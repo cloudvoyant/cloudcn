@@ -59,7 +59,7 @@ source "$(dirname "$0")/utils"
 - Source `mise-tasks/utils` for shared logging (`log_info`, `log_error`, `log_warn`)
 - Use `#MISE hide=true` for internal utilities not meant for direct invocation
 - Use `: <<DOCUMENTATION ... DOCUMENTATION` heredoc for complex script documentation
-- Nested task files (e.g. `mise-tasks/build/prod`) must source shared helpers by
+- Nested task files (e.g. `mise-tasks/publish/rc`) must source shared helpers by
   absolute path — `source "${MISE_PROJECT_ROOT:-$PWD}/mise-tasks/utils"` — because
   `$(dirname "$0")/utils` only resolves for flat files
 
@@ -75,7 +75,7 @@ Use Conventional Commits. No Claude attributions.
 
 - `feat:` → MINOR bump (1.x.0)
 - `fix:` → PATCH bump (1.0.x)
-- `feat!:` / `fix!:` → MAJOR bump (x.0.0)
+- `feat!:` / `fix!:` → MAJOR bump (x.0.0) — except cloudcn, which intentionally caps at `minor` to stay at v0 (see `.releaserc.json`)
 - `docs:`, `refactor:`, `test:` → changelog only, no bump
 - `chore:` → hidden from changelog, no bump
 

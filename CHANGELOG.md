@@ -1,3 +1,10 @@
+# [0.1.0](https://github.com/cloudvoyant/cloudcn/compare/v0.0.0...v0.1.0) (2026-08-17)
+
+
+### Features
+
+* convert cloudcn to a pnpm workspace monorepo ([219cfa9](https://github.com/cloudvoyant/cloudcn/commit/219cfa91efa7d4a81b1f024fca0b0935356b36a3))
+
 ## [2.15.0](https://github.com/cloudvoyant/cloudcn/compare/v2.14.0...v2.15.0) (2026-07-15)
 * emit placeholder docs during scaffold
 

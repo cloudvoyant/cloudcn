@@ -1,6 +1,6 @@
 {
   "name": "cloudcn-docs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "description": "cloudcn docs/demo app — placeholder (will become an HMR Astro app)",

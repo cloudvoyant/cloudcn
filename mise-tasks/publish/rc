@@ -20,10 +20,11 @@ RC_VERSION="${VERSION}-rc.${TIMESTAMP}.${SHORT_SHA}"
 log_info "Setting lockstep RC version $RC_VERSION across libs/* and apps/*..."
 "${MISE_PROJECT_ROOT:-$PWD}/mise-tasks/set-version" "$RC_VERSION"
 
-log_info "Publishing all libs/* and apps/* @ $RC_VERSION to npm with tag 'next'..."
-# --filter './libs/*' --filter './apps/*' excludes the private root; private packages are
-# skipped by pnpm publish. Everything publishable goes at the same version -> true lockstep.
-pnpm -r --filter './libs/*' --filter './apps/*' publish --access public --no-git-checks --tag next
+log_info "Publishing all libs/* @ $RC_VERSION to npm with tag 'next'..."
+# --filter './libs/*' excludes apps (docs/demo, never published) and the private root;
+# private packages are skipped by pnpm publish. Everything publishable goes at the same
+# version -> true lockstep.
+pnpm -r --filter './libs/*' publish --access public --no-git-checks --tag next
 
 log_info "Restoring lockstep version $VERSION across libs/* and apps/*..."
 "${MISE_PROJECT_ROOT:-$PWD}/mise-tasks/set-version" "$VERSION"

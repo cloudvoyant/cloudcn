@@ -99,7 +99,14 @@ importers:
         specifier: 'catalog:'
         version: 2.1.9(@types/node@22.20.1)
 
-  apps/cloudcn-docs: {}
+  apps/cloudcn-docs:
+    dependencies:
+      cloudcn-react:
+        specifier: workspace:*
+        version: link:../../libs/cloudcn-react
+      cloudcn-svelte:
+        specifier: workspace:*
+        version: link:../../libs/cloudcn-svelte
 
   libs/cloudcn-react:
     devDependencies:

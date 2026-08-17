@@ -13,5 +13,9 @@
     "lint:fix": "eslint src --no-error-on-unmatched-pattern --fix",
     "format": "prettier --write \"src/**/*.{mjs,ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{mjs,ts,tsx}\""
+  },
+  "dependencies": {
+    "cloudcn-react": "workspace:*",
+    "cloudcn-svelte": "workspace:*"
   }
 }

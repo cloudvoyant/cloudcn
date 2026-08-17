@@ -21,28 +21,19 @@ Environment is configured in `mise.toml` under `[env]`:
 
 ```toml
 [env]
-GCP_REGISTRY_PROJECT_ID = "your-project-id"
-GCP_REGISTRY_REGION     = "us-central1"
-GCP_REGISTRY_NAME       = "your-repository-name"
+_.path  = ['{{config_root}}/node_modules/.bin']
+PROJECT = "cloudcn"
 ```
 
 ### GitHub Actions For CI/CD
 
-The `ci` workflow runs on feature branch commits and publishes pre-release packages for testing. The `release` workflow runs on merge to main, where `semantic-release` bumps versions and updates the changelog.
+The `ci` workflow runs on feature branch commits and publishes pre-release packages (`mise run publish:rc`) for testing. The `release` workflow runs on merge to main, where `semantic-release` bumps the lockstep `version.txt` version and `mise run publish` publishes the public workspace packages.
 
 ### CI/CD Secrets
 
 Org-level secrets are utilized to avoid the need for setting up secrets for every new project. This means setup is only needed once.
 
-For GCP (default):
-
-- `GCP_SA_KEY` - Service account JSON key
-- `GCP_REGISTRY_PROJECT_ID`, `GCP_REGISTRY_REGION`, `GCP_REGISTRY_NAME` - Registry configuration
-
-For other registries:
-
-- npm: `NPM_TOKEN`
-- PyPI: `PYPI_TOKEN`
+- `NPM_TOKEN` — npm publish token; exposed to CI as `NODE_AUTH_TOKEN`
 
 ### Cross-Platform Support
 
@@ -59,7 +50,7 @@ Key compatibility measures:
 - [mise - the dev tool manager](https://mise.jdx.dev/)
 - [semantic-release](https://semantic-release.gitbook.io/)
 - [GitHub Actions](https://docs.github.com/en/actions)
-- [GCP Artifact Registry](https://cloud.google.com/artifact-registry/docs)
+- [pnpm workspaces](https://pnpm.io/workspaces)
 - [Conventional Commits](https://www.conventionalcommits.org/)
 
 ---

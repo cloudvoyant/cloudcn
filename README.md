@@ -1,66 +1,31 @@
 # cloudcn
 
-cloudcn is [add your project description here].
+cloudcn is a pnpm workspace monorepo for a UI component library with a docs/demo app.
 
-## Features
+## Structure
 
-- [List key features of your project]
+- `libs/cloudcn-react` — React UI components (placeholder: exports `helloReact`)
+- `libs/cloudcn-svelte` — Svelte UI components (placeholder: exports `helloSvelte`)
+- `apps/cloudcn-docs` — docs/demo app (placeholder: prints `hello`; will become an HMR Astro app)
 
-## Requirements
-
-- bash 3.2+
-- [mise](https://mise.jdx.dev/getting-started.html)
-
-Run `mise install` to install all tools, then `mise run install` for any additional dependencies.
-
-## Quick Start
+## Getting started
 
 ```bash
-git clone <your-repo>
-cd cloudcn
-mise install
+mise run install   # install all workspace deps
+mise run build     # build every package (tsup -> dist/)
+mise run test      # run vitest across the workspace
+mise run lint      # eslint + tsc across the workspace
+mise run format:check
 ```
 
-Type `mise tasks` to see all available tasks:
+Run the docs placeholder:
 
 ```bash
-❯ mise tasks
-build        Build the project
-clean        Clean build artifacts
-install      Install dependencies
-publish      Publish package to registry
-run          Run project locally
-test         Run tests
-...
+pnpm --filter cloudcn-docs run dev    # prints "hello"
+pnpm --filter cloudcn-docs run build  # prints "hello"
+pnpm --filter cloudcn-docs run serve  # prints "hello"
 ```
 
-Build, run, and test with `mise run`:
+## Versioning
 
-```bash
-mise run run
-mise run test
-```
-
-Task dependencies run automatically — `mise run test` runs `build` first!
-
-Commit using conventional commits (`feat:`, `fix:`, `docs:`). Merge/push to main and CI/CD will run automatically bumping your project version and publishing a package.
-
-## Documentation
-
-- [User Guide](docs/user-guide.md) - Complete setup and usage guide
-- [Architecture](docs/architecture.md) - Design and implementation details
-- [Infrastructure](docs/infrastructure.md) - Infrastructure and CI/CD details
-
-## References
-
-- [mise - dev tool manager](https://mise.jdx.dev/)
-- [semantic-release](https://semantic-release.gitbook.io/)
-- [bats-core bash testing](https://bats-core.readthedocs.io/)
-- [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [GitHub Actions](https://docs.github.com/en/actions)
-- [GCP Artifact Registry](https://cloud.google.com/artifact-registry/docs)
-
----
-
-**Template**: mise-lib-template v2.15.0
+All packages share one lockstep version sourced from `version.txt` (`mise run set-version <version>` fans it out). The project intentionally stays at v0 — release rules cap every bump at minor, so the first publish is 0.x. See `docs/architecture.md`.

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#MISE description="Run the cloudcn-docs app (dev server)"
+#MISE depends=["install"]
+set -euo pipefail
+cd "${MISE_PROJECT_ROOT:-$PWD}"
+pnpm --filter cloudcn-docs dev

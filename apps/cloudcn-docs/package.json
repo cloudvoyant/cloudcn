@@ -1,0 +1,21 @@
+{
+  "name": "cloudcn-docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "cloudcn docs/demo app — placeholder (will become an HMR Astro app)",
+  "scripts": {
+    "dev": "node src/index.mjs",
+    "build": "node src/index.mjs",
+    "serve": "node src/index.mjs",
+    "test": "vitest run --passWithNoTests",
+    "lint": "eslint src --no-error-on-unmatched-pattern",
+    "lint:fix": "eslint src --no-error-on-unmatched-pattern --fix",
+    "format": "prettier --write \"src/**/*.{mjs,ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{mjs,ts,tsx}\""
+  },
+  "dependencies": {
+    "cloudcn-react": "workspace:*",
+    "cloudcn-svelte": "workspace:*"
+  }
+}

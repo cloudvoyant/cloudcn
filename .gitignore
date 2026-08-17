@@ -45,7 +45,8 @@ zig-out/
 !Cargo.lock
 package-lock.json
 yarn.lock
-pnpm-lock.yaml
+# pnpm workspace lockfile is committed for reproducible installs
+!pnpm-lock.yaml
 Gemfile.lock
 Pipfile.lock
 poetry.lock
@@ -128,3 +129,6 @@ test-results/
 
 # Codevoyant style guide learning data (personal observations)
 .codevoyant/
+
+# codevoyant context store (symlink to ~/.codevoyant/<project-slug>/)
+.codevoyant

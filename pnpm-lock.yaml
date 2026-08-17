@@ -105,6 +105,12 @@ importers:
         specifier: 'catalog:'
         version: 22.20.1
 
+  libs/cloudcn-svelte:
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.20.1
+
 packages:
 
   '@babel/code-frame@7.29.7':

@@ -1,6 +1,6 @@
-# {{PROJECT_NAME}} Development Guide
+# cloudcn Development Guide
 
-Generated from {{TEMPLATE_NAME}} v{{TEMPLATE_VERSION}}.
+Generated from mise-lib-template v2.15.0.
 
 ## Prerequisites
 

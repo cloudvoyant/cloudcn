@@ -1,5 +1,5 @@
 /**
- * mise-lib-template — sample library module.
+ * cloudcn — sample library module.
  * Rename and replace with your actual implementation.
  */
 
@@ -13,7 +13,7 @@ export interface GreetOptions {
  *
  * @example
  * ```ts
- * import { greet } from 'mise-lib-template';
+ * import { greet } from 'cloudcn';
  * console.log(greet({ name: 'world' })); // "Hello, world!"
  * ```
  */

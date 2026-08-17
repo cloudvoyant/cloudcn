@@ -2,7 +2,7 @@
 
 ## Overview
 
-`{{PROJECT_NAME}}` is a [`mise`](https://mise.jdx.dev/)-powered project with automated versioning, testing, and GitHub Actions CI/CD.
+`cloudcn` is a [`mise`](https://mise.jdx.dev/)-powered project with automated versioning, testing, and GitHub Actions CI/CD.
 
 ## Design
 
@@ -64,4 +64,4 @@ Key compatibility measures:
 
 ---
 
-**Template**: {{TEMPLATE_NAME}} v{{TEMPLATE_VERSION}}
+**Template**: mise-lib-template v2.15.0

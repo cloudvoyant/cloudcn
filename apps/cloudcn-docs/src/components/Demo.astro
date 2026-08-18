@@ -15,15 +15,16 @@ const examples = component === 'button' ? buttonExamples : [];
 <div class="flex w-full flex-col gap-6">
   {examples.map((example) => (
     <Example
+      id={example.id}
       title={example.title}
       reactCode={example.code.react}
       svelteCode={example.code.svelte}
     >
       <div data-fw="react">
-        <ReactButtonDemo section={example.id} client:load />
+        <ReactButtonDemo section={example.id} client:visible />
       </div>
       <div data-fw="svelte">
-        <SvelteButtonDemo section={example.id} client:load />
+        <SvelteButtonDemo section={example.id} client:visible />
       </div>
     </Example>
   ))}

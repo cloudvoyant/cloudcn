@@ -9,6 +9,7 @@ const { currentPath = '/' } = Astro.props;
 ---
 
 <div
+  id="mobile-sidebar"
   class="invisible fixed inset-0 z-50 overflow-y-auto bg-background p-6 opacity-0 transition-opacity duration-200"
   data-mobile-sidebar
 >
@@ -36,11 +37,37 @@ const { currentPath = '/' } = Astro.props;
 </style>
 
 <script>
-  const closeBtn = document.querySelector('[data-mobile-close]');
-  const close = () => document.documentElement.classList.remove('mobile-nav-open');
-  closeBtn?.addEventListener('click', close);
+  const openBtn = document.querySelector<HTMLButtonElement>('[data-mobile-open]');
+  const drawer = document.querySelector<HTMLElement>('[data-mobile-sidebar]');
+  const closeBtn = drawer?.querySelector<HTMLButtonElement>('[data-mobile-close]');
 
-  document.querySelector('[data-mobile-sidebar]')?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', close);
+  const setBackgroundInert = (inert: boolean) => {
+    Array.from(document.body.children)
+      .filter((el) => !el.hasAttribute('data-mobile-sidebar'))
+      .forEach((el) => (inert ? el.setAttribute('inert', '') : el.removeAttribute('inert')));
+  };
+
+  const close = () => {
+    document.documentElement.classList.remove('mobile-nav-open');
+    openBtn?.setAttribute('aria-expanded', 'false');
+    setBackgroundInert(false);
+    openBtn?.focus();
+  };
+
+  const open = () => {
+    document.documentElement.classList.add('mobile-nav-open');
+    openBtn?.setAttribute('aria-expanded', 'true');
+    setBackgroundInert(true);
+    closeBtn?.focus();
+  };
+
+  openBtn?.addEventListener('click', () => {
+    if (document.documentElement.classList.contains('mobile-nav-open')) close();
+    else open();
   });
+  closeBtn?.addEventListener('click', close);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && document.documentElement.classList.contains('mobile-nav-open')) close();
+  });
+  drawer?.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
 </script>

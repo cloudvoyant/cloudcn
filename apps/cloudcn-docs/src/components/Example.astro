@@ -3,12 +3,14 @@
 import { Code } from 'astro/components';
 
 interface Props {
+  id: string;
   title: string;
   reactCode: string;
   svelteCode: string;
 }
 
-const { title, reactCode, svelteCode } = Astro.props;
+const { id, title, reactCode, svelteCode } = Astro.props;
+const tabId = (name: string) => `example-${id}-${name}`;
 ---
 
 <div class="w-full" data-example>
@@ -18,28 +20,50 @@ const { title, reactCode, svelteCode } = Astro.props;
       <div class="flex items-center gap-1" role="tablist" aria-label="Example view">
         <button
           type="button"
+          role="tab"
+          id={tabId('preview-tab')}
+          aria-controls={tabId('preview-panel')}
+          aria-selected="true"
+          tabindex="0"
           class="rounded px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
           data-example-tab="preview"
-          aria-selected="true"
         >
           Preview
         </button>
         <button
           type="button"
+          role="tab"
+          id={tabId('code-tab')}
+          aria-controls={tabId('code-panel')}
+          aria-selected="false"
+          tabindex="-1"
           class="rounded px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
           data-example-tab="code"
-          aria-selected="false"
         >
           Code
         </button>
       </div>
     </div>
 
-    <div data-example-panel="preview" class="p-6" data-demo>
+    <div
+      role="tabpanel"
+      id={tabId('preview-panel')}
+      aria-labelledby={tabId('preview-tab')}
+      data-example-panel="preview"
+      class="p-6"
+      data-demo
+    >
       <slot />
     </div>
 
-    <div data-example-panel="code" class="hidden" data-demo>
+    <div
+      role="tabpanel"
+      id={tabId('code-panel')}
+      aria-labelledby={tabId('code-tab')}
+      data-example-panel="code"
+      hidden
+      data-demo
+    >
       <div data-fw="react" class="border-t border-border">
         <Code code={reactCode} lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} />
       </div>
@@ -56,26 +80,37 @@ const { title, reactCode, svelteCode } = Astro.props;
     const codePanel = root.querySelector('[data-example-panel="code"]');
     const tabs = root.querySelectorAll<HTMLButtonElement>('[data-example-tab]');
 
-    const selectTab = (tab: HTMLButtonElement) => {
+    const selectTab = (tab: HTMLButtonElement, focus = false) => {
       const view = tab.dataset.exampleTab;
       tabs.forEach((t) => {
-        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
-        t.classList.toggle('text-foreground', t === tab);
-        t.classList.toggle('bg-accent', t === tab);
+        const selected = t === tab;
+        t.setAttribute('aria-selected', String(selected));
+        t.tabIndex = selected ? 0 : -1;
+        t.classList.toggle('text-foreground', selected);
+        t.classList.toggle('bg-accent', selected);
       });
-      if (view === 'preview') {
-        previewPanel?.classList.remove('hidden');
-        codePanel?.classList.add('hidden');
-      } else {
-        codePanel?.classList.remove('hidden');
-        previewPanel?.classList.add('hidden');
-      }
+      previewPanel?.toggleAttribute('hidden', view !== 'preview');
+      codePanel?.toggleAttribute('hidden', view !== 'code');
+      if (focus) tab.focus();
     };
 
     tabs.forEach((tab) => {
       tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        const keys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+        if (!keys.includes(event.key)) return;
+        event.preventDefault();
+        const index = Array.from(tabs).indexOf(tab);
+        let next = index;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        selectTab(tabs[next], true);
+      });
     });
 
-    selectTab(root.querySelector('[data-example-tab="preview"]') as HTMLButtonElement);
+    const initial = root.querySelector('[data-example-tab="preview"]');
+    if (initial) selectTab(initial as HTMLButtonElement);
   });
 </script>

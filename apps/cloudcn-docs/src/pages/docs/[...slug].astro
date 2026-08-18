@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from 'astro:content';
+import Shell from '../../layouts/Shell.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const currentPath = `/docs/${entry.id}`;
+---
+
+<Shell
+  title={`${entry.data.title} — cloudcn`}
+  description={entry.data.description}
+  currentPath={currentPath}
+  headings={headings}
+>
+  <h1 class="text-3xl font-bold tracking-tight">{entry.data.title}</h1>
+  <div class="docs-prose mt-6">
+    <Content />
+  </div>
+</Shell>

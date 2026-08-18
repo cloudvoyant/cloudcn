@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const docs = (await getCollection('docs')).sort((a, b) => {
+  const ag = a.data.group === 'general' ? 0 : 1;
+  const bg = b.data.group === 'general' ? 0 : 1;
+  return ag - bg || a.data.order - b.data.order;
+});
+
+const general = docs.filter((d) => d.data.group === 'general');
+const components = docs.filter((d) => d.data.group === 'components');
+
+const groups = [
+  { label: 'General', items: general },
+  { label: 'Components', items: components },
+];
+---
+
+<nav class="flex flex-col gap-8 text-sm" aria-label="Docs navigation">
+  {groups.map((group) =>
+    group.items.length > 0 ? (
+      <div>
+        <p class="mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{group.label}</p>
+        <ul class="flex flex-col gap-0.5">
+          {group.items.map((entry) => {
+            const href = `/docs/${entry.id}`;
+            const active = currentPath === href;
+            return (
+              <li>
+                <a
+                  href={href}
+                  class:list={[
+                    'block rounded-md px-3 py-1.5 font-medium transition-colors',
+                    active ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent/60 hover:text-foreground',
+                  ]}
+                >
+                  {entry.data.title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ) : null,
+  )}
+</nav>

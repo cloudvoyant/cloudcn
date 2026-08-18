@@ -1,0 +1,52 @@
+---
+const frameworks = [
+  { id: 'react', label: 'React' },
+  { id: 'svelte', label: 'Svelte' },
+] as const;
+---
+
+<div
+  class="inline-flex items-center rounded-full border border-border bg-muted p-1 text-xs font-medium"
+  role="group"
+  aria-label="Framework"
+  data-framework-selector
+>
+  {frameworks.map((fw) => (
+    <button
+      type="button"
+      class="rounded-full px-3 py-1 text-muted-foreground transition-colors hover:text-foreground"
+      data-fw={fw.id}
+      aria-pressed="false"
+    >
+      {fw.label}
+    </button>
+  ))}
+</div>
+
+<script>
+  import { FRAMEWORK_EVENT, getStoredFramework, setFramework } from '../lib/framework';
+  import type { Framework } from '../lib/framework';
+
+  const root = document.querySelector('[data-framework-selector]');
+  if (!root) throw new Error('framework selector not found');
+
+  const buttons = root.querySelectorAll<HTMLButtonElement>('button[data-fw]');
+
+  const sync = (fw: Framework) => {
+    buttons.forEach((btn) => {
+      btn.setAttribute('aria-pressed', btn.dataset.fw === fw ? 'true' : 'false');
+    });
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      setFramework(btn.dataset.fw as Framework);
+    });
+  });
+
+  window.addEventListener(FRAMEWORK_EVENT, (event) => {
+    sync((event as CustomEvent<Framework>).detail);
+  });
+
+  sync(getStoredFramework());
+</script>

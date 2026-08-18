@@ -1,14 +1,44 @@
 ---
-import '../styles/global.css';
+import Shell from '../layouts/Shell.astro';
+import { getCollection } from 'astro:content';
+
+const components = (await getCollection('docs'))
+  .filter((d) => d.data.group === 'components')
+  .sort((a, b) => a.data.order - b.data.order);
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>cloudcn</title>
-  </head>
-  <body class="flex min-h-dvh items-center justify-center bg-background text-foreground">
-    <p>cloudcn docs — scaffold in progress.</p>
-  </body>
-</html>
+
+<Shell title="cloudcn — React and Svelte components" description="Accessible React and Svelte components built on Ark UI with a shared shadcn-style theme.">
+  <section class="py-16 lg:py-24">
+    <h1 class="max-w-2xl text-4xl font-bold tracking-tight lg:text-6xl">Beautifully accessible components for React and Svelte.</h1>
+    <p class="mt-6 max-w-xl text-lg text-muted-foreground">A component library with a shared theme and shared variants. Built on Ark UI. Open source.</p>
+    <div class="mt-8 flex gap-3">
+      <a
+        href="/docs/general/introduction"
+        class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+      >
+        Get started
+      </a>
+      <a
+        href="/docs/components/button"
+        class="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+      >
+        Browse components
+      </a>
+    </div>
+  </section>
+
+  <section class="grid gap-4 pb-20 sm:grid-cols-2">
+    {components.map((entry) => {
+      const href = `/docs/${entry.id}`;
+      return (
+        <a
+          href={href}
+          class="group rounded-lg border border-border bg-card p-6 transition-colors hover:border-border hover:bg-accent"
+        >
+          <h2 class="text-lg font-semibold">{entry.data.title}</h2>
+          <p class="mt-2 text-sm text-muted-foreground">{entry.data.description}</p>
+        </a>
+      );
+    })}
+  </section>
+</Shell>

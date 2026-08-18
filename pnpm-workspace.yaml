@@ -3,13 +3,33 @@ packages:
   - libs/*
 
 catalog:
+  '@ark-ui/react': ^5.38.2
+  '@ark-ui/svelte': ^5.23.1
+  '@astrojs/check': ^0.9.10
+  '@astrojs/mdx': ^7.0.6
+  '@astrojs/react': ^6.0.3
+  '@astrojs/svelte': ^9.0.1
   '@eslint/js': ^9.0.0
+  '@sveltejs/package': ^2.5.8
+  '@sveltejs/vite-plugin-svelte': ^4.0.0
+  '@tailwindcss/vite': ^4.3.3
   '@types/node': ^22.0.0
+  '@types/react': ^19.2.18
+  '@types/react-dom': ^19.2.4
   '@typescript-eslint/eslint-plugin': ^8.0.0
   '@typescript-eslint/parser': ^8.0.0
+  astro: ^7.2.3
+  'class-variance-authority': ^0.7.1
+  clsx: ^2.1.1
   eslint: ^9.0.0
   globals: ^15.0.0
   prettier: ^3.0.0
+  react: ^19.2.8
+  'react-dom': ^19.2.8
+  svelte: ^5.56.9
+  'svelte-check': ^4.7.6
+  tailwindcss: ^4.3.3
+  'tailwind-merge': ^3.6.0
   tsup: ^8.3.0
   typescript: ^5.5.0
   typescript-eslint: ^8.0.0

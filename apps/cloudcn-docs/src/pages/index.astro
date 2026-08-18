@@ -1,6 +1,8 @@
 ---
 import Shell from '../layouts/Shell.astro';
 import { getCollection } from 'astro:content';
+import { buttonVariants } from 'cloudcn-core';
+import { cn } from 'cloudcn-core';
 
 const components = (await getCollection('docs'))
   .filter((d) => d.data.group === 'components')
@@ -14,13 +16,13 @@ const components = (await getCollection('docs'))
     <div class="mt-8 flex gap-3">
       <a
         href="/docs/general/introduction"
-        class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+        class={cn(buttonVariants({ variant: 'primary', size: 'md' }))}
       >
         Get started
       </a>
       <a
         href="/docs/components/button"
-        class="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+        class={cn(buttonVariants({ variant: 'outline', size: 'md' }))}
       >
         Browse components
       </a>

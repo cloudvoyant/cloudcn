@@ -1,0 +1,23 @@
+---
+import ReactButtonDemo from './demo/ReactButtonDemo.tsx';
+import SvelteButtonDemo from './demo/SvelteButtonDemo.svelte';
+
+interface Props {
+  component?: 'button';
+}
+
+const { component = 'button' } = Astro.props;
+---
+
+<div class="w-full">
+  {component === 'button' && (
+    <div class="w-full rounded-lg border border-border bg-card p-6">
+      <div data-fw="react">
+        <ReactButtonDemo client:load />
+      </div>
+      <div data-fw="svelte">
+        <SvelteButtonDemo client:load />
+      </div>
+    </div>
+  )}
+</div>

@@ -5,6 +5,48 @@ group: components
 order: 1
 ---
 
-The Button component triggers an action. It is implemented in both React and Svelte on top of Ark UI, sharing `buttonVariants` and the theme from `cloudcn-core`.
+import Demo from '../../../components/Demo.astro';
 
-Full variant documentation and a live framework-switchable demo are added in a later milestone.
+The Button component triggers an action. It is implemented in both React and Svelte on top of Ark UI's factory, sharing the `buttonVariants` cva definitions and the theme from `cloudcn-core`. Use the framework selector in the top-right to switch between implementations — the demo below renders the correct component for the selected framework.
+
+<Demo component="button" />
+
+## Variants
+
+| Variant | Description |
+| --- | --- |
+| `primary` | The default high-emphasis action. |
+| `secondary` | Lower-emphasis filled action. |
+| `outline` | Bordered, transparent background. |
+| `rounded` | Pill-shaped primary action. |
+| `success` | Confirms a successful action. |
+| `danger` | Destructive or irreversible action. |
+| `warn` | Warns about a consequence. |
+| `info` | Neutral informational action. |
+
+## Sizes
+
+| Size | Height |
+| --- | --- |
+| `sm` | `h-9` |
+| `md` | `h-10` |
+| `lg` | `h-11` |
+| `icon` | `size-10` |
+
+## API
+
+The React and Svelte components accept the same `variant` and `size` props, plus standard button attributes (`type`, `disabled`, `className`/`class`).
+
+```ts
+import { Button } from 'cloudcn-react';
+
+<Button variant="danger" size="lg">Delete</Button>
+```
+
+```svelte
+<script lang="ts">
+  import { Button } from 'cloudcn-svelte';
+</script>
+
+<Button variant="danger" size="lg">Delete</Button>
+```

@@ -1,0 +1,27 @@
+---
+title: Theming
+description: CSS-variable theming that matches shadcn/ui, with light and dark support.
+group: general
+order: 3
+---
+
+## CSS variables
+
+The theme in `cloudcn-core` matches shadcn/ui's implementation exactly at this stage: semantic tokens such as `--background`, `--foreground`, `--primary`, and `--secondary` are defined under `:root` for light mode and overridden under `.dark`.
+
+```css
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+}
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+}
+```
+
+## Dark mode
+
+Toggle the `dark` class on `<html>`. The docs site persists your choice and honors `prefers-color-scheme` by default.

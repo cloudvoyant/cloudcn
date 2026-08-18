@@ -1,0 +1,29 @@
+---
+title: Installation
+description: Install cloudcn packages with pnpm.
+group: general
+order: 2
+---
+
+## Workspace packages
+
+The library ships three npm packages:
+
+- `cloudcn-core` — shared interfaces, cva variants, and the shadcn-style theme.
+- `cloudcn-react` — React components (Ark UI based).
+- `cloudcn-svelte` — Svelte components (Ark UI based).
+
+## Install
+
+```bash
+pnpm add cloudcn-core cloudcn-react
+# or for Svelte
+pnpm add cloudcn-core cloudcn-svelte
+```
+
+Import the theme once in your app's global CSS:
+
+```css
+@import 'tailwindcss';
+@import 'cloudcn-core/theme.css';
+```

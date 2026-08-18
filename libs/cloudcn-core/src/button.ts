@@ -14,6 +14,13 @@ export const buttonVariants = cva(
         danger: 'bg-danger text-danger-foreground hover:bg-danger/90',
         warn: 'bg-warn text-warn-foreground hover:bg-warn/90',
         info: 'bg-info text-info-foreground hover:bg-info/90',
+        'outline-primary': 'border border-primary/40 bg-background text-primary hover:bg-primary/10',
+        'outline-secondary':
+          'border border-secondary-foreground/30 bg-background text-secondary-foreground hover:bg-secondary',
+        'outline-success': 'border border-success/50 bg-background text-success hover:bg-success/10',
+        'outline-danger': 'border border-danger/50 bg-background text-danger hover:bg-danger/10',
+        'outline-warn': 'border border-warn/60 bg-background text-warn hover:bg-warn/15',
+        'outline-info': 'border border-info/50 bg-background text-info hover:bg-info/10',
       },
       size: {
         sm: 'h-9 px-3',

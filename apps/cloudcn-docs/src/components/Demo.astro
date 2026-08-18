@@ -1,23 +1,30 @@
 ---
+import Example from './Example.astro';
 import ReactButtonDemo from './demo/ReactButtonDemo.tsx';
 import SvelteButtonDemo from './demo/SvelteButtonDemo.svelte';
+import { buttonExamples } from '../lib/examples';
 
 interface Props {
   component?: 'button';
 }
 
 const { component = 'button' } = Astro.props;
+const examples = component === 'button' ? buttonExamples : [];
 ---
 
-<div class="w-full">
-  {component === 'button' && (
-    <div class="w-full rounded-lg border border-border bg-card p-6" data-demo>
+<div class="flex w-full flex-col gap-6">
+  {examples.map((example) => (
+    <Example
+      title={example.title}
+      reactCode={example.code.react}
+      svelteCode={example.code.svelte}
+    >
       <div data-fw="react">
-        <ReactButtonDemo client:load />
+        <ReactButtonDemo section={example.id} client:load />
       </div>
       <div data-fw="svelte">
-        <SvelteButtonDemo client:load />
+        <SvelteButtonDemo section={example.id} client:load />
       </div>
-    </div>
-  )}
+    </Example>
+  ))}
 </div>

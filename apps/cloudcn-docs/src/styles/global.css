@@ -22,6 +22,18 @@ html[data-framework='svelte'] [data-demo] [data-fw='react'] {
   @apply bg-primary text-primary-foreground hover:text-primary-foreground;
 }
 
+/* Example preview/code cards (Shiki output inside). */
+[data-example-panel='code'] .astro-code {
+  @apply m-0 rounded-none border-0 bg-transparent p-4 text-[13px];
+}
+html.dark [data-example-panel='code'] .astro-code {
+  background-color: var(--shiki-dark-bg);
+  color: var(--shiki-dark);
+}
+html.dark [data-example-panel='code'] .astro-code span {
+  color: var(--shiki-dark);
+}
+
 /* Rendered MDX docs. */
 .docs-prose {
   @apply text-foreground;

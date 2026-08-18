@@ -7,7 +7,7 @@ order: 1
 
 import Demo from '../../../components/Demo.astro';
 
-The Button component triggers an action. It is implemented in both React and Svelte on top of Ark UI's factory, sharing the `buttonVariants` cva definitions and the theme from `cloudcn-core`. Use the framework selector in the top-right to switch between implementations — the demo below renders the correct component for the selected framework.
+The Button component triggers an action. It is implemented in both React and Svelte on top of Ark UI's factory, sharing the `buttonVariants` cva definitions and the theme from `cloudcn-core`. Use the framework selector in the top-right to switch between implementations — each example below renders the correct component for the selected framework. Toggle between **Preview** and **Code** to see the source for the active framework.
 
 <Demo component="button" />
 
@@ -24,6 +24,8 @@ The Button component triggers an action. It is implemented in both React and Sve
 | `warn` | Warns about a consequence. |
 | `info` | Neutral informational action. |
 
+Every filled color variant also has an outlined counterpart — `outline-primary`, `outline-secondary`, `outline-success`, `outline-danger`, `outline-warn`, `outline-info` — for lower-emphasis actions that keep the color's meaning.
+
 ## Sizes
 
 | Size | Height |
@@ -31,7 +33,7 @@ The Button component triggers an action. It is implemented in both React and Sve
 | `sm` | `h-9` |
 | `md` | `h-10` |
 | `lg` | `h-11` |
-| `icon` | `size-10` |
+| `icon` | `size-10` — square, meant for a lucide icon |
 
 ## API
 

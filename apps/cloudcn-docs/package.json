@@ -25,6 +25,8 @@
     "cloudcn-core": "workspace:*",
     "cloudcn-react": "workspace:*",
     "cloudcn-svelte": "workspace:*",
+    "lucide-react": "catalog:",
+    "lucide-svelte": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "svelte": "catalog:",

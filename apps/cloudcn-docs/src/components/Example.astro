@@ -1,0 +1,81 @@
+---
+// apps/cloudcn-docs/src/components/Example.astro
+import { Code } from 'astro/components';
+
+interface Props {
+  title: string;
+  reactCode: string;
+  svelteCode: string;
+}
+
+const { title, reactCode, svelteCode } = Astro.props;
+---
+
+<div class="w-full" data-example>
+  <div class="flex flex-col rounded-lg border border-border bg-card">
+    <div class="flex items-center justify-between border-b border-border px-4 py-2">
+      <p class="text-sm font-medium">{title}</p>
+      <div class="flex items-center gap-1" role="tablist" aria-label="Example view">
+        <button
+          type="button"
+          class="rounded px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+          data-example-tab="preview"
+          aria-selected="true"
+        >
+          Preview
+        </button>
+        <button
+          type="button"
+          class="rounded px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+          data-example-tab="code"
+          aria-selected="false"
+        >
+          Code
+        </button>
+      </div>
+    </div>
+
+    <div data-example-panel="preview" class="p-6" data-demo>
+      <slot />
+    </div>
+
+    <div data-example-panel="code" class="hidden" data-demo>
+      <div data-fw="react" class="border-t border-border">
+        <Code code={reactCode} lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} />
+      </div>
+      <div data-fw="svelte" class="border-t border-border">
+        <Code code={svelteCode} lang="svelte" themes={{ light: 'github-light', dark: 'github-dark' }} />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-example]').forEach((root) => {
+    const previewPanel = root.querySelector('[data-example-panel="preview"]');
+    const codePanel = root.querySelector('[data-example-panel="code"]');
+    const tabs = root.querySelectorAll<HTMLButtonElement>('[data-example-tab]');
+
+    const selectTab = (tab: HTMLButtonElement) => {
+      const view = tab.dataset.exampleTab;
+      tabs.forEach((t) => {
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        t.classList.toggle('text-foreground', t === tab);
+        t.classList.toggle('bg-accent', t === tab);
+      });
+      if (view === 'preview') {
+        previewPanel?.classList.remove('hidden');
+        codePanel?.classList.add('hidden');
+      } else {
+        codePanel?.classList.remove('hidden');
+        previewPanel?.classList.add('hidden');
+      }
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => selectTab(tab));
+    });
+
+    selectTab(root.querySelector('[data-example-tab="preview"]') as HTMLButtonElement);
+  });
+</script>

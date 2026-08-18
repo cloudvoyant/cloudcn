@@ -7,11 +7,13 @@
 @source '../../../../libs/cloudcn-react/src';
 @source '../../../../libs/cloudcn-svelte/src';
 
-/* Framework selector + Demo: show only the active framework. */
-html[data-framework='react'] [data-fw='svelte'] {
+/* Demo: show only the active framework's island.
+   Scoped to [data-demo] so the FrameworkSelector buttons (which also carry
+   data-fw=...) are never hidden. */
+html[data-framework='react'] [data-demo] [data-fw='svelte'] {
   display: none;
 }
-html[data-framework='svelte'] [data-fw='react'] {
+html[data-framework='svelte'] [data-demo] [data-fw='react'] {
   display: none;
 }
 

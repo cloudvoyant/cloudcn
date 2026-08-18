@@ -15,7 +15,7 @@
 
   let { variant = 'primary', size = 'md', class: className = '', type = 'button', disabled = false, children }: Props = $props();
 
-  const classes = cn(buttonVariants({ variant, size }), className);
+  const classes = $derived(cn(buttonVariants({ variant, size }), className));
 </script>
 
 <Ark as="button" class={classes} {type} {disabled}>

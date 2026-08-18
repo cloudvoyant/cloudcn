@@ -28,7 +28,15 @@
     children?: Snippet;
   } & HTMLButtonAttributes;
 
-  let { variant = 'primary', size = 'md', class: className = '', type = 'button', disabled = false, children, ...rest }: Props = $props();
+  let {
+    variant = 'primary',
+    size = 'md',
+    class: className = '',
+    type = 'button',
+    disabled = false,
+    children,
+    ...rest
+  }: Props = $props();
 
   const classes = $derived(cn(buttonVariants({ variant, size }), className));
 </script>

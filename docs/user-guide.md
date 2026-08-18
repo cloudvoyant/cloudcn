@@ -41,6 +41,10 @@ Import the theme once in your global CSS:
 ```css
 @import 'tailwindcss';
 @import 'cloudcn-core/theme.css';
+/* Tailwind doesn't scan node_modules by default — point at cloudcn-core so its
+   cva class strings (bg-primary, h-10, …) get generated. Path is relative to
+   your global CSS file. */
+@source '../../node_modules/cloudcn-core/dist';
 ```
 
 Components accept the same `variant` and `size` props across frameworks; see the Button docs on the site for the full list.

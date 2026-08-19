@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "e2e": "playwright test",
     "test": "vitest run --passWithNoTests",
     "lint": "astro check && eslint \"src/**/*.{ts,tsx,mjs}\" --no-error-on-unmatched-pattern",
     "lint:fix": "eslint \"src/**/*.{ts,tsx,mjs}\" --no-error-on-unmatched-pattern --fix",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "catalog:",
+    "@playwright/test": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

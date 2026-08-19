@@ -3,16 +3,23 @@ import { getCollection, render } from 'astro:content';
 import Shell from '../../layouts/Shell.astro';
 
 export async function getStaticPaths() {
-  const docs = await getCollection('docs');
-  return docs.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }));
+  const general = await getCollection('general');
+  const components = await getCollection('components');
+  return [
+    ...general.map((entry) => ({
+      params: { section: 'general', slug: entry.id },
+      props: { entry },
+    })),
+    ...components.map((entry) => ({
+      params: { section: 'components', slug: entry.id },
+      props: { entry },
+    })),
+  ];
 }
 
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
-const currentPath = `/docs/${entry.id}`;
+const currentPath = `/${Astro.params.section}/${entry.id}`;
 ---
 
 <Shell

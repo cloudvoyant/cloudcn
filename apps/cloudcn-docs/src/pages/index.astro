@@ -4,9 +4,7 @@ import { getCollection } from 'astro:content';
 import { buttonVariants } from 'cloudcn-core';
 import { cn } from 'cloudcn-core';
 
-const components = (await getCollection('docs'))
-  .filter((d) => d.data.group === 'components')
-  .sort((a, b) => a.data.order - b.data.order);
+const components = (await getCollection('components')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Shell title="cloudcn — React and Svelte components" description="Accessible React and Svelte components built on Ark UI with a shared shadcn-style theme.">
@@ -15,13 +13,13 @@ const components = (await getCollection('docs'))
     <p class="mt-6 max-w-xl text-lg text-muted-foreground">A component library with a shared theme and shared variants. Built on Ark UI. Open source.</p>
     <div class="mt-8 flex gap-3">
       <a
-        href="/docs/general/introduction"
+        href="/general/introduction"
         class={cn(buttonVariants({ variant: 'solid', color: 'primary', size: 'md' }))}
       >
         Get started
       </a>
       <a
-        href="/docs/components/button"
+        href="/components/button"
         class={cn(buttonVariants({ variant: 'outline', color: 'primary', size: 'md' }))}
       >
         Browse components
@@ -31,7 +29,7 @@ const components = (await getCollection('docs'))
 
   <section class="grid gap-4 pb-20 sm:grid-cols-2">
     {components.map((entry) => {
-      const href = `/docs/${entry.id}`;
+      const href = `/components/${entry.id}`;
       return (
         <a
           href={href}

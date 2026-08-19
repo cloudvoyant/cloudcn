@@ -1,31 +1,34 @@
 ---
-import Example from './Example.astro';
-import ReactButtonDemo from './demo/ReactButtonDemo.tsx';
-import SvelteButtonDemo from './demo/SvelteButtonDemo.svelte';
-import { buttonExamples } from '../lib/examples';
+import ExampleButtonSolid from './examples/button/solid/index.astro';
+import ExampleButtonOutline from './examples/button/outline/index.astro';
+import ExampleButtonRounded from './examples/button/rounded/index.astro';
+import ExampleButtonSizes from './examples/button/sizes/index.astro';
+import ExampleButtonIcon from './examples/button/icon/index.astro';
+import ExampleButtonWithIcon from './examples/button/with-icon/index.astro';
+import ExampleButtonDisabled from './examples/button/disabled/index.astro';
 
 interface Props {
   component?: 'button';
 }
 
 const { component = 'button' } = Astro.props;
-const examples = component === 'button' ? buttonExamples : [];
+
+const examples =
+  component === 'button'
+    ? [
+        ExampleButtonSolid,
+        ExampleButtonOutline,
+        ExampleButtonRounded,
+        ExampleButtonSizes,
+        ExampleButtonIcon,
+        ExampleButtonWithIcon,
+        ExampleButtonDisabled,
+      ]
+    : [];
 ---
 
 <div class="flex w-full flex-col gap-6">
-  {examples.map((example) => (
-    <Example
-      id={example.id}
-      title={example.title}
-      reactCode={example.code.react}
-      svelteCode={example.code.svelte}
-    >
-      <div data-fw="react">
-        <ReactButtonDemo section={example.id} client:visible />
-      </div>
-      <div data-fw="svelte">
-        <SvelteButtonDemo section={example.id} client:visible />
-      </div>
-    </Example>
+  {examples.map((Example) => (
+    <Example />
   ))}
 </div>

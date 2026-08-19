@@ -2,22 +2,13 @@
 import { Button } from 'cloudcn-react';
 import { Plus, Download, Trash2, Check, AlertTriangle, Info as InfoIcon } from 'lucide-react';
 
-const SOLID = [
-  { name: 'Primary', variant: 'primary' },
-  { name: 'Secondary', variant: 'secondary' },
-  { name: 'Success', variant: 'success' },
-  { name: 'Danger', variant: 'danger' },
-  { name: 'Warn', variant: 'warn' },
-  { name: 'Info', variant: 'info' },
-] as const;
-
-const OUTLINE = [
-  { name: 'Primary', variant: 'outline-primary' },
-  { name: 'Secondary', variant: 'outline-secondary' },
-  { name: 'Success', variant: 'outline-success' },
-  { name: 'Danger', variant: 'outline-danger' },
-  { name: 'Warn', variant: 'outline-warn' },
-  { name: 'Info', variant: 'outline-info' },
+const COLORS = [
+  { name: 'Primary', color: 'primary' },
+  { name: 'Secondary', color: 'secondary' },
+  { name: 'Success', color: 'success' },
+  { name: 'Danger', color: 'danger' },
+  { name: 'Warn', color: 'warn' },
+  { name: 'Info', color: 'info' },
 ] as const;
 
 export interface ReactButtonDemoProps {
@@ -29,8 +20,8 @@ export default function ReactButtonDemo({ section }: ReactButtonDemoProps) {
     case 'solid':
       return (
         <div className="flex flex-wrap items-center gap-3">
-          {SOLID.map(({ name, variant }) => (
-            <Button key={variant} variant={variant}>
+          {COLORS.map(({ name, color }) => (
+            <Button key={color} color={color}>
               {name}
             </Button>
           ))}
@@ -39,8 +30,8 @@ export default function ReactButtonDemo({ section }: ReactButtonDemoProps) {
     case 'outline':
       return (
         <div className="flex flex-wrap items-center gap-3">
-          {OUTLINE.map(({ name, variant }) => (
-            <Button key={variant} variant={variant}>
+          {COLORS.map(({ name, color }) => (
+            <Button key={color} variant="outline" color={color}>
               {name}
             </Button>
           ))}
@@ -49,8 +40,8 @@ export default function ReactButtonDemo({ section }: ReactButtonDemoProps) {
     case 'rounded':
       return (
         <div className="flex flex-wrap items-center gap-3">
-          {SOLID.map(({ name, variant }) => (
-            <Button key={variant} variant={variant} className="rounded-full">
+          {COLORS.map(({ name, color }) => (
+            <Button key={color} color={color} className="rounded-full">
               {name}
             </Button>
           ))}
@@ -78,19 +69,19 @@ export default function ReactButtonDemo({ section }: ReactButtonDemoProps) {
     case 'with-icon':
       return (
         <div className="flex flex-wrap items-center gap-3">
-          <Button variant="success">
+          <Button color="success">
             <Check className="size-4" />
             Approve
           </Button>
-          <Button variant="danger">
+          <Button color="danger">
             <Trash2 className="size-4" />
             Delete
           </Button>
-          <Button variant="warn">
+          <Button color="warn">
             <AlertTriangle className="size-4" />
             Warn
           </Button>
-          <Button variant="info">
+          <Button color="info">
             <InfoIcon className="size-4" />
             Info
           </Button>
@@ -98,7 +89,7 @@ export default function ReactButtonDemo({ section }: ReactButtonDemoProps) {
             <Plus className="size-4" />
             Add
           </Button>
-          <Button variant="secondary">
+          <Button color="secondary">
             <Download className="size-4" />
             Export
           </Button>
@@ -107,8 +98,8 @@ export default function ReactButtonDemo({ section }: ReactButtonDemoProps) {
     case 'disabled':
       return (
         <div className="flex flex-wrap items-center gap-3">
-          {SOLID.map(({ name, variant }) => (
-            <Button key={variant} variant={variant} disabled>
+          {COLORS.map(({ name, color }) => (
+            <Button key={color} color={color} disabled>
               {name}
             </Button>
           ))}

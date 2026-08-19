@@ -6,21 +6,8 @@
   import type { HTMLButtonAttributes } from 'svelte/elements';
 
   type Props = {
-    variant?:
-      | 'primary'
-      | 'secondary'
-      | 'outline'
-      | 'rounded'
-      | 'success'
-      | 'danger'
-      | 'warn'
-      | 'info'
-      | 'outline-primary'
-      | 'outline-secondary'
-      | 'outline-success'
-      | 'outline-danger'
-      | 'outline-warn'
-      | 'outline-info';
+    variant?: 'solid' | 'outline' | 'text';
+    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warn' | 'info';
     size?: 'sm' | 'md' | 'lg' | 'icon';
     class?: string;
     type?: 'button' | 'submit' | 'reset';
@@ -28,17 +15,9 @@
     children?: Snippet;
   } & HTMLButtonAttributes;
 
-  let {
-    variant = 'primary',
-    size = 'md',
-    class: className = '',
-    type = 'button',
-    disabled = false,
-    children,
-    ...rest
-  }: Props = $props();
+  let { variant = 'solid', color = 'primary', size = 'md', class: className = '', type = 'button', disabled = false, children, ...rest }: Props = $props();
 
-  const classes = $derived(cn(buttonVariants({ variant, size }), className));
+  const classes = $derived(cn(buttonVariants({ variant, color, size }), className));
 </script>
 
 <Ark as="button" class={classes} {type} {disabled} {...rest}>

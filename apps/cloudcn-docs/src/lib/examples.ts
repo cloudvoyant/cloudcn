@@ -19,22 +19,22 @@ export const buttonExamples: ButtonExample[] = [
     code: {
       react: `import { Button } from 'cloudcn-react';
 
-<Button variant="primary">Primary</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="success">Success</Button>
-<Button variant="danger">Danger</Button>
-<Button variant="warn">Warn</Button>
-<Button variant="info">Info</Button>`,
+<Button color="primary">Primary</Button>
+<Button color="secondary">Secondary</Button>
+<Button color="success">Success</Button>
+<Button color="danger">Danger</Button>
+<Button color="warn">Warn</Button>
+<Button color="info">Info</Button>`,
       svelte: `<script lang="ts">
   import { Button } from 'cloudcn-svelte';
 </script>
 
-<Button variant="primary">Primary</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="success">Success</Button>
-<Button variant="danger">Danger</Button>
-<Button variant="warn">Warn</Button>
-<Button variant="info">Info</Button>`,
+<Button color="primary">Primary</Button>
+<Button color="secondary">Secondary</Button>
+<Button color="success">Success</Button>
+<Button color="danger">Danger</Button>
+<Button color="warn">Warn</Button>
+<Button color="info">Info</Button>`,
     },
   },
   {
@@ -43,22 +43,22 @@ export const buttonExamples: ButtonExample[] = [
     code: {
       react: `import { Button } from 'cloudcn-react';
 
-<Button variant="outline-primary">Primary</Button>
-<Button variant="outline-secondary">Secondary</Button>
-<Button variant="outline-success">Success</Button>
-<Button variant="outline-danger">Danger</Button>
-<Button variant="outline-warn">Warn</Button>
-<Button variant="outline-info">Info</Button>`,
+<Button variant="outline" color="primary">Primary</Button>
+<Button variant="outline" color="secondary">Secondary</Button>
+<Button variant="outline" color="success">Success</Button>
+<Button variant="outline" color="danger">Danger</Button>
+<Button variant="outline" color="warn">Warn</Button>
+<Button variant="outline" color="info">Info</Button>`,
       svelte: `<script lang="ts">
   import { Button } from 'cloudcn-svelte';
 </script>
 
-<Button variant="outline-primary">Primary</Button>
-<Button variant="outline-secondary">Secondary</Button>
-<Button variant="outline-success">Success</Button>
-<Button variant="outline-danger">Danger</Button>
-<Button variant="outline-warn">Warn</Button>
-<Button variant="outline-info">Info</Button>`,
+<Button variant="outline" color="primary">Primary</Button>
+<Button variant="outline" color="secondary">Secondary</Button>
+<Button variant="outline" color="success">Success</Button>
+<Button variant="outline" color="danger">Danger</Button>
+<Button variant="outline" color="warn">Warn</Button>
+<Button variant="outline" color="info">Info</Button>`,
     },
   },
   {
@@ -67,22 +67,22 @@ export const buttonExamples: ButtonExample[] = [
     code: {
       react: `import { Button } from 'cloudcn-react';
 
-<Button variant="primary" className="rounded-full">Primary</Button>
-<Button variant="secondary" className="rounded-full">Secondary</Button>
-<Button variant="success" className="rounded-full">Success</Button>
-<Button variant="danger" className="rounded-full">Danger</Button>
-<Button variant="warn" className="rounded-full">Warn</Button>
-<Button variant="info" className="rounded-full">Info</Button>`,
+<Button color="primary" className="rounded-full">Primary</Button>
+<Button color="secondary" className="rounded-full">Secondary</Button>
+<Button color="success" className="rounded-full">Success</Button>
+<Button color="danger" className="rounded-full">Danger</Button>
+<Button color="warn" className="rounded-full">Warn</Button>
+<Button color="info" className="rounded-full">Info</Button>`,
       svelte: `<script lang="ts">
   import { Button } from 'cloudcn-svelte';
 </script>
 
-<Button variant="primary" class="rounded-full">Primary</Button>
-<Button variant="secondary" class="rounded-full">Secondary</Button>
-<Button variant="success" class="rounded-full">Success</Button>
-<Button variant="danger" class="rounded-full">Danger</Button>
-<Button variant="warn" class="rounded-full">Warn</Button>
-<Button variant="info" class="rounded-full">Info</Button>`,
+<Button color="primary" class="rounded-full">Primary</Button>
+<Button color="secondary" class="rounded-full">Secondary</Button>
+<Button color="success" class="rounded-full">Success</Button>
+<Button color="danger" class="rounded-full">Danger</Button>
+<Button color="warn" class="rounded-full">Warn</Button>
+<Button color="info" class="rounded-full">Info</Button>`,
     },
   },
   {
@@ -136,23 +136,23 @@ import { Plus } from 'lucide-react';
       react: `import { Button } from 'cloudcn-react';
 import { Check, Trash2, AlertTriangle, Info, Plus, Download } from 'lucide-react';
 
-<Button variant="success"><Check className="size-4" />Approve</Button>
-<Button variant="danger"><Trash2 className="size-4" />Delete</Button>
-<Button variant="warn"><AlertTriangle className="size-4" />Warn</Button>
-<Button variant="info"><Info className="size-4" />Info</Button>
+<Button color="success"><Check className="size-4" />Approve</Button>
+<Button color="danger"><Trash2 className="size-4" />Delete</Button>
+<Button color="warn"><AlertTriangle className="size-4" />Warn</Button>
+<Button color="info"><Info className="size-4" />Info</Button>
 <Button><Plus className="size-4" />Add</Button>
-<Button variant="secondary"><Download className="size-4" />Export</Button>`,
+<Button color="secondary"><Download className="size-4" />Export</Button>`,
       svelte: `<script lang="ts">
   import { Button } from 'cloudcn-svelte';
   import { Check, Trash2, AlertTriangle, Info, Plus, Download } from 'lucide-svelte';
 </script>
 
-<Button variant="success"><Check class="size-4" />Approve</Button>
-<Button variant="danger"><Trash2 class="size-4" />Delete</Button>
-<Button variant="warn"><AlertTriangle class="size-4" />Warn</Button>
-<Button variant="info"><Info class="size-4" />Info</Button>
+<Button color="success"><Check class="size-4" />Approve</Button>
+<Button color="danger"><Trash2 class="size-4" />Delete</Button>
+<Button color="warn"><AlertTriangle class="size-4" />Warn</Button>
+<Button color="info"><Info class="size-4" />Info</Button>
 <Button><Plus class="size-4" />Add</Button>
-<Button variant="secondary"><Download class="size-4" />Export</Button>`,
+<Button color="secondary"><Download class="size-4" />Export</Button>`,
     },
   },
   {
@@ -161,22 +161,22 @@ import { Check, Trash2, AlertTriangle, Info, Plus, Download } from 'lucide-react
     code: {
       react: `import { Button } from 'cloudcn-react';
 
-<Button variant="primary" disabled>Primary</Button>
-<Button variant="secondary" disabled>Secondary</Button>
-<Button variant="success" disabled>Success</Button>
-<Button variant="danger" disabled>Danger</Button>
-<Button variant="warn" disabled>Warn</Button>
-<Button variant="info" disabled>Info</Button>`,
+<Button color="primary" disabled>Primary</Button>
+<Button color="secondary" disabled>Secondary</Button>
+<Button color="success" disabled>Success</Button>
+<Button color="danger" disabled>Danger</Button>
+<Button color="warn" disabled>Warn</Button>
+<Button color="info" disabled>Info</Button>`,
       svelte: `<script lang="ts">
   import { Button } from 'cloudcn-svelte';
 </script>
 
-<Button variant="primary" disabled>Primary</Button>
-<Button variant="secondary" disabled>Secondary</Button>
-<Button variant="success" disabled>Success</Button>
-<Button variant="danger" disabled>Danger</Button>
-<Button variant="warn" disabled>Warn</Button>
-<Button variant="info" disabled>Info</Button>`,
+<Button color="primary" disabled>Primary</Button>
+<Button color="secondary" disabled>Secondary</Button>
+<Button color="success" disabled>Success</Button>
+<Button color="danger" disabled>Danger</Button>
+<Button color="warn" disabled>Warn</Button>
+<Button color="info" disabled>Info</Button>`,
     },
   },
 ];

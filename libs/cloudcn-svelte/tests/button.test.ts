@@ -18,9 +18,9 @@ describe('Button', () => {
     expect(body).toContain('Save');
   });
 
-  it('applies the danger variant', () => {
+  it('applies the danger color', () => {
     const { body } = render(Button, {
-      props: { variant: 'danger', children: text('Delete') },
+      props: { variant: 'solid', color: 'danger', children: text('Delete') },
     });
     expect(body).toContain('bg-danger');
   });

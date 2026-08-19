@@ -10,9 +10,15 @@ describe('Button', () => {
     expect(html).toContain('>Save<');
   });
 
-  it('applies the danger variant', () => {
-    const html = renderToStaticMarkup(<Button variant="danger">Delete</Button>);
+  it('applies the danger color', () => {
+    const html = renderToStaticMarkup(<Button variant="solid" color="danger">Delete</Button>);
     expect(html).toContain('bg-danger');
+  });
+
+  it('applies the outline variant', () => {
+    const html = renderToStaticMarkup(<Button variant="outline" color="danger">Delete</Button>);
+    expect(html).toContain('border-danger/50');
+    expect(html).toContain('text-danger');
   });
 
   it('renders as a button element with type=button by default', () => {

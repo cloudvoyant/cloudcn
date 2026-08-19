@@ -13,18 +13,28 @@ The Button component triggers an action. It is implemented in both React and Sve
 
 ## Variants
 
+`variant` controls the fill style:
+
 | Variant | Description |
+| --- | --- |
+| `solid` | The default filled style. |
+| `outline` | Bordered, transparent background. |
+| `text` | No fill or border, colored text. |
+
+## Colors
+
+`color` selects the palette for any variant:
+
+| Color | Description |
 | --- | --- |
 | `primary` | The default high-emphasis action. |
 | `secondary` | Lower-emphasis filled action. |
-| `outline` | Bordered, transparent background. |
-| `rounded` | Pill-shaped primary action. |
 | `success` | Confirms a successful action. |
 | `danger` | Destructive or irreversible action. |
 | `warn` | Warns about a consequence. |
 | `info` | Neutral informational action. |
 
-Every filled color variant also has an outlined counterpart — `outline-primary`, `outline-secondary`, `outline-success`, `outline-danger`, `outline-warn`, `outline-info` — for lower-emphasis actions that keep the color's meaning.
+Every color works with every variant, so `variant="outline" color="danger"` gives a bordered destructive action.
 
 ## Sizes
 
@@ -37,12 +47,12 @@ Every filled color variant also has an outlined counterpart — `outline-primary
 
 ## API
 
-The React and Svelte components accept the same `variant` and `size` props, plus standard button attributes (`type`, `disabled`, `className`/`class`).
+The React and Svelte components accept the same `variant`, `color`, and `size` props, plus standard button attributes (`type`, `disabled`, `className`/`class`).
 
 ```ts
 import { Button } from 'cloudcn-react';
 
-<Button variant="danger" size="lg">Delete</Button>
+<Button variant="outline" color="danger" size="lg">Delete</Button>
 ```
 
 ```svelte
@@ -50,5 +60,5 @@ import { Button } from 'cloudcn-react';
   import { Button } from 'cloudcn-svelte';
 </script>
 
-<Button variant="danger" size="lg">Delete</Button>
+<Button variant="outline" color="danger" size="lg">Delete</Button>
 ```

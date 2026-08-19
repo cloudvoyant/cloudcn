@@ -1,17 +1,18 @@
 {
   "name": "cloudcn-svelte",
   "version": "0.1.0",
-  "description": "cloudcn Svelte UI components (placeholder)",
+  "description": "cloudcn Svelte UI components",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/index.cjs",
+  "svelte": "./dist/index.js",
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -22,14 +23,25 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup",
-    "test": "vitest run --passWithNoTests",
-    "lint": "eslint src tests --no-error-on-unmatched-pattern && tsc --noEmit",
-    "lint:fix": "eslint src tests --no-error-on-unmatched-pattern --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx}\""
+    "build": "svelte-package -i src -o dist",
+    "lint": "eslint \"src/**/*.ts\" --no-error-on-unmatched-pattern && svelte-check --tsconfig ./tsconfig.json",
+    "lint:fix": "eslint \"src/**/*.ts\" --no-error-on-unmatched-pattern --fix",
+    "format": "prettier --write \"src/**/*.{ts,svelte}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,svelte}\""
+  },
+  "peerDependencies": {
+    "svelte": "catalog:"
+  },
+  "dependencies": {
+    "@ark-ui/svelte": "catalog:",
+    "cloudcn-core": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "catalog:"
+    "@sveltejs/package": "catalog:",
+    "@sveltejs/vite-plugin-svelte": "catalog:",
+    "prettier-plugin-svelte": "catalog:",
+    "svelte": "catalog:",
+    "svelte-check": "catalog:",
+    "typescript": "catalog:"
   }
 }

@@ -1,8 +1,2 @@
-/**
- * cloudcn-svelte placeholder entry point.
- *
- * Returns the canonical hello message for the cloudcn Svelte library.
- */
-export function helloSvelte(): string {
-  return 'helloSvelte';
-}
+// libs/cloudcn-svelte/src/index.ts
+export { default as Button } from './Button.svelte';

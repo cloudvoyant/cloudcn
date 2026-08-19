@@ -1,29 +1,28 @@
 # cloudcn
 
-cloudcn is a pnpm workspace monorepo for a UI component library with a docs/demo app.
+cloudcn is a pnpm workspace monorepo for a cross-framework UI component library (React + Svelte) with an Astro docs/demo site.
 
 ## Structure
 
-- `libs/cloudcn-react` — React UI components (placeholder: exports `helloReact`)
-- `libs/cloudcn-svelte` — Svelte UI components (placeholder: exports `helloSvelte`)
-- `apps/cloudcn-docs` — docs/demo app (placeholder: prints `hello`; will become an HMR Astro app)
+- `libs/cloudcn-core` — shared interfaces, cva variants (`buttonVariants`), `cn`, and the shadcn-style theme (light + dark)
+- `libs/cloudcn-react` — React components built on Ark UI (Button)
+- `libs/cloudcn-svelte` — Svelte components built on Ark UI (Button)
+- `apps/cloudcn-docs` — Astro docs/demo site with MDX docs, framework selector, and live demos
 
 ## Getting started
 
-```bash
+```text
 mise run install   # install all workspace deps
-mise run build     # build every package (tsup -> dist/)
+mise run build     # build every package
 mise run test      # run vitest across the workspace
-mise run lint      # eslint + tsc across the workspace
+mise run lint      # eslint + tsc/svelte-check across the workspace
 mise run format:check
 ```
 
-Run the docs placeholder:
+Run the docs site:
 
-```bash
-pnpm --filter cloudcn-docs run dev    # prints "hello"
-pnpm --filter cloudcn-docs run build  # prints "hello"
-pnpm --filter cloudcn-docs run serve  # prints "hello"
+```text
+mise run dev       # Astro dev server (docs + demos)
 ```
 
 ## Versioning

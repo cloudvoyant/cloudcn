@@ -29,6 +29,7 @@
     "eslint": "catalog:",
     "globals": "catalog:",
     "prettier": "catalog:",
+    "prettier-plugin-svelte": "catalog:",
     "semantic-release": "^24.0.0",
     "tsup": "catalog:",
     "typescript": "catalog:",

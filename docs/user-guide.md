@@ -1,18 +1,20 @@
 # User Guide
 
-> Placeholder — explain how to install and use `cloudcn`. Replace this file with real usage docs.
+> How to install and use cloudcn.
 
 ## Requirements
 
-<!-- TODO: tools, versions, and setup a user needs before using cloudcn. -->
+- [mise](https://mise.jdx.dev/) — manages Node.js and pnpm versions
+- Node.js LTS and pnpm are installed automatically by mise via `mise install`
 
 ## Getting Started
 
-<!-- TODO: the minimal steps to install and run cloudcn. -->
-
-## Usage
-
-<!-- TODO: common commands, options, and examples. -->
+```text
+mise install
+mise run install
+mise run build
+mise run dev   # opens the Astro docs site
+```
 
 ## Workspace (pnpm monorepo)
 
@@ -22,9 +24,29 @@ cloudcn is a pnpm workspace monorepo:
 - Build all packages: `mise run build`
 - Test all packages: `mise run test`
 - Lint/format all packages: `mise run lint`, `mise run format:check`
-- Run the docs placeholder: `pnpm --filter cloudcn-docs run dev`
+- Run the docs site: `mise run dev` (Astro), then open the printed URL
 - Show the current version: `mise run version`
 - Set the lockstep version across all packages: `mise run set-version <version>`
 
-All packages share one lockstep version from `version.txt`; the project stays at v0 until the release-rule cap is deliberately removed.
+## Using the packages
 
+```text
+pnpm add cloudcn-core cloudcn-react
+# or for Svelte
+pnpm add cloudcn-core cloudcn-svelte
+```
+
+Import the theme once in your global CSS:
+
+```css
+@import 'tailwindcss';
+@import 'cloudcn-core/theme.css';
+/* Tailwind doesn't scan node_modules by default — point at cloudcn-core so its
+   cva class strings (bg-primary, h-10, …) get generated. Path is relative to
+   your global CSS file. */
+@source '../../node_modules/cloudcn-core/dist';
+```
+
+Components accept the same `variant` and `size` props across frameworks; see the Button docs on the site for the full list.
+
+All packages share one lockstep version from `version.txt`; the project stays at v0 until the release-rule cap is deliberately removed.

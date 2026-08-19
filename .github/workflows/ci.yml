@@ -37,6 +37,12 @@ jobs:
       - name: Run tests
         run: mise run test
 
+      - name: Install Playwright browsers
+        run: pnpm --filter cloudcn-docs exec playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        run: mise run e2e
+
       - name: Check formatting
         run: mise run format:check
 

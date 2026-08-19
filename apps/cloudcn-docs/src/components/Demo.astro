@@ -1,0 +1,34 @@
+---
+import ExampleButtonSolid from './examples/button/solid/index.astro';
+import ExampleButtonOutline from './examples/button/outline/index.astro';
+import ExampleButtonRounded from './examples/button/rounded/index.astro';
+import ExampleButtonSizes from './examples/button/sizes/index.astro';
+import ExampleButtonIcon from './examples/button/icon/index.astro';
+import ExampleButtonWithIcon from './examples/button/with-icon/index.astro';
+import ExampleButtonDisabled from './examples/button/disabled/index.astro';
+
+interface Props {
+  component?: 'button';
+}
+
+const { component = 'button' } = Astro.props;
+
+const examples =
+  component === 'button'
+    ? [
+        ExampleButtonSolid,
+        ExampleButtonOutline,
+        ExampleButtonRounded,
+        ExampleButtonSizes,
+        ExampleButtonIcon,
+        ExampleButtonWithIcon,
+        ExampleButtonDisabled,
+      ]
+    : [];
+---
+
+<div class="flex w-full flex-col gap-6">
+  {examples.map((Example) => (
+    <Example />
+  ))}
+</div>

@@ -1,7 +1,7 @@
 {
   "name": "cloudcn-react",
   "version": "0.1.0",
-  "description": "cloudcn React UI components (placeholder)",
+  "description": "cloudcn React UI components",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -23,13 +23,24 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "vitest run --passWithNoTests",
-    "lint": "eslint src tests --no-error-on-unmatched-pattern && tsc --noEmit",
-    "lint:fix": "eslint src tests --no-error-on-unmatched-pattern --fix",
+    "lint": "eslint src --no-error-on-unmatched-pattern && tsc --noEmit",
+    "lint:fix": "eslint src --no-error-on-unmatched-pattern --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\""
   },
+  "peerDependencies": {
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "dependencies": {
+    "@ark-ui/react": "catalog:",
+    "cloudcn-core": "workspace:*"
+  },
   "devDependencies": {
-    "@types/node": "catalog:"
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
   }
 }

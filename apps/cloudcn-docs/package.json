@@ -3,19 +3,42 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "cloudcn docs/demo app — placeholder (will become an HMR Astro app)",
+  "description": "cloudcn docs/demo app — Astro site with React + Svelte component demos",
   "scripts": {
-    "dev": "node src/index.mjs",
-    "build": "node src/index.mjs",
-    "serve": "node src/index.mjs",
+    "predev": "pnpm --filter cloudcn-core --filter cloudcn-react --filter cloudcn-svelte run build",
+    "prebuild": "pnpm --filter cloudcn-core --filter cloudcn-react --filter cloudcn-svelte run build",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "e2e": "playwright test",
     "test": "vitest run --passWithNoTests",
-    "lint": "eslint src --no-error-on-unmatched-pattern",
-    "lint:fix": "eslint src --no-error-on-unmatched-pattern --fix",
-    "format": "prettier --write \"src/**/*.{mjs,ts,tsx}\"",
-    "format:check": "prettier --check \"src/**/*.{mjs,ts,tsx}\""
+    "lint": "astro check && eslint \"src/**/*.{ts,tsx,mjs}\" --no-error-on-unmatched-pattern",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx,mjs}\" --no-error-on-unmatched-pattern --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,mjs}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,mjs}\""
   },
   "dependencies": {
+    "@astrojs/mdx": "catalog:",
+    "@astrojs/react": "catalog:",
+    "@astrojs/svelte": "catalog:",
+    "@tailwindcss/vite": "catalog:",
+    "astro": "catalog:",
+    "cloudcn-core": "workspace:*",
     "cloudcn-react": "workspace:*",
-    "cloudcn-svelte": "workspace:*"
+    "cloudcn-svelte": "workspace:*",
+    "lucide-react": "catalog:",
+    "lucide-svelte": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "svelte": "catalog:",
+    "tailwindcss": "catalog:"
+  },
+  "devDependencies": {
+    "@astrojs/check": "catalog:",
+    "@playwright/test": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "typescript": "catalog:"
   }
 }

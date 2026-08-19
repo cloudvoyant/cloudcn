@@ -1,0 +1,13 @@
+// libs/cloudcn-tests/tests/cn.test.ts
+import { describe, it, expect } from 'vitest';
+import { cn } from 'cloudcn-core';
+
+describe('cn', () => {
+  it('joins class names', () => {
+    expect(cn('a', 'b')).toBe('a b');
+  });
+
+  it('merges tailwind classes with tailwind-merge', () => {
+    expect(cn('px-2', 'px-4')).toBe('px-4');
+  });
+});

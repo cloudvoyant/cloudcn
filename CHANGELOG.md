@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/cloudvoyant/cloudcn/compare/v0.1.0...v0.2.0) (2026-08-19)
+
+
+### Features
+
+* add Astro docs shell with shared Button components ([d4762fd](https://github.com/cloudvoyant/cloudcn/commit/d4762fdf1d81d92e9abe23a7d604d9d6fb015939))
+
 # [0.1.0](https://github.com/cloudvoyant/cloudcn/compare/v0.0.0...v0.1.0) (2026-08-17)
 
 

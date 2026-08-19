@@ -247,6 +247,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.20.1
+      vitest:
+        specifier: 'catalog:'
+        version: 2.1.9(@types/node@22.20.1)(lightningcss@1.33.0)
 
   libs/cloudcn-react:
     dependencies:
@@ -300,6 +303,43 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
+
+  libs/cloudcn-tests:
+    dependencies:
+      cloudcn-core:
+        specifier: workspace:*
+        version: link:../cloudcn-core
+      cloudcn-react:
+        specifier: workspace:*
+        version: link:../cloudcn-react
+      cloudcn-svelte:
+        specifier: workspace:*
+        version: link:../cloudcn-svelte
+      react:
+        specifier: 'catalog:'
+        version: 19.2.8
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.2.8(react@19.2.8)
+      svelte:
+        specifier: 'catalog:'
+        version: 5.56.9(@typescript-eslint/types@8.67.0)
+    devDependencies:
+      '@sveltejs/vite-plugin-svelte':
+        specifier: 'catalog:'
+        version: 4.0.4(svelte@5.56.9(@typescript-eslint/types@8.67.0))(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.0))
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.18
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.2.4(@types/react@19.2.18)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      vitest:
+        specifier: 'catalog:'
+        version: 2.1.9(@types/node@22.20.1)(lightningcss@1.33.0)
 
 packages:
 

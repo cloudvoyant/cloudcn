@@ -23,9 +23,8 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "vitest run",
-    "lint": "eslint src tests --no-error-on-unmatched-pattern && tsc --noEmit",
-    "lint:fix": "eslint src tests --no-error-on-unmatched-pattern --fix",
+    "lint": "eslint src --no-error-on-unmatched-pattern && tsc --noEmit",
+    "lint:fix": "eslint src --no-error-on-unmatched-pattern --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\""
   },

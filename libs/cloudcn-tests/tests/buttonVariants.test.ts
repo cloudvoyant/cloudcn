@@ -1,6 +1,6 @@
-// libs/cloudcn-core/tests/buttonVariants.test.ts
+// libs/cloudcn-tests/tests/buttonVariants.test.ts
 import { describe, it, expect } from 'vitest';
-import { buttonVariants } from '../src/index';
+import { buttonVariants } from 'cloudcn-core';
 
 describe('buttonVariants', () => {
   it('returns primary solid + md classes by default', () => {

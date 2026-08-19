@@ -24,9 +24,8 @@
   },
   "scripts": {
     "build": "svelte-package -i src -o dist",
-    "test": "vitest run",
-    "lint": "eslint \"src/**/*.ts\" tests --no-error-on-unmatched-pattern && svelte-check --tsconfig ./tsconfig.json",
-    "lint:fix": "eslint \"src/**/*.ts\" tests --no-error-on-unmatched-pattern --fix",
+    "lint": "eslint \"src/**/*.ts\" --no-error-on-unmatched-pattern && svelte-check --tsconfig ./tsconfig.json",
+    "lint:fix": "eslint \"src/**/*.ts\" --no-error-on-unmatched-pattern --fix",
     "format": "prettier --write \"src/**/*.{ts,svelte}\"",
     "format:check": "prettier --check \"src/**/*.{ts,svelte}\""
   },

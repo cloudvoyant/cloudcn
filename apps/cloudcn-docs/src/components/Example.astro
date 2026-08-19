@@ -3,14 +3,15 @@
 import { Code } from 'astro/components';
 
 interface Props {
-  id: string;
+  id?: string;
   title: string;
   reactCode: string;
   svelteCode: string;
 }
 
-const { id, title, reactCode, svelteCode } = Astro.props;
-const tabId = (name: string) => `example-${id}-${name}`;
+const { id = '', title, reactCode, svelteCode } = Astro.props;
+const slug = id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const tabId = (name: string) => `example-${slug}-${name}`;
 ---
 
 <div class="w-full" data-example>

@@ -11,6 +11,10 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   redirects: {
-    '/docs': '/docs/general/introduction',
+    '/docs': '/general/introduction',
+    '/docs/general/introduction': '/general/introduction',
+    '/docs/general/installation': '/general/installation',
+    '/docs/general/theming': '/general/theming',
+    '/docs/components/button': '/components/button',
   },
 });

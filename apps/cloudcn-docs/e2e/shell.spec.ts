@@ -22,16 +22,33 @@ test.describe('Docs shell', () => {
     await expect(page.locator('html')).toHaveAttribute('data-framework', 'svelte');
   });
 
-  test('theme toggle switches the dark class and persists', async ({ page }) => {
+  test('theme selector switches color mode and theme, and persists', async ({ page }) => {
     await page.goto('/components/button');
-    await page.locator('[data-theme-toggle]').click();
+    const trigger = page.locator('[data-theme-selector]');
+    await expect(trigger).toBeVisible();
+
+    // Open the modal — retry until the React island hydrates.
+    const openModal = () =>
+      expect(async () => {
+        await trigger.click();
+        await expect(page.locator('[data-theme-modal]')).toBeVisible();
+      }).toPass();
+
+    await openModal();
+    await page.locator('[data-color-mode="dark"]').click();
     await expect(page.locator('html')).toHaveClass(/dark/);
+
+    await page.locator('[data-theme-swatch="catppuccin"]').click();
+    await expect(page.locator('html')).toHaveClass(/theme-catppuccin/);
 
     await page.goto('/general/introduction');
     await expect(page.locator('html')).toHaveClass(/dark/);
+    await expect(page.locator('html')).toHaveClass(/theme-catppuccin/);
 
-    await page.locator('[data-theme-toggle]').click();
+    await openModal();
+    await page.locator('[data-color-mode="light"]').click();
     await expect(page.locator('html')).not.toHaveClass(/dark/);
+    await expect(page.locator('html')).toHaveClass(/theme-catppuccin/);
   });
 
   test('topnav shows a border once the page is scrolled', async ({ page }) => {

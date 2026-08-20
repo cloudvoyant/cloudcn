@@ -1,6 +1,6 @@
 ---
 import FrameworkSelector from './FrameworkSelector.astro';
-import ThemeToggle from './ThemeToggle.astro';
+import ThemeSelector from './ThemeSelector.tsx';
 
 interface Props {
   currentPath?: string;
@@ -47,7 +47,7 @@ const links = [
     </nav>
     <div class="ml-auto flex items-center gap-2">
       <FrameworkSelector />
-      <ThemeToggle />
+      <ThemeSelector client:load />
     </div>
   </div>
 </header>

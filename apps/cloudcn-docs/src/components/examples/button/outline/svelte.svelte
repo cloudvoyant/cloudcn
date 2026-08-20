@@ -1,19 +1,13 @@
 <!-- apps/cloudcn-docs/src/components/examples/button/outline/svelte.svelte -->
 <script lang="ts">
   import { Button } from 'cloudcn-svelte';
-
-  const COLORS = [
-    { name: 'Primary', color: 'primary' },
-    { name: 'Secondary', color: 'secondary' },
-    { name: 'Success', color: 'success' },
-    { name: 'Danger', color: 'danger' },
-    { name: 'Warn', color: 'warn' },
-    { name: 'Info', color: 'info' },
-  ] as const;
 </script>
 
 <div class="flex flex-wrap items-center gap-3">
-  {#each COLORS as { name, color }}
-    <Button variant="outline" {color}>{name}</Button>
-  {/each}
+  <Button variant="outline" color="primary">Primary</Button>
+  <Button variant="outline" color="secondary">Secondary</Button>
+  <Button variant="outline" color="success">Success</Button>
+  <Button variant="outline" color="danger">Danger</Button>
+  <Button variant="outline" color="warn">Warn</Button>
+  <Button variant="outline" color="info">Info</Button>
 </div>

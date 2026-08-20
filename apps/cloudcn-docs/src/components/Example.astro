@@ -11,107 +11,86 @@ interface Props {
 
 const { id = '', title, reactCode, svelteCode } = Astro.props;
 const slug = id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const tabId = (name: string) => `example-${slug}-${name}`;
+const codeId = `example-${slug}-code`;
 ---
 
 <div class="w-full" data-example>
-  <div class="flex flex-col rounded-lg border border-border bg-card">
-    <div class="flex items-center justify-between border-b border-border px-4 py-2">
-      <p class="text-sm font-medium">{title}</p>
-      <div class="flex items-center gap-1" role="tablist" aria-label="Example view">
-        <button
-          type="button"
-          role="tab"
-          id={tabId('preview-tab')}
-          aria-controls={tabId('preview-panel')}
-          aria-selected="true"
-          tabindex="0"
-          class="rounded px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-          data-example-tab="preview"
-        >
-          Preview
-        </button>
-        <button
-          type="button"
-          role="tab"
-          id={tabId('code-tab')}
-          aria-controls={tabId('code-panel')}
-          aria-selected="false"
-          tabindex="-1"
-          class="rounded px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-          data-example-tab="code"
-        >
-          Code
-        </button>
+  <div class="flex flex-col overflow-hidden rounded-lg border border-border bg-card">
+    <div data-example-preview class="bg-card" data-demo>
+      <div class="p-6">
+        <slot />
       </div>
     </div>
 
-    <div
-      role="tabpanel"
-      id={tabId('preview-panel')}
-      aria-labelledby={tabId('preview-tab')}
-      data-example-panel="preview"
-      class="p-6"
-      data-demo
-    >
-      <slot />
+    <div id={codeId} data-example-code hidden data-demo>
+      <div data-fw="react">
+        <Code
+          code={reactCode}
+          lang="tsx"
+          themes={{ light: 'github-light', dark: 'github-dark' }}
+          defaultColor={false}
+        />
+      </div>
+      <div data-fw="svelte">
+        <Code
+          code={svelteCode}
+          lang="svelte"
+          themes={{ light: 'github-light', dark: 'github-dark' }}
+          defaultColor={false}
+        />
+      </div>
     </div>
 
-    <div
-      role="tabpanel"
-      id={tabId('code-panel')}
-      aria-labelledby={tabId('code-tab')}
-      data-example-panel="code"
-      hidden
-      data-demo
+    <button
+      type="button"
+      class="flex items-center justify-center gap-1.5 border-t border-border bg-muted/40 px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      data-example-toggle
+      aria-expanded="false"
+      aria-controls={codeId}
     >
-      <div data-fw="react" class="border-t border-border">
-        <Code code={reactCode} lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} />
-      </div>
-      <div data-fw="svelte" class="border-t border-border">
-        <Code code={svelteCode} lang="svelte" themes={{ light: 'github-light', dark: 'github-dark' }} />
-      </div>
-    </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        data-example-chevron
+        class="transition-transform duration-200"
+      >
+        <path d="m6 9 6 6 6-6"></path>
+      </svg>
+      <span data-example-toggle-label>Show code</span>
+    </button>
   </div>
 </div>
 
 <script>
   document.querySelectorAll('[data-example]').forEach((root) => {
-    const previewPanel = root.querySelector('[data-example-panel="preview"]');
-    const codePanel = root.querySelector('[data-example-panel="code"]');
-    const tabs = root.querySelectorAll<HTMLButtonElement>('[data-example-tab]');
+    const toggle = root.querySelector<HTMLButtonElement>('[data-example-toggle]');
+    const code = root.querySelector<HTMLElement>('[data-example-code]');
+    const label = root.querySelector<HTMLElement>('[data-example-toggle-label]');
+    const chevron = root.querySelector<HTMLElement>('[data-example-chevron]');
 
-    const selectTab = (tab: HTMLButtonElement, focus = false) => {
-      const view = tab.dataset.exampleTab;
-      tabs.forEach((t) => {
-        const selected = t === tab;
-        t.setAttribute('aria-selected', String(selected));
-        t.tabIndex = selected ? 0 : -1;
-        t.classList.toggle('text-foreground', selected);
-        t.classList.toggle('bg-accent', selected);
-      });
-      previewPanel?.toggleAttribute('hidden', view !== 'preview');
-      codePanel?.toggleAttribute('hidden', view !== 'code');
-      if (focus) tab.focus();
+    if (!toggle || !code) return;
+
+    const open = () => {
+      toggle.setAttribute('aria-expanded', 'true');
+      code.hidden = false;
+      if (label) label.textContent = 'Hide code';
+      chevron?.classList.add('rotate-180');
     };
 
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => selectTab(tab));
-      tab.addEventListener('keydown', (event) => {
-        const keys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
-        if (!keys.includes(event.key)) return;
-        event.preventDefault();
-        const index = Array.from(tabs).indexOf(tab);
-        let next = index;
-        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
-        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + tabs.length) % tabs.length;
-        else if (event.key === 'Home') next = 0;
-        else if (event.key === 'End') next = tabs.length - 1;
-        selectTab(tabs[next], true);
-      });
-    });
+    const close = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      code.hidden = true;
+      if (label) label.textContent = 'Show code';
+      chevron?.classList.remove('rotate-180');
+    };
 
-    const initial = root.querySelector('[data-example-tab="preview"]');
-    if (initial) selectTab(initial as HTMLButtonElement);
+    toggle.addEventListener('click', () => (code.hidden ? open() : close()));
   });
 </script>

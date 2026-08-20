@@ -1,0 +1,108 @@
+/* mdBook's built-in light theme and its default navy dark theme. */
+.theme-mdbook {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #fafafa;
+  --popover-foreground: #000000;
+  --primary: #20609f;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f4;
+  --secondary-foreground: #000000;
+  --muted: #f4f4f4;
+  --muted-foreground: #747474;
+  --accent: #e6e6e6;
+  --accent-foreground: #000000;
+  --destructive: #b52731;
+  --destructive-foreground: #ffffff;
+  --border: #f2f2f2;
+  --input: #aaaaaa;
+  --ring: #aaaaaa;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #000000;
+  --sidebar-accent: #e6e6e6;
+  --sidebar-accent-foreground: #1f1fff;
+  --radius: 0.1875rem;
+  --font-sans: 'Open Sans', sans-serif;
+  --font-serif: 'Open Sans', sans-serif;
+  --font-mono: 'Source Code Pro', Consolas, 'Ubuntu Mono', Menlo, 'DejaVu Sans Mono', monospace;
+  --font-heading: 'Open Sans', sans-serif;
+}
+
+.theme-mdbook.dark {
+  --background: #161923;
+  --foreground: #bcbdd0;
+  --card: #161923;
+  --card-foreground: #bcbdd0;
+  --popover: #161923;
+  --popover-foreground: #bcbdd0;
+  --primary: #2b79a2;
+  --primary-foreground: #161923;
+  --secondary: #2d334f;
+  --secondary-foreground: #bcbdd0;
+  --muted: #2d334f;
+  --muted-foreground: #737480;
+  --accent: #282e40;
+  --accent-foreground: #b7b9cc;
+  --destructive: #f21424;
+  --destructive-foreground: #ffffff;
+  --border: rgb(188 189 208 / 14%);
+  --input: #aaaaaa;
+  --ring: #aaaaaa;
+  --sidebar: #282d3f;
+  --sidebar-foreground: #c8c9db;
+  --sidebar-accent: #282e40;
+  --sidebar-accent-foreground: #2b79a2;
+}
+
+.theme-mdbook .db-docs-sidebar {
+  border-color: transparent;
+}
+
+/* mdbook's nav is shorter than the default 3.5rem — keep --nav-h in sync so
+   sticky offsets (e.g. the TOC rail) track the real nav height. */
+.theme-mdbook {
+  --nav-h: 3.125rem;
+}
+
+.theme-mdbook .db-topnav > div {
+  height: 3.125rem;
+}
+
+.theme-mdbook .prose {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.theme-mdbook .prose :where(a) {
+  color: #20609f;
+  text-decoration: none;
+}
+
+.theme-mdbook .prose :where(a):hover {
+  text-decoration: underline;
+}
+
+.theme-mdbook.dark .prose :where(a) {
+  color: #2b79a2;
+}
+
+.theme-mdbook .prose :where(code):not(pre code) {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #301900;
+  font-size: 0.875em;
+}
+
+.theme-mdbook.dark .prose :where(code):not(pre code) {
+  color: #c5c8c6;
+}
+
+.theme-mdbook .code-wrap pre.shiki,
+.theme-mdbook .prose :where(pre) {
+  border: 0;
+  border-radius: 0;
+}

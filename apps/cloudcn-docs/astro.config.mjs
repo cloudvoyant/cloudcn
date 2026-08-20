@@ -16,5 +16,7 @@ export default defineConfig({
     '/docs/general/installation': '/general/installation',
     '/docs/general/theming': '/general/theming',
     '/docs/components/button': '/components/button',
+    '/docs/components/toggle-button': '/components/toggle-button',
+    '/docs/components/badge': '/components/badge',
   },
 });

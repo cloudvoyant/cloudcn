@@ -1,23 +1,27 @@
 // apps/cloudcn-docs/src/components/examples/button/rounded/react.tsx
 import { Button } from 'cloudcn-react';
 
-const COLORS = [
-  { name: 'Primary', color: 'primary' },
-  { name: 'Secondary', color: 'secondary' },
-  { name: 'Success', color: 'success' },
-  { name: 'Danger', color: 'danger' },
-  { name: 'Warn', color: 'warn' },
-  { name: 'Info', color: 'info' },
-] as const;
-
 export default function ReactButtonRounded() {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      {COLORS.map(({ name, color }) => (
-        <Button key={color} color={color} className="rounded-full">
-          {name}
-        </Button>
-      ))}
+      <Button color="primary" className="rounded-full">
+        Primary
+      </Button>
+      <Button color="secondary" className="rounded-full">
+        Secondary
+      </Button>
+      <Button color="success" className="rounded-full">
+        Success
+      </Button>
+      <Button color="danger" className="rounded-full">
+        Danger
+      </Button>
+      <Button color="warn" className="rounded-full">
+        Warn
+      </Button>
+      <Button color="info" className="rounded-full">
+        Info
+      </Button>
     </div>
   );
 }

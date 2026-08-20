@@ -1,6 +1,8 @@
 /* apps/cloudcn-docs/src/styles/global.css */
 @import 'tailwindcss';
 @import 'cloudcn-core/theme.css';
+/* shadcn-compatible theme presets (`.theme-{name}` / `.theme-{name}.dark`). */
+@import 'cloudcn-core/themes.css';
 
 /* Tailwind content detection must reach the workspace libs (cva class strings). */
 @source '../../../../libs/cloudcn-core/src';
@@ -23,15 +25,20 @@ html[data-framework='svelte'] [data-demo] [data-fw='react'] {
 }
 
 /* Example preview/code cards (Shiki output inside). */
-[data-example-panel='code'] .astro-code {
-  @apply m-0 rounded-none border-0 bg-transparent p-4 text-[13px];
+[data-example-code] .astro-code {
+  @apply m-0 rounded-none border-0 p-4 text-[13px];
+  background-color: transparent;
+  color: var(--shiki-light, #24292e);
 }
-html.dark [data-example-panel='code'] .astro-code {
-  background-color: var(--shiki-dark-bg);
-  color: var(--shiki-dark);
+[data-example-code] .astro-code span {
+  color: var(--shiki-light, #24292e);
 }
-html.dark [data-example-panel='code'] .astro-code span {
-  color: var(--shiki-dark);
+html.dark [data-example-code] .astro-code {
+  background-color: var(--shiki-dark-bg, #24292e);
+  color: var(--shiki-dark, #e1e4e8);
+}
+html.dark [data-example-code] .astro-code span {
+  color: var(--shiki-dark, #e1e4e8);
 }
 
 /* Rendered MDX docs. */

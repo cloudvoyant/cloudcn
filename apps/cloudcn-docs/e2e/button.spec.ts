@@ -36,13 +36,14 @@ for (const framework of FRAMEWORKS) {
 
       // First example is Solid — preview visible, code hidden by default.
       const solid = examples.first();
-      await expect(solid.locator('[data-example-panel="preview"]')).toBeVisible();
-      await expect(solid.locator('[data-example-panel="code"]')).toBeHidden();
+      await expect(solid.locator('[data-example-preview]')).toBeVisible();
+      await expect(solid.locator('[data-example-code]')).toBeHidden();
 
-      // Toggle to code view — only the active framework's code block is visible.
-      await solid.locator('[data-example-tab="code"]').click();
-      const codePanel = solid.locator('[data-example-panel="code"]');
+      // Toggle to show code — only the active framework's code block is visible.
+      await solid.locator('[data-example-toggle]').click();
+      const codePanel = solid.locator('[data-example-code]');
       await expect(codePanel).toBeVisible();
+      await expect(solid.locator('[data-example-toggle]')).toHaveAttribute('aria-expanded', 'true');
       await expect(codePanel.locator('.astro-code:visible')).toHaveCount(1);
       await expect(codePanel.locator('.astro-code').filter({ visible: true })).toContainText(
         framework === 'react' ? 'cloudcn-react' : 'cloudcn-svelte',

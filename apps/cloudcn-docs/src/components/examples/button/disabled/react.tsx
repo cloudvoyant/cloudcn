@@ -1,23 +1,27 @@
 // apps/cloudcn-docs/src/components/examples/button/disabled/react.tsx
 import { Button } from 'cloudcn-react';
 
-const COLORS = [
-  { name: 'Primary', color: 'primary' },
-  { name: 'Secondary', color: 'secondary' },
-  { name: 'Success', color: 'success' },
-  { name: 'Danger', color: 'danger' },
-  { name: 'Warn', color: 'warn' },
-  { name: 'Info', color: 'info' },
-] as const;
-
 export default function ReactButtonDisabled() {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      {COLORS.map(({ name, color }) => (
-        <Button key={color} color={color} disabled>
-          {name}
-        </Button>
-      ))}
+      <Button color="primary" disabled>
+        Primary
+      </Button>
+      <Button color="secondary" disabled>
+        Secondary
+      </Button>
+      <Button color="success" disabled>
+        Success
+      </Button>
+      <Button color="danger" disabled>
+        Danger
+      </Button>
+      <Button color="warn" disabled>
+        Warn
+      </Button>
+      <Button color="info" disabled>
+        Info
+      </Button>
     </div>
   );
 }

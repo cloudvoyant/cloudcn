@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactToggleButtonIndicator from './react.tsx';
+import SvelteToggleButtonIndicator from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Indicator" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactToggleButtonIndicator client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteToggleButtonIndicator client:load />
+  </div>
+</Example>

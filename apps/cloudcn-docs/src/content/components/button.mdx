@@ -5,59 +5,38 @@ order: 1
 ---
 
 import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
 
-The Button component triggers an action. It is implemented in both React and Svelte on top of Ark UI's factory, sharing the `buttonVariants` cva definitions and the theme from `cloudcn-core`. Use the framework selector in the top-right to switch between implementations — each example below renders the correct component for the selected framework. Toggle between **Preview** and **Code** to see the source for the active framework.
+The Button triggers an action. It is implemented in both React and Svelte on top of Ark UI's factory, sharing the `buttonVariants` cva definitions and the theme from `cloudcn-core`. Use the framework selector in the top-right to switch between implementations.
 
-<Demo component="button" />
+<Demo component="button" example="solid" />
 
-## Variants
+## Examples
 
-`variant` controls the fill style:
+<Examples component="button" exclude="solid" />
 
-| Variant | Description |
-| --- | --- |
-| `solid` | The default filled style. |
-| `outline` | Bordered, transparent background. |
-| `text` | No fill or border, colored text. |
-
-## Colors
-
-`color` selects the palette for any variant:
-
-| Color | Description |
-| --- | --- |
-| `primary` | The default high-emphasis action. |
-| `secondary` | Lower-emphasis filled action. |
-| `success` | Confirms a successful action. |
-| `danger` | Destructive or irreversible action. |
-| `warn` | Warns about a consequence. |
-| `info` | Neutral informational action. |
-
-Every color works with every variant, so `variant="outline" color="danger"` gives a bordered destructive action.
-
-## Sizes
-
-| Size | Height |
-| --- | --- |
-| `sm` | `h-9` |
-| `md` | `h-10` |
-| `lg` | `h-11` |
-| `icon` | `size-10` — square, meant for a lucide icon |
-
-## API
+## API Reference
 
 The React and Svelte components accept the same `variant`, `color`, and `size` props, plus standard button attributes (`type`, `disabled`, `className`/`class`).
 
-```ts
-import { Button } from 'cloudcn-react';
+### Button
 
-<Button variant="outline" color="danger" size="lg">Delete</Button>
-```
+#### Props
 
-```svelte
-<script lang="ts">
-  import { Button } from 'cloudcn-svelte';
-</script>
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `'solid' \| 'outline' \| 'text'` | `'solid'` | Fill style. |
+| `color` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warn' \| 'info'` | `'primary'` | Palette color. |
+| `size` | `'sm' \| 'md' \| 'lg' \| 'icon'` | `'md'` | Button size. |
+| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Native button type. |
+| `disabled` | `boolean` | `false` | Disables the button. |
+| `className` / `class` | `string` | — | Merged via `cn` with the variant classes. |
 
-<Button variant="outline" color="danger" size="lg">Delete</Button>
-```
+## Accessibility
+
+Renders a native `<button>` element via Ark's factory, so it gets keyboard support, focus styling, and button role announcement for free.
+
+**Keyboard support:**
+
+- `Space` / `Enter` — activates the button.
+- `Tab` — moves focus to/from the button.

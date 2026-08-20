@@ -1,4 +1,5 @@
 <!-- libs/cloudcn-svelte/src/Button.svelte -->
+<!-- Source: @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { buttonVariants, cn } from 'cloudcn-core';
@@ -15,7 +16,16 @@
     children?: Snippet;
   } & HTMLButtonAttributes;
 
-  let { variant = 'solid', color = 'primary', size = 'md', class: className = '', type = 'button', disabled = false, children, ...rest }: Props = $props();
+  let {
+    variant = 'solid',
+    color = 'primary',
+    size = 'md',
+    class: className = '',
+    type = 'button',
+    disabled = false,
+    children,
+    ...rest
+  }: Props = $props();
 
   const classes = $derived(cn(buttonVariants({ variant, color, size }), className));
 </script>

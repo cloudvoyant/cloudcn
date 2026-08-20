@@ -1,5 +1,5 @@
 /* anyscale — indigo/blue brand: white surface, saturated indigo primary,
-   cool slate text. Distinct cool-slate theme. *
+   cool slate text. Distinct cool-slate theme. */
 .theme-anyscale {
   --radius: 0.5rem;
   --background: oklch(1 0 180);

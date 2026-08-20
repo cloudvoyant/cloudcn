@@ -16,10 +16,10 @@ const fills: Record<VariantName, Record<ColorName, string>> = {
   },
   subtle: {
     primary: 'border-transparent bg-primary/10 text-primary',
-    secondary: 'border-transparent bg-secondary text-secondary-foreground',
+    secondary: 'border-transparent bg-secondary/10 text-secondary-foreground',
     success: 'border-transparent bg-success/10 text-success',
     danger: 'border-transparent bg-danger/10 text-danger',
-    warn: 'border-transparent bg-warn/15 text-warn',
+    warn: 'border-transparent bg-warn/10 text-warn',
     info: 'border-transparent bg-info/10 text-info',
   },
   outline: {
@@ -27,7 +27,7 @@ const fills: Record<VariantName, Record<ColorName, string>> = {
     secondary: 'border-secondary-foreground/30 bg-transparent text-secondary-foreground',
     success: 'border-success/50 bg-transparent text-success',
     danger: 'border-danger/50 bg-transparent text-danger',
-    warn: 'border-warn/60 bg-transparent text-warn',
+    warn: 'border-warn/50 bg-transparent text-warn',
     info: 'border-info/50 bg-transparent text-info',
   },
   surface: {
@@ -35,7 +35,7 @@ const fills: Record<VariantName, Record<ColorName, string>> = {
     secondary: 'border-secondary-foreground/30 bg-secondary text-secondary-foreground',
     success: 'border-success/50 bg-success/10 text-success',
     danger: 'border-danger/50 bg-danger/10 text-danger',
-    warn: 'border-warn/60 bg-warn/15 text-warn',
+    warn: 'border-warn/50 bg-warn/10 text-warn',
     info: 'border-info/50 bg-info/10 text-info',
   },
   plain: {

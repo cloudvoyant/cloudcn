@@ -3,7 +3,7 @@
 // live-preview theme swatches. Ported from diffbook's settings-dialog as a
 // self-contained component (no shadcn Dialog dependency yet). Each swatch
 // applies its own `theme-{name}` class so its preview renders in that theme.
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 import { Settings2, Sun, Moon, Monitor, X, type LucideIcon } from 'lucide-react';
 import { THEMES, type ThemeMeta } from 'cloudcn-core';
@@ -168,14 +168,40 @@ function ThemeGrid({ isDark }: { isDark: boolean }) {
 export default function ThemeSelector() {
   const [open, setOpen] = useState(false);
   const [isDark, setIsDark] = useState(() => resolveColorMode(getInitialColorMode()) === 'dark');
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!open) return;
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
+    dialogRef.current?.focus();
     const onKeydown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setOpen(false);
+      if (event.key !== 'Tab') return;
+      const dialog = dialogRef.current;
+      if (!dialog) return;
+      const focusables = dialog.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener('keydown', onKeydown);
     return () => window.removeEventListener('keydown', onKeydown);
+  }, [open]);
+
+  useEffect(() => {
+    if (open) return;
+    previousFocusRef.current?.focus();
+    previousFocusRef.current = null;
   }, [open]);
 
   return (
@@ -204,10 +230,12 @@ export default function ThemeSelector() {
             }}
           >
             <div
+              ref={dialogRef}
               role="dialog"
               aria-modal="true"
               aria-label="Theme settings"
-              className="flex w-full max-w-md flex-col gap-5 rounded-lg border border-border bg-popover p-5 text-popover-foreground shadow-lg"
+              tabIndex={-1}
+              className="flex w-full max-w-md flex-col gap-5 rounded-lg border border-border bg-popover p-5 text-popover-foreground shadow-lg focus:outline-none"
             >
               <div className="flex items-center justify-between">
                 <h2 className="flex items-center gap-2 text-sm font-semibold">

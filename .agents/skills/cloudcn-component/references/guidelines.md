@@ -50,6 +50,20 @@ The Svelte wrapper exposes the same parts and prop names as React. Translate las
 ## Testing
 
 - **Test behavior and accessibility, never appearance.** Unit tests must not assert on generated cva class strings — that is appearance testing, already covered by `format:check`/lint and the e2e specs. Keep test files header-comment free.
-- If the external source (Ark/Chakra/shadcn) ships tests for the component, copy them over and adapt them to these standards — behavior and accessibility, never appearance/class-string assertions.
-- **e2e specs are the behavior surface.** Each `e2e/{component}.spec.ts` exercises the rendered component through the docs demo islands, matrixed over both React and Svelte: correct roles and aria state (`button`/`span`, `aria-pressed`, `aria-label` on icon-only controls), dispatched events (click toggles state, keyboard `Enter`/`Space` activates), and inertness (disabled controls are not activatable). Do not assert demo-shell presence, example-card UI, or generated classes.
+- **Bring over tests from the source.** If the external source (Ark/Chakra/shadcn) ships tests, fixtures, or a11y checks for the component, copy them over and adapt them to these standards (see `references/sourcing.md`).
+- **e2e specs are the behavior surface.** One spec per component at `apps/cloudcn-docs/e2e/{component}.spec.ts`, matrixed over both React and Svelte via the docs demo islands. Cover:
+  - **role / aria state** — native element type (`button`/`span`), `aria-pressed` on toggles, `aria-label` on icon-only controls; non-interactive parts stay non-focusable (no `tabindex`, no button role)
+  - **events** — click toggles state; keyboard `Enter`/`Space` activates
+  - **inertness** — disabled controls are not activatable (`toBeDisabled`)
+  - **a11y violations** — when the axe harness is available, scan for violations instead of hand-rolling role checks
+  Do not assert demo-shell presence, example-card UI, or generated classes.
+- **Example** — a behavior/a11y e2e test follows this pattern (the shipped `e2e/button.spec.ts`, `e2e/toggle-button.spec.ts`, and `e2e/badge.spec.ts` are the canonical full specs):
+  ```ts
+  const toggle = page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("Bold")`).first();
+  await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+  await expect(async () => {
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+  }).toPass();
+  ```
 - A theme/registry cross-check is redundant — lint/format CI (e.g. prettier on malformed CSS like an unterminated comment) already catches it; do not ship one.

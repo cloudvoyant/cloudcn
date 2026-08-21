@@ -21,6 +21,7 @@ command -v mise >/dev/null 2>&1 || echo "NOTE: mise not available — validation
 - Support multiple components in one invocation — run them as parallel blocking subagents, one per component, then aggregate
 - Always source before writing: Ark UI → Chakra UI → shadcn, in that order (see `references/sourcing.md`)
 - First pass of a component is a working copy from an external source (Ark/Chakra MCP snippet or shadcn) — never written from scratch
+- Bring over any tests, fixtures, or a11y checks the external source ships, adapted to the testing standards (see `references/guidelines.md`)
 - Check the Ark and Chakra MCP servers are set up before sourcing; if one is missing, search its docs and surface the setup instructions (see `references/reference-index.md`)
 - Shared interfaces, cva variants, `cn`, and the theme live in `cloudcn-core` — never in a framework package (see `references/package-layout.md`)
 - Framework wrappers stay thin — apply `cn(variants(...))`, pass through Ark props, zero logic

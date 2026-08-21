@@ -46,3 +46,9 @@ A theme extension means any change that affects theming — new tokens, new vari
 ## React → Svelte parity
 
 The Svelte wrapper exposes the same parts and prop names as React. Translate last, mirror exactly.
+
+## Testing
+
+- **Test behavior and accessibility, never appearance.** Unit tests must not assert on generated cva class strings — that is appearance testing, already covered by `format:check`/lint and the e2e specs. Keep test files header-comment free.
+- **e2e specs are the behavior surface.** Each `e2e/{component}.spec.ts` exercises the rendered component through the docs demo islands, matrixed over both React and Svelte: correct roles and aria state (`button`/`span`, `aria-pressed`, `aria-label` on icon-only controls), dispatched events (click toggles state, keyboard `Enter`/`Space` activates), and inertness (disabled controls are not activatable). Do not assert demo-shell presence, example-card UI, or generated classes.
+- A theme/registry cross-check is redundant — lint/format CI (e.g. prettier on malformed CSS like an unterminated comment) already catches it; do not ship one.

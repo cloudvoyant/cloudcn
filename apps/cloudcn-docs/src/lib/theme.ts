@@ -43,9 +43,11 @@ export function resolveColorMode(mode: ColorMode): 'light' | 'dark' {
 /**
  * Apply a color-mode preference by toggling the `.dark` class on <html> to the
  * resolved effective mode, and persist the raw preference (incl. 'system').
+ * Unknown values are ignored so the persisted preference stays in the registry.
  */
 export function applyColorMode(mode: ColorMode): void {
   if (typeof document === 'undefined') return;
+  if (mode !== 'light' && mode !== 'dark' && mode !== 'system') return;
   document.documentElement.classList.toggle('dark', resolveColorMode(mode) === 'dark');
   try {
     localStorage.setItem(COLOR_MODE_KEY, mode);
@@ -73,10 +75,12 @@ export function getInitialTheme(): ThemeName {
 /**
  * Apply a theme by swapping the `theme-*` class on <html>. Every theme (including
  * 'default') has a `.theme-{name}` block from its copied file, so we always set
- * the class. Also persists the choice to localStorage.
+ * the class. Also persists the choice to localStorage. Unknown names are ignored
+ * so the persisted value stays consistent with the THEMES registry.
  */
 export function applyTheme(name: ThemeName): void {
   if (typeof document === 'undefined') return;
+  if (!THEME_NAMES.includes(name)) return;
   const root = document.documentElement;
   const toRemove: string[] = [];
   root.classList.forEach((cls) => {

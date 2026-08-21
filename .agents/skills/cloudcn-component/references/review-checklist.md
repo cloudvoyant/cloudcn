@@ -44,8 +44,6 @@ Audit checklist for the `review` verb. Each item maps to a severity; report ever
 Each component ships an E2E spec (`apps/cloudcn-docs/e2e/{component}.spec.ts`). Check it:
 
 - [ ] Spec exists and is matrixed across both frameworks (`react` and `svelte`).
-- [ ] Spec renders the demo island and asserts shared classes (`bg-primary`, etc.) for both frameworks.
-- [ ] Spec toggles the framework selector and confirms the other island swaps in.
-- [ ] Spec opens each example's show/hide code panel and confirms the framework-appropriate snippet is visible.
-- [ ] Spec exercises interactive behavior where applicable (toggle open/close, press states, focus) for both frameworks.
+- [ ] Spec exercises the component's behavior and accessibility via the demo islands: correct roles/aria attributes (`button`/`span`, `aria-pressed`, `aria-label` on icon-only controls), dispatched events (click toggles state; keyboard `Enter`/`Space` activates), and inertness (disabled controls are not activatable).
+- [ ] Spec avoids demo-shell/app presence assertions (no shared-class checks, no example-card UI, no generated-class assertions).
 - [ ] Spec runs green via `mise run e2e`.

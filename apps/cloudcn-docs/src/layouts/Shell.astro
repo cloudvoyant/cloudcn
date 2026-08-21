@@ -42,9 +42,22 @@ const {
           if (framework === 'svelte' || framework === 'react') {
             document.documentElement.dataset.framework = framework;
           }
-          var storedTheme = localStorage.getItem('cloudcn:theme');
-          var dark = storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          if (dark) document.documentElement.classList.add('dark');
+          // Restore the theme before first paint to avoid a flash.
+          var root = document.documentElement;
+          var mq = window.matchMedia('(prefers-color-scheme: dark)');
+          var mode = localStorage.getItem('cloudcn:color-mode') || 'system';
+          var dark = mode === 'dark' || (mode === 'system' && mq.matches);
+          if (dark) root.classList.add('dark');
+          var theme = localStorage.getItem('cloudcn:theme');
+          // Ignore legacy 'light'/'dark' values left by the old theme toggle.
+          if (theme && theme !== 'light' && theme !== 'dark') {
+            var toRemove = [];
+            for (var i = 0; i < root.classList.length; i++) {
+              if (root.classList[i].indexOf('theme-') === 0) toRemove.push(root.classList[i]);
+            }
+            for (var j = 0; j < toRemove.length; j++) root.classList.remove(toRemove[j]);
+            root.classList.add('theme-' + theme);
+          }
         } catch (e) {}
       })();
     </script>

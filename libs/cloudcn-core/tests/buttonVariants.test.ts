@@ -1,4 +1,3 @@
-// libs/cloudcn-tests/tests/buttonVariants.test.ts
 import { describe, it, expect } from 'vitest';
 import { buttonVariants } from 'cloudcn-core';
 

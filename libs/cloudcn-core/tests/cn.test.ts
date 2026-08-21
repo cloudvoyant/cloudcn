@@ -1,4 +1,3 @@
-// libs/cloudcn-tests/tests/cn.test.ts
 import { describe, it, expect } from 'vitest';
 import { cn } from 'cloudcn-core';
 

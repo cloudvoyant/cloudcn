@@ -47,6 +47,12 @@ Import the theme once in your global CSS:
 @source '../../node_modules/cloudcn-core/dist';
 ```
 
-Components accept the same `variant` and `size` props across frameworks; see the Button docs on the site for the full list.
+Components accept the same `variant` and `size` props across frameworks. Available components:
+
+- `Button` — `variant` (`solid`/`outline`/`text`), `color`, `size`
+- `ToggleButton` — `variant` (`default`/`outline`), `size`
+- `Badge` — `variant` (`solid`/`subtle`/`outline`/`surface`/`plain`), `color`, `size`
+
+Every component accepts `className`/`class` and merges it with the shared variant classes, so consumers can restyle individual instances and override the whole theme via CSS variables.
 
 All packages share one lockstep version from `version.txt`; the project stays at v0 until the release-rule cap is deliberately removed.

@@ -1,23 +1,15 @@
 // apps/cloudcn-docs/src/components/examples/button/solid/react.tsx
 import { Button } from 'cloudcn-react';
 
-const COLORS = [
-  { name: 'Primary', color: 'primary' },
-  { name: 'Secondary', color: 'secondary' },
-  { name: 'Success', color: 'success' },
-  { name: 'Danger', color: 'danger' },
-  { name: 'Warn', color: 'warn' },
-  { name: 'Info', color: 'info' },
-] as const;
-
 export default function ReactButtonSolid() {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      {COLORS.map(({ name, color }) => (
-        <Button key={color} color={color}>
-          {name}
-        </Button>
-      ))}
+      <Button color="primary">Primary</Button>
+      <Button color="secondary">Secondary</Button>
+      <Button color="success">Success</Button>
+      <Button color="danger">Danger</Button>
+      <Button color="warn">Warn</Button>
+      <Button color="info">Info</Button>
     </div>
   );
 }

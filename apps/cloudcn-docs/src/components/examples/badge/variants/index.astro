@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactBadgeVariants from './react.tsx';
+import SvelteBadgeVariants from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Variants" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactBadgeVariants client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteBadgeVariants client:load />
+  </div>
+</Example>

@@ -1,19 +1,13 @@
 <!-- apps/cloudcn-docs/src/components/examples/button/disabled/svelte.svelte -->
 <script lang="ts">
   import { Button } from 'cloudcn-svelte';
-
-  const COLORS = [
-    { name: 'Primary', color: 'primary' },
-    { name: 'Secondary', color: 'secondary' },
-    { name: 'Success', color: 'success' },
-    { name: 'Danger', color: 'danger' },
-    { name: 'Warn', color: 'warn' },
-    { name: 'Info', color: 'info' },
-  ] as const;
 </script>
 
 <div class="flex flex-wrap items-center gap-3">
-  {#each COLORS as { name, color }}
-    <Button {color} disabled>{name}</Button>
-  {/each}
+  <Button color="primary" disabled>Primary</Button>
+  <Button color="secondary" disabled>Secondary</Button>
+  <Button color="success" disabled>Success</Button>
+  <Button color="danger" disabled>Danger</Button>
+  <Button color="warn" disabled>Warn</Button>
+  <Button color="info" disabled>Info</Button>
 </div>

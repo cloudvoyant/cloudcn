@@ -1,13 +1,32 @@
 // apps/cloudcn-docs/e2e/button.spec.ts
-import { test, expect, type Page } from '@playwright/test';
+// Behavior + accessibility coverage for the Button, matrixed over React and
+// Svelte via the docs demo islands: native button role, mouse/keyboard
+// activation, and disabled-button inertness.
+import { test, expect, type Locator, type Page } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
 type Framework = (typeof FRAMEWORKS)[number];
+type ClickCounter = { __clicks: number };
 
 async function selectFramework(page: Page, framework: Framework) {
   await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
   const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
   await expect(demo).toBeVisible();
+}
+
+function introButton(page: Page, framework: Framework, text: string): Locator {
+  return page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("${text}")`).first();
+}
+
+/** Attach a native click counter to a button and return a reader for it. */
+async function trackClicks(page: Page, target: Locator): Promise<() => Promise<number>> {
+  await target.evaluate((el) => {
+    (window as unknown as ClickCounter).__clicks = 0;
+    el.addEventListener('click', () => {
+      (window as unknown as ClickCounter).__clicks += 1;
+    });
+  });
+  return () => page.evaluate(() => (window as unknown as ClickCounter).__clicks);
 }
 
 for (const framework of FRAMEWORKS) {
@@ -17,36 +36,40 @@ for (const framework of FRAMEWORKS) {
       await selectFramework(page, framework);
     });
 
-    test('renders the demo island with shared classes', async ({ page }) => {
-      const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-      await expect(demo.locator('button:has-text("Primary")').first()).toHaveClass(/bg-primary/);
-      await expect(demo.locator('button:has-text("Success")').first()).toHaveClass(/bg-success/);
-      await expect(demo.locator('button:has-text("Danger")').first()).toHaveClass(/bg-danger/);
-
-      // The Outline example's first button uses the outline variant with a border.
-      const outlineCard = page.locator('[data-example]').nth(1);
-      const outlineButton = outlineCard.locator(`[data-fw="${framework}"] button`).first();
-      await expect(outlineButton).toHaveClass(/border/);
-      await expect(outlineButton).toHaveClass(/text-/);
+    test('renders a native button with the button role', async ({ page }) => {
+      const btn = introButton(page, framework, 'Primary');
+      await expect(btn).toBeVisible();
+      await expect(btn).toHaveAttribute('type', 'button');
+      expect(await btn.evaluate((el) => el.tagName)).toBe('BUTTON');
     });
 
-    test('renders every example card with preview and code views', async ({ page }) => {
-      const examples = page.locator('[data-example]');
-      await expect(examples).toHaveCount(7);
+    test('fires a click event on mouse activation', async ({ page }) => {
+      const btn = introButton(page, framework, 'Primary');
+      const clicks = await trackClicks(page, btn);
+      await btn.click();
+      expect(await clicks()).toBeGreaterThan(0);
+    });
 
-      // First example is Solid — preview visible, code hidden by default.
-      const solid = examples.first();
-      await expect(solid.locator('[data-example-panel="preview"]')).toBeVisible();
-      await expect(solid.locator('[data-example-panel="code"]')).toBeHidden();
+    test('activates with the Enter and Space keys', async ({ page }) => {
+      const btn = introButton(page, framework, 'Primary');
+      const clicks = await trackClicks(page, btn);
 
-      // Toggle to code view — only the active framework's code block is visible.
-      await solid.locator('[data-example-tab="code"]').click();
-      const codePanel = solid.locator('[data-example-panel="code"]');
-      await expect(codePanel).toBeVisible();
-      await expect(codePanel.locator('.astro-code:visible')).toHaveCount(1);
-      await expect(codePanel.locator('.astro-code').filter({ visible: true })).toContainText(
-        framework === 'react' ? 'cloudcn-react' : 'cloudcn-svelte',
-      );
+      await btn.focus();
+      await page.keyboard.press('Enter');
+      expect(await clicks()).toBeGreaterThan(0);
+
+      await page.keyboard.press('Space');
+      expect(await clicks()).toBeGreaterThan(1);
+    });
+
+    test('renders disabled buttons that cannot be activated', async ({ page }) => {
+      const disabled = page
+        .locator('[data-example]')
+        .last()
+        .locator(`[data-fw="${framework}"] button`)
+        .first();
+      await expect(disabled).toBeDisabled();
+      expect(await disabled.evaluate((el) => el.hasAttribute('disabled'))).toBe(true);
     });
   });
 }

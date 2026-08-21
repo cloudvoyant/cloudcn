@@ -1,4 +1,5 @@
 // libs/cloudcn-react/src/button.tsx
+// Source: @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { buttonVariants, cn } from 'cloudcn-core';
 import type { ButtonProps as ButtonPropsBase } from 'cloudcn-core';

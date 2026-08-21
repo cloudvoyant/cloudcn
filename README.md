@@ -4,9 +4,9 @@ cloudcn is a pnpm workspace monorepo for a cross-framework UI component library 
 
 ## Structure
 
-- `libs/cloudcn-core` — shared interfaces, cva variants (`buttonVariants`), `cn`, and the shadcn-style theme (light + dark)
-- `libs/cloudcn-react` — React components built on Ark UI (Button)
-- `libs/cloudcn-svelte` — Svelte components built on Ark UI (Button)
+- `libs/cloudcn-core` — shared interfaces, cva variants (`buttonVariants`, `toggleButtonVariants`, `badgeVariants`), `cn`, and the shadcn-style theme (light + dark)
+- `libs/cloudcn-react` — React components built on Ark UI (Button, ToggleButton, Badge)
+- `libs/cloudcn-svelte` — Svelte components built on Ark UI (Button, ToggleButton, Badge)
 - `apps/cloudcn-docs` — Astro docs/demo site with MDX docs, framework selector, and live demos
 
 ## Getting started

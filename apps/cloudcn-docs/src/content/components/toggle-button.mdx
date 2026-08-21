@@ -1,0 +1,43 @@
+---
+title: ToggleButton
+description: A pressable toggle button for React and Svelte, built on Ark UI.
+order: 2
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The ToggleButton toggles between pressed and unpressed states. It is implemented in both React and Svelte on top of Ark UI's `toggle` primitive, sharing the `toggleButtonVariants` cva definitions and the theme from `cloudcn-core`. Use the framework selector in the top-right to switch between implementations.
+
+<Demo component="toggle-button" example="default" />
+
+## Examples
+
+<Examples component="toggle-button" exclude="default" />
+
+## API Reference
+
+The React and Svelte components accept `variant`, `size`, and `className`/`class`, plus standard button attributes and all [Ark toggle](https://ark-ui.com/docs/components/toggle) `ToggleRoot` props.
+
+### ToggleButton
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `'default' \| 'outline'` | `'default'` | Visual emphasis. |
+| `size` | `'default' \| 'sm' \| 'lg'` | `'default'` | Height of the button. |
+| `pressed` | `boolean` | — | Controlled pressed state. |
+| `defaultPressed` | `boolean` | `false` | Initial state when uncontrolled. |
+| `onPressedChange` | `(details: PressedChangeDetails) => void` | — | Fires when pressed state changes. |
+| `className` / `class` | `string` | — | Merged via `cn` with the variant classes. |
+
+### ToggleButtonIndicator
+
+#### Props
+
+Accepts all [Ark `ToggleIndicator`](https://ark-ui.com/docs/components/toggle) props. Renders its children only when the button is pressed; pass the `fallback` prop to render content in the unpressed state.
+
+## Accessibility
+
+Follows the [Button WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/). The underlying Ark `toggle` sets `aria-pressed` automatically and supports keyboard activation with `Space` and `Enter`.

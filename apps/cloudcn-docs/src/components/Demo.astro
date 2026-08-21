@@ -1,4 +1,5 @@
 ---
+// apps/cloudcn-docs/src/components/Demo.astro
 import ExampleButtonSolid from './examples/button/solid/index.astro';
 import ExampleButtonOutline from './examples/button/outline/index.astro';
 import ExampleButtonRounded from './examples/button/rounded/index.astro';
@@ -6,29 +7,75 @@ import ExampleButtonSizes from './examples/button/sizes/index.astro';
 import ExampleButtonIcon from './examples/button/icon/index.astro';
 import ExampleButtonWithIcon from './examples/button/with-icon/index.astro';
 import ExampleButtonDisabled from './examples/button/disabled/index.astro';
+import ExampleToggleButtonDefault from './examples/toggle-button/default/index.astro';
+import ExampleToggleButtonOutline from './examples/toggle-button/outline/index.astro';
+import ExampleToggleButtonIcon from './examples/toggle-button/icon/index.astro';
+import ExampleToggleButtonIndicator from './examples/toggle-button/indicator/index.astro';
+import ExampleBadgeDefault from './examples/badge/default/index.astro';
+import ExampleBadgeVariants from './examples/badge/variants/index.astro';
+import ExampleBadgeColors from './examples/badge/colors/index.astro';
+import ExampleBadgeSizes from './examples/badge/sizes/index.astro';
 
-interface Props {
-  component?: 'button';
+type ComponentName =
+  | 'button'
+  | 'toggle-button'
+  | 'badge';
+
+type ExampleName =
+  | 'solid'
+  | 'outline'
+  | 'rounded'
+  | 'sizes'
+  | 'icon'
+  | 'with-icon'
+  | 'disabled'
+  | 'indicator'
+  | 'variants'
+  | 'colors'
+  | 'default';
+
+interface ExampleEntry {
+  id: ExampleName;
+  title: string;
+  component: typeof ExampleButtonSolid;
 }
 
-const { component = 'button' } = Astro.props;
+interface Props {
+  component?: ComponentName;
+  /** Render a single example by id (defaults to the first in the registry). */
+  example?: ExampleName;
+}
 
-const examples =
-  component === 'button'
-    ? [
-        ExampleButtonSolid,
-        ExampleButtonOutline,
-        ExampleButtonRounded,
-        ExampleButtonSizes,
-        ExampleButtonIcon,
-        ExampleButtonWithIcon,
-        ExampleButtonDisabled,
-      ]
-    : [];
+const { component = 'button', example } = Astro.props;
+
+const registry: Record<ComponentName, ExampleEntry[]> = {
+  button: [
+    { id: 'solid', title: 'Solid', component: ExampleButtonSolid },
+    { id: 'outline', title: 'Outline', component: ExampleButtonOutline },
+    { id: 'rounded', title: 'Rounded', component: ExampleButtonRounded },
+    { id: 'sizes', title: 'Sizes', component: ExampleButtonSizes },
+    { id: 'icon', title: 'Icon button', component: ExampleButtonIcon },
+    { id: 'with-icon', title: 'With icon', component: ExampleButtonWithIcon },
+    { id: 'disabled', title: 'Disabled', component: ExampleButtonDisabled },
+  ],
+  'toggle-button': [
+    { id: 'default', title: 'Default', component: ExampleToggleButtonDefault },
+    { id: 'outline', title: 'Outline', component: ExampleToggleButtonOutline },
+    { id: 'icon', title: 'Icon', component: ExampleToggleButtonIcon },
+    { id: 'indicator', title: 'Indicator', component: ExampleToggleButtonIndicator },
+  ],
+  badge: [
+    { id: 'default', title: 'Default', component: ExampleBadgeDefault },
+    { id: 'variants', title: 'Variants', component: ExampleBadgeVariants },
+    { id: 'colors', title: 'Colors', component: ExampleBadgeColors },
+    { id: 'sizes', title: 'Sizes', component: ExampleBadgeSizes },
+  ],
+};
+
+const entries = registry[component] ?? [];
+const selected = example ? entries.find((e) => e.id === example) ?? entries[0] : entries[0];
 ---
 
-<div class="flex w-full flex-col gap-6">
-  {examples.map((Example) => (
-    <Example />
-  ))}
+<div class="w-full" data-demo-region>
+  {selected && <selected.component />}
 </div>

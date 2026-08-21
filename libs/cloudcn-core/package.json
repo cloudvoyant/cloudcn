@@ -1,6 +1,6 @@
 {
   "name": "cloudcn-core",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "cloudcn shared component interfaces, cva variants, and theme",
   "license": "MIT",
   "type": "module",

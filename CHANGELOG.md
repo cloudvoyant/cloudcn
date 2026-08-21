@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/cloudvoyant/cloudcn/compare/v0.2.0...v0.3.0) (2026-08-21)
+
+
+### Features
+
+* add toggle-button, badge, and shadcn theme presets ([ed6f3de](https://github.com/cloudvoyant/cloudcn/commit/ed6f3de09ba92323afc8d819464654ec09ae632d))
+
 # [0.2.0](https://github.com/cloudvoyant/cloudcn/compare/v0.1.0...v0.2.0) (2026-08-19)
 
 

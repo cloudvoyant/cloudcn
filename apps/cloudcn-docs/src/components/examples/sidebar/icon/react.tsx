@@ -14,7 +14,6 @@ import {
   SidebarRail,
   SidebarTrigger,
   SidebarInset,
-  SidebarInput,
 } from 'cloudcn-react';
 import { Home, Inbox, Settings, LifeBuoy, PanelLeft } from 'lucide-react';
 
@@ -44,7 +43,6 @@ function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Applications</SidebarGroupLabel>
-          <SidebarInput type="search" placeholder="Search..." />
           <SidebarGroupContent>
             <SidebarMenu>
               {NAV.map((item) => (

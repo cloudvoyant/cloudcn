@@ -89,13 +89,18 @@ for (const framework of FRAMEWORKS) {
       await expect(sb).toHaveAttribute('data-state', 'expanded');
       await expect(rail).toHaveAttribute('aria-label', 'Toggle Sidebar');
 
+      // Click a point on the rail's right edge: when collapsed (offcanvas) the
+      // 16px-wide rail peeks ~8px into the demo box, so the element center can
+      // fall under the card's overflow clip.
+      const clickRail = () => rail.click({ position: { x: 13, y: 100 } });
+
       await expect(async () => {
-        await rail.click();
+        await clickRail();
         await expect(sb).toHaveAttribute('data-state', 'collapsed');
       }).toPass();
 
       await expect(async () => {
-        await rail.click();
+        await clickRail();
         await expect(sb).toHaveAttribute('data-state', 'expanded');
       }).toPass();
     });

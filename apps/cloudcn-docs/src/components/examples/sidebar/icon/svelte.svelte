@@ -15,7 +15,6 @@
     SidebarRail,
     SidebarTrigger,
     SidebarInset,
-    SidebarInput,
   } from 'cloudcn-svelte';
   import { House as Home, Inbox, Settings, LifeBuoy } from 'lucide-svelte';
 
@@ -45,9 +44,8 @@
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Applications</SidebarGroupLabel>
-          <SidebarInput type="search" placeholder="Search..." />
-          <SidebarGroupContent>
+        <SidebarGroupLabel>Applications</SidebarGroupLabel>
+        <SidebarGroupContent>
             <SidebarMenu>
               {#each NAV as item (item.label)}
                 <SidebarMenuItem>

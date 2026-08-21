@@ -66,6 +66,15 @@ html.dark [data-example-code] .astro-code span {
 .docs-prose ol {
   @apply my-4 list-decimal pl-6 space-y-1;
 }
+/* Interactive demo previews render their own component trees (e.g. the
+   Sidebar's SidebarMenu <ul>/<li>). Reset prose list styling inside them so
+   navigation menus don't inherit bullets/indentation. */
+.docs-prose [data-demo] :is(ul, ol) {
+  @apply m-0 list-none p-0;
+}
+.docs-prose [data-demo] :is(ul, ol) li {
+  @apply m-0;
+}
 .docs-prose code {
   @apply rounded bg-muted px-1.5 py-0.5 text-[0.9em] text-foreground;
 }

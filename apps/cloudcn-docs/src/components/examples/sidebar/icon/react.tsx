@@ -26,7 +26,7 @@ const NAV = [
 
 function AppSidebar() {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="h-full">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -76,21 +76,23 @@ function AppSidebar() {
 
 export default function ReactSidebarIcon() {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <header className="flex h-12 items-center gap-2 border-b px-4">
-          <SidebarTrigger>
-            <PanelLeft />
-          </SidebarTrigger>
-          <span className="text-sm font-medium">Icon rail sidebar</span>
-        </header>
-        <main className="flex-1 p-6">
-          <p className="text-sm text-muted-foreground">
-            Click the trigger (or the rail, or press Cmd/Ctrl+B) to collapse this sidebar to an icon rail.
-          </p>
-        </main>
-      </SidebarInset>
-    </SidebarProvider>
+    <div className="relative h-[560px] rounded-lg bg-background [transform:translateZ(0)]">
+      <SidebarProvider className="h-full min-h-0">
+        <AppSidebar />
+        <SidebarInset>
+          <header className="flex h-12 items-center gap-2 border-b px-4">
+            <SidebarTrigger>
+              <PanelLeft />
+            </SidebarTrigger>
+            <span className="text-sm font-medium">Icon rail sidebar</span>
+          </header>
+          <main className="flex-1 p-6">
+            <p className="text-sm text-muted-foreground">
+              Click the trigger (or the rail, or press Cmd/Ctrl+B) to collapse this sidebar to an icon rail.
+            </p>
+          </main>
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
   );
 }

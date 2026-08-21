@@ -35,9 +35,11 @@ If neither has it, use shadcn as a design/starting point.
 - Swap its base (base-ui / radix / native) parts for the equivalent Ark UI components.
 - `--shadcn` forces this path.
 
-## Always — Svelte last
+## Always — Svelte last, tests copied
 
-Whatever the React result is, translate it to Svelte only after the React component is finalized. Do not build both frameworks in parallel — the Svelte wrapper mirrors the React one's parts and variants.
+Build and verify the React component first; only after it is finalized, translate it to Svelte. Never build both frameworks in parallel — the Svelte wrapper mirrors the React one's parts and variants.
+
+If the external source (Ark/Chakra/shadcn) ships tests for the component, copy them over and adapt them to this skill's testing standards (see `references/guidelines.md` → Testing): behavior and accessibility across both frameworks, never appearance/class-string assertions.
 
 ## Record the source in file headers
 

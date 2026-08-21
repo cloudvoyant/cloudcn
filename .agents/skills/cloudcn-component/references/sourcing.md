@@ -2,6 +2,12 @@
 
 Every new component starts from an existing, accessibility-complete source. The order matters: we wrap Ark UI directly when possible, fall back to Chakra UI (built on Ark), and only then to shadcn (which needs Ark swaps). The Svelte translation always happens last.
 
+**The first pass is a working copy, never written from scratch** — pull a real, working implementation from Ark/Chakra (MCP snippet) or shadcn, then adapt it to cloudcn standards.
+
+## MCP servers
+
+Before sourcing, confirm the Ark and Chakra UI MCP servers are set up. If one is unavailable, use its docs (links in `references/reference-index.md`) and surface the setup instructions in your report — the MCP server is the primary retrieval path.
+
 ## Step 1 — Ark UI (preferred)
 
 Ark UI is the library cloudcn wraps directly. Check it first.

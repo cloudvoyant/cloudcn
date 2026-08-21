@@ -20,6 +20,8 @@ command -v mise >/dev/null 2>&1 || echo "NOTE: mise not available — validation
 - Dispatch on the first non-flag argument: `new` (default) | `update` | `review`
 - Support multiple components in one invocation — run them as parallel blocking subagents, one per component, then aggregate
 - Always source before writing: Ark UI → Chakra UI → shadcn, in that order (see `references/sourcing.md`)
+- First pass of a component is a working copy from an external source (Ark/Chakra MCP snippet or shadcn) — never written from scratch
+- Check the Ark and Chakra MCP servers are set up before sourcing; if one is missing, search its docs and surface the setup instructions (see `references/reference-index.md`)
 - Shared interfaces, cva variants, `cn`, and the theme live in `cloudcn-core` — never in a framework package (see `references/package-layout.md`)
 - Framework wrappers stay thin — apply `cn(variants(...))`, pass through Ark props, zero logic
 - Every component is light-and-dark capable, accessible, and themeable; accessibility comes from Ark's state machine — never hand-roll roles/keyboard/focus (see `references/guidelines.md`)
@@ -39,6 +41,10 @@ FORCE_ARK=false; FORCE_CHAKRA=false; FORCE_SHADCN=false
 ```
 
 Normalise aliases: `add`/`create` → `new`. If `COMPONENTS` is empty, ask for the name(s) (free-text via Other, space-separated).
+
+## Step 0.5: Check MCP servers
+
+Before sourcing, confirm the Ark and Chakra UI MCP servers are set up. If either is unavailable, search its docs (links in `references/reference-index.md`) and report the setup instructions in your output — do not silently proceed docs-only, the MCP server is the primary retrieval path.
 
 ## Step 1: Dispatch per verb
 

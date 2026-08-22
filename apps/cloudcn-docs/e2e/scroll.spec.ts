@@ -39,5 +39,13 @@ for (const framework of FRAMEWORKS) {
         .poll(() => viewport.evaluate((el) => el.scrollTop))
         .toBeGreaterThan(0);
     });
+
+    test('applies custom scrollbar thumb styling', async ({ page }) => {
+      const fw = `[data-fw="${framework}"]`;
+      const thumb = page.locator(`${fw} [data-part="thumb"].bg-primary`).first();
+      await expect(thumb).toBeVisible();
+      const bg = await thumb.evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(bg).not.toBe('rgba(0, 0, 0, 0)');
+    });
   });
 }

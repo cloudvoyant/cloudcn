@@ -46,8 +46,8 @@ import ExampleSplitterDisabled from './examples/splitter/disabled/index.astro';
 import ExampleCenterDefault from './examples/center/default/index.astro';
 import ExampleCenterIcon from './examples/center/icon/index.astro';
 import ExampleCenterInline from './examples/center/inline/index.astro';
-import ExampleItemSurface from './examples/item/surface/index.astro';
-import ExampleItemPlain from './examples/item/plain/index.astro';
+import ExampleItemInStack from './examples/item/in-stack/index.astro';
+import ExampleItemInContainer from './examples/item/in-container/index.astro';
 import ExampleCardDefault from './examples/card/default/index.astro';
 import ExampleCardVariants from './examples/card/variants/index.astro';
 import ExampleCardSizes from './examples/card/sizes/index.astro';
@@ -104,8 +104,8 @@ type ExampleName =
   | 'col-separator'
   | 'col-responsive'
   | 'inline'
-  | 'surface'
-  | 'plain'
+  | 'in-stack'
+  | 'in-container'
   | 'override'
   | 'with-image';
 
@@ -187,8 +187,8 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'inline', title: 'Inline', component: ExampleCenterInline },
   ],
   item: [
-    { id: 'surface', title: 'Surface', component: ExampleItemSurface },
-    { id: 'plain', title: 'Plain', component: ExampleItemPlain },
+    { id: 'in-stack', title: 'In a stack', component: ExampleItemInStack },
+    { id: 'in-container', title: 'In a container', component: ExampleItemInContainer },
   ],
   card: [
     { id: 'default', title: 'Default', component: ExampleCardDefault },

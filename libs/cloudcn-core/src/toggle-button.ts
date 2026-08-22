@@ -1,5 +1,5 @@
 // libs/cloudcn-core/src/toggle-button.ts
-// Source: cloudcn-core (shared toggleButtonVariants cva — shadcn-style variants)
+// Closely based on: cloudcn-core (shared toggleButtonVariants cva — shadcn-style variants)
 import { cva, type VariantProps } from 'class-variance-authority';
 
 export const toggleButtonVariants = cva(

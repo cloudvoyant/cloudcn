@@ -1,5 +1,5 @@
 // libs/cloudcn-core/src/layout.ts
-// Source: Chakra UI layout primitives (Container, Stack/HStack/VStack) plus
+// Closely based on: Chakra UI layout primitives (Container, Stack/HStack/VStack) plus
 // Row/Col flex aliases — shadcn/Tailwind base classes. No variant axes:
 // customization is via className, applied last through cn.
 

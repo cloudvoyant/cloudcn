@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/item.tsx
-// Source: cloudcn example-item primitive, built on @ark-ui/react/factory (Ark UI)
+// Closely based on: cloudcn example-item primitive, built on @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { itemVariants, cn } from 'cloudcn-core';
 import type { ItemProps as ItemPropsBase } from 'cloudcn-core';

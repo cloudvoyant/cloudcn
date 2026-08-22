@@ -29,5 +29,12 @@ for (const framework of FRAMEWORKS) {
         expect(after).not.toBe(before);
       }).toPass();
     });
+
+    test('shows a divider line between panels', async ({ page }) => {
+      const separator = page.locator(`[data-fw="${framework}"] [data-part="separator"]`).first();
+      await expect(separator).toBeVisible();
+      const bg = await separator.evaluate((el) => getComputedStyle(el).backgroundColor);
+      expect(bg).not.toBe('rgba(0, 0, 0, 0)');
+    });
   });
 }

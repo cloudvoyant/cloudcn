@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/scroll.tsx
-// Source: @ark-ui/react/scroll-area (Ark UI), Chakra UI ScrollArea
+// Closely based on: @ark-ui/react/scroll-area (Ark UI), Chakra UI ScrollArea
 import {
   ScrollAreaRoot as ArkRoot,
   ScrollAreaViewport as ArkViewport,

@@ -1,5 +1,5 @@
 // libs/cloudcn-core/src/item.ts
-// Source: cloudcn-core (shared itemVariants cva — the example/content-box primitive).
+// Closely based on: cloudcn-core (shared itemVariants cva — the example/content-box primitive).
 // `plain` is used inside Container/Row/Col (styleless layout): it fills available
 // width and has square corners. `surface` is used inside Stack/HStack/VStack
 // (visual lists): rounded, bordered, themed surface.

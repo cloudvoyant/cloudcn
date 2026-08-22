@@ -1,5 +1,5 @@
 // libs/cloudcn-core/src/card.ts
-// Source: Chakra UI Card slot recipe — adapted to the cva/Tailwind approach.
+// Closely based on: Chakra UI Card slot recipe — adapted to the cva/Tailwind approach.
 // Themed via the shadcn --card/--card-foreground/--muted/--border variables.
 import { cva, type VariantProps } from 'class-variance-authority';
 

@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/card/root.tsx
-// Source: Chakra UI Card, built on @ark-ui/react/factory (Ark UI)
+// Closely based on: Chakra UI Card, built on @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { cardVariants, cn } from 'cloudcn-core';
 import type { CardRootProps } from 'cloudcn-core';

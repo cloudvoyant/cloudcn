@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/Badge.svelte -->
-<!-- Source: @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
+<!-- Closely based on: @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { badgeVariants, cn } from 'cloudcn-core';

@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/container.tsx
-// Source: Chakra UI Container, built on @ark-ui/react/factory (Ark UI)
+// Closely based on: Chakra UI Container, built on @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { containerBase, cn } from 'cloudcn-core';
 

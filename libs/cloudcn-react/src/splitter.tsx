@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/splitter.tsx
-// Source: @ark-ui/react/splitter (Ark UI), Chakra UI Splitter
+// Closely based on: @ark-ui/react/splitter (Ark UI), Chakra UI Splitter
 import {
   SplitterRoot as ArkSplitterRoot,
   SplitterPanel as ArkSplitterPanel,
@@ -30,7 +30,7 @@ export function SplitterPanel({ className, ...props }: SplitterPanelProps) {
 export function SplitterResizeTrigger({ className, children, ...props }: SplitterResizeTriggerProps) {
   return (
     <ArkSplitterResizeTrigger className={cn(splitterResizeTriggerBase, className)} {...props}>
-      <span aria-hidden className={splitterResizeTriggerSeparatorBase} />
+      <span aria-hidden data-part="separator" className={splitterResizeTriggerSeparatorBase} />
       {children}
     </ArkSplitterResizeTrigger>
   );

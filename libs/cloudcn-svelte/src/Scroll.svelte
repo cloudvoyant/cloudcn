@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/Scroll.svelte -->
-<!-- Source: @ark-ui/svelte/scroll-area (Ark UI), Chakra UI ScrollArea, mirrored from cloudcn-react -->
+<!-- Closely based on: @ark-ui/svelte/scroll-area (Ark UI), Chakra UI ScrollArea, mirrored from cloudcn-react -->
 <script lang="ts">
   import {
     ScrollAreaRoot,

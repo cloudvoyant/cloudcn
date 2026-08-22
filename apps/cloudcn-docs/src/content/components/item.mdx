@@ -8,13 +8,13 @@ group: Layout
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-The Item is a content box used throughout the examples. The `surface` variant adds a rounded border and themed surface color — used inside `Stack`/`HStack`/`VStack`; the default `plain` variant has no color or boundary — used inside `Container`/`Row`/`Col`.
+The Item is a content box used throughout the examples. Inside `Stack`/`HStack`/`VStack` (visual lists) items use the `surface` variant — rounded, bordered, and themed. Inside `Container`/`Row`/`Col` (layout slicing) items are `plain` — no color, no border.
 
-<Demo component="item" example="surface" />
+<Demo component="item" example="in-stack" />
 
 ## Examples
 
-<Examples component="item" exclude="surface" />
+<Examples component="item" exclude="in-stack" />
 
 ## API Reference
 

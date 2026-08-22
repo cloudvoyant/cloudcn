@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/badge.tsx
-// Source: @ark-ui/react/factory (Ark UI)
+// Closely based on: @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { badgeVariants, cn } from 'cloudcn-core';
 import type { BadgeProps as BadgePropsBase } from 'cloudcn-core';

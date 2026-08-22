@@ -1,5 +1,5 @@
 // libs/cloudcn-core/src/scroll.ts
-// Source: Chakra UI ScrollArea slot recipe (built on @ark-ui/* scroll-area).
+// Closely based on: Chakra UI ScrollArea slot recipe (built on @ark-ui/* scroll-area).
 // Defaults baked in: variant "hover" (scrollbars fade in on hover/scroll) and
 // size "md" (--scrollbar-size: 0.5rem). Customize via className, applied last.
 

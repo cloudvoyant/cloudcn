@@ -1,13 +1,13 @@
 // apps/cloudcn-docs/e2e/item.spec.ts
-// Behavior coverage for the Item primitive: the `surface` variant (Stack/HStack/
-// VStack) renders rounded + bordered, the `plain` variant (Row/Col) renders
-// without a border or rounding.
+// Behavior coverage for the Item primitive: inside Stack/HStack/VStack items
+// use the `surface` variant (rounded + bordered); inside Container/Row/Col they
+// are `plain` (square, no border).
 import { test, expect } from '@playwright/test';
 import { FRAMEWORKS, selectFramework } from './helpers';
 
 for (const framework of FRAMEWORKS) {
   test.describe(`Item docs page · ${framework}`, () => {
-    test('surface items are rounded and bordered, plain items are not', async ({ page }) => {
+    test('in-stack items are rounded and bordered; in-container items are not', async ({ page }) => {
       await page.goto('/components/item');
       await selectFramework(page, framework);
 

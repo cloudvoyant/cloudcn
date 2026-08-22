@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/toggle-button.tsx
-// Source: @ark-ui/react/toggle (Ark UI)
+// Closely based on: @ark-ui/react/toggle (Ark UI)
 import { ToggleRoot, ToggleIndicator, type ToggleRootProps, type ToggleIndicatorProps } from '@ark-ui/react/toggle';
 import { toggleButtonVariants, cn } from 'cloudcn-core';
 import type { ToggleButtonProps as ToggleButtonPropsBase } from 'cloudcn-core';

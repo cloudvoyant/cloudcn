@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/Col.svelte -->
-<!-- Source: Chakra UI Flex (direction="column"), built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
+<!-- Closely based on: Chakra UI Flex (direction="column"), built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { colBase, cn } from 'cloudcn-core';

@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/HStack.svelte -->
-<!-- Source: Chakra UI HStack, built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
+<!-- Closely based on: Chakra UI HStack, built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { hstackBase, cn } from 'cloudcn-core';

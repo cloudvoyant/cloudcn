@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/Stack.svelte -->
-<!-- Source: Chakra UI Stack, built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
+<!-- Closely based on: Chakra UI Stack, built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { stackBase, cn } from 'cloudcn-core';

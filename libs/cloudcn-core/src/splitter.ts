@@ -1,5 +1,5 @@
 // libs/cloudcn-core/src/splitter.ts
-// Source: Chakra UI Splitter slot recipe (built on @ark-ui/* splitter).
+// Closely based on: Chakra UI Splitter slot recipe (built on @ark-ui/* splitter).
 // Root/panel base classes are empty: Ark sets display/flex-direction, the
 // height/width: 100% and overflow: hidden, and panel flex sizing inline.
 

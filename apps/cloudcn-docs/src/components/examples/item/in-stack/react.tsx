@@ -1,7 +1,7 @@
-// apps/cloudcn-docs/src/components/examples/item/surface/react.tsx
+// apps/cloudcn-docs/src/components/examples/item/in-stack/react.tsx
 import { Item, Stack } from 'cloudcn-react';
 
-export default function ReactItemSurface() {
+export default function ReactItemInStack() {
   return (
     <Stack>
       <Item variant="surface">One</Item>

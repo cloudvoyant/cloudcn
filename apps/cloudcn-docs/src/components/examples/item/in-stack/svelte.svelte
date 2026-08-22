@@ -1,4 +1,4 @@
-<!-- apps/cloudcn-docs/src/components/examples/item/surface/svelte.svelte -->
+<!-- apps/cloudcn-docs/src/components/examples/item/in-stack/svelte.svelte -->
 <script lang="ts">
   import { Item, Stack } from 'cloudcn-svelte';
 </script>

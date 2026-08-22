@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/CardRoot.svelte -->
-<!-- Source: Chakra UI Card, built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
+<!-- Closely based on: Chakra UI Card, built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
 <script lang="ts">
   import { setContext } from 'svelte';
   import { Ark } from '@ark-ui/svelte/factory';

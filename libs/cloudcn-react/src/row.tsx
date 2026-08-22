@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/row.tsx
-// Source: Chakra UI Flex (direction="row"), built on @ark-ui/react/factory (Ark UI)
+// Closely based on: Chakra UI Flex (direction="row"), built on @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { rowBase, cn } from 'cloudcn-core';
 

@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/Item.svelte -->
-<!-- Source: cloudcn example-item primitive, built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
+<!-- Closely based on: cloudcn example-item primitive, built on @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { itemVariants, cn } from 'cloudcn-core';

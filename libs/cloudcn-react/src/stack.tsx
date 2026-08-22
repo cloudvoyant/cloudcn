@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/stack.tsx
-// Source: Chakra UI Stack/HStack/VStack, built on @ark-ui/react/factory (Ark UI)
+// Closely based on: Chakra UI Stack/HStack/VStack, built on @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { stackBase, hstackBase, vstackBase, cn } from 'cloudcn-core';
 

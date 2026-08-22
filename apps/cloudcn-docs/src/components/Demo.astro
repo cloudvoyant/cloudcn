@@ -15,11 +15,49 @@ import ExampleBadgeDefault from './examples/badge/default/index.astro';
 import ExampleBadgeVariants from './examples/badge/variants/index.astro';
 import ExampleBadgeColors from './examples/badge/colors/index.astro';
 import ExampleBadgeSizes from './examples/badge/sizes/index.astro';
+import ExampleContainerDefault from './examples/container/default/index.astro';
+import ExampleContainerSizes from './examples/container/sizes/index.astro';
+import ExampleContainerFluid from './examples/container/fluid/index.astro';
+import ExampleRowDefault from './examples/row/default/index.astro';
+import ExampleRowWithGap from './examples/row/with-gap/index.astro';
+import ExampleRowSeparator from './examples/row/separator/index.astro';
+import ExampleRowResponsiveDirection from './examples/row/responsive-direction/index.astro';
+import ExampleColDefault from './examples/col/default/index.astro';
+import ExampleColWithGap from './examples/col/with-gap/index.astro';
+import ExampleColSeparator from './examples/col/separator/index.astro';
+import ExampleColResponsiveDirection from './examples/col/responsive-direction/index.astro';
+import ExampleStackDefault from './examples/stack/default/index.astro';
+import ExampleStackHstack from './examples/stack/hstack/index.astro';
+import ExampleStackVstack from './examples/stack/vstack/index.astro';
+import ExampleStackSeparator from './examples/stack/separator/index.astro';
+import ExampleStackResponsiveDirection from './examples/stack/responsive-direction/index.astro';
+import ExampleScrollAreaDefault from './examples/scroll-area/default/index.astro';
+import ExampleScrollAreaSizes from './examples/scroll-area/sizes/index.astro';
+import ExampleScrollAreaHorizontal from './examples/scroll-area/horizontal/index.astro';
+import ExampleScrollAreaBoth from './examples/scroll-area/both/index.astro';
+import ExampleScrollAreaScrollShadow from './examples/scroll-area/scroll-shadow/index.astro';
+import ExampleScrollAreaThumbStyling from './examples/scroll-area/thumb-styling/index.astro';
+import ExampleSplitterDefault from './examples/splitter/default/index.astro';
+import ExampleSplitterVertical from './examples/splitter/vertical/index.astro';
+import ExampleSplitterMultiplePanels from './examples/splitter/multiple-panels/index.astro';
+import ExampleSplitterCollapsible from './examples/splitter/collapsible/index.astro';
+import ExampleSplitterMinMax from './examples/splitter/min-max/index.astro';
+import ExampleSplitterDisabled from './examples/splitter/disabled/index.astro';
+import ExampleCenterDefault from './examples/center/default/index.astro';
+import ExampleCenterIcon from './examples/center/icon/index.astro';
+import ExampleCenterInline from './examples/center/inline/index.astro';
+import ExampleItemDefault from './examples/item/default/index.astro';
 
 type ComponentName =
   | 'button'
   | 'toggle-button'
-  | 'badge';
+  | 'badge'
+  | 'layout'
+  | 'stack'
+  | 'scroll-area'
+  | 'splitter'
+  | 'center'
+  | 'item';
 
 type ExampleName =
   | 'solid'
@@ -32,7 +70,32 @@ type ExampleName =
   | 'indicator'
   | 'variants'
   | 'colors'
-  | 'default';
+  | 'default'
+  | 'fluid'
+  | 'hstack'
+  | 'vstack'
+  | 'separator'
+  | 'responsive-direction'
+  | 'horizontal'
+  | 'both'
+  | 'scroll-shadow'
+  | 'thumb-styling'
+  | 'vertical'
+  | 'multiple-panels'
+  | 'collapsible'
+  | 'min-max'
+  | 'container'
+  | 'container-sizes'
+  | 'container-fluid'
+  | 'row'
+  | 'row-gap'
+  | 'row-separator'
+  | 'row-responsive'
+  | 'col'
+  | 'col-gap'
+  | 'col-separator'
+  | 'col-responsive'
+  | 'inline';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -70,6 +133,48 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'colors', title: 'Colors', component: ExampleBadgeColors },
     { id: 'sizes', title: 'Sizes', component: ExampleBadgeSizes },
   ],
+  layout: [
+    { id: 'container', title: 'Container', component: ExampleContainerDefault },
+    { id: 'container-sizes', title: 'Container sizes', component: ExampleContainerSizes },
+    { id: 'container-fluid', title: 'Fluid container', component: ExampleContainerFluid },
+    { id: 'row', title: 'Row', component: ExampleRowDefault },
+    { id: 'row-gap', title: 'Row with gap', component: ExampleRowWithGap },
+    { id: 'row-separator', title: 'Row separator', component: ExampleRowSeparator },
+    { id: 'row-responsive', title: 'Row responsive direction', component: ExampleRowResponsiveDirection },
+    { id: 'col', title: 'Col', component: ExampleColDefault },
+    { id: 'col-gap', title: 'Col with gap', component: ExampleColWithGap },
+    { id: 'col-separator', title: 'Col separator', component: ExampleColSeparator },
+    { id: 'col-responsive', title: 'Col responsive direction', component: ExampleColResponsiveDirection },
+  ],
+  stack: [
+    { id: 'default', title: 'Default', component: ExampleStackDefault },
+    { id: 'hstack', title: 'HStack', component: ExampleStackHstack },
+    { id: 'vstack', title: 'VStack', component: ExampleStackVstack },
+    { id: 'separator', title: 'Separator', component: ExampleStackSeparator },
+    { id: 'responsive-direction', title: 'Responsive direction', component: ExampleStackResponsiveDirection },
+  ],
+  'scroll-area': [
+    { id: 'default', title: 'Default', component: ExampleScrollAreaDefault },
+    { id: 'sizes', title: 'Sizes', component: ExampleScrollAreaSizes },
+    { id: 'horizontal', title: 'Horizontal scrolling', component: ExampleScrollAreaHorizontal },
+    { id: 'both', title: 'Both directions', component: ExampleScrollAreaBoth },
+    { id: 'scroll-shadow', title: 'Scroll shadow', component: ExampleScrollAreaScrollShadow },
+    { id: 'thumb-styling', title: 'Thumb styling', component: ExampleScrollAreaThumbStyling },
+  ],
+  splitter: [
+    { id: 'default', title: 'Default', component: ExampleSplitterDefault },
+    { id: 'vertical', title: 'Vertical', component: ExampleSplitterVertical },
+    { id: 'multiple-panels', title: 'Multiple panels', component: ExampleSplitterMultiplePanels },
+    { id: 'collapsible', title: 'Collapsible panels', component: ExampleSplitterCollapsible },
+    { id: 'min-max', title: 'Min/max constraints', component: ExampleSplitterMinMax },
+    { id: 'disabled', title: 'Disabled resize', component: ExampleSplitterDisabled },
+  ],
+  center: [
+    { id: 'default', title: 'Default', component: ExampleCenterDefault },
+    { id: 'icon', title: 'Icon', component: ExampleCenterIcon },
+    { id: 'inline', title: 'Inline', component: ExampleCenterInline },
+  ],
+  item: [{ id: 'default', title: 'Default', component: ExampleItemDefault }],
 };
 
 const entries = registry[component] ?? [];

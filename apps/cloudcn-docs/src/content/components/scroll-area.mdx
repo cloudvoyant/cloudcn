@@ -1,0 +1,42 @@
+---
+title: ScrollArea
+description: A scrollable region with styled scrollbars, for React and Svelte.
+order: 8
+group: Layout
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The ScrollArea creates a scrollable region with custom-styled scrollbars. It is a thin wrapper over [Ark UI `scroll-area`](https://ark-ui.com/docs/components/scroll-area), with base styling from Chakra UI's ScrollArea shared via `cloudcn-core`. Use the framework selector to switch between React and Svelte.
+
+<Demo component="scroll-area" example="default" />
+
+## Examples
+
+<Examples component="scroll-area" exclude="default" />
+
+## API Reference
+
+The React package exposes a `ScrollArea` namespace (`ScrollArea.Root`, `.Viewport`, `.Content`, `.Scrollbar`, `.Thumb`, `.Corner`) plus flat `ScrollAreaRoot`-style exports; the Svelte package exposes flat `ScrollAreaRoot`, `ScrollAreaViewport`, etc. Each part accepts all the corresponding [Ark `scroll-area` props](https://ark-ui.com/docs/components/scroll-area) plus `className`/`class`.
+
+### ScrollArea.Root
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `ids` | `Partial<{ root, viewport, content, scrollbar, thumb }>` | — | Element ids for composition. |
+| `className` / `class` | `string` | — | Merged via `cn` with `scrollAreaRootBase`. Set a fixed height here (e.g. `h-48`). |
+
+### ScrollArea.Scrollbar
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` | Which axis this scrollbar controls. |
+
+## Accessibility
+
+Ark sets `role="presentation"` on the root and viewport and manages focus/keyboard scrolling; no hand-rolled roles or handlers are needed.

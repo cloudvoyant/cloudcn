@@ -1,0 +1,31 @@
+---
+title: Item
+description: A content box with a shared default padding, for React and Svelte.
+order: 10
+group: Layout
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The Item is a small content-box primitive that captures the shared default padding, rounding, and text size used throughout the examples (`p-3`, `rounded-md`, `text-sm`). It is implemented in both React and Svelte on top of Ark UI's factory, sharing the `itemBase` class from `cloudcn-core`. Apply color and flex sizing via `className`/`class`, which is merged last via `cn`.
+
+<Demo component="item" example="default" />
+
+## Examples
+
+<Examples component="item" exclude="default" />
+
+## API Reference
+
+### Item
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` / `class` | `string` | — | Merged via `cn` with `itemBase` (`rounded-md p-3 text-sm`). Override padding, rounding, or background with Tailwind classes. |
+
+## Accessibility
+
+Renders a native `<div>`, so it requires no roles or keyboard handling.

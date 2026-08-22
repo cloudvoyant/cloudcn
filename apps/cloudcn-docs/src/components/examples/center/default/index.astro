@@ -1,0 +1,17 @@
+---
+// apps/cloudcn-docs/src/components/examples/center/default/index.astro
+import Example from '../../../Example.astro';
+import ReactCenterDefault from './react.tsx';
+import SvelteCenterDefault from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Default" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactCenterDefault client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteCenterDefault client:load />
+  </div>
+</Example>

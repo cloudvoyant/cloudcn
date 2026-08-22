@@ -1,0 +1,49 @@
+---
+title: Layout
+description: Container, Row, and Col layout primitives for React and Svelte.
+order: 4
+group: Layout
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`Container`, `Row`, and `Col` are the low-level layout primitives. `Container` constrains and centers a section's content to a maximum width; `Row` and `Col` lay out children in a bare flex row or column with no gap (the gap-less forms of `HStack` and `VStack`). All three are implemented in both React and Svelte on top of Ark UI's factory, sharing base classes from `cloudcn-core`. Use the framework selector in the top-right to switch between implementations.
+
+<Demo component="layout" example="container" />
+
+## Examples
+
+<Examples component="layout" exclude="container" />
+
+## API Reference
+
+The React and Svelte components expose no manual sizing props — customize width, padding, gap, and direction with `className`/`class`, which is merged last via `cn` so Tailwind classes override the defaults.
+
+### Container
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` / `class` | `string` | — | Merged via `cn` with `containerBase` (`mx-auto w-full max-w-[90rem] px-4 md:px-6 lg:px-8`). |
+
+### Row
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` / `class` | `string` | — | Merged via `cn` with `rowBase` (`flex flex-row`). Use `gap-*`, `divide-x`, or `flex-col` to customize. |
+
+### Col
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` / `class` | `string` | — | Merged via `cn` with `colBase` (`flex flex-col`). Use `gap-*`, `divide-y`, or `flex-row` to customize. |
+
+## Accessibility
+
+All three render a native `<div>`, so they require no roles or keyboard handling.

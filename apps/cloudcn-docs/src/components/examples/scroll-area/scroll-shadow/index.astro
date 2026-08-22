@@ -1,0 +1,17 @@
+---
+// apps/cloudcn-docs/src/components/examples/scroll-area/scroll-shadow/index.astro
+import Example from '../../../Example.astro';
+import ReactScrollAreaScrollShadow from './react.tsx';
+import SvelteScrollAreaScrollShadow from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Scroll shadow" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactScrollAreaScrollShadow client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteScrollAreaScrollShadow client:load />
+  </div>
+</Example>

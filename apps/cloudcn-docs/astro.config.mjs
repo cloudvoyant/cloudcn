@@ -18,5 +18,12 @@ export default defineConfig({
     '/docs/components/button': '/components/button',
     '/docs/components/toggle-button': '/components/toggle-button',
     '/docs/components/badge': '/components/badge',
+    '/docs/components/container': '/components/layout',
+    '/docs/components/row': '/components/layout',
+    '/docs/components/col': '/components/layout',
+    '/docs/components/layout': '/components/layout',
+    '/docs/components/stack': '/components/stack',
+    '/docs/components/scroll-area': '/components/scroll-area',
+    '/docs/components/splitter': '/components/splitter',
   },
 });

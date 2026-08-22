@@ -1,0 +1,10 @@
+// libs/cloudcn-react/src/col.tsx
+// Source: Chakra UI Flex (direction="column"), built on @ark-ui/react/factory (Ark UI)
+import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
+import { colBase, cn } from 'cloudcn-core';
+
+export type ColProps = HTMLArkProps<'div'>;
+
+export function Col({ className, ...props }: ColProps) {
+  return <ark.div className={cn(colBase, className)} {...props} />;
+}

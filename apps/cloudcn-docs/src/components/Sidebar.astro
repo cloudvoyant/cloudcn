@@ -10,9 +10,13 @@ const { currentPath = '/' } = Astro.props;
 const general = (await getCollection('general')).sort((a, b) => a.data.order - b.data.order);
 const components = (await getCollection('components')).sort((a, b) => a.data.order - b.data.order);
 
+const layout = components.filter((c) => c.data.group === 'Layout');
+const rest = components.filter((c) => c.data.group !== 'Layout');
+
 const groups = [
   { label: 'General', section: 'general', items: general },
-  { label: 'Components', section: 'components', items: components },
+  { label: 'Layout', section: 'components', items: layout },
+  { label: 'Components', section: 'components', items: rest },
 ];
 ---
 

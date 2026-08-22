@@ -1,0 +1,33 @@
+---
+title: Stack
+description: Stack, HStack, and VStack flex layouts with a default gap, for React and Svelte.
+order: 5
+group: Layout
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`Stack`, `HStack`, and `VStack` lay out children in a flex row or column with a default `8px` gap, mirroring Chakra UI's Stack. They are implemented in both React and Svelte on top of Ark UI's factory, sharing the `stackBase`/`hstackBase`/`vstackBase` classes from `cloudcn-core`.
+
+<Demo component="stack" example="default" />
+
+## Examples
+
+<Examples component="stack" exclude="default" />
+
+## API Reference
+
+All three components accept the same props. The direction is set by the component (`Stack`/`VStack` are columns, `HStack` is a row); override it with a Tailwind class like `flex-row`/`flex-col`.
+
+### Stack / HStack / VStack
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` / `class` | `string` | — | Merged via `cn` with the base classes (`flex flex-col gap-2`, `flex flex-row gap-2`). Tailwind `gap-*`, `flex-row`/`flex-col`, and `divide-*` utilities override the defaults. |
+
+## Accessibility
+
+Renders a native `<div>`; no roles or keyboard handling are required.

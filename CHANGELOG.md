@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/cloudvoyant/cloudcn/compare/v0.3.0...v0.4.0) (2026-08-22)
+
+
+### Features
+
+* add layout primitives to core, react, and svelte ([d9aaedb](https://github.com/cloudvoyant/cloudcn/commit/d9aaedbc894fcee828c199aa30b2deb45692838a))
+
 # [0.3.0](https://github.com/cloudvoyant/cloudcn/compare/v0.2.0...v0.3.0) (2026-08-21)
 
 

@@ -43,16 +43,16 @@ If the external source (Ark/Chakra/shadcn) ships tests for the component, copy t
 
 ## Record the source in file headers
 
-Every component file records its origin in a header comment, so reviewers can verify the sourcing chain:
+Every component file records its origin in a header comment, so reviewers can verify the sourcing chain. Since cloudcn adapts components heavily to its own `cn`/Tailwind/theme conventions, phrase it as **closely based on** rather than a verbatim source:
 
 ```tsx
 // cloudcn-react/src/tooltip.tsx
-// Source: @ark-ui/react/tooltip (Ark UI)
+// Closely based on: @ark-ui/react/tooltip (Ark UI)
 ```
 
 ```svelte
 <!-- cloudcn-svelte/src/TooltipContent.svelte -->
-<!-- Source: @ark-ui/svelte/tooltip (Ark UI), mirrored from cloudcn-react -->
+<!-- Closely based on: @ark-ui/svelte/tooltip (Ark UI), mirrored from cloudcn-react -->
 ```
 
-Name the actual source (`@ark-ui/react/tooltip`, `@chakra-ui/...`, or `shadcn/ui <component>`). This makes it obvious when a component was home-made instead of sourced — which `review` flags.
+Name the actual origin (`@ark-ui/react/tooltip`, `@chakra-ui/...`, or `shadcn/ui <component>`). This makes it obvious when a component was home-made instead of adapted — which `review` flags.

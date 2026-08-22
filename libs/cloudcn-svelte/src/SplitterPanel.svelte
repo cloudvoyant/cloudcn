@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/SplitterPanel.svelte -->
-<!-- Source: @ark-ui/svelte/splitter (Ark UI), Chakra UI Splitter, mirrored from cloudcn-react -->
+<!-- Closely based on: @ark-ui/svelte/splitter (Ark UI), Chakra UI Splitter, mirrored from cloudcn-react -->
 <script lang="ts">
   import { SplitterPanel, type SplitterPanelProps } from '@ark-ui/svelte/splitter';
   import { splitterPanelBase, cn } from 'cloudcn-core';

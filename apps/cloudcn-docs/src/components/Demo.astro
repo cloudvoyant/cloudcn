@@ -31,12 +31,12 @@ import ExampleStackHstack from './examples/stack/hstack/index.astro';
 import ExampleStackVstack from './examples/stack/vstack/index.astro';
 import ExampleStackSeparator from './examples/stack/separator/index.astro';
 import ExampleStackResponsiveDirection from './examples/stack/responsive-direction/index.astro';
-import ExampleScrollAreaDefault from './examples/scroll-area/default/index.astro';
-import ExampleScrollAreaSizes from './examples/scroll-area/sizes/index.astro';
-import ExampleScrollAreaHorizontal from './examples/scroll-area/horizontal/index.astro';
-import ExampleScrollAreaBoth from './examples/scroll-area/both/index.astro';
-import ExampleScrollAreaScrollShadow from './examples/scroll-area/scroll-shadow/index.astro';
-import ExampleScrollAreaThumbStyling from './examples/scroll-area/thumb-styling/index.astro';
+import ExampleScrollDefault from './examples/scroll/default/index.astro';
+import ExampleScrollSizes from './examples/scroll/sizes/index.astro';
+import ExampleScrollHorizontal from './examples/scroll/horizontal/index.astro';
+import ExampleScrollBoth from './examples/scroll/both/index.astro';
+import ExampleScrollScrollShadow from './examples/scroll/scroll-shadow/index.astro';
+import ExampleScrollThumbStyling from './examples/scroll/thumb-styling/index.astro';
 import ExampleSplitterDefault from './examples/splitter/default/index.astro';
 import ExampleSplitterVertical from './examples/splitter/vertical/index.astro';
 import ExampleSplitterMultiplePanels from './examples/splitter/multiple-panels/index.astro';
@@ -46,7 +46,14 @@ import ExampleSplitterDisabled from './examples/splitter/disabled/index.astro';
 import ExampleCenterDefault from './examples/center/default/index.astro';
 import ExampleCenterIcon from './examples/center/icon/index.astro';
 import ExampleCenterInline from './examples/center/inline/index.astro';
-import ExampleItemDefault from './examples/item/default/index.astro';
+import ExampleItemInStack from './examples/item/in-stack/index.astro';
+import ExampleItemInContainer from './examples/item/in-container/index.astro';
+import ExampleCardDefault from './examples/card/default/index.astro';
+import ExampleCardVariants from './examples/card/variants/index.astro';
+import ExampleCardSizes from './examples/card/sizes/index.astro';
+import ExampleCardOverride from './examples/card/override/index.astro';
+import ExampleCardWithImage from './examples/card/with-image/index.astro';
+import ExampleCardHorizontal from './examples/card/horizontal/index.astro';
 
 type ComponentName =
   | 'button'
@@ -54,10 +61,11 @@ type ComponentName =
   | 'badge'
   | 'layout'
   | 'stack'
-  | 'scroll-area'
+  | 'scroll'
   | 'splitter'
   | 'center'
-  | 'item';
+  | 'item'
+  | 'card';
 
 type ExampleName =
   | 'solid'
@@ -95,7 +103,11 @@ type ExampleName =
   | 'col-gap'
   | 'col-separator'
   | 'col-responsive'
-  | 'inline';
+  | 'inline'
+  | 'in-stack'
+  | 'in-container'
+  | 'override'
+  | 'with-image';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -153,13 +165,13 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'separator', title: 'Separator', component: ExampleStackSeparator },
     { id: 'responsive-direction', title: 'Responsive direction', component: ExampleStackResponsiveDirection },
   ],
-  'scroll-area': [
-    { id: 'default', title: 'Default', component: ExampleScrollAreaDefault },
-    { id: 'sizes', title: 'Sizes', component: ExampleScrollAreaSizes },
-    { id: 'horizontal', title: 'Horizontal scrolling', component: ExampleScrollAreaHorizontal },
-    { id: 'both', title: 'Both directions', component: ExampleScrollAreaBoth },
-    { id: 'scroll-shadow', title: 'Scroll shadow', component: ExampleScrollAreaScrollShadow },
-    { id: 'thumb-styling', title: 'Thumb styling', component: ExampleScrollAreaThumbStyling },
+  'scroll': [
+    { id: 'default', title: 'Default', component: ExampleScrollDefault },
+    { id: 'sizes', title: 'Sizes', component: ExampleScrollSizes },
+    { id: 'horizontal', title: 'Horizontal scrolling', component: ExampleScrollHorizontal },
+    { id: 'both', title: 'Both directions', component: ExampleScrollBoth },
+    { id: 'scroll-shadow', title: 'Scroll shadow', component: ExampleScrollScrollShadow },
+    { id: 'thumb-styling', title: 'Thumb styling', component: ExampleScrollThumbStyling },
   ],
   splitter: [
     { id: 'default', title: 'Default', component: ExampleSplitterDefault },
@@ -174,7 +186,18 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'icon', title: 'Icon', component: ExampleCenterIcon },
     { id: 'inline', title: 'Inline', component: ExampleCenterInline },
   ],
-  item: [{ id: 'default', title: 'Default', component: ExampleItemDefault }],
+  item: [
+    { id: 'in-stack', title: 'In a stack', component: ExampleItemInStack },
+    { id: 'in-container', title: 'In a container', component: ExampleItemInContainer },
+  ],
+  card: [
+    { id: 'default', title: 'Default', component: ExampleCardDefault },
+    { id: 'variants', title: 'Variants', component: ExampleCardVariants },
+    { id: 'sizes', title: 'Sizes', component: ExampleCardSizes },
+    { id: 'override', title: 'Override title', component: ExampleCardOverride },
+    { id: 'with-image', title: 'With image', component: ExampleCardWithImage },
+    { id: 'horizontal', title: 'Horizontal', component: ExampleCardHorizontal },
+  ],
 };
 
 const entries = registry[component] ?? [];

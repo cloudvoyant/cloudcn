@@ -8,7 +8,7 @@
   } from 'cloudcn-svelte';
 </script>
 
-<div class="h-64 w-full rounded-md border border-border">
+<div class="h-64 w-full rounded-md border border-border bg-background">
   <SplitterRoot panels={[{ id: 'a' }, { id: 'b' }, { id: 'c' }]}>
     <SplitterPanel id="a" class="flex items-center justify-center">
       <span class="text-sm font-medium">A</span>

@@ -3,7 +3,7 @@ import { Splitter } from 'cloudcn-react';
 
 export default function ReactSplitterMinMax() {
   return (
-    <div className="h-64 w-full rounded-md border border-border">
+    <div className="h-64 w-full rounded-md border border-border bg-background">
       <Splitter.Root
         defaultSize={[30, 70]}
         panels={[

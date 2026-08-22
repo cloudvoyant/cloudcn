@@ -1,6 +1,6 @@
 ---
 title: Item
-description: A content box with a shared default padding, for React and Svelte.
+description: A content box with a shared default padding and a themed surface, for React and Svelte.
 order: 10
 group: Layout
 ---
@@ -8,13 +8,13 @@ group: Layout
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-The Item is a small content-box primitive that captures the shared default padding, rounding, and text size used throughout the examples (`p-3`, `rounded-md`, `text-sm`). It is implemented in both React and Svelte on top of Ark UI's factory, sharing the `itemBase` class from `cloudcn-core`. Apply color and flex sizing via `className`/`class`, which is merged last via `cn`.
+The Item is a content box used throughout the examples. Inside `Stack`/`HStack`/`VStack` (visual lists) items use the `surface` variant — rounded, bordered, and themed. Inside `Container`/`Row`/`Col` (layout slicing) items are `plain` — no color, no border.
 
-<Demo component="item" example="default" />
+<Demo component="item" example="in-stack" />
 
 ## Examples
 
-<Examples component="item" exclude="default" />
+<Examples component="item" exclude="in-stack" />
 
 ## API Reference
 
@@ -24,7 +24,8 @@ The Item is a small content-box primitive that captures the shared default paddi
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `className` / `class` | `string` | — | Merged via `cn` with `itemBase` (`rounded-md p-3 text-sm`). Override padding, rounding, or background with Tailwind classes. |
+| `variant` | `'plain' \| 'surface'` | `'plain'` | `surface` adds a rounded `border border-border bg-card text-card-foreground` (themed); `plain` is square-cornered with no color or boundary. |
+| `className` / `class` | `string` | — | Merged last via `cn`; override growth, padding, rounding, or background with Tailwind classes. |
 
 ## Accessibility
 

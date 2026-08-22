@@ -8,7 +8,7 @@ group: Layout
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-`Stack`, `HStack`, and `VStack` lay out children in a flex row or column with a default `8px` gap, mirroring Chakra UI's Stack. They are implemented in both React and Svelte on top of Ark UI's factory, sharing the `stackBase`/`hstackBase`/`vstackBase` classes from `cloudcn-core`.
+`Stack`, `HStack`, and `VStack` lay out visual lists of common items — grouped buttons, chips, list rows — with a small default gap. They're for visual lists, not for slicing up layouts; use `Row`, `Col`, and `Container` for that.
 
 <Demo component="stack" example="default" />
 
@@ -26,7 +26,7 @@ All three components accept the same props. The direction is set by the componen
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `className` / `class` | `string` | — | Merged via `cn` with the base classes (`flex flex-col gap-2`, `flex flex-row gap-2`). Tailwind `gap-*`, `flex-row`/`flex-col`, and `divide-*` utilities override the defaults. |
+| `className` / `class` | `string` | — | Merged via `cn` with the base classes (`flex flex-col gap-1`, `flex flex-row gap-1`). Tailwind `gap-*`, `flex-row`/`flex-col`, and `divide-*` utilities override the defaults. |
 
 ## Accessibility
 

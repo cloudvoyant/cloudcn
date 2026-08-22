@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/SplitterResizeTriggerIndicator.svelte -->
-<!-- Source: @ark-ui/svelte/splitter (Ark UI), Chakra UI Splitter, mirrored from cloudcn-react -->
+<!-- Closely based on: @ark-ui/svelte/splitter (Ark UI), Chakra UI Splitter, mirrored from cloudcn-react -->
 <script lang="ts">
   import {
     SplitterResizeTriggerIndicator,

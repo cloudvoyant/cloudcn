@@ -4,7 +4,7 @@
 </script>
 
 <Row class="md:flex-col">
-  <Item class="flex-1 bg-primary/15">One</Item>
-  <Item class="flex-1 bg-secondary text-secondary-foreground">Two</Item>
-  <Item class="flex-1 bg-accent text-accent-foreground">Three</Item>
+  <Item class="bg-muted">One</Item>
+  <Item class="bg-muted/50">Two</Item>
+  <Item class="bg-muted">Three</Item>
 </Row>

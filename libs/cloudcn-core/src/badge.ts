@@ -1,5 +1,5 @@
 // libs/cloudcn-core/src/badge.ts
-// Source: cloudcn-core (shared badgeVariants cva — Chakra-inspired API, colors mirror button)
+// Closely based on: cloudcn-core (shared badgeVariants cva — Chakra-inspired API, colors mirror button)
 import { cva, type VariantProps } from 'class-variance-authority';
 
 type VariantName = 'solid' | 'subtle' | 'outline' | 'surface' | 'plain';

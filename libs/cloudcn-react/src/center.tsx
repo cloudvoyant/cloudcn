@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/center.tsx
-// Source: Chakra UI Center, built on @ark-ui/react/factory (Ark UI)
+// Closely based on: Chakra UI Center, built on @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { centerBase, cn } from 'cloudcn-core';
 

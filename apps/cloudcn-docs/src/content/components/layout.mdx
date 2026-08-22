@@ -1,5 +1,5 @@
 ---
-title: Layout
+title: Container
 description: Container, Row, and Col layout primitives for React and Svelte.
 order: 4
 group: Layout
@@ -8,7 +8,7 @@ group: Layout
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-`Container`, `Row`, and `Col` are the low-level layout primitives. `Container` constrains and centers a section's content to a maximum width; `Row` and `Col` lay out children in a bare flex row or column with no gap (the gap-less forms of `HStack` and `VStack`). All three are implemented in both React and Svelte on top of Ark UI's factory, sharing base classes from `cloudcn-core`. Use the framework selector in the top-right to switch between implementations.
+`Container`, `Row`, and `Col` occupy all available space and slice and dice it. `Container` constrains content to a max width and centers it; `Row` lays children out horizontally; `Col` stacks them vertically.
 
 <Demo component="layout" example="container" />
 

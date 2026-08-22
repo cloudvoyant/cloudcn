@@ -1,5 +1,5 @@
 // libs/cloudcn-react/src/col.tsx
-// Source: Chakra UI Flex (direction="column"), built on @ark-ui/react/factory (Ark UI)
+// Closely based on: Chakra UI Flex (direction="column"), built on @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { colBase, cn } from 'cloudcn-core';
 

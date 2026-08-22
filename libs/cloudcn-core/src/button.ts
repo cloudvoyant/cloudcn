@@ -1,5 +1,5 @@
 // libs/cloudcn-core/src/button.ts
-// Source: cloudcn-core (shared buttonVariants cva — shadcn-style variants)
+// Closely based on: cloudcn-core (shared buttonVariants cva — shadcn-style variants)
 import { cva, type VariantProps } from 'class-variance-authority';
 
 type VariantName = 'solid' | 'outline' | 'text';

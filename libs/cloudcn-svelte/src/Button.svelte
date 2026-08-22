@@ -1,5 +1,5 @@
 <!-- libs/cloudcn-svelte/src/Button.svelte -->
-<!-- Source: @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
+<!-- Closely based on: @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { buttonVariants, cn } from 'cloudcn-core';

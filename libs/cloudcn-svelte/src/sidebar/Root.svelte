@@ -11,7 +11,7 @@
     DrawerCloseTrigger,
   } from '@ark-ui/svelte/drawer';
   import { SIDEBAR_WIDTH_MOBILE, sidebarStyles, cn } from 'cloudcn-core';
-  import { getSidebarContext } from './sidebar-context.svelte';
+  import { getSidebarContext } from './context.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 

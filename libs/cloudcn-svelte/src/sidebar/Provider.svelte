@@ -9,7 +9,7 @@
     cn,
     type SidebarContextProps,
   } from 'cloudcn-core';
-  import { setSidebarContext } from './sidebar-context.svelte';
+  import { setSidebarContext } from './context.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 

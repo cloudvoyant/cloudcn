@@ -4,7 +4,7 @@
   import { Ark } from '@ark-ui/svelte/factory';
   import { TooltipRoot, TooltipTrigger, TooltipPositioner, TooltipContent } from '@ark-ui/svelte/tooltip';
   import { sidebarMenuButtonVariants, sidebarStyles, cn } from 'cloudcn-core';
-  import { getSidebarContext } from './sidebar-context.svelte';
+  import { getSidebarContext } from './context.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLButtonAttributes, HTMLAttributes } from 'svelte/elements';
 

@@ -1,4 +1,4 @@
-// libs/cloudcn-svelte/src/sidebar-context.svelte.ts
+// libs/cloudcn-svelte/src/sidebar/context.svelte.ts
 // Source: cloudcn-react sidebar context (shadcn/ui sidebar, re-based on Ark UI)
 import { getContext, setContext } from 'svelte';
 import type { SidebarContextProps } from 'cloudcn-core';

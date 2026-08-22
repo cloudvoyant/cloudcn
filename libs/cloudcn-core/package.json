@@ -15,12 +15,14 @@
     },
     "./theme.css": "./src/theme.css",
     "./themes.css": "./src/themes.css",
+    "./components.css": "./src/components.css",
     "./package.json": "./package.json"
   },
   "files": [
     "dist",
     "src/theme.css",
     "src/themes.css",
+    "src/components.css",
     "src/themes"
   ],
   "publishConfig": {

@@ -1,12 +1,18 @@
 // apps/cloudcn-docs/src/components/examples/item/plain/react.tsx
-import { Item, Stack } from 'cloudcn-react';
+import { Item, Row } from 'cloudcn-react';
 
 export default function ReactItemPlain() {
   return (
-    <Stack className="gap-2">
-      <Item variant="surface">One</Item>
-      <Item variant="surface">Two</Item>
-      <Item variant="surface">Three</Item>
-    </Stack>
+    <Row>
+      <Item variant="plain" className="bg-muted">
+        One
+      </Item>
+      <Item variant="plain" className="bg-muted/50">
+        Two
+      </Item>
+      <Item variant="plain" className="bg-muted">
+        Three
+      </Item>
+    </Row>
   );
 }

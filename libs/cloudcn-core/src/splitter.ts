@@ -18,7 +18,7 @@ export const splitterRootBase = '';
 export const splitterPanelBase = '';
 
 export const splitterResizeTriggerBase =
-  'group relative grid place-items-center outline-none data-[orientation=horizontal]:-mx-1 data-[orientation=horizontal]:min-w-2 data-[orientation=vertical]:-my-1 data-[orientation=vertical]:min-h-2';
+  'group relative grid place-items-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 data-[orientation=horizontal]:-mx-1 data-[orientation=horizontal]:min-w-2 data-[orientation=vertical]:-my-1 data-[orientation=vertical]:min-h-2';
 
 export const splitterResizeTriggerSeparatorBase =
   'absolute bg-border group-data-[orientation=horizontal]:inset-y-0 group-data-[orientation=horizontal]:right-1 group-data-[orientation=horizontal]:w-px group-data-[orientation=vertical]:inset-x-0 group-data-[orientation=vertical]:bottom-1 group-data-[orientation=vertical]:h-px';

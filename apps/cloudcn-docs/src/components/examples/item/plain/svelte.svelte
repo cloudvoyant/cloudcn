@@ -1,10 +1,10 @@
 <!-- apps/cloudcn-docs/src/components/examples/item/plain/svelte.svelte -->
 <script lang="ts">
-  import { Item, Stack } from 'cloudcn-svelte';
+  import { Item, Row } from 'cloudcn-svelte';
 </script>
 
-<Stack class="gap-2">
-  <Item variant="surface">One</Item>
-  <Item variant="surface">Two</Item>
-  <Item variant="surface">Three</Item>
-</Stack>
+<Row>
+  <Item variant="plain" class="bg-muted">One</Item>
+  <Item variant="plain" class="bg-muted/50">Two</Item>
+  <Item variant="plain" class="bg-muted">Three</Item>
+</Row>

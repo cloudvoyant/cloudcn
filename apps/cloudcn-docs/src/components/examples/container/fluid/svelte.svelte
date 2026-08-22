@@ -4,7 +4,7 @@
 </script>
 
 <Container class="max-w-full">
-  <Item class="bg-muted">
+  <Item class="w-full bg-muted">
     This container stretches to fill the width of its parent.
   </Item>
 </Container>

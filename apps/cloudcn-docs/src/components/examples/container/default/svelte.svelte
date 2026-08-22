@@ -4,7 +4,7 @@
 </script>
 
 <Container>
-  <Item class="bg-muted">
+  <Item class="w-full bg-muted">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur, tortor in lacinia eleifend, dui nisl
     tristique nunc.
   </Item>

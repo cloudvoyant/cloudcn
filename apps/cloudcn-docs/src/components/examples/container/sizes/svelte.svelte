@@ -5,12 +5,12 @@
 
 <div class="flex flex-col gap-4">
   <Container class="max-w-sm">
-    <Item class="bg-muted">max-w-sm</Item>
+    <Item class="w-full bg-muted">max-w-sm</Item>
   </Container>
   <Container class="max-w-2xl">
-    <Item class="bg-muted">max-w-2xl</Item>
+    <Item class="w-full bg-muted">max-w-2xl</Item>
   </Container>
   <Container class="max-w-5xl">
-    <Item class="bg-muted">max-w-5xl</Item>
+    <Item class="w-full bg-muted">max-w-5xl</Item>
   </Container>
 </div>

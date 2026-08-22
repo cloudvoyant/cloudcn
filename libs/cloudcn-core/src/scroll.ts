@@ -6,6 +6,10 @@
 export const scrollRootBase =
   'relative flex h-full w-full flex-col overflow-hidden [--scrollbar-size:0.5rem] [--scrollbar-margin:2px]';
 
+// The viewport is a `flex flex-col` container. For horizontal scrolling, wrap
+// your content in a single flex row (e.g. `flex gap-2 w-max`) or override the
+// viewport class via the `viewportClassName`/`viewportClass` prop — sibling
+// block children inside the flex-col viewport will not scroll horizontally.
 export const scrollViewportBase =
   'flex h-full w-full flex-col rounded-[inherit] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden';
 

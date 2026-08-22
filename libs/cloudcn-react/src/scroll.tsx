@@ -23,6 +23,9 @@ export type ScrollProps = ScrollAreaRootProps & {
   orientation?: 'vertical' | 'horizontal' | 'both';
   contentClassName?: string;
   thumbClassName?: string;
+  /** Overrides the viewport class. The default is `flex h-full w-full flex-col`;
+   * for horizontal scrolling wrap content in a flex row or override this. */
+  viewportClassName?: string;
 };
 
 export function Scroll({
@@ -30,12 +33,13 @@ export function Scroll({
   orientation = 'vertical',
   contentClassName,
   thumbClassName,
+  viewportClassName,
   children,
   ...props
 }: ScrollProps) {
   return (
     <ArkRoot className={cn(scrollRootBase, className)} {...props}>
-      <ArkViewport className={scrollViewportBase}>
+      <ArkViewport className={cn(scrollViewportBase, viewportClassName)}>
         <ArkContent className={cn(scrollContentBase, contentClassName)}>{children}</ArkContent>
       </ArkViewport>
       {(orientation === 'vertical' || orientation === 'both') && (

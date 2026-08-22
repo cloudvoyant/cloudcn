@@ -24,6 +24,9 @@
     orientation?: 'vertical' | 'horizontal' | 'both';
     contentClass?: string;
     thumbClass?: string;
+    /** Overrides the viewport class. The default is `flex h-full w-full flex-col`;
+     * for horizontal scrolling wrap content in a flex row or override this. */
+    viewportClass?: string;
   };
 
   let {
@@ -31,17 +34,19 @@
     orientation = 'vertical',
     contentClass = '',
     thumbClass = '',
+    viewportClass = '',
     children,
     ...rest
   }: Props = $props();
 
   const rootClasses = $derived(cn(scrollRootBase, className));
+  const viewportClasses = $derived(cn(scrollViewportBase, viewportClass));
   const contentClasses = $derived(cn(scrollContentBase, contentClass));
   const thumbClasses = $derived(cn(scrollThumbBase, thumbClass));
 </script>
 
 <ScrollAreaRoot class={rootClasses} {...rest}>
-  <ScrollAreaViewport class={scrollViewportBase}>
+  <ScrollAreaViewport class={viewportClasses}>
     <ScrollAreaContent class={contentClasses}>
       {@render children?.()}
     </ScrollAreaContent>

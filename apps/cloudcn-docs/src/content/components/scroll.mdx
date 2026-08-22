@@ -10,6 +10,8 @@ import Examples from '../../components/Examples.astro';
 
 The Scroll creates a scrollable region with custom-styled scrollbars. Put your content inside; the scrollbar is added for you based on `orientation`.
 
+The viewport defaults to a `flex flex-col` container. For horizontal scrolling, wrap your content in a single flex row (e.g. `flex gap-2 w-max`) or override the viewport class with `viewportClassName` / `viewportClass` — sibling block children inside the viewport will not scroll horizontally.
+
 <Demo component="scroll" example="default" />
 
 ## Examples
@@ -26,6 +28,7 @@ The Scroll creates a scrollable region with custom-styled scrollbars. Put your c
 | --- | --- | --- | --- |
 | `orientation` | `'vertical' \| 'horizontal' \| 'both'` | `'vertical'` | Which scrollbar(s) to show. |
 | `contentClassName` / `contentClass` | `string` | — | Styles the content element (e.g. a mask for fading edges). |
+| `viewportClassName` / `viewportClass` | `string` | — | Overrides the viewport class (default `flex h-full w-full flex-col`). |
 | `thumbClassName` / `thumbClass` | `string` | — | Styles the scrollbar thumb. |
 | `className` / `class` | `string` | — | Set a fixed height here (e.g. `h-48`). |
 

@@ -1,5 +1,5 @@
 // apps/cloudcn-docs/src/components/examples/sidebar/rail/react.tsx
-import { Sidebar } from 'cloudcn-react';
+import { Sidebar, Container } from 'cloudcn-react';
 import { Home, Inbox, Settings, LifeBuoy, PanelLeft } from 'lucide-react';
 
 const NAV = [
@@ -63,11 +63,11 @@ export default function ReactSidebarRail() {
             </Sidebar.Trigger>
             <span className="text-sm font-medium">Rail sidebar</span>
           </header>
-          <main className="flex-1 p-6">
+          <Container className="flex-1 py-6">
             <p className="text-sm text-muted-foreground">
               Hover the rail handle on the sidebar edge (or use the trigger / Cmd/Ctrl+B) to collapse and expand.
             </p>
-          </main>
+          </Container>
         </Sidebar.Inset>
       </Sidebar.Provider>
     </div>

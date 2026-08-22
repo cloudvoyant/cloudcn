@@ -14,6 +14,7 @@ import {
   type DrawerRootProps,
 } from '@ark-ui/react/drawer';
 import { SIDEBAR_WIDTH_MOBILE, sidebarStyles, cn } from 'cloudcn-core';
+import { Col } from '../col';
 import { useSidebar } from './context';
 
 export function Root({
@@ -32,14 +33,14 @@ export function Root({
 
   if (collapsible === 'none') {
     return (
-      <div
+      <Col
         data-slot="sidebar"
         data-sidebar="sidebar"
-        className={cn('flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground', className)}
+        className={cn('h-full w-(--sidebar-width) bg-sidebar text-sidebar-foreground', className)}
         {...props}
       >
         {children}
-      </div>
+      </Col>
     );
   }
 
@@ -62,7 +63,7 @@ export function Root({
             <DrawerTitle className="sr-only">Sidebar</DrawerTitle>
             <DrawerDescription className="sr-only">Displays the mobile sidebar.</DrawerDescription>
             <DrawerCloseTrigger className="hidden" />
-            <div className="flex h-full w-full flex-col">{children}</div>
+            <Col className="h-full w-full">{children}</Col>
           </DrawerContent>
         </DrawerPositioner>
       </DrawerRoot>
@@ -102,14 +103,14 @@ export function Root({
         )}
         {...props}
       >
-        <div
+        <Col
           data-sidebar="sidebar"
           data-slot="sidebar-inner"
           data-variant={variant}
           className={cn(sidebarStyles.innerClass)}
         >
           {children}
-        </div>
+        </Col>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 <!-- apps/cloudcn-docs/src/components/examples/sidebar/icon/svelte.svelte -->
 <script lang="ts">
-  import { Sidebar } from 'cloudcn-svelte';
+  import { Sidebar, Container } from 'cloudcn-svelte';
   import { House as Home, Inbox, Settings, LifeBuoy, PanelLeft } from 'lucide-svelte';
 
   const NAV = [
@@ -64,11 +64,11 @@
         </Sidebar.Trigger>
           <span class="text-sm font-medium">Icon rail sidebar</span>
         </header>
-        <main class="flex-1 p-6">
+        <Container class="flex-1 py-6">
           <p class="text-sm text-muted-foreground">
             Click the trigger (or the rail, or press Cmd/Ctrl+B) to collapse this sidebar to an icon rail.
           </p>
-        </main>
+        </Container>
       </Sidebar.Inset>
     </Sidebar.Provider>
   </div>

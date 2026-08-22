@@ -10,6 +10,7 @@
     type SidebarContextProps,
   } from 'cloudcn-core';
   import { setSidebarContext } from './context.svelte';
+  import Row from '../Row.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -92,11 +93,11 @@
   });
 </script>
 
-<div
+<Row
   data-slot="sidebar-wrapper"
   class={cn(sidebarStyles.wrapperClass, className)}
   style={`--sidebar-width: ${SIDEBAR_WIDTH}; --sidebar-width-icon: ${SIDEBAR_WIDTH_ICON};`}
   {...rest}
 >
   {@render children?.()}
-</div>
+</Row>

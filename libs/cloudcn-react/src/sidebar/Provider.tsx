@@ -4,6 +4,7 @@
 /// <reference lib="dom" />
 import * as React from 'react';
 import { SIDEBAR_WIDTH, SIDEBAR_WIDTH_ICON, SIDEBAR_KEYBOARD_SHORTCUT, sidebarStyles, cn } from 'cloudcn-core';
+import { Row } from '../row';
 import { SidebarContext } from './context';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';
@@ -92,7 +93,7 @@ export function Provider({
 
   return (
     <SidebarContext.Provider value={contextValue}>
-      <div
+      <Row
         data-slot="sidebar-wrapper"
         style={
           {
@@ -105,7 +106,7 @@ export function Provider({
         {...props}
       >
         {children}
-      </div>
+      </Row>
     </SidebarContext.Provider>
   );
 }

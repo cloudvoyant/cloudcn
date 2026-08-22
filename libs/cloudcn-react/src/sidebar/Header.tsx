@@ -1,12 +1,13 @@
 // libs/cloudcn-react/src/sidebar/Header.tsx
 // Source: shadcn/ui sidebar (https://ui.shadcn.com/docs/components/base/sidebar),
 //         re-based on Ark UI (drawer, tooltip, asChild factory)
-import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
+import type { HTMLArkProps } from '@ark-ui/react/factory';
 import { sidebarStyles, cn } from 'cloudcn-core';
+import { Col } from '../col';
 
 export function Header({ className, ...props }: HTMLArkProps<'div'>) {
   return (
-    <ark.div
+    <Col
       data-slot="sidebar-header"
       data-sidebar="header"
       className={cn(sidebarStyles.headerClass, className)}

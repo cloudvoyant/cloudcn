@@ -11,6 +11,7 @@
     DrawerCloseTrigger,
   } from '@ark-ui/svelte/drawer';
   import { SIDEBAR_WIDTH_MOBILE, sidebarStyles, cn } from 'cloudcn-core';
+  import Col from '../Col.svelte';
   import { getSidebarContext } from './context.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
@@ -63,14 +64,14 @@
 </script>
 
 {#if collapsible === 'none'}
-  <div
+  <Col
     data-slot="sidebar"
     data-sidebar="sidebar"
-    class={cn('flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground', className)}
+    class={cn('h-full w-(--sidebar-width) bg-sidebar text-sidebar-foreground', className)}
     {...rest}
   >
     {@render children?.()}
-  </div>
+  </Col>
 {:else if isMobile}
   <DrawerRoot open={openMobile} onOpenChange={(details) => setOpenMobile(details.open)} {...rest}>
     <DrawerBackdrop />
@@ -85,7 +86,7 @@
         <DrawerTitle class="sr-only">Sidebar</DrawerTitle>
         <DrawerDescription class="sr-only">Displays the mobile sidebar.</DrawerDescription>
         <DrawerCloseTrigger class="hidden" />
-        <div class="flex h-full w-full flex-col">{@render children?.()}</div>
+        <Col class="h-full w-full">{@render children?.()}</Col>
       </DrawerContent>
     </DrawerPositioner>
   </DrawerRoot>
@@ -100,9 +101,9 @@
   >
     <div data-slot="sidebar-gap" class={gapClasses}></div>
     <div data-slot="sidebar-container" class={containerClasses} {...rest}>
-      <div data-sidebar="sidebar" data-slot="sidebar-inner" data-variant={variant} class={cn(sidebarStyles.innerClass)}>
+      <Col data-sidebar="sidebar" data-slot="sidebar-inner" data-variant={variant} class={cn(sidebarStyles.innerClass)}>
         {@render children?.()}
-      </div>
+      </Col>
     </div>
   </div>
 {/if}

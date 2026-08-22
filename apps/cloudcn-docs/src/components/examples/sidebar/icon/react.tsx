@@ -1,5 +1,5 @@
 // apps/cloudcn-docs/src/components/examples/sidebar/icon/react.tsx
-import { Sidebar } from 'cloudcn-react';
+import { Sidebar, Container } from 'cloudcn-react';
 import { Home, Inbox, Settings, LifeBuoy, PanelLeft } from 'lucide-react';
 
 const NAV = [
@@ -69,11 +69,11 @@ export default function ReactSidebarIcon() {
             </Sidebar.Trigger>
             <span className="text-sm font-medium">Icon rail sidebar</span>
           </header>
-          <main className="flex-1 p-6">
+          <Container className="flex-1 py-6">
             <p className="text-sm text-muted-foreground">
               Click the trigger (or the rail, or press Cmd/Ctrl+B) to collapse this sidebar to an icon rail.
             </p>
-          </main>
+          </Container>
         </Sidebar.Inset>
       </Sidebar.Provider>
     </div>

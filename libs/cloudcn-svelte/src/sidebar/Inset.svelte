@@ -1,4 +1,4 @@
-<!-- libs/cloudcn-svelte/src/SidebarInset.svelte -->
+<!-- libs/cloudcn-svelte/src/sidebar/Inset.svelte -->
 <!-- Source: @ark-ui/svelte/factory (Ark UI), mirrored from cloudcn-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';

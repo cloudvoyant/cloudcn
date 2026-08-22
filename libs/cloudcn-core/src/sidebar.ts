@@ -43,11 +43,12 @@ export interface SidebarContextProps {
 }
 
 export const sidebarStyles = {
-  wrapperClass: 'group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar',
+  wrapperClass: 'group/sidebar-wrapper min-h-svh w-full has-data-[variant=inset]:bg-sidebar',
 
   // Base (static) classes for the desktop sidebar container. Side- and
   // variant-specific classes are applied inline in the framework wrappers via
-  // ternaries, exactly as in the shadcn source.
+  // ternaries, exactly as in the shadcn source. The `flex` direction bases are
+  // provided by the Row/Col layout primitives at render time.
   containerClass:
     'fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex',
 
@@ -55,13 +56,13 @@ export const sidebarStyles = {
     'relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear group-data-[collapsible=offcanvas]:w-0',
 
   innerClass:
-    'flex h-full w-full flex-col bg-sidebar data-[variant=floating]:rounded-lg data-[variant=floating]:border data-[variant=floating]:border-sidebar-border data-[variant=floating]:shadow-sm',
+    'h-full w-full bg-sidebar data-[variant=floating]:rounded-lg data-[variant=floating]:border data-[variant=floating]:border-sidebar-border data-[variant=floating]:shadow-sm',
 
-  headerClass: 'flex flex-col gap-2 p-2',
-  footerClass: 'flex flex-col gap-2 p-2',
+  headerClass: 'gap-2 p-2',
+  footerClass: 'gap-2 p-2',
   separatorClass: 'mx-2 w-auto bg-sidebar-border',
-  contentClass: 'flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden',
-  groupClass: 'relative flex w-full min-w-0 flex-col p-2',
+  contentClass: 'min-h-0 flex-1 gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden',
+  groupClass: 'relative w-full min-w-0 p-2',
   groupLabelClass:
     'flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 ring-sidebar-ring outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0 group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
   groupActionClass:

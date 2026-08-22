@@ -1,5 +1,5 @@
 // apps/cloudcn-docs/src/components/examples/sidebar/offcanvas/react.tsx
-import { Sidebar } from 'cloudcn-react';
+import { Sidebar, Container } from 'cloudcn-react';
 import { Home, Inbox, Settings, PanelLeft } from 'lucide-react';
 
 const NAV = [
@@ -52,11 +52,11 @@ export default function ReactSidebarOffcanvas() {
             </Sidebar.Trigger>
             <span className="text-sm font-medium">Offcanvas sidebar</span>
           </header>
-          <main className="flex-1 p-6">
+          <Container className="flex-1 py-6">
             <p className="text-sm text-muted-foreground">
               Click the trigger (or press Cmd/Ctrl+B) to completely hide this sidebar off-screen.
             </p>
-          </main>
+          </Container>
         </Sidebar.Inset>
       </Sidebar.Provider>
     </div>

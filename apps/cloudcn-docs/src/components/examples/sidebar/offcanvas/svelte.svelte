@@ -1,6 +1,6 @@
 <!-- apps/cloudcn-docs/src/components/examples/sidebar/offcanvas/svelte.svelte -->
 <script lang="ts">
-  import { Sidebar } from 'cloudcn-svelte';
+  import { Sidebar, Container } from 'cloudcn-svelte';
   import { House as Home, Inbox, Settings, PanelLeft } from 'lucide-svelte';
 
   const NAV = [
@@ -53,11 +53,11 @@
         </Sidebar.Trigger>
         <span class="text-sm font-medium">Offcanvas sidebar</span>
       </header>
-      <main class="flex-1 p-6">
+      <Container class="flex-1 py-6">
         <p class="text-sm text-muted-foreground">
           Click the trigger (or press Cmd/Ctrl+B) to completely hide this sidebar off-screen.
         </p>
-      </main>
+      </Container>
     </Sidebar.Inset>
   </Sidebar.Provider>
 </div>

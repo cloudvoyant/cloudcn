@@ -2,11 +2,14 @@
 <!-- Source: @ark-ui/svelte/splitter (Ark UI), Chakra UI Splitter, mirrored from cloudcn-react -->
 <script lang="ts">
   import { SplitterResizeTrigger, type SplitterResizeTriggerProps } from '@ark-ui/svelte/splitter';
-  import { splitterResizeTriggerBase, cn } from 'cloudcn-core';
+  import { splitterResizeTriggerBase, splitterResizeTriggerSeparatorBase, cn } from 'cloudcn-core';
 
-  let { class: className = '', ...rest }: SplitterResizeTriggerProps = $props();
+  let { class: className = '', children, ...rest }: SplitterResizeTriggerProps = $props();
 
   const classes = $derived(cn(splitterResizeTriggerBase, className));
 </script>
 
-<SplitterResizeTrigger class={classes} {...rest} />
+<SplitterResizeTrigger class={classes} {...rest}>
+  <span aria-hidden class={splitterResizeTriggerSeparatorBase}></span>
+  {@render children?.()}
+</SplitterResizeTrigger>

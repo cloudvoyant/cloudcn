@@ -50,7 +50,7 @@ const titles: Record<string, { id: string; title: string }[]> = {
     { id: 'separator', title: 'Separator' },
     { id: 'responsive-direction', title: 'Responsive direction' },
   ],
-  'scroll-area': [
+  'scroll': [
     { id: 'sizes', title: 'Sizes' },
     { id: 'horizontal', title: 'Horizontal scrolling' },
     { id: 'both', title: 'Both directions' },
@@ -68,7 +68,14 @@ const titles: Record<string, { id: string; title: string }[]> = {
     { id: 'icon', title: 'Icon' },
     { id: 'inline', title: 'Inline' },
   ],
-  item: [],
+  item: [{ id: 'plain', title: 'Plain' }],
+  card: [
+    { id: 'variants', title: 'Variants' },
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'override', title: 'Override title' },
+    { id: 'with-image', title: 'Cover variants' },
+    { id: 'horizontal', title: 'Horizontal' },
+  ],
 };
 const entries = (titles[component ?? 'button'] ?? []).filter((e) => e.id !== exclude);
 ---

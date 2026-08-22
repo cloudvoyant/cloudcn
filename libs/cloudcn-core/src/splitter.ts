@@ -18,7 +18,10 @@ export const splitterRootBase = '';
 export const splitterPanelBase = '';
 
 export const splitterResizeTriggerBase =
-  'relative grid place-items-center outline-none data-[orientation=horizontal]:-mx-1 data-[orientation=horizontal]:min-w-2 data-[orientation=vertical]:-my-1 data-[orientation=vertical]:min-h-2';
+  'group relative grid place-items-center outline-none data-[orientation=horizontal]:-mx-1 data-[orientation=horizontal]:min-w-2 data-[orientation=vertical]:-my-1 data-[orientation=vertical]:min-h-2';
+
+export const splitterResizeTriggerSeparatorBase =
+  'absolute bg-border group-data-[orientation=horizontal]:inset-y-0 group-data-[orientation=horizontal]:right-1 group-data-[orientation=horizontal]:w-px group-data-[orientation=vertical]:inset-x-0 group-data-[orientation=vertical]:bottom-1 group-data-[orientation=vertical]:h-px';
 
 export const splitterResizeTriggerIndicatorBase =
-  'relative z-10 rounded-full border bg-border shadow-xs data-[dragging]:bg-ring data-[focus]:bg-accent data-[disabled]:hidden data-[orientation=horizontal]:h-6 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-6';
+  'relative z-10 rounded-full border border-border bg-muted shadow-xs data-[dragging]:bg-muted-foreground data-[focus]:bg-accent data-[disabled]:hidden data-[orientation=horizontal]:h-6 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-6';

@@ -1,0 +1,54 @@
+// libs/cloudcn-react/src/scroll.tsx
+// Source: @ark-ui/react/scroll-area (Ark UI), Chakra UI ScrollArea
+import {
+  ScrollAreaRoot as ArkRoot,
+  ScrollAreaViewport as ArkViewport,
+  ScrollAreaContent as ArkContent,
+  ScrollAreaScrollbar as ArkScrollbar,
+  ScrollAreaThumb as ArkThumb,
+  ScrollAreaCorner as ArkCorner,
+  type ScrollAreaRootProps,
+} from '@ark-ui/react/scroll-area';
+import {
+  scrollRootBase,
+  scrollViewportBase,
+  scrollContentBase,
+  scrollScrollbarBase,
+  scrollThumbBase,
+  scrollCornerBase,
+  cn,
+} from 'cloudcn-core';
+
+export type ScrollProps = ScrollAreaRootProps & {
+  orientation?: 'vertical' | 'horizontal' | 'both';
+  contentClassName?: string;
+  thumbClassName?: string;
+};
+
+export function Scroll({
+  className,
+  orientation = 'vertical',
+  contentClassName,
+  thumbClassName,
+  children,
+  ...props
+}: ScrollProps) {
+  return (
+    <ArkRoot className={cn(scrollRootBase, className)} {...props}>
+      <ArkViewport className={scrollViewportBase}>
+        <ArkContent className={cn(scrollContentBase, contentClassName)}>{children}</ArkContent>
+      </ArkViewport>
+      {(orientation === 'vertical' || orientation === 'both') && (
+        <ArkScrollbar orientation="vertical" className={scrollScrollbarBase}>
+          <ArkThumb className={cn(scrollThumbBase, thumbClassName)} />
+        </ArkScrollbar>
+      )}
+      {(orientation === 'horizontal' || orientation === 'both') && (
+        <ArkScrollbar orientation="horizontal" className={scrollScrollbarBase}>
+          <ArkThumb className={cn(scrollThumbBase, thumbClassName)} />
+        </ArkScrollbar>
+      )}
+      {orientation === 'both' && <ArkCorner className={scrollCornerBase} />}
+    </ArkRoot>
+  );
+}

@@ -4,7 +4,7 @@
 </script>
 
 <VStack>
-  <Item class="bg-primary/15">One</Item>
-  <Item class="bg-secondary text-secondary-foreground">Two</Item>
-  <Item class="bg-accent text-accent-foreground">Three</Item>
+  <Item variant="surface">One</Item>
+  <Item variant="surface">Two</Item>
+  <Item variant="surface">Three</Item>
 </VStack>

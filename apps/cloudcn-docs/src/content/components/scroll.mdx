@@ -1,0 +1,34 @@
+---
+title: Scroll
+description: A scrollable region with styled scrollbars, for React and Svelte.
+order: 8
+group: Layout
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The Scroll creates a scrollable region with custom-styled scrollbars. Put your content inside; the scrollbar is added for you based on `orientation`.
+
+<Demo component="scroll" example="default" />
+
+## Examples
+
+<Examples component="scroll" exclude="default" />
+
+## API Reference
+
+### Scroll
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `orientation` | `'vertical' \| 'horizontal' \| 'both'` | `'vertical'` | Which scrollbar(s) to show. |
+| `contentClassName` / `contentClass` | `string` | — | Styles the content element (e.g. a mask for fading edges). |
+| `thumbClassName` / `thumbClass` | `string` | — | Styles the scrollbar thumb. |
+| `className` / `class` | `string` | — | Set a fixed height here (e.g. `h-48`). |
+
+## Accessibility
+
+Ark sets `role="presentation"` on the root and viewport and manages focus/keyboard scrolling; no hand-rolled roles or handlers are needed.

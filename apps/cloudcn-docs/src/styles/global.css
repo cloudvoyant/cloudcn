@@ -45,19 +45,19 @@ html.dark [data-example-code] .astro-code span {
 .docs-prose {
   @apply text-foreground;
 }
-.docs-prose :is(h1, h2, h3, h4) {
+.docs-prose :is(h1, h2, h3, h4):not([data-demo] *) {
   @apply scroll-mt-24 font-semibold tracking-tight;
 }
-.docs-prose h1 {
+.docs-prose h1:not([data-demo] *) {
   @apply text-3xl;
 }
-.docs-prose h2 {
+.docs-prose h2:not([data-demo] *) {
   @apply mt-10 mb-4 text-2xl;
 }
-.docs-prose h3 {
+.docs-prose h3:not([data-demo] *) {
   @apply mt-8 mb-3 text-xl;
 }
-.docs-prose p {
+.docs-prose p:not([data-demo] *) {
   @apply my-4 leading-7;
 }
 .docs-prose ul {

@@ -4,9 +4,9 @@ import { Item, Stack } from 'cloudcn-react';
 export default function ReactStackResponsiveDirection() {
   return (
     <Stack className="md:flex-row">
-      <Item className="flex-1 bg-primary/15">One</Item>
-      <Item className="flex-1 bg-secondary text-secondary-foreground">Two</Item>
-      <Item className="flex-1 bg-accent text-accent-foreground">Three</Item>
+      <Item variant="surface">One</Item>
+      <Item variant="surface">Two</Item>
+      <Item variant="surface">Three</Item>
     </Stack>
   );
 }

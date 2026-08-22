@@ -1,17 +1,17 @@
 // apps/cloudcn-docs/src/components/examples/container/sizes/react.tsx
-import { Container } from 'cloudcn-react';
+import { Container, Item } from 'cloudcn-react';
 
 export default function ReactContainerSizes() {
   return (
     <div className="flex flex-col gap-4">
       <Container className="max-w-sm">
-        <div className="rounded-md border border-border bg-muted/40 p-4 text-sm">max-w-sm</div>
+        <Item className="bg-muted">max-w-sm</Item>
       </Container>
       <Container className="max-w-2xl">
-        <div className="rounded-md border border-border bg-muted/40 p-4 text-sm">max-w-2xl</div>
+        <Item className="bg-muted">max-w-2xl</Item>
       </Container>
       <Container className="max-w-5xl">
-        <div className="rounded-md border border-border bg-muted/40 p-4 text-sm">max-w-5xl</div>
+        <Item className="bg-muted">max-w-5xl</Item>
       </Container>
     </div>
   );

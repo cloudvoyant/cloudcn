@@ -7,8 +7,18 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   integrations: [react(), svelte(), mdx()],
+  devToolbar: {
+    enabled: false,
+  },
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      // Workspace packages resolve to built dist/; don't let Vite pre-bundle and
+      // cache a stale copy (new named exports then throw
+      // "does not provide an export named ..." until a dev-server restart).
+      // Excluding them makes Vite watch the dist files as source modules instead.
+      exclude: ['cloudcn-core', 'cloudcn-react', 'cloudcn-svelte'],
+    },
   },
   redirects: {
     '/docs': '/general/introduction',
@@ -23,7 +33,7 @@ export default defineConfig({
     '/docs/components/col': '/components/layout',
     '/docs/components/layout': '/components/layout',
     '/docs/components/stack': '/components/stack',
-    '/docs/components/scroll-area': '/components/scroll-area',
+    '/docs/components/scroll': '/components/scroll',
     '/docs/components/splitter': '/components/splitter',
   },
 });

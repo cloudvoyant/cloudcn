@@ -4,9 +4,9 @@ import { Item, Col } from 'cloudcn-react';
 export default function ReactColResponsiveDirection() {
   return (
     <Col className="md:flex-row">
-      <Item className="flex-1 bg-primary/15">One</Item>
-      <Item className="flex-1 bg-secondary text-secondary-foreground">Two</Item>
-      <Item className="flex-1 bg-accent text-accent-foreground">Three</Item>
+      <Item className="bg-muted">One</Item>
+      <Item className="bg-muted/50">Two</Item>
+      <Item className="bg-muted">Three</Item>
     </Col>
   );
 }

@@ -9,12 +9,10 @@ export const rowBase = 'flex flex-row';
 
 export const colBase = 'flex flex-col';
 
-export const stackBase = 'flex flex-col gap-2';
+export const stackBase = 'flex flex-col gap-1';
 
-export const hstackBase = 'flex flex-row gap-2';
+export const hstackBase = 'flex flex-row gap-1';
 
-export const vstackBase = 'flex flex-col gap-2';
+export const vstackBase = 'flex flex-col gap-1';
 
 export const centerBase = 'flex items-center justify-center';
-
-export const itemBase = 'rounded-md p-3 text-sm';

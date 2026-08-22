@@ -4,7 +4,7 @@
 </script>
 
 <Col class="gap-4">
-  <Item class="bg-primary/15">One</Item>
-  <Item class="bg-secondary text-secondary-foreground">Two</Item>
-  <Item class="bg-accent text-accent-foreground">Three</Item>
+  <Item class="bg-muted">One</Item>
+  <Item class="bg-muted/50">Two</Item>
+  <Item class="bg-muted">Three</Item>
 </Col>

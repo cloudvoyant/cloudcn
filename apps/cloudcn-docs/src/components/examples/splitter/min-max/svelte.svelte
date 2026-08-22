@@ -8,7 +8,7 @@
   } from 'cloudcn-svelte';
 </script>
 
-<div class="h-64 w-full rounded-md border border-border">
+<div class="h-64 w-full rounded-md border border-border bg-background">
   <SplitterRoot
     defaultSize={[30, 70]}
     panels={[

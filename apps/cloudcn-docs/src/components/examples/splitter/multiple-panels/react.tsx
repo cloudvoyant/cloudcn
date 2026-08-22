@@ -3,7 +3,7 @@ import { Splitter } from 'cloudcn-react';
 
 export default function ReactSplitterMultiplePanels() {
   return (
-    <div className="h-64 w-full rounded-md border border-border">
+    <div className="h-64 w-full rounded-md border border-border bg-background">
       <Splitter.Root panels={[{ id: 'a' }, { id: 'b' }, { id: 'c' }]}>
         <Splitter.Panel id="a" className="flex items-center justify-center">
           <span className="text-sm font-medium">A</span>

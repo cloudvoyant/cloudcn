@@ -17,6 +17,26 @@ for (const framework of FRAMEWORKS) {
       expect(await box.evaluate((el) => el.tagName)).toBe('DIV');
     });
 
+    test('Item fills its container width', async ({ page }) => {
+      await page.goto('/components/layout');
+      await selectFramework(page, framework);
+
+      const item = page.locator(`[data-fw="${framework}"] div.bg-muted:has-text("Lorem ipsum")`).first();
+      await expect(item).toBeVisible();
+
+      const { itemWidth, contentWidth } = await item.evaluate((el) => {
+        const parent = el.parentElement as HTMLElement;
+        const cs = getComputedStyle(parent);
+        const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+        return {
+          itemWidth: el.getBoundingClientRect().width,
+          contentWidth: parent.clientWidth - pad,
+        };
+      });
+
+      expect(Math.abs(itemWidth - contentWidth)).toBeLessThan(2);
+    });
+
     test('Row renders its children', async ({ page }) => {
       await page.goto('/components/layout');
       await selectFramework(page, framework);

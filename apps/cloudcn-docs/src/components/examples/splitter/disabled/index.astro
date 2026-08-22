@@ -1,0 +1,17 @@
+---
+// apps/cloudcn-docs/src/components/examples/splitter/disabled/index.astro
+import Example from '../../../Example.astro';
+import ReactSplitterDisabled from './react.tsx';
+import SvelteSplitterDisabled from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Disabled resize" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactSplitterDisabled client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteSplitterDisabled client:load />
+  </div>
+</Example>

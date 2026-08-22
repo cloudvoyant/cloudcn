@@ -18,6 +18,7 @@ const components = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     order: z.number().default(0),
+    group: z.string().default('Components'),
   }),
 });
 

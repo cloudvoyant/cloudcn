@@ -1,0 +1,46 @@
+---
+title: Splitter
+description: Resizable panels with a drag handle, for React and Svelte.
+order: 9
+group: Layout
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The Splitter lets users resize panels by dragging a handle between them. It is a thin wrapper over [Ark UI `splitter`](https://ark-ui.com/docs/components/splitter), with base styling from Chakra UI's Splitter shared via `cloudcn-core`.
+
+<Demo component="splitter" example="default" />
+
+## Examples
+
+<Examples component="splitter" exclude="default" />
+
+## API Reference
+
+The React package exposes a `Splitter` namespace (`Splitter.Root`, `.Panel`, `.ResizeTrigger`, `.ResizeTriggerIndicator`) plus flat exports; the Svelte package exposes flat `SplitterRoot`, `SplitterPanel`, etc. Each part accepts all the corresponding [Ark `splitter` props](https://ark-ui.com/docs/components/splitter) plus `className`/`class`.
+
+> **Sizing note:** Ark sets `height: 100%` and `width: 100%` inline on the root, so wrap the `Splitter` in a container with an explicit height (e.g. `<div className="h-64">`).
+
+### Splitter.Root
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `panels` | `PanelData[]` | — | Required. Each panel's id plus optional `minSize`, `maxSize`, `collapsible`, `collapsedSize`. |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Split axis. |
+| `defaultSize` / `size` | `PanelSize[]` | — | Initial or controlled panel sizes. |
+
+### Splitter.ResizeTrigger
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | `'a:b'` | — | Which two panel ids this handle separates. |
+| `disabled` | `boolean` | — | Disables resizing across this handle. |
+
+## Accessibility
+
+Ark renders the resize handle as a `role="separator"` button with `aria-orientation`, `aria-valuenow`, and keyboard support (arrow keys resize, `Home`/`End` jump to min/max).

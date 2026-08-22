@@ -1,0 +1,26 @@
+// apps/cloudcn-docs/src/components/examples/splitter/min-max/react.tsx
+import { Splitter } from 'cloudcn-react';
+
+export default function ReactSplitterMinMax() {
+  return (
+    <div className="h-64 w-full rounded-md border border-border">
+      <Splitter.Root
+        defaultSize={[30, 70]}
+        panels={[
+          { id: 'a', minSize: 20, maxSize: 60 },
+          { id: 'b', minSize: 40 },
+        ]}
+      >
+        <Splitter.Panel id="a" className="flex items-center justify-center">
+          <span className="text-sm font-medium">A</span>
+        </Splitter.Panel>
+        <Splitter.ResizeTrigger id="a:b">
+          <Splitter.ResizeTriggerIndicator />
+        </Splitter.ResizeTrigger>
+        <Splitter.Panel id="b" className="flex items-center justify-center">
+          <span className="text-sm font-medium">B</span>
+        </Splitter.Panel>
+      </Splitter.Root>
+    </div>
+  );
+}

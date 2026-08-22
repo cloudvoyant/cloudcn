@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/cloudvoyant/cloudcn/compare/v0.4.0...v0.5.0) (2026-08-22)
+
+
+### Features
+
+* add Card and Item primitives, rename Scroll, refine layout ([3803ef2](https://github.com/cloudvoyant/cloudcn/commit/3803ef2adb5622c619cd71b537b218abcfe6461f)), closes [#7](https://github.com/cloudvoyant/cloudcn/issues/7)
+
 # [0.4.0](https://github.com/cloudvoyant/cloudcn/compare/v0.3.0...v0.4.0) (2026-08-22)
 
 

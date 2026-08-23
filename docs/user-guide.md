@@ -1,6 +1,6 @@
 # User Guide
 
-> How to install and use cloudcn.
+> How to install and use wicn.
 
 ## Requirements
 
@@ -18,7 +18,7 @@ mise run dev   # opens the Astro docs site
 
 ## Workspace (pnpm monorepo)
 
-cloudcn is a pnpm workspace monorepo:
+wicn is a pnpm workspace monorepo:
 
 - Install everything: `mise run install`
 - Build all packages: `mise run build`
@@ -31,20 +31,20 @@ cloudcn is a pnpm workspace monorepo:
 ## Using the packages
 
 ```text
-pnpm add cloudcn-core cloudcn-react
+pnpm add wicn-core wicn-react
 # or for Svelte
-pnpm add cloudcn-core cloudcn-svelte
+pnpm add wicn-core wicn-svelte
 ```
 
 Import the theme once in your global CSS:
 
 ```css
 @import 'tailwindcss';
-@import 'cloudcn-core/theme.css';
-/* Tailwind doesn't scan node_modules by default — point at cloudcn-core so its
+@import 'wicn-core/theme.css';
+/* Tailwind doesn't scan node_modules by default — point at wicn-core so its
    cva class strings (bg-primary, h-10, …) get generated. Path is relative to
    your global CSS file. */
-@source '../../node_modules/cloudcn-core/dist';
+@source '../../node_modules/wicn-core/dist';
 ```
 
 Components accept the same `variant` and `size` props across frameworks. Available components:

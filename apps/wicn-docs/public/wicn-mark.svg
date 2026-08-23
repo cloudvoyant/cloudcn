@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Compact icon variant of the cloudvoyant logo. Same paths as
+     cloudvoyant-logo-dark.svg but with a tight viewBox around the mark so
+     stroke widths render at a sensible thickness in a ~50x50 dock tile. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="35 90 630 530">
+  <g id="g19540" transform="matrix(1.514356,0,0,1.5397644,-185.51293,-65.4375)" style="stroke:#ffffff;stroke-opacity:1">
+    <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:15.2537;stroke-dasharray:none;stroke-opacity:1" d="M 350.33649,120.74643 157.01285,436.11342 550.17667,433.93848 Z"/>
+    <g id="g149" transform="matrix(0.76940948,0,0,0.78766892,82.284183,20.097432)" style="stroke:#ffffff;stroke-width:0.6;stroke-dasharray:none;stroke-opacity:1;fill:#ffffff;fill-opacity:1">
+      <path d="m 250.32,299.04 c -3.3594,3.9219 -3.3594,10.078 0,14 1.6797,2.2383 44.801,49.281 99.68,49.281 54.879,0 98,-47.039 99.68,-49.281 3.3594,-3.9219 3.3594,-10.078 0,-14 -1.6797,-2.2383 -44.801,-49.281 -99.68,-49.281 -54.879,0.004 -98,47.043 -99.68,49.281 z M 382.48,277.2 c 19.602,7.8398 35.84,20.719 44.801,28.559 -12.883,12.32 -43.121,35.844 -77.281,35.844 -34.16,0 -64.398,-23.52 -77.281,-35.281 8.9609,-7.8398 25.199,-21.281 44.801,-29.121 -1.1211,3.3594 -1.6797,6.7188 -1.6797,10.641 0,19.039 15.121,34.16 34.16,34.16 19.039,0 34.16,-15.121 34.16,-34.16 0,-3.918 -0.55859,-7.2812 -1.6797,-10.641 z"/>
+    </g>
+  </g>
+  <g id="File-Cloud" transform="matrix(27.259138,0,0,29.603972,18.963322,-78.022793)" style="fill:none;stroke:#ffffff;stroke-width:0.77;stroke-linecap:round;stroke-linejoin:round;">
+    <path d="M 4.114421,18.478497 C 2.2628249,17.74584 1,16.11207 1,13.9999 1,11.3498 3.06206,9.18144 5.66895,9.01082 6.79019,6.64004 9.20335,5 12,5 15.5267,5 18.4447,7.60802 18.9297,11.0006 18.9532,11.0002 18.9764,11 19,11 c 2.2091,0 4,1.7909 4,4 0,1.815151 -1.068485,3.261633 -2.72521,3.7506"/>
+  </g>
+</svg>

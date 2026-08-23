@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Publish cloudcn workspace packages to npm"
+#MISE description="Publish wicn workspace packages to npm"
 #MISE depends=["build"]
 set -euo pipefail
 cd "${MISE_PROJECT_ROOT:-$PWD}"

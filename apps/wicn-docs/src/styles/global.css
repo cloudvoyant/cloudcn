@@ -1,0 +1,109 @@
+/* apps/wicn-docs/src/styles/global.css */
+@import 'tailwindcss';
+@import 'wicn-core/theme.css';
+/* shadcn-compatible theme presets (`.theme-{name}` / `.theme-{name}.dark`). */
+@import 'wicn-core/themes.css';
+/* Registers the wicn component class strings (cva + inline framework
+   classes) with Tailwind, resolving via the package exports. This is the same
+   line an external consumer uses. */
+@import 'wicn-core/components.css';
+
+/* Demo: show only the active framework's island.
+   Scoped to [data-demo] so the FrameworkSelector buttons (which also carry
+   data-fw=...) are never hidden. */
+html[data-framework='react'] [data-demo] [data-fw='svelte'] {
+  display: none;
+}
+html[data-framework='svelte'] [data-demo] [data-fw='react'] {
+  display: none;
+}
+
+/* Framework selector: highlight the active button. */
+[data-framework-selector] button[aria-pressed='true'] {
+  @apply bg-primary text-primary-foreground hover:text-primary-foreground;
+}
+
+/* Example preview/code cards (Shiki output inside). */
+[data-example-code] .astro-code {
+  @apply m-0 rounded-none border-0 p-4 text-[13px];
+  background-color: transparent;
+  color: var(--shiki-light, #24292e);
+}
+[data-example-code] .astro-code span {
+  color: var(--shiki-light, #24292e);
+}
+html.dark [data-example-code] .astro-code {
+  background-color: var(--shiki-dark-bg, #24292e);
+  color: var(--shiki-dark, #e1e4e8);
+}
+html.dark [data-example-code] .astro-code span {
+  color: var(--shiki-dark, #e1e4e8);
+}
+
+/* Rendered MDX docs. */
+.docs-prose {
+  @apply text-foreground;
+}
+.docs-prose :is(h1, h2, h3, h4):not([data-demo] *) {
+  @apply scroll-mt-24 font-semibold tracking-tight;
+}
+.docs-prose h1:not([data-demo] *) {
+  @apply text-3xl;
+}
+.docs-prose h2:not([data-demo] *) {
+  @apply mt-10 mb-4 text-2xl;
+}
+.docs-prose h3:not([data-demo] *) {
+  @apply mt-8 mb-3 text-xl;
+}
+.docs-prose p:not([data-demo] *) {
+  @apply my-4 leading-7;
+}
+.docs-prose ul {
+  @apply my-4 list-disc pl-6 space-y-1;
+}
+.docs-prose ol {
+  @apply my-4 list-decimal pl-6 space-y-1;
+}
+/* Interactive demo previews render their own component trees (e.g. the
+   Sidebar's SidebarMenu <ul>/<li>). Reset prose list styling inside them so
+   navigation menus don't inherit bullets/indentation. */
+.docs-prose [data-demo] :is(ul, ol) {
+  @apply m-0 list-none p-0;
+}
+.docs-prose [data-demo] :is(ul, ol) li {
+  @apply m-0;
+}
+/* Prose anchor styling (underline, primary color) must not bleed into
+   interactive demos — demos render their own components (e.g. the sidebar's
+   asChild <a> logo), which should keep their own look. */
+.docs-prose [data-demo] a {
+  @apply font-normal text-inherit no-underline;
+}
+.docs-prose code {
+  @apply rounded bg-muted px-1.5 py-0.5 text-[0.9em] text-foreground;
+}
+.docs-prose pre {
+  @apply my-4 overflow-x-auto rounded-lg border bg-muted p-4 text-sm;
+}
+.docs-prose pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+.docs-prose a {
+  @apply font-medium text-primary underline underline-offset-4 hover:text-primary/80;
+}
+.docs-prose blockquote {
+  @apply my-4 border-l-4 border-border pl-4 text-muted-foreground;
+}
+.docs-prose table {
+  @apply my-4 w-full border-collapse text-sm;
+}
+.docs-prose th {
+  @apply border-b border-border px-3 py-2 text-left font-medium;
+}
+.docs-prose td {
+  @apply border-b border-border/60 px-3 py-2;
+}
+.docs-prose hr {
+  @apply my-8 border-border;
+}

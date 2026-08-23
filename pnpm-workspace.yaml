@@ -22,6 +22,7 @@ catalog:
   '@playwright/test': ^1.62.1
   'class-variance-authority': ^0.7.1
   clsx: ^2.1.1
+  commander: ^15.0.0
   eslint: ^9.0.0
   globals: ^15.0.0
   'lucide-react': ^1.32.0

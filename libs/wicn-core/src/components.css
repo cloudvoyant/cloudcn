@@ -1,0 +1,23 @@
+/* libs/wicn-core/src/components.css */
+/*
+ * Registers the wicn component class strings with the consuming Tailwind
+ * v4 build. Relative paths resolve from this file's installed location
+ * (node_modules/wicn-core/src/), where the sibling packages sit alongside
+ * it in a flat node_modules. This lets the client's own Tailwind compile the
+ * utility classes the wicn components reference + inline in the framework
+ * libs -- no per-consumer @source config required.
+ *
+ * src/ dirs are scanned so dev-served source (HMR) sees class changes without
+ * a rebuild; dist/ stays so published packages keep working.
+ *
+ * Consumers import it after Tailwind, e.g.:
+ *   @import 'tailwindcss';
+ *   @import 'wicn-core/theme.css';
+ *   @import 'wicn-core/components.css';
+ */
+@source ".";
+@source "../../wicn-react/src";
+@source "../../wicn-svelte/src";
+@source "../dist";
+@source "../../wicn-react/dist";
+@source "../../wicn-svelte/dist";

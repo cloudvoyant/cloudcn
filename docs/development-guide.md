@@ -1,4 +1,4 @@
-# cloudcn Development Guide
+# wicn Development Guide
 
 Generated from mise-lib-template v2.15.0.
 
@@ -25,9 +25,9 @@ mise run format:check
 ## Project Structure
 
 ```
-apps/cloudcn-docs/     # Docs/demo app (private placeholder)
-libs/cloudcn-react/    # React UI lib (tsup: ESM + CJS + d.ts)
-libs/cloudcn-svelte/   # Svelte UI lib (tsup: ESM + CJS + d.ts)
+apps/wicn-docs/     # Docs/demo app (private placeholder)
+libs/wicn-react/    # React UI lib (tsup: ESM + CJS + d.ts)
+libs/wicn-svelte/   # Svelte UI lib (tsup: ESM + CJS + d.ts)
 version.txt            # Single source of truth for the lockstep version
 mise.toml              # Task runner and tool versions
 pnpm-workspace.yaml    # Workspace declaration (apps/*, libs/*)
@@ -45,8 +45,8 @@ tsconfig.base.json     # Shared strict TypeScript base
 ## Adding Dependencies
 
 ```bash
-pnpm --filter cloudcn-react add express            # runtime dep for one package
-pnpm --filter cloudcn-react add -D @types/express  # dev-only dependency
+pnpm --filter wicn-react add express            # runtime dep for one package
+pnpm --filter wicn-react add -D @types/express  # dev-only dependency
 pnpm add -w typescript                             # workspace root tooling
 ```
 
@@ -87,7 +87,7 @@ To publish as `@your-org/my-library`:
 ```bash
 mise run publish:rc
 # Publishes every public workspace package to npm as X.Y.Z-rc.<timestamp>.<sha> with tag "next"
-# Consumers install with: pnpm add cloudcn-react@next
+# Consumers install with: pnpm add wicn-react@next
 ```
 
 ### Token Expiration and Trusted Publishing

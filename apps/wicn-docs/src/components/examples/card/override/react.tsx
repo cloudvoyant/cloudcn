@@ -1,9 +1,9 @@
 // apps/wicn-docs/src/components/examples/card/override/react.tsx
-import { CardRoot, CardHeader, CardBody, CardTitle, CardDescription } from 'wicn-react';
+import { Card, CardHeader, CardBody, CardTitle, CardDescription } from 'wicn-react';
 
 export default function ReactCardOverride() {
   return (
-    <CardRoot className="w-full max-w-sm">
+    <Card className="w-full max-w-sm">
       <CardHeader>
         <CardTitle asChild>
           <h2 className="text-xl">Overridden heading</h2>
@@ -15,6 +15,6 @@ export default function ReactCardOverride() {
           Use asChild to change the heading level, and a text-* class to change the size.
         </p>
       </CardBody>
-    </CardRoot>
+    </Card>
   );
 }

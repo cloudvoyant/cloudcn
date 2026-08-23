@@ -1,10 +1,10 @@
 // apps/wicn-docs/src/components/examples/splitter/multiple-panels/react.tsx
-import { SplitterRoot, SplitterPanel, SplitterResizeTrigger, SplitterResizeTriggerIndicator } from 'wicn-react';
+import { Splitter, SplitterPanel, SplitterResizeTrigger, SplitterResizeTriggerIndicator } from 'wicn-react';
 
 export default function ReactSplitterMultiplePanels() {
   return (
     <div className="h-64 w-full rounded-md border border-border bg-background">
-      <SplitterRoot panels={[{ id: 'a' }, { id: 'b' }, { id: 'c' }]}>
+      <Splitter panels={[{ id: 'a' }, { id: 'b' }, { id: 'c' }]}>
         <SplitterPanel id="a" className="flex items-center justify-center">
           <span className="text-sm font-medium">A</span>
         </SplitterPanel>
@@ -20,7 +20,7 @@ export default function ReactSplitterMultiplePanels() {
         <SplitterPanel id="c" className="flex items-center justify-center">
           <span className="text-sm font-medium">C</span>
         </SplitterPanel>
-      </SplitterRoot>
+      </Splitter>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 <!-- apps/wicn-docs/src/components/examples/splitter/collapsible/svelte.svelte -->
 <script lang="ts">
   import {
-    SplitterRoot,
+    Splitter,
     SplitterPanel,
     SplitterResizeTrigger,
     SplitterResizeTriggerIndicator,
@@ -9,7 +9,7 @@
 </script>
 
 <div class="h-64 w-full rounded-md border border-border bg-background">
-  <SplitterRoot
+  <Splitter
     defaultSize={[40, 60]}
     panels={[
       { id: 'a', collapsible: true, collapsedSize: 5, minSize: 25 },
@@ -25,5 +25,5 @@
     <SplitterPanel id="b" class="flex items-center justify-center">
       <span class="text-sm font-medium">B</span>
     </SplitterPanel>
-  </SplitterRoot>
+  </Splitter>
 </div>

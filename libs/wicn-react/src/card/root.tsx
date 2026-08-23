@@ -2,12 +2,12 @@
 // Closely based on: Chakra UI Card, built on @ark-ui/react/factory (Ark UI)
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { cardVariants, cn } from 'wicn-core';
-import type { CardRootProps } from 'wicn-core';
+import type { CardProps as CardBaseProps } from 'wicn-core';
 import { CardOrientationContext } from './context';
 
-export type CardProps = HTMLArkProps<'div'> & CardRootProps;
+export type CardProps = HTMLArkProps<'div'> & CardBaseProps;
 
-export function CardRoot({ className, variant, size, orientation, children, ...props }: CardProps) {
+export function Card({ className, variant, size, orientation, children, ...props }: CardProps) {
   const resolvedOrientation = orientation ?? 'vertical';
   return (
     <CardOrientationContext.Provider value={resolvedOrientation}>

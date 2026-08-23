@@ -1,4 +1,4 @@
-<!-- libs/wicn-svelte/src/CardRoot.svelte -->
+<!-- libs/wicn-svelte/src/card/Card.svelte -->
 <!-- Closely based on: Chakra UI Card, built on @ark-ui/svelte/factory (Ark UI), mirrored from wicn-react -->
 <script lang="ts">
   import { setContext } from 'svelte';

@@ -19,7 +19,7 @@ import {
   cn,
 } from 'wicn-core';
 
-export function SplitterRoot({ className, ...props }: SplitterRootProps) {
+export function Splitter({ className, ...props }: SplitterRootProps) {
   return <ArkSplitterRoot className={cn(splitterRootBase, className)} {...props} />;
 }
 
@@ -49,7 +49,7 @@ export function SplitterResizeTriggerIndicator({
 }
 
 export type {
-  SplitterRootProps,
+  SplitterRootProps as SplitterProps,
   SplitterPanelProps,
   SplitterResizeTriggerProps,
   SplitterResizeTriggerIndicatorProps,

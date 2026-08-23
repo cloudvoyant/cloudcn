@@ -1,10 +1,10 @@
 // apps/wicn-docs/src/components/examples/splitter/min-max/react.tsx
-import { SplitterRoot, SplitterPanel, SplitterResizeTrigger, SplitterResizeTriggerIndicator } from 'wicn-react';
+import { Splitter, SplitterPanel, SplitterResizeTrigger, SplitterResizeTriggerIndicator } from 'wicn-react';
 
 export default function ReactSplitterMinMax() {
   return (
     <div className="h-64 w-full rounded-md border border-border bg-background">
-      <SplitterRoot
+      <Splitter
         defaultSize={[30, 70]}
         panels={[
           { id: 'a', minSize: 20, maxSize: 60 },
@@ -20,7 +20,7 @@ export default function ReactSplitterMinMax() {
         <SplitterPanel id="b" className="flex items-center justify-center">
           <span className="text-sm font-medium">B</span>
         </SplitterPanel>
-      </SplitterRoot>
+      </Splitter>
     </div>
   );
 }

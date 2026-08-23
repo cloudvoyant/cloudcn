@@ -1,10 +1,10 @@
 <!-- apps/wicn-docs/src/components/examples/card/horizontal/svelte.svelte -->
 <script lang="ts">
-  import { CardRoot, CardHeader, CardBody, CardTitle, CardDescription, CardCover } from 'wicn-svelte';
+  import { Card, CardHeader, CardBody, CardTitle, CardDescription, CardCover } from 'wicn-svelte';
   import { User } from 'lucide-svelte';
 </script>
 
-<CardRoot orientation="horizontal" class="w-full max-w-2xl">
+<Card orientation="horizontal" class="w-full max-w-2xl">
   <CardCover class="w-1/3">
     <div class="flex h-full min-h-40 w-full items-center justify-center bg-gradient-to-br from-primary/40 to-accent/50">
       <User class="size-8 text-primary" />
@@ -21,4 +21,4 @@
       </p>
     </CardBody>
   </div>
-</CardRoot>
+</Card>

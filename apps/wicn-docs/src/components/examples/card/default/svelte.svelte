@@ -1,9 +1,9 @@
 <!-- apps/wicn-docs/src/components/examples/card/default/svelte.svelte -->
 <script lang="ts">
-  import { CardRoot, CardHeader, CardBody, CardFooter, CardTitle, CardDescription, Button } from 'wicn-svelte';
+  import { Card, CardHeader, CardBody, CardFooter, CardTitle, CardDescription, Button } from 'wicn-svelte';
 </script>
 
-<CardRoot class="w-full max-w-sm">
+<Card class="w-full max-w-sm">
   <CardHeader>
     <CardTitle>Team members</CardTitle>
     <CardDescription>Manage your team and their roles.</CardDescription>
@@ -17,4 +17,4 @@
     <Button variant="solid" color="primary" size="sm">Add member</Button>
     <Button variant="outline" color="primary" size="sm">Cancel</Button>
   </CardFooter>
-</CardRoot>
+</Card>

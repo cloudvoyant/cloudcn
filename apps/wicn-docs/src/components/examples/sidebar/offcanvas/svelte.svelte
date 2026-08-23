@@ -2,7 +2,7 @@
 <script lang="ts">
   import {
     SidebarProvider,
-    SidebarRoot,
+    Sidebar,
     SidebarHeader,
     SidebarContent,
     SidebarGroup,
@@ -23,7 +23,7 @@
 
 <div class="relative h-[560px] rounded-lg bg-background [transform:translateZ(0)]">
   <SidebarProvider class="h-full min-h-0">
-    <SidebarRoot collapsible="offcanvas" class="h-full">
+    <Sidebar collapsible="offcanvas" class="h-full">
       <SidebarHeader>
         <SidebarMenu>
           {#snippet logoIcon()}
@@ -50,7 +50,7 @@
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-    </SidebarRoot>
+    </Sidebar>
 
     <SidebarInset>
       <header class="flex h-12 items-center gap-2 border-b px-4">

@@ -1,6 +1,17 @@
 <!-- apps/wicn-docs/src/components/examples/sidebar/offcanvas/svelte.svelte -->
 <script lang="ts">
-  import { Sidebar, Container } from 'wicn-svelte';
+  import {
+    SidebarProvider,
+    SidebarRoot,
+    SidebarHeader,
+    SidebarContent,
+    SidebarGroup,
+    SidebarMenu,
+    SidebarMenuLink,
+    SidebarInset,
+    SidebarTrigger,
+    Container,
+  } from 'wicn-svelte';
   import { House as Home, Inbox, Settings } from 'lucide-svelte';
 
   const NAV = [
@@ -11,39 +22,39 @@
 </script>
 
 <div class="relative h-[560px] rounded-lg bg-background [transform:translateZ(0)]">
-  <Sidebar.Provider class="h-full min-h-0">
-    <Sidebar.Root collapsible="offcanvas" class="h-full">
-      <Sidebar.Header>
-        <Sidebar.Menu>
+  <SidebarProvider class="h-full min-h-0">
+    <SidebarRoot collapsible="offcanvas" class="h-full">
+      <SidebarHeader>
+        <SidebarMenu>
           {#snippet logoIcon()}
             <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <span class="text-sm font-semibold">c</span>
             </div>
           {/snippet}
-          <Sidebar.MenuLink href="#" size="lg" icon={logoIcon}>
+          <SidebarMenuLink href="#" size="lg" icon={logoIcon}>
             wicn
-          </Sidebar.MenuLink>
-        </Sidebar.Menu>
-      </Sidebar.Header>
-      <Sidebar.Content>
-        <Sidebar.Group label="Applications">
-          <Sidebar.Menu>
+          </SidebarMenuLink>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup label="Applications">
+          <SidebarMenu>
             {#each NAV as item (item.label)}
               {#snippet itemIcon()}
                 <item.icon />
               {/snippet}
-              <Sidebar.MenuLink icon={itemIcon} isActive={item.label === 'Home'}>
+              <SidebarMenuLink icon={itemIcon} isActive={item.label === 'Home'}>
                 {item.label}
-              </Sidebar.MenuLink>
+              </SidebarMenuLink>
             {/each}
-          </Sidebar.Menu>
-        </Sidebar.Group>
-      </Sidebar.Content>
-    </Sidebar.Root>
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarContent>
+    </SidebarRoot>
 
-    <Sidebar.Inset>
+    <SidebarInset>
       <header class="flex h-12 items-center gap-2 border-b px-4">
-        <Sidebar.Trigger>
+        <SidebarTrigger>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -55,7 +66,7 @@
             stroke-linecap="round"
             stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M15 3v18" /></svg
           >
-        </Sidebar.Trigger>
+        </SidebarTrigger>
         <span class="text-sm font-medium">Offcanvas sidebar</span>
       </header>
       <Container class="flex-1 py-6">
@@ -63,6 +74,6 @@
           Click the trigger (or press Cmd/Ctrl+B) to completely hide this sidebar off-screen.
         </p>
       </Container>
-    </Sidebar.Inset>
-  </Sidebar.Provider>
+    </SidebarInset>
+  </SidebarProvider>
 </div>

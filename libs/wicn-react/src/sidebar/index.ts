@@ -1,10 +1,7 @@
 // libs/wicn-react/src/sidebar/index.ts
-// Unified export. `Sidebar` is the root component (renders the sidebar panel)
-// with the other parts attached as static members, so both APIs work:
-//   <Sidebar> ... </Sidebar>            (flat root usage)
-//   <Sidebar.Provider> <Sidebar.Root>   (compound/namespace usage)
-// Flat named exports (SidebarProvider, SidebarHeader, ...) are retained for
-// backwards compatibility.
+// Unified export. `Sidebar` parts are exported flat (SidebarProvider,
+// SidebarRoot, SidebarHeader, and the other named parts) as the only public API:
+//   <SidebarProvider> <SidebarRoot> <SidebarHeader> </SidebarProvider>
 
 import { Provider } from './Provider';
 import { Root } from './Root';
@@ -29,34 +26,6 @@ import { Rail } from './Rail';
 import { Inset } from './Inset';
 import { Input } from './Input';
 import { useSidebar } from './context';
-
-const Sidebar = Object.assign(Root, {
-  Provider,
-  Root,
-  Header,
-  Footer,
-  Separator,
-  Content,
-  Group,
-  GroupAction,
-  Menu,
-  MenuItem,
-  MenuButton,
-  MenuLink,
-  MenuAction,
-  MenuBadge,
-  MenuSkeleton,
-  MenuSub,
-  MenuSubItem,
-  MenuSubButton,
-  Trigger,
-  Rail,
-  Inset,
-  Input,
-  useSidebar,
-});
-
-export { Sidebar };
 
 export {
   Provider as SidebarProvider,

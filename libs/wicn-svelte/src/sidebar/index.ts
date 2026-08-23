@@ -1,9 +1,7 @@
 // libs/wicn-svelte/src/sidebar/index.ts
-// Unified export. `Sidebar` is a namespace object grouping all parts, so the
-// compound API works:
-//   <Sidebar.Provider> <Sidebar.Root> <Sidebar.Header> ... </Sidebar.Provider>
-// Flat named exports (SidebarProvider, SidebarRoot, SidebarHeader, ...) are
-// retained for backwards compatibility.
+// Unified export. `Sidebar` parts are exported flat (SidebarProvider,
+// SidebarRoot, SidebarHeader, and the other named parts) as the only public API:
+//   <SidebarProvider> <SidebarRoot> <SidebarHeader> </SidebarProvider>
 
 import Provider from './Provider.svelte';
 import Root from './Root.svelte';
@@ -28,32 +26,6 @@ import Rail from './Rail.svelte';
 import Inset from './Inset.svelte';
 import Input from './Input.svelte';
 import { getSidebarContext as useSidebar } from './context.svelte';
-
-export const Sidebar = {
-  Provider,
-  Root,
-  Header,
-  Footer,
-  Separator,
-  Content,
-  Group,
-  GroupAction,
-  Menu,
-  MenuItem,
-  MenuButton,
-  MenuLink,
-  MenuAction,
-  MenuBadge,
-  MenuSkeleton,
-  MenuSub,
-  MenuSubItem,
-  MenuSubButton,
-  Trigger,
-  Rail,
-  Inset,
-  Input,
-  useSidebar,
-} as const;
 
 export {
   Provider as SidebarProvider,

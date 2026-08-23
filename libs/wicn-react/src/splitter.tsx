@@ -48,13 +48,6 @@ export function SplitterResizeTriggerIndicator({
   );
 }
 
-export const Splitter = {
-  Root: SplitterRoot,
-  Panel: SplitterPanel,
-  ResizeTrigger: SplitterResizeTrigger,
-  ResizeTriggerIndicator: SplitterResizeTriggerIndicator,
-};
-
 export type {
   SplitterRootProps,
   SplitterPanelProps,

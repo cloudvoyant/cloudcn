@@ -18,7 +18,7 @@ The Card displays content related to a single subject, composed of `Root`, `Head
 
 ## API Reference
 
-### Card / Card.Root
+### CardRoot
 
 #### Props
 
@@ -29,7 +29,7 @@ The Card displays content related to a single subject, composed of `Root`, `Head
 | `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` | `horizontal` lays the media and content side by side. |
 | `className` / `class` | `string` | — | Merged last via `cn`. |
 
-### Card.Cover
+### CardCover
 
 A cover slot that accepts an image, icon, or any element. `variant="flush"` (default) bleeds the media edge-to-edge to the card's boundaries, adapting to the root's `orientation` (top/left/right for `vertical`, left/top/bottom for `horizontal`). `variant="inset"` keeps the card's padding around the media with rounded corners.
 
@@ -41,7 +41,7 @@ A cover slot that accepts an image, icon, or any element. `variant="flush"` (def
 
 ### Parts
 
-`Card.Root`, `Card.Header`, `Card.Body`, `Card.Footer`, `Card.Title` (renders an `<h3>`), `Card.Description` (renders a `<p>`), and `Card.Cover`. In Svelte these are exported as `CardRoot`, `CardHeader`, `CardBody`, `CardFooter`, `CardTitle`, `CardDescription`, and `CardCover`.
+`CardRoot`, `CardHeader`, `CardBody`, `CardFooter`, `CardTitle` (renders an `<h3>`), `CardDescription` (renders a `<p>`), and `CardCover` are exported from both `wicn-react` and `wicn-svelte`.
 
 ## Accessibility
 

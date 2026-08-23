@@ -1,5 +1,18 @@
 // apps/wicn-docs/src/components/examples/sidebar/icon/react.tsx
-import { Sidebar, Container } from 'wicn-react';
+import {
+  SidebarProvider,
+  SidebarRoot,
+  SidebarHeader,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarMenu,
+  SidebarMenuLink,
+  SidebarRail,
+  SidebarInset,
+  SidebarTrigger,
+  Container,
+} from 'wicn-react';
 import { Home, Inbox, Settings, LifeBuoy, PanelLeft } from 'lucide-react';
 
 const NAV = [
@@ -10,10 +23,10 @@ const NAV = [
 
 function AppSidebar() {
   return (
-    <Sidebar.Root collapsible="icon" className="h-full">
-      <Sidebar.Header>
-        <Sidebar.Menu>
-          <Sidebar.MenuLink
+    <SidebarRoot collapsible="icon" className="h-full">
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuLink
             href="#"
             size="lg"
             icon={
@@ -23,47 +36,47 @@ function AppSidebar() {
             }
           >
             wicn
-          </Sidebar.MenuLink>
-        </Sidebar.Menu>
-      </Sidebar.Header>
-      <Sidebar.Content>
-        <Sidebar.Group label="Applications">
-          <Sidebar.Menu>
+          </SidebarMenuLink>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup label="Applications">
+          <SidebarMenu>
             {NAV.map((item) => (
-              <Sidebar.MenuLink
+              <SidebarMenuLink
                 key={item.label}
                 icon={<item.icon />}
                 tooltip={item.label}
                 isActive={item.label === 'Home'}
               >
                 {item.label}
-              </Sidebar.MenuLink>
+              </SidebarMenuLink>
             ))}
-          </Sidebar.Menu>
-        </Sidebar.Group>
-      </Sidebar.Content>
-      <Sidebar.Footer>
-        <Sidebar.Menu>
-          <Sidebar.MenuLink icon={<LifeBuoy />} tooltip="Help">
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuLink icon={<LifeBuoy />} tooltip="Help">
             Help
-          </Sidebar.MenuLink>
-        </Sidebar.Menu>
-      </Sidebar.Footer>
-      <Sidebar.Rail />
-    </Sidebar.Root>
+          </SidebarMenuLink>
+        </SidebarMenu>
+      </SidebarFooter>
+      <SidebarRail />
+    </SidebarRoot>
   );
 }
 
 export default function ReactSidebarIcon() {
   return (
     <div className="relative h-[560px] rounded-lg bg-background [transform:translateZ(0)]">
-      <Sidebar.Provider className="h-full min-h-0">
+      <SidebarProvider className="h-full min-h-0">
         <AppSidebar />
-        <Sidebar.Inset>
+        <SidebarInset>
           <header className="flex h-12 items-center gap-2 border-b px-4">
-            <Sidebar.Trigger>
+            <SidebarTrigger>
               <PanelLeft />
-            </Sidebar.Trigger>
+            </SidebarTrigger>
             <span className="text-sm font-medium">Icon rail sidebar</span>
           </header>
           <Container className="flex-1 py-6">
@@ -71,8 +84,8 @@ export default function ReactSidebarIcon() {
               Click the trigger (or the rail, or press Cmd/Ctrl+B) to collapse this sidebar to an icon rail.
             </p>
           </Container>
-        </Sidebar.Inset>
-      </Sidebar.Provider>
+        </SidebarInset>
+      </SidebarProvider>
     </div>
   );
 }

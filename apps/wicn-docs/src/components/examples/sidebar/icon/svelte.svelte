@@ -1,6 +1,19 @@
 <!-- apps/wicn-docs/src/components/examples/sidebar/icon/svelte.svelte -->
 <script lang="ts">
-  import { Sidebar, Container } from 'wicn-svelte';
+  import {
+    SidebarProvider,
+    SidebarRoot,
+    SidebarHeader,
+    SidebarContent,
+    SidebarFooter,
+    SidebarGroup,
+    SidebarMenu,
+    SidebarMenuLink,
+    SidebarRail,
+    SidebarInset,
+    SidebarTrigger,
+    Container,
+  } from 'wicn-svelte';
   import { House as Home, Inbox, Settings, LifeBuoy } from 'lucide-svelte';
 
   const NAV = [
@@ -11,50 +24,50 @@
 </script>
 
 <div class="relative h-[560px] rounded-lg bg-background [transform:translateZ(0)]">
-  <Sidebar.Provider class="h-full min-h-0">
-    <Sidebar.Root collapsible="icon" class="h-full">
-      <Sidebar.Header>
-        <Sidebar.Menu>
+  <SidebarProvider class="h-full min-h-0">
+    <SidebarRoot collapsible="icon" class="h-full">
+      <SidebarHeader>
+        <SidebarMenu>
           {#snippet logoIcon()}
             <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <span class="text-sm font-semibold">c</span>
             </div>
           {/snippet}
-          <Sidebar.MenuLink href="#" size="lg" icon={logoIcon}>
+          <SidebarMenuLink href="#" size="lg" icon={logoIcon}>
             wicn
-          </Sidebar.MenuLink>
-        </Sidebar.Menu>
-      </Sidebar.Header>
-      <Sidebar.Content>
-        <Sidebar.Group label="Applications">
-          <Sidebar.Menu>
+          </SidebarMenuLink>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup label="Applications">
+          <SidebarMenu>
             {#each NAV as item (item.label)}
               {#snippet itemIcon()}
                 <item.icon />
               {/snippet}
-              <Sidebar.MenuLink icon={itemIcon} tooltip={item.label} isActive={item.label === 'Home'}>
+              <SidebarMenuLink icon={itemIcon} tooltip={item.label} isActive={item.label === 'Home'}>
                 {item.label}
-              </Sidebar.MenuLink>
+              </SidebarMenuLink>
             {/each}
-          </Sidebar.Menu>
-        </Sidebar.Group>
-      </Sidebar.Content>
-      <Sidebar.Footer>
-        <Sidebar.Menu>
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
           {#snippet helpIcon()}
             <LifeBuoy />
           {/snippet}
-          <Sidebar.MenuLink icon={helpIcon} tooltip="Help">
+          <SidebarMenuLink icon={helpIcon} tooltip="Help">
             Help
-          </Sidebar.MenuLink>
-        </Sidebar.Menu>
-      </Sidebar.Footer>
-      <Sidebar.Rail />
-    </Sidebar.Root>
+          </SidebarMenuLink>
+        </SidebarMenu>
+      </SidebarFooter>
+      <SidebarRail />
+    </SidebarRoot>
 
-    <Sidebar.Inset>
+    <SidebarInset>
       <header class="flex h-12 items-center gap-2 border-b px-4">
-        <Sidebar.Trigger>
+        <SidebarTrigger>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -66,7 +79,7 @@
             stroke-linecap="round"
             stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M15 3v18" /></svg
           >
-        </Sidebar.Trigger>
+        </SidebarTrigger>
         <span class="text-sm font-medium">Icon rail sidebar</span>
       </header>
       <Container class="flex-1 py-6">
@@ -74,6 +87,6 @@
           Click the trigger (or the rail, or press Cmd/Ctrl+B) to collapse this sidebar to an icon rail.
         </p>
       </Container>
-    </Sidebar.Inset>
-  </Sidebar.Provider>
+    </SidebarInset>
+  </SidebarProvider>
 </div>

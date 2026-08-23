@@ -1,3 +1,19 @@
+# [0.8.0](https://github.com/cloudvoyant/wicn/compare/v0.7.1...v0.8.0) (2026-08-23)
+
+
+* feat!: flatten Component.Subcomponent names to PascalCase ([299cac4](https://github.com/cloudvoyant/wicn/commit/299cac4a8ded8efa88740c2753bb55bcb66d5dd5))
+
+
+### BREAKING CHANGES
+
+* The Card, Sidebar, and Splitter namespace objects are
+removed from wicn-react, and the Sidebar namespace object is removed
+from wicn-svelte. Each part now has exactly one flat PascalCase name.
+Migrate compound usages to the flat exports, for example Card.Root →
+CardRoot, Sidebar.Provider → SidebarProvider, and Splitter.Root →
+SplitterRoot. The React and Svelte Sidebar components were also usable
+as a flat root (<Sidebar>); use <SidebarRoot> instead.
+
 ## [0.7.1](https://github.com/cloudvoyant/wicn/compare/v0.7.0...v0.7.1) (2026-08-23)
 
 

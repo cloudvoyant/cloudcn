@@ -5,7 +5,7 @@
    version="1.1"
    viewBox="0 0 700 700"
    id="svg151"
-   sodipodi:docname="cloudvoyant-logo.svg"
+   sodipodi:docname="wicn-logo-light.svg"
    inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -22,17 +22,34 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="pt"
      showgrid="false"
-     inkscape:zoom="0.58695899"
-     inkscape:cx="319.4431"
-     inkscape:cy="465.961"
+     inkscape:zoom="0.60165347"
+     inkscape:cx="665.66557"
+     inkscape:cy="464.55313"
      inkscape:window-width="1390"
      inkscape:window-height="805"
      inkscape:window-x="0"
-     inkscape:window-y="106"
+     inkscape:window-y="191"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg151" />
+     inkscape:current-layer="g19540-6"
+     showguides="false" />
   <defs
      id="defs65">
+    <linearGradient
+       id="linearGradient5590"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#3d38ff;stop-opacity:1;"
+         offset="0"
+         id="stop5588" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5570"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#3d38ff;stop-opacity:1;"
+         offset="0"
+         id="stop5568" />
+    </linearGradient>
     <symbol
        id="h"
        overflow="visible">
@@ -199,34 +216,22 @@
     </radialGradient>
   </defs>
   <g
-     id="g19540"
-     transform="matrix(1.514356,0,0,1.5397644,-185.51293,-65.4375)">
+     id="g19540-6"
+     transform="matrix(1.514356,0,0,1.5397644,-267.85739,178.38872)">
     <path
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:15.2537;stroke-dasharray:none;stroke-opacity:1"
-       d="M 350.33649,120.74643 157.01285,436.11342 550.17667,433.93848 Z"
-       id="path1310" />
-    <g
-       id="g149"
-       transform="matrix(0.76940948,0,0,0.78766892,82.284183,20.097432)"
-       style="stroke:none;stroke-width:0.6;stroke-dasharray:none;stroke-opacity:0.604255">
-      <path
-         d="m 250.32,299.04 c -3.3594,3.9219 -3.3594,10.078 0,14 1.6797,2.2383 44.801,49.281 99.68,49.281 54.879,0 98,-47.039 99.68,-49.281 3.3594,-3.9219 3.3594,-10.078 0,-14 -1.6797,-2.2383 -44.801,-49.281 -99.68,-49.281 -54.879,0.004 -98,47.043 -99.68,49.281 z M 382.48,277.2 c 19.602,7.8398 35.84,20.719 44.801,28.559 -12.883,12.32 -43.121,35.844 -77.281,35.844 -34.16,0 -64.398,-23.52 -77.281,-35.281 8.9609,-7.8398 25.199,-21.281 44.801,-29.121 -1.1211,3.3594 -1.6797,6.7188 -1.6797,10.641 0,19.039 15.121,34.16 34.16,34.16 19.039,0 34.16,-15.121 34.16,-34.16 0,-3.918 -0.55859,-7.2812 -1.6797,-10.641 z"
-         id="path69"
-         style="stroke:none;stroke-width:0.6;stroke-dasharray:none;stroke-opacity:0.604255" />
-    </g>
-  </g>
-  <g
-     id="File / Cloud"
-     transform="matrix(27.259138,0,0,29.603972,18.963322,-78.022793)"
-     style="fill:none;stroke-width:0.77029302;stroke-dasharray:none">
+       style="fill:#3d38ff;fill-opacity:0.66383;stroke:none;stroke-width:9.28226;stroke-dasharray:none;stroke-opacity:1"
+       d="M 345.69656,260.2771 231.50691,62.565364 463.73532,63.9289 Z"
+       id="path1310-0-2" />
     <path
-       id="Vector"
-       d="M 4.114421,18.478497 C 2.2628249,17.74584 1,16.11207 1,13.9999 1,11.3498 3.06206,9.18144 5.66895,9.01082 6.79019,6.64004 9.20335,5 12,5 15.5267,5 18.4447,7.60802 18.9297,11.0006 18.9532,11.0002 18.9764,11 19,11 c 2.2091,0 4,1.7909 4,4 0,1.815151 -1.068485,3.261633 -2.72521,3.7506"
-       stroke="#000000"
-       stroke-width="2"
-       stroke-linecap="round"
-       stroke-linejoin="round"
-       style="fill:none;stroke-width:0.770293;stroke-dasharray:none"
-       sodipodi:nodetypes="cscscssc" />
+       style="fill:#3d38ff;fill-opacity:0.66383;stroke:none;stroke-width:12.1956;stroke-dasharray:none;stroke-opacity:1"
+       d="M 419.59342,264.93238 269.83397,4.6980308 574.40098,6.492758 Z"
+       id="path1310-0-2-6-7" />
+    <ellipse
+       style="fill:#0700f3;fill-opacity:0.65531915;fill-rule:evenodd;stroke:none;stroke-width:19.1645;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="path29713"
+       cx="389.18329"
+       cy="106.10422"
+       rx="40.461342"
+       ry="41.509865" />
   </g>
 </svg>

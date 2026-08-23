@@ -22,7 +22,7 @@
     children?: Snippet;
   } & HTMLAttributes<HTMLDivElement>;
 
-  let { defaultOpen = true, open: openProp, onOpenChange, class: className = '', children, ...rest }: Props = $props();
+  let { defaultOpen = true, open: openProp, onOpenChange, class: className = '', style, children, ...rest }: Props = $props();
 
   let isMobile = $state(false);
   let openMobile = $state(false);
@@ -96,7 +96,7 @@
 <Row
   data-slot="sidebar-wrapper"
   class={cn(sidebarStyles.wrapperClass, className)}
-  style={`--sidebar-width: ${SIDEBAR_WIDTH}; --sidebar-width-icon: ${SIDEBAR_WIDTH_ICON};`}
+  style={`--sidebar-width: ${SIDEBAR_WIDTH}; --sidebar-width-icon: ${SIDEBAR_WIDTH_ICON}; ${style ?? ''}`}
   {...rest}
 >
   {@render children?.()}

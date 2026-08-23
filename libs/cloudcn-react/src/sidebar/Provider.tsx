@@ -66,6 +66,17 @@ export function Provider({
   }, [isMobile, setOpen, setOpenMobile]);
 
   React.useEffect(() => {
+    if (openProp !== undefined) return;
+    if (typeof document === 'undefined') return;
+    const cookie = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith(`${SIDEBAR_COOKIE_NAME}=`));
+    if (cookie) {
+      _setOpen(cookie.split('=')[1] === 'true');
+    }
+  }, [openProp]);
+
+  React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();

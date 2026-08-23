@@ -57,7 +57,7 @@ export function Root({
             data-sidebar="sidebar"
             data-slot="sidebar"
             data-mobile="true"
-            className="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground"
+            className={cn('w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground', className)}
             style={{ '--sidebar-width': SIDEBAR_WIDTH_MOBILE } as React.CSSProperties}
           >
             <DrawerTitle className="sr-only">Sidebar</DrawerTitle>

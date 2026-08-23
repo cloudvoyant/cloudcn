@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/cloudvoyant/cloudcn/compare/v0.5.0...v0.6.0) (2026-08-23)
+
+
+### Features
+
+* cloudcn sidebar component (Phases 1-5) ([28cbd1a](https://github.com/cloudvoyant/cloudcn/commit/28cbd1a84c94b1a532a150a14beb5d5ce04e1294))
+
 # [0.5.0](https://github.com/cloudvoyant/cloudcn/compare/v0.4.0...v0.5.0) (2026-08-22)
 
 

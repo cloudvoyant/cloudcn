@@ -3,4 +3,4 @@
 #MISE depends=["build"]
 set -euo pipefail
 cd "${MISE_PROJECT_ROOT:-$PWD}"
-pnpm --filter cloudcn-docs run e2e
+pnpm --filter wicn-docs run e2e

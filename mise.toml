@@ -6,7 +6,7 @@
 
 [env]
 _.path   = ['{{config_root}}/node_modules/.bin']
-PROJECT  = "cloudcn"
+PROJECT  = "wicn"
 TEMPLATE         = "mise-pnpm-template"
 VERSION  = "{{exec(command='node -p \"require(\\\"./package.json\\\").version\" 2>/dev/null || echo 0.1.0')}}"
 
@@ -16,6 +16,7 @@ pnpm       = "10"
 bats       = "latest"
 shellcheck = "latest"
 shfmt      = "latest"
+imagemagick = "latest"
 
 [task_config]
 includes = ["mise-tasks"]

@@ -1,0 +1,52 @@
+name: Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup mise
+        uses: jdx/mise-action@v4
+
+      - name: Install dependencies
+        run: mise run install
+
+      - name: Build docs site
+        run: mise run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/wicn-docs/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # Gate on the renamed repo: /wicn/ base is correct only once the GitHub
+    # repo is renamed to wicn. Remove this line (tracked in Linear) after the
+    # rename lands so the first deploy targets the right URL.
+    if: github.repository == 'cloudvoyant/wicn'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

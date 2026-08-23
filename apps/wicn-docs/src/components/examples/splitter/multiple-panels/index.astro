@@ -1,0 +1,17 @@
+---
+// apps/wicn-docs/src/components/examples/splitter/multiple-panels/index.astro
+import Example from '../../../Example.astro';
+import ReactSplitterMultiplePanels from './react.tsx';
+import SvelteSplitterMultiplePanels from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Multiple panels" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactSplitterMultiplePanels client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteSplitterMultiplePanels client:load />
+  </div>
+</Example>

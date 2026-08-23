@@ -1,0 +1,32 @@
+---
+title: Installation
+description: Install wicn packages with pnpm.
+order: 2
+---
+
+## Workspace packages
+
+The library ships three npm packages:
+
+- `wicn-core` — shared interfaces, cva variants, and the shadcn-style theme.
+- `wicn-react` — React components (Ark UI based).
+- `wicn-svelte` — Svelte components (Ark UI based).
+
+## Install
+
+```bash
+pnpm add wicn-core wicn-react
+# or for Svelte
+pnpm add wicn-core wicn-svelte
+```
+
+Import the theme once in your app's global CSS:
+
+```css
+@import 'tailwindcss';
+@import 'wicn-core/theme.css';
+/* Tailwind doesn't scan node_modules by default — point at wicn-core so its
+   cva class strings (bg-primary, h-10, …) get generated. Path is relative to
+   your global CSS file. */
+@source '../../node_modules/wicn-core/dist';
+```

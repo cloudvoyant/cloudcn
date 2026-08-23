@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+#MISE description="Generate favicon-light.svg, favicon-dark.svg, and favicon.ico from the wicn logos"
+set -euo pipefail
+cd "${MISE_PROJECT_ROOT:-$PWD}"
+source "${MISE_PROJECT_ROOT:-$PWD}/mise-tasks/utils"
+
+PUB="apps/wicn-docs/public"
+LIGHT_LOGO="$PUB/wicn-logo-light.svg"
+DARK_LOGO="$PUB/wicn-logo-dark.svg"
+
+# ImageMagick 7 ships `magick`; `convert` is the legacy alias. Prefer magick,
+# fall back to convert (IM6) for portability.
+if command_exists magick; then
+  MAGICK="magick"
+elif command_exists convert; then
+  MAGICK="convert"
+else
+  log_error "ImageMagick (magick/convert) not found. Run: mise install"
+  exit 1
+fi
+
+if [ ! -f "$LIGHT_LOGO" ] || [ ! -f "$DARK_LOGO" ]; then
+    log_error "Missing logo files — expected $LIGHT_LOGO and $DARK_LOGO"
+    exit 1
+fi
+
+# 1. SVG favicons are the logos themselves (browsers swap by theme via Shell.astro).
+cp "$LIGHT_LOGO" "$PUB/favicon-light.svg"
+cp "$DARK_LOGO" "$PUB/favicon-dark.svg"
+log_info "Wrote $PUB/favicon-light.svg and $PUB/favicon-dark.svg"
+
+# 2. Build a clean renderable SVG from the light logo. The source is an Inkscape
+#    export whose shapes carry stroke:none only inside a style="" string; ImageMagick's
+#    SVG renderer ignores that and draws default black outlines. Emit the drawing
+#    shapes as explicit fill/fill-opacity/stroke="none" attributes instead.
+TMP_DIR="$(mktemp -d)"
+trap 'rm -rf "$TMP_DIR"' EXIT
+CLEAN_SVG="$TMP_DIR/favicon-clean.svg"
+
+node --input-type=module - "$PWD/$LIGHT_LOGO" "$CLEAN_SVG" <<'NODE'
+import fs from 'node:fs';
+const [src, out] = process.argv.slice(2);
+const svg = fs.readFileSync(src, 'utf8');
+const drawing = svg.slice(svg.lastIndexOf('</defs>') + 7);
+const gMatch = drawing.match(/<g[^>]*>/);
+const transform = (gMatch && gMatch[0].match(/transform="([^"]+)"/) || [])[1] || '';
+const shapes = [...drawing.matchAll(/<(path|ellipse)\b[^>]*\/?>/g)].map((m) => {
+  const tag = m[0]; const el = m[1];
+  const style = (tag.match(/style="([^"]*)"/) || [])[1] || '';
+  const styleVal = (k) => { const p = style.match(new RegExp(`${k}:([^;]+)`)); return p ? p[1].trim() : ''; };
+  const attr = (a) => (tag.match(new RegExp(`${a}="([^"]*)"`)) || [])[1];
+  const fill = attr('fill') || styleVal('fill') || '#3d38ff';
+  const fo = attr('fill-opacity') || styleVal('fill-opacity') || '1';
+  let out = `    <${el}`;
+  out += ` fill="${fill}" fill-opacity="${fo}" stroke="none"`;
+  if (el === 'path') out += ` d="${attr('d')}"`;
+  else out += ` cx="${attr('cx')}" cy="${attr('cy')}" rx="${attr('rx')}" ry="${attr('ry')}"`;
+  return `${out} />`;
+});
+const clean = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700">\n  <g transform="${transform}">\n${shapes.join('\n')}\n  </g>\n</svg>\n`;
+fs.writeFileSync(out, clean);
+NODE
+
+# 3. Tighten the viewBox to the drawn content (the logo has large empty margins),
+#    then render the .ico at standard favicon sizes.
+"$MAGICK" -background none "$CLEAN_SVG" -resize 700x700 png32:"$TMP_DIR/probe.png"
+BBOX=$("$MAGICK" "$TMP_DIR/probe.png" -alpha extract -threshold 1 -format "%@" info:-)
+W="${BBOX%%x*}"; REST="${BBOX#*x}"; H="${REST%%+*}"; REST="${REST#*+}"; X="${REST%%+*}"; Y="${REST#*+}"
+[ "$W" -gt 0 ] && [ "$H" -gt 0 ] || { log_error "Could not measure logo content bbox (got '$BBOX')"; exit 1; }
+PAD_W=$(( W / 10 )); PAD_H=$(( H / 10 ))
+[ "$PAD_W" -lt 10 ] && PAD_W=10
+[ "$PAD_H" -lt 10 ] && PAD_H=10
+VB_X=$(( X - PAD_W )); [ "$VB_X" -lt 0 ] && VB_X=0
+VB_Y=$(( Y - PAD_H )); [ "$VB_Y" -lt 0 ] && VB_Y=0
+VB_W=$(( W + 2 * PAD_W )); VB_H=$(( H + 2 * PAD_H ))
+sed "s/viewBox=\"0 0 700 700\"/viewBox=\"$VB_X $VB_Y $VB_W $VB_H\"/" "$CLEAN_SVG" > "$TMP_DIR/favicon-tight.svg"
+
+for SIZE in 16 32 48 256; do
+  "$MAGICK" -background none "$TMP_DIR/favicon-tight.svg" -resize "${SIZE}x${SIZE}" "png32:$TMP_DIR/favicon-${SIZE}.png"
+done
+"$MAGICK" "$TMP_DIR"/favicon-16.png "$TMP_DIR"/favicon-32.png "$TMP_DIR"/favicon-48.png "$TMP_DIR"/favicon-256.png "$PUB/favicon.ico"
+
+log_success "Wrote $PUB/favicon.ico ($("$MAGICK" identify "$PUB/favicon.ico" 2>/dev/null | wc -l | tr -d ' ') frames)"

@@ -1,13 +1,13 @@
-# cloudcn
+# wicn
 
-cloudcn is a pnpm workspace monorepo for a cross-framework UI component library (React + Svelte) with an Astro docs/demo site.
+wicn is a pnpm workspace monorepo for a cross-framework UI component library (React + Svelte) with an Astro docs/demo site.
 
 ## Structure
 
-- `libs/cloudcn-core` — shared interfaces, cva variants (`buttonVariants`, `toggleButtonVariants`, `badgeVariants`), `cn`, and the shadcn-style theme (light + dark)
-- `libs/cloudcn-react` — React components built on Ark UI (Button, ToggleButton, Badge)
-- `libs/cloudcn-svelte` — Svelte components built on Ark UI (Button, ToggleButton, Badge)
-- `apps/cloudcn-docs` — Astro docs/demo site with MDX docs, framework selector, and live demos
+- `libs/wicn-core` — shared interfaces, cva variants (`buttonVariants`, `toggleButtonVariants`, `badgeVariants`), `cn`, and the shadcn-style theme (light + dark)
+- `libs/wicn-react` — React components built on Ark UI (Button, ToggleButton, Badge)
+- `libs/wicn-svelte` — Svelte components built on Ark UI (Button, ToggleButton, Badge)
+- `apps/wicn-docs` — Astro docs/demo site with MDX docs, framework selector, and live demos
 
 ## Getting started
 

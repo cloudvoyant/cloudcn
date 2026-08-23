@@ -1,0 +1,65 @@
+---
+title: NavigationMenu
+description: A horizontally composed navigation menu with dropdown panels, for React and Svelte.
+order: 11
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The NavigationMenu composes a row of menu items whose triggers open positioned dropdown panels. It is a thin wrapper over [Ark UI `navigation-menu`](https://ark-ui.com/docs/components/navigation-menu), styled like [shadcn's navigation menu](https://ui.shadcn.com/docs/components/base/navigation-menu), sharing the `navigationMenuTriggerStyle` cva + part classes from `wicn-core`. Use the framework selector in the top-right to switch between implementations.
+
+<Demo component="navigation-menu" example="default" />
+
+## Examples
+
+<Examples component="navigation-menu" exclude="default" />
+
+## API Reference
+
+All parts accept standard element attributes plus `className`/`class`, merged via `cn` with the shared part classes.
+
+### NavigationMenu
+
+#### Props
+
+Accepts all [Ark `NavigationMenuRoot` props](https://ark-ui.com/docs/components/navigation-menu) plus `className`/`class`. Renders the `List` region plus the shared `ViewportPositioner`/`Viewport` that dropdown content portals into.
+
+### NavigationMenuTrigger
+
+#### Props
+
+Accepts all [Ark `NavigationMenuTrigger` props](https://ark-ui.com/docs/components/navigation-menu). Applies `navigationMenuTriggerStyle()` and renders a chevron that rotates when its item is open.
+
+### NavigationMenuItem
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | — | Identifies the item. |
+| `disabled` | `boolean` | `false` | Disables the item. |
+
+### NavigationMenuContent
+
+#### Props
+
+Accepts all [Ark `NavigationMenuContent` props](https://ark-ui.com/docs/components/navigation-menu). Renders the dropdown panel; portal into the shared viewport is handled by Ark.
+
+### NavigationMenuLink
+
+#### Props
+
+Accepts all [Ark `NavigationMenuLink` props](https://ark-ui.com/docs/components/navigation-menu). Renders an `<a>` styled as a menu link.
+
+### Other parts
+
+`NavigationMenuList`, `NavigationMenuViewport`, `NavigationMenuViewportPositioner`, `NavigationMenuIndicator` — each accepts its native element props plus `className`/`class`.
+
+## Accessibility
+
+Follows the [Navigation Menu WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/). The underlying Ark `navigation-menu` provides hover/click triggers with `openDelay`/`closeDelay`, arrow-key roving, `Escape` dismissal, and the `menu`/`menuitem` roles — wicn never hand-rolls these. The trigger chevron is `aria-hidden`.
+
+## Theming
+
+No theme extension is required — all styling uses existing tokens (`bg-popover`, `text-muted-foreground`, `bg-accent`, `border-border`, `--radius-*`), light and dark.

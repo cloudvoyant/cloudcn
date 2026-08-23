@@ -57,6 +57,14 @@ import ExampleCardSizes from './examples/card/sizes/index.astro';
 import ExampleCardOverride from './examples/card/override/index.astro';
 import ExampleCardWithImage from './examples/card/with-image/index.astro';
 import ExampleCardHorizontal from './examples/card/horizontal/index.astro';
+import ExampleNavigationMenuDefault from './examples/navigation-menu/default/index.astro';
+import ExampleNavigationMenuDropdown from './examples/navigation-menu/dropdown/index.astro';
+import ExampleTabsDefault from './examples/tabs/default/index.astro';
+import ExampleTabsUnderline from './examples/tabs/underline/index.astro';
+import ExamplePaginationDefault from './examples/pagination/default/index.astro';
+import ExamplePaginationControlled from './examples/pagination/controlled/index.astro';
+import ExampleNavbarSticky from './examples/navbar/sticky/index.astro';
+import ExampleNavbarFloating from './examples/navbar/floating/index.astro';
 
 type ComponentName =
   | 'button'
@@ -69,7 +77,11 @@ type ComponentName =
   | 'center'
   | 'item'
   | 'card'
-  | 'sidebar';
+  | 'sidebar'
+  | 'navigation-menu'
+  | 'tabs'
+  | 'pagination'
+  | 'navbar';
 
 type ExampleName =
   | 'solid'
@@ -113,7 +125,12 @@ type ExampleName =
   | 'override'
   | 'with-image'
   | 'offcanvas'
-  | 'rail';
+  | 'rail'
+  | 'dropdown'
+  | 'underline'
+  | 'controlled'
+  | 'sticky'
+  | 'floating';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -208,6 +225,22 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'icon', title: 'Collapses to an icon rail', component: ExampleSidebarIcon },
     { id: 'offcanvas', title: 'Completely disappears on collapse', component: ExampleSidebarOffcanvas },
     { id: 'rail', title: 'Toggle with the rail handle', component: ExampleSidebarRail },
+  ],
+  'navigation-menu': [
+    { id: 'default', title: 'Default', component: ExampleNavigationMenuDefault },
+    { id: 'dropdown', title: 'Dropdown panels', component: ExampleNavigationMenuDropdown },
+  ],
+  tabs: [
+    { id: 'default', title: 'Default', component: ExampleTabsDefault },
+    { id: 'underline', title: 'Underline', component: ExampleTabsUnderline },
+  ],
+  pagination: [
+    { id: 'default', title: 'Default', component: ExamplePaginationDefault },
+    { id: 'controlled', title: 'Controlled', component: ExamplePaginationControlled },
+  ],
+  navbar: [
+    { id: 'sticky', title: 'Sticky', component: ExampleNavbarSticky },
+    { id: 'floating', title: 'Floating', component: ExampleNavbarFloating },
   ],
 };
 

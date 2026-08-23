@@ -1,6 +1,6 @@
 {
   "name": "wicn-svelte",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "wicn Svelte UI components",
   "license": "MIT",
   "type": "module",

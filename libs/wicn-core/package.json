@@ -1,6 +1,6 @@
 {
   "name": "wicn-core",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "wicn shared component interfaces, cva variants, and theme",
   "license": "MIT",
   "type": "module",

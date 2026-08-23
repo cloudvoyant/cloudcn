@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/cloudvoyant/cloudcn/compare/v0.6.0...v0.7.0) (2026-08-23)
+
+
+### Features
+
+* rename cloudcn UI library to wicn ([45a9765](https://github.com/cloudvoyant/cloudcn/commit/45a9765ce3a6f57dc87cf5a2186636e2d056cb1b)), closes [#090f29](https://github.com/cloudvoyant/cloudcn/issues/090f29)
+
 # [0.6.0](https://github.com/cloudvoyant/cloudcn/compare/v0.5.0...v0.6.0) (2026-08-23)
 
 

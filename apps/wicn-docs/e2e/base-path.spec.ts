@@ -9,7 +9,11 @@ test.describe('Base-path', () => {
   test('rendered nav links and assets are /wicn/-prefixed', async ({ page }) => {
     await page.goto('components/button');
 
-    await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', /^\/wicn\//);
+    const favicons = page.locator('link[rel="icon"][data-favicon]');
+    await expect(favicons).toHaveCount(2);
+    for (const href of await favicons.evaluateAll((els) => els.map((el) => el.getAttribute('href')))) {
+      expect(href).toMatch(/^\/wicn\//);
+    }
     await expect(page.locator('a[href="/"]')).toHaveCount(0);
     await expect(page.locator('a[href^="/"]:not([href^="/wicn/"])')).toHaveCount(0);
     await expect(page.locator('img[src^="/"]:not([src^="/wicn/"])')).toHaveCount(0);

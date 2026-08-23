@@ -1,3 +1,10 @@
+## [0.7.1](https://github.com/cloudvoyant/wicn/compare/v0.7.0...v0.7.1) (2026-08-23)
+
+
+### Bug Fixes
+
+* remove pages.yml deploy gate after repo rename to wicn ([c5d85e1](https://github.com/cloudvoyant/wicn/commit/c5d85e1f140c7b755fbbca8813114b543c4358d1))
+
 # [0.7.0](https://github.com/cloudvoyant/cloudcn/compare/v0.6.0...v0.7.0) (2026-08-23)
 
 

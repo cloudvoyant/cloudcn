@@ -1,6 +1,12 @@
 # wicn
 
+[![npm version](https://img.shields.io/npm/v/wicn-react.svg)](https://www.npmjs.com/package/wicn-react)
+
 wicn is a pnpm workspace monorepo for a cross-framework UI component library (React + Svelte) with an Astro docs/demo site.
+
+## Docs
+
+The docs site is published to GitHub Pages at [https://cloudvoyant.github.io/wicn/](https://cloudvoyant.github.io/wicn/).
 
 ## Structure
 

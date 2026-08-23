@@ -1,4 +1,5 @@
 /* apps/wicn-docs/src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 @import 'tailwindcss';
 @import 'wicn-core/theme.css';
 /* shadcn-compatible theme presets (`.theme-{name}` / `.theme-{name}.dark`). */
@@ -7,6 +8,12 @@
    classes) with Tailwind, resolving via the package exports. This is the same
    line an external consumer uses. */
 @import 'wicn-core/components.css';
+
+/* Brand wordmark font — distinctive geometric grotesque for the "wicn" lockup. */
+.font-brand {
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
 
 /* Demo: show only the active framework's island.
    Scoped to [data-demo] so the FrameworkSelector buttons (which also carry
@@ -38,6 +45,15 @@ html.dark [data-example-code] .astro-code {
 }
 html.dark [data-example-code] .astro-code span {
   color: var(--shiki-dark, #e1e4e8);
+}
+
+/* Astro inlines a hardcoded Shiki background on MDX code blocks; force it to
+   the theme's surface token so light/dark code blocks match the theme. */
+.astro-code {
+  background-color: var(--wicn-shiki-light-bg, #ffffff) !important;
+}
+html.dark .astro-code {
+  background-color: var(--wicn-shiki-dark-bg, #24292e) !important;
 }
 
 /* Rendered MDX docs. */

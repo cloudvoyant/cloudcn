@@ -33,7 +33,7 @@ const components = (await getCollection('components')).sort((a, b) => a.data.ord
       return (
         <a
           href={href}
-          class="group rounded-lg border border-border bg-card p-6 transition-colors hover:border-border hover:bg-accent"
+          class="group rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary hover:bg-accent dark:hover:bg-accent/40"
         >
           <h2 class="text-lg font-semibold">{entry.data.title}</h2>
           <p class="mt-2 text-sm text-muted-foreground">{entry.data.description}</p>

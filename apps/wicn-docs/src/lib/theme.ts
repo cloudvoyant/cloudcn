@@ -59,17 +59,17 @@ export function applyColorMode(mode: ColorMode): void {
 // ── Theme ────────────────────────────────────────────────────────────────
 
 /**
- * Read the persisted theme from localStorage. Falls back to 'default'.
+ * Read the persisted theme from localStorage. Falls back to the wicn brand theme.
  */
 export function getInitialTheme(): ThemeName {
-  if (typeof window === 'undefined') return 'default';
+  if (typeof window === 'undefined') return 'wicn';
   try {
     const saved = localStorage.getItem(THEME_KEY);
     if (saved && THEME_NAMES.includes(saved)) return saved;
   } catch {
     /* storage unavailable */
   }
-  return 'default';
+  return 'wicn';
 }
 
 /**

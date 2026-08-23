@@ -60,6 +60,7 @@ export const THEMES: ThemeMeta[] = [
   { name: 'vintage-paper', label: 'Vintage Paper' },
   { name: 'violet-bloom', label: 'Violet Bloom' },
   { name: 'vitepress', label: 'Vitepress' },
+  { name: 'wicn', label: 'Wicn' },
 ];
 
 export const THEME_NAMES: string[] = THEMES.map((t) => t.name);

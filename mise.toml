@@ -16,6 +16,7 @@ pnpm       = "10"
 bats       = "latest"
 shellcheck = "latest"
 shfmt      = "latest"
+imagemagick = "latest"
 
 [task_config]
 includes = ["mise-tasks"]

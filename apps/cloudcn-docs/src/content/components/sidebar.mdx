@@ -39,6 +39,28 @@ The sidebar is a composition of named parts; all structural parts accept standar
 | `variant` | `'sidebar' \| 'floating' \| 'inset'` | `'sidebar'` | Layout variant. |
 | `collapsible` | `'offcanvas' \| 'icon' \| 'none'` | `'offcanvas'` | Collapse behavior: `icon` leaves a thin icon rail, `offcanvas` hides it entirely, `none` disables collapsing. |
 
+### SidebarGroup
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | — | Optional group heading, rendered as the `SidebarGroupLabel`. |
+
+### SidebarMenuLink
+
+The concise nav-item shorthand: renders `SidebarMenuItem > SidebarMenuButton` in one component.
+
+#### Props
+
+Accepts all `SidebarMenuButton` props plus:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `icon` | `ReactNode` / snippet | — | Icon rendered before the label. |
+| `href` | `string` | — | When set, renders an `<a>` instead of a `<button>`. |
+| `children` | `string` | — | The item label. |
+
 ### SidebarMenuButton
 
 #### Props
@@ -61,7 +83,7 @@ Accepts all `HTMLButtonProps` plus `className`/`class`, and:
 
 ### Other parts
 
-`SidebarHeader`, `SidebarFooter`, `SidebarContent`, `SidebarGroup`, `SidebarGroupLabel`, `SidebarGroupAction`, `SidebarGroupContent`, `SidebarMenu`, `SidebarMenuItem`, `SidebarMenuAction`, `SidebarMenuBadge`, `SidebarMenuSkeleton`, `SidebarMenuSub`, `SidebarMenuSubItem`, `SidebarMenuSubButton`, `SidebarTrigger`, `SidebarRail`, `SidebarInset`, `SidebarSeparator`, `SidebarInput` — each accepts its native element props plus `className`/`class`. `SidebarTrigger` and `SidebarRail` are toggle buttons (`aria-label="Toggle Sidebar"`); `SidebarRail` is non-focusable by default (`tabIndex={-1}`).
+`SidebarHeader`, `SidebarFooter`, `SidebarContent`, `SidebarGroupAction`, `SidebarMenu`, `SidebarMenuItem`, `SidebarMenuAction`, `SidebarMenuBadge`, `SidebarMenuSkeleton`, `SidebarMenuSub`, `SidebarMenuSubItem`, `SidebarMenuSubButton`, `SidebarTrigger`, `SidebarRail`, `SidebarInset`, `SidebarSeparator`, `SidebarInput` — each accepts its native element props plus `className`/`class`. `SidebarTrigger` and `SidebarRail` are toggle buttons (`aria-label="Toggle Sidebar"`); `SidebarRail` is non-focusable by default (`tabIndex={-1}`). `SidebarMenuLink` covers the common nav-item case; use `SidebarMenuItem` + `SidebarMenuButton` + `SidebarMenuAction`/`SidebarMenuBadge` for composite items (badge, hover action, submenu).
 
 ## Accessibility
 

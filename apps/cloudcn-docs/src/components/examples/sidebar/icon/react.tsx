@@ -13,43 +13,40 @@ function AppSidebar() {
     <Sidebar.Root collapsible="icon" className="h-full">
       <Sidebar.Header>
         <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton size="lg" asChild>
-              <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <span className="text-sm font-semibold">c</span>
-                </div>
-                <span>cloudcn</span>
-              </a>
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
+          <Sidebar.MenuLink
+            href="#"
+            size="lg"
+            icon={
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <span className="text-sm font-semibold">c</span>
+              </div>
+            }
+          >
+            cloudcn
+          </Sidebar.MenuLink>
         </Sidebar.Menu>
       </Sidebar.Header>
       <Sidebar.Content>
-        <Sidebar.Group>
-          <Sidebar.GroupLabel>Applications</Sidebar.GroupLabel>
-          <Sidebar.GroupContent>
-            <Sidebar.Menu>
-              {NAV.map((item) => (
-                <Sidebar.MenuItem key={item.label}>
-                  <Sidebar.MenuButton tooltip={item.label} isActive={item.label === 'Home'}>
-                    <item.icon />
-                    <span>{item.label}</span>
-                  </Sidebar.MenuButton>
-                </Sidebar.MenuItem>
-              ))}
-            </Sidebar.Menu>
-          </Sidebar.GroupContent>
+        <Sidebar.Group label="Applications">
+          <Sidebar.Menu>
+            {NAV.map((item) => (
+              <Sidebar.MenuLink
+                key={item.label}
+                icon={<item.icon />}
+                tooltip={item.label}
+                isActive={item.label === 'Home'}
+              >
+                {item.label}
+              </Sidebar.MenuLink>
+            ))}
+          </Sidebar.Menu>
         </Sidebar.Group>
       </Sidebar.Content>
       <Sidebar.Footer>
         <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton tooltip="Help">
-              <LifeBuoy />
-              <span>Help</span>
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
+          <Sidebar.MenuLink icon={<LifeBuoy />} tooltip="Help">
+            Help
+          </Sidebar.MenuLink>
         </Sidebar.Menu>
       </Sidebar.Footer>
       <Sidebar.Rail />

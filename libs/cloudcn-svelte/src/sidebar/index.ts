@@ -12,12 +12,11 @@ import Footer from './Footer.svelte';
 import Separator from './Separator.svelte';
 import Content from './Content.svelte';
 import Group from './Group.svelte';
-import GroupLabel from './GroupLabel.svelte';
 import GroupAction from './GroupAction.svelte';
-import GroupContent from './GroupContent.svelte';
 import Menu from './Menu.svelte';
 import MenuItem from './MenuItem.svelte';
 import MenuButton from './MenuButton.svelte';
+import MenuLink from './MenuLink.svelte';
 import MenuAction from './MenuAction.svelte';
 import MenuBadge from './MenuBadge.svelte';
 import MenuSkeleton from './MenuSkeleton.svelte';
@@ -38,12 +37,11 @@ export const Sidebar = {
   Separator,
   Content,
   Group,
-  GroupLabel,
   GroupAction,
-  GroupContent,
   Menu,
   MenuItem,
   MenuButton,
+  MenuLink,
   MenuAction,
   MenuBadge,
   MenuSkeleton,
@@ -65,12 +63,11 @@ export {
   Separator as SidebarSeparator,
   Content as SidebarContent,
   Group as SidebarGroup,
-  GroupLabel as SidebarGroupLabel,
   GroupAction as SidebarGroupAction,
-  GroupContent as SidebarGroupContent,
   Menu as SidebarMenu,
   MenuItem as SidebarMenuItem,
   MenuButton as SidebarMenuButton,
+  MenuLink as SidebarMenuLink,
   MenuAction as SidebarMenuAction,
   MenuBadge as SidebarMenuBadge,
   MenuSkeleton as SidebarMenuSkeleton,

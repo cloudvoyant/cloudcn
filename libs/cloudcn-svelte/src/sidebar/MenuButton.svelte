@@ -14,7 +14,7 @@
   };
 
   type Props = {
-    asChild?: Snippet<[(props: HTMLButtonAttributes) => HTMLAttributes<HTMLElement>]>;
+    asChild?: Snippet<[(props?: HTMLButtonAttributes) => HTMLAttributes<HTMLElement>]>;
     isActive?: boolean;
     variant?: 'default' | 'outline';
     size?: 'default' | 'sm' | 'lg';

@@ -12,11 +12,21 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: [
+        // Serve workspace packages from source in dev so edits to libs/* hot-reload
+        // instead of requiring a rebuild (the package exports map points at dist/).
+        // Exact-match anchors keep subpath imports (cloudcn-core/theme.css, ...)
+        // resolving through the exports map, not through the JS alias.
+        { find: /^cloudcn-core$/, replacement: new URL('../../libs/cloudcn-core/src/index.ts', import.meta.url).pathname },
+        { find: /^cloudcn-react$/, replacement: new URL('../../libs/cloudcn-react/src/index.ts', import.meta.url).pathname },
+        { find: /^cloudcn-svelte$/, replacement: new URL('../../libs/cloudcn-svelte/src/index.ts', import.meta.url).pathname },
+      ],
+    },
     optimizeDeps: {
-      // Workspace packages resolve to built dist/; don't let Vite pre-bundle and
-      // cache a stale copy (new named exports then throw
+      // Workspace packages resolve to source in dev (see alias above); don't let
+      // Vite pre-bundle and cache a stale copy (new named exports then throw
       // "does not provide an export named ..." until a dev-server restart).
-      // Excluding them makes Vite watch the dist files as source modules instead.
       exclude: ['cloudcn-core', 'cloudcn-react', 'cloudcn-svelte'],
     },
   },

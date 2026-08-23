@@ -1,7 +1,7 @@
 <!-- apps/cloudcn-docs/src/components/examples/sidebar/icon/svelte.svelte -->
 <script lang="ts">
   import { Sidebar, Container } from 'cloudcn-svelte';
-  import { House as Home, Inbox, Settings, LifeBuoy, PanelLeft } from 'lucide-svelte';
+  import { House as Home, Inbox, Settings, LifeBuoy } from 'lucide-svelte';
 
   const NAV = [
     { label: 'Home', icon: Home },
@@ -15,43 +15,38 @@
     <Sidebar.Root collapsible="icon" class="h-full">
       <Sidebar.Header>
         <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton size="lg">
-              <div
-                class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
-              >
-                <span class="text-sm font-semibold">c</span>
-              </div>
-              <span>cloudcn</span>
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
+          {#snippet logoIcon()}
+            <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+              <span class="text-sm font-semibold">c</span>
+            </div>
+          {/snippet}
+          <Sidebar.MenuLink href="#" size="lg" icon={logoIcon}>
+            cloudcn
+          </Sidebar.MenuLink>
         </Sidebar.Menu>
       </Sidebar.Header>
       <Sidebar.Content>
-        <Sidebar.Group>
-        <Sidebar.GroupLabel>Applications</Sidebar.GroupLabel>
-        <Sidebar.GroupContent>
-            <Sidebar.Menu>
-              {#each NAV as item (item.label)}
-                <Sidebar.MenuItem>
-                  <Sidebar.MenuButton tooltip={item.label} isActive={item.label === 'Home'}>
-                    <item.icon />
-                    <span>{item.label}</span>
-                  </Sidebar.MenuButton>
-                </Sidebar.MenuItem>
-              {/each}
-            </Sidebar.Menu>
-          </Sidebar.GroupContent>
+        <Sidebar.Group label="Applications">
+          <Sidebar.Menu>
+            {#each NAV as item (item.label)}
+              {#snippet itemIcon()}
+                <item.icon />
+              {/snippet}
+              <Sidebar.MenuLink icon={itemIcon} tooltip={item.label} isActive={item.label === 'Home'}>
+                {item.label}
+              </Sidebar.MenuLink>
+            {/each}
+          </Sidebar.Menu>
         </Sidebar.Group>
       </Sidebar.Content>
       <Sidebar.Footer>
         <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton tooltip="Help">
-              <LifeBuoy />
-              <span>Help</span>
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
+          {#snippet helpIcon()}
+            <LifeBuoy />
+          {/snippet}
+          <Sidebar.MenuLink icon={helpIcon} tooltip="Help">
+            Help
+          </Sidebar.MenuLink>
         </Sidebar.Menu>
       </Sidebar.Footer>
       <Sidebar.Rail />
@@ -60,15 +55,25 @@
     <Sidebar.Inset>
       <header class="flex h-12 items-center gap-2 border-b px-4">
         <Sidebar.Trigger>
-          <PanelLeft />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M15 3v18" /></svg
+          >
         </Sidebar.Trigger>
-          <span class="text-sm font-medium">Icon rail sidebar</span>
-        </header>
-        <Container class="flex-1 py-6">
-          <p class="text-sm text-muted-foreground">
-            Click the trigger (or the rail, or press Cmd/Ctrl+B) to collapse this sidebar to an icon rail.
-          </p>
-        </Container>
-      </Sidebar.Inset>
-    </Sidebar.Provider>
-  </div>
+        <span class="text-sm font-medium">Icon rail sidebar</span>
+      </header>
+      <Container class="flex-1 py-6">
+        <p class="text-sm text-muted-foreground">
+          Click the trigger (or the rail, or press Cmd/Ctrl+B) to collapse this sidebar to an icon rail.
+        </p>
+      </Container>
+    </Sidebar.Inset>
+  </Sidebar.Provider>
+</div>

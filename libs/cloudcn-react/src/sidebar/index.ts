@@ -13,12 +13,11 @@ import { Footer } from './Footer';
 import { Separator } from './Separator';
 import { Content } from './Content';
 import { Group } from './Group';
-import { GroupLabel } from './GroupLabel';
 import { GroupAction } from './GroupAction';
-import { GroupContent } from './GroupContent';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
 import { MenuButton } from './MenuButton';
+import { MenuLink } from './MenuLink';
 import { MenuAction } from './MenuAction';
 import { MenuBadge } from './MenuBadge';
 import { MenuSkeleton } from './MenuSkeleton';
@@ -39,12 +38,11 @@ const Sidebar = Object.assign(Root, {
   Separator,
   Content,
   Group,
-  GroupLabel,
   GroupAction,
-  GroupContent,
   Menu,
   MenuItem,
   MenuButton,
+  MenuLink,
   MenuAction,
   MenuBadge,
   MenuSkeleton,
@@ -68,12 +66,11 @@ export {
   Separator as SidebarSeparator,
   Content as SidebarContent,
   Group as SidebarGroup,
-  GroupLabel as SidebarGroupLabel,
   GroupAction as SidebarGroupAction,
-  GroupContent as SidebarGroupContent,
   Menu as SidebarMenu,
   MenuItem as SidebarMenuItem,
   MenuButton as SidebarMenuButton,
+  MenuLink as SidebarMenuLink,
   MenuAction as SidebarMenuAction,
   MenuBadge as SidebarMenuBadge,
   MenuSkeleton as SidebarMenuSkeleton,

@@ -103,14 +103,14 @@ export function Root({
         )}
         {...props}
       >
-        <Col
+        <div
           data-sidebar="sidebar"
           data-slot="sidebar-inner"
           data-variant={variant}
           className={cn(sidebarStyles.innerClass)}
         >
           {children}
-        </Col>
+        </div>
       </div>
     </div>
   );

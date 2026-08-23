@@ -12,6 +12,12 @@ import {
 import { sidebarMenuButtonVariants, sidebarStyles, cn } from 'cloudcn-core';
 import { useSidebar } from './context';
 
+export type MenuButtonProps = HTMLArkProps<'button'> & {
+  asChild?: boolean;
+  isActive?: boolean;
+  tooltip?: string | React.ComponentProps<typeof ArkTooltipContent>;
+} & React.ComponentProps<typeof sidebarMenuButtonVariants>;
+
 export function MenuButton({
   asChild = false,
   isActive = false,
@@ -21,11 +27,7 @@ export function MenuButton({
   className,
   children,
   ...props
-}: HTMLArkProps<'button'> & {
-  asChild?: boolean;
-  isActive?: boolean;
-  tooltip?: string | React.ComponentProps<typeof ArkTooltipContent>;
-} & React.ComponentProps<typeof sidebarMenuButtonVariants>) {
+}: MenuButtonProps) {
   const { isMobile, state } = useSidebar();
 
   const button = (

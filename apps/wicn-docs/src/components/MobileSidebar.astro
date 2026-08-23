@@ -15,7 +15,16 @@ const { currentPath = import.meta.env.BASE_URL } = Astro.props;
 >
   <div class="mb-6 flex items-center justify-between">
     <span class="flex items-center gap-2 text-lg font-semibold tracking-tight">
-      <img src={`${import.meta.env.BASE_URL}wicn-mark.svg`} alt="" class="h-6 w-6" />
+      <img
+        src={`${import.meta.env.BASE_URL}wicn-logo-light.svg`}
+        alt=""
+        class="h-7 w-auto dark:hidden"
+      />
+      <img
+        src={`${import.meta.env.BASE_URL}wicn-logo-dark.svg`}
+        alt=""
+        class="hidden h-7 w-auto dark:block"
+      />
       wicn
     </span>
     <button

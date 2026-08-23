@@ -1,7 +1,7 @@
 // apps/wicn-docs/src/components/examples/sidebar/offcanvas/react.tsx
 import {
   SidebarProvider,
-  SidebarRoot,
+  Sidebar,
   SidebarHeader,
   SidebarContent,
   SidebarGroup,
@@ -23,7 +23,7 @@ export default function ReactSidebarOffcanvas() {
   return (
     <div className="relative h-[560px] rounded-lg bg-background [transform:translateZ(0)]">
       <SidebarProvider className="h-full min-h-0">
-        <SidebarRoot collapsible="offcanvas" className="h-full">
+        <Sidebar collapsible="offcanvas" className="h-full">
           <SidebarHeader>
             <SidebarMenu>
               <SidebarMenuLink
@@ -50,7 +50,7 @@ export default function ReactSidebarOffcanvas() {
               </SidebarMenu>
             </SidebarGroup>
           </SidebarContent>
-        </SidebarRoot>
+        </Sidebar>
         <SidebarInset>
           <header className="flex h-12 items-center gap-2 border-b px-4">
             <SidebarTrigger>

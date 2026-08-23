@@ -1,10 +1,10 @@
 // apps/wicn-docs/src/components/examples/card/with-image/react.tsx
-import { CardRoot, CardHeader, CardBody, CardTitle, CardDescription, CardCover } from 'wicn-react';
+import { Card, CardHeader, CardBody, CardTitle, CardDescription, CardCover } from 'wicn-react';
 
 export default function ReactCardWithImage() {
   return (
     <div className="flex flex-col gap-4 sm:flex-row">
-      <CardRoot className="w-full max-w-sm">
+      <Card className="w-full max-w-sm">
         <CardCover>
           <div className="h-40 w-full bg-gradient-to-br from-primary/40 to-accent/50" />
         </CardCover>
@@ -15,8 +15,8 @@ export default function ReactCardWithImage() {
         <CardBody>
           <p className="text-sm text-muted-foreground">A flush cover reaches the card boundaries.</p>
         </CardBody>
-      </CardRoot>
-      <CardRoot className="w-full max-w-sm">
+      </Card>
+      <Card className="w-full max-w-sm">
         <CardCover variant="inset">
           <div className="h-40 w-full bg-gradient-to-br from-primary/40 to-accent/50" />
         </CardCover>
@@ -27,7 +27,7 @@ export default function ReactCardWithImage() {
         <CardBody>
           <p className="text-sm text-muted-foreground">An inset cover stays within the padding with rounded corners.</p>
         </CardBody>
-      </CardRoot>
+      </Card>
     </div>
   );
 }

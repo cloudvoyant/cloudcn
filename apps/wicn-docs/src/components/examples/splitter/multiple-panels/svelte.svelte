@@ -1,7 +1,7 @@
 <!-- apps/wicn-docs/src/components/examples/splitter/multiple-panels/svelte.svelte -->
 <script lang="ts">
   import {
-    SplitterRoot,
+    Splitter,
     SplitterPanel,
     SplitterResizeTrigger,
     SplitterResizeTriggerIndicator,
@@ -9,7 +9,7 @@
 </script>
 
 <div class="h-64 w-full rounded-md border border-border bg-background">
-  <SplitterRoot panels={[{ id: 'a' }, { id: 'b' }, { id: 'c' }]}>
+  <Splitter panels={[{ id: 'a' }, { id: 'b' }, { id: 'c' }]}>
     <SplitterPanel id="a" class="flex items-center justify-center">
       <span class="text-sm font-medium">A</span>
     </SplitterPanel>
@@ -25,5 +25,5 @@
     <SplitterPanel id="c" class="flex items-center justify-center">
       <span class="text-sm font-medium">C</span>
     </SplitterPanel>
-  </SplitterRoot>
+  </Splitter>
 </div>

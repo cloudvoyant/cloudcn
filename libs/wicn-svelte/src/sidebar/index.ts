@@ -1,7 +1,7 @@
 // libs/wicn-svelte/src/sidebar/index.ts
 // Unified export. `Sidebar` parts are exported flat (SidebarProvider,
-// SidebarRoot, SidebarHeader, and the other named parts) as the only public API:
-//   <SidebarProvider> <SidebarRoot> <SidebarHeader> </SidebarProvider>
+// Sidebar, SidebarHeader, and the other named parts) as the only public API:
+//   <SidebarProvider> <Sidebar> <SidebarHeader> </SidebarProvider>
 
 import Provider from './Provider.svelte';
 import Root from './Root.svelte';
@@ -29,7 +29,7 @@ import { getSidebarContext as useSidebar } from './context.svelte';
 
 export {
   Provider as SidebarProvider,
-  Root as SidebarRoot,
+  Root as Sidebar,
   Header as SidebarHeader,
   Footer as SidebarFooter,
   Separator as SidebarSeparator,

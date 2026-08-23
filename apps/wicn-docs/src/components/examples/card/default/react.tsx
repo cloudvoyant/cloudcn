@@ -1,9 +1,9 @@
 // apps/wicn-docs/src/components/examples/card/default/react.tsx
-import { CardRoot, CardHeader, CardBody, CardFooter, CardTitle, CardDescription, Button } from 'wicn-react';
+import { Card, CardHeader, CardBody, CardFooter, CardTitle, CardDescription, Button } from 'wicn-react';
 
 export default function ReactCardDefault() {
   return (
-    <CardRoot className="w-full max-w-sm">
+    <Card className="w-full max-w-sm">
       <CardHeader>
         <CardTitle>Team members</CardTitle>
         <CardDescription>Manage your team and their roles.</CardDescription>
@@ -21,6 +21,6 @@ export default function ReactCardDefault() {
           Cancel
         </Button>
       </CardFooter>
-    </CardRoot>
+    </Card>
   );
 }

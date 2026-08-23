@@ -8,7 +8,7 @@ export { Col, type ColProps } from './col';
 export { Center, type CenterProps } from './center';
 export { Item, type ItemProps } from './item';
 export {
-  CardRoot,
+  Card,
   CardHeader,
   CardBody,
   CardFooter,
@@ -26,11 +26,11 @@ export {
 export { Stack, HStack, VStack, type StackProps, type HStackProps, type VStackProps } from './stack';
 export { Scroll, type ScrollProps } from './scroll';
 export {
-  SplitterRoot,
+  Splitter,
   SplitterPanel,
   SplitterResizeTrigger,
   SplitterResizeTriggerIndicator,
-  type SplitterRootProps,
+  type SplitterProps,
   type SplitterPanelProps,
   type SplitterResizeTriggerProps,
   type SplitterResizeTriggerIndicatorProps,

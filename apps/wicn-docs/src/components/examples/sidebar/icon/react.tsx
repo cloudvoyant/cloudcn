@@ -1,7 +1,7 @@
 // apps/wicn-docs/src/components/examples/sidebar/icon/react.tsx
 import {
   SidebarProvider,
-  SidebarRoot,
+  Sidebar,
   SidebarHeader,
   SidebarContent,
   SidebarFooter,
@@ -23,7 +23,7 @@ const NAV = [
 
 function AppSidebar() {
   return (
-    <SidebarRoot collapsible="icon" className="h-full">
+    <Sidebar collapsible="icon" className="h-full">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuLink
@@ -63,7 +63,7 @@ function AppSidebar() {
         </SidebarMenu>
       </SidebarFooter>
       <SidebarRail />
-    </SidebarRoot>
+    </Sidebar>
   );
 }
 

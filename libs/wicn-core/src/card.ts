@@ -29,7 +29,7 @@ export const cardVariants = cva('flex flex-col overflow-hidden rounded-lg border
 
 export type CardVariants = VariantProps<typeof cardVariants>;
 
-export interface CardRootProps {
+export interface CardProps {
   variant?: CardVariants['variant'];
   size?: CardVariants['size'];
   orientation?: CardVariants['orientation'];

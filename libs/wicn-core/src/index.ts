@@ -12,7 +12,7 @@ export {
   cardFooterBase,
   cardTitleBase,
   cardDescriptionBase,
-  type CardRootProps,
+  type CardProps,
   type CardCoverProps,
   type CardVariants,
 } from './card';

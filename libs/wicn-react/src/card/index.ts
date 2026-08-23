@@ -1,5 +1,5 @@
 // libs/wicn-react/src/card/index.ts
-export { CardRoot, type CardProps } from './root';
+export { Card, type CardProps } from './root';
 export { CardHeader, type CardHeaderProps } from './header';
 export { CardBody, type CardBodyProps } from './body';
 export { CardFooter, type CardFooterProps } from './footer';

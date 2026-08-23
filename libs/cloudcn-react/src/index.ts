@@ -37,3 +37,4 @@ export {
   type SplitterResizeTriggerProps,
   type SplitterResizeTriggerIndicatorProps,
 } from './splitter';
+export * from './sidebar';

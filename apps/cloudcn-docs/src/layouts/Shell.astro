@@ -65,14 +65,14 @@ const {
   </head>
   <body class="min-h-dvh bg-background text-foreground antialiased">
     <TopNav currentPath={currentPath} />
-    <div class="mx-auto flex w-full max-w-6xl gap-8 px-4 lg:px-8">
-      <aside class="hidden w-56 shrink-0 py-10 lg:block">
+    <div class="flex w-full gap-8">
+      <aside class="hidden w-56 shrink-0 py-10 pl-4 lg:block lg:pl-8">
         <div class="sticky top-24">
           <Sidebar currentPath={currentPath} />
         </div>
       </aside>
       <main class="min-w-0 flex-1 py-10">
-        <div class="mx-auto w-full max-w-3xl">
+        <div class="mx-auto w-full max-w-4xl">
           <slot />
         </div>
       </main>

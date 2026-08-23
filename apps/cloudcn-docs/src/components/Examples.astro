@@ -76,6 +76,11 @@ const titles: Record<string, { id: string; title: string }[]> = {
     { id: 'with-image', title: 'Cover variants' },
     { id: 'horizontal', title: 'Horizontal' },
   ],
+  sidebar: [
+    { id: 'icon', title: 'Collapses to an icon rail' },
+    { id: 'offcanvas', title: 'Completely disappears on collapse' },
+    { id: 'rail', title: 'Toggle with the rail handle' },
+  ],
 };
 const entries = (titles[component ?? 'button'] ?? []).filter((e) => e.id !== exclude);
 ---

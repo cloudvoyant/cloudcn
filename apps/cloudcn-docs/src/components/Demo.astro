@@ -15,6 +15,9 @@ import ExampleBadgeDefault from './examples/badge/default/index.astro';
 import ExampleBadgeVariants from './examples/badge/variants/index.astro';
 import ExampleBadgeColors from './examples/badge/colors/index.astro';
 import ExampleBadgeSizes from './examples/badge/sizes/index.astro';
+import ExampleSidebarIcon from './examples/sidebar/icon/index.astro';
+import ExampleSidebarOffcanvas from './examples/sidebar/offcanvas/index.astro';
+import ExampleSidebarRail from './examples/sidebar/rail/index.astro';
 import ExampleContainerDefault from './examples/container/default/index.astro';
 import ExampleContainerSizes from './examples/container/sizes/index.astro';
 import ExampleContainerFluid from './examples/container/fluid/index.astro';
@@ -65,7 +68,8 @@ type ComponentName =
   | 'splitter'
   | 'center'
   | 'item'
-  | 'card';
+  | 'card'
+  | 'sidebar';
 
 type ExampleName =
   | 'solid'
@@ -107,7 +111,9 @@ type ExampleName =
   | 'in-stack'
   | 'in-container'
   | 'override'
-  | 'with-image';
+  | 'with-image'
+  | 'offcanvas'
+  | 'rail';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -197,6 +203,11 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'override', title: 'Override title', component: ExampleCardOverride },
     { id: 'with-image', title: 'With image', component: ExampleCardWithImage },
     { id: 'horizontal', title: 'Horizontal', component: ExampleCardHorizontal },
+  ],
+  sidebar: [
+    { id: 'icon', title: 'Collapses to an icon rail', component: ExampleSidebarIcon },
+    { id: 'offcanvas', title: 'Completely disappears on collapse', component: ExampleSidebarOffcanvas },
+    { id: 'rail', title: 'Toggle with the rail handle', component: ExampleSidebarRail },
   ],
 };
 

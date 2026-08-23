@@ -1,15 +1,18 @@
 ---
 // apps/cloudcn-docs/src/components/Example.astro
 import { Code } from 'astro/components';
+import ExampleScreen from './ExampleScreen.astro';
 
 interface Props {
   id?: string;
   title: string;
   reactCode: string;
   svelteCode: string;
+  /** Render the preview flush to the card edge (no padding) — for full-screen demos. */
+  fullscreen?: boolean;
 }
 
-const { id = '', title, reactCode, svelteCode } = Astro.props;
+const { id = '', title, reactCode, svelteCode, fullscreen = false } = Astro.props;
 const slug = id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const codeId = `example-${slug}-code`;
 ---
@@ -17,9 +20,9 @@ const codeId = `example-${slug}-code`;
 <div class="w-full" data-example>
   <div class="flex flex-col overflow-hidden rounded-lg border border-border bg-background">
     <div data-example-preview class="bg-background" data-demo>
-      <div class="p-6">
+      <ExampleScreen fullscreen={fullscreen}>
         <slot />
-      </div>
+      </ExampleScreen>
     </div>
 
     <div id={codeId} data-example-code hidden data-demo>

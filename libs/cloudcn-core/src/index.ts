@@ -31,5 +31,15 @@ export {
   splitterResizeTriggerSeparatorBase,
   splitterResizeTriggerIndicatorBase,
 } from './splitter';
+export {
+  SIDEBAR_WIDTH,
+  SIDEBAR_WIDTH_MOBILE,
+  SIDEBAR_WIDTH_ICON,
+  SIDEBAR_KEYBOARD_SHORTCUT,
+  sidebarMenuButtonVariants,
+  type SidebarMenuButtonVariants,
+  type SidebarContextProps,
+  sidebarStyles,
+} from './sidebar';
 export { THEMES, THEME_NAMES, type ThemeMeta } from './themes';
 export { cn } from './cn';

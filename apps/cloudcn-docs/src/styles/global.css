@@ -3,11 +3,10 @@
 @import 'cloudcn-core/theme.css';
 /* shadcn-compatible theme presets (`.theme-{name}` / `.theme-{name}.dark`). */
 @import 'cloudcn-core/themes.css';
-
-/* Tailwind content detection must reach the workspace libs (cva class strings). */
-@source '../../../../libs/cloudcn-core/src';
-@source '../../../../libs/cloudcn-react/src';
-@source '../../../../libs/cloudcn-svelte/src';
+/* Registers the cloudcn component class strings (cva + inline framework
+   classes) with Tailwind, resolving via the package exports. This is the same
+   line an external consumer uses. */
+@import 'cloudcn-core/components.css';
 
 /* Demo: show only the active framework's island.
    Scoped to [data-demo] so the FrameworkSelector buttons (which also carry
@@ -65,6 +64,21 @@ html.dark [data-example-code] .astro-code span {
 }
 .docs-prose ol {
   @apply my-4 list-decimal pl-6 space-y-1;
+}
+/* Interactive demo previews render their own component trees (e.g. the
+   Sidebar's SidebarMenu <ul>/<li>). Reset prose list styling inside them so
+   navigation menus don't inherit bullets/indentation. */
+.docs-prose [data-demo] :is(ul, ol) {
+  @apply m-0 list-none p-0;
+}
+.docs-prose [data-demo] :is(ul, ol) li {
+  @apply m-0;
+}
+/* Prose anchor styling (underline, primary color) must not bleed into
+   interactive demos — demos render their own components (e.g. the sidebar's
+   asChild <a> logo), which should keep their own look. */
+.docs-prose [data-demo] a {
+  @apply font-normal text-inherit no-underline;
 }
 .docs-prose code {
   @apply rounded bg-muted px-1.5 py-0.5 text-[0.9em] text-foreground;

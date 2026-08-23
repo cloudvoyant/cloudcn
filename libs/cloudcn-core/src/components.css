@@ -1,0 +1,23 @@
+/* libs/cloudcn-core/src/components.css */
+/*
+ * Registers the cloudcn component class strings with the consuming Tailwind
+ * v4 build. Relative paths resolve from this file's installed location
+ * (node_modules/cloudcn-core/src/), where the sibling packages sit alongside
+ * it in a flat node_modules. This lets the client's own Tailwind compile the
+ * utility classes the cloudcn components reference + inline in the framework
+ * libs -- no per-consumer @source config required.
+ *
+ * src/ dirs are scanned so dev-served source (HMR) sees class changes without
+ * a rebuild; dist/ stays so published packages keep working.
+ *
+ * Consumers import it after Tailwind, e.g.:
+ *   @import 'tailwindcss';
+ *   @import 'cloudcn-core/theme.css';
+ *   @import 'cloudcn-core/components.css';
+ */
+@source ".";
+@source "../../cloudcn-react/src";
+@source "../../cloudcn-svelte/src";
+@source "../dist";
+@source "../../cloudcn-react/dist";
+@source "../../cloudcn-svelte/dist";

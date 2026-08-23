@@ -4,6 +4,8 @@ External sources the skill consults. Start at the top and fall through in order.
 
 ## Sourcing
 
+- Shark UI — component index <https://shark.vini.one/docs/components>, Agent Skill (`pnpm dlx skills add sharkui-inc/shark-ui`), LLMs.txt <https://shark.vini.one/llms.txt>
+- Tark UI — component index <https://www.tarkui.com/> (Ark UI + Tailwind, 40+ components, client-rendered docs)
 - Ark UI MCP server — <https://ark-ui.com/docs/ai/mcp-server>
 - Ark UI component docs (index of parts, anatomy, API) — <https://ark-ui.com/docs/components>
 - Chakra UI MCP server — <https://chakra-ui.com/docs/get-started/ai/mcp-server>

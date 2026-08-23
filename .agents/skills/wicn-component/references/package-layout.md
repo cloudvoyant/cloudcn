@@ -9,6 +9,7 @@ Everything both frameworks need, defined once:
 - **Shared types/interfaces** — the component's prop shape that React and Svelte both import.
 - **cva variants** — `{component}Variants` with the `variant` / `color` / `size` axes.
 - **`cn`** — the `clsx` + `tailwind-merge` helper used for every class merge.
+- **Layout primitives** — `Container`, `Row`, `Col`, `Stack`, `HStack`, `VStack`, `Center` (see `layout.ts`); compose components with these, not raw flex divs.
 - **Theme** — the shadcn CSS-variable theme (`theme.css`), light and dark.
 
 No framework imports (`react`, `svelte`, `@ark-ui/*`) belong here.

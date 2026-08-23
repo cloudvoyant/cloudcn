@@ -1,5 +1,16 @@
 // apps/wicn-docs/src/components/examples/sidebar/offcanvas/react.tsx
-import { Sidebar, Container } from 'wicn-react';
+import {
+  SidebarProvider,
+  SidebarRoot,
+  SidebarHeader,
+  SidebarContent,
+  SidebarGroup,
+  SidebarMenu,
+  SidebarMenuLink,
+  SidebarInset,
+  SidebarTrigger,
+  Container,
+} from 'wicn-react';
 import { Home, Inbox, Settings, PanelLeft } from 'lucide-react';
 
 const NAV = [
@@ -11,11 +22,11 @@ const NAV = [
 export default function ReactSidebarOffcanvas() {
   return (
     <div className="relative h-[560px] rounded-lg bg-background [transform:translateZ(0)]">
-      <Sidebar.Provider className="h-full min-h-0">
-        <Sidebar.Root collapsible="offcanvas" className="h-full">
-          <Sidebar.Header>
-            <Sidebar.Menu>
-              <Sidebar.MenuLink
+      <SidebarProvider className="h-full min-h-0">
+        <SidebarRoot collapsible="offcanvas" className="h-full">
+          <SidebarHeader>
+            <SidebarMenu>
+              <SidebarMenuLink
                 href="#"
                 size="lg"
                 icon={
@@ -25,26 +36,26 @@ export default function ReactSidebarOffcanvas() {
                 }
               >
                 wicn
-              </Sidebar.MenuLink>
-            </Sidebar.Menu>
-          </Sidebar.Header>
-          <Sidebar.Content>
-            <Sidebar.Group label="Applications">
-              <Sidebar.Menu>
+              </SidebarMenuLink>
+            </SidebarMenu>
+          </SidebarHeader>
+          <SidebarContent>
+            <SidebarGroup label="Applications">
+              <SidebarMenu>
                 {NAV.map((item) => (
-                  <Sidebar.MenuLink key={item.label} icon={<item.icon />} isActive={item.label === 'Home'}>
+                  <SidebarMenuLink key={item.label} icon={<item.icon />} isActive={item.label === 'Home'}>
                     {item.label}
-                  </Sidebar.MenuLink>
+                  </SidebarMenuLink>
                 ))}
-              </Sidebar.Menu>
-            </Sidebar.Group>
-          </Sidebar.Content>
-        </Sidebar.Root>
-        <Sidebar.Inset>
+              </SidebarMenu>
+            </SidebarGroup>
+          </SidebarContent>
+        </SidebarRoot>
+        <SidebarInset>
           <header className="flex h-12 items-center gap-2 border-b px-4">
-            <Sidebar.Trigger>
+            <SidebarTrigger>
               <PanelLeft />
-            </Sidebar.Trigger>
+            </SidebarTrigger>
             <span className="text-sm font-medium">Offcanvas sidebar</span>
           </header>
           <Container className="flex-1 py-6">
@@ -52,8 +63,8 @@ export default function ReactSidebarOffcanvas() {
               Click the trigger (or press Cmd/Ctrl+B) to completely hide this sidebar off-screen.
             </p>
           </Container>
-        </Sidebar.Inset>
-      </Sidebar.Provider>
+        </SidebarInset>
+      </SidebarProvider>
     </div>
   );
 }

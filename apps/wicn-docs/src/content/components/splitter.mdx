@@ -18,11 +18,11 @@ The Splitter lets users resize panels by dragging a handle between them.
 
 ## API Reference
 
-The React package exposes a `Splitter` namespace (`Splitter.Root`, `.Panel`, `.ResizeTrigger`, `.ResizeTriggerIndicator`) plus flat exports; the Svelte package exposes flat `SplitterRoot`, `SplitterPanel`, etc. Each part accepts all the corresponding [Ark `splitter` props](https://ark-ui.com/docs/components/splitter) plus `className`/`class`.
+Both packages expose flat `SplitterRoot`, `SplitterPanel`, `SplitterResizeTrigger`, and `SplitterResizeTriggerIndicator` exports. Each part accepts all the corresponding [Ark `splitter` props](https://ark-ui.com/docs/components/splitter) plus `className`/`class`.
 
-> **Sizing note:** Ark sets `height: 100%` and `width: 100%` inline on the root, so wrap the `Splitter` in a container with an explicit height (e.g. `<div className="h-64">`).
+> **Sizing note:** Ark sets `height: 100%` and `width: 100%` inline on the root, so wrap the `SplitterRoot` in a container with an explicit height such as `<div className="h-64">`.
 
-### Splitter.Root
+### SplitterRoot
 
 #### Props
 
@@ -32,7 +32,7 @@ The React package exposes a `Splitter` namespace (`Splitter.Root`, `.Panel`, `.R
 | `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Split axis. |
 | `defaultSize` / `size` | `PanelSize[]` | — | Initial or controlled panel sizes. |
 
-### Splitter.ResizeTrigger
+### SplitterResizeTrigger
 
 #### Props
 

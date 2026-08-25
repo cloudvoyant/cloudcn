@@ -5,6 +5,7 @@ import {
   NavbarContainer,
   NavbarBrand,
   NavbarMenu,
+  NavbarActions,
   NavbarTrigger,
   NavbarMobile,
   Container,
@@ -14,6 +15,9 @@ import {
   NavMenuTrigger,
   NavMenuContent,
   NavMenuLink,
+  NavSubMenu,
+  NavSubMenuTrigger,
+  NavSubMenuContent,
 } from 'wicn-react';
 import { WicnLogo } from '../../WicnLogo';
 
@@ -29,8 +33,8 @@ const CONTENT = [
 export default function ReactNavbarFloating() {
   return (
     <div className="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
-      <NavbarProvider density="shrink-on-scroll">
-        <Navbar variant="floating" className="sticky top-4 z-30">
+      <NavbarProvider variant="shrink" floating>
+        <Navbar className="sticky top-4 z-30">
           <NavbarContainer>
             <NavbarBrand>
               <WicnLogo className="h-7 w-auto" />
@@ -48,25 +52,39 @@ export default function ReactNavbarFloating() {
                 <NavMenuItem value="blog" variant="link">
                   <NavMenuLink href="#">Blog</NavMenuLink>
                 </NavMenuItem>
-                <NavMenuItem value="signin" variant="link">
-                  <NavMenuLink href="#">Sign in</NavMenuLink>
-                </NavMenuItem>
               </NavMenuList>
             </NavbarMenu>
+            <NavbarActions>
+              <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+                Sign in
+              </a>
+            </NavbarActions>
             <NavbarTrigger />
           </NavbarContainer>
           <NavbarMobile>
-            <VStack className="gap-2 px-4 py-4">
-              <a href="#" className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
-                Components
-              </a>
-              <a href="#" className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
-                Blog
-              </a>
-              <a href="#" className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
-                Sign in
-              </a>
-            </VStack>
+            <NavSubMenu>
+              <NavSubMenuTrigger>Docs</NavSubMenuTrigger>
+              <NavSubMenuContent>
+                <a
+                  href="#"
+                  className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+                >
+                  Components
+                </a>
+                <a
+                  href="#"
+                  className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+                >
+                  Theming
+                </a>
+              </NavSubMenuContent>
+            </NavSubMenu>
+            <a
+              href="#"
+              className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+            >
+              Blog
+            </a>
           </NavbarMobile>
         </Navbar>
         <Container className="py-6 pt-20">

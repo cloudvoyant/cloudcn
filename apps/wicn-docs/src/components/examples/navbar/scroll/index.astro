@@ -1,0 +1,17 @@
+---
+// apps/wicn-docs/src/components/examples/navbar/scroll/index.astro
+import Example from '../../../Example.astro';
+import ReactNavbarScroll from './react.tsx';
+import SvelteNavbarScroll from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Scroll" reactCode={reactCode} svelteCode={svelteCode} fullscreen>
+  <div data-fw="react">
+    <ReactNavbarScroll client:only="react" />
+  </div>
+  <div data-fw="svelte">
+    <SvelteNavbarScroll client:only="svelte" />
+  </div>
+</Example>

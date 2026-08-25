@@ -42,6 +42,11 @@ export const navMenuContentBase =
 export const navMenuLinkBase =
   'data-[active=true]:bg-accent data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring';
 
+export const navSubMenuContentBase = 'flex flex-col gap-1 py-1';
+
+export const navSubMenuTriggerBase =
+  'flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring';
+
 export const navMenuViewportPositionerBase = 'absolute left-0 top-full z-50 w-full';
 
 export const navMenuViewportBase =

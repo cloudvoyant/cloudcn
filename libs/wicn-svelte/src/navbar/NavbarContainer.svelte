@@ -2,7 +2,7 @@
 <!-- Source: wicn-react navbar container (shadcnblocks navbar6/7, re-based on Ark UI) -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
-  import { navbarContainerBase, navbarDensityVariants, navbarDensityShrunkVariants, cn } from 'wicn-core';
+  import { navbarContainerBase, navbarDensityVariants, navbarShrunkBase, cn } from 'wicn-core';
   import { getNavbarContext } from './NavbarContext.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
@@ -15,14 +15,9 @@
   let { class: className = '', children, ...rest }: Props = $props();
 
   const navbar = getNavbarContext();
-  const shrunk = $derived(navbar.density === 'shrink-on-scroll' && navbar.scrolled);
+  const shrunk = $derived(navbar.variant === 'shrink' && navbar.scrolled);
   const classes = $derived(
-    cn(
-      navbarContainerBase,
-      navbarDensityVariants({ density: navbar.density }),
-      shrunk && navbarDensityShrunkVariants({ density: navbar.density }),
-      className,
-    ),
+    cn(navbarContainerBase, navbarDensityVariants({ density: navbar.density }), shrunk && navbarShrunkBase, className),
   );
 </script>
 

@@ -96,6 +96,8 @@ const titles: Record<string, { id: string; title: string }[]> = {
   navbar: [
     { id: 'floating', title: 'Floating' },
     { id: 'shrink', title: 'Shrink on scroll' },
+    { id: 'scroll', title: 'Scroll' },
+    { id: 'hide', title: 'Hide on leave' },
   ],
 };
 const entries = (titles[component ?? 'button'] ?? []).filter((e) => e.id !== exclude);

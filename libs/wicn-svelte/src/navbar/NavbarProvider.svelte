@@ -1,24 +1,36 @@
 <!-- libs/wicn-svelte/src/navbar/NavbarProvider.svelte -->
 <!-- Source: wicn-react navbar provider (shadcnblocks navbar6/7, re-based on Ark UI) -->
 <script lang="ts">
-  import { navbarProviderBase, cn, type NavbarDensity } from 'wicn-core';
+  import { navbarProviderBase, cn, type NavbarDensity, type NavbarVariant } from 'wicn-core';
   import { setNavbarContext } from './NavbarContext.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
   type Props = {
     defaultOpen?: boolean;
+    variant?: NavbarVariant;
+    floating?: boolean;
     density?: NavbarDensity;
     class?: string;
     children?: Snippet;
   } & HTMLAttributes<HTMLDivElement>;
 
-  let { defaultOpen = false, density = 'relaxed', class: className = '', children, ...rest }: Props = $props();
+  let {
+    defaultOpen = false,
+    variant = 'sticky',
+    floating = false,
+    density = 'relaxed',
+    class: className = '',
+    children,
+    ...rest
+  }: Props = $props();
 
   const SCROLL_THRESHOLD = 24;
   let open = $state(defaultOpen);
   let scrolled = $state(false);
+  let hovered = $state(false);
   let providerEl = $state<HTMLDivElement>();
+  let slots = $state<{ brand?: Snippet; actions?: Snippet }>({});
 
   $effect(() => {
     if (!providerEl) return;
@@ -41,6 +53,14 @@
     open = value;
   }
 
+  function setHovered(value: boolean) {
+    hovered = value;
+  }
+
+  function setSlot(key: 'brand' | 'actions', node: Snippet | undefined) {
+    slots[key] = node;
+  }
+
   setNavbarContext({
     get open() {
       return open;
@@ -51,6 +71,23 @@
     },
     get density() {
       return density;
+    },
+    get variant() {
+      return variant;
+    },
+    get floating() {
+      return floating;
+    },
+    get hovered() {
+      return hovered;
+    },
+    setHovered,
+    get slots() {
+      return slots;
+    },
+    setSlot,
+    get portalEl() {
+      return providerEl;
     },
   });
 

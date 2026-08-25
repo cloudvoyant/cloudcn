@@ -1,6 +1,7 @@
 // libs/wicn-react/src/nav-menu.tsx
 // Closely based on: @ark-ui/react/navigation-menu (Ark UI), styled per shadcn navigation-menu
 import * as React from 'react';
+import { CollapsibleRoot, CollapsibleTrigger, CollapsibleContent } from '@ark-ui/react/collapsible';
 import {
   NavigationMenuRoot as ArkNavMenuRoot,
   NavigationMenuList as ArkNavMenuList,
@@ -28,6 +29,8 @@ import {
   navMenuTriggerStyle,
   navMenuContentBase,
   navMenuLinkBase,
+  navSubMenuContentBase,
+  navSubMenuTriggerBase,
   navMenuViewportPositionerBase,
   navMenuViewportBase,
   navMenuIndicatorBase,
@@ -129,6 +132,51 @@ export function NavMenuLink({ className, children, ...props }: NavMenuLinkProps)
     <ArkNavMenuLink className={classes} {...props}>
       {children}
     </ArkNavMenuLink>
+  );
+}
+
+export function NavSubMenu({ className, children, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <CollapsibleRoot data-slot="nav-sub-menu" className={cn('group', className)} {...props}>
+      {children}
+    </CollapsibleRoot>
+  );
+}
+
+export function NavSubMenuTrigger({ className, children, ...props }: React.ComponentProps<'button'>) {
+  return (
+    <CollapsibleTrigger asChild>
+      <button
+        type="button"
+        data-slot="nav-sub-menu-trigger"
+        className={cn(navSubMenuTriggerBase, className)}
+        {...props}
+      >
+        {children}
+        <svg
+          className="size-4 transition-transform duration-200 group-data-[state=open]:rotate-180"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+    </CollapsibleTrigger>
+  );
+}
+
+export function NavSubMenuContent({ className, children, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <CollapsibleContent>
+      <div data-slot="nav-sub-menu-content" className={cn(navSubMenuContentBase, className)} {...props}>
+        {children}
+      </div>
+    </CollapsibleContent>
   );
 }
 

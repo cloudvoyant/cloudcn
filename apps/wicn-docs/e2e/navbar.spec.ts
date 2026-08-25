@@ -31,15 +31,17 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('mobile trigger toggles the mobile panel', async ({ page }) => {
-      // The trigger is md:hidden — exercise the disclosure at a mobile viewport.
+      // The trigger is md:hidden — exercise the overlay at a mobile viewport.
       await page.setViewportSize({ width: 375, height: 667 });
       const trigger = page.locator(`[data-demo] [data-fw="${framework}"] [data-slot="navbar-trigger"]`).first();
-      const panel = page.locator(`[data-demo] [data-fw="${framework}"] [data-slot="navbar-mobile"]`).first();
       await expect(trigger).toBeVisible();
       await trigger.click();
-      const mobileLink = panel.locator('a:has-text("Components")').first();
+      // The full-screen overlay portals to <body> and shows the collected menu.
+      const overlay = page.locator('[data-slot="navbar-mobile"]').filter({ visible: true }).first();
+      await expect(overlay).toBeVisible();
+      const mobileLink = overlay.locator('a:has-text("Blog")').first();
       await expect(mobileLink).toBeVisible();
-      await trigger.click();
+      await overlay.locator('button[aria-label="Close navigation menu"]').click();
       await expect(mobileLink).toBeHidden();
     });
 
@@ -74,20 +76,50 @@ for (const framework of FRAMEWORKS) {
       await expect(async () => {
         await expect(header).toHaveAttribute('data-scrolled', 'true');
       }).toPass();
-      // density="shrink-on-scroll": the container compacts when scrolled
+      // variant="shrink": the container compacts when scrolled
       const container = example.locator(`[data-fw="${framework}"] [data-slot="navbar-container"]`).first();
       await expect(container).toHaveAttribute('data-shrunk', 'true');
-      const h = await container.evaluate((el) => el.getBoundingClientRect().height);
-      expect(h).toBeLessThan(64); // compacted below the default h-16 (64px)
-      // NavMenu items shrink too (size="sm")
+      await expect(async () => {
+        const h = await container.evaluate((el) => el.getBoundingClientRect().height);
+        expect(h).toBeLessThan(64); // compacted below the default h-16 (64px)
+      }).toPass();
+      // NavMenu items shrink too (density="compact")
       const trigger = example.locator(`[data-fw="${framework}"] [data-slot="navbar-menu"] [data-part="trigger"]`).first();
-      const th = await trigger.evaluate((el) => el.getBoundingClientRect().height);
-      expect(th).toBeLessThan(36); // compacted below h-9 (36px)
+      await expect(async () => {
+        const th = await trigger.evaluate((el) => el.getBoundingClientRect().height);
+        expect(th).toBeLessThan(36); // compacted below h-9 (36px)
+      }).toPass();
       await header.evaluate((el) => {
         let c: HTMLElement | null = el.parentElement;
         while (c && !/auto|scroll|overlay/.test(getComputedStyle(c).overflowY)) c = c.parentElement;
         if (c) c.scrollTop = 0;
       });
+    });
+
+    test('hide variant slides away and reveals on hover', async ({ page }) => {
+      // The "Hide on leave" example is the fifth [data-example] on the page.
+      const example = page.locator('[data-example]').nth(4);
+      const header = example.locator(`[data-fw="${framework}"] header[data-slot="navbar"]`).first();
+      const area = example.locator(`[data-fw="${framework}"] [data-slot="navbar-activation-area"]`).first();
+      await header.scrollIntoViewIfNeeded();
+      // Park the mouse away from the bar so it isn't already hovered.
+      await page.mouse.move(0, 0);
+      await header.evaluate((el) => {
+        let c: HTMLElement | null = el.parentElement;
+        while (c && !/auto|scroll|overlay/.test(getComputedStyle(c).overflowY)) c = c.parentElement;
+        if (c) c.scrollTop = 160;
+      });
+      await expect(async () => {
+        await expect(header).toHaveAttribute('data-hidden', 'true');
+      }).toPass();
+      // Let the slide-up transition settle so the activation area is exposed.
+      await page.waitForTimeout(400);
+      // Move the mouse onto the activation area to reveal the bar.
+      const box = await area.boundingBox();
+      await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+      await expect(async () => {
+        await expect(header).not.toHaveAttribute('data-hidden', 'true');
+      }).toPass();
     });
   });
 }

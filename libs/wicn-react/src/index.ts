@@ -43,6 +43,9 @@ export {
   NavMenuTrigger,
   NavMenuContent,
   NavMenuLink,
+  NavSubMenu,
+  NavSubMenuTrigger,
+  NavSubMenuContent,
   NavMenuViewport,
   NavMenuViewportPositioner,
   NavMenuIndicator,
@@ -81,6 +84,7 @@ export {
 export {
   Navbar,
   NavbarProvider,
+  NavbarActivationArea,
   NavbarContainer,
   NavbarBrand,
   NavbarMenu,

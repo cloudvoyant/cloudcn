@@ -1,8 +1,9 @@
-<!-- apps/wicn-docs/src/components/examples/navbar/floating/svelte.svelte -->
+<!-- apps/wicn-docs/src/components/examples/navbar/hide/svelte.svelte -->
 <script lang="ts">
   import {
     Navbar,
     NavbarProvider,
+    NavbarActivationArea,
     NavbarContainer,
     NavbarBrand,
     NavbarMenu,
@@ -33,13 +34,14 @@
 </script>
 
 <div class="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
-  <NavbarProvider variant="shrink" floating>
-    <Navbar class="sticky top-4 z-30">
+  <NavbarProvider variant="hide">
+    <NavbarActivationArea class="sticky top-0 -mb-12" />
+    <Navbar>
       <NavbarContainer>
         <NavbarBrand>
           <WicnLogo class="h-7 w-auto" /><span class="text-sm font-semibold">wicn</span>
         </NavbarBrand>
-        <NavbarMenu placement="left">
+        <NavbarMenu placement="center">
           <NavMenuList>
             <NavMenuItem value="docs" variant="link">
               <NavMenuTrigger>Docs</NavMenuTrigger>
@@ -69,8 +71,12 @@
         <a href="#" class="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Blog</a>
       </NavbarMobile>
     </Navbar>
-    <Container class="py-6 pt-20">
+    <Container class="py-6">
       <VStack class="gap-4">
+        <p class="rounded-md bg-muted/50 p-4 text-sm text-muted-foreground">
+          With <code>variant="hide"</code> the bar slides away once you scroll past it — hover the top strip
+          (or the bar) to bring it back.
+        </p>
         {#each CONTENT as [title, body] (title)}
           <div class="rounded-md border border-border p-4">
             <p class="text-sm font-medium">{title}</p>

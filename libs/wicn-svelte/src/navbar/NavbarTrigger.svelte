@@ -1,7 +1,7 @@
 <!-- libs/wicn-svelte/src/navbar/NavbarTrigger.svelte -->
 <!-- Source: wicn-react navbar trigger (shadcnblocks navbar6/7, re-based on Ark UI collapsible) -->
 <script lang="ts">
-  import { navbarTriggerBase, cn } from 'wicn-core';
+  import { navbarTriggerVariants, cn } from 'wicn-core';
   import { getNavbarContext } from './NavbarContext.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLButtonAttributes } from 'svelte/elements';
@@ -22,7 +22,7 @@
   const navbar = getNavbarContext();
   const open = $derived(navbar.open);
 
-  const classes = $derived(cn(navbarTriggerBase, className));
+  const classes = $derived(cn(navbarTriggerVariants({ floating: navbar.floating }), 'md:hidden', className));
 
   function toggle() {
     navbar.setOpen(!open);
@@ -43,6 +43,7 @@
     {@render children()}
   {:else}
     <svg
+      class="size-4"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -51,9 +52,9 @@
       stroke-linejoin="round"
       aria-hidden="true"
     >
-      <line x1="4" x2="20" y1="6" y2="6" />
-      <line x1="4" x2="20" y1="12" y2="12" />
-      <line x1="4" x2="20" y1="18" y2="18" />
+      <line x1="4" x2="20" y1="6" y2="6"></line>
+      <line x1="4" x2="20" y1="12" y2="12"></line>
+      <line x1="4" x2="20" y1="18" y2="18"></line>
     </svg>
   {/if}
 </button>

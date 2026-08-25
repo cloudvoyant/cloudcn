@@ -3,6 +3,7 @@
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { navbarActionsBase, cn } from 'wicn-core';
+  import { getNavbarContext } from './NavbarContext.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -12,6 +13,9 @@
   } & HTMLAttributes<HTMLDivElement>;
 
   let { class: className = '', children, ...rest }: Props = $props();
+
+  const navbar = getNavbarContext();
+  $effect(() => navbar.setSlot('actions', children));
 
   const classes = $derived(cn(navbarActionsBase, className));
 </script>

@@ -4,21 +4,35 @@
 /// <reference lib="dom" />
 import * as React from 'react';
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
-import { CollapsibleRoot, CollapsibleContent } from '@ark-ui/react/collapsible';
+import { Portal } from '@ark-ui/react/portal';
+import {
+  DialogRoot,
+  DialogBackdrop,
+  DialogPositioner,
+  DialogContent,
+  DialogCloseTrigger,
+  DialogTitle,
+  DialogDescription,
+} from '@ark-ui/react/dialog';
 import {
   navbarVariants,
   navbarProviderBase,
   navbarContainerBase,
   navbarDensityVariants,
-  navbarDensityShrunkVariants,
+  navbarShrunkBase,
   navbarBrandBase,
   navbarMenuBase,
   navbarMenuPlacementVariants,
   navbarActionsBase,
-  navbarTriggerBase,
-  navbarMobileBase,
+  navbarTriggerVariants,
+  navbarActivationAreaBase,
+  navbarMobileContentBase,
+  navbarMobileHeaderBase,
+  navbarMobileMenuBase,
+  navbarMobileActionsBase,
   cn,
   type NavbarDensity,
+  type NavbarVariant,
   type NavMenuDensity,
 } from 'wicn-core';
 import { NavMenu } from './nav-menu';
@@ -31,6 +45,13 @@ interface NavbarContextValue {
   setOpen: (open: boolean) => void;
   scrolled: boolean;
   density: NavbarDensity;
+  variant: NavbarVariant;
+  floating: boolean;
+  hovered: boolean;
+  setHovered: (hovered: boolean) => void;
+  slots: { brand: React.ReactNode; actions: React.ReactNode };
+  setSlot: (key: 'brand' | 'actions', node: React.ReactNode) => void;
+  portalRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const NavbarContext = React.createContext<NavbarContextValue | null>(null);
@@ -43,17 +64,40 @@ function useNavbar() {
   return context;
 }
 
+function useNavbarSlot(key: 'brand' | 'actions', children: React.ReactNode) {
+  const { setSlot } = useNavbar();
+  React.useLayoutEffect(() => {
+    setSlot(key, children);
+  }, [key, children, setSlot]);
+}
+
 function NavbarProvider({
   defaultOpen = false,
+  variant = 'sticky',
+  floating = false,
   density = 'relaxed',
   className,
   children,
   ...props
-}: React.ComponentProps<'div'> & { defaultOpen?: boolean; density?: NavbarDensity }) {
+}: React.ComponentProps<'div'> & {
+  defaultOpen?: boolean;
+  variant?: NavbarVariant;
+  floating?: boolean;
+  density?: NavbarDensity;
+}) {
   const id = React.useId();
   const providerRef = React.useRef<HTMLDivElement>(null);
   const [open, setOpen] = React.useState(defaultOpen);
   const [scrolled, setScrolled] = React.useState(false);
+  const [hovered, setHovered] = React.useState(false);
+  const [slots, setSlots] = React.useState<{ brand: React.ReactNode; actions: React.ReactNode }>({
+    brand: null,
+    actions: null,
+  });
+
+  const setSlot = React.useCallback((key: 'brand' | 'actions', node: React.ReactNode) => {
+    setSlots((prev) => (prev[key] === node ? prev : { ...prev, [key]: node }));
+  }, []);
 
   React.useEffect(() => {
     // Listen to the nearest scrollable ancestor (e.g. a demo container with
@@ -75,8 +119,8 @@ function NavbarProvider({
   }, []);
 
   const contextValue = React.useMemo(
-    () => ({ id, open, setOpen, scrolled, density }),
-    [id, open, scrolled, density],
+    () => ({ id, open, setOpen, scrolled, density, variant, floating, hovered, setHovered, slots, setSlot, portalRef: providerRef }),
+    [id, open, scrolled, density, variant, floating, hovered, slots, setSlot],
   );
 
   return (
@@ -88,18 +132,17 @@ function NavbarProvider({
   );
 }
 
-function Navbar({
-  variant = 'sticky',
-  className,
-  children,
-  ...props
-}: React.ComponentProps<'header'> & { variant?: 'sticky' | 'floating' }) {
-  const { scrolled } = useNavbar();
+function Navbar({ className, children, ...props }: React.ComponentProps<'header'>) {
+  const { scrolled, variant, floating, hovered, setHovered } = useNavbar();
+  const hidden = variant === 'hide' && scrolled && !hovered;
   return (
     <header
       data-slot="navbar"
       data-scrolled={scrolled || undefined}
-      className={cn(navbarVariants({ variant }), className)}
+      data-hidden={hidden || undefined}
+      className={cn(navbarVariants({ variant, floating }), className)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       {...props}
     >
       {children}
@@ -107,19 +150,29 @@ function Navbar({
   );
 }
 
+function NavbarActivationArea({ className, children, ...props }: HTMLArkProps<'div'>) {
+  const { setHovered } = useNavbar();
+  return (
+    <ark.div
+      data-slot="navbar-activation-area"
+      className={cn(navbarActivationAreaBase, className)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      {...props}
+    >
+      {children}
+    </ark.div>
+  );
+}
+
 function NavbarContainer({ className, children, ...props }: HTMLArkProps<'div'>) {
-  const { scrolled, density } = useNavbar();
-  const shrunk = density === 'shrink-on-scroll' && scrolled;
+  const { scrolled, density, variant } = useNavbar();
+  const shrunk = variant === 'shrink' && scrolled;
   return (
     <ark.div
       data-slot="navbar-container"
       data-shrunk={shrunk || undefined}
-      className={cn(
-        navbarContainerBase,
-        navbarDensityVariants({ density }),
-        shrunk && navbarDensityShrunkVariants({ density }),
-        className,
-      )}
+      className={cn(navbarContainerBase, navbarDensityVariants({ density }), shrunk && navbarShrunkBase, className)}
       {...props}
     >
       {children}
@@ -128,6 +181,7 @@ function NavbarContainer({ className, children, ...props }: HTMLArkProps<'div'>)
 }
 
 function NavbarBrand({ className, children, ...props }: HTMLArkProps<'div'>) {
+  useNavbarSlot('brand', children);
   return (
     <ark.div data-slot="navbar-brand" className={cn(navbarBrandBase, className)} {...props}>
       {children}
@@ -141,9 +195,9 @@ function NavbarMenu({
   children,
   ...props
 }: HTMLArkProps<'div'> & { placement?: 'left' | 'center' | 'right' }) {
-  const { scrolled, density } = useNavbar();
+  const { scrolled, density, variant } = useNavbar();
   const menuDensity: NavMenuDensity =
-    density === 'compact' || (density === 'shrink-on-scroll' && scrolled) ? 'compact' : 'relaxed';
+    density === 'compact' || (variant === 'shrink' && scrolled) ? 'compact' : 'relaxed';
   return (
     <ark.div
       data-slot="navbar-menu"
@@ -157,6 +211,7 @@ function NavbarMenu({
 }
 
 function NavbarActions({ className, children, ...props }: HTMLArkProps<'div'>) {
+  useNavbarSlot('actions', children);
   return (
     <ark.div data-slot="navbar-actions" className={cn(navbarActionsBase, className)} {...props}>
       {children}
@@ -170,7 +225,7 @@ function NavbarTrigger({
   'aria-label': ariaLabel,
   ...props
 }: React.ComponentProps<'button'> & { 'aria-label'?: string }) {
-  const { id, open, setOpen } = useNavbar();
+  const { id, open, setOpen, floating } = useNavbar();
   return (
     <button
       type="button"
@@ -178,12 +233,13 @@ function NavbarTrigger({
       aria-expanded={open}
       aria-controls={id}
       aria-label={ariaLabel ?? 'Toggle navigation menu'}
-      className={cn(navbarTriggerBase, className)}
+      className={cn(navbarTriggerVariants({ floating }), 'md:hidden', className)}
       onClick={() => setOpen(!open)}
       {...props}
     >
       {children ?? (
         <svg
+          className="size-4"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -202,26 +258,47 @@ function NavbarTrigger({
 }
 
 function NavbarMobile({ className, children, ...props }: React.ComponentProps<'div'>) {
-  const { id, open, setOpen } = useNavbar();
+  const { id, open, setOpen, slots, floating, portalRef } = useNavbar();
   return (
-    <CollapsibleRoot
-      open={open}
-      onOpenChange={(details) => setOpen(details.open)}
-      className={cn(navbarMobileBase, className)}
-      {...props}
-    >
-      <CollapsibleContent>
-        <div data-slot="navbar-mobile" id={id}>
-          {children}
-        </div>
-      </CollapsibleContent>
-    </CollapsibleRoot>
+    <Portal container={portalRef}>
+      <DialogRoot open={open} onOpenChange={({ open }) => setOpen(open)}>
+        <DialogBackdrop className="absolute inset-0 z-[100] bg-background/60 backdrop-blur-sm" />
+        <DialogPositioner className="absolute inset-0 z-[100]">
+          <DialogContent id={id} data-slot="navbar-mobile" className={cn(navbarMobileContentBase, className)} {...props}>
+            <DialogTitle className="sr-only">Navigation menu</DialogTitle>
+            <DialogDescription className="sr-only">Mobile navigation menu</DialogDescription>
+            <div className={navbarMobileHeaderBase}>
+              {slots.brand}
+              <DialogCloseTrigger asChild>
+                <button type="button" aria-label="Close navigation menu" className={cn(navbarTriggerVariants({ floating }))}>
+                  <svg
+                    className="size-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              </DialogCloseTrigger>
+            </div>
+            <div className={navbarMobileMenuBase}>{children}</div>
+            {slots.actions ? <div className={navbarMobileActionsBase}>{slots.actions}</div> : null}
+          </DialogContent>
+        </DialogPositioner>
+      </DialogRoot>
+    </Portal>
   );
 }
 
 export { Navbar };
 export {
   NavbarProvider,
+  NavbarActivationArea,
   NavbarContainer,
   NavbarBrand,
   NavbarMenu,

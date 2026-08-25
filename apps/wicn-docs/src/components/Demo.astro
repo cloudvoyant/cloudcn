@@ -69,6 +69,8 @@ import ExamplePaginationControlled from './examples/pagination/controlled/index.
 import ExampleNavbarSticky from './examples/navbar/sticky/index.astro';
 import ExampleNavbarFloating from './examples/navbar/floating/index.astro';
 import ExampleNavbarShrink from './examples/navbar/shrink/index.astro';
+import ExampleNavbarScroll from './examples/navbar/scroll/index.astro';
+import ExampleNavbarHide from './examples/navbar/hide/index.astro';
 
 type ComponentName =
   | 'button'
@@ -138,7 +140,9 @@ type ExampleName =
   | 'controlled'
   | 'sticky'
   | 'floating'
-  | 'shrink';
+  | 'shrink'
+  | 'scroll'
+  | 'hide';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -253,6 +257,8 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'sticky', title: 'Sticky', component: ExampleNavbarSticky },
     { id: 'floating', title: 'Floating', component: ExampleNavbarFloating },
     { id: 'shrink', title: 'Shrink on scroll', component: ExampleNavbarShrink },
+    { id: 'scroll', title: 'Scroll', component: ExampleNavbarScroll },
+    { id: 'hide', title: 'Hide on leave', component: ExampleNavbarHide },
   ],
 };
 

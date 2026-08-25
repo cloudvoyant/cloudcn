@@ -1,4 +1,4 @@
-// apps/wicn-docs/src/components/examples/navbar/sticky/react.tsx
+// apps/wicn-docs/src/components/examples/navbar/scroll/react.tsx
 import {
   Navbar,
   NavbarProvider,
@@ -30,11 +30,11 @@ const CONTENT = [
   ['Roadmap', 'What is coming next — from drawers to tours.'],
 ];
 
-export default function ReactNavbarSticky() {
+export default function ReactNavbarScroll() {
   return (
     <div className="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
-      <NavbarProvider>
-        <Navbar className="z-30">
+      <NavbarProvider variant="scroll">
+        <Navbar>
           <NavbarContainer>
             <NavbarBrand>
               <WicnLogo className="h-7 w-auto" />
@@ -89,6 +89,9 @@ export default function ReactNavbarSticky() {
         </Navbar>
         <Container className="py-6">
           <VStack className="gap-4">
+            <p className="rounded-md bg-muted/50 p-4 text-sm text-muted-foreground">
+              With <code>variant="scroll"</code> the bar scrolls away with the page — no sticky, no shrink.
+            </p>
             {CONTENT.map(([title, body]) => (
               <div key={title} className="rounded-md border border-border p-4">
                 <p className="text-sm font-medium">{title}</p>

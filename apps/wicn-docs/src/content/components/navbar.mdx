@@ -8,7 +8,7 @@ group: navigation
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-The Navbar composes a brand, a navigation menu (via the NavMenu), and actions into a sticky top bar or a floating pill, collapsing to a mobile disclosure below `md`. It is based on [shadcnblocks Navbar 7](https://www.shadcnblocks.com/block/navbar7) and [Navbar 6](https://www.shadcnblocks.com/block/navbar6), re-based on Ark UI's `navigation-menu` and `collapsible` primitives, sharing the `navbarVariants` cva + part classes from `wicn-core`. Use the framework selector in the top-right to switch between implementations.
+The Navbar composes a brand, a navigation menu (via the NavMenu), and actions into a top bar with four behaviors — `scroll`, `sticky`, `shrink`, and `hide` — collapsing to a mobile disclosure below `md`. An optional `floating` flag turns it into a floating pill. It is based on [shadcnblocks Navbar 7](https://www.shadcnblocks.com/block/navbar7) and [Navbar 6](https://www.shadcnblocks.com/block/navbar6), re-based on Ark UI's `navigation-menu` and `collapsible` primitives, sharing the `navbarVariants` cva + part classes from `wicn-core`. Use the framework selector in the top-right to switch between implementations.
 
 <Demo component="navbar" example="sticky" />
 
@@ -25,17 +25,17 @@ The Navbar composes a brand, a navigation menu (via the NavMenu), and actions in
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `defaultOpen` | `boolean` | `false` | Initial mobile-menu open state. |
-| `density` | `'relaxed' \| 'compact' \| 'shrink-on-scroll'` | `'relaxed'` | Bar density. `relaxed` is the spacious default (`h-16`). `compact` uses a tighter `h-12` bar. `shrink-on-scroll` starts relaxed and compacts to the compact style once the bar scrolls past 24px — the container height/gap/padding and the NavMenu triggers animate together over 300ms. |
+| `variant` | `'scroll' \| 'sticky' \| 'shrink' \| 'hide'` | `'sticky'` | Bar behavior. `scroll` scrolls away with the page. `sticky` pins to the top. `shrink` pins and compacts to the compact density once scrolled past 24px. `hide` pins, then slides away once scrolled past 24px while not hovered (revealed on hover of the bar or an `NavbarActivationArea`). |
+| `floating` | `boolean` | `false` | Render as a floating pill (rounded, inset) instead of a full-width bar. Orthogonal to `variant`. |
+| `density` | `'relaxed' \| 'compact'` | `'relaxed'` | Bar density. `relaxed` is the spacious default (`h-16`). `compact` uses a tighter `h-12` bar. |
 
 ### Navbar
 
-#### Props
+The `<header>` element. Reads `variant`/`floating`/`density` from the provider context — no props of its own beyond standard attributes. Sets `data-scrolled` once past 24px and `data-hidden` when the `hide` variant is scrolled away.
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `variant` | `'sticky' \| 'floating'` | `'sticky'` | Sticky top bar or floating pill. |
+### NavbarActivationArea
 
-Sets `data-scrolled` on the root when the page scrolls past 24px, which the sticky variant uses to swap in a blurred, shadowed style.
+An invisible hover strip (fixed to the top edge by default) that reveals a hidden `variant="hide"` bar on hover. Supports `asChild` and standard element attributes plus `className`/`class` — override `navbarActivationAreaBase` (e.g. `absolute` inside a scroll container) via `className`.
 
 ### NavbarContainer
 
@@ -53,7 +53,7 @@ The brand/logo slot (left side). Accepts standard element attributes plus `class
 | --- | --- | --- | --- |
 | `placement` | `'left' \| 'center' \| 'right'` | `'center'` | Horizontal placement of the menu items. |
 
-Wraps the NavMenu; children are `NavMenuList` items. Hidden below `md`. The NavMenu density follows the bar's `density` — `relaxed` maps to `density="relaxed"`, `compact` to `density="compact"`, and `shrink-on-scroll` flips from `relaxed` to `compact` once the bar has scrolled, so the menu triggers compact with the bar.
+Wraps the NavMenu; children are `NavMenuList` items. Hidden below `md`. The NavMenu density follows the bar — `relaxed` by default, `compact` when `density="compact"` or when the `shrink` variant has scrolled.
 
 ### NavbarActions
 

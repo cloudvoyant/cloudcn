@@ -6,6 +6,7 @@
     NavbarContainer,
     NavbarBrand,
     NavbarMenu,
+    NavbarActions,
     NavbarTrigger,
     NavbarMobile,
     Container,
@@ -15,6 +16,9 @@
     NavMenuTrigger,
     NavMenuContent,
     NavMenuLink,
+    NavSubMenu,
+    NavSubMenuTrigger,
+    NavSubMenuContent,
   } from 'wicn-svelte';
   import WicnLogo from '../../WicnLogo.svelte';
 
@@ -29,8 +33,8 @@
 </script>
 
 <div class="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
-  <NavbarProvider density="shrink-on-scroll">
-    <Navbar variant="sticky" class="z-30">
+  <NavbarProvider variant="shrink">
+    <Navbar class="z-30">
       <NavbarContainer>
         <NavbarBrand>
           <WicnLogo class="h-7 w-auto" /><span class="text-sm font-semibold">wicn</span>
@@ -47,25 +51,28 @@
             <NavMenuItem value="blog" variant="link">
               <NavMenuLink href="#">Blog</NavMenuLink>
             </NavMenuItem>
-            <NavMenuItem value="signin" variant="link">
-              <NavMenuLink href="#">Sign in</NavMenuLink>
-            </NavMenuItem>
           </NavMenuList>
         </NavbarMenu>
+        <NavbarActions>
+          <a href="#" class="text-sm font-medium text-muted-foreground hover:text-foreground">Sign in</a>
+        </NavbarActions>
         <NavbarTrigger />
       </NavbarContainer>
       <NavbarMobile>
-        <VStack class="gap-2 px-4 py-4">
-          <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">Components</a>
-          <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">Blog</a>
-          <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">Sign in</a>
-        </VStack>
+        <NavSubMenu>
+          <NavSubMenuTrigger>Docs</NavSubMenuTrigger>
+          <NavSubMenuContent>
+            <a href="#" class="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Components</a>
+            <a href="#" class="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Theming</a>
+          </NavSubMenuContent>
+        </NavSubMenu>
+        <a href="#" class="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Blog</a>
       </NavbarMobile>
     </Navbar>
     <Container class="py-6">
       <VStack class="gap-4">
         <p class="rounded-md bg-muted/50 p-4 text-sm text-muted-foreground">
-          Scroll to see the bar shrink — with <code>density="shrink-on-scroll"</code> the height drops and spacing
+          Scroll to see the bar shrink — with <code>variant="shrink"</code> the height drops and spacing
           compacts once you pass 24px.
         </p>
         {#each CONTENT as [title, body] (title)}

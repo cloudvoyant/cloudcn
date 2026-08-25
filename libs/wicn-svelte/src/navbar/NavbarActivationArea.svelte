@@ -1,8 +1,8 @@
-<!-- libs/wicn-svelte/src/navbar/NavbarBrand.svelte -->
-<!-- Source: wicn-react navbar brand (shadcnblocks navbar6/7, re-based on Ark UI) -->
+<!-- libs/wicn-svelte/src/navbar/NavbarActivationArea.svelte -->
+<!-- Source: wicn-react navbar activation area (hover reveal for variant="hide") -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
-  import { navbarBrandBase, cn } from 'wicn-core';
+  import { navbarActivationAreaBase, cn } from 'wicn-core';
   import { getNavbarContext } from './NavbarContext.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
@@ -15,11 +15,16 @@
   let { class: className = '', children, ...rest }: Props = $props();
 
   const navbar = getNavbarContext();
-  $effect(() => navbar.setSlot('brand', children));
-
-  const classes = $derived(cn(navbarBrandBase, className));
+  const classes = $derived(cn(navbarActivationAreaBase, className));
 </script>
 
-<Ark as="div" data-slot="navbar-brand" class={classes} {...rest}>
+<Ark
+  as="div"
+  data-slot="navbar-activation-area"
+  class={classes}
+  onmouseenter={() => navbar.setHovered(true)}
+  onmouseleave={() => navbar.setHovered(false)}
+  {...rest}
+>
   {@render children?.()}
 </Ark>

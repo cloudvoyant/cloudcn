@@ -18,7 +18,7 @@
 
   const navbar = getNavbarContext();
   const menuDensity = $derived<NavMenuDensity>(
-    navbar.density === 'compact' || (navbar.density === 'shrink-on-scroll' && navbar.scrolled)
+    navbar.density === 'compact' || (navbar.variant === 'shrink' && navbar.scrolled)
       ? 'compact'
       : 'relaxed',
   );

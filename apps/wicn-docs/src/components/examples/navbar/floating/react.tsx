@@ -1,6 +1,13 @@
 // apps/wicn-docs/src/components/examples/navbar/floating/react.tsx
 import {
   Navbar,
+  NavbarProvider,
+  NavbarContainer,
+  NavbarBrand,
+  NavbarMenu,
+  NavbarActions,
+  NavbarTrigger,
+  NavbarMobile,
   Container,
   VStack,
   NavigationMenuList,
@@ -22,13 +29,13 @@ const CONTENT = [
 export default function ReactNavbarFloating() {
   return (
     <div className="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
-      <Navbar.Provider>
-        <Navbar.Root variant="floating" className="sticky top-4 z-30">
-          <Navbar.Container>
-            <Navbar.Brand>
+      <NavbarProvider>
+        <Navbar variant="floating" className="sticky top-4 z-30">
+          <NavbarContainer>
+            <NavbarBrand>
               <span className="text-sm font-semibold">wicn</span>
-            </Navbar.Brand>
-            <Navbar.Menu placement="left">
+            </NavbarBrand>
+            <NavbarMenu placement="left">
               <NavigationMenuList>
                 <NavigationMenuItem value="docs">
                   <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
@@ -41,15 +48,15 @@ export default function ReactNavbarFloating() {
                   <NavigationMenuLink href="#">Blog</NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
-            </Navbar.Menu>
-            <Navbar.Actions>
+            </NavbarMenu>
+            <NavbarActions>
               <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground">
                 Sign in
               </a>
-            </Navbar.Actions>
-            <Navbar.Trigger />
-          </Navbar.Container>
-          <Navbar.Mobile>
+            </NavbarActions>
+            <NavbarTrigger />
+          </NavbarContainer>
+          <NavbarMobile>
             <VStack className="gap-2 px-4 py-4">
               <a href="#" className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
                 Components
@@ -58,8 +65,8 @@ export default function ReactNavbarFloating() {
                 Blog
               </a>
             </VStack>
-          </Navbar.Mobile>
-        </Navbar.Root>
+          </NavbarMobile>
+        </Navbar>
         <Container className="py-6 pt-20">
           <VStack className="gap-4">
             {CONTENT.map(([title, body]) => (
@@ -70,7 +77,7 @@ export default function ReactNavbarFloating() {
             ))}
           </VStack>
         </Container>
-      </Navbar.Provider>
+      </NavbarProvider>
     </div>
   );
 }

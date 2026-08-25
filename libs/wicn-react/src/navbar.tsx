@@ -79,7 +79,7 @@ function NavbarProvider({
   );
 }
 
-function NavbarRoot({
+function Navbar({
   variant = 'sticky',
   className,
   children,
@@ -195,25 +195,14 @@ function NavbarMobile({ className, children, ...props }: React.ComponentProps<'d
   );
 }
 
-const Navbar = Object.assign(NavbarRoot, {
-  Provider: NavbarProvider,
-  Root: NavbarRoot,
-  Container: NavbarContainer,
-  Brand: NavbarBrand,
-  Menu: NavbarMenu,
-  Actions: NavbarActions,
-  Trigger: NavbarTrigger,
-  Mobile: NavbarMobile,
-});
-
 export { Navbar };
 export {
   NavbarProvider,
-  NavbarRoot,
   NavbarContainer,
   NavbarBrand,
   NavbarMenu,
   NavbarActions,
   NavbarTrigger,
   NavbarMobile,
+  useNavbar,
 };

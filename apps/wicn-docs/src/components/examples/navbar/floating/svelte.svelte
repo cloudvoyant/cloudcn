@@ -2,6 +2,13 @@
 <script lang="ts">
   import {
     Navbar,
+    NavbarProvider,
+    NavbarContainer,
+    NavbarBrand,
+    NavbarMenu,
+    NavbarActions,
+    NavbarTrigger,
+    NavbarMobile,
     Container,
     VStack,
     NavigationMenuList,
@@ -22,13 +29,13 @@
 </script>
 
 <div class="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
-  <Navbar.Provider>
-    <Navbar.Root variant="floating" class="sticky top-4 z-30">
-      <Navbar.Container>
-        <Navbar.Brand>
+  <NavbarProvider>
+    <Navbar variant="floating" class="sticky top-4 z-30">
+      <NavbarContainer>
+        <NavbarBrand>
           <span class="text-sm font-semibold">wicn</span>
-        </Navbar.Brand>
-        <Navbar.Menu placement="left">
+        </NavbarBrand>
+        <NavbarMenu placement="left">
           <NavigationMenuList>
             <NavigationMenuItem value="docs">
               <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
@@ -41,19 +48,19 @@
               <NavigationMenuLink href="#">Blog</NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
-        </Navbar.Menu>
-        <Navbar.Actions>
+        </NavbarMenu>
+        <NavbarActions>
           <a href="#" class="text-sm font-medium text-muted-foreground hover:text-foreground">Sign in</a>
-        </Navbar.Actions>
-        <Navbar.Trigger />
-      </Navbar.Container>
-      <Navbar.Mobile>
+        </NavbarActions>
+        <NavbarTrigger />
+      </NavbarContainer>
+      <NavbarMobile>
         <VStack class="gap-2 px-4 py-4">
           <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">Components</a>
           <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">Blog</a>
         </VStack>
-      </Navbar.Mobile>
-    </Navbar.Root>
+      </NavbarMobile>
+    </Navbar>
     <Container class="py-6 pt-20">
       <VStack class="gap-4">
         {#each CONTENT as [title, body] (title)}
@@ -64,5 +71,5 @@
         {/each}
       </VStack>
     </Container>
-  </Navbar.Provider>
+  </NavbarProvider>
 </div>

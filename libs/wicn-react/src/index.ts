@@ -79,11 +79,11 @@ export {
 export {
   Navbar,
   NavbarProvider,
-  NavbarRoot,
   NavbarContainer,
   NavbarBrand,
   NavbarMenu,
   NavbarActions,
   NavbarTrigger,
   NavbarMobile,
+  useNavbar,
 } from './navbar';

@@ -101,7 +101,6 @@ export function NavigationMenuIndicator({ className, ...props }: NavigationMenuI
 }
 
 export {
-  ArkNavigationMenuRoot as NavigationMenuRoot,
   ArkNavigationMenuViewportPositioner as NavigationMenuViewportPositioner,
 };
 export type {

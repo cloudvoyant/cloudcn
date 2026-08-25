@@ -259,6 +259,18 @@ function NavbarTrigger({
 
 function NavbarMobile({ className, children, ...props }: React.ComponentProps<'div'>) {
   const { id, open, setOpen, slots, floating, portalRef } = useNavbar();
+
+  // Ark's focus trap doesn't engage for a controlled dialog (no DialogTrigger),
+  // so Escape isn't handled — add a minimal fallback.
+  React.useEffect(() => {
+    if (!open) return;
+    const onKeydown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('keydown', onKeydown);
+    return () => document.removeEventListener('keydown', onKeydown);
+  }, [open, setOpen]);
+
   return (
     <Portal container={portalRef}>
       <DialogRoot open={open} lazyMount unmountOnExit onOpenChange={({ open }) => setOpen(open)}>

@@ -34,6 +34,17 @@
   const open = $derived(navbar.open);
 
   const classes = $derived(cn(navbarMobileContentBase, className));
+
+  // Ark's focus trap doesn't engage for a controlled dialog (no DialogTrigger),
+  // so Escape isn't handled — add a minimal fallback.
+  $effect(() => {
+    if (!open) return;
+    const onKeydown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') navbar.setOpen(false);
+    };
+    document.addEventListener('keydown', onKeydown);
+    return () => document.removeEventListener('keydown', onKeydown);
+  });
 </script>
 
 <Portal container={navbar.portalEl}>

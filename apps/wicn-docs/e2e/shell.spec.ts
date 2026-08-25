@@ -4,7 +4,7 @@ import { test, expect, type Page } from '@playwright/test';
 test.describe('Docs shell', () => {
   test('framework selector defaults to React and switches islands', async ({ page }) => {
     await page.goto('components/button');
-    await expect(page.locator('[data-framework-selector]')).toBeVisible();
+    await page.locator('[data-framework-selector][data-ready]').waitFor();
     await expect(page.locator('[data-demo] [data-fw="react"]').first()).toBeVisible();
     await expect(page.locator('[data-demo] [data-fw="svelte"]').first()).toBeHidden();
 
@@ -15,6 +15,7 @@ test.describe('Docs shell', () => {
 
   test('framework selection persists across navigation', async ({ page }) => {
     await page.goto('components/button');
+    await page.locator('[data-framework-selector][data-ready]').waitFor();
     await page.locator('[data-framework-selector] button[data-fw="svelte"]').click();
     await expect(page.locator('[data-demo] [data-fw="svelte"]').first()).toBeVisible();
 
@@ -51,26 +52,32 @@ test.describe('Docs shell', () => {
     await expect(page.locator('html')).toHaveClass(/theme-catppuccin/);
   });
 
-  test('topnav shows a border once the page is scrolled', async ({ page }) => {
+  test('topnav marks scrolled once the page is scrolled', async ({ page }) => {
     await page.goto('components/button');
-    const header = page.locator('[data-topnav]');
-    await expect(header).not.toHaveClass(/scrolled/);
+    const header = page.locator('[data-slot="navbar"]');
+    await expect(header).not.toHaveAttribute('data-scrolled', 'true');
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-    await expect(header).toHaveClass(/scrolled/);
+    await expect(async () => {
+      await expect(header).toHaveAttribute('data-scrolled', 'true');
+    }).toPass();
   });
 
-  test('mobile sidebar overlays the viewport without a backdrop', async ({ page }) => {
+  test('mobile menu opens the overlay and closes on Escape', async ({ page }) => {
     await page.setViewportSize({ width: 640, height: 800 });
     await page.goto('general/introduction');
 
-    const drawer = page.locator('[data-mobile-sidebar]');
-    await expect(drawer).toHaveCSS('visibility', 'hidden');
+    // Wait for the topnav island to hydrate (framework selector is hidden on
+    // mobile, so wait for attachment rather than visibility).
+    await page.locator('[data-framework-selector][data-ready]').waitFor({ state: 'attached' });
 
-    await page.locator('[data-mobile-open]').click();
-    await expect(page.locator('html')).toHaveClass(/mobile-nav-open/);
-    await expect(drawer).toHaveCSS('visibility', 'visible');
+    const trigger = page.locator('[data-slot="navbar-trigger"]');
+    await expect(trigger).toBeVisible();
+
+    await trigger.click();
+    const overlay = page.locator('[data-slot="navbar-mobile"]').filter({ visible: true }).first();
+    await expect(overlay).toBeVisible();
 
     await page.keyboard.press('Escape');
-    await expect(page.locator('html')).not.toHaveClass(/mobile-nav-open/);
+    await expect(overlay).toBeHidden();
   });
 });

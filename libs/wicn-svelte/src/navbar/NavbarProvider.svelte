@@ -17,12 +17,23 @@
   const SCROLL_THRESHOLD = 24;
   let open = $state(defaultOpen);
   let scrolled = $state(false);
+  let providerEl = $state<HTMLDivElement>();
 
   $effect(() => {
-    const onScroll = () => (scrolled = window.scrollY > SCROLL_THRESHOLD);
+    if (!providerEl) return;
+    let target: Element | Window = window;
+    for (let n: Element | null = providerEl; n; n = n.parentElement) {
+      const oy = getComputedStyle(n).overflowY;
+      if (oy === 'auto' || oy === 'scroll' || oy === 'overlay') {
+        target = n;
+        break;
+      }
+    }
+    const getY = () => (target === window ? window.scrollY : (target as Element).scrollTop);
+    const onScroll = () => (scrolled = getY() > SCROLL_THRESHOLD);
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    (target as EventTarget).addEventListener('scroll', onScroll, { passive: true });
+    return () => (target as EventTarget).removeEventListener('scroll', onScroll);
   });
 
   function setOpen(value: boolean) {
@@ -42,6 +53,6 @@
   const classes = $derived(cn(navbarProviderBase, className));
 </script>
 
-<div data-slot="navbar-provider" class={classes} {...rest}>
+<div bind:this={providerEl} data-slot="navbar-provider" class={classes} {...rest}>
   {@render children?.()}
 </div>

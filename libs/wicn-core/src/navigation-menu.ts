@@ -16,15 +16,15 @@ export const navigationMenuTriggerStyle = cva(
 );
 
 export const navigationMenuContentBase =
-  'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 top-full left-0 mt-1.5 w-full bg-popover p-2 text-popover-foreground md:absolute md:w-auto';
+  'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 left-0 top-0 w-full bg-popover p-2 text-popover-foreground md:absolute md:w-auto';
 
 export const navigationMenuLinkBase =
   'data-[active=true]:bg-accent data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring';
 
-export const navigationMenuViewportPositionerBase = 'absolute top-full left-0 z-50 flex justify-center';
+export const navigationMenuViewportPositionerBase = 'absolute left-0 top-full z-50 w-full';
 
 export const navigationMenuViewportBase =
-  'origin-top-center relative mt-1.5 h-(--viewport-height) w-(--viewport-width) overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md transition-[width,height] duration-200';
+  'origin-top-center absolute left-(--viewport-x) top-0 mt-1.5 h-(--viewport-height) w-(--viewport-width) overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md transition-[width,height] duration-200';
 
 export const navigationMenuIndicatorBase =
   'data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-50 flex h-1.5 items-end justify-center overflow-hidden';

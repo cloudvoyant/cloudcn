@@ -8,9 +8,9 @@ const FRAMEWORKS = ['react', 'svelte'] as const;
 type Framework = (typeof FRAMEWORKS)[number];
 
 async function selectFramework(page: Page, framework: Framework) {
-  // The floating navbar demo is `fixed` at the top of the viewport and overlays
-  // the docs top nav's framework selector; hide that example so the selector
-  // stays clickable. These tests only exercise the sticky example.
+  // Both navbar demos now live in a self-scrolling container. These tests only
+  // exercise the sticky example, so hide the second (floating) example to keep
+  // the framework selector and locators unambiguous.
   await page.locator('[data-example]').nth(1).evaluate((el) => (el.style.display = 'none'));
   await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
   const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
@@ -56,16 +56,27 @@ for (const framework of FRAMEWORKS) {
       await expect(panelLink).toBeHidden();
     });
 
-    test('sticky bar marks data-scrolled after scrolling', async ({ page }) => {
-      const region = page.locator(`[data-example]`).first().locator(`[data-fw="${framework}"]`).first();
-      const header = region.locator('header[data-slot="navbar"]').first();
+    test('sticky bar stays pinned and marks data-scrolled on container scroll', async ({ page }) => {
+      const header = page.locator(`[data-demo] [data-fw="${framework}"] header[data-slot="navbar"]`).first();
       await header.scrollIntoViewIfNeeded();
-      // A short scroll within the example page exercises the sticky variant's scroll listener.
-      await page.evaluate(() => window.scrollTo(0, 120));
+      const pinned = await header.evaluate((el) => {
+        // Find the demo's scroll container (overflow-y-auto ancestor).
+        let c: HTMLElement | null = el.parentElement;
+        while (c && !/auto|scroll|overlay/.test(getComputedStyle(c).overflowY)) c = c.parentElement;
+        if (!c) return { scrollable: false };
+        c.scrollTop = 160;
+        return { scrollable: true, position: getComputedStyle(el).position };
+      });
+      expect(pinned.scrollable).toBe(true);
+      expect(['sticky', 'fixed']).toContain(pinned.position);
       await expect(async () => {
         await expect(header).toHaveAttribute('data-scrolled', 'true');
       }).toPass();
-      await page.evaluate(() => window.scrollTo(0, 0));
+      await header.evaluate((el) => {
+        let c: HTMLElement | null = el.parentElement;
+        while (c && !/auto|scroll|overlay/.test(getComputedStyle(c).overflowY)) c = c.parentElement;
+        if (c) c.scrollTop = 0;
+      });
     });
   });
 }

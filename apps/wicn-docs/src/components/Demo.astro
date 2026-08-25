@@ -59,6 +59,7 @@ import ExampleCardWithImage from './examples/card/with-image/index.astro';
 import ExampleCardHorizontal from './examples/card/horizontal/index.astro';
 import ExampleNavigationMenuDefault from './examples/navigation-menu/default/index.astro';
 import ExampleNavigationMenuDropdown from './examples/navigation-menu/dropdown/index.astro';
+import ExampleNavigationMenuTwoColumns from './examples/navigation-menu/two-columns/index.astro';
 import ExampleTabsDefault from './examples/tabs/default/index.astro';
 import ExampleTabsUnderline from './examples/tabs/underline/index.astro';
 import ExamplePaginationDefault from './examples/pagination/default/index.astro';
@@ -127,6 +128,7 @@ type ExampleName =
   | 'offcanvas'
   | 'rail'
   | 'dropdown'
+  | 'two-columns'
   | 'underline'
   | 'controlled'
   | 'sticky'
@@ -229,6 +231,7 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
   'navigation-menu': [
     { id: 'default', title: 'Default', component: ExampleNavigationMenuDefault },
     { id: 'dropdown', title: 'Dropdown panels', component: ExampleNavigationMenuDropdown },
+    { id: 'two-columns', title: 'Two columns', component: ExampleNavigationMenuTwoColumns },
   ],
   tabs: [
     { id: 'default', title: 'Default', component: ExampleTabsDefault },

@@ -29,10 +29,22 @@ for (const framework of FRAMEWORKS) {
     test('opens a dropdown panel on trigger hover', async ({ page }) => {
       const trigger = page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("Getting Started")`).first();
       const panel = page.locator(`[data-demo] [data-fw="${framework}"] a:has-text("Installation")`).first();
+      const viewport = page.locator(`[data-demo] [data-fw="${framework}"] [data-part="viewport"]`).first();
       await expect(async () => {
         await trigger.hover();
         await expect(panel).toBeVisible();
       }).toPass();
+      // Regression: content must render INSIDE the viewport — if it is positioned
+      // below it, the viewport's overflow-hidden clips it and the text is invisible.
+      // Assert the panel's top aligns with the viewport's top (tolerating the 1px
+      // border inset), not its bottom. Poll because the viewport height animates.
+      await expect
+        .poll(async () => {
+          const vp = await viewport.boundingBox();
+          const pb = await panel.boundingBox();
+          return Boolean(vp && pb && pb.y >= vp.y - 4 && pb.y < vp.y + vp.height / 2);
+        })
+        .toBe(true);
     });
 
     test('opens the dropdown with keyboard and closes with Escape', async ({ page }) => {

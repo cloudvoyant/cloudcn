@@ -13,6 +13,7 @@
     Container,
   } from 'wicn-svelte';
   import { House as Home, Inbox, Settings } from 'lucide-svelte';
+  import WicnLogo from '../WicnLogo.svelte';
 
   const NAV = [
     { label: 'Home', icon: Home },
@@ -28,7 +29,7 @@
         <SidebarMenu>
           {#snippet logoIcon()}
             <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-              <span class="text-sm font-semibold">c</span>
+              <WicnLogo class="size-5" />
             </div>
           {/snippet}
           <SidebarMenuLink href="#" size="lg" icon={logoIcon}>

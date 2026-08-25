@@ -45,21 +45,34 @@ function NavbarProvider({
   ...props
 }: React.ComponentProps<'div'> & { defaultOpen?: boolean }) {
   const id = React.useId();
+  const providerRef = React.useRef<HTMLDivElement>(null);
   const [open, setOpen] = React.useState(defaultOpen);
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD);
+    // Listen to the nearest scrollable ancestor (e.g. a demo container with
+    // overflow-y-auto); fall back to the window. `position: sticky` sticks
+    // relative to that same container, so data-scrolled stays in sync.
+    let target: Element | Window = window;
+    for (let n: Element | null = providerRef.current; n; n = n.parentElement) {
+      const oy = getComputedStyle(n).overflowY;
+      if (oy === 'auto' || oy === 'scroll' || oy === 'overlay') {
+        target = n;
+        break;
+      }
+    }
+    const getY = () => (target === window ? window.scrollY : (target as Element).scrollTop);
+    const onScroll = () => setScrolled(getY() > SCROLL_THRESHOLD);
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    (target as EventTarget).addEventListener('scroll', onScroll, { passive: true });
+    return () => (target as EventTarget).removeEventListener('scroll', onScroll);
   }, []);
 
   const contextValue = React.useMemo(() => ({ id, open, setOpen, scrolled }), [id, open, scrolled]);
 
   return (
     <NavbarContext.Provider value={contextValue}>
-      <div data-slot="navbar-provider" className={cn(navbarProviderBase, className)} {...props}>
+      <div ref={providerRef} data-slot="navbar-provider" className={cn(navbarProviderBase, className)} {...props}>
         {children}
       </div>
     </NavbarContext.Provider>

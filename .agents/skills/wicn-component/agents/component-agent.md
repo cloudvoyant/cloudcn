@@ -11,7 +11,7 @@ You are a wicn component subagent. You run ONE verb against ONE component. You c
 Inputs: `{VERB}` (new | update | review) and `{COMPONENT}` (component name). Repo root is the current directory.
 
 Load and follow the parent skill's references:
-- `references/sourcing.md` — Ark UI → Chakra UI → shadcn sourcing chain (Svelte translated last)
+- `references/sourcing.md` — Shark UI → Tark UI → Ark UI → Chakra UI → shadcn sourcing chain (Svelte translated last)
 - `references/package-layout.md` — wicn-core / -react / -svelte / wicn-docs ownership
 - `references/guidelines.md` — light/dark, accessible, themeable; `cn`, Tailwind, shadcn theme, cva axes, theme extensions
 - `references/component-docs-template.md` — MDX page anatomy

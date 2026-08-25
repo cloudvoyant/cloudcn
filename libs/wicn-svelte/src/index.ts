@@ -18,3 +18,7 @@ export { default as SplitterPanel } from './SplitterPanel.svelte';
 export { default as SplitterResizeTrigger } from './SplitterResizeTrigger.svelte';
 export { default as SplitterResizeTriggerIndicator } from './SplitterResizeTriggerIndicator.svelte';
 export * from './sidebar';
+export * from './nav-menu';
+export * from './tabs';
+export * from './pagination';
+export * from './navbar';

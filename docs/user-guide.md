@@ -52,6 +52,10 @@ Components accept the same `variant` and `size` props across frameworks. Availab
 - `Button` — `variant` (`solid`/`outline`/`text`), `color`, `size`
 - `ToggleButton` — `variant` (`default`/`outline`), `size`
 - `Badge` — `variant` (`solid`/`subtle`/`outline`/`surface`/`plain`), `color`, `size`
+- `Navbar` — `variant` (`sticky`/`floating`), composed parts for brand, menu, actions, and mobile trigger
+- `NavMenu` — composed parts for menus with dropdown panels
+- `Tabs` — composed parts for tabbed content
+- `Pagination` — composed parts for paging through content
 
 Every component accepts `className`/`class` and merges it with the shared variant classes, so consumers can restyle individual instances and override the whole theme via CSS variables.
 

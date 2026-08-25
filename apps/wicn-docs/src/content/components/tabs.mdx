@@ -1,0 +1,59 @@
+---
+title: Tabs
+description: A tabbed content panel for React and Svelte, built on Ark UI tabs.
+order: 6
+group: navigation
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The Tabs component switches between related content panels. It is built on [Ark UI `tabs`](https://ark-ui.com/docs/components/tabs), sourced from [Shark UI](https://shark.vini.one/docs/components/tabs), sharing the `tabsListVariants`/`tabsIndicatorVariants` cva + part classes from `wicn-core`. Use the framework selector in the top-right to switch between implementations.
+
+<Demo component="tabs" example="default" />
+
+## Examples
+
+<Examples component="tabs" exclude="default" />
+
+## API Reference
+
+### Tabs
+
+#### Props
+
+Accepts all [Ark `TabsRoot` props](https://ark-ui.com/docs/components/tabs) plus `className`/`class`. Defaults `lazyMount` and `unmountOnExit` to `true`.
+
+### TabsList
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `'default' \| 'underline'` | `'default'` | Pill (default) or underline indicator style. |
+
+Also accepts all [Ark `TabList` props](https://ark-ui.com/docs/components/tabs). Renders the Ark `TabIndicator` inside the list.
+
+### TabsTrigger
+
+#### Props
+
+Accepts all [Ark `TabTrigger` props](https://ark-ui.com/docs/components/tabs). `value` is required and must match a `TabsContent` panel; `disabled` prevents selection.
+
+### TabsContent
+
+#### Props
+
+Accepts all [Ark `TabContent` props](https://ark-ui.com/docs/components/tabs). `value` is required and must match a `TabsTrigger`.
+
+### useTabs
+
+Returns Ark's [tabs context](https://ark-ui.com/docs/components/tabs#context) — `value`, `focusedValue`, `setValue`, `selectNext`, `selectPrev`, and friends — for programmatic control.
+
+## Accessibility
+
+Follows the [Tabs WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). Ark sets `role="tablist"`/`role="tab"`/`role="tabpanel"`, `aria-selected`, and `aria-controls`; arrow keys rove between triggers and `Tab` moves focus to the active panel.
+
+## Theming
+
+No theme extension is required — the indicator and hover states use existing tokens (`bg-accent`, `bg-primary`, `text-muted-foreground`, `--radius-*`), light and dark.

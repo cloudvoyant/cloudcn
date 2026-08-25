@@ -81,6 +81,24 @@ const titles: Record<string, { id: string; title: string }[]> = {
     { id: 'offcanvas', title: 'Completely disappears on collapse' },
     { id: 'rail', title: 'Toggle with the rail handle' },
   ],
+  'nav-menu': [
+    { id: 'dropdown', title: 'Dropdown panels' },
+    { id: 'two-columns', title: 'Two columns' },
+    { id: 'density', title: 'Compact' },
+    { id: 'variants', title: 'Links instead of buttons' },
+  ],
+  tabs: [
+    { id: 'underline', title: 'Underline' },
+  ],
+  pagination: [
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  navbar: [
+    { id: 'floating', title: 'Floating' },
+    { id: 'shrink', title: 'Shrink on scroll' },
+    { id: 'scroll', title: 'Scroll' },
+    { id: 'hide', title: 'Hide on leave' },
+  ],
 };
 const entries = (titles[component ?? 'button'] ?? []).filter((e) => e.id !== exclude);
 ---

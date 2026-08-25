@@ -10,23 +10,24 @@ const { currentPath = import.meta.env.BASE_URL } = Astro.props;
 const general = (await getCollection('general')).sort((a, b) => a.data.order - b.data.order);
 const components = (await getCollection('components')).sort((a, b) => a.data.order - b.data.order);
 
-const layout = components.filter((c) => c.data.group === 'Layout');
-const rest = components.filter((c) => c.data.group !== 'Layout');
-
 const groups = [
-  { label: 'General', section: 'general', items: general },
-  { label: 'Layout', section: 'components', items: layout },
-  { label: 'Components', section: 'components', items: rest },
+  { label: 'General', section: 'general', group: '' },
+  { label: 'Layouts', section: 'components', group: 'layouts' },
+  { label: 'Navigation', section: 'components', group: 'navigation' },
+  { label: 'Buttons', section: 'components', group: 'buttons' },
+  { label: 'Misc', section: 'components', group: 'misc' },
 ];
 ---
 
 <nav class="flex flex-col gap-8 text-sm" aria-label="Docs navigation">
-  {groups.map((group) =>
-    group.items.length > 0 ? (
+  {groups.map((group) => {
+    const items =
+      group.section === 'general' ? general : components.filter((c) => c.data.group === group.group);
+    return items.length > 0 ? (
       <div>
         <p class="mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{group.label}</p>
         <ul class="flex flex-col gap-0.5">
-          {group.items.map((entry) => {
+          {items.map((entry) => {
             const href = `${import.meta.env.BASE_URL}${group.section}/${entry.id}`;
             const active = currentPath === href;
             return (
@@ -45,6 +46,6 @@ const groups = [
           })}
         </ul>
       </div>
-    ) : null,
-  )}
+    ) : null;
+  })}
 </nav>

@@ -1,0 +1,76 @@
+---
+title: Navbar
+description: A sticky or floating site navigation bar with a responsive mobile collapse, for React and Svelte.
+order: 8
+group: navigation
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The Navbar composes a brand, a navigation menu (via the NavMenu), and actions into a top bar with four behaviors — `scroll`, `sticky`, `shrink`, and `hide` — collapsing to a mobile disclosure below `md`. An optional `floating` flag turns it into a floating pill. It is based on [shadcnblocks Navbar 7](https://www.shadcnblocks.com/block/navbar7) and [Navbar 6](https://www.shadcnblocks.com/block/navbar6), re-based on Ark UI's `navigation-menu` and `collapsible` primitives, sharing the `navbarVariants` cva + part classes from `wicn-core`. Use the framework selector in the top-right to switch between implementations.
+
+<Demo component="navbar" example="sticky" />
+
+## Examples
+
+<Examples component="navbar" exclude="sticky" />
+
+## API Reference
+
+### NavbarProvider
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `defaultOpen` | `boolean` | `false` | Initial mobile-menu open state. |
+| `variant` | `'scroll' \| 'sticky' \| 'shrink' \| 'hide'` | `'sticky'` | Bar behavior. `scroll` scrolls away with the page. `sticky` pins to the top. `shrink` pins and compacts to the compact density once scrolled past 24px. `hide` pins, then slides away once scrolled past 24px while not hovered (revealed on hover of the bar or an `NavbarActivationArea`). |
+| `floating` | `boolean` | `false` | Render as a floating pill (rounded, inset) instead of a full-width bar. Orthogonal to `variant`. |
+| `density` | `'relaxed' \| 'compact'` | `'relaxed'` | Bar density. `relaxed` is the spacious default (`h-16`). `compact` uses a tighter `h-12` bar. |
+
+### Navbar
+
+The `<header>` element. Reads `variant`/`floating`/`density` from the provider context — no props of its own beyond standard attributes. Sets `data-scrolled` once past 24px and `data-hidden` when the `hide` variant is scrolled away.
+
+### NavbarActivationArea
+
+An invisible hover strip (fixed to the top edge by default) that reveals a hidden `variant="hide"` bar on hover. Supports `asChild` and standard element attributes plus `className`/`class` — override `navbarActivationAreaBase` (e.g. `absolute` inside a scroll container) via `className`.
+
+### NavbarContainer
+
+The inner width-capped, horizontally justified flex row. Accepts standard element attributes plus `className`/`class`.
+
+### NavbarBrand
+
+The brand/logo slot (left side). Accepts standard element attributes plus `className`/`class`.
+
+### NavbarMenu
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `placement` | `'left' \| 'center' \| 'right'` | `'center'` | Horizontal placement of the menu items. |
+
+Wraps the NavMenu; children are `NavMenuList` items. Hidden below `md`. The NavMenu density follows the bar — `relaxed` by default, `compact` when `density="compact"` or when the `shrink` variant has scrolled.
+
+### NavbarActions
+
+The actions slot (right side, e.g. sign-in buttons). Accepts standard element attributes plus `className`/`class`.
+
+### NavbarTrigger
+
+The mobile hamburger that toggles the mobile panel. Renders a default hamburger icon unless given children. Accepts standard button attributes; `aria-label` defaults to `"Toggle navigation menu"`.
+
+### NavbarMobile
+
+The mobile menu panel, shown only below `md`, powered by Ark `collapsible`. Accepts standard element attributes plus `className`/`class`.
+
+## Accessibility
+
+The mobile disclosure uses Ark's `collapsible` primitive, so `aria-expanded`, `aria-controls`, and `Escape` behavior come from Ark. The trigger is a native button with a default `aria-label="Toggle navigation menu"`. The desktop menu uses the NavMenu's Ark `navigation-menu` semantics (roving tabindex, arrow keys, roles).
+
+## Theming
+
+No theme extension is required — the bar/pill and its states use existing tokens (`bg-background`, `border-border`, `bg-accent`, `shadow-md`, `backdrop-blur`), light and dark.

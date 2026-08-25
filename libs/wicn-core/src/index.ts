@@ -41,5 +41,52 @@ export {
   type SidebarContextProps,
   sidebarStyles,
 } from './sidebar';
+export {
+  navMenuRootBase,
+  navMenuListBase,
+  navMenuItemBase,
+  navMenuTriggerStyle,
+  type NavMenuDensity,
+  type NavMenuVariant,
+  navMenuContentBase,
+  navMenuLinkBase,
+  navSubMenuContentBase,
+  navSubMenuTriggerBase,
+  navMenuViewportPositionerBase,
+  navMenuViewportBase,
+  navMenuIndicatorBase,
+} from './nav-menu';
+export {
+  tabsRootBase,
+  tabsListBase,
+  tabsListVariants,
+  tabsIndicatorBase,
+  tabsIndicatorVariants,
+  tabsTriggerBase,
+  tabsContentBase,
+  type TabsListVariants,
+  type TabsIndicatorVariants,
+} from './tabs';
+export { paginationRootBase, paginationTriggerBase, paginationItemBase, paginationEllipsisBase } from './pagination';
+export {
+  navbarVariants,
+  navbarProviderBase,
+  navbarContainerBase,
+  navbarDensityVariants,
+  navbarShrunkBase,
+  type NavbarDensity,
+  type NavbarVariant,
+  navbarBrandBase,
+  navbarMenuBase,
+  navbarMenuPlacementVariants,
+  navbarActionsBase,
+  navbarTriggerVariants,
+  navbarMobileBase,
+  navbarActivationAreaBase,
+  navbarMobileContentBase,
+  navbarMobileHeaderBase,
+  navbarMobileMenuBase,
+  navbarMobileActionsBase,
+} from './navbar';
 export { THEMES, THEME_NAMES, type ThemeMeta } from './themes';
 export { cn } from './cn';

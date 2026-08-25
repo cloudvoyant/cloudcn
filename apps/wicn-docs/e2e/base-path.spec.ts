@@ -17,6 +17,6 @@ test.describe('Base-path', () => {
     await expect(page.locator('a[href="/"]')).toHaveCount(0);
     await expect(page.locator('a[href^="/"]:not([href^="/wicn/"])')).toHaveCount(0);
     await expect(page.locator('img[src^="/"]:not([src^="/wicn/"])')).toHaveCount(0);
-    await expect(page.locator('[data-topnav] a[href="/wicn/general/introduction"]')).toHaveCount(1);
+    await expect(page.locator('[data-slot="navbar"] a[href="/wicn/general/introduction"]')).toHaveCount(1);
   });
 });

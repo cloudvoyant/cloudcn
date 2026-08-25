@@ -12,9 +12,11 @@ order: <n>
 ---
 ```
 
+`title` is the **PascalCase** component name (e.g. `ToggleButton`, `NavigationMenu`) — never a lowercase form. The MDX file path stays kebab-case (`toggle-button.mdx`).
+
 ## Intro
 
-One or two sentences explaining what the component does, noting it is built on Ark UI's `<primitive>` and shares the `{component}Variants` cva + theme from `wicn-core`. Follow with **exactly one example** — a single component instance, not a row of variants — and nothing else. **No variant tables, no color lists, no size lists, no multi-variant rows** here:
+One or two sentences explaining what the component does, noting it is built on Ark UI's `<primitive>` (sourced from [Shark UI](https://shark.vini.one/docs/components) or [Tark UI](https://www.tarkui.com/) where available) and shares the `{component}Variants` cva + theme from `wicn-core`. Follow with **exactly one example** — a single component instance, not a row of variants — and nothing else. **No variant tables, no color lists, no size lists, no multi-variant rows** here:
 
 ```mdx
 import Demo from '../../components/Demo.astro';
@@ -24,7 +26,7 @@ import Demo from '../../components/Demo.astro';
 
 The `default` example shows one instance of the component in its default state. All variants/sizes/usages live in the Examples section below, never in the intro.
 
-If the component is a **simple passthrough** of a headless Ark primitive, link it here in the intro — e.g. "This is a thin wrapper over [Ark UI `toggle`](https://ark-ui.com/docs/components/toggle)."
+If the component is a **simple passthrough** of a headless Ark primitive, link it here in the intro — e.g. "This is a thin wrapper over [Ark UI `toggle`](https://ark-ui.com/docs/components/toggle)." When the parts are closely based on Shark UI or Tark UI, also link their component docs as the styling reference.
 
 ## Examples
 
@@ -71,7 +73,7 @@ Rules:
 - Each public component gets its own `###` heading; the sub-headings under it cover every part of its API — props, slots, CSS variables, context, whatever applies — not just props.
 - Re-exported/passthrough parts may say "accepts all Ark `XxxProps` plus `className`/`class`".
 - No code snippets in the API section — the Examples section already shows usage.
-- **Link passthrough APIs.** When a part's API is a passthrough to Ark/Chakra (thin wrapper, pure re-export, or "accepts all Ark `XxxProps`"), link the relevant upstream doc — e.g. `accepts all [Ark \`TooltipContent\` props](https://ark-ui.com/docs/components/tooltip)`. Link at the part level so a reader can find the full prop reference for anything wicn doesn't document itself.
+- **Link passthrough APIs.** When a part's API is a passthrough to Ark/Chakra (thin wrapper, pure re-export, or "accepts all Ark `XxxProps`"), link the relevant upstream doc — e.g. `accepts all [Ark \`TooltipContent\` props](https://ark-ui.com/docs/components/tooltip)`. Link at the part level so a reader can find the full prop reference for anything wicn doesn't document itself. If the component is closely based on Shark UI or Tark UI, link those docs too.
 
 ## Accessibility (optional)
 

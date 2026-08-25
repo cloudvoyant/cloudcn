@@ -3,7 +3,7 @@ description: 'Create, update, or review wicn components. Triggers on: "create co
 name: wicn-component
 license: MIT
 compatibility: 'Designed for Claude Code. On OpenCode and VS Code Copilot, AskUserQuestion falls back to numbered list.'
-argument-hint: 'new|update|review <component...> [--ark|--chakra|--shadcn]'
+argument-hint: 'new|update|review <component...> [--shark|--tark|--ark|--chakra|--shadcn]'
 ---
 
 > **Compatibility**: AskUserQuestion falls back to numbered list on non-Claude-Code platforms.
@@ -19,13 +19,17 @@ command -v mise >/dev/null 2>&1 || echo "NOTE: mise not available — validation
 
 - Dispatch on the first non-flag argument: `new` (default) | `update` | `review`
 - Support multiple components in one invocation — run them as parallel blocking subagents, one per component, then aggregate
-- Always source before writing: Ark UI → Chakra UI → shadcn, in that order (see `references/sourcing.md`)
-- First pass of a component is a working copy from an external source (Ark/Chakra MCP snippet or shadcn) — never written from scratch
+- Always source before writing: Shark UI → Tark UI → Ark UI → Chakra UI → shadcn, in that order (see `references/sourcing.md`)
+- First pass of a component is a working copy from an external source (Shark/Tark skill, Ark/Chakra MCP snippet, or shadcn) — never written from scratch
+- Copy first, adapt after: land the copied component with e2e green at a clear commit breakpoint before restyling, so adaptations can be reverted and diffed (see `references/sourcing.md`)
 - Bring over any tests, fixtures, or a11y checks the external source ships, adapted to the testing standards (see `references/guidelines.md`)
-- Check the Ark and Chakra MCP servers are set up before sourcing; if one is missing, search its docs and surface the setup instructions (see `references/reference-index.md`)
+- Check the Shark UI skill / LLMs.txt and the Ark/Chakra MCP servers are set up before sourcing; if one is missing, search its docs and surface the setup instructions (see `references/reference-index.md`)
 - Shared interfaces, cva variants, `cn`, and the theme live in `wicn-core` — never in a framework package (see `references/package-layout.md`)
 - Framework wrappers stay thin — apply `cn(variants(...))`, pass through Ark props, zero logic
 - Every component is light-and-dark capable, accessible, and themeable; accessibility comes from Ark's state machine — never hand-roll roles/keyboard/focus (see `references/guidelines.md`)
+- E2E must cover keyboard navigability when applicable — arrow-key navigation, `Enter`/`Space` activation, `Escape` dismissal, no extra-tab traps (see `references/guidelines.md` → Testing)
+- Use wicn layout primitives (`Container`, `Stack`/`HStack`/`VStack`, `Row`/`Col`, `Center`) as heavily as possible and reduce unnecessary nesting — a deliberate difference from the shadcn approach (see `references/guidelines.md`)
+- Component names are PascalCase (`ToggleButton`, `NavigationMenu`) in exports, parts, and MDX titles; file paths stay kebab-case (see `references/guidelines.md`)
 - Translate React → Svelte last, not in parallel
 - Every component ships docs per `references/component-docs-template.md`; theme extensions must be explicit in those docs
 - Validate with `mise run build`, `mise run test`, `mise run lint`, `mise run format:check`, `mise run e2e`
@@ -35,7 +39,9 @@ command -v mise >/dev/null 2>&1 || echo "NOTE: mise not available — validation
 ```bash
 VERB="[first non-flag argument; default 'new']"    # new | update | review
 COMPONENTS="[remaining non-flag arguments]"        # one or more component names
-FORCE_ARK=false; FORCE_CHAKRA=false; FORCE_SHADCN=false
+FORCE_SHARK=false; FORCE_TARK=false; FORCE_ARK=false; FORCE_CHAKRA=false; FORCE_SHADCN=false
+[[ "$*" =~ --shark ]] && FORCE_SHARK=true
+[[ "$*" =~ --tark ]] && FORCE_TARK=true
 [[ "$*" =~ --ark ]] && FORCE_ARK=true
 [[ "$*" =~ --chakra ]] && FORCE_CHAKRA=true
 [[ "$*" =~ --shadcn ]] && FORCE_SHADCN=true
@@ -43,9 +49,13 @@ FORCE_ARK=false; FORCE_CHAKRA=false; FORCE_SHADCN=false
 
 Normalise aliases: `add`/`create` → `new`. If `COMPONENTS` is empty, ask for the name(s) (free-text via Other, space-separated).
 
-## Step 0.5: Check MCP servers
+## Step 0.5: Check retrieval paths
 
-Before sourcing, confirm the Ark and Chakra UI MCP servers are set up. If either is unavailable, search its docs (links in `references/reference-index.md`) and report the setup instructions in your output — do not silently proceed docs-only, the MCP server is the primary retrieval path.
+Before sourcing, confirm the preferred retrieval paths are available:
+- **Shark UI** — install the skill (`pnpm dlx skills add sharkui-inc/shark-ui`) or use its LLMs.txt (<https://shark.vini.one/llms.txt>); Tark UI is browsed via its docs.
+- **Ark / Chakra UI MCP servers** — the fallback retrieval paths for Ark/Chakra sourcing. If one is unavailable, search its docs (links in `references/reference-index.md`) and report the setup instructions in your output.
+
+Do not silently proceed docs-only for the step you land on — surface the setup instructions when a path is missing.
 
 ## Step 1: Dispatch per verb
 
@@ -68,7 +78,7 @@ Each agent follows the verb's steps below and returns a terse per-component repo
 
 ## Step 3 (update): Re-apply standards to existing files
 
-- Confirm sourcing origin still matches the component (Ark → Chakra → shadcn); re-source only if the current wrapper diverges.
+- Confirm sourcing origin still matches the component (Shark → Tark → Ark → Chakra → shadcn); re-source only if the current wrapper diverges.
 - Check each package's files against `references/package-layout.md`; fix misplaced code.
 - Re-apply `references/guidelines.md` (light/dark, accessible, themeable, `cn`, cva axes).
 - Sync the MDX page and demo examples to `references/component-docs-template.md`, including any theme-extension notes.
@@ -102,7 +112,7 @@ Aggregate the per-component reports: files touched (new/update) or findings (rev
 
 ## Reference Index
 
-- `references/sourcing.md` — Ark → Chakra → shadcn decision tree and commands
+- `references/sourcing.md` — Shark → Tark → Ark → Chakra → shadcn decision tree and commands
 - `references/package-layout.md` — which package owns what
 - `references/guidelines.md` — cn/tailwind/theme/cva/accessibility rules
 - `references/component-docs-template.md` — MDX page anatomy

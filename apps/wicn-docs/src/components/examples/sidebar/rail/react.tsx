@@ -14,6 +14,7 @@ import {
   Container,
 } from 'wicn-react';
 import { Home, Inbox, Settings, LifeBuoy, PanelLeft } from 'lucide-react';
+import { WicnLogo } from '../../WicnLogo';
 
 const NAV = [
   { label: 'Home', icon: Home },
@@ -33,7 +34,7 @@ export default function ReactSidebarRail() {
                 size="lg"
                 icon={
                   <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                    <span className="text-sm font-semibold">c</span>
+                    <WicnLogo className="size-5" />
                   </div>
                 }
               >

@@ -69,7 +69,7 @@ export const navbarMenuPlacementVariants = cva('', {
   },
 });
 
-export const navbarActionsBase = 'flex shrink-0 items-center gap-2';
+export const navbarActionsBase = 'ml-auto hidden items-center gap-2 md:flex';
 
 export const navbarTriggerVariants = cva(
   'inline-flex h-9 w-9 items-center justify-center text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',

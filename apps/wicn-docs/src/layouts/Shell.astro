@@ -1,10 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import '../styles/global.css';
-import TopNav from '../components/TopNav.astro';
+import TopNav from '../components/TopNav.tsx';
 import Sidebar from '../components/Sidebar.astro';
 import Toc from '../components/Toc.astro';
 import Footer from '../components/Footer.astro';
-import MobileSidebar from '../components/MobileSidebar.astro';
 
 interface TocHeading {
   depth: number;
@@ -25,6 +25,28 @@ const {
   currentPath = import.meta.env.BASE_URL,
   headings = [] }
 = Astro.props;
+
+const general = (await getCollection('general')).sort((a, b) => a.data.order - b.data.order);
+const components = (await getCollection('components')).sort((a, b) => a.data.order - b.data.order);
+
+const groups = [
+  { label: 'General', section: 'general', group: '' },
+  { label: 'Layouts', section: 'components', group: 'layouts' },
+  { label: 'Navigation', section: 'components', group: 'navigation' },
+  { label: 'Buttons', section: 'components', group: 'buttons' },
+  { label: 'Misc', section: 'components', group: 'misc' },
+]
+  .map((g) => {
+    const items = g.section === 'general' ? general : components.filter((c) => c.data.group === g.group);
+    return {
+      label: g.label,
+      items: items.map((entry) => ({
+        title: entry.data.title,
+        href: `${import.meta.env.BASE_URL}${g.section}/${entry.id}`,
+      })),
+    };
+  })
+  .filter((g) => g.items.length > 0);
 ---
 
 <!doctype html>
@@ -82,7 +104,7 @@ const {
     </script>
   </head>
   <body class="min-h-dvh bg-background text-foreground antialiased">
-    <TopNav currentPath={currentPath} />
+    <TopNav client:load currentPath={currentPath} groups={groups} />
     <div class="flex w-full gap-8">
       <aside class="hidden w-56 shrink-0 py-10 pl-4 lg:block lg:pl-8">
         <div class="sticky top-24 max-h-[calc(100dvh-8rem)] overflow-y-auto pb-4">
@@ -97,6 +119,5 @@ const {
       <Toc headings={headings} />
     </div>
     <Footer />
-    <MobileSidebar currentPath={currentPath} />
   </body>
 </html>

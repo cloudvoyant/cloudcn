@@ -12,6 +12,7 @@ async function selectFramework(page: Page, framework: Framework) {
   // exercise the sticky example, so hide the second (floating) example to keep
   // the framework selector and locators unambiguous.
   await page.locator('[data-example]').nth(1).evaluate((el) => (el.style.display = 'none'));
+  await page.locator('[data-framework-selector][data-ready]').waitFor();
   await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
   const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
   await expect(demo).toBeVisible();

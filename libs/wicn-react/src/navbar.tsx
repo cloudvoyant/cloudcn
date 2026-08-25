@@ -261,7 +261,7 @@ function NavbarMobile({ className, children, ...props }: React.ComponentProps<'d
   const { id, open, setOpen, slots, floating, portalRef } = useNavbar();
   return (
     <Portal container={portalRef}>
-      <DialogRoot open={open} onOpenChange={({ open }) => setOpen(open)}>
+      <DialogRoot open={open} lazyMount unmountOnExit onOpenChange={({ open }) => setOpen(open)}>
         <DialogBackdrop className="absolute inset-0 z-[100] bg-background/60 backdrop-blur-sm" />
         <DialogPositioner className="absolute inset-0 z-[100]">
           <DialogContent id={id} data-slot="navbar-mobile" className={cn(navbarMobileContentBase, className)} {...props}>

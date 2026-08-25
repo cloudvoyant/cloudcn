@@ -37,7 +37,7 @@
 </script>
 
 <Portal container={navbar.portalEl}>
-  <Root {open} onOpenChange={(d: { open: boolean }) => navbar.setOpen(d.open)}>
+  <Root {open} lazyMount unmountOnExit onOpenChange={(d: { open: boolean }) => navbar.setOpen(d.open)}>
     <DialogBackdrop class="absolute inset-0 z-[100] bg-background/60 backdrop-blur-sm" />
     <Positioner class="absolute inset-0 z-[100]">
       <DialogContent data-slot="navbar-mobile" class={classes} {...rest}>

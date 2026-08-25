@@ -8,6 +8,7 @@ const FRAMEWORKS = ['react', 'svelte'] as const;
 type Framework = (typeof FRAMEWORKS)[number];
 
 async function selectFramework(page: Page, framework: Framework) {
+  await page.locator('[data-framework-selector][data-ready]').waitFor();
   await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
   const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
   await expect(demo).toBeVisible();

@@ -15,7 +15,7 @@
     Container,
   } from 'wicn-svelte';
   import { House as Home, Inbox, Settings, LifeBuoy } from 'lucide-svelte';
-  import WicnLogo from '../WicnLogo.svelte';
+  import WicnLogo from '../../WicnLogo.svelte';
 
   const NAV = [
     { label: 'Home', icon: Home },

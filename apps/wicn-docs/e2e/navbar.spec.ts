@@ -56,8 +56,10 @@ for (const framework of FRAMEWORKS) {
       await expect(panelLink).toBeHidden();
     });
 
-    test('sticky bar stays pinned and marks data-scrolled on container scroll', async ({ page }) => {
-      const header = page.locator(`[data-demo] [data-fw="${framework}"] header[data-slot="navbar"]`).first();
+    test('shrink-on-scroll bar stays pinned and compacts on container scroll', async ({ page }) => {
+      // The "Shrink on scroll" example is the third [data-example] on the page.
+      const example = page.locator('[data-example]').nth(2);
+      const header = example.locator(`[data-fw="${framework}"] header[data-slot="navbar"]`).first();
       await header.scrollIntoViewIfNeeded();
       const pinned = await header.evaluate((el) => {
         // Find the demo's scroll container (overflow-y-auto ancestor).
@@ -72,6 +74,15 @@ for (const framework of FRAMEWORKS) {
       await expect(async () => {
         await expect(header).toHaveAttribute('data-scrolled', 'true');
       }).toPass();
+      // density="shrink-on-scroll": the container compacts when scrolled
+      const container = example.locator(`[data-fw="${framework}"] [data-slot="navbar-container"]`).first();
+      await expect(container).toHaveAttribute('data-shrunk', 'true');
+      const h = await container.evaluate((el) => el.getBoundingClientRect().height);
+      expect(h).toBeLessThan(64); // compacted below the default h-16 (64px)
+      // NavMenu items shrink too (size="sm")
+      const trigger = example.locator(`[data-fw="${framework}"] [data-slot="navbar-menu"] [data-part="trigger"]`).first();
+      const th = await trigger.evaluate((el) => el.getBoundingClientRect().height);
+      expect(th).toBeLessThan(36); // compacted below h-9 (36px)
       await header.evaluate((el) => {
         let c: HTMLElement | null = el.parentElement;
         while (c && !/auto|scroll|overlay/.test(getComputedStyle(c).overflowY)) c = c.parentElement;

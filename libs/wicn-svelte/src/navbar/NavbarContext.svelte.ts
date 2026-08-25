@@ -1,11 +1,13 @@
 // libs/wicn-svelte/src/navbar/NavbarContext.svelte.ts
 // Source: wicn-react navbar context (shadcnblocks navbar6/7, re-based on Ark UI)
 import { getContext, setContext } from 'svelte';
+import type { NavbarDensity } from 'wicn-core';
 
 export interface NavbarContextValue {
   open: boolean;
   setOpen: (open: boolean) => void;
   scrolled: boolean;
+  density: NavbarDensity;
 }
 
 export const NAVBAR_CONTEXT_KEY = Symbol('wicn.navbar');

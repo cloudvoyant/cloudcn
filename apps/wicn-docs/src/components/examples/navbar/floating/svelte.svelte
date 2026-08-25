@@ -6,17 +6,17 @@
     NavbarContainer,
     NavbarBrand,
     NavbarMenu,
-    NavbarActions,
     NavbarTrigger,
     NavbarMobile,
     Container,
     VStack,
-    NavigationMenuList,
-    NavigationMenuItem,
-    NavigationMenuTrigger,
-    NavigationMenuContent,
-    NavigationMenuLink,
+    NavMenuList,
+    NavMenuItem,
+    NavMenuTrigger,
+    NavMenuContent,
+    NavMenuLink,
   } from 'wicn-svelte';
+  import WicnLogo from '../../WicnLogo.svelte';
 
   const CONTENT: [string, string][] = [
     ['About', 'A brief history of wicn and its guiding principles.'],
@@ -29,35 +29,36 @@
 </script>
 
 <div class="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
-  <NavbarProvider>
+  <NavbarProvider density="shrink-on-scroll">
     <Navbar variant="floating" class="sticky top-4 z-30">
       <NavbarContainer>
         <NavbarBrand>
-          <span class="text-sm font-semibold">wicn</span>
+          <WicnLogo class="h-7 w-auto" /><span class="text-sm font-semibold">wicn</span>
         </NavbarBrand>
         <NavbarMenu placement="left">
-          <NavigationMenuList>
-            <NavigationMenuItem value="docs">
-              <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <NavigationMenuLink href="#">Components</NavigationMenuLink>
-                <NavigationMenuLink href="#">Theming</NavigationMenuLink>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem value="blog">
-              <NavigationMenuLink href="#">Blog</NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
+          <NavMenuList>
+            <NavMenuItem value="docs" variant="link">
+              <NavMenuTrigger>Docs</NavMenuTrigger>
+              <NavMenuContent>
+                <NavMenuLink href="#">Components</NavMenuLink>
+                <NavMenuLink href="#">Theming</NavMenuLink>
+              </NavMenuContent>
+            </NavMenuItem>
+            <NavMenuItem value="blog" variant="link">
+              <NavMenuLink href="#">Blog</NavMenuLink>
+            </NavMenuItem>
+            <NavMenuItem value="signin" variant="link">
+              <NavMenuLink href="#">Sign in</NavMenuLink>
+            </NavMenuItem>
+          </NavMenuList>
         </NavbarMenu>
-        <NavbarActions>
-          <a href="#" class="text-sm font-medium text-muted-foreground hover:text-foreground">Sign in</a>
-        </NavbarActions>
         <NavbarTrigger />
       </NavbarContainer>
       <NavbarMobile>
         <VStack class="gap-2 px-4 py-4">
           <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">Components</a>
           <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">Blog</a>
+          <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">Sign in</a>
         </VStack>
       </NavbarMobile>
     </Navbar>

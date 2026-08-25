@@ -1,6 +1,15 @@
 /* apps/wicn-docs/src/styles/global.css */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 @import 'tailwindcss';
+/* Scan the workspace lib sources directly. In a pnpm workspace the
+   `@source` lines in wicn-core/components.css resolve through the
+   node_modules symlink, whose target is gitignored — so Tailwind skips it
+   in the production build and wicn's Tailwind classes never compile here.
+   Explicit real paths guarantee wicn-core/react/svelte classes (e.g.
+   group-data-[density=compact]/nav-menu, the link variant, viewport classes). */
+@source '../../../libs/wicn-core/src';
+@source '../../../libs/wicn-react/src';
+@source '../../../libs/wicn-svelte/src';
 @import 'wicn-core/theme.css';
 /* shadcn-compatible theme presets (`.theme-{name}` / `.theme-{name}.dark`). */
 @import 'wicn-core/themes.css';
@@ -92,9 +101,15 @@ html.dark .astro-code {
 }
 /* Prose anchor styling (underline, primary color) must not bleed into
    interactive demos — demos render their own components (e.g. the sidebar's
-   asChild <a> logo), which should keep their own look. */
+   asChild <a> logo), which should keep their own look. Exclude demos from the
+   prose anchor rules entirely, and inside demos only reset weight/decoration
+   (never `color`) so component color utilities — which Tailwind v4 wraps in
+   `:where()` and would otherwise lose the specificity battle — win. */
+.docs-prose a:not([data-demo] *) {
+  @apply font-medium text-primary underline underline-offset-4 hover:text-primary/80;
+}
 .docs-prose [data-demo] a {
-  @apply font-normal text-inherit no-underline;
+  @apply font-normal no-underline;
 }
 .docs-prose code {
   @apply rounded bg-muted px-1.5 py-0.5 text-[0.9em] text-foreground;
@@ -104,9 +119,6 @@ html.dark .astro-code {
 }
 .docs-prose pre code {
   @apply bg-transparent p-0 text-inherit;
-}
-.docs-prose a {
-  @apply font-medium text-primary underline underline-offset-4 hover:text-primary/80;
 }
 .docs-prose blockquote {
   @apply my-4 border-l-4 border-border pl-4 text-muted-foreground;

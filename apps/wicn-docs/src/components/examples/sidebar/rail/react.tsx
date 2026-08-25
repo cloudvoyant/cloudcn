@@ -14,7 +14,7 @@ import {
   Container,
 } from 'wicn-react';
 import { Home, Inbox, Settings, LifeBuoy, PanelLeft } from 'lucide-react';
-import { WicnLogo } from '../WicnLogo';
+import { WicnLogo } from '../../WicnLogo';
 
 const NAV = [
   { label: 'Home', icon: Home },

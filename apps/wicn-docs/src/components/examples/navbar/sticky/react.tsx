@@ -5,17 +5,17 @@ import {
   NavbarContainer,
   NavbarBrand,
   NavbarMenu,
-  NavbarActions,
   NavbarTrigger,
   NavbarMobile,
   Container,
   VStack,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
-  NavigationMenuLink,
+  NavMenuList,
+  NavMenuItem,
+  NavMenuTrigger,
+  NavMenuContent,
+  NavMenuLink,
 } from 'wicn-react';
+import { WicnLogo } from '../../WicnLogo';
 
 const CONTENT = [
   ['About', 'A brief history of wicn and its guiding principles.'],
@@ -33,27 +33,26 @@ export default function ReactNavbarSticky() {
         <Navbar variant="sticky" className="z-30">
           <NavbarContainer>
             <NavbarBrand>
+              <WicnLogo className="h-7 w-auto" />
               <span className="text-sm font-semibold">wicn</span>
             </NavbarBrand>
             <NavbarMenu placement="center">
-              <NavigationMenuList>
-                <NavigationMenuItem value="docs">
-                  <NavigationMenuTrigger>Docs</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <NavigationMenuLink href="#">Components</NavigationMenuLink>
-                    <NavigationMenuLink href="#">Theming</NavigationMenuLink>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem value="blog">
-                  <NavigationMenuLink href="#">Blog</NavigationMenuLink>
-                </NavigationMenuItem>
-              </NavigationMenuList>
+              <NavMenuList>
+                <NavMenuItem value="docs" variant="link">
+                  <NavMenuTrigger>Docs</NavMenuTrigger>
+                  <NavMenuContent>
+                    <NavMenuLink href="#">Components</NavMenuLink>
+                    <NavMenuLink href="#">Theming</NavMenuLink>
+                  </NavMenuContent>
+                </NavMenuItem>
+                <NavMenuItem value="blog" variant="link">
+                  <NavMenuLink href="#">Blog</NavMenuLink>
+                </NavMenuItem>
+                <NavMenuItem value="signin" variant="link">
+                  <NavMenuLink href="#">Sign in</NavMenuLink>
+                </NavMenuItem>
+              </NavMenuList>
             </NavbarMenu>
-            <NavbarActions>
-              <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-                Sign in
-              </a>
-            </NavbarActions>
             <NavbarTrigger />
           </NavbarContainer>
           <NavbarMobile>
@@ -63,6 +62,9 @@ export default function ReactNavbarSticky() {
               </a>
               <a href="#" className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
                 Blog
+              </a>
+              <a href="#" className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent">
+                Sign in
               </a>
             </VStack>
           </NavbarMobile>

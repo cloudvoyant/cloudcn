@@ -42,16 +42,18 @@ export {
   sidebarStyles,
 } from './sidebar';
 export {
-  navigationMenuRootBase,
-  navigationMenuListBase,
-  navigationMenuItemBase,
-  navigationMenuTriggerStyle,
-  navigationMenuContentBase,
-  navigationMenuLinkBase,
-  navigationMenuViewportPositionerBase,
-  navigationMenuViewportBase,
-  navigationMenuIndicatorBase,
-} from './navigation-menu';
+  navMenuRootBase,
+  navMenuListBase,
+  navMenuItemBase,
+  navMenuTriggerStyle,
+  type NavMenuDensity,
+  type NavMenuVariant,
+  navMenuContentBase,
+  navMenuLinkBase,
+  navMenuViewportPositionerBase,
+  navMenuViewportBase,
+  navMenuIndicatorBase,
+} from './nav-menu';
 export {
   tabsRootBase,
   tabsListBase,
@@ -68,6 +70,9 @@ export {
   navbarVariants,
   navbarProviderBase,
   navbarContainerBase,
+  navbarDensityVariants,
+  navbarDensityShrunkVariants,
+  type NavbarDensity,
   navbarBrandBase,
   navbarMenuBase,
   navbarMenuPlacementVariants,

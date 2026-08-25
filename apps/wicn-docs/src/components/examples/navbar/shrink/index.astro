@@ -1,0 +1,17 @@
+---
+// apps/wicn-docs/src/components/examples/navbar/shrink/index.astro
+import Example from '../../../Example.astro';
+import ReactNavbarShrink from './react.tsx';
+import SvelteNavbarShrink from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Shrink on scroll" reactCode={reactCode} svelteCode={svelteCode} fullscreen>
+  <div data-fw="react">
+    <ReactNavbarShrink client:only="react" />
+  </div>
+  <div data-fw="svelte">
+    <SvelteNavbarShrink client:only="svelte" />
+  </div>
+</Example>

@@ -1,13 +1,14 @@
 ---
 title: Navbar
 description: A sticky or floating site navigation bar with a responsive mobile collapse, for React and Svelte.
-order: 14
+order: 8
+group: navigation
 ---
 
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-The Navbar composes a brand, a navigation menu (via the NavigationMenu), and actions into a sticky top bar or a floating pill, collapsing to a mobile disclosure below `md`. It is based on [shadcnblocks Navbar 7](https://www.shadcnblocks.com/block/navbar7) and [Navbar 6](https://www.shadcnblocks.com/block/navbar6), re-based on Ark UI's `navigation-menu` and `collapsible` primitives, sharing the `navbarVariants` cva + part classes from `wicn-core`. Use the framework selector in the top-right to switch between implementations.
+The Navbar composes a brand, a navigation menu (via the NavMenu), and actions into a sticky top bar or a floating pill, collapsing to a mobile disclosure below `md`. It is based on [shadcnblocks Navbar 7](https://www.shadcnblocks.com/block/navbar7) and [Navbar 6](https://www.shadcnblocks.com/block/navbar6), re-based on Ark UI's `navigation-menu` and `collapsible` primitives, sharing the `navbarVariants` cva + part classes from `wicn-core`. Use the framework selector in the top-right to switch between implementations.
 
 <Demo component="navbar" example="sticky" />
 
@@ -24,6 +25,7 @@ The Navbar composes a brand, a navigation menu (via the NavigationMenu), and act
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `defaultOpen` | `boolean` | `false` | Initial mobile-menu open state. |
+| `density` | `'relaxed' \| 'compact' \| 'shrink-on-scroll'` | `'relaxed'` | Bar density. `relaxed` is the spacious default (`h-16`). `compact` uses a tighter `h-12` bar. `shrink-on-scroll` starts relaxed and compacts to the compact style once the bar scrolls past 24px — the container height/gap/padding and the NavMenu triggers animate together over 300ms. |
 
 ### Navbar
 
@@ -33,7 +35,7 @@ The Navbar composes a brand, a navigation menu (via the NavigationMenu), and act
 | --- | --- | --- | --- |
 | `variant` | `'sticky' \| 'floating'` | `'sticky'` | Sticky top bar or floating pill. |
 
-Sets `data-scrolled` on the root when the page scrolls past 24px, which the sticky variant uses to swap in a blurred, shadowed, compact style.
+Sets `data-scrolled` on the root when the page scrolls past 24px, which the sticky variant uses to swap in a blurred, shadowed style.
 
 ### NavbarContainer
 
@@ -51,7 +53,7 @@ The brand/logo slot (left side). Accepts standard element attributes plus `class
 | --- | --- | --- | --- |
 | `placement` | `'left' \| 'center' \| 'right'` | `'center'` | Horizontal placement of the menu items. |
 
-Wraps the NavigationMenu; children are `NavigationMenuList` items. Hidden below `md`.
+Wraps the NavMenu; children are `NavMenuList` items. Hidden below `md`. The NavMenu density follows the bar's `density` — `relaxed` maps to `density="relaxed"`, `compact` to `density="compact"`, and `shrink-on-scroll` flips from `relaxed` to `compact` once the bar has scrolled, so the menu triggers compact with the bar.
 
 ### NavbarActions
 
@@ -67,7 +69,7 @@ The mobile menu panel, shown only below `md`, powered by Ark `collapsible`. Acce
 
 ## Accessibility
 
-The mobile disclosure uses Ark's `collapsible` primitive, so `aria-expanded`, `aria-controls`, and `Escape` behavior come from Ark. The trigger is a native button with a default `aria-label="Toggle navigation menu"`. The desktop menu uses the NavigationMenu's Ark `navigation-menu` semantics (roving tabindex, arrow keys, roles).
+The mobile disclosure uses Ark's `collapsible` primitive, so `aria-expanded`, `aria-controls`, and `Escape` behavior come from Ark. The trigger is a native button with a default `aria-label="Toggle navigation menu"`. The desktop menu uses the NavMenu's Ark `navigation-menu` semantics (roving tabindex, arrow keys, roles).
 
 ## Theming
 

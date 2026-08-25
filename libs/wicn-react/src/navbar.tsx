@@ -9,6 +9,8 @@ import {
   navbarVariants,
   navbarProviderBase,
   navbarContainerBase,
+  navbarDensityVariants,
+  navbarDensityShrunkVariants,
   navbarBrandBase,
   navbarMenuBase,
   navbarMenuPlacementVariants,
@@ -16,8 +18,10 @@ import {
   navbarTriggerBase,
   navbarMobileBase,
   cn,
+  type NavbarDensity,
+  type NavMenuDensity,
 } from 'wicn-core';
-import { NavigationMenu } from './navigation-menu';
+import { NavMenu } from './nav-menu';
 
 const SCROLL_THRESHOLD = 24;
 
@@ -26,6 +30,7 @@ interface NavbarContextValue {
   open: boolean;
   setOpen: (open: boolean) => void;
   scrolled: boolean;
+  density: NavbarDensity;
 }
 
 const NavbarContext = React.createContext<NavbarContextValue | null>(null);
@@ -40,10 +45,11 @@ function useNavbar() {
 
 function NavbarProvider({
   defaultOpen = false,
+  density = 'relaxed',
   className,
   children,
   ...props
-}: React.ComponentProps<'div'> & { defaultOpen?: boolean }) {
+}: React.ComponentProps<'div'> & { defaultOpen?: boolean; density?: NavbarDensity }) {
   const id = React.useId();
   const providerRef = React.useRef<HTMLDivElement>(null);
   const [open, setOpen] = React.useState(defaultOpen);
@@ -68,7 +74,10 @@ function NavbarProvider({
     return () => (target as EventTarget).removeEventListener('scroll', onScroll);
   }, []);
 
-  const contextValue = React.useMemo(() => ({ id, open, setOpen, scrolled }), [id, open, scrolled]);
+  const contextValue = React.useMemo(
+    () => ({ id, open, setOpen, scrolled, density }),
+    [id, open, scrolled, density],
+  );
 
   return (
     <NavbarContext.Provider value={contextValue}>
@@ -99,8 +108,20 @@ function Navbar({
 }
 
 function NavbarContainer({ className, children, ...props }: HTMLArkProps<'div'>) {
+  const { scrolled, density } = useNavbar();
+  const shrunk = density === 'shrink-on-scroll' && scrolled;
   return (
-    <ark.div data-slot="navbar-container" className={cn(navbarContainerBase, className)} {...props}>
+    <ark.div
+      data-slot="navbar-container"
+      data-shrunk={shrunk || undefined}
+      className={cn(
+        navbarContainerBase,
+        navbarDensityVariants({ density }),
+        shrunk && navbarDensityShrunkVariants({ density }),
+        className,
+      )}
+      {...props}
+    >
       {children}
     </ark.div>
   );
@@ -120,6 +141,9 @@ function NavbarMenu({
   children,
   ...props
 }: HTMLArkProps<'div'> & { placement?: 'left' | 'center' | 'right' }) {
+  const { scrolled, density } = useNavbar();
+  const menuDensity: NavMenuDensity =
+    density === 'compact' || (density === 'shrink-on-scroll' && scrolled) ? 'compact' : 'relaxed';
   return (
     <ark.div
       data-slot="navbar-menu"
@@ -127,7 +151,7 @@ function NavbarMenu({
       className={cn(navbarMenuBase, navbarMenuPlacementVariants({ placement }), className)}
       {...props}
     >
-      <NavigationMenu>{children}</NavigationMenu>
+      <NavMenu density={menuDensity}>{children}</NavMenu>
     </ark.div>
   );
 }

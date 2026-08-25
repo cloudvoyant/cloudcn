@@ -20,7 +20,35 @@ export const navbarVariants = cva('w-full', {
 
 export const navbarProviderBase = 'group/navbar';
 
-export const navbarContainerBase = 'flex h-16 items-center justify-between gap-4 px-4 md:px-6';
+export type NavbarDensity = 'relaxed' | 'compact' | 'shrink-on-scroll';
+
+export const navbarContainerBase = 'flex items-center justify-between transition-[height,gap,padding] duration-300';
+
+export const navbarDensityVariants = cva('', {
+  variants: {
+    density: {
+      relaxed: 'h-16 gap-4 px-4 md:px-6',
+      compact: 'h-12 gap-1.5 px-2',
+      'shrink-on-scroll': 'h-16 gap-4 px-4 md:px-6',
+    },
+  },
+  defaultVariants: {
+    density: 'relaxed',
+  },
+});
+
+export const navbarDensityShrunkVariants = cva('', {
+  variants: {
+    density: {
+      relaxed: '',
+      compact: '',
+      'shrink-on-scroll': 'h-12 gap-1.5 px-2',
+    },
+  },
+  defaultVariants: {
+    density: 'relaxed',
+  },
+});
 
 export const navbarBrandBase = 'flex shrink-0 items-center gap-2';
 

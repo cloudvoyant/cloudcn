@@ -47,7 +47,7 @@ export default defineConfig({
     '/docs/components/stack': '/components/stack',
     '/docs/components/scroll': '/components/scroll',
     '/docs/components/splitter': '/components/splitter',
-    '/docs/components/navigation-menu': '/components/navigation-menu',
+    '/docs/components/nav-menu': '/components/nav-menu',
     '/docs/components/tabs': '/components/tabs',
     '/docs/components/pagination': '/components/pagination',
     '/docs/components/navbar': '/components/navbar',

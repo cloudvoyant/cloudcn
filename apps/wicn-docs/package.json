@@ -1,6 +1,6 @@
 {
   "name": "wicn-docs",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "private": true,
   "type": "module",
   "description": "wicn docs/demo app — Astro site with React + Svelte component demos",

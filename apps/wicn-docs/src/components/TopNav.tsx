@@ -43,7 +43,7 @@ export default function TopNav({ currentPath = import.meta.env.BASE_URL, groups 
     <NavbarProvider variant="shrink">
       <Navbar>
         <NavbarContainer>
-          <NavbarBrand>
+          <NavbarBrand className="text-primary">
             <WicnLogo className="h-7 w-auto" />
             <span className="font-brand text-sm font-semibold">wicn</span>
           </NavbarBrand>

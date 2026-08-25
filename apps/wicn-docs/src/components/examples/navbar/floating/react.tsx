@@ -5,7 +5,6 @@ import {
   NavbarContainer,
   NavbarBrand,
   NavbarMenu,
-  NavbarActions,
   NavbarTrigger,
   NavbarMobile,
   Container,
@@ -52,13 +51,11 @@ export default function ReactNavbarFloating() {
                 <NavMenuItem value="blog" variant="link">
                   <NavMenuLink href="#">Blog</NavMenuLink>
                 </NavMenuItem>
+                <NavMenuItem value="signin" variant="link">
+                  <NavMenuLink href="#">Sign in</NavMenuLink>
+                </NavMenuItem>
               </NavMenuList>
             </NavbarMenu>
-            <NavbarActions>
-              <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-                Sign in
-              </a>
-            </NavbarActions>
             <NavbarTrigger />
           </NavbarContainer>
           <NavbarMobile>
@@ -84,6 +81,12 @@ export default function ReactNavbarFloating() {
               className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
             >
               Blog
+            </a>
+            <a
+              href="#"
+              className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+            >
+              Sign in
             </a>
           </NavbarMobile>
         </Navbar>

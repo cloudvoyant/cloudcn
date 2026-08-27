@@ -5,6 +5,7 @@
 import * as React from 'react';
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import { Portal } from '@ark-ui/react/portal';
+import { CollapsibleRoot, CollapsibleTrigger, CollapsibleContent } from '@ark-ui/react/collapsible';
 import {
   DialogRoot,
   DialogBackdrop,
@@ -15,8 +16,27 @@ import {
   DialogDescription,
 } from '@ark-ui/react/dialog';
 import {
+  NavigationMenuRoot as ArkNavMenuRoot,
+  NavigationMenuList as ArkNavMenuList,
+  NavigationMenuItem as ArkNavMenuItem,
+  NavigationMenuTrigger as ArkNavMenuTrigger,
+  NavigationMenuContent as ArkNavMenuContent,
+  NavigationMenuLink as ArkNavMenuLink,
+  NavigationMenuViewport as ArkNavMenuViewport,
+  NavigationMenuViewportPositioner as ArkNavMenuViewportPositioner,
+  NavigationMenuIndicator as ArkNavMenuIndicator,
+  type NavigationMenuRootProps as NavbarMenuRootProps,
+  type NavigationMenuListProps as NavbarMenuListProps,
+  type NavigationMenuItemProps as NavbarMenuItemProps,
+  type NavigationMenuTriggerProps as NavbarMenuTriggerProps,
+  type NavigationMenuContentProps as NavbarMenuContentProps,
+  type NavigationMenuLinkProps as NavbarMenuLinkProps,
+  type NavigationMenuViewportProps as NavbarMenuViewportProps,
+  type NavigationMenuViewportPositionerProps as NavbarMenuViewportPositionerProps,
+  type NavigationMenuIndicatorProps as NavbarMenuIndicatorProps,
+} from '@ark-ui/react/navigation-menu';
+import {
   navbarVariants,
-  navbarProviderBase,
   navbarContainerBase,
   navbarDensityVariants,
   navbarShrunkBase,
@@ -30,12 +50,23 @@ import {
   navbarMobileHeaderBase,
   navbarMobileMenuBase,
   navbarMobileActionsBase,
+  navbarMenuRootBase,
+  navbarMenuListBase,
+  navbarMenuItemBase,
+  navbarMenuTriggerStyle,
+  navbarMenuContentBase,
+  navbarMenuLinkBase,
+  navbarMobileMenuContentBase,
+  navbarMobileMenuTriggerBase,
+  navbarMenuViewportPositionerBase,
+  navbarMenuViewportBase,
+  navbarMenuIndicatorBase,
   cn,
   type NavbarDensity,
   type NavbarVariant,
-  type NavMenuDensity,
+  type NavbarMenuDensity,
+  type NavbarMenuVariant,
 } from 'wicn-core';
-import { NavMenu } from './nav-menu';
 
 const SCROLL_THRESHOLD = 24;
 
@@ -44,14 +75,16 @@ interface NavbarContextValue {
   open: boolean;
   setOpen: (open: boolean) => void;
   scrolled: boolean;
-  density: NavbarDensity;
-  variant: NavbarVariant;
-  floating: boolean;
+  setScrolled: (scrolled: boolean) => void;
   hovered: boolean;
   setHovered: (hovered: boolean) => void;
   slots: { brand: React.ReactNode; actions: React.ReactNode };
   setSlot: (key: 'brand' | 'actions', node: React.ReactNode) => void;
-  portalRef: React.RefObject<HTMLDivElement | null>;
+  variant: NavbarVariant;
+  floating: boolean;
+  density: NavbarDensity;
+  /** The element the mobile overlay portals into (the header's parent). */
+  portalRef: React.RefObject<HTMLElement | null>;
 }
 
 const NavbarContext = React.createContext<NavbarContextValue | null>(null);
@@ -71,22 +104,26 @@ function useNavbarSlot(key: 'brand' | 'actions', children: React.ReactNode) {
   }, [key, children, setSlot]);
 }
 
+interface NavbarMenuStyle {
+  density: NavbarMenuDensity;
+  variant: NavbarMenuVariant;
+  inContent: boolean;
+}
+
+const NavbarMenuStyleContext = React.createContext<NavbarMenuStyle>({
+  density: 'relaxed',
+  variant: 'default',
+  inContent: false,
+});
+
 function NavbarProvider({
   defaultOpen = false,
-  variant = 'sticky',
-  floating = false,
-  density = 'relaxed',
-  className,
   children,
-  ...props
-}: React.ComponentProps<'div'> & {
+}: {
   defaultOpen?: boolean;
-  variant?: NavbarVariant;
-  floating?: boolean;
-  density?: NavbarDensity;
+  children: React.ReactNode;
 }) {
   const id = React.useId();
-  const providerRef = React.useRef<HTMLDivElement>(null);
   const [open, setOpen] = React.useState(defaultOpen);
   const [scrolled, setScrolled] = React.useState(false);
   const [hovered, setHovered] = React.useState(false);
@@ -94,17 +131,57 @@ function NavbarProvider({
     brand: null,
     actions: null,
   });
+  const portalRef = React.useRef<HTMLElement | null>(null);
 
   const setSlot = React.useCallback((key: 'brand' | 'actions', node: React.ReactNode) => {
     setSlots((prev) => (prev[key] === node ? prev : { ...prev, [key]: node }));
   }, []);
+
+  const contextValue = React.useMemo(
+    () => ({
+      id,
+      open,
+      setOpen,
+      scrolled,
+      setScrolled,
+      hovered,
+      setHovered,
+      slots,
+      setSlot,
+      portalRef,
+      // Baseline config; the Navbar header overrides these with its props.
+      variant: 'sticky' as NavbarVariant,
+      floating: false,
+      density: 'relaxed' as NavbarDensity,
+    }),
+    [id, open, scrolled, hovered, slots, setSlot],
+  );
+
+  return <NavbarContext.Provider value={contextValue}>{children}</NavbarContext.Provider>;
+}
+
+function Navbar({
+  variant = 'sticky',
+  floating = false,
+  density = 'relaxed',
+  className,
+  children,
+  ...props
+}: React.ComponentProps<'header'> & {
+  variant?: NavbarVariant;
+  floating?: boolean;
+  density?: NavbarDensity;
+}) {
+  const base = useNavbar();
+  const headerRef = React.useRef<HTMLElement>(null);
+  const { setScrolled, setHovered } = base;
 
   React.useEffect(() => {
     // Listen to the nearest scrollable ancestor (e.g. a demo container with
     // overflow-y-auto); fall back to the window. `position: sticky` sticks
     // relative to that same container, so data-scrolled stays in sync.
     let target: Element | Window = window;
-    for (let n: Element | null = providerRef.current; n; n = n.parentElement) {
+    for (let n: Element | null = headerRef.current; n; n = n.parentElement) {
       const oy = getComputedStyle(n).overflowY;
       if (oy === 'auto' || oy === 'scroll' || oy === 'overlay') {
         target = n;
@@ -116,37 +193,57 @@ function NavbarProvider({
     onScroll();
     (target as EventTarget).addEventListener('scroll', onScroll, { passive: true });
     return () => (target as EventTarget).removeEventListener('scroll', onScroll);
-  }, []);
+  }, [setScrolled]);
 
-  const contextValue = React.useMemo(
-    () => ({ id, open, setOpen, scrolled, density, variant, floating, hovered, setHovered, slots, setSlot, portalRef: providerRef }),
-    [id, open, scrolled, density, variant, floating, hovered, slots, setSlot],
+  const value = React.useMemo(
+    () => ({ ...base, variant, floating, density }),
+    [base, variant, floating, density],
   );
+  const hidden = variant === 'hide' && base.scrolled && !base.hovered;
+  const shrunk = variant === 'shrink' && base.scrolled;
+
+  React.useLayoutEffect(() => {
+    // Anchor the mobile overlay to the element that contains the bar (its
+    // parent), so it covers the surrounding container rather than the window.
+    base.portalRef.current = headerRef.current?.parentElement ?? null;
+  });
+
+  // The mobile overlay portals into the bar's scroll container (this header's
+  // parent). Lock that container's scroll while the overlay is open so the
+  // background can't be scrolled past it; Ark's body scroll lock is disabled.
+  React.useEffect(() => {
+    if (!base.open) return;
+    const el = headerRef.current?.parentElement;
+    if (!el) return;
+    const prev = el.style.overflow;
+    el.style.overflow = 'hidden';
+    return () => {
+      el.style.overflow = prev;
+    };
+  }, [base.open]);
 
   return (
-    <NavbarContext.Provider value={contextValue}>
-      <div ref={providerRef} data-slot="navbar-provider" className={cn(navbarProviderBase, className)} {...props}>
+    <NavbarContext.Provider value={value}>
+      <header
+        ref={headerRef}
+        data-slot="navbar"
+        data-scrolled={base.scrolled || undefined}
+        data-hidden={hidden || undefined}
+        data-shrunk={shrunk || undefined}
+        className={cn(
+          navbarVariants({ variant, floating }),
+          navbarContainerBase,
+          navbarDensityVariants({ density }),
+          shrunk && navbarShrunkBase,
+          className,
+        )}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        {...props}
+      >
         {children}
-      </div>
+      </header>
     </NavbarContext.Provider>
-  );
-}
-
-function Navbar({ className, children, ...props }: React.ComponentProps<'header'>) {
-  const { scrolled, variant, floating, hovered, setHovered } = useNavbar();
-  const hidden = variant === 'hide' && scrolled && !hovered;
-  return (
-    <header
-      data-slot="navbar"
-      data-scrolled={scrolled || undefined}
-      data-hidden={hidden || undefined}
-      className={cn(navbarVariants({ variant, floating }), className)}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      {...props}
-    >
-      {children}
-    </header>
   );
 }
 
@@ -158,21 +255,6 @@ function NavbarActivationArea({ className, children, ...props }: HTMLArkProps<'d
       className={cn(navbarActivationAreaBase, className)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      {...props}
-    >
-      {children}
-    </ark.div>
-  );
-}
-
-function NavbarContainer({ className, children, ...props }: HTMLArkProps<'div'>) {
-  const { scrolled, density, variant } = useNavbar();
-  const shrunk = variant === 'shrink' && scrolled;
-  return (
-    <ark.div
-      data-slot="navbar-container"
-      data-shrunk={shrunk || undefined}
-      className={cn(navbarContainerBase, navbarDensityVariants({ density }), shrunk && navbarShrunkBase, className)}
       {...props}
     >
       {children}
@@ -194,20 +276,145 @@ function NavbarMenu({
   className,
   children,
   ...props
-}: HTMLArkProps<'div'> & { placement?: 'left' | 'center' | 'right' }) {
+}: NavbarMenuRootProps & { placement?: 'left' | 'center' | 'right' }) {
   const { scrolled, density, variant } = useNavbar();
-  const menuDensity: NavMenuDensity =
+  const menuDensity: NavbarMenuDensity =
     density === 'compact' || (variant === 'shrink' && scrolled) ? 'compact' : 'relaxed';
   return (
-    <ark.div
-      data-slot="navbar-menu"
-      data-placement={placement}
-      className={cn(navbarMenuBase, navbarMenuPlacementVariants({ placement }), className)}
-      {...props}
-    >
-      <NavMenu density={menuDensity}>{children}</NavMenu>
-    </ark.div>
+    <NavbarMenuStyleContext.Provider value={{ density: menuDensity, variant: 'default', inContent: false }}>
+      <ark.div
+        data-slot="navbar-menu"
+        data-placement={placement}
+        className={cn(navbarMenuBase, navbarMenuPlacementVariants({ placement }), className)}
+      >
+        <ArkNavMenuRoot data-density={menuDensity} className={cn(navbarMenuRootBase)} {...props}>
+          {children}
+          <ArkNavMenuViewportPositioner className={cn(navbarMenuViewportPositionerBase)}>
+            <ArkNavMenuViewport className={cn(navbarMenuViewportBase)} />
+          </ArkNavMenuViewportPositioner>
+        </ArkNavMenuRoot>
+      </ark.div>
+    </NavbarMenuStyleContext.Provider>
   );
+}
+
+function NavbarMenuList({ className, children, ...props }: NavbarMenuListProps) {
+  return (
+    <ArkNavMenuList className={cn(navbarMenuListBase, className)} {...props}>
+      {children}
+    </ArkNavMenuList>
+  );
+}
+
+function NavbarMenuItem({
+  variant = 'default',
+  className,
+  ...props
+}: NavbarMenuItemProps & { variant?: NavbarMenuVariant }) {
+  const { density } = React.useContext(NavbarMenuStyleContext);
+  return (
+    <NavbarMenuStyleContext.Provider value={{ density, variant, inContent: false }}>
+      <ArkNavMenuItem data-variant={variant} className={cn(navbarMenuItemBase, className)} {...props} />
+    </NavbarMenuStyleContext.Provider>
+  );
+}
+
+function NavbarMenuTrigger({ asChild, className, children, ...props }: NavbarMenuTriggerProps) {
+  const { density, variant } = React.useContext(NavbarMenuStyleContext);
+  const chevron = (
+    <svg
+      className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+  return (
+    <ArkNavMenuTrigger asChild={asChild} className={cn(navbarMenuTriggerStyle({ density, variant }), className)} {...props}>
+      {asChild ? children : (<>{children}{chevron}</>)}
+    </ArkNavMenuTrigger>
+  );
+}
+
+function NavbarMenuContent({ className, children, ...props }: NavbarMenuContentProps) {
+  return (
+    <NavbarMenuStyleContext.Provider value={{ density: 'relaxed', variant: 'default', inContent: true }}>
+      <ArkNavMenuContent className={cn(navbarMenuContentBase, className)} {...props}>
+        {children}
+      </ArkNavMenuContent>
+    </NavbarMenuStyleContext.Provider>
+  );
+}
+
+function NavbarMenuLink({ className, children, ...props }: NavbarMenuLinkProps) {
+  const { density, variant, inContent } = React.useContext(NavbarMenuStyleContext);
+  const classes = inContent
+    ? cn(navbarMenuLinkBase, className)
+    : cn(navbarMenuTriggerStyle({ density, variant }), className);
+  return (
+    <ArkNavMenuLink className={classes} {...props}>
+      {children}
+    </ArkNavMenuLink>
+  );
+}
+
+function NavbarMobileMenu({ className, children, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <CollapsibleRoot data-slot="navbar-mobile-menu" className={cn('group', className)} {...props}>
+      {children}
+    </CollapsibleRoot>
+  );
+}
+
+function NavbarMobileMenuTrigger({ className, children, ...props }: React.ComponentProps<'button'>) {
+  return (
+    <CollapsibleTrigger asChild>
+      <button
+        type="button"
+        data-slot="navbar-mobile-menu-trigger"
+        className={cn(navbarMobileMenuTriggerBase, className)}
+        {...props}
+      >
+        {children}
+        <svg
+          className="size-4 transition-transform duration-200 group-data-[state=open]:rotate-180"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+    </CollapsibleTrigger>
+  );
+}
+
+function NavbarMobileMenuContent({ className, children, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <CollapsibleContent>
+      <div data-slot="navbar-mobile-menu-content" className={cn(navbarMobileMenuContentBase, className)} {...props}>
+        {children}
+      </div>
+    </CollapsibleContent>
+  );
+}
+
+function NavbarMenuViewport({ className, ...props }: NavbarMenuViewportProps) {
+  return <ArkNavMenuViewport className={cn(navbarMenuViewportBase, className)} {...props} />;
+}
+
+function NavbarMenuIndicator({ className, ...props }: NavbarMenuIndicatorProps) {
+  return <ArkNavMenuIndicator className={cn(navbarMenuIndicatorBase, className)} {...props} />;
 }
 
 function NavbarActions({ className, children, ...props }: HTMLArkProps<'div'>) {
@@ -257,7 +464,7 @@ function NavbarTrigger({
   );
 }
 
-function NavbarMobile({ className, children, ...props }: React.ComponentProps<'div'>) {
+function NavbarMobileOverlay({ className, children, ...props }: React.ComponentProps<'div'>) {
   const { id, open, setOpen, slots, floating, portalRef } = useNavbar();
 
   // Ark's focus trap doesn't engage for a controlled dialog (no DialogTrigger),
@@ -273,10 +480,10 @@ function NavbarMobile({ className, children, ...props }: React.ComponentProps<'d
 
   return (
     <Portal container={portalRef}>
-      <DialogRoot open={open} lazyMount unmountOnExit onOpenChange={({ open }) => setOpen(open)}>
+      <DialogRoot open={open} lazyMount unmountOnExit onOpenChange={({ open }) => setOpen(open)} preventScroll={false}>
         <DialogBackdrop className="absolute inset-0 z-[100] bg-background/60 backdrop-blur-sm" />
         <DialogPositioner className="absolute inset-0 z-[100]">
-          <DialogContent id={id} data-slot="navbar-mobile" className={cn(navbarMobileContentBase, className)} {...props}>
+          <DialogContent id={id} data-slot="navbar-mobile-overlay" className={cn(navbarMobileContentBase, className)} {...props}>
             <DialogTitle className="sr-only">Navigation menu</DialogTitle>
             <DialogDescription className="sr-only">Mobile navigation menu</DialogDescription>
             <div className={navbarMobileHeaderBase}>
@@ -311,11 +518,35 @@ export { Navbar };
 export {
   NavbarProvider,
   NavbarActivationArea,
-  NavbarContainer,
   NavbarBrand,
   NavbarMenu,
   NavbarActions,
   NavbarTrigger,
-  NavbarMobile,
+  NavbarMobileOverlay,
+  NavbarMenuList,
+  NavbarMenuItem,
+  NavbarMenuTrigger,
+  NavbarMenuContent,
+  NavbarMenuLink,
+  NavbarMobileMenu,
+  NavbarMobileMenuTrigger,
+  NavbarMobileMenuContent,
+  NavbarMenuViewport,
+  NavbarMenuIndicator,
   useNavbar,
+};
+export {
+  ArkNavMenuViewportPositioner as NavbarMenuViewportPositioner,
+};
+export { navbarMenuTriggerStyle, type NavbarMenuDensity, type NavbarMenuVariant } from 'wicn-core';
+export type {
+  NavbarMenuRootProps,
+  NavbarMenuListProps,
+  NavbarMenuItemProps,
+  NavbarMenuTriggerProps,
+  NavbarMenuContentProps,
+  NavbarMenuLinkProps,
+  NavbarMenuViewportProps,
+  NavbarMenuViewportPositionerProps,
+  NavbarMenuIndicatorProps,
 };

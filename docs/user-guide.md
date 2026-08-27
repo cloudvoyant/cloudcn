@@ -53,7 +53,7 @@ Components accept the same `variant` and `size` props across frameworks. Availab
 - `ToggleButton` — `variant` (`default`/`outline`), `size`
 - `Badge` — `variant` (`solid`/`subtle`/`outline`/`surface`/`plain`), `color`, `size`
 - `Navbar` — `variant` (`sticky`/`floating`), composed parts for brand, menu, actions, and mobile trigger
-- `NavMenu` — composed parts for menus with dropdown panels
+- `NavbarMenu` — the Navbar's menu, with composed parts for dropdown panels
 - `Tabs` — composed parts for tabbed content
 - `Pagination` — composed parts for paging through content
 

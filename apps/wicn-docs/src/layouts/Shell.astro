@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { NAV_GROUPS } from '../lib/nav';
 import '../styles/global.css';
 import TopNav from '../components/TopNav.tsx';
 import Sidebar from '../components/Sidebar.astro';
@@ -29,14 +30,7 @@ const {
 const general = (await getCollection('general')).sort((a, b) => a.data.order - b.data.order);
 const components = (await getCollection('components')).sort((a, b) => a.data.order - b.data.order);
 
-const groups = [
-  { label: 'General', section: 'general', group: '' },
-  { label: 'Layouts', section: 'components', group: 'layouts' },
-  { label: 'Navigation', section: 'components', group: 'navigation' },
-  { label: 'Buttons', section: 'components', group: 'buttons' },
-  { label: 'Misc', section: 'components', group: 'misc' },
-]
-  .map((g) => {
+const groups = NAV_GROUPS.map((g) => {
     const items = g.section === 'general' ? general : components.filter((c) => c.data.group === g.group);
     return {
       label: g.label,

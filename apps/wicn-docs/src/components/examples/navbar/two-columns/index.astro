@@ -1,0 +1,17 @@
+---
+// apps/wicn-docs/src/components/examples/nav-menu/two-columns/index.astro
+import Example from '../../../Example.astro';
+import ReactNavbarMenuTwoColumns from './react.tsx';
+import SvelteNavbarMenuTwoColumns from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Two columns" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactNavbarMenuTwoColumns client:only="react" />
+  </div>
+  <div data-fw="svelte">
+    <SvelteNavbarMenuTwoColumns client:only="svelte" />
+  </div>
+</Example>

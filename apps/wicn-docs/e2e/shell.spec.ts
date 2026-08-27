@@ -74,7 +74,7 @@ test.describe('Docs shell', () => {
     await expect(trigger).toBeVisible();
 
     await trigger.click();
-    const overlay = page.locator('[data-slot="navbar-mobile"]').filter({ visible: true }).first();
+    const overlay = page.locator('[data-slot="navbar-mobile-overlay"]').filter({ visible: true }).first();
     await expect(overlay).toBeVisible();
 
     await page.keyboard.press('Escape');

@@ -57,11 +57,6 @@ import ExampleCardSizes from './examples/card/sizes/index.astro';
 import ExampleCardOverride from './examples/card/override/index.astro';
 import ExampleCardWithImage from './examples/card/with-image/index.astro';
 import ExampleCardHorizontal from './examples/card/horizontal/index.astro';
-import ExampleNavMenuDefault from './examples/nav-menu/default/index.astro';
-import ExampleNavMenuDropdown from './examples/nav-menu/dropdown/index.astro';
-import ExampleNavMenuTwoColumns from './examples/nav-menu/two-columns/index.astro';
-import ExampleNavMenuSizes from './examples/nav-menu/density/index.astro';
-import ExampleNavMenuVariants from './examples/nav-menu/variants/index.astro';
 import ExampleTabsDefault from './examples/tabs/default/index.astro';
 import ExampleTabsUnderline from './examples/tabs/underline/index.astro';
 import ExamplePaginationDefault from './examples/pagination/default/index.astro';
@@ -71,6 +66,10 @@ import ExampleNavbarFloating from './examples/navbar/floating/index.astro';
 import ExampleNavbarShrink from './examples/navbar/shrink/index.astro';
 import ExampleNavbarScroll from './examples/navbar/scroll/index.astro';
 import ExampleNavbarHide from './examples/navbar/hide/index.astro';
+import ExampleNavbarDropdown from './examples/navbar/dropdown/index.astro';
+import ExampleNavbarTwoColumns from './examples/navbar/two-columns/index.astro';
+import ExampleNavbarDensity from './examples/navbar/density/index.astro';
+import ExampleNavbarVariants from './examples/navbar/variants/index.astro';
 
 type ComponentName =
   | 'button'
@@ -84,7 +83,6 @@ type ComponentName =
   | 'item'
   | 'card'
   | 'sidebar'
-  | 'nav-menu'
   | 'tabs'
   | 'pagination'
   | 'navbar';
@@ -238,13 +236,6 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'offcanvas', title: 'Completely disappears on collapse', component: ExampleSidebarOffcanvas },
     { id: 'rail', title: 'Toggle with the rail handle', component: ExampleSidebarRail },
   ],
-  'nav-menu': [
-    { id: 'default', title: 'Default', component: ExampleNavMenuDefault },
-    { id: 'dropdown', title: 'Dropdown panels', component: ExampleNavMenuDropdown },
-    { id: 'two-columns', title: 'Two columns', component: ExampleNavMenuTwoColumns },
-    { id: 'density', title: 'Compact', component: ExampleNavMenuSizes },
-    { id: 'variants', title: 'Links instead of buttons', component: ExampleNavMenuVariants },
-  ],
   tabs: [
     { id: 'default', title: 'Default', component: ExampleTabsDefault },
     { id: 'underline', title: 'Underline', component: ExampleTabsUnderline },
@@ -259,6 +250,10 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'shrink', title: 'Shrink on scroll', component: ExampleNavbarShrink },
     { id: 'scroll', title: 'Scroll', component: ExampleNavbarScroll },
     { id: 'hide', title: 'Hide on leave', component: ExampleNavbarHide },
+    { id: 'dropdown', title: 'Menu dropdowns', component: ExampleNavbarDropdown },
+    { id: 'two-columns', title: 'Two-column menu', component: ExampleNavbarTwoColumns },
+    { id: 'density', title: 'Compact menu', component: ExampleNavbarDensity },
+    { id: 'variants', title: 'Menu links', component: ExampleNavbarVariants },
   ],
 };
 

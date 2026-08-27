@@ -1,6 +1,6 @@
 {
   "name": "@cloudvoyant/helix-svelte",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "helix Svelte UI components",
   "license": "MIT",
   "type": "module",

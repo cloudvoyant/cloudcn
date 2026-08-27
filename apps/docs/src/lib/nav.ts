@@ -13,4 +13,5 @@ export const NAV_GROUPS: NavGroup[] = [
   { label: 'Navigation', section: 'components', group: 'navigation' },
   { label: 'Buttons', section: 'components', group: 'buttons' },
   { label: 'Misc', section: 'components', group: 'misc' },
+  { label: 'Forms', section: 'components', group: 'forms' },
 ];

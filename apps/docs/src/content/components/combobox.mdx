@@ -1,0 +1,47 @@
+---
+title: Combobox
+description: A typeahead combobox with single and multi-select, for React and Svelte.
+order: 13
+group: forms
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`Combobox` is a typeahead select. Set `multiple` on the root for multi-select. Built on [Ark UI `combobox`](https://ark-ui.com/docs/components/combobox), sourced from [Shark UI](https://shark.vini.one/docs/components/combobox).
+
+<Demo component="combobox" example="default" />
+
+## Examples
+
+<Examples component="combobox" exclude="default" />
+
+## API Reference
+
+### Combobox
+
+#### Props
+
+Accepts all [Ark `ComboboxRoot` props](https://ark-ui.com/docs/components/combobox) (`items`, `multiple`, `value`, `onValueChange`, `onInputValueChange`, …) plus `className`/`class` and `collection`/`items`. Defaults `openOnClick`, `lazyMount`, and `unmountOnExit` to `true`.
+
+### ComboboxInput
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Input height. |
+
+Also accepts all [Ark `ComboboxInput` props](https://ark-ui.com/docs/components/combobox).
+
+### ComboboxTrigger / ComboboxClear / ComboboxControl / ComboboxContent / ComboboxItem / ComboboxItemText / ComboboxItemIndicator / ComboboxItemGroup / ComboboxItemGroupLabel / ComboboxList / ComboboxEmpty
+
+Accept all corresponding Ark props plus `className`/`class`. `ComboboxItem` takes an `item` (the collection item object) and adds `showIndicator` (`true` by default).
+
+## Accessibility
+
+Ark implements the [Combobox WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) — `role="combobox"`, `aria-expanded`, `aria-activedescendant`, arrow-key list navigation, `Enter` to select, `Escape` to dismiss.
+
+## Theming
+
+No theme extension — uses `--input`, `--popover`, `--accent`, `--muted-foreground`.

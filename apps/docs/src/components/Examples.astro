@@ -97,6 +97,9 @@ const titles: Record<string, { id: string; title: string }[]> = {
     { id: 'density', title: 'Compact menu' },
     { id: 'variants', title: 'Menu links' },
   ],
+  input: [{ id: 'textarea', title: 'Textarea' }],
+  field: [{ id: 'fieldset', title: 'FieldSet' }],
+  combobox: [{ id: 'multiple', title: 'Multiple' }],
 };
 const entries = (titles[component ?? 'button'] ?? []).filter((e) => e.id !== exclude);
 ---

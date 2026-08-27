@@ -66,8 +66,6 @@ for (const framework of FRAMEWORKS) {
       const container = containerHandle.asElement();
       expect(container).not.toBeNull();
       expect(await container!.evaluate((c) => getComputedStyle(c).overflowY)).toBe('auto');
-      const containerBox = await container!.boundingBox();
-      expect(containerBox).not.toBeNull();
 
       await trigger.click();
       const overlay = page.locator('[data-slot="navbar-mobile-overlay"]').filter({ visible: true }).first();
@@ -77,8 +75,12 @@ for (const framework of FRAMEWORKS) {
       // covers it (its top aligns with the container's top). The page is not.
       expect(await container!.evaluate((c) => getComputedStyle(c).overflowY)).toBe('hidden');
       expect(await page.evaluate(() => getComputedStyle(document.body).overflowY)).toBe('visible');
+      // Measure the overlay and the container at the same scroll position —
+      // clicking the trigger may auto-scroll the container into view.
       const overlayBox = await overlay.boundingBox();
+      const containerBox = await container!.boundingBox();
       expect(overlayBox).not.toBeNull();
+      expect(containerBox).not.toBeNull();
       expect(overlayBox!.y).toBeCloseTo(containerBox!.y, 0);
 
       // Closing restores the container's scroll.

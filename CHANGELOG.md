@@ -1,3 +1,10 @@
+# [0.13.0](https://github.com/cloudvoyant/helix/compare/v0.12.0...v0.13.0) (2026-08-27)
+
+
+### Features
+
+* **forms:** add form components across helix, react, and svelte ([ef97713](https://github.com/cloudvoyant/helix/commit/ef9771361b40d71e6ba3fcb9d9d57208dbd977ba))
+
 # [0.12.0](https://github.com/cloudvoyant/wicn/compare/v0.11.0...v0.12.0) (2026-08-27)
 
 # [0.11.0](https://github.com/cloudvoyant/wicn/compare/v0.10.0...v0.11.0) (2026-08-27)

@@ -1,0 +1,32 @@
+---
+title: TagInput
+description: Enter free-form tags, for React and Svelte.
+order: 14
+group: forms
+---
+
+import Demo from '../../components/Demo.astro';
+
+`TagInput` accepts free-form tags — press `Enter` or `,` to commit, `Backspace` to remove the last tag. Built on [Ark UI `tags-input`](https://ark-ui.com/docs/components/tags-input), sourced from [Shark UI](https://shark.vini.one/docs/components/tags-input).
+
+<Demo component="tags-input" example="default" />
+
+## API Reference
+
+### TagInput
+
+#### Props
+
+Accepts all [Ark `TagsInputRoot` props](https://ark-ui.com/docs/components/tags-input) (`value`, `defaultValue`, `onValueChange`, `max`, `editable`, …) plus `className`/`class`. Renders the hidden input for form submission automatically.
+
+### TagInputControl / TagInputInput / TagInputItem / TagInputItemPreview / TagInputItemText / TagInputItemInput / TagInputItemDeleteTrigger / TagInputClearTrigger
+
+Accept all corresponding Ark props plus `className`/`class`. `TagInputItem` requires `index` and `value`. `TagInputContext` exposes the Ark render prop (`api.value`, `api.addValue`, …) to map items.
+
+## Accessibility
+
+Ark manages the combobox-like structure, `aria-controls`, and the delete triggers (each `TagInputItemDeleteTrigger` has an `aria-label`). `Enter`/`,` adds, `Backspace` removes.
+
+## Theming
+
+No theme extension — uses `--input`, `--secondary`, `--muted-foreground`.

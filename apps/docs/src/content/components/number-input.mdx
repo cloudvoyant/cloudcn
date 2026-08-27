@@ -1,0 +1,36 @@
+---
+title: NumberInput
+description: A numeric input with increment and decrement steppers, for React and Svelte.
+order: 9
+group: forms
+---
+
+import Demo from '../../components/Demo.astro';
+
+`NumberInput` is a numeric field with increment/decrement steppers, keyboard editing, and clamping. Built on [Ark UI `number-input`](https://ark-ui.com/docs/components/number-input), sourced from [Shark UI](https://shark.vini.one/docs/components/number-input).
+
+<Demo component="number-input" example="default" />
+
+## API Reference
+
+### NumberInput
+
+#### Props
+
+Accepts all [Ark `NumberInputRoot` props](https://ark-ui.com/docs/components/number-input) (`min`, `max`, `step`, `value`, `onValueChange`, `allowMouseWheel`, …) plus `className`/`class`.
+
+### NumberInputControl / NumberInputInput
+
+Accept all corresponding Ark props plus `className`/`class`.
+
+### NumberInputIncrement / NumberInputDecrement
+
+Accept all Ark `NumberInput*Trigger` props plus `className`/`class`. Supply an icon as children; an `aria-label` is set by default.
+
+## Accessibility
+
+Ark provides the spin-button role, keyboard increment/decrement (arrow keys), and `aria-valuemin`/`aria-valuemax`/`aria-valuenow`.
+
+## Theming
+
+No theme extension — uses `--input`, `--ring`, `--muted-foreground`.

@@ -70,6 +70,17 @@ import ExampleNavbarDropdown from './examples/navbar/dropdown/index.astro';
 import ExampleNavbarTwoColumns from './examples/navbar/two-columns/index.astro';
 import ExampleNavbarDensity from './examples/navbar/density/index.astro';
 import ExampleNavbarVariants from './examples/navbar/variants/index.astro';
+import ExampleInputDefault from './examples/input/default/index.astro';
+import ExampleInputTextarea from './examples/input/textarea/index.astro';
+import ExampleFieldDefault from './examples/field/default/index.astro';
+import ExampleFieldFieldset from './examples/field/fieldset/index.astro';
+import ExampleNumberInputDefault from './examples/number-input/default/index.astro';
+import ExampleCheckboxDefault from './examples/checkbox/default/index.astro';
+import ExampleSwitchDefault from './examples/switch/default/index.astro';
+import ExampleSelectDefault from './examples/select/default/index.astro';
+import ExampleComboboxDefault from './examples/combobox/default/index.astro';
+import ExampleComboboxMultiple from './examples/combobox/multiple/index.astro';
+import ExampleTagsInputDefault from './examples/tags-input/default/index.astro';
 
 type ComponentName =
   | 'button'
@@ -85,7 +96,15 @@ type ComponentName =
   | 'sidebar'
   | 'tabs'
   | 'pagination'
-  | 'navbar';
+  | 'navbar'
+  | 'input'
+  | 'field'
+  | 'number-input'
+  | 'checkbox'
+  | 'switch'
+  | 'select'
+  | 'combobox'
+  | 'tags-input';
 
 type ExampleName =
   | 'solid'
@@ -140,7 +159,10 @@ type ExampleName =
   | 'floating'
   | 'shrink'
   | 'scroll'
-  | 'hide';
+  | 'hide'
+  | 'textarea'
+  | 'fieldset'
+  | 'multiple';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -254,6 +276,33 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'two-columns', title: 'Two-column menu', component: ExampleNavbarTwoColumns },
     { id: 'density', title: 'Compact menu', component: ExampleNavbarDensity },
     { id: 'variants', title: 'Menu links', component: ExampleNavbarVariants },
+  ],
+  input: [
+    { id: 'default', title: 'Default', component: ExampleInputDefault },
+    { id: 'textarea', title: 'Textarea', component: ExampleInputTextarea },
+  ],
+  field: [
+    { id: 'default', title: 'Default', component: ExampleFieldDefault },
+    { id: 'fieldset', title: 'FieldSet', component: ExampleFieldFieldset },
+  ],
+  'number-input': [
+    { id: 'default', title: 'Default', component: ExampleNumberInputDefault },
+  ],
+  checkbox: [
+    { id: 'default', title: 'Default', component: ExampleCheckboxDefault },
+  ],
+  switch: [
+    { id: 'default', title: 'Default', component: ExampleSwitchDefault },
+  ],
+  select: [
+    { id: 'default', title: 'Default', component: ExampleSelectDefault },
+  ],
+  combobox: [
+    { id: 'default', title: 'Default', component: ExampleComboboxDefault },
+    { id: 'multiple', title: 'Multiple', component: ExampleComboboxMultiple },
+  ],
+  'tags-input': [
+    { id: 'default', title: 'Default', component: ExampleTagsInputDefault },
   ],
 };
 

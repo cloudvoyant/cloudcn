@@ -1,0 +1,46 @@
+---
+title: Select
+description: A listbox select that swaps to a native select on mobile, for React and Svelte.
+order: 12
+group: forms
+---
+
+import Demo from '../../components/Demo.astro';
+
+`Select` renders Ark UI's accessible listbox on desktop and — when you pass the `items` prop and the pointer is coarse (mobile/tablet) — swaps to a native `<select>` driven by the same `value`/`onValueChange`. Built on [Ark UI `select`](https://ark-ui.com/docs/components/select), sourced from [Shark UI](https://shark.vini.one/docs/components/select).
+
+<Demo component="select" example="default" />
+
+## API Reference
+
+### Select
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `items` | `{ value, label, disabled? }[]` | — | Enables the native-select fallback on coarse-pointer devices. |
+| `collection` | `ListCollection` | — | Ark UI collection (advanced); overrides `items` on desktop. |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Trigger height (native + desktop). |
+
+Also accepts all [Ark `SelectRoot` props](https://ark-ui.com/docs/components/select) (`value`, `defaultValue`, `onValueChange`, `multiple`, `disabled`, `invalid`, …).
+
+### SelectTrigger / SelectValue / SelectIndicator / SelectClearTrigger
+
+Accept all corresponding Ark props plus `className`/`class`. Supply the chevron as `SelectIndicator` children.
+
+### SelectContent / SelectItem / SelectItemText / SelectItemIndicator / SelectItemGroup / SelectItemGroupLabel
+
+Accept all corresponding Ark props plus `className`/`class`. `SelectItem` takes an `item` (the collection item object). Supply the check glyph as `SelectItemIndicator` children.
+
+### SelectNative
+
+Props: `items`, `value?`, `defaultValue?`, `onValueChange?(value: string)`, `size?`, `invalid?`, `icon?` (snippet/ReactNode), plus native `<select>` attributes.
+
+## Accessibility
+
+Desktop: Ark implements the [Listbox WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/) (combobox role, `aria-expanded`, arrow-key navigation, typeahead). Mobile: a native `<select>`.
+
+## Theming
+
+No theme extension — uses `--input`, `--popover`, `--accent`, `--muted-foreground`.

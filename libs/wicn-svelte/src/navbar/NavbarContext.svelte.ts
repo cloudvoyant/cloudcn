@@ -5,9 +5,11 @@ import type { Snippet } from 'svelte';
 import type { NavbarDensity, NavbarVariant } from 'wicn-core';
 
 export interface NavbarContextValue {
+  id: string;
   open: boolean;
   setOpen: (open: boolean) => void;
   scrolled: boolean;
+  setScrolled: (scrolled: boolean) => void;
   density: NavbarDensity;
   variant: NavbarVariant;
   floating: boolean;
@@ -15,7 +17,9 @@ export interface NavbarContextValue {
   setHovered: (hovered: boolean) => void;
   slots: { brand?: Snippet; actions?: Snippet };
   setSlot: (key: 'brand' | 'actions', node: Snippet | undefined) => void;
-  portalEl: HTMLDivElement | undefined;
+  /** The element the mobile overlay portals into (the header's parent). */
+  portalEl: HTMLElement | undefined;
+  setPortalEl: (el: HTMLElement | undefined) => void;
 }
 
 export const NAVBAR_CONTEXT_KEY = Symbol('wicn.navbar');

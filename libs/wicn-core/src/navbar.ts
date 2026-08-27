@@ -32,8 +32,6 @@ export const navbarVariants = cva(
   },
 );
 
-export const navbarProviderBase = 'group/navbar';
-
 export const navbarContainerBase = 'flex items-center justify-between transition-[height,gap,padding] duration-300';
 
 export const navbarDensityVariants = cva('', {
@@ -49,7 +47,7 @@ export const navbarDensityVariants = cva('', {
 });
 
 // The `shrink` variant reduces height only (padding/gap stay put); the menu
-// items compact via the NavMenu density.
+// items compact via the NavbarMenu density.
 export const navbarShrunkBase = 'h-12';
 
 export const navbarBrandBase = 'flex shrink-0 items-center gap-2';

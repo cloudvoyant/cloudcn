@@ -42,20 +42,20 @@ export {
   sidebarStyles,
 } from './sidebar';
 export {
-  navMenuRootBase,
-  navMenuListBase,
-  navMenuItemBase,
-  navMenuTriggerStyle,
-  type NavMenuDensity,
-  type NavMenuVariant,
-  navMenuContentBase,
-  navMenuLinkBase,
-  navSubMenuContentBase,
-  navSubMenuTriggerBase,
-  navMenuViewportPositionerBase,
-  navMenuViewportBase,
-  navMenuIndicatorBase,
-} from './nav-menu';
+  navbarMenuRootBase,
+  navbarMenuListBase,
+  navbarMenuItemBase,
+  navbarMenuTriggerStyle,
+  type NavbarMenuDensity,
+  type NavbarMenuVariant,
+  navbarMenuContentBase,
+  navbarMenuLinkBase,
+  navbarMobileMenuContentBase,
+  navbarMobileMenuTriggerBase,
+  navbarMenuViewportPositionerBase,
+  navbarMenuViewportBase,
+  navbarMenuIndicatorBase,
+} from './navbar-menu';
 export {
   tabsRootBase,
   tabsListBase,
@@ -70,7 +70,6 @@ export {
 export { paginationRootBase, paginationTriggerBase, paginationItemBase, paginationEllipsisBase } from './pagination';
 export {
   navbarVariants,
-  navbarProviderBase,
   navbarContainerBase,
   navbarDensityVariants,
   navbarShrunkBase,

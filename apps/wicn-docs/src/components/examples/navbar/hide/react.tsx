@@ -3,22 +3,21 @@ import {
   Navbar,
   NavbarProvider,
   NavbarActivationArea,
-  NavbarContainer,
   NavbarBrand,
   NavbarMenu,
   NavbarActions,
   NavbarTrigger,
-  NavbarMobile,
+  NavbarMobileOverlay,
   Container,
   VStack,
-  NavMenuList,
-  NavMenuItem,
-  NavMenuTrigger,
-  NavMenuContent,
-  NavMenuLink,
-  NavSubMenu,
-  NavSubMenuTrigger,
-  NavSubMenuContent,
+  NavbarMenuList,
+  NavbarMenuItem,
+  NavbarMenuTrigger,
+  NavbarMenuContent,
+  NavbarMenuLink,
+  NavbarMobileMenu,
+  NavbarMobileMenuTrigger,
+  NavbarMobileMenuContent,
 } from 'wicn-react';
 import { WicnLogo } from '../../WicnLogo';
 
@@ -34,39 +33,37 @@ const CONTENT = [
 export default function ReactNavbarHide() {
   return (
     <div className="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
-      <NavbarProvider variant="hide">
+      <NavbarProvider>
         <NavbarActivationArea className="sticky top-0 -mb-12" />
-        <Navbar>
-          <NavbarContainer>
-            <NavbarBrand>
-              <WicnLogo className="h-7 w-auto" />
-              <span className="text-sm font-semibold">wicn</span>
-            </NavbarBrand>
-            <NavbarMenu placement="center">
-              <NavMenuList>
-                <NavMenuItem value="docs" variant="link">
-                  <NavMenuTrigger>Docs</NavMenuTrigger>
-                  <NavMenuContent>
-                    <NavMenuLink href="#">Components</NavMenuLink>
-                    <NavMenuLink href="#">Theming</NavMenuLink>
-                  </NavMenuContent>
-                </NavMenuItem>
-                <NavMenuItem value="blog" variant="link">
-                  <NavMenuLink href="#">Blog</NavMenuLink>
-                </NavMenuItem>
-              </NavMenuList>
-            </NavbarMenu>
-            <NavbarActions>
-              <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-                Sign in
-              </a>
-            </NavbarActions>
-            <NavbarTrigger />
-          </NavbarContainer>
-          <NavbarMobile>
-            <NavSubMenu>
-              <NavSubMenuTrigger>Docs</NavSubMenuTrigger>
-              <NavSubMenuContent>
+        <Navbar variant="hide">
+          <NavbarBrand>
+            <WicnLogo className="h-7 w-auto" />
+            <span className="text-sm font-semibold">wicn</span>
+          </NavbarBrand>
+          <NavbarMenu placement="center">
+            <NavbarMenuList>
+              <NavbarMenuItem value="docs" variant="link">
+                <NavbarMenuTrigger>Docs</NavbarMenuTrigger>
+                <NavbarMenuContent>
+                  <NavbarMenuLink href="#">Components</NavbarMenuLink>
+                  <NavbarMenuLink href="#">Theming</NavbarMenuLink>
+                </NavbarMenuContent>
+              </NavbarMenuItem>
+              <NavbarMenuItem value="blog" variant="link">
+                <NavbarMenuLink href="#">Blog</NavbarMenuLink>
+              </NavbarMenuItem>
+            </NavbarMenuList>
+          </NavbarMenu>
+          <NavbarActions>
+            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              Sign in
+            </a>
+          </NavbarActions>
+          <NavbarTrigger />
+          <NavbarMobileOverlay>
+            <NavbarMobileMenu>
+              <NavbarMobileMenuTrigger>Docs</NavbarMobileMenuTrigger>
+              <NavbarMobileMenuContent>
                 <a
                   href="#"
                   className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
@@ -79,15 +76,15 @@ export default function ReactNavbarHide() {
                 >
                   Theming
                 </a>
-              </NavSubMenuContent>
-            </NavSubMenu>
+              </NavbarMobileMenuContent>
+            </NavbarMobileMenu>
             <a
               href="#"
               className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
             >
               Blog
             </a>
-          </NavbarMobile>
+          </NavbarMobileOverlay>
         </Navbar>
         <Container className="py-6">
           <VStack className="gap-4">

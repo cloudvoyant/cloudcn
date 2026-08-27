@@ -38,12 +38,55 @@ for (const framework of FRAMEWORKS) {
       await expect(trigger).toBeVisible();
       await trigger.click();
       // The full-screen overlay portals to <body> and shows the collected menu.
-      const overlay = page.locator('[data-slot="navbar-mobile"]').filter({ visible: true }).first();
+      const overlay = page.locator('[data-slot="navbar-mobile-overlay"]').filter({ visible: true }).first();
       await expect(overlay).toBeVisible();
       const mobileLink = overlay.locator('a:has-text("Blog")').first();
       await expect(mobileLink).toBeVisible();
       await overlay.locator('button[aria-label="Close navigation menu"]').click();
       await expect(mobileLink).toBeHidden();
+    });
+
+    test('mobile overlay locks the background scroll', async ({ page }) => {
+      // The overlay portals into the bar's scroll container (a demo card with
+      // overflow-y-auto). Opening it must lock that container's scroll so the
+      // page content below can't be scrolled past the overlay — while the page
+      // itself stays scrollable.
+      await page.setViewportSize({ width: 375, height: 667 });
+      const trigger = page.locator(`[data-demo] [data-fw="${framework}"] [data-slot="navbar-trigger"]`).first();
+      await expect(trigger).toBeVisible();
+
+      // Grab the scroll container handle BEFORE opening, since the lock flips
+      // its computed overflow to hidden (so it can no longer be found by an
+      // overflow search).
+      const containerHandle = await trigger.evaluateHandle((el) => {
+        let c: HTMLElement | null = el.parentElement;
+        while (c && !/auto|scroll|overlay/.test(getComputedStyle(c).overflowY)) c = c.parentElement;
+        return c;
+      });
+      const container = containerHandle.asElement();
+      expect(container).not.toBeNull();
+      expect(await container!.evaluate((c) => getComputedStyle(c).overflowY)).toBe('auto');
+
+      await trigger.click();
+      const overlay = page.locator('[data-slot="navbar-mobile-overlay"]').filter({ visible: true }).first();
+      await expect(overlay).toBeVisible();
+
+      // While open: the container's scroll is locked and the overlay still
+      // covers it (its top aligns with the container's top). The page is not.
+      expect(await container!.evaluate((c) => getComputedStyle(c).overflowY)).toBe('hidden');
+      expect(await page.evaluate(() => getComputedStyle(document.body).overflowY)).toBe('visible');
+      // Measure the overlay and the container at the same scroll position —
+      // clicking the trigger may auto-scroll the container into view.
+      const overlayBox = await overlay.boundingBox();
+      const containerBox = await container!.boundingBox();
+      expect(overlayBox).not.toBeNull();
+      expect(containerBox).not.toBeNull();
+      expect(overlayBox!.y).toBeCloseTo(containerBox!.y, 0);
+
+      // Closing restores the container's scroll.
+      await overlay.locator('button[aria-label="Close navigation menu"]').click();
+      await expect(overlay).toBeHidden();
+      expect(await container!.evaluate((c) => getComputedStyle(c).overflowY)).toBe('auto');
     });
 
     test('desktop menu dropdown opens on keyboard', async ({ page }) => {
@@ -77,14 +120,14 @@ for (const framework of FRAMEWORKS) {
       await expect(async () => {
         await expect(header).toHaveAttribute('data-scrolled', 'true');
       }).toPass();
-      // variant="shrink": the container compacts when scrolled
-      const container = example.locator(`[data-fw="${framework}"] [data-slot="navbar-container"]`).first();
+      // variant="shrink": the bar compacts when scrolled (the header is the bar)
+      const container = example.locator(`[data-fw="${framework}"] header[data-slot="navbar"]`).first();
       await expect(container).toHaveAttribute('data-shrunk', 'true');
       await expect(async () => {
         const h = await container.evaluate((el) => el.getBoundingClientRect().height);
         expect(h).toBeLessThan(64); // compacted below the default h-16 (64px)
       }).toPass();
-      // NavMenu items shrink too (density="compact")
+      // NavbarMenu items shrink too (density="compact")
       const trigger = example.locator(`[data-fw="${framework}"] [data-slot="navbar-menu"] [data-part="trigger"]`).first();
       await expect(async () => {
         const th = await trigger.evaluate((el) => el.getBoundingClientRect().height);

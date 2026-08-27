@@ -1,7 +1,8 @@
 // apps/wicn-docs/e2e/nav-menu.spec.ts
-// Behavior + accessibility coverage for the NavMenu, matrixed over React
-// and Svelte via the docs demo islands: native nav/menu roles, hover + keyboard
-// trigger activation, dropdown panel visibility, and link rendering.
+// Behavior + accessibility coverage for the NavbarMenu (the Navbar's menu),
+// matrixed over React and Svelte via the navbar docs page: native nav/menu
+// roles, hover + keyboard trigger activation, dropdown panel visibility, and
+// link rendering.
 import { test, expect, type Page } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
@@ -14,23 +15,40 @@ async function selectFramework(page: Page, framework: Framework) {
   await expect(demo).toBeVisible();
 }
 
+// The "Menu dropdowns" example (Platform/Company triggers) exercises the
+// NavbarMenu dropdown behavior. Hide the other navbar examples so the framework
+// selector and locators stay unambiguous and the sticky/fixed bars don't overlap.
+async function isolateDropdownExample(page: Page) {
+  const example = page.locator('[data-example]').filter({ hasText: 'Platform' });
+  await expect(example).toBeVisible();
+  const count = await page.locator('[data-example]').count();
+  for (let i = 0; i < count; i++) {
+    const el = page.locator('[data-example]').nth(i);
+    const isTarget = await el.evaluate((n) => n.textContent?.includes('Platform'));
+    if (!isTarget) await el.evaluate((n) => (n.style.display = 'none'));
+  }
+  return example;
+}
+
 for (const framework of FRAMEWORKS) {
-  test.describe(`NavMenu docs page · ${framework}`, () => {
+  test.describe(`NavbarMenu (navbar page) · ${framework}`, () => {
     test.beforeEach(async ({ page }) => {
-      await page.goto('components/nav-menu');
+      await page.goto('components/navbar');
       await selectFramework(page, framework);
     });
 
     test('renders a navigation landmark with menu item buttons', async ({ page }) => {
-      const nav = page.locator(`[data-demo] [data-fw="${framework}"] nav`).first();
+      const example = await isolateDropdownExample(page);
+      const nav = example.locator(`[data-fw="${framework}"] nav`).first();
       await expect(nav).toBeVisible();
-      await expect(nav.locator('a:has-text("Docs")').first()).toBeVisible();
+      await expect(nav.locator('button:has-text("Platform")').first()).toBeVisible();
     });
 
     test('opens a dropdown panel on trigger hover', async ({ page }) => {
-      const trigger = page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("Getting Started")`).first();
-      const panel = page.locator(`[data-demo] [data-fw="${framework}"] a:has-text("Installation")`).first();
-      const viewport = page.locator(`[data-demo] [data-fw="${framework}"] [data-part="viewport"]`).first();
+      const example = await isolateDropdownExample(page);
+      const trigger = example.locator(`[data-fw="${framework}"] button:has-text("Platform")`).first();
+      const panel = example.locator(`[data-fw="${framework}"] a:has-text("Analytics")`).first();
+      const viewport = example.locator(`[data-fw="${framework}"] [data-part="viewport"]`).first();
       await expect(async () => {
         await trigger.hover();
         await expect(panel).toBeVisible();
@@ -49,8 +67,9 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('opens the dropdown with keyboard and closes with Escape', async ({ page }) => {
-      const trigger = page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("Getting Started")`).first();
-      const panel = page.locator(`[data-demo] [data-fw="${framework}"] a:has-text("Installation")`).first();
+      const example = await isolateDropdownExample(page);
+      const trigger = example.locator(`[data-fw="${framework}"] button:has-text("Platform")`).first();
+      const panel = example.locator(`[data-fw="${framework}"] a:has-text("Analytics")`).first();
       await expect(async () => {
         await trigger.focus();
         await page.keyboard.press('Enter');

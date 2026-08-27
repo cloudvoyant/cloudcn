@@ -3,22 +3,21 @@
   import {
     Navbar,
     NavbarProvider,
-    NavbarContainer,
     NavbarBrand,
     NavbarMenu,
     NavbarActions,
     NavbarTrigger,
-    NavbarMobile,
+    NavbarMobileOverlay,
     Container,
     VStack,
-    NavMenuList,
-    NavMenuItem,
-    NavMenuTrigger,
-    NavMenuContent,
-    NavMenuLink,
-    NavSubMenu,
-    NavSubMenuTrigger,
-    NavSubMenuContent,
+    NavbarMenuList,
+    NavbarMenuItem,
+    NavbarMenuTrigger,
+    NavbarMenuContent,
+    NavbarMenuLink,
+    NavbarMobileMenu,
+    NavbarMobileMenuTrigger,
+    NavbarMobileMenuContent,
   } from 'wicn-svelte';
   import WicnLogo from '../../WicnLogo.svelte';
 
@@ -33,41 +32,39 @@
 </script>
 
 <div class="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
-  <NavbarProvider variant="scroll">
-    <Navbar>
-      <NavbarContainer>
+  <NavbarProvider>
+    <Navbar variant="scroll">
         <NavbarBrand>
           <WicnLogo class="h-7 w-auto" /><span class="text-sm font-semibold">wicn</span>
         </NavbarBrand>
         <NavbarMenu placement="center">
-          <NavMenuList>
-            <NavMenuItem value="docs" variant="link">
-              <NavMenuTrigger>Docs</NavMenuTrigger>
-              <NavMenuContent>
-                <NavMenuLink href="#">Components</NavMenuLink>
-                <NavMenuLink href="#">Theming</NavMenuLink>
-              </NavMenuContent>
-            </NavMenuItem>
-            <NavMenuItem value="blog" variant="link">
-              <NavMenuLink href="#">Blog</NavMenuLink>
-            </NavMenuItem>
-          </NavMenuList>
+          <NavbarMenuList>
+            <NavbarMenuItem value="docs" variant="link">
+              <NavbarMenuTrigger>Docs</NavbarMenuTrigger>
+              <NavbarMenuContent>
+                <NavbarMenuLink href="#">Components</NavbarMenuLink>
+                <NavbarMenuLink href="#">Theming</NavbarMenuLink>
+              </NavbarMenuContent>
+            </NavbarMenuItem>
+            <NavbarMenuItem value="blog" variant="link">
+              <NavbarMenuLink href="#">Blog</NavbarMenuLink>
+            </NavbarMenuItem>
+          </NavbarMenuList>
         </NavbarMenu>
         <NavbarActions>
           <a href="#" class="text-sm font-medium text-muted-foreground hover:text-foreground">Sign in</a>
         </NavbarActions>
         <NavbarTrigger />
-      </NavbarContainer>
-      <NavbarMobile>
-        <NavSubMenu>
-          <NavSubMenuTrigger>Docs</NavSubMenuTrigger>
-          <NavSubMenuContent>
+      <NavbarMobileOverlay>
+        <NavbarMobileMenu>
+          <NavbarMobileMenuTrigger>Docs</NavbarMobileMenuTrigger>
+          <NavbarMobileMenuContent>
             <a href="#" class="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Components</a>
             <a href="#" class="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Theming</a>
-          </NavSubMenuContent>
-        </NavSubMenu>
+          </NavbarMobileMenuContent>
+        </NavbarMobileMenu>
         <a href="#" class="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Blog</a>
-      </NavbarMobile>
+      </NavbarMobileOverlay>
     </Navbar>
     <Container class="py-6">
       <VStack class="gap-4">

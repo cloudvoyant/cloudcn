@@ -1,0 +1,17 @@
+---
+// apps/wicn-docs/src/components/examples/navbar/density/index.astro
+import Example from '../../../Example.astro';
+import ReactNavbarMenuDensity from './react.tsx';
+import SvelteNavbarMenuDensity from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Compact" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactNavbarMenuDensity client:only="react" />
+  </div>
+  <div data-fw="svelte">
+    <SvelteNavbarMenuDensity client:only="svelte" />
+  </div>
+</Example>

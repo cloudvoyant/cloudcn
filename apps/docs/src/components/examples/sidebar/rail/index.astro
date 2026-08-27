@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/sidebar/rail/index.astro
+import Example from '../../../Example.astro';
+import ReactSidebarRail from './react.tsx';
+import SvelteSidebarRail from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Toggle with the rail handle" reactCode={reactCode} svelteCode={svelteCode} fullscreen>
+  <div data-fw="react">
+    <ReactSidebarRail client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteSidebarRail client:load />
+  </div>
+</Example>

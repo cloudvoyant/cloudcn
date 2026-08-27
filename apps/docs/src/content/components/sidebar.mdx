@@ -1,0 +1,95 @@
+---
+title: Sidebar
+description: A composable, themeable application sidebar for React and Svelte, built on Ark UI's drawer and tooltip primitives.
+order: 4
+group: navigation
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The Sidebar provides an application navigation shell that can collapse to an icon rail, slide fully off-canvas, or be toggled with a rail handle. It is implemented in both React and Svelte on top of Ark UI's `drawer` and `tooltip` primitives, sharing the `sidebarMenuButtonVariants` cva and the `--sidebar-*` theme tokens from `@cloudvoyant/helix`. Use the framework selector in the top-right to switch between implementations.
+
+<Demo component="sidebar" example="icon" />
+
+## Examples
+
+<Examples component="sidebar" exclude="icon" />
+
+## API Reference
+
+The sidebar is a composition of named parts; all structural parts accept standard element attributes plus `className`/`class`, merged via `cn`.
+
+### SidebarProvider
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `defaultOpen` | `boolean` | `true` | Default open state. |
+| `open` | `boolean` | — | Controlled open state. |
+| `onOpenChange` | `(open: boolean) => void` | — | Fires when open state changes. |
+
+### Sidebar
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `side` | `'left' \| 'right'` | `'left'` | Which side the sidebar sits on. |
+| `variant` | `'sidebar' \| 'floating' \| 'inset'` | `'sidebar'` | Layout variant. |
+| `collapsible` | `'offcanvas' \| 'icon' \| 'none'` | `'offcanvas'` | Collapse behavior: `icon` leaves a thin icon rail, `offcanvas` hides it entirely, `none` disables collapsing. |
+
+### SidebarGroup
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | — | Optional group heading, rendered as the `SidebarGroupLabel`. |
+
+### SidebarMenuLink
+
+The concise nav-item shorthand: renders `SidebarMenuItem > SidebarMenuButton` in one component.
+
+#### Props
+
+Accepts all `SidebarMenuButton` props plus:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `icon` | `ReactNode` / snippet | — | Icon rendered before the label. |
+| `href` | `string` | — | When set, renders an `<a>` instead of a `<button>`. |
+| `children` | `string` | — | The item label. |
+
+### SidebarMenuButton
+
+#### Props
+
+Accepts all `HTMLButtonProps` plus `className`/`class`, and:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `asChild` | `boolean` / snippet | `false` | Render the button as a different element (e.g. an `<a>`). |
+| `isActive` | `boolean` | `false` | Marks the item active. |
+| `variant` | `'default' \| 'outline'` | `'default'` | Menu button style. |
+| `size` | `'default' \| 'sm' \| 'lg'` | `'default'` | Menu button size. |
+| `tooltip` | `string` or Ark `TooltipContent` props | — | Label shown as a tooltip when the sidebar is collapsed to an icon rail. |
+
+### useSidebar
+
+#### Return
+
+`state` (`'expanded' | 'collapsed'`), `open`, `setOpen`, `openMobile`, `setOpenMobile`, `isMobile`, `toggleSidebar`.
+
+### Other parts
+
+`SidebarHeader`, `SidebarFooter`, `SidebarContent`, `SidebarGroupAction`, `SidebarMenu`, `SidebarMenuItem`, `SidebarMenuAction`, `SidebarMenuBadge`, `SidebarMenuSkeleton`, `SidebarMenuSub`, `SidebarMenuSubItem`, `SidebarMenuSubButton`, `SidebarTrigger`, `SidebarRail`, `SidebarInset`, `SidebarSeparator`, `SidebarInput` — each accepts its native element props plus `className`/`class`. `SidebarTrigger` and `SidebarRail` are toggle buttons (`aria-label="Toggle Sidebar"`); `SidebarRail` is non-focusable by default (`tabIndex={-1}`). `SidebarMenuLink` covers the common nav-item case; use `SidebarMenuItem` + `SidebarMenuButton` + `SidebarMenuAction`/`SidebarMenuBadge` for composite items (badge, hover action, submenu).
+
+## Accessibility
+
+The mobile sheet uses Ark's `drawer` primitive, so focus trapping, `Esc` dismissal, and the dialog role come from Ark. Tooltips use Ark's `tooltip` primitive. `SidebarTrigger`, `SidebarRail`, and `SidebarMenuButton` are native buttons with accessible labels; `Cmd/Ctrl+B` toggles the sidebar. Non-interactive parts stay non-focusable.
+
+## Theming
+
+No theme extension is required — the sidebar uses the `--sidebar-*` tokens already shipped in `@cloudvoyant/helix`'s `theme.css` (light and dark).

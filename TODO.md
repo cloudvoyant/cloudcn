@@ -122,7 +122,7 @@
   - Wave3D
 - MDX?
 
-Split: wicn vs diffui vs kernelui
+Split: helix vs diffui vs kernelui
 
 ## Primitives
 

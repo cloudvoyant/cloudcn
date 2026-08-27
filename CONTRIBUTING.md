@@ -5,8 +5,8 @@
 Fork and clone the repository:
 
 ```bash
-git clone https://github.com/cloudvoyant/wicn.git
-cd wicn
+git clone https://github.com/cloudvoyant/helix.git
+cd helix
 mise install                     # Install tools declared in mise.toml
 mise run install                 # Install project dependencies (semantic-release)
 mise run install-claude-plugins  # Install the Claudevoyant plugin for Claude CLI

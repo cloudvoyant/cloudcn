@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/card/variants/index.astro
+import Example from '../../../Example.astro';
+import ReactCardVariants from './react.tsx';
+import SvelteCardVariants from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Variants" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactCardVariants client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteCardVariants client:load />
+  </div>
+</Example>

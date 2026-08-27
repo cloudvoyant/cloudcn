@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/navbar/variants/index.astro
+import Example from '../../../Example.astro';
+import ReactNavbarMenuVariants from './react.tsx';
+import SvelteNavbarMenuVariants from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Links instead of buttons" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactNavbarMenuVariants client:only="react" />
+  </div>
+  <div data-fw="svelte">
+    <SvelteNavbarMenuVariants client:only="svelte" />
+  </div>
+</Example>

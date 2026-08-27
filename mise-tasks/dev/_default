@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#MISE description="Run the wicn-docs app (dev server)"
+#MISE description="Run the docs app (dev server)"
 #MISE depends=["install"]
 set -euo pipefail
 cd "${MISE_PROJECT_ROOT:-$PWD}"
-pnpm --filter wicn-docs dev
+pnpm --filter docs dev

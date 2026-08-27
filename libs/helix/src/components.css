@@ -1,0 +1,23 @@
+/* libs/helix/src/components.css */
+/*
+ * Registers the helix component class strings with the consuming Tailwind
+ * v4 build. Relative paths resolve from this file's installed location
+ * (node_modules/@cloudvoyant/helix/src/), where the sibling packages sit alongside
+ * it in a flat node_modules. This lets the client's own Tailwind compile the
+ * utility classes the helix components reference + inline in the framework
+ * libs -- no per-consumer @source config required.
+ *
+ * src/ dirs are scanned so dev-served source (HMR) sees class changes without
+ * a rebuild; dist/ stays so published packages keep working.
+ *
+ * Consumers import it after Tailwind, e.g.:
+ *   @import 'tailwindcss';
+ *   @import '@cloudvoyant/helix/theme.css';
+ *   @import '@cloudvoyant/helix/components.css';
+ */
+@source ".";
+@source "../../helix-react/src";
+@source "../../helix-svelte/src";
+@source "../dist";
+@source "../../helix-react/dist";
+@source "../../helix-svelte/dist";

@@ -2,7 +2,7 @@
 
 ## Overview
 
-`wicn` is a [`mise`](https://mise.jdx.dev/)-powered project with automated versioning, testing, and GitHub Actions CI/CD.
+`helix` is a [`mise`](https://mise.jdx.dev/)-powered project with automated versioning, testing, and GitHub Actions CI/CD.
 
 ## Design
 
@@ -22,7 +22,7 @@ Environment is configured in `mise.toml` under `[env]`:
 ```toml
 [env]
 _.path  = ['{{config_root}}/node_modules/.bin']
-PROJECT = "wicn"
+PROJECT = "helix"
 ```
 
 ### GitHub Actions For CI/CD

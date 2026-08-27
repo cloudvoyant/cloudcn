@@ -1,6 +1,6 @@
 # User Guide
 
-> How to install and use wicn.
+> How to install and use helix.
 
 ## Requirements
 
@@ -18,7 +18,7 @@ mise run dev   # opens the Astro docs site
 
 ## Workspace (pnpm monorepo)
 
-wicn is a pnpm workspace monorepo:
+helix is a pnpm workspace monorepo:
 
 - Install everything: `mise run install`
 - Build all packages: `mise run build`
@@ -31,20 +31,19 @@ wicn is a pnpm workspace monorepo:
 ## Using the packages
 
 ```text
-pnpm add wicn-core wicn-react
+pnpm add @cloudvoyant/helix @cloudvoyant/helix-react
 # or for Svelte
-pnpm add wicn-core wicn-svelte
+pnpm add @cloudvoyant/helix @cloudvoyant/helix-svelte
 ```
 
 Import the theme once in your global CSS:
 
 ```css
 @import 'tailwindcss';
-@import 'wicn-core/theme.css';
-/* Tailwind doesn't scan node_modules by default — point at wicn-core so its
-   cva class strings (bg-primary, h-10, …) get generated. Path is relative to
-   your global CSS file. */
-@source '../../node_modules/wicn-core/dist';
+@import '@cloudvoyant/helix/theme.css';
+/* Registers the helix component class strings (cva variants + framework
+   classes) with Tailwind via @source self-scanning — no manual @source needed. */
+@import '@cloudvoyant/helix/components.css';
 ```
 
 Components accept the same `variant` and `size` props across frameworks. Available components:

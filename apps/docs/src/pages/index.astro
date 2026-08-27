@@ -1,0 +1,44 @@
+---
+import Shell from '../layouts/Shell.astro';
+import { getCollection } from 'astro:content';
+import { buttonVariants } from '@cloudvoyant/helix';
+import { cn } from '@cloudvoyant/helix';
+
+const components = (await getCollection('components')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Shell title="helix — React and Svelte components" description="Accessible React and Svelte components built on Ark UI with a shared shadcn-style theme.">
+  <section class="py-16 lg:py-24">
+    <h1 class="max-w-2xl text-4xl font-bold tracking-tight lg:text-6xl">Beautifully accessible components for React and Svelte.</h1>
+    <p class="mt-6 max-w-xl text-lg text-muted-foreground">A component library with a shared theme and shared variants. Built on Ark UI. Open source.</p>
+    <div class="mt-8 flex gap-3">
+      <a
+        href={`${import.meta.env.BASE_URL}general/introduction`}
+        class={cn(buttonVariants({ variant: 'solid', color: 'primary', size: 'md' }))}
+      >
+        Get started
+      </a>
+      <a
+        href={`${import.meta.env.BASE_URL}components/button`}
+        class={cn(buttonVariants({ variant: 'outline', color: 'primary', size: 'md' }))}
+      >
+        Browse components
+      </a>
+    </div>
+  </section>
+
+  <section class="grid gap-4 pb-20 sm:grid-cols-2">
+    {components.map((entry) => {
+      const href = `${import.meta.env.BASE_URL}components/${entry.id}`;
+      return (
+        <a
+          href={href}
+          class="group rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary hover:bg-accent dark:hover:bg-accent/40"
+        >
+          <h2 class="text-lg font-semibold">{entry.data.title}</h2>
+          <p class="mt-2 text-sm text-muted-foreground">{entry.data.description}</p>
+        </a>
+      );
+    })}
+  </section>
+</Shell>

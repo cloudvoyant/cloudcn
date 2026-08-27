@@ -22,12 +22,8 @@ log_info "Setting lockstep RC version $RC_VERSION across libs/* and apps/*..."
 
 log_info "Publishing all libs/* @ $RC_VERSION to npm with tag 'next'..."
 # --filter './libs/*' excludes apps (docs/demo, never published) and the private root;
-# private packages are skipped by pnpm publish. Everything publishable goes at the same
-# version -> true lockstep.
-# The `wicn` CLI name is blocked by npm's anti-typosquatting check (too similar to
-# `when`/`which`); exclude it until npm grants the name exception, then drop the
-# `!wicn` filter.
-pnpm -r --filter './libs/*' --filter '!wicn' publish --access public --no-git-checks --tag next
+# private packages are skipped by pnpm publish.
+pnpm -r --filter './libs/*' publish --access public --no-git-checks --tag next
 
 log_info "Restoring lockstep version $VERSION across libs/* and apps/*..."
 "${MISE_PROJECT_ROOT:-$PWD}/mise-tasks/set-version" "$VERSION"

@@ -1,0 +1,31 @@
+---
+title: Installation
+description: Install helix packages with pnpm.
+order: 2
+---
+
+## Workspace packages
+
+The library ships three npm packages:
+
+- `@cloudvoyant/helix` — shared interfaces, cva variants, and the shadcn-style theme.
+- `@cloudvoyant/helix-react` — React components (Ark UI based).
+- `@cloudvoyant/helix-svelte` — Svelte components (Ark UI based).
+
+## Install
+
+```bash
+pnpm add @cloudvoyant/helix @cloudvoyant/helix-react
+# or for Svelte
+pnpm add @cloudvoyant/helix @cloudvoyant/helix-svelte
+```
+
+Import the theme once in your app's global CSS:
+
+```css
+@import 'tailwindcss';
+@import '@cloudvoyant/helix/theme.css';
+/* Registers the helix component class strings (cva variants + framework
+   classes) with Tailwind via @source self-scanning — no manual @source needed. */
+@import '@cloudvoyant/helix/components.css';
+```

@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/card/default/index.astro
+import Example from '../../../Example.astro';
+import ReactCardDefault from './react.tsx';
+import SvelteCardDefault from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Default" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactCardDefault client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteCardDefault client:load />
+  </div>
+</Example>

@@ -38,7 +38,7 @@ jobs:
         run: mise run test
 
       - name: Install Playwright browsers
-        run: pnpm --filter wicn-docs exec playwright install --with-deps chromium
+        run: pnpm --filter docs exec playwright install --with-deps chromium
 
       - name: Run E2E tests
         run: mise run e2e

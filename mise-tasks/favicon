@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-#MISE description="Generate favicon-light.svg, favicon-dark.svg, and favicon.ico from the wicn logos"
+#MISE description="Generate favicon-light.svg, favicon-dark.svg, and favicon.ico from the helix logos"
 set -euo pipefail
 cd "${MISE_PROJECT_ROOT:-$PWD}"
 source "${MISE_PROJECT_ROOT:-$PWD}/mise-tasks/utils"
 
-PUB="apps/wicn-docs/public"
-LIGHT_LOGO="$PUB/wicn-logo-light.svg"
-DARK_LOGO="$PUB/wicn-logo-dark.svg"
+PUB="apps/docs/public"
+LIGHT_LOGO="$PUB/helix-logo-light.svg"
+DARK_LOGO="$PUB/helix-logo-dark.svg"
 
 # ImageMagick 7 ships `magick`; `convert` is the legacy alias. Prefer magick,
 # fall back to convert (IM6) for portability.

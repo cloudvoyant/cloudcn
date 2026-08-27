@@ -1,4 +1,4 @@
-# wicn Development Guide
+# helix Development Guide
 
 Generated from mise-lib-template v2.15.0.
 
@@ -25,9 +25,9 @@ mise run format:check
 ## Project Structure
 
 ```
-apps/wicn-docs/     # Docs/demo app (private placeholder)
-libs/wicn-react/    # React UI lib (tsup: ESM + CJS + d.ts)
-libs/wicn-svelte/   # Svelte UI lib (tsup: ESM + CJS + d.ts)
+apps/docs/     # Docs/demo app (private placeholder)
+libs/helix-react/    # React UI lib (tsup: ESM + CJS + d.ts)
+libs/helix-svelte/   # Svelte UI lib (tsup: ESM + CJS + d.ts)
 version.txt            # Single source of truth for the lockstep version
 mise.toml              # Task runner and tool versions
 pnpm-workspace.yaml    # Workspace declaration (apps/*, libs/*)
@@ -45,8 +45,8 @@ tsconfig.base.json     # Shared strict TypeScript base
 ## Adding Dependencies
 
 ```bash
-pnpm --filter wicn-react add express            # runtime dep for one package
-pnpm --filter wicn-react add -D @types/express  # dev-only dependency
+pnpm --filter @cloudvoyant/helix-react add express            # runtime dep for one package
+pnpm --filter @cloudvoyant/helix-react add -D @types/express  # dev-only dependency
 pnpm add -w typescript                             # workspace root tooling
 ```
 
@@ -87,7 +87,7 @@ To publish as `@your-org/my-library`:
 ```bash
 mise run publish:rc
 # Publishes every public workspace package to npm as X.Y.Z-rc.<timestamp>.<sha> with tag "next"
-# Consumers install with: pnpm add wicn-react@next
+# Consumers install with: pnpm add @cloudvoyant/helix-react@next
 ```
 
 ### Token Expiration and Trusted Publishing

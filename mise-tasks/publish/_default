@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Publish wicn workspace packages to npm"
+#MISE description="Publish helix workspace packages to npm"
 #MISE depends=["build"]
 set -euo pipefail
 cd "${MISE_PROJECT_ROOT:-$PWD}"
@@ -14,14 +14,6 @@ for pkg_json in libs/*/package.json; do
   version="$(node -p "require('./${pkg_json}').version")"
   is_private="$(node -p "require('./${pkg_json}').private === true")"
   if [ "$is_private" = "true" ]; then
-    continue
-  fi
-
-  # The `wicn` CLI name is blocked by npm's anti-typosquatting check (too similar to
-  # `when`/`which`). Skip it until npm grants the name exception; remove this guard
-  # once the CLI publishes under `wicn`.
-  if [ "$name" = "wicn" ]; then
-    log_info "Skipping ${name}@${version} — npm name exception pending (wicn blocked as too similar to when/which)."
     continue
   fi
 

@@ -1,0 +1,104 @@
+// apps/docs/src/components/examples/navbar/shrink/react.tsx
+import {
+  Navbar,
+  NavbarProvider,
+  NavbarBrand,
+  NavbarMenu,
+  NavbarActions,
+  NavbarTrigger,
+  NavbarMobileOverlay,
+  Container,
+  VStack,
+  NavbarMenuList,
+  NavbarMenuItem,
+  NavbarMenuTrigger,
+  NavbarMenuContent,
+  NavbarMenuLink,
+  NavbarMobileMenu,
+  NavbarMobileMenuTrigger,
+  NavbarMobileMenuContent,
+} from '@cloudvoyant/helix-react';
+import { HelixLogo } from '../../HelixLogo';
+
+const CONTENT = [
+  ['About', 'A brief history of helix and its guiding principles.'],
+  ['Installation', 'Add helix to your Astro, Vite, or framework project.'],
+  ['Components', 'Every component, demoed and documented for React and Svelte.'],
+  ['Theming', 'Light and dark themes over the shadcn token model.'],
+  ['Accessibility', "Roles, focus, and keyboard behavior come from Ark's state machine."],
+  ['Roadmap', 'What is coming next — from drawers to tours.'],
+];
+
+export default function ReactNavbarShrink() {
+  return (
+    <div className="relative h-[420px] overflow-y-auto overscroll-y-contain rounded-md bg-background">
+      <NavbarProvider>
+        <Navbar variant="shrink" className="z-30">
+          <NavbarBrand>
+            <HelixLogo className="h-7 w-auto" />
+            <span className="text-sm font-semibold">helix</span>
+          </NavbarBrand>
+          <NavbarMenu placement="center">
+            <NavbarMenuList>
+              <NavbarMenuItem value="docs" variant="link">
+                <NavbarMenuTrigger>Docs</NavbarMenuTrigger>
+                <NavbarMenuContent>
+                  <NavbarMenuLink href="#">Components</NavbarMenuLink>
+                  <NavbarMenuLink href="#">Theming</NavbarMenuLink>
+                </NavbarMenuContent>
+              </NavbarMenuItem>
+              <NavbarMenuItem value="blog" variant="link">
+                <NavbarMenuLink href="#">Blog</NavbarMenuLink>
+              </NavbarMenuItem>
+            </NavbarMenuList>
+          </NavbarMenu>
+          <NavbarActions>
+            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+              Sign in
+            </a>
+          </NavbarActions>
+          <NavbarTrigger />
+          <NavbarMobileOverlay>
+            <NavbarMobileMenu>
+              <NavbarMobileMenuTrigger>Docs</NavbarMobileMenuTrigger>
+              <NavbarMobileMenuContent>
+                <a
+                  href="#"
+                  className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+                >
+                  Components
+                </a>
+                <a
+                  href="#"
+                  className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+                >
+                  Theming
+                </a>
+              </NavbarMobileMenuContent>
+            </NavbarMobileMenu>
+            <a
+              href="#"
+              className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+            >
+              Blog
+            </a>
+          </NavbarMobileOverlay>
+        </Navbar>
+        <Container className="py-6">
+          <VStack className="gap-4">
+            <p className="rounded-md bg-muted/50 p-4 text-sm text-muted-foreground">
+              Scroll to see the bar shrink — with <code>variant="shrink"</code> the height drops and spacing compacts
+              once you pass 24px.
+            </p>
+            {CONTENT.map(([title, body]) => (
+              <div key={title} className="rounded-md border border-border p-4">
+                <p className="text-sm font-medium">{title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{body}</p>
+              </div>
+            ))}
+          </VStack>
+        </Container>
+      </NavbarProvider>
+    </div>
+  );
+}

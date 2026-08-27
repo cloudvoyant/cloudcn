@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/container/fluid/index.astro
+import Example from '../../../Example.astro';
+import ReactContainerFluid from './react.tsx';
+import SvelteContainerFluid from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Fluid" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactContainerFluid client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteContainerFluid client:load />
+  </div>
+</Example>

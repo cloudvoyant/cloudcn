@@ -51,7 +51,7 @@
   <Root {open} lazyMount unmountOnExit onOpenChange={(d: { open: boolean }) => navbar.setOpen(d.open)} preventScroll={false}>
     <DialogBackdrop class="absolute inset-0 z-[100] bg-background/60 backdrop-blur-sm" />
     <Positioner class="absolute inset-0 z-[100]">
-      <DialogContent data-slot="navbar-mobile-overlay" class={classes} {...rest}>
+      <DialogContent id={navbar.id} data-slot="navbar-mobile-overlay" class={classes} {...rest}>
         <Title class="sr-only">Navigation menu</Title>
         <DialogDescription class="sr-only">Mobile navigation menu</DialogDescription>
         <div class={navbarMobileHeaderBase}>

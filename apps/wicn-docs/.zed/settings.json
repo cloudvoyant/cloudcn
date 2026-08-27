@@ -1,9 +1,0 @@
-{
-  "lsp": {
-    "astro": {
-      "binary": {
-        "path": "astro-ls"
-      }
-    }
-  }
-}

@@ -1,4 +1,4 @@
-<!-- apps/wicn-docs/src/components/examples/nav-menu/dropdown/svelte.svelte -->
+<!-- apps/wicn-docs/src/components/examples/navbar/dropdown/svelte.svelte -->
 <script lang="ts">
   import {
     Navbar,
@@ -14,25 +14,25 @@
 
 <NavbarProvider>
   <Navbar variant="scroll">
-      <NavbarMenu>
-        <NavbarMenuList>
-          <NavbarMenuItem value="platform">
-            <NavbarMenuTrigger>Platform</NavbarMenuTrigger>
-            <NavbarMenuContent>
-              <NavbarMenuLink href="#">Analytics</NavbarMenuLink>
-              <NavbarMenuLink href="#">Integrations</NavbarMenuLink>
-              <NavbarMenuLink href="#">Automations</NavbarMenuLink>
-            </NavbarMenuContent>
-          </NavbarMenuItem>
-          <NavbarMenuItem value="company">
-            <NavbarMenuTrigger>Company</NavbarMenuTrigger>
-            <NavbarMenuContent>
-              <NavbarMenuLink href="#">About</NavbarMenuLink>
-              <NavbarMenuLink href="#">Careers</NavbarMenuLink>
-              <NavbarMenuLink href="#">Contact</NavbarMenuLink>
-            </NavbarMenuContent>
-          </NavbarMenuItem>
-        </NavbarMenuList>
-      </NavbarMenu>
+    <NavbarMenu>
+      <NavbarMenuList>
+        <NavbarMenuItem value="platform">
+          <NavbarMenuTrigger>Platform</NavbarMenuTrigger>
+          <NavbarMenuContent>
+            <NavbarMenuLink href="#">Analytics</NavbarMenuLink>
+            <NavbarMenuLink href="#">Integrations</NavbarMenuLink>
+            <NavbarMenuLink href="#">Automations</NavbarMenuLink>
+          </NavbarMenuContent>
+        </NavbarMenuItem>
+        <NavbarMenuItem value="company">
+          <NavbarMenuTrigger>Company</NavbarMenuTrigger>
+          <NavbarMenuContent>
+            <NavbarMenuLink href="#">About</NavbarMenuLink>
+            <NavbarMenuLink href="#">Careers</NavbarMenuLink>
+            <NavbarMenuLink href="#">Contact</NavbarMenuLink>
+          </NavbarMenuContent>
+        </NavbarMenuItem>
+      </NavbarMenuList>
+    </NavbarMenu>
   </Navbar>
 </NavbarProvider>

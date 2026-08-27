@@ -33,7 +33,7 @@
   type="button"
   data-slot="navbar-trigger"
   aria-expanded={open}
-  aria-controls="navbar-mobile-overlay"
+  aria-controls={navbar.id}
   aria-label={ariaLabel}
   class={classes}
   onclick={toggle}

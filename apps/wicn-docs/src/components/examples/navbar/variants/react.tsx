@@ -1,4 +1,4 @@
-// apps/wicn-docs/src/components/examples/nav-menu/variants/react.tsx
+// apps/wicn-docs/src/components/examples/navbar/variants/react.tsx
 import {
   Navbar,
   NavbarProvider,

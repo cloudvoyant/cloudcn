@@ -5,6 +5,7 @@ import type { Snippet } from 'svelte';
 import type { NavbarDensity, NavbarVariant } from 'wicn-core';
 
 export interface NavbarContextValue {
+  id: string;
   open: boolean;
   setOpen: (open: boolean) => void;
   scrolled: boolean;

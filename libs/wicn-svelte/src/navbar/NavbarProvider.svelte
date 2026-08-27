@@ -1,5 +1,9 @@
 <!-- libs/wicn-svelte/src/navbar/NavbarProvider.svelte -->
 <!-- Source: wicn-react navbar provider (shadcnblocks navbar6/7, re-based on Ark UI) -->
+<script module lang="ts">
+  let navbarIdCounter = 0;
+</script>
+
 <script lang="ts">
   import { setNavbarContext } from './NavbarContext.svelte';
   import type { NavbarDensity, NavbarVariant } from 'wicn-core';
@@ -12,6 +16,7 @@
 
   let { defaultOpen = false, children }: Props = $props();
 
+  let id = $state(`wicn-navbar-${++navbarIdCounter}`);
   let open = $state(defaultOpen);
   let scrolled = $state(false);
   let hovered = $state(false);
@@ -39,6 +44,9 @@
   }
 
   setNavbarContext({
+    get id() {
+      return id;
+    },
     get open() {
       return open;
     },

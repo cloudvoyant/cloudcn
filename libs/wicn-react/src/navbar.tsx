@@ -70,6 +70,16 @@ import {
 
 const SCROLL_THRESHOLD = 24;
 
+// Resolve the nearest scrollable ancestor (e.g. a demo container with
+// overflow-y-auto); null means the viewport itself scrolls.
+function resolveScrollContainer(el: HTMLElement | null): HTMLElement | null {
+  for (let n: HTMLElement | null = el; n; n = n.parentElement) {
+    const oy = getComputedStyle(n).overflowY;
+    if (oy === 'auto' || oy === 'scroll' || oy === 'overlay') return n;
+  }
+  return null;
+}
+
 interface NavbarContextValue {
   id: string;
   open: boolean;
@@ -180,14 +190,7 @@ function Navbar({
     // Listen to the nearest scrollable ancestor (e.g. a demo container with
     // overflow-y-auto); fall back to the window. `position: sticky` sticks
     // relative to that same container, so data-scrolled stays in sync.
-    let target: Element | Window = window;
-    for (let n: Element | null = headerRef.current; n; n = n.parentElement) {
-      const oy = getComputedStyle(n).overflowY;
-      if (oy === 'auto' || oy === 'scroll' || oy === 'overlay') {
-        target = n;
-        break;
-      }
-    }
+    const target = resolveScrollContainer(headerRef.current) ?? window;
     const getY = () => (target === window ? window.scrollY : (target as Element).scrollTop);
     const onScroll = () => setScrolled(getY() > SCROLL_THRESHOLD);
     onScroll();
@@ -208,13 +211,13 @@ function Navbar({
     base.portalRef.current = headerRef.current?.parentElement ?? null;
   });
 
-  // The mobile overlay portals into the bar's scroll container (this header's
-  // parent). Lock that container's scroll while the overlay is open so the
-  // background can't be scrolled past it; Ark's body scroll lock is disabled.
+  // The mobile overlay portals into the bar's scroll container. Lock that
+  // container's scroll while the overlay is open so the background can't be
+  // scrolled past it; Ark's body scroll lock is disabled. When no ancestor is
+  // scrollable the viewport scrolls, so lock the documentElement instead.
   React.useEffect(() => {
     if (!base.open) return;
-    const el = headerRef.current?.parentElement;
-    if (!el) return;
+    const el = resolveScrollContainer(headerRef.current) ?? document.documentElement;
     const prev = el.style.overflow;
     el.style.overflow = 'hidden';
     return () => {

@@ -10,8 +10,7 @@ export interface NavGroup {
 export const NAV_GROUPS: NavGroup[] = [
   { label: 'General', section: 'general', group: '' },
   { label: 'Layouts', section: 'components', group: 'layouts' },
-  { label: 'Nav', section: 'components', group: 'navigation' },
+  { label: 'Navigation', section: 'components', group: 'navigation' },
   { label: 'Buttons', section: 'components', group: 'buttons' },
-  { label: 'Positioning', section: 'components', group: 'pos' },
   { label: 'Misc', section: 'components', group: 'misc' },
 ];

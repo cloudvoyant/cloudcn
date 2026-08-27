@@ -1,4 +1,4 @@
-// apps/wicn-docs/src/components/examples/nav-menu/density/react.tsx
+// apps/wicn-docs/src/components/examples/navbar/density/react.tsx
 import {
   Navbar,
   NavbarProvider,

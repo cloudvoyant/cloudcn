@@ -1,4 +1,4 @@
-// apps/wicn-docs/src/components/examples/nav-menu/dropdown/react.tsx
+// apps/wicn-docs/src/components/examples/navbar/dropdown/react.tsx
 import {
   Navbar,
   NavbarProvider,

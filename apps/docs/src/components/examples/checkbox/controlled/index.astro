@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactCheckboxControlled from './react.tsx';
+import SvelteCheckboxControlled from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="controlled" title="Controlled" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactCheckboxControlled client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteCheckboxControlled client:load />
+  </div>
+</Example>

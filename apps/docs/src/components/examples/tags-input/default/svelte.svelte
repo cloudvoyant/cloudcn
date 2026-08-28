@@ -7,30 +7,24 @@
     TagInputItem,
     TagInputItemPreview,
     TagInputItemText,
-    TagInputItemInput,
     TagInputItemDeleteTrigger,
-    TagInputContext,
+    TagInputItemInput,
   } from '@cloudvoyant/helix-svelte';
   import { X } from 'lucide-svelte';
+  let tags = $state(['react', 'svelte']);
 </script>
 
-<TagInput defaultValue={['react', 'svelte']} class="max-w-sm">
+<TagInput bind:value={tags} class="max-w-sm">
   <TagInputControl>
-    <TagInputContext>
-      {#snippet render(api)}
-        {#each api().value as value, index (value)}
-          <TagInputItem {index} {value}>
-            <TagInputItemPreview>
-              <TagInputItemText>{value}</TagInputItemText>
-              <TagInputItemDeleteTrigger>
-                <X />
-              </TagInputItemDeleteTrigger>
-            </TagInputItemPreview>
-            <TagInputItemInput />
-          </TagInputItem>
-        {/each}
-        <TagInputInput placeholder="Add tag" />
-      {/snippet}
-    </TagInputContext>
+    {#each tags as value, index (value)}
+      <TagInputItem {index} {value}>
+        <TagInputItemPreview>
+          <TagInputItemText>{value}</TagInputItemText>
+          <TagInputItemDeleteTrigger><X /></TagInputItemDeleteTrigger>
+        </TagInputItemPreview>
+        <TagInputItemInput />
+      </TagInputItem>
+    {/each}
+    <TagInputInput placeholder="Add tag" />
   </TagInputControl>
 </TagInput>

@@ -1,0 +1,47 @@
+// apps/docs/src/components/examples/file-input/default/react.tsx
+import {
+  FileInput,
+  FileInputDropzone,
+  FileInputTrigger,
+  FileInputItemGroup,
+  FileInputItem,
+  FileInputItemName,
+  FileInputItemSizeText,
+  FileInputItemDeleteTrigger,
+  useFileInput,
+} from '@cloudvoyant/helix-react';
+import { Upload, FileUp, Trash2 } from 'lucide-react';
+
+function ReactFileList() {
+  const files = useFileInput();
+  return files.acceptedFiles.length > 0 ? (
+    <FileInputItemGroup>
+      {files.acceptedFiles.map((file, i) => (
+        <FileInputItem key={i} file={file}>
+          <FileInputItemName>{file.name}</FileInputItemName>
+          <div className="flex items-center gap-2">
+            <FileInputItemSizeText>{file.size} bytes</FileInputItemSizeText>
+            <FileInputItemDeleteTrigger aria-label="Remove file">
+              <Trash2 />
+            </FileInputItemDeleteTrigger>
+          </div>
+        </FileInputItem>
+      ))}
+    </FileInputItemGroup>
+  ) : null;
+}
+
+export default function ReactFileInputDefault() {
+  return (
+    <FileInput accept="image/*" className="max-w-sm">
+      <FileInputDropzone>
+        <Upload />
+        <span>Drag & drop files here</span>
+        <FileInputTrigger>
+          <FileUp /> Browse files
+        </FileInputTrigger>
+      </FileInputDropzone>
+      <ReactFileList />
+    </FileInput>
+  );
+}

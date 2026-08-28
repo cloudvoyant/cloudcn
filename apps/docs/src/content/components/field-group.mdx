@@ -1,0 +1,32 @@
+---
+title: FieldGroup
+description: Group related fields or checkboxes under a fieldset with a legend, for React and Svelte.
+order: 8
+group: forms
+---
+
+import Demo from '../../components/Demo.astro';
+
+`FieldGroup` groups Fields or Checkboxes under a `FieldGroupLegend` (a native `<fieldset>`/`<legend>`). Built on [Ark UI fieldset](https://ark-ui.com/docs/components/fieldset).
+
+<Demo component="field-group" example="default" />
+
+## API Reference
+
+### FieldGroup
+
+#### Props
+
+Accepts all [Ark `FieldsetRoot` props](https://ark-ui.com/docs/components/fieldset) (`disabled`, `invalid`, `ids`, …) plus `className`/`class`.
+
+### FieldGroupLegend / FieldGroupHelper / FieldGroupError
+
+Accept all corresponding Ark `Fieldset*` props plus `className`/`class`.
+
+## Accessibility
+
+`FieldGroup` renders a native `<fieldset>`/`<legend>`, so the group label is announced for every control inside it and focus moves between the group's controls in DOM order. Keyboard: `Tab` moves into the group, `Space` toggles a focused checkbox.
+
+## Theming
+
+No theme extension — uses `--foreground`, `--muted-foreground`, `--destructive`.

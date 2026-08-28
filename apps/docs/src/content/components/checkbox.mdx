@@ -1,15 +1,20 @@
 ---
 title: Checkbox
 description: An accessible checkbox with indeterminate support, for React and Svelte.
-order: 10
+order: 14
 group: forms
 ---
 
 import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
 
-`Checkbox` supports checked, unchecked, and indeterminate states, and groups via `CheckboxGroup`. Built on [Ark UI `checkbox`](https://ark-ui.com/docs/components/checkbox), sourced from [Shark UI](https://shark.vini.one/docs/components/checkbox).
+`Checkbox` supports checked, unchecked, and indeterminate states, and groups via `CheckboxGroup`. Built on [Ark UI `checkbox`](https://ark-ui.com/docs/components/checkbox).
 
 <Demo component="checkbox" example="default" />
+
+## Examples
+
+<Examples component="checkbox" exclude="default" />
 
 ## API Reference
 
@@ -17,9 +22,9 @@ import Demo from '../../components/Demo.astro';
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Box size. |
+| Prop   | Type                   | Default | Description |
+| ------ | ---------------------- | ------- | ----------- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'`  | Box size.   |
 
 Also accepts all [Ark `CheckboxRoot` props](https://ark-ui.com/docs/components/checkbox) (`checked`, `defaultChecked`, `indeterminate`, `onCheckedChange`, `disabled`, …).
 

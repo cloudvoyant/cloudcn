@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactTextareaDisabled from './react.tsx';
+import SvelteTextareaDisabled from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="disabled" title="Disabled" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactTextareaDisabled client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteTextareaDisabled client:load />
+  </div>
+</Example>

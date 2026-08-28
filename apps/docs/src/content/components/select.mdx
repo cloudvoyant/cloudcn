@@ -1,15 +1,20 @@
 ---
 title: Select
 description: A listbox select that swaps to a native select on mobile, for React and Svelte.
-order: 12
+order: 16
 group: forms
 ---
 
 import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
 
-`Select` renders Ark UI's accessible listbox on desktop and — when you pass the `items` prop and the pointer is coarse (mobile/tablet) — swaps to a native `<select>` driven by the same `value`/`onValueChange`. Built on [Ark UI `select`](https://ark-ui.com/docs/components/select), sourced from [Shark UI](https://shark.vini.one/docs/components/select).
+`Select` renders Ark UI's accessible listbox on desktop and — when you pass the `items` prop and the pointer is coarse (mobile/tablet) — swaps to a native `<select>` driven by the same `value`/`onValueChange`. Built on [Ark UI `select`](https://ark-ui.com/docs/components/select).
 
 <Demo component="select" example="default" />
+
+## Examples
+
+<Examples component="select" exclude="default" />
 
 ## API Reference
 
@@ -17,11 +22,11 @@ import Demo from '../../components/Demo.astro';
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `items` | `{ value, label, disabled? }[]` | — | Enables the native-select fallback on coarse-pointer devices. |
-| `collection` | `ListCollection` | — | Ark UI collection (advanced); overrides `items` on desktop. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Trigger height (native + desktop). |
+| Prop         | Type                            | Default | Description                                                   |
+| ------------ | ------------------------------- | ------- | ------------------------------------------------------------- |
+| `items`      | `{ value, label, disabled? }[]` | —       | Enables the native-select fallback on coarse-pointer devices. |
+| `collection` | `ListCollection`                | —       | Ark UI collection (advanced); overrides `items` on desktop.   |
+| `size`       | `'sm' \| 'md' \| 'lg'`          | `'md'`  | Trigger height (native + desktop).                            |
 
 Also accepts all [Ark `SelectRoot` props](https://ark-ui.com/docs/components/select) (`value`, `defaultValue`, `onValueChange`, `multiple`, `disabled`, `invalid`, …).
 

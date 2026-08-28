@@ -1,0 +1,37 @@
+---
+title: Textarea
+description: A multi-line text input for React and Svelte, built on Ark UI field.
+order: 13
+group: forms
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`Textarea` is a multi-line text input. Built on [Ark UI field](https://ark-ui.com/docs/components/field). It shares the `textareaVariants` cva from `@cloudvoyant/helix`; pair with `Field` for label/error.
+
+<Demo component="textarea" example="default" />
+
+## Examples
+
+<Examples component="textarea" exclude="default" />
+
+## API Reference
+
+### Textarea
+
+#### Props
+
+| Prop   | Type                   | Default | Description         |
+| ------ | ---------------------- | ------- | ------------------- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'`  | Padding/font scale. |
+
+Accepts all [Ark `FieldTextarea` props](https://ark-ui.com/docs/components/field) (`rows`, `placeholder`, `disabled`, …) plus `className`/`class`.
+
+## Accessibility
+
+Ark renders a native `<textarea>`. Invalid state is announced via `aria-invalid` when inside a `Field`; pair with `FieldLabel`/`FieldError` for full labelling.
+
+## Theming
+
+No theme extension — uses `--input`, `--ring`, `--destructive`, `--muted-foreground` tokens, light and dark.

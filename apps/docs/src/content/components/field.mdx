@@ -1,14 +1,14 @@
 ---
 title: Field
 description: Label, helper text, and error text grouped with an accessible field, for React and Svelte.
-order: 8
+order: 7
 group: forms
 ---
 
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-`Field` wires a label, control, and helper/error text together with correct `aria` (the control's `aria-describedby` and invalid state are handled by Ark). `FieldSet` groups related fields in a `<fieldset>` with a legend. Built on [Ark UI `field`](https://ark-ui.com/docs/components/field) and [`fieldset`](https://ark-ui.com/docs/components/fieldset), sourced from [Shark UI](https://shark.vini.one/docs/components/field).
+`Field` wires a label, control, and helper/error text together with correct `aria` (the control's `aria-describedby` and invalid state are handled by Ark). Built on [Ark UI `field`](https://ark-ui.com/docs/components/field) and [`fieldset`](https://ark-ui.com/docs/components/fieldset).
 
 <Demo component="field" example="default" />
 
@@ -30,7 +30,13 @@ Accepts all [Ark `FieldRoot` props](https://ark-ui.com/docs/components/field) (`
 
 Accepts all [Ark `FieldLabel` props](https://ark-ui.com/docs/components/field) plus `className`/`class`.
 
-### FieldHelper
+### FieldPrefix / FieldSuffix
+
+#### Props
+
+Plain `<span>` slots rendered inside the `Field`'s flex row. Use them for units (`$`, `%`) or icons (search) that hug the control. Styled with `fieldPrefixBase`/`fieldSuffixBase` (flex, muted, `[&_svg]` sizing).
+
+### FieldHint
 
 #### Props
 
@@ -48,19 +54,13 @@ Accepts all [Ark `FieldErrorText` props](https://ark-ui.com/docs/components/fiel
 
 Accepts all [Ark `FieldRequiredIndicator` props](https://ark-ui.com/docs/components/field) plus `className`/`class`. Defaults to rendering `*`.
 
-### FieldSet
+### FieldGroup
 
-#### Props
-
-Accepts all [Ark `FieldsetRoot` props](https://ark-ui.com/docs/components/fieldset) plus `className`/`class`.
-
-### FieldSetLegend / FieldSetHelper / FieldSetError
-
-Accept all corresponding Ark `Fieldset*` props plus `className`/`class`.
+See [FieldGroup](/helix/components/field-group) for grouping Fields or Checkboxes.
 
 ## Accessibility
 
-Ark wires `for`/`id`, `aria-describedby`, and `aria-invalid` between the label, control, helper, and error text. `FieldSet` renders a native `<fieldset>`/`<legend>`.
+Ark wires `for`/`id`, `aria-describedby`, and `aria-invalid` between the label, control, helper, and error text.
 
 ## Theming
 

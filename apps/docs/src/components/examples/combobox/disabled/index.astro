@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactComboboxDisabled from './react.tsx';
+import SvelteComboboxDisabled from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="disabled" title="Disabled" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactComboboxDisabled client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteComboboxDisabled client:load />
+  </div>
+</Example>

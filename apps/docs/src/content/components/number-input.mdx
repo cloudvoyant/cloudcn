@@ -1,15 +1,20 @@
 ---
 title: NumberInput
-description: A numeric input with increment and decrement steppers, for React and Svelte.
-order: 9
+description: A scrubber-style numeric input with formatting, for React and Svelte.
+order: 11
 group: forms
 ---
 
 import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
 
-`NumberInput` is a numeric field with increment/decrement steppers, keyboard editing, and clamping. Built on [Ark UI `number-input`](https://ark-ui.com/docs/components/number-input), sourced from [Shark UI](https://shark.vini.one/docs/components/number-input).
+`NumberInput` is a numeric field with a drag-to-adjust scrubber, keyboard editing, clamping, and `Intl` formatting. Built on [Ark UI `number-input`](https://ark-ui.com/docs/components/number-input).
 
 <Demo component="number-input" example="default" />
+
+## Examples
+
+<Examples component="number-input" exclude="default" />
 
 ## API Reference
 
@@ -17,15 +22,11 @@ import Demo from '../../components/Demo.astro';
 
 #### Props
 
-Accepts all [Ark `NumberInputRoot` props](https://ark-ui.com/docs/components/number-input) (`min`, `max`, `step`, `value`, `onValueChange`, `allowMouseWheel`, …) plus `className`/`class`.
+Accepts all [Ark `NumberInputRoot` props](https://ark-ui.com/docs/components/number-input) (`min`, `max`, `step`, `value`, `onValueChange`, `precision`, `formatOptions`, `allowMouseWheel`, …) plus `className`/`class`.
 
-### NumberInputControl / NumberInputInput
+### NumberInputControl / NumberInputInput / NumberInputScrubber / NumberInputValueText
 
-Accept all corresponding Ark props plus `className`/`class`.
-
-### NumberInputIncrement / NumberInputDecrement
-
-Accept all Ark `NumberInput*Trigger` props plus `className`/`class`. Supply an icon as children; an `aria-label` is set by default.
+Accept all corresponding Ark props plus `className`/`class`. `NumberInputInput` also takes `size` (`'sm' | 'md' | 'lg'`). The scrubber renders inside the control by default and drags vertically to adjust the value. The left/right increment/decrement steppers are removed; use arrow keys on the input for step changes.
 
 ## Accessibility
 

@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactInputLabelsHints from './react.tsx';
+import SvelteInputLabelsHints from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="labels-hints" title="Labels & hints" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactInputLabelsHints client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteInputLabelsHints client:load />
+  </div>
+</Example>

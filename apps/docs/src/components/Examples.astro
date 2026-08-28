@@ -97,9 +97,70 @@ const titles: Record<string, { id: string; title: string }[]> = {
     { id: 'density', title: 'Compact menu' },
     { id: 'variants', title: 'Menu links' },
   ],
-  input: [{ id: 'textarea', title: 'Textarea' }],
-  field: [{ id: 'fieldset', title: 'FieldSet' }],
-  combobox: [{ id: 'multiple', title: 'Multiple' }],
+  input: [
+    { id: 'labels-hints', title: 'Labels & hints' },
+    { id: 'error', title: 'Validation error' },
+    { id: 'disabled', title: 'Disabled' },
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'search', title: 'Search prefix' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  field: [
+    { id: 'prefix-suffix', title: 'Prefix & suffix' },
+    { id: 'error', title: 'Validation error' },
+    { id: 'disabled', title: 'Disabled' },
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'submit-validation', title: 'Validation on submit' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  'number-input': [
+    { id: 'format', title: 'Formatting' },
+    { id: 'disabled', title: 'Disabled' },
+    { id: 'error', title: 'Validation error' },
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  'password-input': [
+    { id: 'disabled', title: 'Disabled' },
+    { id: 'error', title: 'Validation error' },
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  'file-input': [
+    { id: 'clear', title: 'Clear' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  textarea: [
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'disabled', title: 'Disabled' },
+    { id: 'error', title: 'Validation error' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  checkbox: [
+    { id: 'disabled', title: 'Disabled' },
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  switch: [
+    { id: 'disabled', title: 'Disabled' },
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  select: [
+    { id: 'disabled', title: 'Disabled' },
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'error', title: 'Validation error' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  combobox: [
+    { id: 'multiple', title: 'Multiple' },
+    { id: 'disabled', title: 'Disabled' },
+    { id: 'sizes', title: 'Sizes' },
+    { id: 'controlled', title: 'Controlled' },
+  ],
+  'tags-input': [
+    { id: 'controlled', title: 'Controlled' },
+  ],
 };
 const entries = (titles[component ?? 'button'] ?? []).filter((e) => e.id !== exclude);
 ---

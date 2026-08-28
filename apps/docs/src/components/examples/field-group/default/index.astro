@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactFieldGroupDefault from './react.tsx';
+import SvelteFieldGroupDefault from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Default" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactFieldGroupDefault client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteFieldGroupDefault client:load />
+  </div>
+</Example>

@@ -71,16 +71,59 @@ import ExampleNavbarTwoColumns from './examples/navbar/two-columns/index.astro';
 import ExampleNavbarDensity from './examples/navbar/density/index.astro';
 import ExampleNavbarVariants from './examples/navbar/variants/index.astro';
 import ExampleInputDefault from './examples/input/default/index.astro';
-import ExampleInputTextarea from './examples/input/textarea/index.astro';
+import ExampleInputLabelsHints from './examples/input/labels-hints/index.astro';
+import ExampleInputError from './examples/input/error/index.astro';
+import ExampleInputDisabled from './examples/input/disabled/index.astro';
+import ExampleInputSizes from './examples/input/sizes/index.astro';
+import ExampleInputSearch from './examples/input/search/index.astro';
+import ExampleInputControlled from './examples/input/controlled/index.astro';
 import ExampleFieldDefault from './examples/field/default/index.astro';
-import ExampleFieldFieldset from './examples/field/fieldset/index.astro';
+import ExampleFieldPrefixSuffix from './examples/field/prefix-suffix/index.astro';
+import ExampleFieldError from './examples/field/error/index.astro';
+import ExampleFieldDisabled from './examples/field/disabled/index.astro';
+import ExampleFieldSizes from './examples/field/sizes/index.astro';
+import ExampleFieldSubmitValidation from './examples/field/submit-validation/index.astro';
+import ExampleFieldControlled from './examples/field/controlled/index.astro';
+import ExampleFieldGroupDefault from './examples/field-group/default/index.astro';
+import ExamplePasswordInputDefault from './examples/password-input/default/index.astro';
+import ExamplePasswordInputDisabled from './examples/password-input/disabled/index.astro';
+import ExamplePasswordInputError from './examples/password-input/error/index.astro';
+import ExamplePasswordInputSizes from './examples/password-input/sizes/index.astro';
+import ExamplePasswordInputControlled from './examples/password-input/controlled/index.astro';
+import ExampleFileInputDefault from './examples/file-input/default/index.astro';
+import ExampleFileInputClear from './examples/file-input/clear/index.astro';
+import ExampleFileInputControlled from './examples/file-input/controlled/index.astro';
+import ExampleTextareaDefault from './examples/textarea/default/index.astro';
+import ExampleTextareaSizes from './examples/textarea/sizes/index.astro';
+import ExampleTextareaDisabled from './examples/textarea/disabled/index.astro';
+import ExampleTextareaError from './examples/textarea/error/index.astro';
+import ExampleTextareaControlled from './examples/textarea/controlled/index.astro';
 import ExampleNumberInputDefault from './examples/number-input/default/index.astro';
+import ExampleNumberInputFormat from './examples/number-input/format/index.astro';
+import ExampleNumberInputDisabled from './examples/number-input/disabled/index.astro';
+import ExampleNumberInputError from './examples/number-input/error/index.astro';
+import ExampleNumberInputSizes from './examples/number-input/sizes/index.astro';
+import ExampleNumberInputControlled from './examples/number-input/controlled/index.astro';
 import ExampleCheckboxDefault from './examples/checkbox/default/index.astro';
+import ExampleCheckboxDisabled from './examples/checkbox/disabled/index.astro';
+import ExampleCheckboxSizes from './examples/checkbox/sizes/index.astro';
+import ExampleCheckboxControlled from './examples/checkbox/controlled/index.astro';
 import ExampleSwitchDefault from './examples/switch/default/index.astro';
+import ExampleSwitchDisabled from './examples/switch/disabled/index.astro';
+import ExampleSwitchSizes from './examples/switch/sizes/index.astro';
+import ExampleSwitchControlled from './examples/switch/controlled/index.astro';
 import ExampleSelectDefault from './examples/select/default/index.astro';
+import ExampleSelectDisabled from './examples/select/disabled/index.astro';
+import ExampleSelectSizes from './examples/select/sizes/index.astro';
+import ExampleSelectError from './examples/select/error/index.astro';
+import ExampleSelectControlled from './examples/select/controlled/index.astro';
 import ExampleComboboxDefault from './examples/combobox/default/index.astro';
 import ExampleComboboxMultiple from './examples/combobox/multiple/index.astro';
+import ExampleComboboxDisabled from './examples/combobox/disabled/index.astro';
+import ExampleComboboxSizes from './examples/combobox/sizes/index.astro';
+import ExampleComboboxControlled from './examples/combobox/controlled/index.astro';
 import ExampleTagsInputDefault from './examples/tags-input/default/index.astro';
+import ExampleTagsInputControlled from './examples/tags-input/controlled/index.astro';
 
 type ComponentName =
   | 'button'
@@ -99,6 +142,10 @@ type ComponentName =
   | 'navbar'
   | 'input'
   | 'field'
+  | 'field-group'
+  | 'password-input'
+  | 'file-input'
+  | 'textarea'
   | 'number-input'
   | 'checkbox'
   | 'switch'
@@ -162,7 +209,14 @@ type ExampleName =
   | 'hide'
   | 'textarea'
   | 'fieldset'
-  | 'multiple';
+  | 'multiple'
+  | 'labels-hints'
+  | 'search'
+  | 'prefix-suffix'
+  | 'submit-validation'
+  | 'format'
+  | 'clear'
+  | 'error';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -279,30 +333,81 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
   ],
   input: [
     { id: 'default', title: 'Default', component: ExampleInputDefault },
-    { id: 'textarea', title: 'Textarea', component: ExampleInputTextarea },
+    { id: 'labels-hints', title: 'Labels & hints', component: ExampleInputLabelsHints },
+    { id: 'error', title: 'Validation error', component: ExampleInputError },
+    { id: 'disabled', title: 'Disabled', component: ExampleInputDisabled },
+    { id: 'sizes', title: 'Sizes', component: ExampleInputSizes },
+    { id: 'search', title: 'Search prefix', component: ExampleInputSearch },
+    { id: 'controlled', title: 'Controlled', component: ExampleInputControlled },
   ],
   field: [
     { id: 'default', title: 'Default', component: ExampleFieldDefault },
-    { id: 'fieldset', title: 'FieldSet', component: ExampleFieldFieldset },
+    { id: 'prefix-suffix', title: 'Prefix & suffix', component: ExampleFieldPrefixSuffix },
+    { id: 'error', title: 'Validation error', component: ExampleFieldError },
+    { id: 'disabled', title: 'Disabled', component: ExampleFieldDisabled },
+    { id: 'sizes', title: 'Sizes', component: ExampleFieldSizes },
+    { id: 'submit-validation', title: 'Validation on submit', component: ExampleFieldSubmitValidation },
+    { id: 'controlled', title: 'Controlled', component: ExampleFieldControlled },
+  ],
+  'field-group': [
+    { id: 'default', title: 'Default', component: ExampleFieldGroupDefault },
+  ],
+  'password-input': [
+    { id: 'default', title: 'Default', component: ExamplePasswordInputDefault },
+    { id: 'disabled', title: 'Disabled', component: ExamplePasswordInputDisabled },
+    { id: 'error', title: 'Validation error', component: ExamplePasswordInputError },
+    { id: 'sizes', title: 'Sizes', component: ExamplePasswordInputSizes },
+    { id: 'controlled', title: 'Controlled', component: ExamplePasswordInputControlled },
+  ],
+  'file-input': [
+    { id: 'default', title: 'Default', component: ExampleFileInputDefault },
+    { id: 'clear', title: 'Clear', component: ExampleFileInputClear },
+    { id: 'controlled', title: 'Controlled', component: ExampleFileInputControlled },
+  ],
+  textarea: [
+    { id: 'default', title: 'Default', component: ExampleTextareaDefault },
+    { id: 'sizes', title: 'Sizes', component: ExampleTextareaSizes },
+    { id: 'disabled', title: 'Disabled', component: ExampleTextareaDisabled },
+    { id: 'error', title: 'Validation error', component: ExampleTextareaError },
+    { id: 'controlled', title: 'Controlled', component: ExampleTextareaControlled },
   ],
   'number-input': [
     { id: 'default', title: 'Default', component: ExampleNumberInputDefault },
+    { id: 'format', title: 'Formatting', component: ExampleNumberInputFormat },
+    { id: 'disabled', title: 'Disabled', component: ExampleNumberInputDisabled },
+    { id: 'error', title: 'Validation error', component: ExampleNumberInputError },
+    { id: 'sizes', title: 'Sizes', component: ExampleNumberInputSizes },
+    { id: 'controlled', title: 'Controlled', component: ExampleNumberInputControlled },
   ],
   checkbox: [
     { id: 'default', title: 'Default', component: ExampleCheckboxDefault },
+    { id: 'disabled', title: 'Disabled', component: ExampleCheckboxDisabled },
+    { id: 'sizes', title: 'Sizes', component: ExampleCheckboxSizes },
+    { id: 'controlled', title: 'Controlled', component: ExampleCheckboxControlled },
   ],
   switch: [
     { id: 'default', title: 'Default', component: ExampleSwitchDefault },
+    { id: 'disabled', title: 'Disabled', component: ExampleSwitchDisabled },
+    { id: 'sizes', title: 'Sizes', component: ExampleSwitchSizes },
+    { id: 'controlled', title: 'Controlled', component: ExampleSwitchControlled },
   ],
   select: [
     { id: 'default', title: 'Default', component: ExampleSelectDefault },
+    { id: 'disabled', title: 'Disabled', component: ExampleSelectDisabled },
+    { id: 'sizes', title: 'Sizes', component: ExampleSelectSizes },
+    { id: 'error', title: 'Validation error', component: ExampleSelectError },
+    { id: 'controlled', title: 'Controlled', component: ExampleSelectControlled },
   ],
   combobox: [
     { id: 'default', title: 'Default', component: ExampleComboboxDefault },
     { id: 'multiple', title: 'Multiple', component: ExampleComboboxMultiple },
+    { id: 'disabled', title: 'Disabled', component: ExampleComboboxDisabled },
+    { id: 'sizes', title: 'Sizes', component: ExampleComboboxSizes },
+    { id: 'controlled', title: 'Controlled', component: ExampleComboboxControlled },
   ],
   'tags-input': [
     { id: 'default', title: 'Default', component: ExampleTagsInputDefault },
+    { id: 'controlled', title: 'Controlled', component: ExampleTagsInputControlled },
   ],
 };
 

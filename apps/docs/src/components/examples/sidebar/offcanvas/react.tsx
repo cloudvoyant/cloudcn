@@ -40,7 +40,7 @@ export default function ReactSidebarOffcanvas() {
               </SidebarMenuLink>
             </SidebarMenu>
           </SidebarHeader>
-          <SidebarContent>
+          <SidebarContent className="scroll-fade no-scrollbar">
             <SidebarGroup label="Applications">
               <SidebarMenu>
                 {NAV.map((item) => (

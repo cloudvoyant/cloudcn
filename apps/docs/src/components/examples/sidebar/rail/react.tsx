@@ -42,7 +42,7 @@ export default function ReactSidebarRail() {
               </SidebarMenuLink>
             </SidebarMenu>
           </SidebarHeader>
-          <SidebarContent>
+          <SidebarContent className="scroll-fade no-scrollbar">
             <SidebarGroup label="Applications">
               <SidebarMenu>
                 {NAV.map((item) => (

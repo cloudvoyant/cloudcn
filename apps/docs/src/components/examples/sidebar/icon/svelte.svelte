@@ -39,7 +39,7 @@
           </SidebarMenuLink>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent class="scroll-fade no-scrollbar">
         <SidebarGroup label="Applications">
           <SidebarMenu>
             {#each NAV as item (item.label)}

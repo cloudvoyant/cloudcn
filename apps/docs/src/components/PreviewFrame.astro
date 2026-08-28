@@ -11,25 +11,31 @@ interface Props {
   component: string;
   example: string;
   title?: string;
+  /** Fixed width (px) for the desktop mode. Full-screen layouts (e.g. the
+   * Sidebar) need a wide viewport to reach their desktop breakpoint; page-level
+   * previews default to filling the card width. */
+  desktopWidth?: number;
 }
 
-const { component, example, title = 'helix preview' } = Astro.props;
+const { component, example, title = 'helix preview', desktopWidth } = Astro.props;
 const uid = `pf-${Math.random().toString(36).slice(2)}`;
+const initialWidth = desktopWidth ? `${desktopWidth}px` : '100%';
 ---
 
 <div
   data-preview-frame
   id={uid}
   data-component={component}
-  data-example={example}
+  data-preview-example={example}
+  data-desktop-width={desktopWidth ?? ''}
   class="relative overflow-hidden rounded-t-lg bg-background"
 >
-  <div data-preview-viewport class="flex justify-center bg-muted/20">
+  <div data-preview-viewport class="flex overflow-x-auto bg-muted/20">
     <div
       data-preview-window
       data-preview-mode="desktop"
-      class="relative overflow-hidden transition-[width] duration-200"
-      style="width: 100%; aspect-ratio: 16 / 9"
+      class="relative mx-auto shrink-0 overflow-hidden transition-[width] duration-200"
+      style={`width: ${initialWidth}; aspect-ratio: 16 / 9`}
     >
       <iframe data-preview title={title} class="block h-full w-full border-0"></iframe>
     </div>
@@ -116,7 +122,7 @@ const uid = `pf-${Math.random().toString(36).slice(2)}`;
   if (root) {
     const frame = root.querySelector('[data-preview]');
     const component = root.dataset.component ?? 'page';
-    const example = root.dataset.example ?? 'default';
+    const example = root.dataset.previewExample ?? 'default';
 
     const currentFw = () =>
       document.documentElement.dataset.framework === 'svelte' ? 'svelte' : 'react';
@@ -153,6 +159,7 @@ const uid = `pf-${Math.random().toString(36).slice(2)}`;
 
     const windowEl = root.querySelector('[data-preview-window]');
     const buttons = root.querySelectorAll('[data-preview-width]');
+    const desktopWidth = Number(root.dataset.desktopWidth) || 0;
     const applyWidth = (width) => {
       if (!windowEl) return;
       windowEl.dataset.previewMode = width;
@@ -160,7 +167,7 @@ const uid = `pf-${Math.random().toString(36).slice(2)}`;
         windowEl.style.width = '375px';
         windowEl.style.aspectRatio = '9 / 16';
       } else {
-        windowEl.style.width = '100%';
+        windowEl.style.width = desktopWidth ? `${desktopWidth}px` : '100%';
         windowEl.style.aspectRatio = '16 / 9';
       }
     };

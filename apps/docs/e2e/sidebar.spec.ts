@@ -2,35 +2,40 @@
 // Behavior + accessibility coverage for the Sidebar, matrixed over React and
 // Svelte via the docs demo islands: collapse-to-icon-rail, collapse-to-offcanvas,
 // and rail-handle toggling. Asserts observable state (`data-state`) and visibility,
-// never generated class strings.
-import { selectFramework } from './helpers';
-import { test, expect, type Locator, type Page } from '@playwright/test';
+// never generated class strings. The demos render in PreviewFrame iframes, so
+// assertions target the active framework's island inside each frame.
+import { test, expect, type Page, type FrameLocator } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
 type Framework = (typeof FRAMEWORKS)[number];
 
-
-function exampleRegion(page: Page, framework: Framework, index: number): Locator {
-  return page.locator(`[data-example]`).nth(index).locator(`[data-fw="${framework}"]`).first();
+function exampleFrame(page: Page, index: number): FrameLocator {
+  return page.locator('[data-example]').nth(index).frameLocator('iframe[data-preview]');
 }
 
-function sidebar(page: Page, region: Locator): Locator {
-  return region.locator(`[data-slot="sidebar"]`).first();
+function sidebar(frame: FrameLocator, framework: Framework) {
+  // The desktop sidebar (not the mobile drawer, which also carries
+  // data-slot="sidebar" but with data-mobile="true").
+  return frame.locator(`[data-fw="${framework}"] [data-slot="sidebar"]:not([data-mobile="true"])`).first();
 }
 
 for (const framework of FRAMEWORKS) {
   test.describe(`Sidebar docs page · ${framework}`, () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('components/sidebar');
-      await selectFramework(page, framework);
+      // Every Sidebar example renders in a PreviewFrame iframe — there are no
+      // inline islands — so wait for the framework selector to hydrate, then
+      // click; the frames pick up the framework via postMessage.
+      await page.locator('[data-framework-selector][data-ready]').waitFor();
+      await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
     });
 
     test('collapses to an icon rail (container narrows, icon remains)', async ({ page }) => {
-      const region = exampleRegion(page, framework, 0); // icon example
-      const sb = sidebar(page, region);
-      const container = region.locator('[data-slot="sidebar-container"]').first();
-      const menuButton = region.locator('[data-sidebar="menu-button"]:has(svg)').first();
-      const trigger = region.locator('[data-sidebar="trigger"]').first();
+      const frame = exampleFrame(page, 0); // icon example
+      const sb = sidebar(frame, framework);
+      const container = frame.locator(`[data-fw="${framework}"] [data-slot="sidebar-container"]`).first();
+      const menuButton = frame.locator(`[data-fw="${framework}"] [data-sidebar="menu-button"]:has(svg)`).first();
+      const trigger = frame.locator(`[data-fw="${framework}"] [data-sidebar="trigger"]`).first();
 
       await expect(sb).toHaveAttribute('data-state', 'expanded');
       // The desktop sidebar is 16rem (256px) wide when expanded.
@@ -55,10 +60,10 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('completely disappears on collapse (offcanvas)', async ({ page }) => {
-      const region = exampleRegion(page, framework, 1); // offcanvas example
-      const sb = sidebar(page, region);
-      const gap = region.locator('[data-slot="sidebar-gap"]').first();
-      const trigger = region.locator('[data-sidebar="trigger"]').first();
+      const frame = exampleFrame(page, 1); // offcanvas example
+      const sb = sidebar(frame, framework);
+      const gap = frame.locator(`[data-fw="${framework}"] [data-slot="sidebar-gap"]`).first();
+      const trigger = frame.locator(`[data-fw="${framework}"] [data-sidebar="trigger"]`).first();
 
       await expect(sb).toHaveAttribute('data-state', 'expanded');
 
@@ -78,9 +83,9 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('toggles expanded/collapsed with the rail handle', async ({ page }) => {
-      const region = exampleRegion(page, framework, 2); // rail example
-      const sb = sidebar(page, region);
-      const rail = region.locator('[data-sidebar="rail"]').first();
+      const frame = exampleFrame(page, 2); // rail example
+      const sb = sidebar(frame, framework);
+      const rail = frame.locator(`[data-fw="${framework}"] [data-sidebar="rail"]`).first();
 
       await expect(sb).toHaveAttribute('data-state', 'expanded');
       await expect(rail).toHaveAttribute('aria-label', 'Toggle Sidebar');
@@ -102,9 +107,9 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('rail activates with the Enter key', async ({ page }) => {
-      const region = exampleRegion(page, framework, 2); // rail example
-      const sb = sidebar(page, region);
-      const rail = region.locator('[data-sidebar="rail"]').first();
+      const frame = exampleFrame(page, 2); // rail example
+      const sb = sidebar(frame, framework);
+      const rail = frame.locator(`[data-fw="${framework}"] [data-sidebar="rail"]`).first();
 
       await expect(sb).toHaveAttribute('data-state', 'expanded');
       await expect(async () => {
@@ -115,9 +120,15 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('trigger and rail carry accessible labels', async ({ page }) => {
-      const region = exampleRegion(page, framework, 2); // rail example
-      await expect(region.locator('[data-sidebar="trigger"]').first()).toHaveAttribute('aria-label', 'Toggle Sidebar');
-      await expect(region.locator('[data-sidebar="rail"]').first()).toHaveAttribute('aria-label', 'Toggle Sidebar');
+      const frame = exampleFrame(page, 2); // rail example
+      await expect(frame.locator(`[data-fw="${framework}"] [data-sidebar="trigger"]`).first()).toHaveAttribute(
+        'aria-label',
+        'Toggle Sidebar',
+      );
+      await expect(frame.locator(`[data-fw="${framework}"] [data-sidebar="rail"]`).first()).toHaveAttribute(
+        'aria-label',
+        'Toggle Sidebar',
+      );
     });
   });
 }

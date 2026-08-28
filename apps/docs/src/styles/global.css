@@ -1,6 +1,9 @@
 /* apps/docs/src/styles/global.css */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 @import 'tailwindcss';
+/* shadcn's Tailwind utilities (scroll-fade, no-scrollbar, etc.) — used for the
+   docs sidebar/TOC scroll fade. */
+@import 'shadcn/tailwind.css';
 /* Scan the workspace lib sources directly. In a pnpm workspace the
    `@source` lines in @cloudvoyant/helix/components.css resolve through the
    node_modules symlink, whose target is gitignored — so Tailwind skips it

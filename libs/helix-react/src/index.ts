@@ -93,16 +93,18 @@ export {
 export {
   Field,
   FieldLabel,
-  FieldHelper,
+  FieldPrefix,
+  FieldSuffix,
+  FieldHint,
   FieldError,
   FieldRequiredIndicator,
-  FieldSet,
-  FieldSetLegend,
-  FieldSetHelper,
-  FieldSetError,
+  FieldGroup,
+  FieldGroupLegend,
+  FieldGroupHelper,
+  FieldGroupError,
   useField,
   type FieldProps,
-  type FieldSetProps,
+  type FieldGroupProps,
 } from './field';
 export { Input, type InputProps } from './input';
 export { Textarea, type TextareaProps } from './textarea';
@@ -110,11 +112,33 @@ export {
   NumberInput,
   NumberInputControl,
   NumberInputInput,
-  NumberInputDecrement,
-  NumberInputIncrement,
+  NumberInputScrubber,
+  NumberInputValueText,
   useNumberInput,
   type NumberInputProps,
 } from './number-input';
+export {
+  PasswordInput,
+  PasswordInputControl,
+  PasswordInputInput,
+  PasswordInputVisibilityTrigger,
+  PasswordInputIndicator,
+  usePasswordInput,
+  type PasswordInputProps,
+} from './password-input';
+export {
+  FileInput,
+  FileInputDropzone,
+  FileInputTrigger,
+  FileInputItemGroup,
+  FileInputItem,
+  FileInputItemName,
+  FileInputItemSizeText,
+  FileInputItemDeleteTrigger,
+  FileInputClearTrigger,
+  useFileInput,
+  type FileInputProps,
+} from './file-input';
 export {
   Checkbox,
   CheckboxControl,

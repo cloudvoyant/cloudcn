@@ -1,5 +1,4 @@
 // libs/helix-react/src/switch.tsx
-// Closely based on: Shark UI switch (@ark-ui/react/switch)
 import { createContext, useContext } from 'react';
 import {
   SwitchRoot as ArkSwitchRoot,

@@ -1,14 +1,18 @@
 <!-- libs/helix-svelte/src/Textarea.svelte -->
-<!-- Closely based on: Shark UI textarea (@ark-ui/svelte/field), mirrored from @cloudvoyant/helix-react -->
 <script lang="ts">
   import { FieldTextarea, type FieldTextareaProps } from '@ark-ui/svelte/field';
-  import { textareaBase, cn } from '@cloudvoyant/helix';
+  import { textareaVariants, cn } from '@cloudvoyant/helix';
 
-  let { class: className = '', children, ...rest }: FieldTextareaProps = $props();
+  type Props = Omit<FieldTextareaProps, 'size'> & {
+    size?: 'sm' | 'md' | 'lg';
+    class?: string;
+  };
 
-  const classes = $derived(cn(textareaBase, className));
+  let { size = 'md', class: className = '', children, value = $bindable(), ...rest }: Props = $props();
+
+  const classes = $derived(cn(textareaVariants({ size }), className));
 </script>
 
-<FieldTextarea class={classes} {...rest}>
+<FieldTextarea class={classes} bind:value {...rest}>
   {@render children?.()}
 </FieldTextarea>

@@ -92,22 +92,26 @@ export { cn } from './cn';
 export {
   fieldRootBase,
   fieldLabelBase,
-  fieldHelperBase,
+  fieldPrefixBase,
+  fieldSuffixBase,
+  fieldHintBase,
   fieldErrorBase,
   fieldRequiredIndicatorBase,
-  fieldsetRootBase,
-  fieldsetLegendBase,
-  fieldsetHelperBase,
-  fieldsetErrorBase,
+  fieldGroupRootBase,
+  fieldGroupLegendBase,
+  fieldGroupHelperBase,
+  fieldGroupErrorBase,
 } from './field';
 export { inputVariants, type InputProps, type InputVariants } from './input';
-export { textareaBase, type TextareaProps } from './textarea';
+export { textareaVariants, type TextareaProps, type TextareaVariants } from './textarea';
 export {
   numberInputRootBase,
   numberInputControlBase,
-  numberInputInputBase,
-  numberInputTriggerBase,
+  numberInputScrubberBase,
+  numberInputValueTextBase,
+  numberInputVariants,
   type NumberInputProps,
+  type NumberInputVariants,
 } from './number-input';
 export {
   checkboxVariants,
@@ -169,3 +173,25 @@ export {
   tagsInputClearTriggerBase,
   type TagsInputProps,
 } from './tags-input';
+export {
+  passwordInputRootBase,
+  passwordInputControlBase,
+  passwordInputVariants,
+  passwordInputVisibilityTriggerBase,
+  passwordInputIndicatorBase,
+  type PasswordInputProps,
+  type PasswordInputVariants,
+} from './password-input';
+export {
+  fileInputRootBase,
+  fileInputDropzoneBase,
+  fileInputTriggerBase,
+  fileInputLabelBase,
+  fileInputItemGroupBase,
+  fileInputItemBase,
+  fileInputItemNameBase,
+  fileInputItemSizeTextBase,
+  fileInputItemDeleteTriggerBase,
+  fileInputClearTriggerBase,
+  type FileInputProps,
+} from './file-input';

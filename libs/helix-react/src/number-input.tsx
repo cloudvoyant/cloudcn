@@ -1,50 +1,64 @@
 // libs/helix-react/src/number-input.tsx
-// Closely based on: Shark UI number input (@ark-ui/react/number-input)
 import {
   NumberInputRoot as ArkNumberInputRoot,
   NumberInputControl as ArkNumberInputControl,
   NumberInputInput as ArkNumberInputInput,
-  NumberInputIncrementTrigger as ArkNumberInputIncrementTrigger,
-  NumberInputDecrementTrigger as ArkNumberInputDecrementTrigger,
+  NumberInputScrubber as ArkNumberInputScrubber,
+  NumberInputValueText as ArkNumberInputValueText,
   useNumberInputContext,
   type NumberInputRootProps,
-} from '@ark-ui/react/number-input';
-import type {
-  NumberInputControlProps,
-  NumberInputInputProps,
-  NumberInputIncrementTriggerProps,
-  NumberInputDecrementTriggerProps,
+  type NumberInputControlProps,
+  type NumberInputInputProps,
+  type NumberInputScrubberProps,
+  type NumberInputValueTextProps,
 } from '@ark-ui/react/number-input';
 import {
   numberInputRootBase,
   numberInputControlBase,
-  numberInputInputBase,
-  numberInputTriggerBase,
+  numberInputScrubberBase,
+  numberInputValueTextBase,
+  numberInputVariants,
   cn,
+  type NumberInputProps as NumberInputBaseProps,
 } from '@cloudvoyant/helix';
 
-export type NumberInputProps = NumberInputRootProps;
+export type NumberInputProps = NumberInputRootProps & Omit<NumberInputBaseProps, 'size'>;
 
-export function NumberInput({ className, ...props }: NumberInputProps) {
-  return <ArkNumberInputRoot className={cn(numberInputRootBase, className)} {...props} />;
+export function NumberInput({ className, children, ...props }: NumberInputProps) {
+  return (
+    <ArkNumberInputRoot className={cn(numberInputRootBase, className)} {...props}>
+      <NumberInputControl>
+        <NumberInputScrubber aria-label="Adjust value" />
+        {children}
+      </NumberInputControl>
+    </ArkNumberInputRoot>
+  );
 }
 
-export function NumberInputControl({ className, ...props }: NumberInputControlProps) {
+export function NumberInputControl({ className, ...props }: NumberInputControlProps & NumberInputBaseProps) {
   return <ArkNumberInputControl className={cn(numberInputControlBase, className)} {...props} />;
 }
 
-export function NumberInputInput({ className, ...props }: NumberInputInputProps) {
-  return <ArkNumberInputInput className={cn(numberInputInputBase, className)} {...props} />;
+export function NumberInputInput({
+  className,
+  size,
+  ...props
+}: Omit<NumberInputInputProps, 'size'> & NumberInputBaseProps) {
+  return <ArkNumberInputInput className={cn(numberInputVariants({ size }), className)} {...props} />;
 }
 
-export function NumberInputDecrement({ className, ...props }: NumberInputDecrementTriggerProps) {
-  return <ArkNumberInputDecrementTrigger aria-label="Decrement" className={cn(numberInputTriggerBase, className)} {...props} />;
+export function NumberInputScrubber({ className, children, ...props }: NumberInputScrubberProps) {
+  return (
+    <ArkNumberInputScrubber className={cn(numberInputScrubberBase, className)} {...props}>
+      {children}
+    </ArkNumberInputScrubber>
+  );
 }
 
-export function NumberInputIncrement({ className, ...props }: NumberInputIncrementTriggerProps) {
-  return <ArkNumberInputIncrementTrigger aria-label="Increment" className={cn(numberInputTriggerBase, className)} {...props} />;
+export function NumberInputValueText({ className, ...props }: NumberInputValueTextProps) {
+  return <ArkNumberInputValueText className={cn(numberInputValueTextBase, className)} {...props} />;
 }
 
 export const useNumberInput = useNumberInputContext;
 
-export type { NumberInputControlProps, NumberInputInputProps, NumberInputIncrementTriggerProps, NumberInputDecrementTriggerProps };
+export type { NumberInputControlProps, NumberInputInputProps, NumberInputScrubberProps, NumberInputValueTextProps };

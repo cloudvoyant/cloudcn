@@ -9,9 +9,9 @@
     class?: string;
   };
 
-  let { size = 'md', class: className = '', ...rest }: Props = $props();
+  let { size = 'md', class: className = '', value = $bindable(), ...rest }: Props = $props();
 
   const classes = $derived(cn(inputVariants({ size }), className));
 </script>
 
-<FieldInput class={classes} {...rest} />
+<FieldInput class={classes} bind:value {...rest} />

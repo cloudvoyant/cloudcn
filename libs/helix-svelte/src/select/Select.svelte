@@ -25,7 +25,7 @@
     size = 'md',
     class: className = '',
     children,
-    value,
+    value = $bindable(),
     defaultValue,
     onValueChange,
     invalid,
@@ -55,7 +55,10 @@
     {size}
     value={value?.[0]}
     defaultValue={defaultValue?.[0]}
-    onValueChange={(v) => onValueChange?.({ value: [v], items: [] })}
+    onValueChange={(v) => {
+      value = [v];
+      onValueChange?.({ value: [v], items: [] });
+    }}
     {invalid}
     {disabled}
     {name}
@@ -63,7 +66,22 @@
     {required}
   />
 {:else}
-  <SelectRoot collection={resolvedCollection} {value} {defaultValue} {onValueChange} {invalid} {disabled} {name} {form} {required} class={className} {...rest}>
+  <SelectRoot
+    collection={resolvedCollection}
+    {value}
+    onValueChange={(e) => {
+      value = e.value;
+      onValueChange?.(e);
+    }}
+    {defaultValue}
+    {invalid}
+    {disabled}
+    {name}
+    {form}
+    {required}
+    class={className}
+    {...rest}
+  >
     {@render children?.()}
     <SelectHiddenSelect />
   </SelectRoot>

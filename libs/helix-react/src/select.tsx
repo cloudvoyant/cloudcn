@@ -1,5 +1,4 @@
 // libs/helix-react/src/select.tsx
-// Closely based on: Shark UI select + native-select (@ark-ui/react/select)
 // Note: adapted to Ark UI v5 collection-based API (Select.Root `collection` +
 // Select.Item `item`), while preserving the plan's `items`/`size` convenience
 // surface and the native-select fallback on coarse-pointer devices.

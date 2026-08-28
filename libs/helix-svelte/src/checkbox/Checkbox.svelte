@@ -10,14 +10,14 @@
     class?: string;
   };
 
-  let { size = 'md', class: className = '', children, ...rest }: Props = $props();
+  let { size = 'md', class: className = '', children, checked = $bindable(), ...rest }: Props = $props();
 
   setContext<'sm' | 'md' | 'lg'>('checkbox-size', size);
 
   const classes = $derived(cn('flex items-center gap-2', className));
 </script>
 
-<CheckboxRoot class={classes} {...rest}>
+<CheckboxRoot class={classes} bind:checked {...rest}>
   {@render children?.()}
   <CheckboxHiddenInput />
 </CheckboxRoot>

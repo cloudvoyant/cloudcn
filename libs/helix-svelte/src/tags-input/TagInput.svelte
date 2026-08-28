@@ -1,19 +1,21 @@
 <!-- libs/helix-svelte/src/tags-input/TagInput.svelte -->
 <!-- Closely based on: Shark UI tags input (@ark-ui/svelte/tags-input), mirrored from @cloudvoyant/helix-react -->
 <script lang="ts">
-  import {
-    TagsInputRoot,
-    TagsInputHiddenInput,
-    type TagsInputRootProps,
-  } from '@ark-ui/svelte/tags-input';
+  import { TagsInputRoot, TagsInputHiddenInput, type TagsInputRootProps } from '@ark-ui/svelte/tags-input';
   import { tagsInputRootBase, cn } from '@cloudvoyant/helix';
 
-  let { class: className = '', editable = false, children, ...rest }: TagsInputRootProps = $props();
+  let {
+    class: className = '',
+    editable = false,
+    children,
+    value = $bindable(),
+    ...rest
+  }: TagsInputRootProps = $props();
 
   const classes = $derived(cn(tagsInputRootBase, className));
 </script>
 
-<TagsInputRoot {editable} class={classes} {...rest}>
+<TagsInputRoot {editable} class={classes} bind:value {...rest}>
   {@render children?.()}
   <TagsInputHiddenInput />
 </TagsInputRoot>

@@ -1,5 +1,4 @@
 // libs/helix-react/src/tags-input.tsx
-// Closely based on: Shark UI tags input (@ark-ui/react/tags-input)
 import {
   TagsInputRoot as ArkTagsInputRoot,
   TagsInputControl as ArkTagsInputControl,

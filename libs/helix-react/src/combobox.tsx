@@ -1,5 +1,4 @@
 // libs/helix-react/src/combobox.tsx
-// Closely based on: Shark UI combobox (@ark-ui/react/combobox)
 // Note: adapted to Ark UI v5 collection-based API (Combobox.Root `collection` +
 // Combobox.Item `item`), while preserving the plan's `items` convenience surface.
 import { Portal } from '@ark-ui/react/portal';

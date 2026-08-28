@@ -15,11 +15,20 @@
     collection?: ListCollection<SelectItemData>;
   };
 
-  let { items, collection, openOnClick = true, lazyMount = true, unmountOnExit = true, children, ...rest }: Props = $props();
+  let {
+    items,
+    collection,
+    openOnClick = true,
+    lazyMount = true,
+    unmountOnExit = true,
+    children,
+    value = $bindable(),
+    ...rest
+  }: Props = $props();
 
   const resolvedCollection = $derived(collection ?? createListCollection({ items: items ?? [] }));
 </script>
 
-<ComboboxRoot collection={resolvedCollection} {openOnClick} {lazyMount} {unmountOnExit} {...rest}>
+<ComboboxRoot collection={resolvedCollection} {openOnClick} {lazyMount} {unmountOnExit} bind:value {...rest}>
   {@render children?.()}
 </ComboboxRoot>

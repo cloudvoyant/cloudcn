@@ -24,6 +24,8 @@ export * from './navbar';
 export * from './field';
 export { default as Input } from './Input.svelte';
 export { default as Textarea } from './Textarea.svelte';
+export * from './password-input';
+export * from './file-input';
 export * from './number-input';
 export * from './checkbox';
 export * from './switch';

@@ -5,6 +5,7 @@
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
 import {
   pageVariants,
+  pageGutterAreaBase,
   pageGutterVariants,
   pageGutterContentVariants,
   pageContentBase,
@@ -43,12 +44,21 @@ export function PageGutter({
   ...props
 }: PageGutterProps) {
   return (
-    <ark.div data-slot="page-gutter" className={cn(pageGutterVariants({ side }), className)} {...props}>
+    <ark.div
+      data-slot="page-gutter-area"
+      className={cn(pageGutterAreaBase, side === 'right' && '[grid-area:right]')}
+    >
       <ark.div
-        data-slot="page-gutter-content"
-        className={cn(pageGutterContentVariants({ align }), contentClassName)}
+        data-slot="page-gutter"
+        className={cn(pageGutterVariants({ side }), className)}
+        {...props}
       >
-        {children}
+        <ark.div
+          data-slot="page-gutter-content"
+          className={cn(pageGutterContentVariants({ align }), contentClassName)}
+        >
+          {children}
+        </ark.div>
       </ark.div>
     </ark.div>
   );

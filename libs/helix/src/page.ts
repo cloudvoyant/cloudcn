@@ -1,9 +1,11 @@
 // libs/helix/src/page.ts
 // No direct upstream source: Page composes helix layout primitives (Row/Col/
 // Container) and Ark UI scroll-area (via Scroll). Shared class strings / cva /
-// types. The default variant is a CSS grid with named areas so the sticky
-// gutters bottom out when the footer is reached; the landing variant stacks
-// full-viewport sections above the footer.
+// types. The default variant is a CSS grid with named areas. Each gutter sits
+// in an area wrapper (pageGutterAreaBase) that stretches to the content row, so
+// the sticky gutter's containing block is the content — it bottoms out when the
+// footer comes into view instead of staying pinned over it. The landing variant
+// stacks full-viewport sections above the footer.
 import { cva, type VariantProps } from 'class-variance-authority';
 import { colBase } from './layout';
 import { cn } from './cn';
@@ -19,13 +21,18 @@ export const pageVariants = cva('min-h-svh w-full', {
   defaultVariants: { variant: 'default' },
 });
 
+// The grid item that fills the left/right area. Stretching it to the row means
+// the sticky gutter inside is bounded by the content row, not the whole grid
+// (which would include the footer and keep the gutter pinned past the content).
+export const pageGutterAreaBase = 'h-full min-w-0 [grid-area:left]';
+
 export const pageGutterVariants = cva(
-  'sticky top-0 h-svh w-4 shrink-0 self-start overflow-hidden p-0.5 md:w-56 md:p-2 lg:w-72 lg:p-3',
+  'sticky top-0 h-svh w-4 shrink-0 overflow-hidden p-0.5 md:w-56 md:p-2 lg:w-72 lg:p-3',
   {
     variants: {
       side: {
-        left: '[grid-area:left]',
-        right: '[grid-area:right]',
+        left: '',
+        right: '',
       },
     },
     defaultVariants: { side: 'left' },

@@ -2,7 +2,7 @@
 <!-- No upstream component; composed from @cloudvoyant/helix page classes, mirrored from @cloudvoyant/helix-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
-  import { pageGutterVariants, pageGutterContentVariants, cn } from '@cloudvoyant/helix';
+  import { pageGutterAreaBase, pageGutterVariants, pageGutterContentVariants, cn } from '@cloudvoyant/helix';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -23,12 +23,15 @@
     ...rest
   }: Props = $props();
 
+  const areaClasses = $derived(cn(pageGutterAreaBase, side === 'right' && '[grid-area:right]'));
   const gutterClasses = $derived(cn(pageGutterVariants({ side }), className));
   const contentClasses = $derived(cn(pageGutterContentVariants({ align }), contentClass));
 </script>
 
-<Ark as="div" data-slot="page-gutter" class={gutterClasses} {...rest}>
-  <div data-slot="page-gutter-content" class={contentClasses}>
-    {@render children?.()}
-  </div>
-</Ark>
+<div data-slot="page-gutter-area" class={areaClasses}>
+  <Ark as="div" data-slot="page-gutter" class={gutterClasses} {...rest}>
+    <div data-slot="page-gutter-content" class={contentClasses}>
+      {@render children?.()}
+    </div>
+  </Ark>
+</div>

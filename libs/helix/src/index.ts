@@ -26,6 +26,7 @@ export {
 } from './scroll';
 export {
   pageVariants,
+  pageGutterAreaBase,
   pageGutterVariants,
   pageGutterContentVariants,
   pageContentBase,

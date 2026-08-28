@@ -2,35 +2,23 @@
 // Behavior + accessibility coverage for the Navbar, matrixed over React and Svelte
 // via the docs demo islands: the mobile trigger toggles the disclosure panel,
 // the desktop menu is keyboard navigable, and scrolling marks the sticky bar.
+import { selectFramework } from './helpers';
 import { test, expect, type Page } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
 
-async function selectFramework(page: Page, framework: Framework) {
-  // Both navbar demos now live in a self-scrolling container. These tests only
-  // exercise the sticky example, so hide the second (floating) example to keep
-  // the framework selector and locators unambiguous.
+// Both navbar demos now live in a self-scrolling container. These tests only
+// exercise the sticky example, so hide the second (floating) example to keep
+// the framework selector and locators unambiguous.
+async function hideFloatingExample(page: Page) {
   await page.locator('[data-example]').nth(1).evaluate((el) => (el.style.display = 'none'));
-  await page.locator('[data-framework-selector][data-ready]').waitFor();
-  await page.locator('[data-framework-selector][data-ready]').waitFor();
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect
-    .poll(
-      async () => {
-        const box = await demo.boundingBox();
-        return box !== null && box.height > 0;
-      },
-      { timeout: 10_000 },
-    )
-    .toBe(true);
 }
 
 for (const framework of FRAMEWORKS) {
   test.describe(`Navbar docs page · ${framework}`, () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('components/navbar');
+      await hideFloatingExample(page);
       await selectFramework(page, framework);
     });
 

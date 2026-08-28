@@ -55,3 +55,20 @@ for (const framework of FRAMEWORKS) {
     });
   });
 }
+
+for (const framework of FRAMEWORKS) {
+  test.describe(`Combobox controlled · ${framework}`, () => {
+    test('keeps external state in sync both ways', async ({ page }) => {
+      await page.goto('components/combobox');
+      await selectFramework(page, framework);
+      const demo = page.locator(`[data-example="controlled"] [data-fw="${framework}"]`);
+
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('react');
+      await demo.locator('[role="combobox"]').click();
+      await page.locator('[role="listbox"]:visible [role="option"]', { hasText: 'Vue' }).click();
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('vue');
+      await demo.locator('button[data-testid="reset"]').click();
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('react');
+    });
+  });
+}

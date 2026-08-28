@@ -32,4 +32,20 @@ for (const framework of FRAMEWORKS) {
       ).toBeVisible();
     });
   });
+
+  test.describe(`Input controlled · ${framework}`, () => {
+    test('keeps external state in sync both ways', async ({ page }) => {
+      await page.goto('components/input');
+      await selectFramework(page, framework);
+      const demo = page.locator(`[data-example="controlled"] [data-fw="${framework}"]`);
+
+      const input = demo.locator('input').first();
+      await input.fill('controlled value');
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('controlled value');
+
+      await demo.locator('button[data-testid="reset"]').click();
+      await expect(input).toHaveValue('initial');
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('initial');
+    });
+  });
 }

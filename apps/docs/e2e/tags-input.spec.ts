@@ -44,4 +44,20 @@ for (const framework of FRAMEWORKS) {
       }).toPass();
     });
   });
+
+  test.describe(`TagInput controlled · ${framework}`, () => {
+    test('keeps external state in sync both ways', async ({ page }) => {
+      await page.goto('components/tags-input');
+      await selectFramework(page, framework);
+      const demo = page.locator(`[data-example="controlled"] [data-fw="${framework}"]`);
+      const input = demo.locator('input[data-part="input"]').first();
+
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('react, svelte');
+      await input.fill('vue');
+      await input.press('Enter');
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('react, svelte, vue');
+      await demo.locator('button[data-testid="reset"]').click();
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('react, svelte');
+    });
+  });
 }

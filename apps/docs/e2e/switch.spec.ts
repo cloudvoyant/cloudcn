@@ -23,10 +23,9 @@ for (const framework of FRAMEWORKS) {
     test('renders a switch with initial checked state', async ({ page }) => {
       const sw = page.locator(`[data-demo] [data-fw="${framework}"] input[type="checkbox"]`).first();
       await expect(sw).toBeChecked();
-      await expect(page.locator(`[data-demo] [data-fw="${framework}"] [data-scope="switch"][data-part="root"]`).first()).toHaveAttribute(
-        'data-state',
-        'checked',
-      );
+      await expect(
+        page.locator(`[data-demo] [data-fw="${framework}"] [data-scope="switch"][data-part="root"]`).first(),
+      ).toHaveAttribute('data-state', 'checked');
     });
 
     test('toggles checked state on click', async ({ page }) => {
@@ -46,6 +45,20 @@ for (const framework of FRAMEWORKS) {
         await page.keyboard.press('Space');
         await expect(sw).not.toBeChecked();
       }).toPass();
+    });
+  });
+
+  test.describe(`Switch controlled · ${framework}`, () => {
+    test('keeps external state in sync both ways', async ({ page }) => {
+      await page.goto('components/switch');
+      await selectFramework(page, framework);
+      const demo = page.locator(`[data-example="controlled"] [data-fw="${framework}"]`);
+
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('true');
+      await demo.locator('label').click();
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('false');
+      await demo.locator('button[data-testid="reset"]').click();
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('true');
     });
   });
 }

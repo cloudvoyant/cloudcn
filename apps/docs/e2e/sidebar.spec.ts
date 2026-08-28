@@ -74,7 +74,7 @@ for (const framework of FRAMEWORKS) {
         await trigger.click();
         await expect(sb).toHaveAttribute('data-state', 'expanded');
       }).toPass();
-      expect(await gap.evaluate((el) => el.getBoundingClientRect().width)).toBeGreaterThan(0);
+      await expect(gap).toHaveCSS('width', '256px');
     });
 
     test('toggles expanded/collapsed with the rail handle', async ({ page }) => {

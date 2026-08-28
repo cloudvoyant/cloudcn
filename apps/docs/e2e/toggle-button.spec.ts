@@ -3,16 +3,11 @@
 // and Svelte via the docs demo islands: native button role with `aria-pressed`,
 // mouse/keyboard state toggling, accessible labels on icon-only toggles, and
 // indicator content swapping.
-import { test, expect, type Page } from '@playwright/test';
+import { selectFramework } from './helpers';
+import { test, expect } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
 
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
 
 for (const framework of FRAMEWORKS) {
   test.describe(`ToggleButton docs page · ${framework}`, () => {

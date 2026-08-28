@@ -1,4 +1,8 @@
 ---
+// apps/docs/src/components/Toc.astro
+// Renders the "On this page" list. The containing aside/sticky/scroll comes from
+// the Page layout's right gutter (see Shell.astro) — this component renders only
+// the list itself.
 interface TocHeading {
   depth: number;
   slug: string;
@@ -14,24 +18,22 @@ const items = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 ---
 
 {items.length > 0 && (
-  <aside class="hidden w-56 shrink-0 py-10 pr-4 xl:block xl:pr-8" aria-label="On this page">
-    <div class="sticky top-24">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">On this page</p>
-      <ul class="flex flex-col gap-1 border-l border-border text-sm">
-        {items.map((h) => (
-          <li>
-            <a
-              href={`#${h.slug}`}
-              class:list={[
-                'block border-l py-0.5 text-muted-foreground transition-colors hover:text-foreground',
-                h.depth === 3 ? 'border-transparent pl-8' : 'border-border pl-4',
-              ]}
-            >
-              {h.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </aside>
+  <div aria-label="On this page">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">On this page</p>
+    <ul class="flex flex-col gap-1 border-l border-border text-sm">
+      {items.map((h) => (
+        <li>
+          <a
+            href={`#${h.slug}`}
+            class:list={[
+              'block border-l py-0.5 text-muted-foreground transition-colors hover:text-foreground',
+              h.depth === 3 ? 'border-transparent pl-8' : 'border-border pl-4',
+            ]}
+          >
+            {h.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 )}

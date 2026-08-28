@@ -2,16 +2,11 @@
 // Behavior + accessibility coverage for the Pagination, matrixed over React and
 // Svelte via the docs demo islands: page items render, the current page carries
 // data-selected, prev/next navigate, and the controlled example updates its label.
+import { selectFramework } from './helpers';
 import { test, expect, type Page } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
 
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
 
 for (const framework of FRAMEWORKS) {
   test.describe(`Pagination docs page · ${framework}`, () => {

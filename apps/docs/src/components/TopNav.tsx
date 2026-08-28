@@ -40,7 +40,10 @@ const links = [
 export default function TopNav({ currentPath = import.meta.env.BASE_URL, groups = [] }: Props) {
   return (
     <NavbarProvider>
-      <Navbar variant="shrink">
+      <Navbar
+        variant="shrink"
+        className="fixed inset-x-0 top-0 bg-background/60 backdrop-blur-xl transition-[height,background-color,box-shadow] duration-300 data-[scrolled=true]:bg-background/75"
+      >
         <NavbarBrand className="text-primary">
           <HelixLogo className="h-7 w-auto" />
           <span className="font-brand text-sm font-semibold">helix</span>

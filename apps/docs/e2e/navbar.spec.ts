@@ -13,9 +13,18 @@ async function selectFramework(page: Page, framework: Framework) {
   // the framework selector and locators unambiguous.
   await page.locator('[data-example]').nth(1).evaluate((el) => (el.style.display = 'none'));
   await page.locator('[data-framework-selector][data-ready]').waitFor();
+  await page.locator('[data-framework-selector][data-ready]').waitFor();
   await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
   const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
+  await expect
+    .poll(
+      async () => {
+        const box = await demo.boundingBox();
+        return box !== null && box.height > 0;
+      },
+      { timeout: 10_000 },
+    )
+    .toBe(true);
 }
 
 for (const framework of FRAMEWORKS) {

@@ -3,31 +3,46 @@ import Shell from '../layouts/Shell.astro';
 import { getCollection } from 'astro:content';
 import { buttonVariants } from '@cloudvoyant/helix';
 import { cn } from '@cloudvoyant/helix';
+import { PageSection } from '@cloudvoyant/helix-react';
+import HeroWord from '../components/HeroWord.tsx';
 
 const components = (await getCollection('components')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<Shell title="helix — React and Svelte components" description="Accessible React and Svelte components built on Ark UI with a shared shadcn-style theme.">
-  <section class="py-16 lg:py-24">
-    <h1 class="max-w-2xl text-4xl font-bold tracking-tight lg:text-6xl">Beautifully accessible components for React and Svelte.</h1>
-    <p class="mt-6 max-w-xl text-lg text-muted-foreground">A component library with a shared theme and shared variants. Built on Ark UI. Open source.</p>
-    <div class="mt-8 flex gap-3">
-      <a
-        href={`${import.meta.env.BASE_URL}general/introduction`}
-        class={cn(buttonVariants({ variant: 'solid', color: 'primary', size: 'md' }))}
-      >
-        Get started
-      </a>
-      <a
-        href={`${import.meta.env.BASE_URL}components/button`}
-        class={cn(buttonVariants({ variant: 'outline', color: 'primary', size: 'md' }))}
-      >
-        Browse components
-      </a>
+<Shell
+  variant="landing"
+  title="helix — React and Svelte components"
+  description="Accessible React and Svelte components built on Ark UI with a shared shadcn-style theme."
+>
+  <PageSection className="relative items-center justify-center overflow-hidden px-4 py-16">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-40 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+      <div class="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
+      <div class="absolute inset-0 [background-image:linear-gradient(to_right,color-mix(in_oklab,var(--border)_60%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--border)_60%,transparent)_1px,transparent_1px)] [background-size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_72%)]" />
     </div>
-  </section>
+    <div class="relative mx-auto max-w-4xl text-center">
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-6xl">
+        <HeroWord client:load /> components for building modern web apps
+      </h1>
+      <p class="mt-6 text-lg text-muted-foreground">Built with Ark UI and Tailwind CSS</p>
+      <div class="mt-8 flex justify-center gap-3">
+        <a
+          href={`${import.meta.env.BASE_URL}general/introduction`}
+          class={cn(buttonVariants({ variant: 'solid', color: 'primary', size: 'md' }))}
+        >
+          Get started
+        </a>
+        <a
+          href={`${import.meta.env.BASE_URL}components/button`}
+          class={cn(buttonVariants({ variant: 'outline', color: 'primary', size: 'md' }))}
+        >
+          Browse components
+        </a>
+      </div>
+    </div>
+  </PageSection>
 
-  <section class="grid gap-4 pb-20 sm:grid-cols-2">
+  <section class="mx-auto grid w-full max-w-6xl gap-4 px-4 pb-20 pt-10 sm:grid-cols-2 md:grid-cols-3">
     {components.map((entry) => {
       const href = `${import.meta.env.BASE_URL}components/${entry.id}`;
       return (

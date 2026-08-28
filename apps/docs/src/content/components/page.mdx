@@ -1,0 +1,75 @@
+---
+title: Page
+description: A page layout with sticky gutters, a footer, and a landing variant, for React and Svelte.
+order: 17
+group: layouts
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`Page` composes a full application page: optional left and right gutters around a center content area, plus a footer. The gutters stay fixed while the center content scrolls with the page scrollbar; once you scroll past the page body the footer appears and everything scrolls up together. A `landing` variant swaps the gutters for stacked full-viewport `PageSection`s.
+
+<Demo component="page" example="default" />
+
+## Examples
+
+<Examples component="page" exclude="default" />
+
+## API Reference
+
+### Page
+
+Renders a `<div>`. The default variant is a CSS grid (`left content right` / `footer footer footer`); the `landing` variant is a flex column.
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `'default' \| 'landing'` | `'default'` | `default` lays out gutters + content + footer; `landing` stacks `PageSection`s then the footer. |
+
+### PageGutter
+
+A sticky, non-scrolling gutter that renders a `<div>` so it never creates duplicate landmarks — add `role="complementary"` and an `aria-label` when a gutter holds meaningful content. It shrinks at mid-width screens (`md:w-56`) and collapses to a thin `p-0.5` sliver below `md`, where its content is hidden (`hidden md:flex` on the inner content wrapper). Vertical alignment of the gutter content is controlled by `align`.
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `side` | `'left' \| 'right'` | `'left'` | Which grid area the gutter occupies. |
+| `align` | `'start' \| 'center' \| 'end'` | `'start'` | Vertical alignment of the gutter content. |
+| `contentClassName` / `contentClass` | `string` | — | Extra classes for the inner content wrapper (e.g. to change the hide-below-`md` behavior). |
+
+### PageContent
+
+Renders `<main>` in the center grid area.
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` / `class` | `string` | — | Merged via `cn` with `pageContentBase` (`min-w-0 [grid-area:content]`). |
+
+### PageFooter
+
+Renders `<footer>` in the footer grid area (default variant) or after the sections (landing).
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` / `class` | `string` | — | Merged via `cn` with `pageFooterBase` (`w-full shrink-0 [grid-area:footer]`). |
+
+### PageSection
+
+A full-viewport section for the `landing` variant. Renders `<section>`.
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` / `class` | `string` | — | Merged via `cn` with `pageSectionBase` (`flex min-h-svh w-full flex-col`). |
+
+## Accessibility
+
+`PageContent` renders a native `<main>`, `PageFooter` a native `<footer>`, and `PageSection` a native `<section>`, so landmarks come from the elements themselves. A document should contain one `<main>` and one `<footer>` — these parts are single-use per document (the demos on this page render several for illustration, which is why they sit inside the docs shell's own landmark). `PageGutter` renders a plain `<div>` (never a second complementary landmark) — add `role="complementary"` with an `aria-label` when a gutter carries meaningful content. The gutter scroll behavior is native `position: sticky`, so no JavaScript or keyboard handling is required.

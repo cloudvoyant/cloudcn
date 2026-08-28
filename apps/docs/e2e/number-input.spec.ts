@@ -1,16 +1,11 @@
 // apps/docs/e2e/number-input.spec.ts
 // Behavior coverage for NumberInput: stepper buttons change the value, input
 // reflects clamping, and the field has a spinbutton role.
-import { test, expect, type Page } from '@playwright/test';
+import { selectFramework } from './helpers';
+import { test, expect } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
 
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
 
 for (const framework of FRAMEWORKS) {
   test.describe(`NumberInput docs page · ${framework}`, () => {

@@ -24,6 +24,29 @@
   letter-spacing: -0.02em;
 }
 
+/* Hero headline: the cycling word (HeroWord) rolls up out, then the next rolls
+   in from below — slot-machine style, stacked in one grid cell. */
+@keyframes hero-word-roll-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes hero-word-roll-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
 /* Demo: show only the active framework's island.
    Scoped to [data-demo] so the FrameworkSelector buttons (which also carry
    data-fw=...) are never hidden. */

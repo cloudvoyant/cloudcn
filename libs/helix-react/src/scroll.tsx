@@ -21,6 +21,8 @@ import {
 
 export type ScrollProps = ScrollAreaRootProps & {
   orientation?: 'vertical' | 'horizontal' | 'both';
+  /** `default` shows the styled scrollbars; `hidden` keeps scrolling without rendering any scrollbar. */
+  variant?: 'default' | 'hidden';
   contentClassName?: string;
   thumbClassName?: string;
   /** Overrides the viewport class. The default is `flex h-full w-full flex-col`;
@@ -31,6 +33,7 @@ export type ScrollProps = ScrollAreaRootProps & {
 export function Scroll({
   className,
   orientation = 'vertical',
+  variant = 'default',
   contentClassName,
   thumbClassName,
   viewportClassName,
@@ -42,17 +45,21 @@ export function Scroll({
       <ArkViewport className={cn(scrollViewportBase, viewportClassName)}>
         <ArkContent className={cn(scrollContentBase, contentClassName)}>{children}</ArkContent>
       </ArkViewport>
-      {(orientation === 'vertical' || orientation === 'both') && (
-        <ArkScrollbar orientation="vertical" className={scrollScrollbarBase}>
-          <ArkThumb className={cn(scrollThumbBase, thumbClassName)} />
-        </ArkScrollbar>
+      {variant === 'hidden' ? null : (
+        <>
+          {(orientation === 'vertical' || orientation === 'both') && (
+            <ArkScrollbar orientation="vertical" className={scrollScrollbarBase}>
+              <ArkThumb className={cn(scrollThumbBase, thumbClassName)} />
+            </ArkScrollbar>
+          )}
+          {(orientation === 'horizontal' || orientation === 'both') && (
+            <ArkScrollbar orientation="horizontal" className={scrollScrollbarBase}>
+              <ArkThumb className={cn(scrollThumbBase, thumbClassName)} />
+            </ArkScrollbar>
+          )}
+          {orientation === 'both' && <ArkCorner className={scrollCornerBase} />}
+        </>
       )}
-      {(orientation === 'horizontal' || orientation === 'both') && (
-        <ArkScrollbar orientation="horizontal" className={scrollScrollbarBase}>
-          <ArkThumb className={cn(scrollThumbBase, thumbClassName)} />
-        </ArkScrollbar>
-      )}
-      {orientation === 'both' && <ArkCorner className={scrollCornerBase} />}
     </ArkRoot>
   );
 }

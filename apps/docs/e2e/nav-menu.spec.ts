@@ -3,17 +3,11 @@
 // matrixed over React and Svelte via the navbar docs page: native nav/menu
 // roles, hover + keyboard trigger activation, dropdown panel visibility, and
 // link rendering.
+import { selectFramework } from './helpers';
 import { test, expect, type Page } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
 
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator('[data-framework-selector][data-ready]').waitFor();
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
 
 // The "Menu dropdowns" example (Platform/Company triggers) exercises the
 // NavbarMenu dropdown behavior. Hide the other navbar examples so the framework

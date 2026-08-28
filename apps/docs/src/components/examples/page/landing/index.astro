@@ -1,0 +1,11 @@
+---
+// apps/docs/src/components/examples/page/landing/index.astro
+import Example from '../../../Example.astro';
+import PreviewFrame from '../../../PreviewFrame.astro';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Landing variant" fullscreen reactCode={reactCode} svelteCode={svelteCode}>
+  <PreviewFrame component="page" example="landing" />
+</Example>

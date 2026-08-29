@@ -30,7 +30,6 @@
     "lucide-svelte": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "shadcn": "^4.19.0",
     "svelte": "catalog:",
     "tailwindcss": "catalog:"
   },
@@ -40,6 +39,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "shadcn": "^4.19.0",
     "typescript": "catalog:"
   }
 }

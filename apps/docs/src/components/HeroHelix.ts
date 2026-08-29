@@ -44,6 +44,10 @@ export function initHeroHelix() {
     primary = oklchToRgb(v('--primary'));
   };
   readColors();
+  // Theme switchers toggle a class (e.g. `dark`) on <html>; re-read --primary
+  // so the backbones follow the active theme (draw loop picks it up next frame).
+  const themeObserver = new MutationObserver(() => readColors());
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
   const mix = (c1: { r: number; g: number; b: number }, c2: { r: number; g: number; b: number }, t: number) => ({
     r: Math.round(c1.r + (c2.r - c1.r) * t),

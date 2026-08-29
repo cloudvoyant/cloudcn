@@ -20,13 +20,70 @@ import Examples from '../../components/Examples.astro';
 
 ### FileInput
 
-#### Props
+| Prop | Type | Default |
+| --- | --- | --- |
+| `accept` | `string` | — |
+| `multiple` | `boolean` | `false` |
+| `maxFiles` | `number` | — |
+| `files` | `File[]` | — |
+| `onFileChange` | `(details: FileUploadFileChangeDetails) => void` | — |
+| `className` | `string` | — |
 
-Accepts all [Ark `FileUploadRoot` props](https://ark-ui.com/docs/components/file-upload) (`accept`, `multiple`, `maxFiles`, `files`, `onFileChange`, …) plus `className`/`class`.
+### FileInputDropzone
 
-### FileInputDropzone / FileInputTrigger / FileInputItemGroup / FileInputItem / FileInputItemName / FileInputItemSizeText / FileInputItemDeleteTrigger / FileInputClearTrigger
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
 
-Accept all corresponding Ark `FileUpload*` props plus `className`/`class`. `FileInputItemGroup` renders the item list container; `FileInputItem` requires an `index` (or a `file`).
+### FileInputTrigger
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### FileInputItemGroup
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+Renders the item list container.
+
+### FileInputItem
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `index` | `number` | — |
+| `file` | `File` | — |
+| `className` | `string` | — |
+
+### FileInputItemName
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### FileInputItemSizeText
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### FileInputItemDeleteTrigger
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### FileInputClearTrigger
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### useFileInput
+
+Returns the Ark file-upload context (`useFileUploadContext`): `acceptedFiles`, `rejectedFiles`, `deleteFile`, `clearFiles`, …
 
 ## Accessibility
 

@@ -23,9 +23,10 @@ for (const framework of FRAMEWORKS) {
     test('renders a switch with initial checked state', async ({ page }) => {
       const sw = page.locator(`[data-demo] [data-fw="${framework}"] input[type="checkbox"]`).first();
       await expect(sw).toBeChecked();
-      await expect(
-        page.locator(`[data-demo] [data-fw="${framework}"] [data-scope="switch"][data-part="root"]`).first(),
-      ).toHaveAttribute('data-state', 'checked');
+      await expect(page.locator(`[data-demo] [data-fw="${framework}"] [data-scope="switch"][data-part="root"]`).first()).toHaveAttribute(
+        'data-state',
+        'checked',
+      );
     });
 
     test('toggles checked state on click', async ({ page }) => {

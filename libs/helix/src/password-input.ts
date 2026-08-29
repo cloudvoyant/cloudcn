@@ -14,7 +14,8 @@ export const passwordInputVariants = cva(
 );
 export const passwordInputVisibilityTriggerBase =
   'absolute end-3 top-1/2 -translate-y-1/2 flex size-6 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0';
-export const passwordInputIndicatorBase = passwordInputVisibilityTriggerBase;
+export const passwordInputIndicatorBase =
+  'flex size-6 shrink-0 items-center justify-center text-muted-foreground [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0';
 export type PasswordInputVariants = VariantProps<typeof passwordInputVariants>;
 export interface PasswordInputProps {
   size?: PasswordInputVariants['size'];

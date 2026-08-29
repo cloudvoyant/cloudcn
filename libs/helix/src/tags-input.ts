@@ -5,7 +5,8 @@ export const tagsInputControlBase =
 export const tagsInputInputBase =
   'min-w-12 flex-1 border-0 bg-transparent px-1 text-sm outline-none ring-0 placeholder:text-muted-foreground focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50';
 export const tagsInputItemBase =
-  'inline-flex h-6 max-w-full shrink-0 items-center gap-1 rounded-md border bg-secondary px-1.5 text-xs text-secondary-foreground outline-none data-[highlighted]:border-primary/30 data-[highlighted]:bg-primary/10';
+  'inline-flex h-6 max-w-full shrink-0 items-center rounded-md border bg-secondary px-1.5 text-xs text-secondary-foreground outline-none data-[highlighted]:border-primary/30 data-[highlighted]:bg-primary/10';
+export const tagsInputItemPreviewBase = 'flex min-w-0 items-center gap-1';
 export const tagsInputItemTextBase = 'truncate';
 export const tagsInputItemInputBase = 'w-16 border-0 bg-transparent text-xs outline-none';
 export const tagsInputItemDeleteTriggerBase =

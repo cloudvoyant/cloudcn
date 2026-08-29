@@ -20,13 +20,15 @@ import Examples from '../../components/Examples.astro';
 
 ### Textarea
 
-#### Props
-
-| Prop   | Type                   | Default | Description         |
-| ------ | ---------------------- | ------- | ------------------- |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'`  | Padding/font scale. |
-
-Accepts all [Ark `FieldTextarea` props](https://ark-ui.com/docs/components/field) (`rows`, `placeholder`, `disabled`, …) plus `className`/`class`.
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `rows` | `number` | — |
+| `placeholder` | `string` | — |
+| `disabled` | `boolean` | `false` |
+| `value` | `string` | — |
+| `onChange` | `ChangeEventHandler<HTMLTextAreaElement>` | — |
+| `className` | `string` | — |
 
 ## Accessibility
 

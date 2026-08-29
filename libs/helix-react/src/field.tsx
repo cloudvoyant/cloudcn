@@ -28,6 +28,7 @@ import {
   fieldLabelBase,
   fieldPrefixBase,
   fieldSuffixBase,
+  fieldControlBase,
   fieldHintBase,
   fieldErrorBase,
   fieldRequiredIndicatorBase,
@@ -58,6 +59,10 @@ export function FieldPrefix({ className, ...props }: React.HTMLAttributes<HTMLSp
 
 export function FieldSuffix({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) {
   return <span className={cn(fieldSuffixBase, className)} {...props} />;
+}
+
+export function FieldControl({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn(fieldControlBase, className)} {...props} />;
 }
 
 export function FieldHint({ className, ...props }: FieldHelperTextProps) {

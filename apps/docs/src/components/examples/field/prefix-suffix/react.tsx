@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/field/prefix-suffix/react.tsx
-import { Field, FieldLabel, FieldPrefix, FieldSuffix, Input, FieldHint } from '@cloudvoyant/helix-react';
+import { Field, FieldLabel, FieldPrefix, FieldSuffix, FieldControl, Input, FieldHint } from '@cloudvoyant/helix-react';
 import { DollarSign, Search } from 'lucide-react';
 
 export default function ReactFieldPrefixSuffix() {
@@ -7,23 +7,23 @@ export default function ReactFieldPrefixSuffix() {
     <div className="flex flex-col gap-6">
       <Field className="max-w-sm">
         <FieldLabel>Price</FieldLabel>
-        <div className="flex items-center gap-2">
+        <FieldControl>
           <FieldPrefix>
             <DollarSign />
           </FieldPrefix>
-          <Input type="number" defaultValue="1200" />
+          <Input variant="ghost" type="number" defaultValue="1200" />
           <FieldSuffix>USD</FieldSuffix>
-        </div>
+        </FieldControl>
         <FieldHint>Before taxes.</FieldHint>
       </Field>
       <Field className="max-w-sm">
         <FieldLabel>Search</FieldLabel>
-        <div className="flex items-center gap-2">
+        <FieldControl>
           <FieldPrefix>
             <Search />
           </FieldPrefix>
-          <Input placeholder="Search components…" />
-        </div>
+          <Input variant="ghost" placeholder="Search components…" />
+        </FieldControl>
       </Field>
     </div>
   );

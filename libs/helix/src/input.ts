@@ -11,9 +11,15 @@ export const inputVariants = cva(
         md: 'h-9',
         lg: 'h-10',
       },
+      variant: {
+        default: '',
+        ghost:
+          'border-0 bg-transparent px-0 shadow-none focus-visible:border-0 focus-visible:ring-0 aria-invalid:border-0 aria-invalid:ring-0 data-invalid:border-0 data-invalid:ring-0',
+      },
     },
     defaultVariants: {
       size: 'md',
+      variant: 'default',
     },
   },
 );
@@ -22,5 +28,6 @@ export type InputVariants = VariantProps<typeof inputVariants>;
 
 export interface InputProps {
   size?: InputVariants['size'];
+  variant?: InputVariants['variant'];
   className?: string;
 }

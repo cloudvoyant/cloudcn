@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+#MISE description="Scaffold a spec plan adding lazy loading + virtualization to Select, MultiSelect, and TagInput"
+set -euo pipefail
+
+# Nested task files source shared helpers by absolute path (see CLAUDE.md).
+source "${MISE_PROJECT_ROOT:-$PWD}/mise-tasks/utils"
+
+PLAN="lazy-virtual"
+PLAN_DIR=".codevoyant/spec/${PLAN}"
+INTENT="${PLAN_DIR}/intent.md"
+
+mkdir -p "$PLAN_DIR"
+
+if [ -f "$INTENT" ] && rg -q '^[^#]' "$INTENT"; then
+  log_warn "${INTENT} already exists and is non-empty — leaving it untouched."
+  exit 1
+fi
+
+cat > "$INTENT" <<'EOF'
+# Intent: lazy-virtual
+
+<!--
+Fill in / adjust, then run:  /spec new lazy-virtual
+Only ## Objective is required. The more you add here, the fewer questions I'll ask.
+-->
+
+## Objective
+
+Add **lazy loading** and **virtualization** support to the forms option components — `Select`, `MultiSelect` (Combobox), and `TagInput` — across `@cloudvoyant/helix-react` and `@cloudvoyant/helix-svelte`.
+
+1. **Lazy options** — allow option `items` to be loaded on demand (e.g. fetched when the popover opens, or a paginated `loadMore`/search-driven fetch). Provide a `lazy` / `onOpen`-driven loading state (spinner in the list), an empty/loading message, and keep controlled `value`/`onValueChange` working while items arrive. Match Ark UI's lazy-loading patterns.
+2. **Virtualized options** — render large option lists with virtualization (only visible rows in the DOM) so 10k+ items stay smooth. Use the project's existing stack (`@tanstack/react-virtual` for React, `svelte-virtual-list`/the Svelte equivalent for Svelte) rather than introducing a new framework; keep the higher-level part API (`SelectItem`/`MultiSelectItem`/`TagInputItem`) unchanged.
+3. **Shared API** — surface the same ergonomic props on all three components (`virtual`, `virtualOptions` for row height/overscan, and a loading slot), consistent across React and Svelte; add `loading`/`empty` states to the popover.
+4. Preserve the existing behavior: native `<select>` fallback on coarse-pointer, controlled-input sync, keyboard navigation, and the current cva/shadcn theming.
+
+## Context / background
+
+- Existing components: `libs/helix-react/src/select.tsx`, `multi-select.tsx`, `tags-input.tsx` (+ Svelte mirrors in `libs/helix-svelte/src/select/`, `multi-select/`, `tags-input/`), all thin wrappers over `@ark-ui/react` / `@ark-ui/svelte` (Ark v5: react 5.38.2, svelte 5.23.1).
+- Ark v5 supports `items`/collection with `onInputValueChange` (search-driven filtering); check Ark's `virtualized` option and the collection API for what to wrap vs. build.
+- Docs pages: `select.mdx`, `multi-select.mdx`, `tags-input.mdx`; examples under `apps/docs/src/components/examples/`.
+
+## Constraints
+
+- Thin-wrapper rule: shared cva variants + part class strings stay in `@cloudvoyant/helix`; framework wrappers stay thin.
+- No new theme tokens; shadcn tokens + cva only.
+- Keep `Select`'s native-`<select>` fallback on coarse-pointer devices and the e2e coverage for it.
+- Validation via the project task runner: `mise run build && mise run test && mise run lint && mise run format:check && mise run e2e`.
+
+## Out of scope
+
+- Changing the existing option APIs/part names.
+- Adding new components beyond the three listed.
+
+## Open questions
+
+- Whether virtualization should be opt-in via a `virtual` prop (default off) — likely yes, so existing usage is unaffected.
+EOF
+
+log_info "Wrote ${INTENT}"
+log_info "Next steps:"
+log_info "  /spec new ${PLAN}      # generate the implementation plan"
+log_info "  /spec go ${PLAN}       # execute it (with --commit if desired)"

@@ -1,11 +1,9 @@
 // libs/helix-react/src/select.tsx
-// Note: adapted to Ark UI v5 collection-based API (Select.Root `collection` +
-// Select.Item `item`), while preserving the plan's `items`/`size` convenience
-// surface and the native-select fallback on coarse-pointer devices.
+// Note: adapted to Ark UI v5 collection-based API. `Select` is self-contained —
+// it renders the trigger (with value + chevron) and the menu internally; the only
+// option part is `SelectItem`. Advanced parts are still exported for escape hatches.
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
-import { Portal } from '@ark-ui/react/portal';
-import type { ReactNode } from 'react';
-import { useMemo } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import {
   SelectRoot as ArkSelectRoot,
   SelectTrigger as ArkSelectTrigger,
@@ -57,17 +55,63 @@ import {
 import type { SelectItemData } from '@cloudvoyant/helix';
 import { useMediaQuery } from './use-media-query';
 
+function ChevronDownIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
 export type SelectProps = Omit<SelectRootProps<SelectItemData>, 'collection'> & {
   items?: SelectItemData[];
   collection?: ListCollection<SelectItemData>;
   size?: 'sm' | 'md' | 'lg';
+  placeholder?: string;
+  /** Render a search box at the top of the menu that filters the items. */
+  search?: boolean;
+  /** Custom renderer for the selected value shown in the trigger. */
+  renderValue?: (item: SelectItemData) => ReactNode;
 };
 
-export function Select({ items, collection, size, children, ...props }: SelectProps) {
+function SelectValueInner({ placeholder, renderValue }: { placeholder?: string; renderValue?: SelectProps['renderValue'] }) {
+  const select = useSelectContext();
+  const item = select.selectedItems[0];
+  return (
+    <ArkSelectValueText className={cn(selectValueBase, 'flex-1')} placeholder={placeholder}>
+      {item && (renderValue ? renderValue(item) : item.label)}
+    </ArkSelectValueText>
+  );
+}
+
+export function Select({
+  items,
+  collection,
+  size = 'md',
+  placeholder,
+  search = false,
+  renderValue,
+  className,
+  children,
+  ...props
+}: SelectProps) {
   const isCoarse = useMediaQuery('(pointer: coarse)');
+  const [query, setQuery] = useState('');
+  const filtered = useMemo(
+    () => (search && items ? items.filter((i) => i.label.toLowerCase().includes(query.toLowerCase())) : items),
+    [items, query, search],
+  );
   const resolvedCollection = useMemo(
-    () => collection ?? createListCollection({ items: items ?? [] }),
-    [collection, items],
+    () => collection ?? createListCollection({ items: filtered ?? [] }),
+    [collection, filtered],
   );
 
   if (isCoarse && items) {
@@ -91,7 +135,27 @@ export function Select({ items, collection, size, children, ...props }: SelectPr
 
   return (
     <ArkSelectRoot collection={resolvedCollection} {...props}>
-      {children}
+      <ArkSelectTrigger className={cn(inputVariants({ size }), selectTriggerBase, className)}>
+        <SelectValueInner placeholder={placeholder} renderValue={renderValue} />
+        <ArkSelectIndicator className={selectIndicatorBase}>
+          <ChevronDownIcon />
+        </ArkSelectIndicator>
+      </ArkSelectTrigger>
+      <ArkSelectPositioner className={selectPositionerBase}>
+        <ArkSelectContent className={selectContentBase}>
+          {search && (
+            <div className="sticky top-0 z-10 border-b border-input bg-popover p-1.5">
+              <input
+                className="w-full border-0 bg-transparent px-1 py-1 text-sm outline-none placeholder:text-muted-foreground"
+                placeholder="Search…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </div>
+          )}
+          {children}
+        </ArkSelectContent>
+      </ArkSelectPositioner>
       <ArkSelectHiddenSelect />
     </ArkSelectRoot>
   );
@@ -117,11 +181,11 @@ export function SelectClearTrigger({ className, ...props }: SelectClearTriggerPr
 
 export function SelectContent({ className, ...props }: SelectContentProps) {
   return (
-    <Portal>
+    <>
       <ArkSelectPositioner className={selectPositionerBase}>
         <ArkSelectContent className={cn(selectContentBase, className)} {...props} />
       </ArkSelectPositioner>
-    </Portal>
+    </>
   );
 }
 
@@ -133,10 +197,17 @@ export function SelectItemGroupLabel({ className, ...props }: SelectItemGroupLab
   return <ArkSelectItemGroupLabel className={cn(selectItemGroupLabelBase, className)} {...props} />;
 }
 
-export type SelectItemProps = Omit<ArkSelectItemProps, 'item'> & { item: SelectItemData };
+export type SelectItemProps = Omit<ArkSelectItemProps, 'item'> & { item: SelectItemData; className?: string };
 
-export function SelectItem({ item, className, ...props }: SelectItemProps) {
-  return <ArkSelectItem item={item} className={cn(selectItemBase, className)} {...props} />;
+export function SelectItem({ item, className, children, ...props }: SelectItemProps) {
+  return (
+    <ArkSelectItem item={item} className={cn(selectItemBase, className)} {...props}>
+      <ArkSelectItemText className={selectItemTextBase}>{children ?? item.label}</ArkSelectItemText>
+      <ArkSelectItemIndicator className={selectItemIndicatorBase}>
+        <CheckIcon />
+      </ArkSelectItemIndicator>
+    </ArkSelectItem>
+  );
 }
 
 export function SelectItemText({ className, ...props }: SelectItemTextProps) {
@@ -158,22 +229,6 @@ export interface SelectNativeProps
   size?: 'sm' | 'md' | 'lg';
   invalid?: boolean;
   icon?: ReactNode;
-}
-
-function ChevronDownIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  );
 }
 
 export function SelectNative({

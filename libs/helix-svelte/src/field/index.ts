@@ -3,6 +3,7 @@ export { default as Field } from './Field.svelte';
 export { default as FieldLabel } from './FieldLabel.svelte';
 export { default as FieldPrefix } from './FieldPrefix.svelte';
 export { default as FieldSuffix } from './FieldSuffix.svelte';
+export { default as FieldControl } from './FieldControl.svelte';
 export { default as FieldHint } from './FieldHint.svelte';
 export { default as FieldError } from './FieldError.svelte';
 export { default as FieldRequiredIndicator } from './FieldRequiredIndicator.svelte';

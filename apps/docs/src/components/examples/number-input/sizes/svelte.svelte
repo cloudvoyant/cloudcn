@@ -1,7 +1,7 @@
 <!-- apps/docs/src/components/examples/number-input/sizes/svelte.svelte -->
 <script lang="ts">
   import { Field, FieldLabel } from '@cloudvoyant/helix-svelte';
-  import { NumberInput, NumberInputInput } from '@cloudvoyant/helix-svelte';
+  import { NumberInput } from '@cloudvoyant/helix-svelte';
   const sizes = ['sm', 'md', 'lg'] as const;
 </script>
 
@@ -9,9 +9,7 @@
   {#each sizes as size}
     <Field>
       <FieldLabel>Size {size}</FieldLabel>
-      <NumberInput value="5">
-        <NumberInputInput {size} />
-      </NumberInput>
+      <NumberInput {size} value="5" />
     </Field>
   {/each}
 </div>

@@ -20,13 +20,41 @@ import Examples from '../../components/Examples.astro';
 
 ### NumberInput
 
-#### Props
+Self-contained — renders the bordered control with the number input and a vertical stepper on the right: **plus on top, minus below**. Arrow keys also increment/decrement.
 
-Accepts all [Ark `NumberInputRoot` props](https://ark-ui.com/docs/components/number-input) (`min`, `max`, `step`, `value`, `onValueChange`, `precision`, `formatOptions`, `allowMouseWheel`, …) plus `className`/`class`.
+| Prop   | Type                   | Default | Description        |
+| ------ | ---------------------- | ------- | ------------------ |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'`  | Input height.     |
 
-### NumberInputControl / NumberInputInput / NumberInputScrubber / NumberInputValueText
+Also accepts all [Ark `NumberInputRoot` props](https://ark-ui.com/docs/components/number-input) (`min`, `max`, `step`, `value`, `defaultValue`, `onValueChange`, `precision`, `formatOptions`, `allowMouseWheel`, …) plus `className`/`class`.
 
-Accept all corresponding Ark props plus `className`/`class`. `NumberInputInput` also takes `size` (`'sm' | 'md' | 'lg'`). The scrubber renders inside the control by default and drags vertically to adjust the value. The left/right increment/decrement steppers are removed; use arrow keys on the input for step changes.
+### NumberInputControl
+
+The bordered box around the input + stepper. Also accepts all [Ark `NumberInputControl` props](https://ark-ui.com/docs/components/number-input) plus `className`/`class`.
+
+### NumberInputDecrement / NumberInputIncrement
+
+The minus/plus step buttons stacked vertically on the right of the input (plus on top, minus below). Accepts all corresponding Ark trigger props plus `className`/`class`; pass custom children to replace the default `+`/`−` glyphs.
+
+### NumberInputInput
+
+| Prop   | Type                   | Default | Description        |
+| ------ | ---------------------- | ------- | ------------------ |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'`  | Input height.     |
+
+Also accepts all [Ark `NumberInputInput` props](https://ark-ui.com/docs/components/number-input) plus `className`/`class`.
+
+### NumberInputScrubber
+
+Optional drag-to-scrub handle (not part of the default composition). Also accepts all [Ark `NumberInputScrubber` props](https://ark-ui.com/docs/components/number-input) plus `className`/`class`.
+
+### NumberInputValueText
+
+Shows the formatted value. Also accepts all [Ark `NumberInputValueText` props](https://ark-ui.com/docs/components/number-input) plus `className`/`class`.
+
+### useNumberInput
+
+Returns the Ark number-input context (`useNumberInputContext`): `{ value, valueAsNumber, setValue, increment, decrement, ... }` — use it to build custom controls or read the live value.
 
 ## Accessibility
 

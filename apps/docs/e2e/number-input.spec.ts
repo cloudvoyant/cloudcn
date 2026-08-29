@@ -45,7 +45,7 @@ for (const framework of FRAMEWORKS) {
 
       await input.focus();
       await page.keyboard.press('ArrowUp');
-      await expect(demo.locator('output[data-testid="value"]')).not.toHaveText('12.5');
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('$13.50');
 
       await demo.locator('button[data-testid="reset"]').click();
       await expect(demo.locator('output[data-testid="value"]')).toHaveText('12.5');

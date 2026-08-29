@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactMultiSelectControlled from './react.tsx';
+import SvelteMultiSelectControlled from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="controlled" title="Controlled" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactMultiSelectControlled client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteMultiSelectControlled client:load />
+  </div>
+</Example>

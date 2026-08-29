@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/textarea/char-count/index.astro
+import Example from '../../../Example.astro';
+import ReactTextareaCharCount from './react.tsx';
+import SvelteTextareaCharCount from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Character count" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactTextareaCharCount client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteTextareaCharCount client:load />
+  </div>
+</Example>

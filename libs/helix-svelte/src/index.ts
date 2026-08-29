@@ -30,5 +30,5 @@ export * from './number-input';
 export * from './checkbox';
 export * from './switch';
 export * from './select';
-export * from './combobox';
+export * from './multi-select';
 export * from './tags-input';

@@ -1,0 +1,47 @@
+---
+title: MultiSelect
+description: A typeahead combobox with single and multi-select, for React and Svelte.
+order: 17
+group: forms
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`MultiSelect` is a typeahead select. Set `multiple` on the root for multi-select. Built on [Ark UI `combobox`](https://ark-ui.com/docs/components/combobox).
+
+<Demo component="multi-select" example="default" />
+
+## Examples
+
+<Examples component="multi-select" exclude="default" />
+
+## API Reference
+
+### MultiSelect
+
+#### Props
+
+Accepts all [Ark `MultiSelectRoot` props](https://ark-ui.com/docs/components/combobox) (`items`, `multiple`, `value`, `onValueChange`, `onInputValueChange`, …) plus `className`/`class` and `collection`/`items`. Defaults `openOnClick`, `lazyMount`, and `unmountOnExit` to `true`.
+
+### MultiSelectInput
+
+#### Props
+
+| Prop   | Type                   | Default | Description   |
+| ------ | ---------------------- | ------- | ------------- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'`  | Input height. |
+
+Also accepts all [Ark `MultiSelectInput` props](https://ark-ui.com/docs/components/combobox).
+
+### MultiSelectTrigger / MultiSelectClear / MultiSelectControl / MultiSelectContent / MultiSelectItem / MultiSelectItemText / MultiSelectItemIndicator / MultiSelectItemGroup / MultiSelectItemGroupLabel / MultiSelectList / MultiSelectEmpty
+
+Accept all corresponding Ark props plus `className`/`class`. `MultiSelectItem` takes an `item` (the collection item object) and adds `showIndicator` (`true` by default).
+
+## Accessibility
+
+Ark implements the [MultiSelect WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) — `role="combobox"`, `aria-expanded`, `aria-activedescendant`, arrow-key list navigation, `Enter` to select, `Escape` to dismiss.
+
+## Theming
+
+No theme extension — uses `--input`, `--popover`, `--accent`, `--muted-foreground`.

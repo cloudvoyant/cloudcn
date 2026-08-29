@@ -5,7 +5,7 @@
   import FileList from './FileList.svelte';
 </script>
 
-<FileInput class="max-w-sm">
+<FileInput accept="image/*" class="mx-auto max-w-sm">
   <FileInputDropzone>
     <Upload />
     <span>Drag &amp; drop files here</span>

@@ -30,6 +30,7 @@ import {
   tagsInputControlBase,
   tagsInputInputBase,
   tagsInputItemBase,
+  tagsInputItemPreviewBase,
   tagsInputItemTextBase,
   tagsInputItemInputBase,
   tagsInputItemDeleteTriggerBase,
@@ -61,7 +62,7 @@ export function TagInputItem({ className, ...props }: TagsInputItemProps) {
 }
 
 export function TagInputItemPreview({ className, ...props }: TagsInputItemPreviewProps) {
-  return <ArkTagsInputItemPreview className={className} {...props} />;
+  return <ArkTagsInputItemPreview className={cn(tagsInputItemPreviewBase, className)} {...props} />;
 }
 
 export function TagInputItemText({ className, ...props }: TagsInputItemTextProps) {

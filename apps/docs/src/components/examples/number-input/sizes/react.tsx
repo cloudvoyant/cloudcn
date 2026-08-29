@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/number-input/sizes/react.tsx
 import { Field, FieldLabel } from '@cloudvoyant/helix-react';
-import { NumberInput, NumberInputInput } from '@cloudvoyant/helix-react';
+import { NumberInput } from '@cloudvoyant/helix-react';
 
 export default function ReactNumberInputSizes() {
   return (
@@ -8,9 +8,7 @@ export default function ReactNumberInputSizes() {
       {(['sm', 'md', 'lg'] as const).map((size) => (
         <Field key={size}>
           <FieldLabel>Size {size}</FieldLabel>
-          <NumberInput defaultValue="5">
-            <NumberInputInput size={size} />
-          </NumberInput>
+          <NumberInput size={size} defaultValue="5" />
         </Field>
       ))}
     </div>

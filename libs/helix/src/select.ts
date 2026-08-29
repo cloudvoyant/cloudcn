@@ -9,7 +9,7 @@ export interface SelectItemData {
 }
 
 export const selectTriggerBase =
-  'flex w-fit cursor-default items-center gap-2 whitespace-nowrap data-[placeholder-shown]:text-muted-foreground data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/30 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground';
+  'flex w-full min-w-0 cursor-default items-center justify-between gap-2 whitespace-nowrap data-[placeholder-shown]:text-muted-foreground data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/30 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground';
 
 export const selectValueBase = 'flex min-w-0 items-center gap-2 truncate';
 

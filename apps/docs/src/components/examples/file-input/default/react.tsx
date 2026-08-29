@@ -33,7 +33,7 @@ function ReactFileList() {
 
 export default function ReactFileInputDefault() {
   return (
-    <FileInput accept="image/*" className="max-w-sm">
+    <FileInput accept="image/*" className="mx-auto max-w-sm">
       <FileInputDropzone>
         <Upload />
         <span>Drag & drop files here</span>

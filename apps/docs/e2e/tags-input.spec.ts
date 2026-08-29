@@ -52,12 +52,14 @@ for (const framework of FRAMEWORKS) {
       const demo = page.locator(`[data-example="controlled"] [data-fw="${framework}"]`);
       const input = demo.locator('input[data-part="input"]').first();
 
-      await expect(demo.locator('output[data-testid="value"]')).toHaveText('react, svelte');
+      await expect(demo.locator('[data-part="item-text"]')).toHaveCount(2);
+      await expect(demo.locator('[data-part="item-text"]').first()).toHaveText('react');
       await input.fill('vue');
       await input.press('Enter');
-      await expect(demo.locator('output[data-testid="value"]')).toHaveText('react, svelte, vue');
+      await expect(demo.locator('[data-part="item-text"]')).toHaveCount(3);
+      await expect(demo.locator('[data-part="item-text"]').last()).toHaveText('vue');
       await demo.locator('button[data-testid="reset"]').click();
-      await expect(demo.locator('output[data-testid="value"]')).toHaveText('react, svelte');
+      await expect(demo.locator('[data-part="item-text"]')).toHaveCount(2);
     });
   });
 }

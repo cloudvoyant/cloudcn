@@ -6,12 +6,13 @@
 
   type Props = Omit<FieldInputProps, 'size'> & {
     size?: 'sm' | 'md' | 'lg';
+    variant?: 'default' | 'ghost';
     class?: string;
   };
 
-  let { size = 'md', class: className = '', value = $bindable(), ...rest }: Props = $props();
+  let { size = 'md', variant = 'default', class: className = '', value = $bindable(), ...rest }: Props = $props();
 
-  const classes = $derived(cn(inputVariants({ size }), className));
+  const classes = $derived(cn(inputVariants({ size, variant }), className));
 </script>
 
 <FieldInput class={classes} bind:value {...rest} />

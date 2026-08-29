@@ -13,7 +13,7 @@
   let files = $state<File[]>([]);
 </script>
 
-<FileInput accept="image/*" class="max-w-sm" bind:acceptedFiles={files}>
+<FileInput accept="image/*" class="mx-auto max-w-sm" bind:acceptedFiles={files}>
   <FileInputDropzone>
     <Upload />
     <FileInputTrigger><FileUp /> Browse files</FileInputTrigger>

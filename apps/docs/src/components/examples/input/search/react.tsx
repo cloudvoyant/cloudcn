@@ -1,17 +1,17 @@
 // apps/docs/src/components/examples/input/search/react.tsx
-import { Field, FieldLabel, FieldPrefix, Input } from '@cloudvoyant/helix-react';
+import { Field, FieldLabel, FieldPrefix, FieldControl, Input } from '@cloudvoyant/helix-react';
 import { Search } from 'lucide-react';
 
 export default function ReactInputSearch() {
   return (
     <Field className="max-w-sm">
       <FieldLabel>Search</FieldLabel>
-      <div className="flex items-center gap-2">
+      <FieldControl>
         <FieldPrefix>
           <Search />
         </FieldPrefix>
-        <Input placeholder="Search components…" />
-      </div>
+        <Input variant="ghost" placeholder="Search components…" />
+      </FieldControl>
     </Field>
   );
 }

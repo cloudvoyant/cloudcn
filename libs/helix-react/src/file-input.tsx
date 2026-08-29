@@ -8,6 +8,8 @@ import {
   FileUploadItem as ArkFileUploadItem,
   FileUploadItemName as ArkFileUploadItemName,
   FileUploadItemSizeText as ArkFileUploadItemSizeText,
+  FileUploadItemPreview as ArkFileUploadItemPreview,
+  FileUploadItemPreviewImage as ArkFileUploadItemPreviewImage,
   FileUploadItemDeleteTrigger as ArkFileUploadItemDeleteTrigger,
   FileUploadClearTrigger as ArkFileUploadClearTrigger,
   FileUploadHiddenInput as ArkFileUploadHiddenInput,
@@ -19,6 +21,8 @@ import {
   type FileUploadItemProps,
   type FileUploadItemNameProps,
   type FileUploadItemSizeTextProps,
+  type FileUploadItemPreviewProps,
+  type FileUploadItemPreviewImageProps,
   type FileUploadItemDeleteTriggerProps,
   type FileUploadClearTriggerProps,
 } from '@ark-ui/react/file-upload';
@@ -28,6 +32,8 @@ import {
   fileInputTriggerBase,
   fileInputItemGroupBase,
   fileInputItemBase,
+  fileInputItemPreviewBase,
+  fileInputItemPreviewImageBase,
   fileInputItemNameBase,
   fileInputItemSizeTextBase,
   fileInputItemDeleteTriggerBase,
@@ -71,6 +77,14 @@ export function FileInputItemSizeText({ className, ...props }: FileUploadItemSiz
   return <ArkFileUploadItemSizeText className={cn(fileInputItemSizeTextBase, className)} {...props} />;
 }
 
+export function FileInputItemPreview({ className, ...props }: FileUploadItemPreviewProps) {
+  return <ArkFileUploadItemPreview className={cn(fileInputItemPreviewBase, className)} {...props} />;
+}
+
+export function FileInputItemPreviewImage({ className, ...props }: FileUploadItemPreviewImageProps) {
+  return <ArkFileUploadItemPreviewImage className={cn(fileInputItemPreviewImageBase, className)} {...props} />;
+}
+
 export function FileInputItemDeleteTrigger({ className, ...props }: FileUploadItemDeleteTriggerProps) {
   return <ArkFileUploadItemDeleteTrigger className={cn(fileInputItemDeleteTriggerBase, className)} {...props} />;
 }
@@ -88,6 +102,8 @@ export type {
   FileUploadItemProps,
   FileUploadItemNameProps,
   FileUploadItemSizeTextProps,
+  FileUploadItemPreviewProps,
+  FileUploadItemPreviewImageProps,
   FileUploadItemDeleteTriggerProps,
   FileUploadClearTriggerProps,
 };

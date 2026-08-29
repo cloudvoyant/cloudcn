@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/input/char-count/index.astro
+import Example from '../../../Example.astro';
+import ReactInputCharCount from './react.tsx';
+import SvelteInputCharCount from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Character count" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactInputCharCount client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteInputCharCount client:load />
+  </div>
+</Example>

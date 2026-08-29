@@ -16,7 +16,7 @@ export default function ReactFileInputControlled() {
   return (
     <FileInput
       accept="image/*"
-      className="max-w-sm"
+      className="mx-auto max-w-sm"
       acceptedFiles={files}
       onFileChange={(details) => setFiles(details.acceptedFiles)}
     >

@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactMultiSelectSizes from './react.tsx';
+import SvelteMultiSelectSizes from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="sizes" title="Sizes" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactMultiSelectSizes client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteMultiSelectSizes client:load />
+  </div>
+</Example>

@@ -20,13 +20,17 @@ The `Input` component is a styled native input that works standalone or inside a
 
 ### Input
 
-#### Props
-
-| Prop   | Type                   | Default | Description           |
-| ------ | ---------------------- | ------- | --------------------- |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'`  | Height/padding scale. |
-
-Also accepts all [Ark `FieldInput` props](https://ark-ui.com/docs/components/field) (`type`, `placeholder`, `disabled`, `value`, `onChange`, …).
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `variant` | `'default' \| 'ghost'` | `'default'` |
+| `type` | `string` | `'text'` |
+| `placeholder` | `string` | — |
+| `disabled` | `boolean` | `false` |
+| `invalid` | `boolean` | `false` |
+| `value` | `string` | — |
+| `onChange` | `ChangeEventHandler<HTMLInputElement>` | — |
+| `className` | `string` | — |
 
 ## Accessibility
 

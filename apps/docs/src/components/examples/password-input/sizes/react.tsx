@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/password-input/sizes/react.tsx
 import { Field, FieldLabel } from '@cloudvoyant/helix-react';
-import { PasswordInput, PasswordInputControl, PasswordInputInput } from '@cloudvoyant/helix-react';
+import { PasswordInput } from '@cloudvoyant/helix-react';
 
 export default function ReactPasswordInputSizes() {
   return (
@@ -8,11 +8,7 @@ export default function ReactPasswordInputSizes() {
       {(['sm', 'md', 'lg'] as const).map((size) => (
         <Field key={size}>
           <FieldLabel>Size {size}</FieldLabel>
-          <PasswordInput>
-            <PasswordInputControl>
-              <PasswordInputInput size={size} type="password" placeholder="••••••••" />
-            </PasswordInputControl>
-          </PasswordInput>
+          <PasswordInput size={size} placeholder="••••••••" />
         </Field>
       ))}
     </div>

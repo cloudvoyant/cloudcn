@@ -1,6 +1,41 @@
 // libs/helix/src/index.ts
 export { buttonVariants, type ButtonProps, type ButtonVariants } from './button';
 export { toggleButtonVariants, type ToggleButtonProps, type ToggleButtonVariants } from './toggle-button';
+export { tooltipPositionerBase, tooltipArrowBase, tooltipContentBase } from './tooltip';
+export {
+  popoverPositionerBase,
+  popoverArrowBase,
+  popoverContentBase,
+  popoverTitleBase,
+  popoverDescriptionBase,
+  popoverCloseTriggerBase,
+  popoverIndicatorBase,
+} from './popover';
+export {
+  dialogBackdropBase,
+  dialogPositionerBase,
+  dialogContentBase,
+  dialogTitleBase,
+  dialogDescriptionBase,
+  dialogHeaderBase,
+  dialogFooterBase,
+  dialogHeaderStickyBase,
+  dialogFooterStickyBase,
+  dialogFullscreenContentBase,
+  dialogCloseTriggerBase,
+} from './dialog';
+export {
+  windowPositionerBase,
+  windowContentBase,
+  windowDragTriggerBase,
+  windowHeaderBase,
+  windowTitleBase,
+  windowControlBase,
+  windowStageTriggerBase,
+  windowCloseTriggerBase,
+  windowBodyBase,
+  windowResizeTriggerBase,
+} from './window';
 export { badgeVariants, type BadgeProps, type BadgeVariants } from './badge';
 export { containerBase, rowBase, colBase, stackBase, hstackBase, vstackBase, centerBase } from './layout';
 export { itemVariants, type ItemProps, type ItemVariants } from './item';

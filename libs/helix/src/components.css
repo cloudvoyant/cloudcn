@@ -21,3 +21,16 @@
 @source "../dist";
 @source "../../helix-react/dist";
 @source "../../helix-svelte/dist";
+
+/*
+ * Overlay arrows (tooltip/popover): the arrow tip is an 8x8 square rotated into
+ * a diamond, whose inner vertex points into the content. Clip the square to the
+ * {top-left, top-right, bottom-left} triangle (removing the bottom-right corner
+ * that becomes the inner vertex), then the per-placement rotation maps that same
+ * triangle to the outer half for every side. A full border lands on the two kept
+ * edges — always the two outer diagonals — while the clipped base stays borderless.
+ */
+[data-part='arrow-tip'] {
+  border: 1px solid var(--color-border);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}

@@ -18,7 +18,7 @@ export const selectIndicatorBase = 'flex items-center justify-center text-muted-
 export const selectClearTriggerBase =
   'flex items-center justify-center text-muted-foreground opacity-60 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0';
 
-export const selectPositionerBase = 'z-50';
+export const selectPositionerBase = 'z-50 [--z-index:50]!';
 
 export const selectContentBase =
   'relative z-50 max-h-96 min-w-(--reference-width) overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none';

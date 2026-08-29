@@ -44,6 +44,17 @@ The React and Svelte components expose no manual sizing props — customize widt
 | --- | --- | --- | --- |
 | `className` / `class` | `string` | — | Merged via `cn` with `colBase` (`flex flex-col`). Use `gap-*`, `divide-y`, or `flex-row` to customize. |
 
+### Portal
+
+`Portal` renders its children into `document.body`, escaping any ancestor that clips, hides, or scrolls them. It is transparent — no base class, no styling. The overlay components (Popover, Dialog, Window, Tooltip) use it internally to mount their content; reach for it directly when your own composition needs to escape an ancestor (e.g. a dropdown inside an `overflow-hidden` card).
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` / `class` | `string` | — | Optional class applied to the portalled container (rarely needed). |
+| `disabled` | `boolean` | `false` | When `true`, children render in place instead of being portalled. |
+
 ## Accessibility
 
-All three render a native `<div>`, so they require no roles or keyboard handling.
+`Container`, `Row`, and `Col` render a native `<div>`, so they require no roles or keyboard handling. `Portal` is also a plain container — it only moves children to `document.body` and does not alter their semantics.

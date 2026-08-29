@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/popover/anchor/index.astro
+import Example from '../../../Example.astro';
+import ReactPopoverAnchor from './react.tsx';
+import SveltePopoverAnchor from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Anchor" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactPopoverAnchor client:load />
+  </div>
+  <div data-fw="svelte">
+    <SveltePopoverAnchor client:load />
+  </div>
+</Example>

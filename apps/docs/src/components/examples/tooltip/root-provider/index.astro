@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/tooltip/root-provider/index.astro
+import Example from '../../../Example.astro';
+import ReactTooltipRootProvider from './react.tsx';
+import SvelteTooltipRootProvider from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Root provider" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactTooltipRootProvider client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteTooltipRootProvider client:load />
+  </div>
+</Example>

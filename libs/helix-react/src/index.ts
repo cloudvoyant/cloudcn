@@ -1,11 +1,68 @@
 // libs/helix-react/src/index.ts
 export { Button, type ButtonProps } from './button';
 export { ToggleButton, ToggleButtonIndicator, type ToggleButtonProps } from './toggle-button';
+export {
+  Tooltip,
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
+  useTooltip,
+  useTooltipContext,
+  type TooltipContentPropsWithArrow,
+} from './tooltip';
+export {
+  Popover,
+  PopoverProvider,
+  PopoverTrigger,
+  PopoverAnchor,
+  PopoverContent,
+  PopoverTitle,
+  PopoverDescription,
+  PopoverDismiss,
+  PopoverIndicator,
+  usePopover,
+  usePopoverContext,
+  type PopoverContentPropsWithArrow,
+} from './popover';
+export {
+  Dialog,
+  DialogProvider,
+  DialogTrigger,
+  DialogBackdrop,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogHeader,
+  DialogFooter,
+  DialogDismiss,
+  useDialog,
+  useDialogContext,
+  type DialogContentPropsWithPositioner,
+  type DialogHeaderProps,
+  type DialogFooterProps,
+} from './dialog';
+export {
+  Window,
+  WindowProvider,
+  WindowDragTrigger,
+  WindowHeader,
+  WindowTitle,
+  WindowControl,
+  WindowStageTrigger,
+  WindowDismiss,
+  WindowBody,
+  WindowResizeTrigger,
+  useWindow,
+  useWindowContext,
+  type WindowProps,
+  type WindowResizeTriggerProps,
+} from './window';
 export { Badge, type BadgeProps } from './badge';
 export { Container, type ContainerProps } from './container';
 export { Row, type RowProps } from './row';
 export { Col, type ColProps } from './col';
 export { Center, type CenterProps } from './center';
+export { Portal, type PortalProps } from './portal';
 export { Item, type ItemProps } from './item';
 export {
   Card,

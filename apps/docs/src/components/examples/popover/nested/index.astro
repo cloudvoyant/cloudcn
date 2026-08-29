@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/popover/nested/index.astro
+import Example from '../../../Example.astro';
+import ReactPopoverNested from './react.tsx';
+import SveltePopoverNested from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Nested" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactPopoverNested client:load />
+  </div>
+  <div data-fw="svelte">
+    <SveltePopoverNested client:load />
+  </div>
+</Example>

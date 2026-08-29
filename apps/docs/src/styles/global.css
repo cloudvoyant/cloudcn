@@ -10,9 +10,9 @@
    in the production build and helix's Tailwind classes never compile here.
    Explicit real paths guarantee @cloudvoyant/helix/react/svelte classes (e.g.
    group-data-[density=compact]/nav-menu, the link variant, viewport classes). */
-@source '../../../libs/helix/src';
-@source '../../../libs/helix-react/src';
-@source '../../../libs/helix-svelte/src';
+@source '../../../../libs/helix/src';
+@source '../../../../libs/helix-react/src';
+@source '../../../../libs/helix-svelte/src';
 @import '@cloudvoyant/helix/theme.css';
 /* shadcn-compatible theme presets (`.theme-{name}` / `.theme-{name}.dark`). */
 @import '@cloudvoyant/helix/themes.css';

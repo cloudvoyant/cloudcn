@@ -1,0 +1,100 @@
+---
+title: Dialog
+description: A modal window that appears on top of the main content, for React and Svelte.
+order: 22
+group: overlays
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`Dialog` is a thin wrapper over [Ark UI `dialog`](https://ark-ui.com/docs/components/dialog) that shows a modal window on top of the page. It is modal by default — focus is trapped, scrolling is blocked, and outside interaction is prevented. `DialogBackdrop` and `DialogContent` each portal internally; the content uses the existing `--background` tokens.
+
+State is controlled from outside: keep `open` in your own component state and pass it with `onOpenChange`. There is no `DialogTrigger` requirement — a plain `<button>` (or a menu item) outside the dialog opens it by setting `open` to `true`.
+
+<Demo component="dialog" example="default" />
+
+## Examples
+
+<Examples component="dialog" exclude="default" />
+
+## API Reference
+
+### Dialog
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `open` / `onOpenChange` | `boolean` / `(details) => void` | — | Controlled open state. |
+| `defaultOpen` | `boolean` | `false` | Initial open state when uncontrolled. |
+| `modal` | `boolean` | `true` | Prevent pointer interaction outside and hide content below it. |
+| `role` | `'dialog' \| 'alertdialog'` | `'dialog'` | The dialog's role. |
+| `closeOnEscape` | `boolean` | `true` | Close when Escape is pressed. |
+| `closeOnInteractOutside` | `boolean` | `true` | Close on outside click. |
+| `initialFocusEl` | `() => MaybeElement` | — | Element to focus when opened. |
+| `finalFocusEl` | `() => MaybeElement` | — | Element to focus when closed (defaults to the trigger). |
+| `lazyMount` / `unmountOnExit` | `boolean` | `false` | Mount/unmount content only around open/close. |
+| `trapFocus` / `preventScroll` | `boolean` | `true` | Focus trapping and scroll lock. |
+
+Accepts all [Ark `DialogRootProps`](https://ark-ui.com/docs/components/dialog).
+
+### DialogProvider
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `UseDialogReturn` | — | The API object from `useDialog()`. |
+
+### DialogTrigger
+
+Accepts all [Ark `DialogTriggerProps`](https://ark-ui.com/docs/components/dialog) plus `className`/`class`. Supports the `value` prop for multiple triggers.
+
+### DialogBackdrop
+
+Accepts all [Ark `DialogBackdropProps`](https://ark-ui.com/docs/components/dialog) plus `className`/`class`. Portalled internally; rendered as a translucent black layer.
+
+### DialogContent
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `positionerClassName` / `positionerClass` | `string` | — | Class applied to the internal positioner (e.g. `overflow-y-auto` for the Outside Scroll example). |
+| `fullscreen` | `boolean` | `false` | Fill the whole viewport edge to edge (no border, padding, or rounding). |
+
+Accepts all [Ark `DialogContentProps`](https://ark-ui.com/docs/components/dialog) plus `className`/`class`.
+
+### DialogTitle
+
+Accepts all [Ark `DialogTitleProps`](https://ark-ui.com/docs/components/dialog) plus `className`/`class`.
+
+### DialogDescription
+
+Accepts all [Ark `DialogDescriptionProps`](https://ark-ui.com/docs/components/dialog) plus `className`/`class`.
+
+### DialogHeader
+
+A `flex flex-col gap-2` wrapper for the title and description. Pass `sticky` to pin it to the top of a scrolling dialog (`sticky top-0 z-10 bg-background`).
+
+### DialogFooter
+
+A `flex flex-col-reverse gap-2 sm:flex-row sm:justify-end` wrapper for action buttons. Pass `sticky` to pin it to the bottom of a scrolling dialog (`sticky bottom-0 z-10 bg-background`).
+
+### DialogDismiss
+
+Accepts all [Ark `DialogCloseTriggerProps`](https://ark-ui.com/docs/components/dialog) plus `className`/`class`. Ships with `aria-label="Close"`.
+
+### Hooks
+
+- `useDialog` — Ark machine factory; returns `UseDialogReturn` for `DialogProvider`.
+- `useDialogContext` — reads the current dialog state from context.
+
+## Accessibility
+
+Complies with the [Dialog WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/). Keyboard support: `Enter` opens from the trigger; `Tab`/`Shift+Tab` move focus within the trapped dialog; `Esc` closes and returns focus to the trigger or `finalFocusEl`.
+
+## Theme extensions
+
+None. The dialog reuses existing tokens (`--background`, `--foreground`, `--border`, `--ring`, `--muted`) and a translucent black backdrop (`bg-black/50`) — no `theme.css` changes.

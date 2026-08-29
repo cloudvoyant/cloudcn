@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/window/controlled-position/index.astro
+import Example from '../../../Example.astro';
+import ReactWindowControlledPosition from './react.tsx';
+import SvelteWindowControlledPosition from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Controlled position" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactWindowControlledPosition client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteWindowControlledPosition client:load />
+  </div>
+</Example>

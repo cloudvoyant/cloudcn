@@ -26,6 +26,8 @@ helix is a pnpm workspace monorepo:
 
 Every component follows the Button pattern: a shared cva variant function lives in `@cloudvoyant/helix`, and `@cloudvoyant/helix-react`/`@cloudvoyant/helix-svelte` expose thin wrappers that apply `cn(<variants>, className)` over an Ark UI primitive. Composite components (ToggleButton) are composed from per-part exports matching Ark's anatomy.
 
+The overlay components (Popover, Dialog, Window, Tooltip) extend this pattern: their shared Tailwind base classes live in `@cloudvoyant/helix` (e.g. `popoverContentBase`), the framework wrappers are thin `cn(base, className)` pass-throughs, and the content/backdrop parts swallow the Ark `Portal` + `Positioner` internally so consumers never compose them (`Window` goes furthest — its root swallows the positioner and content, so children are the window parts directly). Ark's `CloseTrigger` is exported as `Dismiss` with a baked-in `aria-label`, and the arrow is an internal detail toggled via an `arrow` prop on content. A `Portal` layout primitive is exported by `@cloudvoyant/helix-react`/`@cloudvoyant/helix-svelte` (documented under Layout) for escaping ancestors in user compositions. Overlay components reuse the existing shadcn theme tokens — no `theme.css` additions.
+
 ## Release pipeline
 
 - `.releaserc.json` — semantic-release. Release rules cap every bump at `minor` (stay-at-v0).

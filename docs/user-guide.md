@@ -55,6 +55,11 @@ Components accept the same `variant` and `size` props across frameworks. Availab
 - `NavbarMenu` — the Navbar's menu, with composed parts for dropdown panels
 - `Tabs` — composed parts for tabbed content
 - `Pagination` — composed parts for paging through content
+- `Tooltip` — composed parts for trigger and content, with an optional arrow
+- `Popover` — composed parts for anchor, trigger, title, description, and content, with an optional arrow
+- `Dialog` — composed parts for backdrop, trigger, content, title, description, header, and footer
+- `Window` — draggable, resizable floating panel with composed parts (header, title, body, resize trigger)
+- `Portal` — layout primitive that escapes ancestors via a portal
 
 Every component accepts `className`/`class` and merges it with the shared variant classes, so consumers can restyle individual instances and override the whole theme via CSS variables.
 

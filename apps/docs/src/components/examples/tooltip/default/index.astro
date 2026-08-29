@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/tooltip/default/index.astro
+import Example from '../../../Example.astro';
+import ReactTooltipDefault from './react.tsx';
+import SvelteTooltipDefault from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Default" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactTooltipDefault client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteTooltipDefault client:load />
+  </div>
+</Example>

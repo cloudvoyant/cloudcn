@@ -116,7 +116,7 @@ const groups = NAV_GROUPS.map((g) => {
           side="left"
           className="top-16 hidden h-[calc(100svh-4rem)] lg:block lg:w-56 lg:p-0"
         >
-          <div class="scroll-fade no-scrollbar h-full w-full overflow-y-auto py-10 pl-4 lg:pl-8">
+          <div class="scroll-fade scroll-fade-20 no-scrollbar h-full w-full overflow-y-auto py-10 pl-4 lg:pl-8">
             <Sidebar currentPath={currentPath} />
           </div>
         </PageGutter>
@@ -129,7 +129,7 @@ const groups = NAV_GROUPS.map((g) => {
           side="right"
           className="top-16 hidden h-[calc(100svh-4rem)] xl:block xl:w-64 xl:p-0"
         >
-          <div class="scroll-fade no-scrollbar h-full w-full overflow-y-auto py-10 pr-4 xl:pr-8">
+          <div class="scroll-fade scroll-fade-20 no-scrollbar h-full w-full overflow-y-auto py-10 pr-4 xl:pr-8">
             <Toc headings={headings} />
           </div>
         </PageGutter>

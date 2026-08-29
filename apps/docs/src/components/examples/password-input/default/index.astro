@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactPasswordInputDefault from './react.tsx';
+import SveltePasswordInputDefault from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Default" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactPasswordInputDefault client:load />
+  </div>
+  <div data-fw="svelte">
+    <SveltePasswordInputDefault client:load />
+  </div>
+</Example>

@@ -4,15 +4,7 @@
 // and rail-handle toggling. Asserts observable state (`data-state`) and visibility,
 // never generated class strings.
 import { test, expect, type Locator, type Page } from '@playwright/test';
-
-const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
-
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
+import { selectFramework, FRAMEWORKS, type Framework } from './helpers';
 
 function exampleRegion(page: Page, framework: Framework, index: number): Locator {
   return page.locator(`[data-example]`).nth(index).locator(`[data-fw="${framework}"]`).first();

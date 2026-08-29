@@ -1,0 +1,94 @@
+---
+title: FileInput
+description: A drop-zone file input with an item list, for React and Svelte.
+order: 12
+group: forms
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`FileInput` is a drop-zone file input with an item list and delete/clear controls. Built on [Ark UI file-upload](https://ark-ui.com/docs/components/file-upload). Pair with `Field` for label/error.
+
+<Demo component="file-input" example="default" />
+
+## Examples
+
+<Examples component="file-input" exclude="default" />
+
+## API Reference
+
+### FileInput
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `accept` | `string` | — |
+| `multiple` | `boolean` | `false` |
+| `maxFiles` | `number` | — |
+| `files` | `File[]` | — |
+| `onFileChange` | `(details: FileUploadFileChangeDetails) => void` | — |
+| `className` | `string` | — |
+
+### FileInputDropzone
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### FileInputTrigger
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### FileInputItemGroup
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+Renders the item list container.
+
+### FileInputItem
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `index` | `number` | — |
+| `file` | `File` | — |
+| `className` | `string` | — |
+
+### FileInputItemName
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### FileInputItemSizeText
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### FileInputItemDeleteTrigger
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### FileInputClearTrigger
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### useFileInput
+
+Returns the Ark file-upload context (`useFileUploadContext`): `acceptedFiles`, `rejectedFiles`, `deleteFile`, `clearFiles`, …
+
+## Accessibility
+
+Ark exposes a hidden native file input and wires the dropzone/trigger `aria` and keyboard activation. Each delete trigger carries an `aria-label`.
+
+## Theming
+
+No theme extension — uses `--input`, `--ring`, `--muted-foreground`, `--destructive`.

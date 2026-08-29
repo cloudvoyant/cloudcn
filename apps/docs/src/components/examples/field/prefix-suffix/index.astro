@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactFieldPrefixSuffix from './react.tsx';
+import SvelteFieldPrefixSuffix from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="prefix-suffix" title="Prefix & suffix" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactFieldPrefixSuffix client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteFieldPrefixSuffix client:load />
+  </div>
+</Example>

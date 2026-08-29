@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactSwitchSizes from './react.tsx';
+import SvelteSwitchSizes from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="sizes" title="Sizes" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactSwitchSizes client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteSwitchSizes client:load />
+  </div>
+</Example>

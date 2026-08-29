@@ -1,14 +1,12 @@
 <!-- apps/docs/src/components/examples/field/default/svelte.svelte -->
 <script lang="ts">
-  import { Field, FieldLabel, FieldRequiredIndicator, FieldHelper, FieldError, Input } from '@cloudvoyant/helix-svelte';
+  import { Field, FieldLabel, FieldRequiredIndicator, Input, FieldHint } from '@cloudvoyant/helix-svelte';
 </script>
 
-<Field invalid class="max-w-sm">
+<Field class="max-w-sm">
   <FieldLabel>
-    Username
-    <FieldRequiredIndicator />
+    Username<FieldRequiredIndicator>*</FieldRequiredIndicator>
   </FieldLabel>
-  <Input defaultValue="jane" />
-  <FieldHelper>Pick something memorable.</FieldHelper>
-  <FieldError>Username is already taken.</FieldError>
+  <Input placeholder="jane" />
+  <FieldHint>Pick something memorable.</FieldHint>
 </Field>

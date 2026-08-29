@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactSelectDisabled from './react.tsx';
+import SvelteSelectDisabled from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="disabled" title="Disabled" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactSelectDisabled client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteSelectDisabled client:load />
+  </div>
+</Example>

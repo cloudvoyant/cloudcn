@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactPasswordInputError from './react.tsx';
+import SveltePasswordInputError from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="error" title="Validation error" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactPasswordInputError client:load />
+  </div>
+  <div data-fw="svelte">
+    <SveltePasswordInputError client:load />
+  </div>
+</Example>

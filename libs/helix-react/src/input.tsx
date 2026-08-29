@@ -6,6 +6,6 @@ import type { InputProps as InputBaseProps } from '@cloudvoyant/helix';
 
 export type InputProps = Omit<FieldInputProps, 'size'> & InputBaseProps;
 
-export function Input({ className, size, ...props }: InputProps) {
-  return <FieldInput className={cn(inputVariants({ size }), className)} {...props} />;
+export function Input({ className, size, variant, ...props }: InputProps) {
+  return <FieldInput className={cn(inputVariants({ size, variant }), className)} {...props} />;
 }

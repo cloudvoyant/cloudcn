@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/file-input/prepopulated/index.astro
+import Example from '../../../Example.astro';
+import ReactFileInputPrepopulated from './react.tsx';
+import SvelteFileInputPrepopulated from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Pre-populated" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactFileInputPrepopulated client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteFileInputPrepopulated client:load />
+  </div>
+</Example>

@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactInputSearch from './react.tsx';
+import SvelteInputSearch from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="search" title="Search prefix" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactInputSearch client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteInputSearch client:load />
+  </div>
+</Example>

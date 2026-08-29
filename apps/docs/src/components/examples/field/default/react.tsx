@@ -1,16 +1,14 @@
 // apps/docs/src/components/examples/field/default/react.tsx
-import { Field, FieldLabel, FieldRequiredIndicator, FieldHelper, FieldError, Input } from '@cloudvoyant/helix-react';
+import { Field, FieldLabel, FieldRequiredIndicator, Input, FieldHint } from '@cloudvoyant/helix-react';
 
 export default function ReactFieldDefault() {
   return (
-    <Field invalid className="max-w-sm">
+    <Field className="max-w-sm">
       <FieldLabel>
-        Username
-        <FieldRequiredIndicator />
+        Username<FieldRequiredIndicator> *</FieldRequiredIndicator>
       </FieldLabel>
-      <Input defaultValue="jane" />
-      <FieldHelper>Pick something memorable.</FieldHelper>
-      <FieldError>Username is already taken.</FieldError>
+      <Input placeholder="jane" />
+      <FieldHint>Pick something memorable.</FieldHint>
     </Field>
   );
 }

@@ -1,15 +1,20 @@
 ---
 title: Switch
 description: An accessible on/off switch, for React and Svelte.
-order: 11
+order: 15
 group: forms
 ---
 
 import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
 
-`Switch` is an accessible on/off toggle. Built on [Ark UI `switch`](https://ark-ui.com/docs/components/switch), sourced from [Shark UI](https://shark.vini.one/docs/components/switch).
+`Switch` is an accessible on/off toggle. Built on [Ark UI `switch`](https://ark-ui.com/docs/components/switch).
 
 <Demo component="switch" example="default" />
+
+## Examples
+
+<Examples component="switch" exclude="default" />
 
 ## API Reference
 
@@ -17,9 +22,9 @@ import Demo from '../../components/Demo.astro';
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Track size. |
+| Prop   | Type                   | Default | Description |
+| ------ | ---------------------- | ------- | ----------- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'`  | Track size. |
 
 Also accepts all [Ark `SwitchRoot` props](https://ark-ui.com/docs/components/switch) (`checked`, `defaultChecked`, `onCheckedChange`, `disabled`, …).
 

@@ -2,15 +2,7 @@
 // Behavior + accessibility coverage for Select: listbox role, option selection
 // via mouse and arrow keys, and the native-select fallback on coarse pointers.
 import { test, expect, type Page } from '@playwright/test';
-
-const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
-
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
+import { selectFramework, FRAMEWORKS, type Framework } from './helpers';
 
 for (const framework of FRAMEWORKS) {
   test.describe(`Select docs page · ${framework}`, () => {
@@ -45,6 +37,23 @@ for (const framework of FRAMEWORKS) {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       await expect(trigger).toContainText('Banana');
+    });
+  });
+}
+
+for (const framework of FRAMEWORKS) {
+  test.describe(`Select controlled · ${framework}`, () => {
+    test('keeps external state in sync both ways', async ({ page }) => {
+      await page.goto('components/select');
+      await selectFramework(page, framework);
+      const demo = page.locator(`[data-example="controlled"] [data-fw="${framework}"]`);
+
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('banana');
+      await demo.locator('[data-scope="select"][data-part="trigger"]').click();
+      await page.locator('[role="listbox"]:visible [role="option"]', { hasText: 'Apple' }).click();
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('apple');
+      await demo.locator('button[data-testid="reset"]').click();
+      await expect(demo.locator('output[data-testid="value"]')).toHaveText('banana');
     });
   });
 }

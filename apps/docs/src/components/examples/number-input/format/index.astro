@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactNumberInputFormat from './react.tsx';
+import SvelteNumberInputFormat from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="format" title="Formatting" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactNumberInputFormat client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteNumberInputFormat client:load />
+  </div>
+</Example>

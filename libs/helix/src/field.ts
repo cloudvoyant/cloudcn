@@ -1,22 +1,16 @@
 // libs/helix/src/field.ts
-// Closely based on: Shark UI field (https://shark.vini.one/docs/components/field, @ark-ui/react/field, @ark-ui/react/fieldset).
-// Shared class strings for Field/FieldSet parts. No framework imports.
-
 export const fieldRootBase = 'flex w-full flex-col gap-2 data-invalid:text-destructive';
-
 export const fieldLabelBase =
   'flex w-fit select-none items-center gap-1 text-sm font-medium leading-none text-foreground';
-
-export const fieldHelperBase = 'text-sm text-muted-foreground';
-
+export const fieldPrefixBase = 'flex shrink-0 items-center text-muted-foreground [&_svg]:size-4 [&_svg]:shrink-0';
+export const fieldSuffixBase = 'flex shrink-0 items-center text-muted-foreground [&_svg]:size-4 [&_svg]:shrink-0';
+export const fieldControlBase =
+  'flex w-full items-center gap-1.5 rounded-md border border-input bg-transparent px-3 shadow-xs transition-[box-shadow] outline-none focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24 data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/24';
+export const fieldHintBase = 'text-sm text-muted-foreground';
 export const fieldErrorBase = 'text-sm text-destructive';
-
 export const fieldRequiredIndicatorBase = 'text-destructive';
 
-export const fieldsetRootBase = 'flex flex-col gap-6';
-
-export const fieldsetLegendBase = 'mb-3 text-base font-medium';
-
-export const fieldsetHelperBase = 'text-sm text-muted-foreground';
-
-export const fieldsetErrorBase = 'text-sm text-destructive';
+export const fieldGroupRootBase = 'flex flex-col gap-6';
+export const fieldGroupLegendBase = 'mb-3 text-base font-medium';
+export const fieldGroupHelperBase = 'text-sm text-muted-foreground';
+export const fieldGroupErrorBase = 'text-sm text-destructive';

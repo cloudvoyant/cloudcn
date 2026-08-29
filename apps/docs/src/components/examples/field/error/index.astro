@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactFieldError from './react.tsx';
+import SvelteFieldError from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="error" title="Validation error" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactFieldError client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteFieldError client:load />
+  </div>
+</Example>

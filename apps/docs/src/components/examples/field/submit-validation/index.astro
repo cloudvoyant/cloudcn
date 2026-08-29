@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactFieldSubmitValidation from './react.tsx';
+import SvelteFieldSubmitValidation from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="submit-validation" title="Validation on submit" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactFieldSubmitValidation client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteFieldSubmitValidation client:load />
+  </div>
+</Example>

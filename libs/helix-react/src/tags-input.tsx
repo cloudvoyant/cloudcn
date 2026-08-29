@@ -1,5 +1,4 @@
 // libs/helix-react/src/tags-input.tsx
-// Closely based on: Shark UI tags input (@ark-ui/react/tags-input)
 import {
   TagsInputRoot as ArkTagsInputRoot,
   TagsInputControl as ArkTagsInputControl,
@@ -31,6 +30,7 @@ import {
   tagsInputControlBase,
   tagsInputInputBase,
   tagsInputItemBase,
+  tagsInputItemPreviewBase,
   tagsInputItemTextBase,
   tagsInputItemInputBase,
   tagsInputItemDeleteTriggerBase,
@@ -62,7 +62,7 @@ export function TagInputItem({ className, ...props }: TagsInputItemProps) {
 }
 
 export function TagInputItemPreview({ className, ...props }: TagsInputItemPreviewProps) {
-  return <ArkTagsInputItemPreview className={className} {...props} />;
+  return <ArkTagsInputItemPreview className={cn(tagsInputItemPreviewBase, className)} {...props} />;
 }
 
 export function TagInputItemText({ className, ...props }: TagsInputItemTextProps) {

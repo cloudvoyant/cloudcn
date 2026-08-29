@@ -4,4 +4,6 @@ export { default as NumberInputControl } from './NumberInputControl.svelte';
 export { default as NumberInputInput } from './NumberInputInput.svelte';
 export { default as NumberInputDecrement } from './NumberInputDecrement.svelte';
 export { default as NumberInputIncrement } from './NumberInputIncrement.svelte';
+export { default as NumberInputScrubber } from './NumberInputScrubber.svelte';
+export { default as NumberInputValueText } from './NumberInputValueText.svelte';
 export { useNumberInput } from './NumberInputContext.svelte';

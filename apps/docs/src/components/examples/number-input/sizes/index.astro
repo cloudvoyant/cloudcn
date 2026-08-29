@@ -1,0 +1,16 @@
+---
+import Example from '../../../Example.astro';
+import ReactNumberInputSizes from './react.tsx';
+import SvelteNumberInputSizes from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="sizes" title="Sizes" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactNumberInputSizes client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteNumberInputSizes client:load />
+  </div>
+</Example>

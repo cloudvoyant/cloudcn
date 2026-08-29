@@ -3,15 +3,7 @@
 // via the docs demo islands: role=tab with aria-selected, click + arrow-key
 // switching, and content panel visibility.
 import { test, expect, type Page } from '@playwright/test';
-
-const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
-
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
+import { selectFramework, FRAMEWORKS, type Framework } from './helpers';
 
 for (const framework of FRAMEWORKS) {
   test.describe(`Tabs docs page · ${framework}`, () => {

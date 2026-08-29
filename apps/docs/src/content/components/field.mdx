@@ -1,14 +1,14 @@
 ---
 title: Field
 description: Label, helper text, and error text grouped with an accessible field, for React and Svelte.
-order: 8
+order: 7
 group: forms
 ---
 
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-`Field` wires a label, control, and helper/error text together with correct `aria` (the control's `aria-describedby` and invalid state are handled by Ark). `FieldSet` groups related fields in a `<fieldset>` with a legend. Built on [Ark UI `field`](https://ark-ui.com/docs/components/field) and [`fieldset`](https://ark-ui.com/docs/components/fieldset), sourced from [Shark UI](https://shark.vini.one/docs/components/field).
+`Field` wires a label, control, and helper/error text together with correct `aria` (the control's `aria-describedby` and invalid state are handled by Ark). Built on [Ark UI `field`](https://ark-ui.com/docs/components/field) and [`fieldset`](https://ark-ui.com/docs/components/fieldset).
 
 <Demo component="field" example="default" />
 
@@ -20,47 +20,75 @@ import Examples from '../../components/Examples.astro';
 
 ### Field
 
-#### Props
-
-Accepts all [Ark `FieldRoot` props](https://ark-ui.com/docs/components/field) (`invalid`, `disabled`, `required`, `ids`, …) plus `className`/`class`.
+| Prop | Type | Default |
+| --- | --- | --- |
+| `invalid` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+| `required` | `boolean` | `false` |
+| `ids` | `FieldRootProps['ids']` | — |
+| `className` | `string` | — |
 
 ### FieldLabel
 
-#### Props
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
 
-Accepts all [Ark `FieldLabel` props](https://ark-ui.com/docs/components/field) plus `className`/`class`.
+### FieldPrefix
 
-### FieldHelper
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
 
-#### Props
+Plain `<span>` slot — use for units (`$`, `%`) or icons. Accepts standard `span` attributes.
 
-Accepts all [Ark `FieldHelperText` props](https://ark-ui.com/docs/components/field) plus `className`/`class`.
+### FieldSuffix
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+Plain `<span>` slot rendered after the control.
+
+### FieldControl
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+Bordered box carrying the field's border + focus ring — wrap `FieldPrefix` + a ghost `Input` + `FieldSuffix` inside it.
+
+### FieldHint
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
 
 ### FieldError
 
-#### Props
-
-Accepts all [Ark `FieldErrorText` props](https://ark-ui.com/docs/components/field) plus `className`/`class`.
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
 
 ### FieldRequiredIndicator
 
-#### Props
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
 
-Accepts all [Ark `FieldRequiredIndicator` props](https://ark-ui.com/docs/components/field) plus `className`/`class`. Defaults to rendering `*`.
+Defaults to rendering `*`.
 
-### FieldSet
+### FieldGroup
 
-#### Props
+See [FieldGroup](/helix/components/field-group).
 
-Accepts all [Ark `FieldsetRoot` props](https://ark-ui.com/docs/components/fieldset) plus `className`/`class`.
+### useField
 
-### FieldSetLegend / FieldSetHelper / FieldSetError
-
-Accept all corresponding Ark `Fieldset*` props plus `className`/`class`.
+Returns the Ark field context (`useFieldContext`): `invalid`, `disabled`, `required`, `getLabelProps`, `getInputProps`, … — use it to build custom controls that render inside `Field`.
 
 ## Accessibility
 
-Ark wires `for`/`id`, `aria-describedby`, and `aria-invalid` between the label, control, helper, and error text. `FieldSet` renders a native `<fieldset>`/`<legend>`.
+Ark wires `for`/`id`, `aria-describedby`, and `aria-invalid` between the label, control, helper, and error text.
 
 ## Theming
 

@@ -2,15 +2,7 @@
 // Behavior + accessibility coverage for TagInput: adding a tag via Enter,
 // removing a tag via the delete trigger.
 import { test, expect, type Page } from '@playwright/test';
-
-const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
-
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
+import { selectFramework, FRAMEWORKS, type Framework } from './helpers';
 
 for (const framework of FRAMEWORKS) {
   test.describe(`TagInput docs page · ${framework}`, () => {
@@ -42,6 +34,24 @@ for (const framework of FRAMEWORKS) {
         await firstDelete.click();
         await expect(preview.locator(':text("react")').first()).toBeHidden();
       }).toPass();
+    });
+  });
+
+  test.describe(`TagInput controlled · ${framework}`, () => {
+    test('keeps external state in sync both ways', async ({ page }) => {
+      await page.goto('components/tags-input');
+      await selectFramework(page, framework);
+      const demo = page.locator(`[data-example="controlled"] [data-fw="${framework}"]`);
+      const input = demo.locator('input[data-part="input"]').first();
+
+      await expect(demo.locator('[data-part="item-text"]')).toHaveCount(2);
+      await expect(demo.locator('[data-part="item-text"]').first()).toHaveText('react');
+      await input.fill('vue');
+      await input.press('Enter');
+      await expect(demo.locator('[data-part="item-text"]')).toHaveCount(3);
+      await expect(demo.locator('[data-part="item-text"]').last()).toHaveText('vue');
+      await demo.locator('button[data-testid="reset"]').click();
+      await expect(demo.locator('[data-part="item-text"]')).toHaveCount(2);
     });
   });
 }

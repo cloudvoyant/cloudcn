@@ -1,5 +1,4 @@
 // libs/helix-react/src/checkbox.tsx
-// Closely based on: Shark UI checkbox (@ark-ui/react/checkbox)
 import { createContext, useContext } from 'react';
 import {
   CheckboxRoot as ArkCheckboxRoot,

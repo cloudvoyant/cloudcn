@@ -1,14 +1,14 @@
 ---
 title: Input
-description: Styled text and textarea inputs for React and Svelte, built on Ark UI field.
-order: 7
+description: Styled text input for React and Svelte, built on Ark UI field.
+order: 9
 group: forms
 ---
 
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-The `Input` and `Textarea` components are styled native inputs that work standalone or inside a `Field`. They are built on [Ark UI `field`](https://ark-ui.com/docs/components/field), sourced from [Shark UI](https://shark.vini.one/docs/components/input), sharing the `inputVariants` cva from `@cloudvoyant/helix`.
+The `Input` component is a styled native input that works standalone or inside a `Field`. It is built on [Ark UI `field`](https://ark-ui.com/docs/components/field), sharing the `inputVariants` cva from `@cloudvoyant/helix`.
 
 <Demo component="input" example="default" />
 
@@ -20,23 +20,21 @@ The `Input` and `Textarea` components are styled native inputs that work standal
 
 ### Input
 
-#### Props
-
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height/padding scale. |
-
-Also accepts all [Ark `FieldInput` props](https://ark-ui.com/docs/components/field) (`type`, `placeholder`, `disabled`, `value`, `onChange`, …).
-
-### Textarea
-
-#### Props
-
-Accepts all [Ark `FieldTextarea` props](https://ark-ui.com/docs/components/field) (`rows`, `placeholder`, `disabled`, …) plus `className`/`class`.
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `variant` | `'default' \| 'ghost'` | `'default'` |
+| `type` | `string` | `'text'` |
+| `placeholder` | `string` | — |
+| `disabled` | `boolean` | `false` |
+| `invalid` | `boolean` | `false` |
+| `value` | `string` | — |
+| `onChange` | `ChangeEventHandler<HTMLInputElement>` | — |
+| `className` | `string` | — |
 
 ## Accessibility
 
-Ark renders a native `<input>`/`<textarea>` with no extra role. Invalid state is announced via `aria-invalid` when inside a `Field`; pair with `FieldLabel`/`FieldError` for full labelling.
+Ark renders a native `<input>` with no extra role. Invalid state is announced via `aria-invalid` when inside a `Field`; pair with `FieldLabel`/`FieldError` for full labelling.
 
 ## Theming
 

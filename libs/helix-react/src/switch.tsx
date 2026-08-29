@@ -1,5 +1,4 @@
 // libs/helix-react/src/switch.tsx
-// Closely based on: Shark UI switch (@ark-ui/react/switch)
 import { createContext, useContext } from 'react';
 import {
   SwitchRoot as ArkSwitchRoot,
@@ -22,6 +21,9 @@ export function Switch({ className, size = 'md', children, ...props }: SwitchPro
   return (
     <SwitchSizeContext.Provider value={size}>
       <ArkSwitchRoot className={cn('flex items-center gap-2', className)} {...props}>
+        <ArkSwitchControl className={cn(switchVariants({ size }), switchControlBase)}>
+          <ArkSwitchThumb className={switchThumbBase} />
+        </ArkSwitchControl>
         {children}
         <ArkSwitchHiddenInput />
       </ArkSwitchRoot>

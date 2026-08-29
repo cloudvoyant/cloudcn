@@ -16,9 +16,12 @@ const components = (await getCollection('components')).sort((a, b) => a.data.ord
 >
   <PageSection className="relative items-center justify-center overflow-hidden px-4 py-16">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <div class="absolute -top-40 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
-      <div class="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
-      <div class="absolute inset-0 [background-image:linear-gradient(to_right,color-mix(in_oklab,var(--border)_60%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--border)_60%,transparent)_1px,transparent_1px)] [background-size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_72%)]" />
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--primary)_8%,transparent),transparent_62%)]" />
+      <canvas
+        data-hero-helix
+        class="absolute inset-0 h-full w-full [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_80%)]"
+      />
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_52%_46%_at_50%_50%,color-mix(in_oklab,var(--background)_82%,transparent)_0%,transparent_72%)]" />
     </div>
     <div class="relative mx-auto max-w-4xl text-center">
       <h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-6xl">
@@ -57,3 +60,8 @@ const components = (await getCollection('components')).sort((a, b) => a.data.ord
     })}
   </section>
 </Shell>
+
+<script>
+  import { initHeroHelix } from '../components/HeroHelix';
+  initHeroHelix();
+</script>

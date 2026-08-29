@@ -2,15 +2,7 @@
 // Behavior + accessibility coverage for FileInput: controlled files sync, the
 // file appearing in the item list, and clearing external state removing it.
 import { test, expect, type Page } from '@playwright/test';
-
-const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
-
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
+import { selectFramework, FRAMEWORKS, type Framework } from './helpers';
 
 for (const framework of FRAMEWORKS) {
   test.describe(`FileInput controlled · ${framework}`, () => {

@@ -115,6 +115,9 @@ export function MultiSelect({
   placeholder,
   className,
   children,
+  openOnClick = true,
+  lazyMount = true,
+  unmountOnExit = true,
   ...props
 }: MultiSelectProps) {
   const resolvedCollection = useMemo(
@@ -122,7 +125,13 @@ export function MultiSelect({
     [collection, items],
   );
   return (
-    <ArkMultiSelectRoot collection={resolvedCollection} {...props}>
+    <ArkMultiSelectRoot
+      collection={resolvedCollection}
+      openOnClick={openOnClick}
+      lazyMount={lazyMount}
+      unmountOnExit={unmountOnExit}
+      {...props}
+    >
       <ArkMultiSelectControl className={cn(multiSelectControlBase, className)}>
         <MultiSelectChips items={items} />
         <ArkMultiSelectInput

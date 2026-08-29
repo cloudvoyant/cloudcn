@@ -3,15 +3,7 @@
 // state toggling via mouse and Space key. Ark UI v5 renders the checkbox as a
 // <label> plus a native hidden <input type="checkbox">.
 import { test, expect, type Page } from '@playwright/test';
-
-const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
-
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
+import { selectFramework, FRAMEWORKS, type Framework } from './helpers';
 
 for (const framework of FRAMEWORKS) {
   test.describe(`Checkbox docs page · ${framework}`, () => {

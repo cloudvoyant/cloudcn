@@ -35,6 +35,9 @@
     collection,
     size = 'md',
     placeholder,
+    openOnClick = true,
+    lazyMount = true,
+    unmountOnExit = true,
     class: className = '',
     children,
     value = $bindable(),
@@ -46,7 +49,14 @@
   const inputClass = $derived(cn(multiSelectInputBase, multiSelectInputVariants({ size })));
 </script>
 
-<ComboboxRoot collection={resolvedCollection} bind:value {...rest}>
+<ComboboxRoot
+  collection={resolvedCollection}
+  {openOnClick}
+  {lazyMount}
+  {unmountOnExit}
+  bind:value
+  {...rest}
+>
   <ComboboxControl class={classes}>
     <MultiSelectChips {items} />
     <ComboboxInput class={inputClass} {placeholder} />

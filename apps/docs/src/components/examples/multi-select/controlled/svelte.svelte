@@ -15,6 +15,6 @@
       <MultiSelectItem {item} />
     {/each}
   </MultiSelect>
-  <output data-testid="value">{value[0]}</output>
+  <output data-testid="value">{value.join(', ')}</output>
   <button type="button" data-testid="reset" onclick={() => (value = ['react'])}>Reset</button>
 </div>

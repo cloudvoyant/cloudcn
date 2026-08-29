@@ -3,16 +3,9 @@
 // Svelte via the docs demo islands: native button role, mouse/keyboard
 // activation, and disabled-button inertness.
 import { test, expect, type Locator, type Page } from '@playwright/test';
+import { selectFramework, FRAMEWORKS, type Framework } from './helpers';
 
-const FRAMEWORKS = ['react', 'svelte'] as const;
-type Framework = (typeof FRAMEWORKS)[number];
 type ClickCounter = { __clicks: number };
-
-async function selectFramework(page: Page, framework: Framework) {
-  await page.locator(`[data-framework-selector] button[data-fw="${framework}"]`).click();
-  const demo = page.locator(`[data-demo] [data-fw="${framework}"]`).first();
-  await expect(demo).toBeVisible();
-}
 
 function introButton(page: Page, framework: Framework, text: string): Locator {
   return page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("${text}")`).first();

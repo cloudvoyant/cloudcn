@@ -23,7 +23,7 @@ export default function ReactMultiSelectControlled() {
           <MultiSelectItem key={item.value} item={item} />
         ))}
       </MultiSelect>
-      <output data-testid="value">{value[0]}</output>
+      <output data-testid="value">{value.join(', ')}</output>
       <button type="button" data-testid="reset" onClick={() => setValue(['react'])}>
         Reset
       </button>

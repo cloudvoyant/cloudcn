@@ -1,3 +1,10 @@
+# [0.14.0](https://github.com/cloudvoyant/helix/compare/v0.13.0...v0.14.0) (2026-08-29)
+
+
+### Features
+
+* **page:** add Page layout with sticky gutters and landing variant ([#17](https://github.com/cloudvoyant/helix/issues/17)) ([0451090](https://github.com/cloudvoyant/helix/commit/045109023af7e7232d7a6bfa1d1093721d7d9571))
+
 # [0.13.0](https://github.com/cloudvoyant/helix/compare/v0.12.0...v0.13.0) (2026-08-27)
 
 

@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/layout/portal/index.astro
+import Example from '../../../Example.astro';
+import ReactLayoutPortal from './react.tsx';
+import SvelteLayoutPortal from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Portal" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactLayoutPortal client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteLayoutPortal client:load />
+  </div>
+</Example>

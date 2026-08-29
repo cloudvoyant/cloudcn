@@ -1,0 +1,81 @@
+---
+title: Window
+description: A non-modal floating window that can be dragged and resized, for React and Svelte.
+order: 23
+group: overlays
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`Window` is a thin wrapper over [Ark UI `floating-panel`](https://ark-ui.com/docs/components/floating-panel) that displays content in a non-modal floating window. It is draggable and resizable, with a header (drag handle), a body, and stage controls (minimize/maximize/restore). The portal, positioner, and content are all swallowed by `Window` — its children are the window parts directly, no `WindowContent` wrapper. Content uses the existing `--popover` tokens. Open state is controlled from outside: pass `open`/`onOpenChange` (or use `defaultOpen`) and open it with any button.
+
+<Demo component="window" example="default" />
+
+## Examples
+
+<Examples component="window" exclude="default" />
+
+## API Reference
+
+### Window
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `open` / `onOpenChange` | `boolean` / `(details) => void` | — | Controlled open state. |
+| `defaultOpen` | `boolean` | `false` | Initial open state when uncontrolled. |
+| `size` / `onSizeChange` | `Size` / `(details) => void` | — | Controlled size. |
+| `position` / `onPositionChange` | `Point` / `(details) => void` | — | Controlled position. |
+| `defaultSize` / `defaultPosition` | `Size` / `Point` | — | Uncontrolled size/position. |
+| `draggable` / `resizable` | `boolean` | `true` | Enable dragging/resizing. |
+| `minSize` / `maxSize` | `Size` | — | Size constraints. |
+| `gridSize` | `number` | `1` | Snap grid for dragging. |
+| `getAnchorPosition` | `(details) => Point` | — | Initial position relative to the opening button on open. |
+| `lazyMount` / `unmountOnExit` | `boolean` | `false` | Mount/unmount content only around open/close. |
+| `className` / `class` | `string` | — | Class applied to the window content panel. |
+| `positionerClassName` / `positionerClass` | `string` | — | Class applied to the internal positioner. |
+
+Accepts all [Ark `FloatingPanelRootProps`](https://ark-ui.com/docs/components/floating-panel).
+
+### WindowProvider
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `UseFloatingPanelReturn` | — | The API object from `useWindow()`. |
+
+### WindowDragTrigger
+
+Accepts all [Ark `FloatingPanelDragTriggerProps`](https://ark-ui.com/docs/components/floating-panel) plus `className`/`class`. Wrap the header in this to make it the drag handle.
+
+### WindowHeader / WindowTitle / WindowControl / WindowBody
+
+Passthroughs over their [Ark counterparts](https://ark-ui.com/docs/components/floating-panel) plus `className`/`class`.
+
+### WindowStageTrigger
+
+Accepts all [Ark `FloatingPanelStageTriggerProps`](https://ark-ui.com/docs/components/floating-panel) plus `className`/`class`. Set `stage` to `minimized`/`maximized`/`default` to change the panel stage.
+
+### WindowDismiss
+
+Accepts all [Ark `FloatingPanelCloseTriggerProps`](https://ark-ui.com/docs/components/floating-panel) plus `className`/`class`. Ships with `aria-label="Close"`.
+
+### WindowResizeTrigger
+
+Accepts all [Ark `FloatingPanelResizeTriggerProps`](https://ark-ui.com/docs/components/floating-panel) plus `className`/`class`. The corner drag handle.
+
+### Hooks
+
+- `useWindow` — Ark machine factory; returns `UseFloatingPanelReturn` for `WindowProvider`.
+- `useWindowContext` — reads the current panel state (open, position, size, stage) from context.
+
+## Accessibility
+
+The panel content carries `role="dialog"` with an accessible name from `WindowTitle`. Keyboard: `Esc` closes (when `closeOnEscape` is set); focus moves to the content on open and back to the trigger on close; the header drag and corner resize handles are exposed as controls.
+
+## Theme extensions
+
+None. The panel reuses existing tokens (`--popover`, `--popover-foreground`, `--border`, `--accent`, `--muted`, `--ring`) — no `theme.css` changes.

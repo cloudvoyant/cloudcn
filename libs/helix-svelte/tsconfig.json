@@ -2,7 +2,11 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
-    "types": ["svelte"]
+    "types": ["svelte"],
+    "baseUrl": ".",
+    "paths": {
+      "@cloudvoyant/helix": ["../helix/src/index.ts"]
+    }
   },
   "include": ["src", "tests"]
 }

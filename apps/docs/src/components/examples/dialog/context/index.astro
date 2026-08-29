@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/dialog/context/index.astro
+import Example from '../../../Example.astro';
+import ReactDialogContext from './react.tsx';
+import SvelteDialogContext from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Context" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactDialogContext client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteDialogContext client:load />
+  </div>
+</Example>

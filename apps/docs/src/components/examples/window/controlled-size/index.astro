@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/window/controlled-size/index.astro
+import Example from '../../../Example.astro';
+import ReactWindowControlledSize from './react.tsx';
+import SvelteWindowControlledSize from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Controlled size" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactWindowControlledSize client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteWindowControlledSize client:load />
+  </div>
+</Example>

@@ -11,6 +11,53 @@ import ExampleToggleButtonDefault from './examples/toggle-button/default/index.a
 import ExampleToggleButtonOutline from './examples/toggle-button/outline/index.astro';
 import ExampleToggleButtonIcon from './examples/toggle-button/icon/index.astro';
 import ExampleToggleButtonIndicator from './examples/toggle-button/indicator/index.astro';
+import ExampleTooltipDefault from './examples/tooltip/default/index.astro';
+import ExampleTooltipControlled from './examples/tooltip/controlled/index.astro';
+import ExampleTooltipRootProvider from './examples/tooltip/root-provider/index.astro';
+import ExampleTooltipArrow from './examples/tooltip/arrow/index.astro';
+import ExampleTooltipDelay from './examples/tooltip/delay/index.astro';
+import ExampleTooltipPositioning from './examples/tooltip/positioning/index.astro';
+import ExampleTooltipContext from './examples/tooltip/context/index.astro';
+import ExampleTooltipWithinFixedContainers from './examples/tooltip/within-fixed-containers/index.astro';
+import ExampleTooltipMultipleTriggers from './examples/tooltip/multiple-triggers/index.astro';
+import ExampleTooltipFollowingCursor from './examples/tooltip/following-cursor/index.astro';
+import ExamplePopoverDefault from './examples/popover/default/index.astro';
+import ExamplePopoverControlled from './examples/popover/controlled/index.astro';
+import ExamplePopoverRootProvider from './examples/popover/root-provider/index.astro';
+import ExamplePopoverArrow from './examples/popover/arrow/index.astro';
+import ExamplePopoverPlacement from './examples/popover/placement/index.astro';
+import ExamplePopoverCloseBehavior from './examples/popover/close-behavior/index.astro';
+import ExamplePopoverModality from './examples/popover/modality/index.astro';
+import ExamplePopoverAnchor from './examples/popover/anchor/index.astro';
+import ExamplePopoverSameWidth from './examples/popover/same-width/index.astro';
+import ExamplePopoverNested from './examples/popover/nested/index.astro';
+import ExamplePopoverMultipleTriggers from './examples/popover/multiple-triggers/index.astro';
+import ExamplePopoverDialogIntegration from './examples/popover/dialog-integration/index.astro';
+import ExamplePopoverWithTooltip from './examples/popover/popover-with-tooltip/index.astro';
+import ExampleDialogDefault from './examples/dialog/default/index.astro';
+import ExampleDialogControlled from './examples/dialog/controlled/index.astro';
+import ExampleDialogRootProvider from './examples/dialog/root-provider/index.astro';
+import ExampleDialogAlertDialog from './examples/dialog/alert-dialog/index.astro';
+import ExampleDialogLazyMount from './examples/dialog/lazy-mount/index.astro';
+import ExampleDialogInitialFocus from './examples/dialog/initial-focus/index.astro';
+import ExampleDialogFinalFocus from './examples/dialog/final-focus/index.astro';
+import ExampleDialogNonModal from './examples/dialog/non-modal/index.astro';
+import ExampleDialogInsideScroll from './examples/dialog/inside-scroll/index.astro';
+import ExampleDialogOutsideScroll from './examples/dialog/outside-scroll/index.astro';
+import ExampleDialogFullscreen from './examples/dialog/fullscreen/index.astro';
+import ExampleDialogContext from './examples/dialog/context/index.astro';
+import ExampleDialogOpenFromMenu from './examples/dialog/open-from-menu/index.astro';
+import ExampleDialogNested from './examples/dialog/nested/index.astro';
+import ExampleDialogMultipleTriggers from './examples/dialog/multiple-triggers/index.astro';
+import ExampleDialogConfirmation from './examples/dialog/confirmation/index.astro';
+import ExampleDialogWithTooltip from './examples/dialog/dialog-with-tooltip/index.astro';
+import ExampleWindowDefault from './examples/window/default/index.astro';
+import ExampleWindowControlledSize from './examples/window/controlled-size/index.astro';
+import ExampleWindowControlledPosition from './examples/window/controlled-position/index.astro';
+import ExampleWindowAnchorPosition from './examples/window/anchor-position/index.astro';
+import ExampleWindowOpenState from './examples/window/open-state/index.astro';
+import ExampleWindowLazyMount from './examples/window/lazy-mount/index.astro';
+import ExampleWindowContext from './examples/window/context/index.astro';
 import ExampleBadgeDefault from './examples/badge/default/index.astro';
 import ExampleBadgeVariants from './examples/badge/variants/index.astro';
 import ExampleBadgeColors from './examples/badge/colors/index.astro';
@@ -29,6 +76,7 @@ import ExampleColDefault from './examples/col/default/index.astro';
 import ExampleColWithGap from './examples/col/with-gap/index.astro';
 import ExampleColSeparator from './examples/col/separator/index.astro';
 import ExampleColResponsiveDirection from './examples/col/responsive-direction/index.astro';
+import ExampleLayoutPortal from './examples/layout/portal/index.astro';
 import ExampleStackDefault from './examples/stack/default/index.astro';
 import ExampleStackHstack from './examples/stack/hstack/index.astro';
 import ExampleStackVstack from './examples/stack/vstack/index.astro';
@@ -91,6 +139,10 @@ import ExampleTagsInputDefault from './examples/tags-input/default/index.astro';
 type ComponentName =
   | 'button'
   | 'toggle-button'
+  | 'tooltip'
+  | 'popover'
+  | 'dialog'
+  | 'window'
   | 'badge'
   | 'layout'
   | 'stack'
@@ -122,6 +174,37 @@ type ExampleName =
   | 'with-icon'
   | 'disabled'
   | 'indicator'
+  | 'root-provider'
+  | 'arrow'
+  | 'delay'
+  | 'positioning'
+  | 'context'
+  | 'within-fixed-containers'
+  | 'multiple-triggers'
+  | 'placement'
+  | 'close-behavior'
+  | 'modality'
+  | 'anchor'
+  | 'same-width'
+  | 'nested'
+  | 'dialog-integration'
+  | 'popover-with-tooltip'
+  | 'dialog-with-tooltip'
+  | 'following-cursor'
+  | 'alert-dialog'
+  | 'lazy-mount'
+  | 'initial-focus'
+  | 'final-focus'
+  | 'non-modal'
+  | 'inside-scroll'
+  | 'outside-scroll'
+  | 'fullscreen'
+  | 'open-from-menu'
+  | 'confirmation'
+  | 'controlled-size'
+  | 'controlled-position'
+  | 'anchor-position'
+  | 'open-state'
   | 'variants'
   | 'colors'
   | 'default'
@@ -174,7 +257,8 @@ type ExampleName =
   | 'gutters'
   | 'gutter-scroll'
   | 'footer'
-  | 'landing';
+  | 'landing'
+  | 'portal';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -206,6 +290,61 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'icon', title: 'Icon', component: ExampleToggleButtonIcon },
     { id: 'indicator', title: 'Indicator', component: ExampleToggleButtonIndicator },
   ],
+  tooltip: [
+    { id: 'default', title: 'Default', component: ExampleTooltipDefault },
+    { id: 'controlled', title: 'Controlled', component: ExampleTooltipControlled },
+    { id: 'root-provider', title: 'Root provider', component: ExampleTooltipRootProvider },
+    { id: 'arrow', title: 'Arrow', component: ExampleTooltipArrow },
+    { id: 'delay', title: 'Delay', component: ExampleTooltipDelay },
+    { id: 'positioning', title: 'Positioning', component: ExampleTooltipPositioning },
+    { id: 'context', title: 'Context', component: ExampleTooltipContext },
+    { id: 'within-fixed-containers', title: 'Within fixed containers', component: ExampleTooltipWithinFixedContainers },
+    { id: 'multiple-triggers', title: 'Multiple triggers', component: ExampleTooltipMultipleTriggers },
+    { id: 'following-cursor', title: 'Following cursor', component: ExampleTooltipFollowingCursor },
+  ],
+  popover: [
+    { id: 'default', title: 'Default', component: ExamplePopoverDefault },
+    { id: 'controlled', title: 'Controlled', component: ExamplePopoverControlled },
+    { id: 'root-provider', title: 'Root provider', component: ExamplePopoverRootProvider },
+    { id: 'arrow', title: 'Arrow', component: ExamplePopoverArrow },
+    { id: 'placement', title: 'Placement', component: ExamplePopoverPlacement },
+    { id: 'close-behavior', title: 'Close behavior', component: ExamplePopoverCloseBehavior },
+    { id: 'modality', title: 'Modality', component: ExamplePopoverModality },
+    { id: 'anchor', title: 'Anchor', component: ExamplePopoverAnchor },
+    { id: 'same-width', title: 'Same width', component: ExamplePopoverSameWidth },
+    { id: 'nested', title: 'Nested', component: ExamplePopoverNested },
+    { id: 'multiple-triggers', title: 'Multiple triggers', component: ExamplePopoverMultipleTriggers },
+    { id: 'dialog-integration', title: 'Dialog integration', component: ExamplePopoverDialogIntegration },
+    { id: 'popover-with-tooltip', title: 'Popover with tooltip', component: ExamplePopoverWithTooltip },
+  ],
+  dialog: [
+    { id: 'default', title: 'Default', component: ExampleDialogDefault },
+    { id: 'controlled', title: 'Controlled', component: ExampleDialogControlled },
+    { id: 'root-provider', title: 'Root provider', component: ExampleDialogRootProvider },
+    { id: 'alert-dialog', title: 'Alert dialog', component: ExampleDialogAlertDialog },
+    { id: 'lazy-mount', title: 'Lazy mount', component: ExampleDialogLazyMount },
+    { id: 'initial-focus', title: 'Initial focus', component: ExampleDialogInitialFocus },
+    { id: 'final-focus', title: 'Final focus', component: ExampleDialogFinalFocus },
+    { id: 'non-modal', title: 'Non-modal', component: ExampleDialogNonModal },
+    { id: 'inside-scroll', title: 'Inside scroll', component: ExampleDialogInsideScroll },
+    { id: 'outside-scroll', title: 'Outside scroll', component: ExampleDialogOutsideScroll },
+    { id: 'fullscreen', title: 'Fullscreen', component: ExampleDialogFullscreen },
+    { id: 'context', title: 'Context', component: ExampleDialogContext },
+    { id: 'open-from-menu', title: 'Open from menu', component: ExampleDialogOpenFromMenu },
+    { id: 'nested', title: 'Nested', component: ExampleDialogNested },
+    { id: 'multiple-triggers', title: 'Multiple triggers', component: ExampleDialogMultipleTriggers },
+    { id: 'confirmation', title: 'Confirmation', component: ExampleDialogConfirmation },
+    { id: 'dialog-with-tooltip', title: 'Dialog with tooltip', component: ExampleDialogWithTooltip },
+  ],
+  'window': [
+    { id: 'default', title: 'Default', component: ExampleWindowDefault },
+    { id: 'controlled-size', title: 'Controlled size', component: ExampleWindowControlledSize },
+    { id: 'controlled-position', title: 'Controlled position', component: ExampleWindowControlledPosition },
+    { id: 'anchor-position', title: 'Anchor position', component: ExampleWindowAnchorPosition },
+    { id: 'open-state', title: 'Open state', component: ExampleWindowOpenState },
+    { id: 'lazy-mount', title: 'Lazy mount', component: ExampleWindowLazyMount },
+    { id: 'context', title: 'Context', component: ExampleWindowContext },
+  ],
   badge: [
     { id: 'default', title: 'Default', component: ExampleBadgeDefault },
     { id: 'variants', title: 'Variants', component: ExampleBadgeVariants },
@@ -224,6 +363,7 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'col-gap', title: 'Col with gap', component: ExampleColWithGap },
     { id: 'col-separator', title: 'Col separator', component: ExampleColSeparator },
     { id: 'col-responsive', title: 'Col responsive direction', component: ExampleColResponsiveDirection },
+    { id: 'portal', title: 'Portal', component: ExampleLayoutPortal },
   ],
   stack: [
     { id: 'default', title: 'Default', component: ExampleStackDefault },

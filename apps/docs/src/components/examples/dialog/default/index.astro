@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/dialog/default/index.astro
+import Example from '../../../Example.astro';
+import ReactDialogDefault from './react.tsx';
+import SvelteDialogDefault from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Default" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactDialogDefault client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteDialogDefault client:load />
+  </div>
+</Example>

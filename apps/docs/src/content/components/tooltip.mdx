@@ -1,0 +1,70 @@
+---
+title: Tooltip
+description: A label that appears on hover or focus, for React and Svelte.
+order: 20
+group: overlays
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`Tooltip` is a thin wrapper over [Ark UI `tooltip`](https://ark-ui.com/docs/components/tooltip) that shows supplementary text on hover or focus. It is styled with the helix theme (`bg-popover`/`text-popover-foreground` content, a neutral surface) and accessibility comes entirely from Ark's tooltip state machine — the content carries `role="tooltip"` and is associated with its trigger. The portal and positioner are internal details; the arrow is toggled with the `arrow` prop on `TooltipContent` and only rendered while the tooltip is open.
+
+<Demo component="tooltip" example="default" />
+
+## Examples
+
+<Examples component="tooltip" exclude="default" />
+
+## API Reference
+
+### Tooltip
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `open` / `onOpenChange` | `boolean` / `(details) => void` | — | Controlled open state. |
+| `defaultOpen` | `boolean` | `false` | Initial open state when uncontrolled. |
+| `openDelay` / `closeDelay` | `number` | `400` / `150` | Open/close delay in ms. |
+| `positioning` | `PositioningOptions` | — | Placement/offset (e.g. `{ placement: 'right' }`, `{ strategy: 'fixed' }`). |
+| `disabled` | `boolean` | `false` | Disables the tooltip. |
+| `interactive` | `boolean` | `false` | Keep open while hovering the content. |
+| `closeOnEscape` | `boolean` | `true` | Close on Escape. |
+
+Accepts all [Ark `TooltipRootProps`](https://ark-ui.com/docs/components/tooltip).
+
+### TooltipProvider
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `UseTooltipReturn` | — | The API object from `useTooltip()`. |
+
+### TooltipTrigger
+
+Accepts all [Ark `TooltipTriggerProps`](https://ark-ui.com/docs/components/tooltip) plus `className`/`class`.
+
+### TooltipContent
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `arrow` | `boolean` | `true` | Render the arrow pointing at the trigger. |
+
+Accepts all [Ark `TooltipContentProps`](https://ark-ui.com/docs/components/tooltip) plus `className`/`class`.
+
+### Hooks
+
+- `useTooltip` — Ark machine factory; returns `UseTooltipReturn` for `TooltipProvider`.
+- `useTooltipContext` — reads the current tooltip state from context.
+
+## Accessibility
+
+Follows the [Tooltip WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) via Ark. Keyboard support: `Tab` opens/closes the tooltip without delay; `Escape` closes it.
+
+## Theme extensions
+
+None. The tooltip reuses existing tokens (`--popover`, `--popover-foreground`, `--border`) — no `theme.css` changes.

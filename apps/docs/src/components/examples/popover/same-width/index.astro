@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/popover/same-width/index.astro
+import Example from '../../../Example.astro';
+import ReactPopoverSameWidth from './react.tsx';
+import SveltePopoverSameWidth from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Same width" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactPopoverSameWidth client:load />
+  </div>
+  <div data-fw="svelte">
+    <SveltePopoverSameWidth client:load />
+  </div>
+</Example>

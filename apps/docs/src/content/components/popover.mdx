@@ -1,0 +1,90 @@
+---
+title: Popover
+description: An overlay that displays additional information or options when triggered, for React and Svelte.
+order: 21
+group: overlays
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+`Popover` is a thin wrapper over [Ark UI `popover`](https://ark-ui.com/docs/components/popover) that displays additional content in a floating layer anchored to a trigger. Content is styled with the existing `--popover` tokens and the portal/positioner are internal details — `PopoverContent` handles them. The close control is `PopoverDismiss`, and the arrow is toggled with the `arrow` prop.
+
+<Demo component="popover" example="default" />
+
+## Examples
+
+<Examples component="popover" exclude="default" />
+
+## API Reference
+
+### Popover
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `open` / `onOpenChange` | `boolean` / `(details) => void` | — | Controlled open state. |
+| `defaultOpen` | `boolean` | `false` | Initial open state when uncontrolled. |
+| `modal` | `boolean` | `false` | Trap focus, block scroll, and hide outside content from screen readers. |
+| `closeOnEscape` | `boolean` | `true` | Close when Escape is pressed. |
+| `closeOnInteractOutside` | `boolean` | `true` | Close on click/focus outside. |
+| `positioning` | `PositioningOptions` | — | Placement/offset/sameWidth (see [Ark positioning](https://ark-ui.com/docs/components/popover)). |
+| `lazyMount` / `unmountOnExit` | `boolean` | `false` | Mount/unmount content only around open/close. |
+
+Accepts all [Ark `PopoverRootProps`](https://ark-ui.com/docs/components/popover).
+
+### PopoverProvider
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `UsePopoverReturn` | — | The API object from `usePopover()`. |
+
+### PopoverTrigger
+
+Accepts all [Ark `PopoverTriggerProps`](https://ark-ui.com/docs/components/popover) plus `className`/`class`. Supports the `value` prop for multiple triggers.
+
+### PopoverAnchor
+
+Accepts all [Ark `PopoverAnchorProps`](https://ark-ui.com/docs/components/popover) plus `className`/`class`. Positions the popover relative to this element instead of the trigger.
+
+### PopoverContent
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `arrow` | `boolean` | `false` | Render the arrow pointing at the trigger. |
+
+Accepts all [Ark `PopoverContentProps`](https://ark-ui.com/docs/components/popover) plus `className`/`class`.
+
+### PopoverTitle
+
+Accepts all [Ark `PopoverTitleProps`](https://ark-ui.com/docs/components/popover) plus `className`/`class`.
+
+### PopoverDescription
+
+Accepts all [Ark `PopoverDescriptionProps`](https://ark-ui.com/docs/components/popover) plus `className`/`class`.
+
+### PopoverDismiss
+
+Accepts all [Ark `PopoverCloseTriggerProps`](https://ark-ui.com/docs/components/popover) plus `className`/`class`. Ships with `aria-label="Close"`.
+
+### PopoverIndicator
+
+Accepts all [Ark `PopoverIndicatorProps`](https://ark-ui.com/docs/components/popover) plus `className`/`class`. Rotates 180° while open.
+
+### Hooks
+
+- `usePopover` — Ark machine factory; returns `UsePopoverReturn` for `PopoverProvider`.
+- `usePopoverContext` — reads the current popover state from context.
+
+## Accessibility
+
+The content carries `role="dialog"` with `aria-labelledby`/`aria-describedby` wired to `PopoverTitle`/`PopoverDescription` by Ark. Keyboard support: `Space`/`Enter` open and close; `Tab`/`Shift+Tab` move focus through the content; `Esc` closes and returns focus to the trigger.
+
+## Theme extensions
+
+None. The popover reuses existing tokens (`--popover`, `--popover-foreground`, `--border`, `--ring`, `--muted`) — no `theme.css` changes.

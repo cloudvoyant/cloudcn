@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/popover/close-behavior/index.astro
+import Example from '../../../Example.astro';
+import ReactPopoverCloseBehavior from './react.tsx';
+import SveltePopoverCloseBehavior from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Close behavior" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactPopoverCloseBehavior client:load />
+  </div>
+  <div data-fw="svelte">
+    <SveltePopoverCloseBehavior client:load />
+  </div>
+</Example>

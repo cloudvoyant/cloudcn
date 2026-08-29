@@ -12,7 +12,7 @@ export const comboboxTriggerBase =
 export const comboboxClearTriggerBase =
   'absolute inset-y-0 end-9 flex items-center justify-center text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0';
 
-export const comboboxPositionerBase = 'z-50';
+export const comboboxPositionerBase = 'z-50 [--z-index:50]!';
 
 export const comboboxContentBase =
   'relative z-50 max-h-96 min-w-48 overflow-y-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none';

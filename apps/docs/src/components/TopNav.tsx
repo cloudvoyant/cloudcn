@@ -41,8 +41,8 @@ export default function TopNav({ currentPath = import.meta.env.BASE_URL, groups 
   return (
     <NavbarProvider>
       <Navbar
-        variant="shrink"
-        className="fixed inset-x-0 top-0 bg-background/60 backdrop-blur-xl transition-[height,background-color,box-shadow] duration-300 data-[scrolled=true]:bg-background/75"
+        variant="sticky"
+        className="border-transparent bg-background/60 backdrop-blur-xl transition-[background-color,box-shadow,border-color] duration-300 data-[scrolled=true]:border-border data-[scrolled=true]:bg-background/75"
       >
         <NavbarBrand className="text-primary">
           <HelixLogo className="h-7 w-auto" />

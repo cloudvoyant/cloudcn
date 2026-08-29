@@ -40,7 +40,7 @@ function AppSidebar() {
           </SidebarMenuLink>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="scroll-fade scroll-fade-20 no-scrollbar">
         <SidebarGroup label="Applications">
           <SidebarMenu>
             {NAV.map((item) => (

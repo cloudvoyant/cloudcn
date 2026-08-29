@@ -25,6 +25,7 @@ export {
 } from './card';
 export { Stack, HStack, VStack, type StackProps, type HStackProps, type VStackProps } from './stack';
 export { Scroll, type ScrollProps } from './scroll';
+export { Page, PageGutter, PageContent, PageFooter, PageSection, type PageProps, type PageGutterProps } from './page';
 export {
   Splitter,
   SplitterPanel,

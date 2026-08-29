@@ -40,6 +40,12 @@ import ExampleScrollHorizontal from './examples/scroll/horizontal/index.astro';
 import ExampleScrollBoth from './examples/scroll/both/index.astro';
 import ExampleScrollScrollShadow from './examples/scroll/scroll-shadow/index.astro';
 import ExampleScrollThumbStyling from './examples/scroll/thumb-styling/index.astro';
+import ExampleScrollHidden from './examples/scroll/hidden/index.astro';
+import ExamplePageDefault from './examples/page/default/index.astro';
+import ExamplePageGutters from './examples/page/gutters/index.astro';
+import ExamplePageGutterScroll from './examples/page/gutter-scroll/index.astro';
+import ExamplePageFooter from './examples/page/footer/index.astro';
+import ExamplePageLanding from './examples/page/landing/index.astro';
 import ExampleSplitterDefault from './examples/splitter/default/index.astro';
 import ExampleSplitterVertical from './examples/splitter/vertical/index.astro';
 import ExampleSplitterMultiplePanels from './examples/splitter/multiple-panels/index.astro';
@@ -104,7 +110,8 @@ type ComponentName =
   | 'switch'
   | 'select'
   | 'combobox'
-  | 'tags-input';
+  | 'tags-input'
+  | 'page';
 
 type ExampleName =
   | 'solid'
@@ -162,7 +169,12 @@ type ExampleName =
   | 'hide'
   | 'textarea'
   | 'fieldset'
-  | 'multiple';
+  | 'multiple'
+  | 'hidden'
+  | 'gutters'
+  | 'gutter-scroll'
+  | 'footer'
+  | 'landing';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -227,6 +239,14 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'both', title: 'Both directions', component: ExampleScrollBoth },
     { id: 'scroll-shadow', title: 'Scroll shadow', component: ExampleScrollScrollShadow },
     { id: 'thumb-styling', title: 'Thumb styling', component: ExampleScrollThumbStyling },
+    { id: 'hidden', title: 'Hidden scrollbars', component: ExampleScrollHidden },
+  ],
+  page: [
+    { id: 'default', title: 'Default', component: ExamplePageDefault },
+    { id: 'gutters', title: 'Gutters', component: ExamplePageGutters },
+    { id: 'gutter-scroll', title: 'Scrolling gutters', component: ExamplePageGutterScroll },
+    { id: 'footer', title: 'Footer', component: ExamplePageFooter },
+    { id: 'landing', title: 'Landing variant', component: ExamplePageLanding },
   ],
   splitter: [
     { id: 'default', title: 'Default', component: ExampleSplitterDefault },

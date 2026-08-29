@@ -47,5 +47,17 @@ for (const framework of FRAMEWORKS) {
       const bg = await thumb.evaluate((el) => getComputedStyle(el).backgroundColor);
       expect(bg).not.toBe('rgba(0, 0, 0, 0)');
     });
+
+    test('hidden variant scrolls without rendering scrollbar parts', async ({ page }) => {
+      const section = page.getByRole('heading', { name: 'Hidden scrollbars' }).locator('..');
+      const fw = `[data-fw="${framework}"]`;
+      const viewport = section.locator(`${fw} [data-part="viewport"]`).first();
+      await expect(viewport).toBeVisible();
+      await expect(section.locator(`${fw} [data-part="scrollbar"]`)).toHaveCount(0);
+      await viewport.evaluate((el) => {
+        el.scrollTop = el.scrollHeight;
+      });
+      await expect.poll(() => viewport.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+    });
   });
 }

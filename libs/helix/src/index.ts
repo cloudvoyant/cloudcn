@@ -25,6 +25,18 @@ export {
   scrollCornerBase,
 } from './scroll';
 export {
+  pageVariants,
+  pageGutterAreaBase,
+  pageGutterVariants,
+  pageGutterContentVariants,
+  pageContentBase,
+  pageFooterBase,
+  pageSectionBase,
+  type PageVariants,
+  type PageGutterVariants,
+  type PageGutterContentVariants,
+} from './page';
+export {
   splitterRootBase,
   splitterPanelBase,
   splitterResizeTriggerBase,

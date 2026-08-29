@@ -1,6 +1,9 @@
 /* apps/docs/src/styles/global.css */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 @import 'tailwindcss';
+/* shadcn's Tailwind utilities (scroll-fade, no-scrollbar, etc.) — used for the
+   docs sidebar/TOC scroll fade. */
+@import 'shadcn/tailwind.css';
 /* Scan the workspace lib sources directly. In a pnpm workspace the
    `@source` lines in @cloudvoyant/helix/components.css resolve through the
    node_modules symlink, whose target is gitignored — so Tailwind skips it
@@ -22,6 +25,29 @@
 .font-brand {
   font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   letter-spacing: -0.02em;
+}
+
+/* Hero headline: the cycling word (HeroWord) rolls up out, then the next rolls
+   in from below — slot-machine style, stacked in one grid cell. */
+@keyframes hero-word-roll-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes hero-word-roll-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
 }
 
 /* Demo: show only the active framework's island.

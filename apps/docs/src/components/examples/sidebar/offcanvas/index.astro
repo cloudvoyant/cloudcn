@@ -1,17 +1,11 @@
 ---
 // apps/docs/src/components/examples/sidebar/offcanvas/index.astro
 import Example from '../../../Example.astro';
-import ReactSidebarOffcanvas from './react.tsx';
-import SvelteSidebarOffcanvas from './svelte.svelte';
+import PreviewFrame from '../../../PreviewFrame.astro';
 import reactCode from './react.tsx?raw';
 import svelteCode from './svelte.svelte?raw';
 ---
 
 <Example title="Completely disappears on collapse" reactCode={reactCode} svelteCode={svelteCode} fullscreen>
-  <div data-fw="react">
-    <ReactSidebarOffcanvas client:load />
-  </div>
-  <div data-fw="svelte">
-    <SvelteSidebarOffcanvas client:load />
-  </div>
+  <PreviewFrame component="sidebar" example="offcanvas" desktopWidth={1024} />
 </Example>

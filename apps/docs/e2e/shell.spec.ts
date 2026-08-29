@@ -1,15 +1,16 @@
 // apps/docs/e2e/shell.spec.ts
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
+import { expectIslandRendered } from './helpers';
 
 test.describe('Docs shell', () => {
   test('framework selector defaults to React and switches islands', async ({ page }) => {
     await page.goto('components/button');
     await page.locator('[data-framework-selector][data-ready]').waitFor();
-    await expect(page.locator('[data-demo] [data-fw="react"]').first()).toBeVisible();
+    await expectIslandRendered(page, 'react');
     await expect(page.locator('[data-demo] [data-fw="svelte"]').first()).toBeHidden();
 
     await page.locator('[data-framework-selector] button[data-fw="svelte"]').click();
-    await expect(page.locator('[data-demo] [data-fw="svelte"]').first()).toBeVisible();
+    await expectIslandRendered(page, 'svelte');
     await expect(page.locator('[data-demo] [data-fw="react"]').first()).toBeHidden();
   });
 
@@ -17,7 +18,7 @@ test.describe('Docs shell', () => {
     await page.goto('components/button');
     await page.locator('[data-framework-selector][data-ready]').waitFor();
     await page.locator('[data-framework-selector] button[data-fw="svelte"]').click();
-    await expect(page.locator('[data-demo] [data-fw="svelte"]').first()).toBeVisible();
+    await expectIslandRendered(page, 'svelte');
 
     await page.goto('general/introduction');
     await expect(page.locator('html')).toHaveAttribute('data-framework', 'svelte');

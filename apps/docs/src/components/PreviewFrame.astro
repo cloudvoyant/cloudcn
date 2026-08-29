@@ -1,0 +1,182 @@
+---
+// apps/docs/src/components/PreviewFrame.astro
+// Full-window iframe demo for layout components. Loads the component in its own
+// viewport (so 100svh / position: sticky behave as in production), styled flush
+// like the other examples — no fake browser chrome. A desktop/mobile width
+// toggle floats as icon buttons in the top-right corner, and the framework and
+// theme sync with the docs shell via postMessage. Only adopted for Page
+// (layout) for now — see the preview/[component]/[example] routes and the
+// deferred ticket for other components.
+interface Props {
+  component: string;
+  example: string;
+  title?: string;
+  /** Fixed width (px) for the desktop mode. Full-screen layouts (e.g. the
+   * Sidebar) need a wide viewport to reach their desktop breakpoint; page-level
+   * previews default to filling the card width. */
+  desktopWidth?: number;
+}
+
+const { component, example, title = 'helix preview', desktopWidth } = Astro.props;
+const uid = `pf-${Math.random().toString(36).slice(2)}`;
+const initialWidth = desktopWidth ? `${desktopWidth}px` : '100%';
+---
+
+<div
+  data-preview-frame
+  id={uid}
+  data-component={component}
+  data-preview-example={example}
+  data-desktop-width={desktopWidth ?? ''}
+  class="relative overflow-hidden rounded-t-lg bg-background"
+>
+  <div data-preview-viewport class="flex overflow-x-auto bg-muted/20">
+    <div
+      data-preview-window
+      data-preview-mode="desktop"
+      class="relative mx-auto shrink-0 overflow-hidden transition-[width] duration-200"
+      style={`width: ${initialWidth}; aspect-ratio: 16 / 9`}
+    >
+      <iframe data-preview title={title} class="block h-full w-full border-0"></iframe>
+    </div>
+  </div>
+  <div
+    data-preview-toolbar
+    class="absolute right-3 top-3 z-10 flex items-center gap-0.5 rounded-md border border-border bg-background/90 p-0.5 shadow-sm"
+    role="group"
+    aria-label="Preview width"
+  >
+    <button
+      type="button"
+      data-preview-width="desktop"
+      aria-pressed="true"
+      title="Desktop"
+      class="flex size-7 items-center justify-center rounded text-muted-foreground transition-colors hover:text-foreground"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      data-preview-width="mobile"
+      aria-pressed="false"
+      title="Mobile"
+      class="flex size-7 items-center justify-center rounded text-muted-foreground transition-colors hover:text-foreground"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <line x1="12" y1="18" x2="12.01" y2="18" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  /* Desktop mode: the iframe runs flush to the card edges (the card's own
+     border is the only one; the frame clips corners via overflow-hidden +
+     rounded-t-lg). Mobile mode: a phone-width screen with rounder corners and a
+     subtle border so it reads as a device on the muted canvas. */
+  [data-preview-window][data-preview-mode='mobile'] {
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.06);
+  }
+  [data-preview-width][aria-pressed='true'] {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
+</style>
+
+<script is:inline define:vars={{ uid, base: import.meta.env.BASE_URL }}>
+  // Mirrors FRAMEWORK_EVENT in lib/framework.ts. A define:vars script is inlined
+  // as a non-module script, so it can't use imports or import.meta — base comes
+  // in via define:vars and the event name is duplicated here on purpose.
+  const FRAMEWORK_EVENT = 'helix:framework';
+
+  const root = document.getElementById(uid);
+  if (root) {
+    const frame = root.querySelector('[data-preview]');
+    const component = root.dataset.component ?? 'page';
+    const example = root.dataset.previewExample ?? 'default';
+
+    const currentFw = () =>
+      document.documentElement.dataset.framework === 'svelte' ? 'svelte' : 'react';
+    const currentTheme = () => {
+      const cls = [...document.documentElement.classList];
+      const name = cls.find((c) => c.startsWith('theme-'))?.slice('theme-'.length) ?? 'helix';
+      return name;
+    };
+    const currentDark = () => document.documentElement.classList.contains('dark');
+
+    const buildSrc = () => `${base}preview/${component}/${example}/`;
+
+    const setSrc = () => {
+      if (!frame) return;
+      const src = buildSrc();
+      if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
+    };
+
+    const sendState = () => {
+      if (!frame || !frame.contentWindow) return;
+      frame.contentWindow.postMessage(
+        { framework: currentFw(), theme: currentTheme(), dark: currentDark() },
+        location.origin,
+      );
+    };
+
+    setSrc();
+    frame.addEventListener('load', sendState);
+    window.addEventListener(FRAMEWORK_EVENT, sendState);
+    new MutationObserver(sendState).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    const windowEl = root.querySelector('[data-preview-window]');
+    const buttons = root.querySelectorAll('[data-preview-width]');
+    const desktopWidth = Number(root.dataset.desktopWidth) || 0;
+    const applyWidth = (width) => {
+      if (!windowEl) return;
+      windowEl.dataset.previewMode = width;
+      if (width === 'mobile') {
+        windowEl.style.width = '375px';
+        windowEl.style.aspectRatio = '9 / 16';
+      } else {
+        windowEl.style.width = desktopWidth ? `${desktopWidth}px` : '100%';
+        windowEl.style.aspectRatio = '16 / 9';
+      }
+    };
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const width = button.dataset.previewWidth === 'mobile' ? 'mobile' : 'desktop';
+        applyWidth(width);
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+      });
+    });
+  }
+</script>

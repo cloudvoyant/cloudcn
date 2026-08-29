@@ -22,6 +22,8 @@
 
   type Props = ScrollAreaRootProps & {
     orientation?: 'vertical' | 'horizontal' | 'both';
+    /** `default` shows the styled scrollbars; `hidden` keeps scrolling without rendering any scrollbar. */
+    variant?: 'default' | 'hidden';
     contentClass?: string;
     thumbClass?: string;
     /** Overrides the viewport class. The default is `flex h-full w-full flex-col`;
@@ -32,6 +34,7 @@
   let {
     class: className = '',
     orientation = 'vertical',
+    variant = 'default',
     contentClass = '',
     thumbClass = '',
     viewportClass = '',
@@ -51,17 +54,19 @@
       {@render children?.()}
     </ScrollAreaContent>
   </ScrollAreaViewport>
-  {#if orientation === 'vertical' || orientation === 'both'}
-    <ScrollAreaScrollbar orientation="vertical" class={scrollScrollbarBase}>
-      <ScrollAreaThumb class={thumbClasses} />
-    </ScrollAreaScrollbar>
-  {/if}
-  {#if orientation === 'horizontal' || orientation === 'both'}
-    <ScrollAreaScrollbar orientation="horizontal" class={scrollScrollbarBase}>
-      <ScrollAreaThumb class={thumbClasses} />
-    </ScrollAreaScrollbar>
-  {/if}
-  {#if orientation === 'both'}
-    <ScrollAreaCorner class={scrollCornerBase} />
+  {#if variant !== 'hidden'}
+    {#if orientation === 'vertical' || orientation === 'both'}
+      <ScrollAreaScrollbar orientation="vertical" class={scrollScrollbarBase}>
+        <ScrollAreaThumb class={thumbClasses} />
+      </ScrollAreaScrollbar>
+    {/if}
+    {#if orientation === 'horizontal' || orientation === 'both'}
+      <ScrollAreaScrollbar orientation="horizontal" class={scrollScrollbarBase}>
+        <ScrollAreaThumb class={thumbClasses} />
+      </ScrollAreaScrollbar>
+    {/if}
+    {#if orientation === 'both'}
+      <ScrollAreaCorner class={scrollCornerBase} />
+    {/if}
   {/if}
 </ScrollAreaRoot>

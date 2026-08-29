@@ -1,3 +1,10 @@
+# [0.15.0](https://github.com/cloudvoyant/helix/compare/v0.14.0...v0.15.0) (2026-08-29)
+
+
+### Features
+
+* **overlays:** add tooltip, popover, dialog, and window components ([66cf823](https://github.com/cloudvoyant/helix/commit/66cf823bbaf0d4927a0f60d3e2f1939d89537fd4)), closes [#18](https://github.com/cloudvoyant/helix/issues/18)
+
 # [0.14.0](https://github.com/cloudvoyant/helix/compare/v0.13.0...v0.14.0) (2026-08-29)
 
 

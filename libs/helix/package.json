@@ -1,6 +1,6 @@
 {
   "name": "@cloudvoyant/helix",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "helix shared component interfaces, cva variants, and theme",
   "license": "MIT",
   "type": "module",

@@ -216,3 +216,11 @@ export {
   tagsInputClearTriggerBase,
   type TagsInputProps,
 } from './tags-input';
+export {
+  mermaidRootBase,
+  mermaidSourceBase,
+  mermaidSvgBase,
+  renderMermaidSource,
+  resolveMermaidThemeVariables,
+  type MermaidProps,
+} from './mermaid';

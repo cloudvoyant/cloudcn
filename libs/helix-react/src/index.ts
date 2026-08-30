@@ -237,3 +237,4 @@ export {
   type TagInputContextProps,
 } from './tags-input';
 export { useMediaQuery } from './use-media-query';
+export { Mermaid, type MermaidProps } from './mermaid';

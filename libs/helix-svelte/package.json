@@ -30,7 +30,13 @@
     "format:check": "prettier --check \"src/**/*.{ts,svelte}\""
   },
   "peerDependencies": {
-    "svelte": "catalog:"
+    "svelte": "catalog:",
+    "mermaid": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "mermaid": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@ark-ui/svelte": "catalog:",
@@ -39,6 +45,7 @@
   "devDependencies": {
     "@sveltejs/package": "catalog:",
     "@sveltejs/vite-plugin-svelte": "catalog:",
+    "mermaid": "catalog:",
     "prettier-plugin-svelte": "catalog:",
     "svelte": "catalog:",
     "svelte-check": "catalog:",

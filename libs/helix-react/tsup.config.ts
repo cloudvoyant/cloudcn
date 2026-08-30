@@ -5,5 +5,5 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   dts: true,
   clean: true,
-  external: ['react', 'react-dom', 'react/jsx-runtime', '@ark-ui/react', '@cloudvoyant/helix'],
+  external: ['react', 'react-dom', 'react/jsx-runtime', '@ark-ui/react', '@cloudvoyant/helix', 'mermaid'],
 });

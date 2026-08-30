@@ -1,0 +1,73 @@
+---
+title: Mermaid
+description: Client-rendered Mermaid diagrams for React and Svelte, with an SSR-safe source placeholder.
+order: 1
+group: rich-text
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+import { Code } from 'astro/components';
+
+The Mermaid component renders [Mermaid](https://mermaid.js.org/) diagrams in the browser. The server-rendered output is a placeholder carrying the diagram source; after mount, the `mermaid` library is dynamically imported and replaces the placeholder with the rendered SVG. If the diagram is invalid or `mermaid` fails to load, the source stays visible. Use the framework selector in the top-right to switch between implementations.
+
+<Demo component="mermaid" example="default" />
+
+## Client loading
+
+`mermaid` is an **optional peer dependency** of `@cloudvoyant/helix-react` and `@cloudvoyant/helix-svelte` — the placeholder renders without it, and the library chunk is fetched only when a Mermaid component mounts, so it never lands in the SSR bundle. Install it in any app that renders diagrams:
+
+```bash
+pnpm add mermaid
+```
+
+The first-paint output is the raw source in a monospace placeholder, so pages keep working with JavaScript disabled or when the chunk fails to load, and the source is never lost to an empty render.
+
+## Security and theming
+
+Diagrams render with mermaid's `securityLevel: 'strict'`: the generated SVG is sanitized (DOMPurify) and click bindings in the source are stripped, so untrusted diagram sources cannot execute scripts in the page. Failed renders use `suppressErrorRendering`, so an invalid diagram never injects mermaid's "Syntax error in text" graphic — the placeholder with the source stays visible instead.
+
+Diagram colors follow the app theme: mermaid's `themeVariables` are resolved at render time from the helix shadcn CSS custom properties (`--card`, `--foreground`, `--border`, `--muted-foreground`, `--background`, …) on `<html>`, so brand-theme overrides and the active light/dark mode apply to diagrams. If those tokens are not defined, mermaid's own theme defaults are used.
+
+## Examples
+
+<Examples component="mermaid" />
+
+## Using in MDX
+
+The component takes the diagram source as a plain `code` string, which is exactly what an MDX author writes. In an Astro MDX page, import the component and pass the source with a client directive — every live diagram on this page renders this way, via client loading, not through an MDX component map or rehype plugin:
+
+<Code
+  code={`import { Mermaid } from '@cloudvoyant/helix-react';
+
+<Mermaid
+  client:load
+  code={\`
+flowchart LR
+  A[Source] --> B[Diagram]
+\`} />`}
+  lang="mdx"
+  themes={{ light: 'github-light', dark: 'github-dark' }}
+  defaultColor={false}
+/>
+
+The same `code` prop works from Svelte and plain JSX; a dedicated `@cloudvoyant/helix-mdx` mapping for other MDX hosts is planned future work.
+
+## API Reference
+
+### Mermaid
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `code` | `string` | — | Mermaid diagram source. Required. |
+| `className` / `class` | `string` | `''` | Extra classes for the root container. |
+
+Any other standard `div` attributes — `id`, `style`, `aria-*`, data attributes — pass through to the root container.
+
+The root carries `data-mermaid-code` (JSON-encoded source) at all times and gains `data-mermaid-src` (raw source) once the SVG has rendered.
+
+## Accessibility
+
+The placeholder keeps the diagram source in the document as readable text until (or if) rendering succeeds, so content is never lost to an empty or failed render. The rendered SVG is a visual representation of that same source. Diagrams pick up the light/dark mode that is active at render time.

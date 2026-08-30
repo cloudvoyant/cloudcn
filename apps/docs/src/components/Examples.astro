@@ -159,6 +159,7 @@ const titles: Record<string, { id: string; title: string }[]> = {
   input: [{ id: 'textarea', title: 'Textarea' }],
   field: [{ id: 'fieldset', title: 'FieldSet' }],
   combobox: [{ id: 'multiple', title: 'Multiple' }],
+  mermaid: [{ id: 'fallback', title: 'Source fallback' }],
 };
 const entries = (titles[component ?? 'button'] ?? []).filter((e) => e.id !== exclude);
 ---

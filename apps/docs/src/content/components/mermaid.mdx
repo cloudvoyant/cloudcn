@@ -21,7 +21,7 @@ The Mermaid component renders [Mermaid](https://mermaid.js.org/) diagrams with t
 pnpm add mermaid
 ```
 
-While the diagram renders, a centered spinner with an "Rendering diagram" label is shown. The placeholder carries no border or rounded corners, and the root reserves the diagram's footprint (`min-h-40` plus the SVG's `aspect-ratio`), so the swap to the finished SVG keeps identical margins and height — no layout shift. The raw source stays available in a `<noscript>` block for no-JS users, and is shown directly if the render fails.
+While the diagram renders, a centered spinner with an "Rendering diagram" label is shown. The placeholder carries no border or rounded corners, and the root reserves a minimum footprint (`min-h-40`), so the swap to the finished SVG never collapses the layout. The diagram's exact height cannot be reserved on the client path — the SVG's `aspect-ratio` is only known once `mermaid` has finished rendering — so a diagram taller than that minimum still nudges the layout at swap time. For exact-height, layout-shift-free reservation use the prerendered path below, where the ratio is read from the SVG `viewBox` before first paint. The raw source stays available in a `<noscript>` block for no-JS users (the spinner is hidden without JS, since it can never resolve), and is shown directly if the render fails.
 
 ## Prerendered (SSR)
 

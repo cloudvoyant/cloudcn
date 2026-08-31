@@ -76,12 +76,17 @@
   {:else if status === 'error'}
     <pre class={mermaidSourceBase}>{code}</pre>
   {:else}
-    <div class={mermaidLoadingBase} role="status" aria-label="Rendering diagram">
+    <div class={mermaidLoadingBase} role="status" aria-label="Rendering diagram" data-mermaid-loading>
       <span
         aria-hidden="true"
         class="h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-muted-foreground/25 border-t-muted-foreground"></span>
       <span class="text-sm text-muted-foreground">Rendering diagram</span>
     </div>
-    <noscript><pre class={mermaidSourceBase}>{code}</pre></noscript>
+    <noscript>
+      <!-- Only active with JS disabled: hide the loading spinner, which can never resolve,
+           and show the raw source instead. -->
+      <style>[data-mermaid-loading]{display:none}</style>
+      <pre class={mermaidSourceBase}>{code}</pre>
+    </noscript>
   {/if}
 </Ark>

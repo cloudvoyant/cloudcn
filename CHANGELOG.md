@@ -1,3 +1,10 @@
+# [0.16.0](https://github.com/cloudvoyant/helix/compare/v0.15.0...v0.16.0) (2026-08-31)
+
+
+### Features
+
+* **helix:** add Mermaid rich-text component ([#19](https://github.com/cloudvoyant/helix/issues/19)) ([5211fd0](https://github.com/cloudvoyant/helix/commit/5211fd06c49be7e38aabedc206abe8eeb0532f5c))
+
 # [0.15.0](https://github.com/cloudvoyant/helix/compare/v0.14.0...v0.15.0) (2026-08-29)
 
 

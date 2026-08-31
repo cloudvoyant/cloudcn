@@ -52,6 +52,22 @@ export const sidebarStyles = {
   containerClass:
     'fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex',
 
+  // Mobile sheet (Ark drawer): positioner/backdrop cover the viewport and drop
+  // out of the tree when closed; content anchors by the physical direction the
+  // machine reports via data-swipe-direction — a full-height side sheet for
+  // start (left) and a rounded bottom sheet for down.
+  // RTL reliance: placement is logical (side="left" = inline-start) but Ark
+  // reports the physical direction, so the `left` selectors below match only an
+  // LTR start sheet. Under RTL the start sheet reports `right` and falls back to
+  // the positioner's inline-start flex default (physically right — correct today
+  // only while the positioner sets no justify override). RTL styling is covered
+  // as verified-Ark-guarantee scope in the plan; add explicit
+  // data-[swipe-direction=right] classes here if that fallback ever breaks.
+  mobileBackdropClass: 'fixed inset-0 bg-black/50 select-none data-[state=closed]:hidden',
+  mobilePositionerClass: 'fixed inset-0 z-50 flex data-[swipe-direction=down]:flex-col data-[state=closed]:hidden',
+  mobileContentClass:
+    'relative flex w-(--sidebar-width) flex-col bg-sidebar p-0 text-sidebar-foreground shadow-xl data-[swipe-direction=left]:mr-auto data-[swipe-direction=left]:h-full data-[swipe-direction=down]:mt-auto data-[swipe-direction=down]:w-full data-[swipe-direction=down]:max-h-[80dvh] data-[swipe-direction=down]:rounded-t-2xl',
+
   gapClass:
     'relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear group-data-[collapsible=offcanvas]:w-0',
 

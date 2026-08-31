@@ -53,10 +53,12 @@
 
   const aspectRatio = $derived(rendered !== null ? mermaidSvgAspectRatio(rendered) : undefined);
   const classes = $derived(cn(mermaidRootBase, className));
-  // Svelte style is a string; prepend aspect-ratio so the diagram's ratio wins over any
-  // caller style and the swap never shifts layout.
+  // Svelte style is a string; append aspect-ratio last so the diagram's ratio wins over
+  // any caller style and the swap never shifts layout (matches the React wrapper).
   const styles = $derived(
-    aspectRatio !== undefined ? `aspect-ratio: ${aspectRatio};${rest.style ?? ''}` : rest.style,
+    aspectRatio !== undefined
+      ? `${rest.style ? `${rest.style.trim().replace(/;?\s*$/, '')};` : ''}aspect-ratio: ${aspectRatio};`
+      : rest.style,
   );
 </script>
 

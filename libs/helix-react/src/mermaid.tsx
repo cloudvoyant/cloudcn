@@ -59,7 +59,9 @@ export function Mermaid({ code, svg, className, ...props }: MermaidProps) {
       data-mermaid-code={JSON.stringify(code)}
       data-mermaid-src={rendered !== null ? code : undefined}
       data-mermaid-state={status}
-      style={aspectRatio !== undefined ? { aspectRatio, ...props.style } : props.style}
+      // aspectRatio is applied last so the diagram's ratio wins over any caller style and
+      // the swap never shifts layout (matches the Svelte wrapper).
+      style={aspectRatio !== undefined ? { ...props.style, aspectRatio } : props.style}
       className={cn(mermaidRootBase, className)}
     >
       {rendered !== null ? (

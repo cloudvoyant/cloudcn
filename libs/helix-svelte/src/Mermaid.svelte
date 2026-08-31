@@ -3,48 +3,83 @@
      apps/book/src/components/article-body.tsx client renderer), mirrored from @cloudvoyant/helix-react -->
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
-  import { mermaidRootBase, mermaidSourceBase, mermaidSvgBase, renderMermaidSource, cn } from '@cloudvoyant/helix';
+  import {
+    mermaidRootBase,
+    mermaidSourceBase,
+    mermaidSvgBase,
+    mermaidLoadingBase,
+    renderMermaidSource,
+    mermaidSvgAspectRatio,
+    cn,
+  } from '@cloudvoyant/helix';
   import type { HTMLAttributes } from 'svelte/elements';
 
   type Props = {
     /** Mermaid diagram source. */
     code: string;
+    /** Pre-rendered SVG markup. When provided the component renders it immediately and never
+     *  imports `mermaid` client-side — the server-side rendering path. The SVG should carry a
+     *  `viewBox` so its aspect ratio can be reserved (no layout shift). */
+    svg?: string;
     /** Extra classes for the root container. */
     class?: string;
   } & HTMLAttributes<HTMLDivElement>;
 
-  let { code, class: className = '', ...rest }: Props = $props();
+  let { code, svg = undefined, class: className = '', ...rest }: Props = $props();
 
-  let svg = $state<string | null>(null);
+  type Status = 'loading' | 'done' | 'error';
+  let status = $state<Status>(svg !== undefined ? 'done' : 'loading');
+  let rendered = $state<string | null>(svg ?? null);
 
   $effect(() => {
+    if (svg !== undefined) return; // prerendered — nothing to load client-side
     let cancelled = false;
-    svg = null;
+    status = 'loading';
+    rendered = null;
     renderMermaidSource(code)
-      .then((rendered) => {
-        if (!cancelled) svg = rendered;
+      .then((markup) => {
+        if (!cancelled) {
+          rendered = markup;
+          status = 'done';
+        }
       })
       .catch(() => {
-        /* invalid diagram or failed mermaid load — leave the source visible */
+        if (!cancelled) status = 'error';
       });
     return () => {
       cancelled = true;
     };
   });
 
+  const aspectRatio = $derived(rendered !== null ? mermaidSvgAspectRatio(rendered) : undefined);
   const classes = $derived(cn(mermaidRootBase, className));
+  // Svelte style is a string; prepend aspect-ratio so the diagram's ratio wins over any
+  // caller style and the swap never shifts layout.
+  const styles = $derived(
+    aspectRatio !== undefined ? `aspect-ratio: ${aspectRatio};${rest.style ?? ''}` : rest.style,
+  );
 </script>
 
 <Ark
   as="div"
   {...rest}
   data-mermaid-code={JSON.stringify(code)}
-  data-mermaid-src={svg !== null ? code : undefined}
+  data-mermaid-src={rendered !== null ? code : undefined}
+  data-mermaid-state={status}
+  style={styles}
   class={classes}
 >
-  {#if svg !== null}
-    <div class={mermaidSvgBase}>{@html svg}</div>
-  {:else}
+  {#if rendered !== null}
+    <div class={mermaidSvgBase}>{@html rendered}</div>
+  {:else if status === 'error'}
     <pre class={mermaidSourceBase}>{code}</pre>
+  {:else}
+    <div class={mermaidLoadingBase} role="status" aria-label="Rendering diagram">
+      <span
+        aria-hidden="true"
+        class="h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-muted-foreground/25 border-t-muted-foreground"></span>
+      <span class="text-sm text-muted-foreground">Rendering diagram</span>
+    </div>
+    <noscript><pre class={mermaidSourceBase}>{code}</pre></noscript>
   {/if}
 </Ark>

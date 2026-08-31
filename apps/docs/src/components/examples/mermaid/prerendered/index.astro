@@ -1,0 +1,19 @@
+---
+// apps/docs/src/components/examples/mermaid/prerendered/index.astro
+// The prerendered (SSR) path needs no client directive: the SVG is already in the
+// server-rendered HTML and `mermaid` is never imported, so the island is static.
+import Example from '../../../Example.astro';
+import ReactMermaidPrerendered from './react.tsx';
+import SvelteMermaidPrerendered from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example title="Prerendered (SSR)" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactMermaidPrerendered />
+  </div>
+  <div data-fw="svelte">
+    <SvelteMermaidPrerendered />
+  </div>
+</Example>

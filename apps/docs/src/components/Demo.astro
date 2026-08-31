@@ -137,6 +137,7 @@ import ExampleComboboxMultiple from './examples/combobox/multiple/index.astro';
 import ExampleTagsInputDefault from './examples/tags-input/default/index.astro';
 import ExampleMermaidDefault from './examples/mermaid/default/index.astro';
 import ExampleMermaidFallback from './examples/mermaid/fallback/index.astro';
+import ExampleMermaidPrerendered from './examples/mermaid/prerendered/index.astro';
 
 type ComponentName =
   | 'button'
@@ -262,7 +263,8 @@ type ExampleName =
   | 'footer'
   | 'landing'
   | 'portal'
-  | 'fallback';
+  | 'fallback'
+  | 'prerendered';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -471,6 +473,7 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
   mermaid: [
     { id: 'default', title: 'Default', component: ExampleMermaidDefault },
     { id: 'fallback', title: 'Source fallback', component: ExampleMermaidFallback },
+    { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleMermaidPrerendered },
   ],
 };
 

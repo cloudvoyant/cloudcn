@@ -1,6 +1,6 @@
 ---
 title: Mermaid
-description: Client-rendered Mermaid diagrams for React and Svelte, with an SSR-safe source placeholder.
+description: Mermaid diagrams for React and Svelte, with client-side rendering and an optional server-side (prerendered) path.
 order: 1
 group: rich-text
 ---
@@ -9,23 +9,41 @@ import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 import { Code } from 'astro/components';
 
-The Mermaid component renders [Mermaid](https://mermaid.js.org/) diagrams in the browser. The server-rendered output is a placeholder carrying the diagram source; after mount, the `mermaid` library is dynamically imported and replaces the placeholder with the rendered SVG. If the diagram is invalid or `mermaid` fails to load, the source stays visible. Use the framework selector in the top-right to switch between implementations.
+The Mermaid component renders [Mermaid](https://mermaid.js.org/) diagrams with two paths. By default the diagram is rendered in the browser: a loading skeleton is shown first, then the `mermaid` library is dynamically imported and replaces it with the rendered SVG. You can also pass a **pre-rendered SVG** via the `svg` prop for the server-side/static path — the diagram paints immediately and `mermaid` is never loaded on the client. Use the framework selector in the top-right to switch between implementations.
 
 <Demo component="mermaid" example="default" />
 
 ## Client loading
 
-`mermaid` is an **optional peer dependency** of `@cloudvoyant/helix-react` and `@cloudvoyant/helix-svelte` — the placeholder renders without it, and the library chunk is fetched only when a Mermaid component mounts, so it never lands in the SSR bundle. Install it in any app that renders diagrams:
+`mermaid` is an **optional peer dependency** of `@cloudvoyant/helix-react` and `@cloudvoyant/helix-svelte` — the loading skeleton renders without it, and the library chunk is fetched only when a Mermaid component mounts, so it never lands in the SSR bundle. Install it in any app that renders diagrams:
 
 ```bash
 pnpm add mermaid
 ```
 
-The first-paint output is the raw source in a monospace placeholder, so pages keep working with JavaScript disabled or when the chunk fails to load, and the source is never lost to an empty render.
+While the diagram renders, a centered spinner with an "Rendering diagram" label is shown. The placeholder carries no border or rounded corners, and the root reserves the diagram's footprint (`min-h-40` plus the SVG's `aspect-ratio`), so the swap to the finished SVG keeps identical margins and height — no layout shift. The raw source stays available in a `<noscript>` block for no-JS users, and is shown directly if the render fails.
+
+## Prerendered (SSR)
+
+For content rendered at build time — MDX pages, static exports, or server components — pass a pre-rendered SVG string through the `svg` prop:
+
+<Code
+  code={`import { Mermaid } from '@cloudvoyant/helix-react';
+
+<Mermaid
+  code="flowchart LR\\n  A --> B"
+  svg="<svg viewBox=\\"0 0 480 180\\">…</svg>"
+/>`}
+  lang="tsx"
+  themes={{ light: 'github-light', dark: 'github-dark' }}
+  defaultColor={false}
+/>
+
+The `svg` string is rendered as-is via `dangerouslySetInnerHTML`/`{@html}`, so it must come from a trusted source (your own build pipeline or a sanitizing mermaid-rehype plugin). Provide an SVG that carries a `viewBox` — the component reads it and sets `aspect-ratio` on the root container, so the diagram paints at its final size with **zero layout shift**. With this path `mermaid` is never imported, so no optional peer is required at runtime.
 
 ## Security and theming
 
-Diagrams render with mermaid's `securityLevel: 'strict'`: the generated SVG is sanitized (DOMPurify) and click bindings in the source are stripped, so untrusted diagram sources cannot execute scripts in the page. Failed renders use `suppressErrorRendering`, so an invalid diagram never injects mermaid's "Syntax error in text" graphic — the placeholder with the source stays visible instead.
+Client-rendered diagrams use mermaid's `securityLevel: 'strict'`: the generated SVG is sanitized (DOMPurify) and click bindings in the source are stripped, so untrusted diagram sources cannot execute scripts in the page. Failed renders use `suppressErrorRendering`, so an invalid diagram never injects mermaid's "Syntax error in text" graphic — the source is shown instead. The `svg` prop bypasses mermaid entirely and trusts the caller's markup, so it should only ever carry output from your own build pipeline.
 
 Diagram colors follow the app theme: mermaid's `themeVariables` are resolved at render time from the helix shadcn CSS custom properties (`--card`, `--foreground`, `--border`, `--muted-foreground`, `--background`, …) on `<html>`, so brand-theme overrides and the active light/dark mode apply to diagrams. If those tokens are not defined, mermaid's own theme defaults are used.
 
@@ -62,12 +80,13 @@ The same `code` prop works from Svelte and plain JSX; a dedicated `@cloudvoyant/
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `code` | `string` | — | Mermaid diagram source. Required. |
+| `svg` | `string` | — | Pre-rendered SVG markup (server/static path). When provided, renders immediately and never imports `mermaid`; should carry a `viewBox` for aspect-ratio reservation. |
 | `className` / `class` | `string` | `''` | Extra classes for the root container. |
 
 Any other standard `div` attributes — `id`, `style`, `aria-*`, data attributes — pass through to the root container.
 
-The root carries `data-mermaid-code` (JSON-encoded source) at all times and gains `data-mermaid-src` (raw source) once the SVG has rendered.
+The root carries `data-mermaid-code` (JSON-encoded source) at all times and gains `data-mermaid-src` (raw source) once the SVG has rendered. `data-mermaid-state` reflects the current render state: `loading`, `done`, or `error` (`done` from first paint when the `svg` prop is used).
 
 ## Accessibility
 
-The placeholder keeps the diagram source in the document as readable text until (or if) rendering succeeds, so content is never lost to an empty or failed render. The rendered SVG is a visual representation of that same source. Diagrams pick up the light/dark mode that is active at render time.
+The client path shows a loading skeleton with `role="status"` and an "Rendering diagram" label while mermaid loads; on failure the raw source is shown as readable text, so content is never lost to a failed render. No-JS users see the source via a `<noscript>` block. The `svg` prop renders the markup as-is — pair it with appropriate alternative text for the diagram when it carries no accessible text of its own.

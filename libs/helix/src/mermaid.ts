@@ -2,21 +2,33 @@
 // Closely based on: diffbook Mermaid (packages/diffbook-ui/src/components/Mermaid.tsx placeholder +
 // apps/book/src/components/article-body.tsx client renderer)
 
-/** Root container: escapes prose margins, keeps wide diagrams scrollable. */
-export const mermaidRootBase = 'not-prose my-4 overflow-x-auto';
+/** Root container: escapes prose margins, keeps wide diagrams scrollable, and reserves the
+ *  diagram's minimum footprint (`min-h-40`) so the loading skeleton and the rendered SVG share
+ *  identical margins and vertical space. `aspect-ratio` is layered on top when known (the
+ *  prerendered path knows it upfront from the SVG `viewBox`). */
+export const mermaidRootBase = 'not-prose my-4 min-h-40 overflow-x-auto';
 
-/** Placeholder `<pre>` showing the raw diagram source until (or instead of) rendering. */
-export const mermaidSourceBase =
-  'w-full overflow-x-auto rounded-lg border border-border bg-muted p-4 font-mono text-sm whitespace-pre';
+/** Placeholder `<pre>` showing the raw diagram source until (or instead of) rendering.
+ *  No border or rounded corners — it must look identical to the rendered SVG. */
+export const mermaidSourceBase = 'w-full overflow-x-auto bg-muted p-4 font-mono text-sm whitespace-pre';
 
 /** Wrapper around the rendered SVG: centered, scaled down to the container width. */
 export const mermaidSvgBase = 'flex w-full justify-center [&>svg]:max-w-full';
+
+/** Loading state shown while the client-side mermaid render is in flight: a centered spinner +
+ *  label. Chrome-free so it matches the rendered SVG; the shared `min-h-40` footprint and the
+ *  root's `aspect-ratio` reserve identical space for both states. */
+export const mermaidLoadingBase = 'flex min-h-40 w-full items-center justify-center gap-3';
 
 /** Props shared by the React and Svelte Mermaid wrappers; framework wrappers intersect
  *  these with their host element's HTML attributes. */
 export interface MermaidProps {
   /** Mermaid diagram source. */
   code: string;
+  /** Pre-rendered SVG markup. When provided the component renders it immediately and never
+   *  imports `mermaid` client-side — the server-side rendering path. The SVG should carry a
+   *  `viewBox` so its aspect ratio can be reserved (no layout shift). */
+  svg?: string;
   /** Extra classes for the root container. */
   className?: string;
 }
@@ -68,6 +80,18 @@ export function resolveMermaidThemeVariables(): Record<string, string> {
 }
 
 let mermaidSeq = 0;
+
+/** Extracts the width/height ratio from an SVG `viewBox` (e.g. `0 0 800 450` → `800 / 450`).
+ *  Used to reserve the diagram's aspect ratio on the root container so the client-rendered
+ *  SVG swap never shifts the layout. Returns `undefined` when the SVG has no parseable viewBox. */
+export function mermaidSvgAspectRatio(svg: string): string | undefined {
+  const match = /viewBox="\s*[-\d.]+\s+[-\d.]+\s+([-\d.]+)\s+([-\d.]+)"/.exec(svg);
+  if (!match) return undefined;
+  const width = Number(match[1]);
+  const height = Number(match[2]);
+  if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return undefined;
+  return `${width} / ${height}`;
+}
 
 /**
  * Dynamically import mermaid and render `code` to an SVG string. The import stays

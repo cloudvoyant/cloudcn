@@ -68,7 +68,7 @@ for (const framework of FRAMEWORKS) {
       await expect(page.locator(`[data-demo] [data-fw="${framework}"] [data-mermaid-code] svg`).first()).toBeVisible({
         timeout: 15_000,
       });
-      const fallback = page.locator('[data-example]').nth(1).locator(`[data-fw="${framework}"] [data-mermaid-code]`);
+      const fallback = page.locator('[data-example-id="fallback"]').locator(`[data-fw="${framework}"] [data-mermaid-code]`);
       await expect(fallback).toHaveAttribute('data-mermaid-state', 'error');
       await expect(fallback.locator('pre')).toBeVisible();
       await expect(fallback.locator('pre')).toContainText('not a valid mermaid diagram');
@@ -89,7 +89,7 @@ for (const framework of FRAMEWORKS) {
       await page.goto('components/mermaid');
       await selectFramework(page, framework);
 
-      const prerendered = page.locator('[data-example]').nth(2).locator(`[data-fw="${framework}"] [data-mermaid-code]`);
+      const prerendered = page.locator('[data-example-id="prerendered"]').locator(`[data-fw="${framework}"] [data-mermaid-code]`);
       await expect(prerendered).toHaveAttribute('data-mermaid-state', 'done');
       await expect(prerendered.locator('svg')).toBeVisible();
       await expect(prerendered.locator('svg')).toContainText('Prerendered');
@@ -101,7 +101,7 @@ for (const framework of FRAMEWORKS) {
     test('reserves the diagram aspect-ratio so the swap does not shift layout', async ({ page }) => {
       await page.goto('components/mermaid');
       await selectFramework(page, framework);
-      const prerendered = page.locator('[data-example]').nth(2).locator(`[data-fw="${framework}"] [data-mermaid-code]`);
+      const prerendered = page.locator('[data-example-id="prerendered"]').locator(`[data-fw="${framework}"] [data-mermaid-code]`);
       // The prerendered SVG carries viewBox="0 0 480 180" → aspect-ratio: 480 / 180.
       await expect(prerendered).toHaveCSS('aspect-ratio', /480 \/ 180/);
     });
@@ -131,15 +131,17 @@ test.describe('Mermaid SSR placeholder', () => {
     const root = page.locator('[data-demo] [data-fw="react"] [data-mermaid-code]').first();
     await expect(root).toBeVisible();
     await expect(root).toHaveAttribute('data-mermaid-state', 'loading');
-    // With JS disabled the browser renders <noscript> content, so the source is readable.
+    // With JS disabled the browser renders <noscript> content, so the source is readable
+    // and the loading spinner is hidden (it can never resolve without JS).
     await expect(root.locator('noscript pre')).toBeVisible();
     await expect(root.locator('noscript pre')).toContainText('flowchart LR');
+    await expect(root.locator('[role="status"]')).toBeHidden();
     await expect(root.locator('svg')).toHaveCount(0);
   });
 
   test('prerendered SVG ships in the server-rendered HTML with no client JS', async ({ page }) => {
     await page.goto('components/mermaid');
-    const prerendered = page.locator('[data-example]').nth(2).locator('[data-fw="react"] [data-mermaid-code]');
+    const prerendered = page.locator('[data-example-id="prerendered"]').locator('[data-fw="react"] [data-mermaid-code]');
     await expect(prerendered.locator('svg')).toBeVisible();
     await expect(prerendered.locator('svg')).toContainText('Prerendered');
     await expect(prerendered).toHaveCSS('aspect-ratio', /480 \/ 180/);

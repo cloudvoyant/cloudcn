@@ -1,12 +1,15 @@
 // apps/docs/playwright.config.ts
 import { defineConfig } from '@playwright/test';
 
+const PORT = process.env.E2E_PORT ?? '4321';
+const SERVER_URL = `http://localhost:${PORT}/helix/`;
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
   retries: 2,
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:4321/helix/',
+    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? SERVER_URL,
   },
   webServer: {
     // `astro preview` daemonizes when stdout is not a TTY (Playwright pipes it),
@@ -14,11 +17,11 @@ export default defineConfig({
     // Stale daemons would otherwise be reused by Playwright (stale build).
     command:
       'pnpm run preview stop >/dev/null 2>&1 || true; ' +
-      'pnpm run build && pnpm run preview --port 4321 --background >/dev/null 2>&1 || true; ' +
-      'for i in $(seq 1 120); do curl -fsS -o /dev/null http://localhost:4321/helix/ && break; sleep 1; done; ' +
+      `pnpm run build && pnpm run preview --port ${PORT} --background >/dev/null 2>&1 || true; ` +
+      `for i in $(seq 1 120); do curl -fsS -o /dev/null ${SERVER_URL} && break; sleep 1; done; ` +
       "trap 'pnpm run preview stop >/dev/null 2>&1 || true' EXIT; " +
       'while true; do sleep 5; done',
-    url: 'http://localhost:4321/helix/',
+    url: SERVER_URL,
     reuseExistingServer: false,
     timeout: 120_000,
   },

@@ -51,5 +51,6 @@ export default defineConfig({
     '/docs/components/tabs': '/components/tabs',
     '/docs/components/pagination': '/components/pagination',
     '/docs/components/navbar': '/components/navbar',
+    '/docs/components/mermaid': '/components/mermaid',
   },
 });

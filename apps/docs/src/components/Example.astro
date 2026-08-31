@@ -17,7 +17,7 @@ const slug = id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-
 const codeId = `example-${slug}-code`;
 ---
 
-<div class="w-full" data-example>
+<div class="w-full" data-example data-example-id={id || undefined}>
   <div class="flex flex-col rounded-lg border border-border bg-background">
     <div data-example-preview class="rounded-t-lg bg-background" data-demo>
       <ExampleScreen fullscreen={fullscreen}>

@@ -41,8 +41,17 @@
     "clsx": "catalog:",
     "tailwind-merge": "catalog:"
   },
+  "peerDependencies": {
+    "mermaid": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "mermaid": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@types/node": "catalog:",
+    "mermaid": "catalog:",
     "vitest": "catalog:"
   }
 }

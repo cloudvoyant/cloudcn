@@ -30,7 +30,13 @@
   },
   "peerDependencies": {
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "mermaid": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "mermaid": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@ark-ui/react": "catalog:",
@@ -40,6 +46,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "mermaid": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
   }

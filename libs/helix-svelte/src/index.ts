@@ -40,3 +40,4 @@ export * from './switch';
 export * from './select';
 export * from './combobox';
 export * from './tags-input';
+export { default as Mermaid } from './Mermaid.svelte';

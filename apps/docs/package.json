@@ -39,6 +39,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "mermaid": "catalog:",
     "shadcn": "^4.19.0",
     "typescript": "catalog:"
   }

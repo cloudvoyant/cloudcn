@@ -162,6 +162,7 @@ const titles: Record<string, { id: string; title: string }[]> = {
   mermaid: [
     { id: 'fallback', title: 'Source fallback' },
     { id: 'prerendered', title: 'Prerendered (SSR)' },
+    { id: 'colors', title: 'Colors' },
   ],
 };
 const entries = (titles[component ?? 'button'] ?? []).filter((e) => e.id !== exclude);

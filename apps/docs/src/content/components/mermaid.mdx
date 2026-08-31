@@ -13,7 +13,13 @@ The Mermaid component renders [Mermaid](https://mermaid.js.org/) diagrams with t
 
 <Demo component="mermaid" example="default" />
 
-## Client loading
+## Examples
+
+<Examples component="mermaid" />
+
+## Guide
+
+### Client loading
 
 `mermaid` is an **optional peer dependency** of `@cloudvoyant/helix-react` and `@cloudvoyant/helix-svelte` — the loading skeleton renders without it, and the library chunk is fetched only when a Mermaid component mounts, so it never lands in the SSR bundle. Install it in any app that renders diagrams:
 
@@ -23,7 +29,7 @@ pnpm add mermaid
 
 While the diagram renders, a centered spinner with an "Rendering diagram" label is shown. The placeholder carries no border or rounded corners, and the root reserves a minimum footprint (`min-h-40`), so the swap to the finished SVG never collapses the layout. The diagram's exact height cannot be reserved on the client path — the SVG's `aspect-ratio` is only known once `mermaid` has finished rendering — so a diagram taller than that minimum still nudges the layout at swap time. For exact-height, layout-shift-free reservation use the prerendered path below, where the ratio is read from the SVG `viewBox` before first paint. The raw source stays available in a `<noscript>` block for no-JS users (the spinner is hidden without JS, since it can never resolve), and is shown directly if the render fails.
 
-## Prerendered (SSR)
+### Prerendered (SSR)
 
 For content rendered at build time — MDX pages, static exports, or server components — pass a pre-rendered SVG string through the `svg` prop:
 
@@ -41,19 +47,18 @@ For content rendered at build time — MDX pages, static exports, or server comp
 
 The `svg` string is rendered as-is via `dangerouslySetInnerHTML`/`{@html}`, so it must come from a trusted source (your own build pipeline or a sanitizing mermaid-rehype plugin). Provide an SVG that carries a `viewBox` — the component reads it and sets `aspect-ratio` on the root container, so the diagram paints at its final size with **zero layout shift**. With this path `mermaid` is never imported, so no optional peer is required at runtime.
 
-## Security and theming
+### Using in MDX
 
-Client-rendered diagrams use mermaid's `securityLevel: 'strict'`: the generated SVG is sanitized (DOMPurify) and click bindings in the source are stripped, so untrusted diagram sources cannot execute scripts in the page. Failed renders use `suppressErrorRendering`, so an invalid diagram never injects mermaid's "Syntax error in text" graphic — the source is shown instead. The `svg` prop bypasses mermaid entirely and trusts the caller's markup, so it should only ever carry output from your own build pipeline.
+The MDX-native way to author a diagram is a **fenced code block** with the `mermaid` language — the fence's `code.language-mermaid` is exactly the `code` source the component renders:
 
-Diagram colors follow the app theme: mermaid's `themeVariables` are resolved at render time from the helix shadcn CSS custom properties (`--card`, `--foreground`, `--border`, `--muted-foreground`, `--background`, …) on `<html>`, so brand-theme overrides and the active light/dark mode apply to diagrams. If those tokens are not defined, mermaid's own theme defaults are used.
+````mdx
+```mermaid
+flowchart LR
+  A[Source] --> B[Diagram]
+```
+````
 
-## Examples
-
-<Examples component="mermaid" />
-
-## Using in MDX
-
-The component takes the diagram source as a plain `code` string, which is exactly what an MDX author writes. In an Astro MDX page, import the component and pass the source with a client directive — every live diagram on this page renders this way, via client loading, not through an MDX component map or rehype plugin:
+A component map (`helix-mdx`) routes `code.language-mermaid` to the `Mermaid` component so the fence renders as a diagram; the same source is usable via the JSX `code` prop directly when you prefer an explicit component:
 
 <Code
   code={`import { Mermaid } from '@cloudvoyant/helix-react';
@@ -64,12 +69,34 @@ The component takes the diagram source as a plain `code` string, which is exactl
 flowchart LR
   A[Source] --> B[Diagram]
 \`} />`}
-  lang="mdx"
+  lang="tsx"
   themes={{ light: 'github-light', dark: 'github-dark' }}
   defaultColor={false}
 />
 
-The same `code` prop works from Svelte and plain JSX; a dedicated `@cloudvoyant/helix-mdx` mapping for other MDX hosts is planned future work.
+The `code` prop works identically from Svelte and plain JSX; the `helix-mdx` fence mapping for other MDX hosts is planned future work.
+
+### Security
+
+Client-rendered diagrams use mermaid's `securityLevel: 'strict'`: the generated SVG is sanitized (DOMPurify) and click bindings in the source are stripped, so untrusted diagram sources cannot execute scripts in the page. Failed renders use `suppressErrorRendering`, so an invalid diagram never injects mermaid's "Syntax error in text" graphic — the source is shown instead. The `svg` prop bypasses mermaid entirely and trusts the caller's markup, so it should only ever carry output from your own build pipeline.
+
+### Theming
+
+Diagram colors follow the app theme: mermaid's `themeVariables` are resolved at render time from the helix shadcn CSS custom properties (`--card`, `--foreground`, `--border`, `--muted-foreground`, `--background`, …) on `<html>`, so brand-theme overrides and the active light/dark mode apply to diagrams. If those tokens are not defined, mermaid's own theme defaults are used.
+
+You can also override colors per node in the diagram source with mermaid's `style` statement or a reusable `classDef`:
+
+<Code
+  code={`flowchart LR
+  A[Green] --> B[Amber]
+  style A fill:#d1fae5,stroke:#065f46,stroke-width:2px
+  style B fill:#fef3c7,stroke:#92400e,stroke-width:2px`}
+  lang="mermaid"
+  themes={{ light: 'github-light', dark: 'github-dark' }}
+  defaultColor={false}
+/>
+
+Per-node colors are part of the diagram source and win over the theme-level `themeVariables`, so they apply the same way on both rendering paths (client and prerendered).
 
 ## API Reference
 

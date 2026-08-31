@@ -2,22 +2,23 @@
 // Closely based on: diffbook Mermaid (packages/diffbook-ui/src/components/Mermaid.tsx placeholder +
 // apps/book/src/components/article-body.tsx client renderer)
 
-/** Root container: escapes prose margins, keeps wide diagrams scrollable, and reserves the
- *  diagram's minimum footprint (`min-h-40`) so the loading skeleton and the rendered SVG share
- *  identical margins and vertical space. `aspect-ratio` is layered on top when known (the
- *  prerendered path knows it upfront from the SVG `viewBox`). */
-export const mermaidRootBase = 'not-prose my-4 min-h-40 overflow-x-auto';
+/** Root container: escapes prose margins, keeps wide diagrams scrollable. Height is driven by
+ *  the diagram's own content (the SVG's natural size, or the prerendered `viewBox` `aspect-ratio`
+ *  layered via inline style) — never a fixed minimum, so a short diagram is not left sitting in a
+ *  taller empty container. */
+export const mermaidRootBase = 'not-prose my-4 overflow-x-auto';
 
 /** Placeholder `<pre>` showing the raw diagram source until (or instead of) rendering.
  *  No border or rounded corners — it must look identical to the rendered SVG. */
 export const mermaidSourceBase = 'w-full overflow-x-auto bg-muted p-4 font-mono text-sm whitespace-pre';
 
-/** Wrapper around the rendered SVG: centered, scaled down to the container width. */
-export const mermaidSvgBase = 'flex w-full justify-center [&>svg]:max-w-full';
+/** Wrapper around the rendered SVG: centered both axes, scaled down to the container width. */
+export const mermaidSvgBase = 'flex w-full items-center justify-center [&>svg]:max-w-full';
 
 /** Loading state shown while the client-side mermaid render is in flight: a centered spinner +
- *  label. Chrome-free so it matches the rendered SVG; the shared `min-h-40` footprint and the
- *  root's `aspect-ratio` reserve identical space for both states. */
+ *  label. Chrome-free so it matches the rendered SVG. Reserves a minimum footprint (`min-h-40`)
+ *  so the swap doesn't collapse the layout for short diagrams; the rendered SVG takes its natural
+ *  height (root has no fixed minimum). */
 export const mermaidLoadingBase = 'flex min-h-40 w-full items-center justify-center gap-3';
 
 /** Props shared by the React and Svelte Mermaid wrappers; framework wrappers intersect

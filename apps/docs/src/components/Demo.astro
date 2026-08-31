@@ -138,6 +138,7 @@ import ExampleTagsInputDefault from './examples/tags-input/default/index.astro';
 import ExampleMermaidDefault from './examples/mermaid/default/index.astro';
 import ExampleMermaidFallback from './examples/mermaid/fallback/index.astro';
 import ExampleMermaidPrerendered from './examples/mermaid/prerendered/index.astro';
+import ExampleMermaidColors from './examples/mermaid/colors/index.astro';
 
 type ComponentName =
   | 'button'
@@ -264,7 +265,8 @@ type ExampleName =
   | 'landing'
   | 'portal'
   | 'fallback'
-  | 'prerendered';
+  | 'prerendered'
+  | 'colors';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -474,6 +476,7 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'default', title: 'Default', component: ExampleMermaidDefault },
     { id: 'fallback', title: 'Source fallback', component: ExampleMermaidFallback },
     { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleMermaidPrerendered },
+    { id: 'colors', title: 'Colors', component: ExampleMermaidColors },
   ],
 };
 

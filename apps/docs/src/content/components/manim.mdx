@@ -1,0 +1,25 @@
+---
+title: Manim
+description: manim-web animations with an inlined scene builder for React and Svelte.
+order: 9
+group: rich-text
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+Manim plays a manim-web animation. The scene is defined by a `build` prop — a function that receives the `manim-web` module (imported internally by the component) and the recording proxy (`play`/`wait`) — so the manim code lives with the component and you never import `manim-web` yourself. It is client-only (the `manim-web` chunk is lazy-imported on mount). Install the optional peer with `pnpm add manim-web`.
+
+<Demo component="manim" example="default" />
+
+## Examples
+
+<Examples component="manim" />
+
+## API Reference
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `build` | `(manim, scene) => Promise<void> \| void` | — | Scene builder; `manim` is the internally-imported module, `scene` the recording proxy. Required. |
+| `width` / `height` | `number` | `800` / `450` | Aspect-ratio components. |
+| `caption` | `string` | — | Optional caption. |

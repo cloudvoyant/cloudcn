@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/questions/multiple/index.astro
+import Example from '../../../Example.astro';
+import ReactQuestionMultiple from './react.tsx';
+import SvelteQuestionMultiple from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="multiple" title="Multiple choice" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactQuestionMultiple client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteQuestionMultiple client:load />
+  </div>
+</Example>

@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/chart/bar/index.astro
+import Example from '../../../Example.astro';
+import ReactChartBar from './react.tsx';
+import SvelteChartBar from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="bar" title="Bar" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactChartBar client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteChartBar client:load />
+  </div>
+</Example>

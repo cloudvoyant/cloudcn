@@ -1,0 +1,41 @@
+---
+title: YouTube
+description: A lazy YouTube video facade with poster, title, description, and composed timestamps for React and Svelte.
+order: 7
+group: rich-text
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+YouTube renders a dependency-free facade: a poster thumbnail with a play overlay that swaps in a privacy-enhanced `youtube-nocookie` iframe on click. The SSR output is the poster (no-JS friendly). Timestamps seek the player via the composed `YoutubeTimestamps` + `YoutubeTimestampAt` parts.
+
+<Demo component="youtube" example="default" />
+
+## Timestamps
+
+`YoutubeTimestamps` auto-infers chapters from the video's web metadata (fetched via an oEmbed proxy) when given no children, and accepts manual `YoutubeTimestampAt` overrides:
+
+```tsx
+<YouTube url="https://www.youtube.com/watch?v=...">
+  <YoutubeTimestamps>
+    <YoutubeTimestampAt t={0}>Intro</YoutubeTimestampAt>
+    <YoutubeTimestampAt t={43}>Chorus</YoutubeTimestampAt>
+  </YoutubeTimestamps>
+</YouTube>
+```
+
+## Examples
+
+<Examples component="youtube" />
+
+## API Reference
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `url` | `string` | Video URL (`youtube.com/watch?v=…` / `youtu.be/…`). Required. |
+| `title` | `string` | Optional heading. |
+| `description` | `string` | Optional description. |
+| `poster` | `string` | Optional poster URL (defaults to the hqdefault thumbnail). |
+
+`YoutubeTimestamps` — composes inside `YouTube`; `chapters` prop overrides, otherwise auto-inferred from metadata. `YoutubeTimestampAt` — child entry with `t` (seconds) and description as children.

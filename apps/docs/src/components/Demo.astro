@@ -139,6 +139,32 @@ import ExampleMermaidDefault from './examples/mermaid/default/index.astro';
 import ExampleMermaidFallback from './examples/mermaid/fallback/index.astro';
 import ExampleMermaidPrerendered from './examples/mermaid/prerendered/index.astro';
 import ExampleMermaidColors from './examples/mermaid/colors/index.astro';
+import ExampleNoticeVariants from './examples/notice/variants/index.astro';
+import ExampleNoticeDefault from './examples/notice/default/index.astro';
+import ExampleNoticeOmitTitle from './examples/notice/omit-title/index.astro';
+import ExampleFigureDefault from './examples/figure/default/index.astro';
+import ExampleRevealDefault from './examples/reveal/default/index.astro';
+import ExampleLaTeXBlock from './examples/latex/block/index.astro';
+import ExampleLaTeXInline from './examples/latex/inline/index.astro';
+import ExampleLaTeXPrerendered from './examples/latex/prerendered/index.astro';
+import ExampleCodeBlockDefault from './examples/code-block/default/index.astro';
+import ExampleCodeBlockFeatures from './examples/code-block/features/index.astro';
+import ExampleCodeBlockMultiFile from './examples/code-block/multi-file/index.astro';
+import ExampleCodeBlockLanguageTabs from './examples/code-block/language-tabs/index.astro';
+import ExampleCodeBlockPrerendered from './examples/code-block/prerendered/index.astro';
+import ExampleCodeBlockDiff from './examples/code-block/diff/index.astro';
+import ExampleManimDefault from './examples/manim/default/index.astro';
+import ExampleYouTubeDefault from './examples/youtube/default/index.astro';
+import ExampleYouTubeTimestamps from './examples/youtube/timestamps/index.astro';
+import ExampleChartLine from './examples/chart/line/index.astro';
+import ExampleChartPie from './examples/chart/pie/index.astro';
+import ExampleChartBar from './examples/chart/bar/index.astro';
+import ExampleChartPrerendered from './examples/chart/prerendered/index.astro';
+import ExampleQuestionSingle from './examples/questions/single/index.astro';
+import ExampleQuestionMultiple from './examples/questions/multiple/index.astro';
+import ExampleQuestionNumeric from './examples/questions/numeric/index.astro';
+import ExampleQuizDefault from './examples/quiz/default/index.astro';
+import ExamplePrevNextDefault from './examples/prev-next/default/index.astro';
 
 type ComponentName =
   | 'button'
@@ -168,7 +194,18 @@ type ComponentName =
   | 'combobox'
   | 'tags-input'
   | 'page'
-  | 'mermaid';
+  | 'mermaid'
+  | 'notice'
+  | 'figure'
+  | 'reveal'
+  | 'latex'
+  | 'code-block'
+  | 'manim'
+  | 'youtube'
+  | 'chart'
+  | 'questions'
+  | 'quiz'
+  | 'prev-next';
 
 type ExampleName =
   | 'solid'
@@ -266,7 +303,21 @@ type ExampleName =
   | 'portal'
   | 'fallback'
   | 'prerendered'
-  | 'colors';
+  | 'diff'
+  | 'colors'
+  | 'bar'
+  | 'variants'
+  | 'block'
+  | 'inline'
+  | 'features'
+  | 'multi-file'
+  | 'language-tabs'
+  | 'line'
+  | 'pie'
+  | 'single'
+  | 'numeric'
+  | 'timestamps'
+  | 'omit-title';
 
 interface ExampleEntry {
   id: ExampleName;
@@ -477,6 +528,54 @@ const registry: Record<ComponentName, ExampleEntry[]> = {
     { id: 'fallback', title: 'Source fallback', component: ExampleMermaidFallback },
     { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleMermaidPrerendered },
     { id: 'colors', title: 'Colors', component: ExampleMermaidColors },
+  ],
+  notice: [
+    { id: 'default', title: 'Default', component: ExampleNoticeDefault },
+    { id: 'variants', title: 'Variants', component: ExampleNoticeVariants },
+    { id: 'omit-title', title: 'Omit title', component: ExampleNoticeOmitTitle },
+  ],
+  figure: [
+    { id: 'default', title: 'Default', component: ExampleFigureDefault },
+  ],
+  reveal: [
+    { id: 'default', title: 'Default', component: ExampleRevealDefault },
+  ],
+  latex: [
+    { id: 'block', title: 'Block', component: ExampleLaTeXBlock },
+    { id: 'inline', title: 'Inline (toLaTeX)', component: ExampleLaTeXInline },
+    { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleLaTeXPrerendered },
+  ],
+  'code-block': [
+    { id: 'default', title: 'Default', component: ExampleCodeBlockDefault },
+    { id: 'features', title: 'Line numbers & highlights', component: ExampleCodeBlockFeatures },
+    { id: 'multi-file', title: 'Multi-file', component: ExampleCodeBlockMultiFile },
+    { id: 'language-tabs', title: 'Language tabs', component: ExampleCodeBlockLanguageTabs },
+    { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleCodeBlockPrerendered },
+    { id: 'diff', title: 'Diff', component: ExampleCodeBlockDiff },
+  ],
+  manim: [
+    { id: 'default', title: 'Default', component: ExampleManimDefault },
+  ],
+  youtube: [
+    { id: 'default', title: 'Default', component: ExampleYouTubeDefault },
+    { id: 'timestamps', title: 'Timestamps', component: ExampleYouTubeTimestamps },
+  ],
+  chart: [
+    { id: 'pie', title: 'Pie', component: ExampleChartPie },
+    { id: 'bar', title: 'Bar', component: ExampleChartBar },
+    { id: 'line', title: 'Line', component: ExampleChartLine },
+    { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleChartPrerendered },
+  ],
+  questions: [
+    { id: 'single', title: 'Single choice', component: ExampleQuestionSingle },
+    { id: 'multiple', title: 'Multiple choice', component: ExampleQuestionMultiple },
+    { id: 'numeric', title: 'Numeric', component: ExampleQuestionNumeric },
+  ],
+  quiz: [
+    { id: 'default', title: 'Default', component: ExampleQuizDefault },
+  ],
+  'prev-next': [
+    { id: 'default', title: 'Default', component: ExamplePrevNextDefault },
   ],
 };
 

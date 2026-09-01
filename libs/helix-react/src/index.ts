@@ -238,3 +238,52 @@ export {
 } from './tags-input';
 export { useMediaQuery } from './use-media-query';
 export { Mermaid, type MermaidProps } from './mermaid';
+export { CopyButton, type CopyButtonProps } from './clipboard';
+export {
+  RadioGroup,
+  RadioGroupItem,
+  useRadioGroup,
+  type RadioGroupProps,
+  type RadioGroupItemProps,
+} from './radio-group';
+export { Notice, type NoticeProps } from './notice';
+export { Figure, type FigureProps } from './figure';
+export { Reveal, type RevealProps } from './reveal';
+export { PrevNext, type PrevNextProps } from './prevnext';
+export { LaTeX, InlineLaTeX, type LaTeXProps, type InlineLaTeXProps } from './latex';
+export {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockTitle,
+  CodeBlockContent,
+  CodeBlockCopyButton,
+  MultiFileCodeBlock,
+  LanguageTabsCodeBlock,
+  type CodeBlockProps,
+  type CodeBlockHeaderProps,
+  type CodeBlockTitleProps,
+  type CodeBlockContentProps,
+  type CodeBlockCopyButtonProps,
+  type MultiFileCodeBlockProps,
+  type LanguageTabsCodeBlockProps,
+} from './code-block';
+export { Manim, type ManimProps } from './manim';
+export {
+  YouTube,
+  YoutubeTimestamps,
+  YoutubeTimestampAt,
+  type YouTubeProps,
+  type YoutubeTimestampsProps,
+  type YoutubeTimestampAtProps,
+} from './youtube';
+export { Chart, type ChartProps } from './chart';
+export {
+  SingleChoiceQuestion,
+  MultipleChoiceQuestion,
+  NumericQuestion,
+  Quiz,
+  type SingleChoiceQuestionProps,
+  type MultipleChoiceQuestionProps,
+  type NumericQuestionProps,
+  type QuizProps,
+} from './questions';

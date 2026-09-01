@@ -39,8 +39,11 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "katex": "catalog:",
+    "manim-web": "catalog:",
     "mermaid": "catalog:",
     "shadcn": "^4.19.0",
+    "shiki": "catalog:",
     "typescript": "catalog:"
   }
 }

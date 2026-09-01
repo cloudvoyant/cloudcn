@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Sunrise over layered mountain ranges">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="60%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#sky)"/>
+  <circle cx="320" cy="230" r="52" fill="url(#sun)"/>
+  <path d="M0 360 L0 250 L120 170 L240 250 L360 180 L480 260 L560 210 L640 250 L640 360 Z" fill="#1e293b"/>
+  <path d="M0 360 L0 300 L160 240 L320 300 L480 250 L640 300 L640 360 Z" fill="#0f172a"/>
+  <path d="M0 360 L0 330 L200 300 L400 330 L640 300 L640 360 Z" fill="#020617"/>
+</svg>

@@ -20,6 +20,9 @@
    classes) with Tailwind, resolving via the package exports. This is the same
    line an external consumer uses. */
 @import '@cloudvoyant/helix/components.css';
+/* KaTeX typesetting (glyphs, fractions, spacing). Without it the raw MathML
+   annotation and the HTML glyphs both render, so equations appear twice as ascii. */
+@import 'katex/dist/katex.min.css';
 
 /* Brand wordmark font — distinctive geometric grotesque for the "helix" lockup. */
 .font-brand {

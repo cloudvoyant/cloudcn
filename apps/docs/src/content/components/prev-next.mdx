@@ -1,0 +1,23 @@
+---
+title: Prev Next
+description: Previous/next page navigation links for React and Svelte.
+order: 10
+group: navigation
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+PrevNext renders bordered previous/next links for the bottom of a docs page. It is fully static and hides whichever side is absent.
+
+<Demo component="prev-next" example="default" />
+
+## Examples
+
+<Examples component="prev-next" />
+
+## API Reference
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `prev` / `next` | `{ title: string; href: string }` | Optional link on each side. |

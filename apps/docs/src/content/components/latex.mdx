@@ -1,0 +1,62 @@
+---
+title: LaTeX
+description: LaTeX math for React and Svelte, rendered synchronously with KaTeX — a block component plus a toLaTeX() helper for inline math.
+order: 5
+group: rich-text
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+import { Code } from 'astro/components';
+
+LaTeX renders math with [KaTeX](https://katex.org/). Block equations use the `LaTeX` component; inline math uses the synchronous `toLaTeX()` function, which returns KaTeX HTML you can place anywhere (a rehype plugin, `dangerouslySetInnerHTML`, a template). KaTeX is a direct dependency, so both render at build/SSR time with proper glyphs — no placeholder, no lazy import, no double render. Import the KaTeX stylesheet once (`katex/dist/katex.min.css`).
+
+<Demo component="latex" example="block" />
+
+## Examples
+
+<Examples component="latex" />
+
+## Inline math
+
+Inline math is a function, not a component:
+
+<Code
+  code={`import { toLaTeX } from '@cloudvoyant/helix';
+
+// React / JSX
+<span dangerouslySetInnerHTML={{ __html: toLaTeX('e^{i\\\\pi} + 1 = 0') }} />
+
+// Svelte
+{@html toLaTeX('e^{i\\\\pi} + 1 = 0')}`}
+  lang="tsx"
+  themes={{ light: 'github-light', dark: 'github-dark' }}
+  defaultColor={false}
+/>
+
+`toLaTeX(latex, { displayMode? })` renders inline by default; block output is `toLaTeX(latex, { displayMode: true })` (which is what the `LaTeX` component wraps).
+
+## Using in Markdown / MDX
+
+The typical markdown authoring syntax for math is `$...$` (inline) and `$$...$$` (block). A rehype-katex plugin turns those into `toLaTeX()` output at build time:
+
+```md
+The identity $e^{i\pi} + 1 = 0$ holds for all reals.
+
+$$\int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}$$
+```
+
+The `LaTeX` component's `html` prop accepts that pre-rendered output directly, so an MDX pipeline can pass the plugin's string straight through without importing KaTeX a second time.
+
+## API Reference
+
+### LaTeX
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `latex` | `string` | LaTeX source. Required. |
+| `html` | `string` | Pre-rendered KaTeX HTML (server path). |
+
+### toLaTeX
+
+`toLaTeX(latex: string, opts?: { displayMode?: boolean }): string` — renders LaTeX to a KaTeX HTML string synchronously. `throwOnError`/`strict` are disabled so malformed input renders best-effort instead of throwing.

@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/latex/inline/index.astro
+import Example from '../../../Example.astro';
+import ReactLaTeXInline from './react.tsx';
+import SvelteLaTeXInline from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="inline" title="Inline (toLaTeX)" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactLaTeXInline client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteLaTeXInline client:load />
+  </div>
+</Example>

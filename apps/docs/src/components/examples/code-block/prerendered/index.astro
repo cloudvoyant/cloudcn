@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/code-block/prerendered/index.astro
+import Example from '../../../Example.astro';
+import ReactCodeBlockPrerendered from './react.tsx';
+import SvelteCodeBlockPrerendered from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="prerendered" title="Prerendered (SSR)" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactCodeBlockPrerendered />
+  </div>
+  <div data-fw="svelte">
+    <SvelteCodeBlockPrerendered />
+  </div>
+</Example>

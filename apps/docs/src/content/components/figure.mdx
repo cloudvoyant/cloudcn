@@ -1,0 +1,26 @@
+---
+title: Figure
+description: A captioned image figure for React and Svelte.
+order: 3
+group: rich-text
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+Figure is a presentational `<figure>` with an image and an optional caption. Image optimization is out of scope. Use `src`/`alt` for a simple image, or pass a custom `img` element to control `srcSet`/`sizes` and other attributes.
+
+<Demo component="figure" example="default" />
+
+## Examples
+
+<Examples component="figure" />
+
+## API Reference
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `src` | `string` | Image URL (used to build a default `<img>`). |
+| `alt` | `string` | Accessible alternative text. |
+| `img` | `ReactNode` / snippet | Custom image element (e.g. `<img srcSet="…">`); replaces the default image. |
+| `caption` | `string` | Optional caption. |

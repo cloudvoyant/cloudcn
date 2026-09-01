@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/notice/default/index.astro
+import Example from '../../../Example.astro';
+import ReactNoticeDefault from './react.tsx';
+import SvelteNoticeDefault from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="default" title="Default" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactNoticeDefault client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteNoticeDefault client:load />
+  </div>
+</Example>

@@ -49,15 +49,16 @@ export function Root({
       <DrawerRoot
         open={openMobile}
         onOpenChange={(details) => setOpenMobile(details.open)}
+        swipeDirection={side === 'left' ? 'start' : 'down'}
         {...(props as DrawerRootProps)}
       >
-        <DrawerBackdrop />
-        <DrawerPositioner className="w-(--sidebar-width)">
+        <DrawerBackdrop className={sidebarStyles.mobileBackdropClass} />
+        <DrawerPositioner className={sidebarStyles.mobilePositionerClass}>
           <DrawerContent
             data-sidebar="sidebar"
             data-slot="sidebar"
             data-mobile="true"
-            className={cn('w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground', className)}
+            className={cn(sidebarStyles.mobileContentClass, className)}
             style={{ '--sidebar-width': SIDEBAR_WIDTH_MOBILE } as React.CSSProperties}
           >
             <DrawerTitle className="sr-only">Sidebar</DrawerTitle>

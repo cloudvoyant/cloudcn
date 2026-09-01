@@ -4,13 +4,46 @@
 // and rail-handle toggling. Asserts observable state (`data-state`) and visibility,
 // never generated class strings. The demos render in PreviewFrame iframes, so
 // assertions target the active framework's island inside each frame.
-import { test, expect, type Page, type FrameLocator } from '@playwright/test';
+import { test, expect, type Locator, type Page, type FrameLocator } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
 type Framework = (typeof FRAMEWORKS)[number];
 
 function exampleFrame(page: Page, index: number): FrameLocator {
   return page.locator('[data-example]').nth(index).frameLocator('iframe[data-preview]');
+}
+
+// Resolves an example's PreviewFrame card by identity (its `data-preview-example`
+// slug), not by ordinal, so unrelated examples added elsewhere on the page can't
+// shift what a test targets.
+function previewCard(page: Page, example: string): Locator {
+  return page.locator(`[data-preview-frame][data-component="sidebar"][data-preview-example="${example}"]`);
+}
+
+// Shared mobile-sheet flow: switch the example's frame to mobile width, open the
+// drawer via the trigger, assert the sheet's swipe direction and open state,
+// then dismiss with Esc.
+async function assertMobileSheet(page: Page, example: string, framework: Framework, expectedSwipe: 'left' | 'down') {
+  const card = previewCard(page, example);
+  await card.locator('button[data-preview-width="mobile"]').click();
+  const fw = card.frameLocator('iframe[data-preview]').locator(`[data-fw="${framework}"]`);
+  const drawer = fw.locator('[data-slot="sidebar"][data-mobile="true"]');
+  const positioner = fw.locator('[data-part="positioner"]');
+  const trigger = fw.locator('[data-sidebar="trigger"]');
+
+  // Closed by default: no overlay is visible.
+  await expect(positioner).toBeHidden();
+
+  await expect(async () => {
+    await trigger.click();
+    await expect(positioner).toBeVisible();
+  }).toPass();
+  await expect(drawer).toHaveAttribute('data-swipe-direction', expectedSwipe);
+  await expect(drawer).toHaveAttribute('data-state', 'open');
+
+  // Esc dismisses it and removes the overlay entirely.
+  await page.keyboard.press('Escape');
+  await expect(positioner).toBeHidden();
 }
 
 function sidebar(frame: FrameLocator, framework: Framework) {
@@ -57,6 +90,22 @@ for (const framework of FRAMEWORKS) {
         await expect(sb).toHaveAttribute('data-state', 'expanded');
       }).toPass();
       await expect(container).toHaveCSS('width', '256px');
+    });
+
+    test('renders as a full-height mobile side sheet', async ({ page }) => {
+      // The icon example (side="left") opens a full-height sheet anchored left.
+      await assertMobileSheet(page, 'icon', framework, 'left');
+    });
+
+    test('renders the right sidebar as a bottom sheet', async ({ page }) => {
+      // The right-side example lives in pending docs work not yet on this branch,
+      // so skip (rather than fail) when it is absent; it runs wherever the example
+      // is registered. Resolved by identity, so a different example occupying this
+      // position can't turn the clean skip into a wrong-example assertion.
+      if ((await previewCard(page, 'right-side').count()) === 0) {
+        test.skip(true, 'right-side sidebar example not registered in docs examples');
+      }
+      await assertMobileSheet(page, 'right-side', framework, 'down');
     });
 
     test('completely disappears on collapse (offcanvas)', async ({ page }) => {

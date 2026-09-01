@@ -73,14 +73,19 @@
     {@render children?.()}
   </Col>
 {:else if isMobile}
-  <DrawerRoot open={openMobile} onOpenChange={(details) => setOpenMobile(details.open)} {...rest}>
-    <DrawerBackdrop />
-    <DrawerPositioner class="w-(--sidebar-width)">
+  <DrawerRoot
+    open={openMobile}
+    onOpenChange={(details) => setOpenMobile(details.open)}
+    swipeDirection={side === 'left' ? 'start' : 'down'}
+    {...rest}
+  >
+    <DrawerBackdrop class={sidebarStyles.mobileBackdropClass} />
+    <DrawerPositioner class={sidebarStyles.mobilePositionerClass}>
       <DrawerContent
         data-sidebar="sidebar"
         data-slot="sidebar"
         data-mobile="true"
-        class="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground"
+        class={cn(sidebarStyles.mobileContentClass, className)}
         style={`--sidebar-width: ${SIDEBAR_WIDTH_MOBILE};`}
       >
         <DrawerTitle class="sr-only">Sidebar</DrawerTitle>

@@ -1,3 +1,10 @@
+# [0.17.0](https://github.com/cloudvoyant/helix/compare/v0.16.0...v0.17.0) (2026-09-01)
+
+
+### Features
+
+* **helix:** add rich-text and navigation components ([#21](https://github.com/cloudvoyant/helix/issues/21)) ([a6cc2bc](https://github.com/cloudvoyant/helix/commit/a6cc2bcf300fd2f4c55307bcd13abf35fe82808f))
+
 # [0.16.0](https://github.com/cloudvoyant/helix/compare/v0.15.0...v0.16.0) (2026-08-31)
 
 

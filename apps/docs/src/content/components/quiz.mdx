@@ -1,0 +1,25 @@
+---
+title: Quiz
+description: A multi-question quiz with a single final submit and a total score, for React and Svelte.
+order: 11
+group: rich-text
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+Quiz (diffbook's `Quiz`) composes a `title` and a list of questions into a single quiz: answer each question, then hit **Submit** to grade them all at once and see the per-question results and total score simultaneously. Each question is a discriminated union (`type: 'single' | 'multiple' | 'numeric'`).
+
+<Demo component="quiz" example="default" />
+
+## Examples
+
+<Examples component="quiz" />
+
+## API Reference
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `id` | `string` | Unique quiz id. Required. |
+| `title` | `string` | Optional heading. |
+| `questions` | `Question[]` | The question list. Required. |

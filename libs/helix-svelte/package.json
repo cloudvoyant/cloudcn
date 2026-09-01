@@ -31,22 +31,31 @@
   },
   "peerDependencies": {
     "svelte": "catalog:",
-    "mermaid": "catalog:"
+    "mermaid": "catalog:",
+    "shiki": "catalog:"
   },
   "peerDependenciesMeta": {
     "mermaid": {
+      "optional": true
+    },
+    "shiki": {
       "optional": true
     }
   },
   "dependencies": {
     "@ark-ui/svelte": "catalog:",
-    "@cloudvoyant/helix": "workspace:*"
+    "@cloudvoyant/helix": "workspace:*",
+    "@tanstack/charts": "catalog:"
   },
   "devDependencies": {
     "@sveltejs/package": "catalog:",
     "@sveltejs/vite-plugin-svelte": "catalog:",
+    "@types/katex": "catalog:",
+    "katex": "catalog:",
+    "manim-web": "catalog:",
     "mermaid": "catalog:",
     "prettier-plugin-svelte": "catalog:",
+    "shiki": "catalog:",
     "svelte": "catalog:",
     "svelte-check": "catalog:",
     "typescript": "catalog:"

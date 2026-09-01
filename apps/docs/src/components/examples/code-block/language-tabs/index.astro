@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/code-block/language-tabs/index.astro
+import Example from '../../../Example.astro';
+import ReactCodeBlockLanguageTabs from './react.tsx';
+import SvelteCodeBlockLanguageTabs from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="language-tabs" title="Language tabs" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactCodeBlockLanguageTabs client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteCodeBlockLanguageTabs client:load />
+  </div>
+</Example>

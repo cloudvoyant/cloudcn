@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/quiz/default/index.astro
+import Example from '../../../Example.astro';
+import ReactQuizDefault from './react.tsx';
+import SvelteQuizDefault from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="default" title="Default" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactQuizDefault client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteQuizDefault client:load />
+  </div>
+</Example>

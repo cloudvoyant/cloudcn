@@ -1,0 +1,24 @@
+---
+title: Reveal
+description: A revealable question-and-answer for self-study (diffbook's QA, renamed).
+order: 4
+group: rich-text
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+Reveal (diffbook's `QA`) renders a question that reveals its answer on click. It is built on Ark UI Collapsible, so it is keyboard-accessible and prints correctly.
+
+<Demo component="reveal" example="default" />
+
+## Examples
+
+<Examples component="reveal" />
+
+## API Reference
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `question` | `string` | The question text. Required. |
+| `children` | `ReactNode` | The answer body. |

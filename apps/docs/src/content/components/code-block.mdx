@@ -1,0 +1,47 @@
+---
+title: Code Block
+description: Syntax-highlighted code blocks with a composable API, copy buttons, line numbers, file/language selectors, and diff highlighting for React and Svelte.
+order: 6
+group: rich-text
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+import { Code } from 'astro/components';
+
+The code-block family renders syntax-highlighted code with shiki. `CodeBlock` is composable — `CodeBlockHeader`, `CodeBlockTitle`, `CodeBlockContent`, and `CodeBlockCopyButton` compose inside it, so you can drop your own buttons or a scroll container in the header. `MultiFileCodeBlock` adds file tabs; `LanguageTabsCodeBlock` swaps languages with a dropdown and floats the copy button over the code. Highlighting is client-side by default (a loading body is shown first, then `shiki` is dynamically imported); pass `html` for the static path. Install the optional peer with `pnpm add shiki`.
+
+<Demo component="code-block" example="default" />
+
+## Composing a block
+
+`CodeBlock` provides the code context; the parts read it. The `CodeBlockContent` accepts an `html` override for the prerendered path:
+
+<Code
+  code={`<CodeBlock code={code} language="ts">
+  <CodeBlockHeader>
+    <CodeBlockTitle>greet.ts</CodeBlockTitle>
+    <div className="ml-auto">
+      <CodeBlockCopyButton />
+    </div>
+  </CodeBlockHeader>
+  <CodeBlockContent />
+</CodeBlock>`}
+  lang="tsx"
+  themes={{ light: 'github-light', dark: 'github-dark' }}
+  defaultColor={false}
+/>
+
+## Examples
+
+<Examples component="code-block" />
+
+## API Reference
+
+`CodeBlock` — `code`, `language` (default `tsx`), `filename`, `html`, `showLineNumbers`, `scrollable`, `maxHeight`, `highlightLines`; renders a default header + content unless `children` is provided.
+
+`CodeBlockHeader` / `CodeBlockTitle` / `CodeBlockContent` / `CodeBlockCopyButton` — composite parts; must be inside a `CodeBlock`. `CodeBlockContent` accepts an `html` override.
+
+`MultiFileCodeBlock` — `files` (`{ filename, code, language?, html? }[]`), `showLineNumbers`, `scrollable`, `maxHeight`.
+
+`LanguageTabsCodeBlock` — `tabs` (`{ label, filename, code, language?, html? }[]`), `showLineNumbers`, `scrollable`, `maxHeight`; renders a language dropdown (far right) and a floating copy button.

@@ -1,0 +1,21 @@
+---
+title: Questions
+description: Self-grading single-choice, multiple-choice, and numeric questions for React and Svelte.
+order: 10
+group: rich-text
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+The question components are standalone, self-grading interactive questions. `SingleChoiceQuestion` uses a radio group, `MultipleChoiceQuestion` uses checkboxes, and `NumericQuestion` accepts a numeric input with a tolerance. Graded state is in-memory only (not persisted).
+
+<Demo component="questions" example="single" />
+
+## Examples
+
+<Examples component="questions" />
+
+## API Reference
+
+Single: `id`, `prompt`, `choices`, `correct` (index), `explanation`. Multiple: `id`, `prompt`, `choices`, `correct` (indices), `explanation`. Numeric: `id`, `prompt`, `answer`, `tolerance`, `unit`, `explanation`.

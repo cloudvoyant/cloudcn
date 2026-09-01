@@ -37,21 +37,31 @@
     "format:check": "prettier --check \"src/**/*.ts\""
   },
   "dependencies": {
+    "@tanstack/charts": "catalog:",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
+    "katex": "catalog:",
     "tailwind-merge": "catalog:"
   },
   "peerDependencies": {
-    "mermaid": "catalog:"
+    "mermaid": "catalog:",
+    "shiki": "catalog:"
   },
   "peerDependenciesMeta": {
     "mermaid": {
       "optional": true
+    },
+    "shiki": {
+      "optional": true
     }
   },
   "devDependencies": {
+    "@types/katex": "catalog:",
     "@types/node": "catalog:",
+    "katex": "catalog:",
+    "manim-web": "catalog:",
     "mermaid": "catalog:",
+    "shiki": "catalog:",
     "vitest": "catalog:"
   }
 }

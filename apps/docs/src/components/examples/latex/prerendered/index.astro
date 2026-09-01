@@ -1,0 +1,17 @@
+---
+// apps/docs/src/components/examples/latex/prerendered/index.astro
+import Example from '../../../Example.astro';
+import ReactLaTeXPrerendered from './react.tsx';
+import SvelteLaTeXPrerendered from './svelte.svelte';
+import reactCode from './react.tsx?raw';
+import svelteCode from './svelte.svelte?raw';
+---
+
+<Example id="prerendered" title="Prerendered (SSR)" reactCode={reactCode} svelteCode={svelteCode}>
+  <div data-fw="react">
+    <ReactLaTeXPrerendered client:load />
+  </div>
+  <div data-fw="svelte">
+    <SvelteLaTeXPrerendered client:load />
+  </div>
+</Example>

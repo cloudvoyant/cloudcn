@@ -164,6 +164,31 @@ const titles: Record<string, { id: string; title: string }[]> = {
     { id: 'prerendered', title: 'Prerendered (SSR)' },
     { id: 'colors', title: 'Colors' },
   ],
+  notice: [
+    { id: 'variants', title: 'Variants' },
+    { id: 'omit-title', title: 'Omit title' },
+  ],
+  latex: [
+    { id: 'inline', title: 'Inline (toLaTeX)' },
+    { id: 'prerendered', title: 'Prerendered (SSR)' },
+  ],
+  'code-block': [
+    { id: 'features', title: 'Line numbers & highlights' },
+    { id: 'multi-file', title: 'Multi-file' },
+    { id: 'language-tabs', title: 'Language selector' },
+    { id: 'diff', title: 'Diff' },
+    { id: 'prerendered', title: 'Prerendered (SSR)' },
+  ],
+  chart: [
+    { id: 'bar', title: 'Bar' },
+    { id: 'line', title: 'Line' },
+    { id: 'prerendered', title: 'Prerendered (SSR)' },
+  ],
+  youtube: [{ id: 'timestamps', title: 'Timestamps' }],
+  questions: [
+    { id: 'multiple', title: 'Multiple choice' },
+    { id: 'numeric', title: 'Numeric' },
+  ],
 };
 const entries = (titles[component ?? 'button'] ?? []).filter((e) => e.id !== exclude);
 ---

@@ -31,23 +31,36 @@
   "peerDependencies": {
     "react": "catalog:",
     "react-dom": "catalog:",
-    "mermaid": "catalog:"
+    "manim-web": "catalog:",
+    "mermaid": "catalog:",
+    "shiki": "catalog:"
   },
   "peerDependenciesMeta": {
+    "manim-web": {
+      "optional": true
+    },
     "mermaid": {
+      "optional": true
+    },
+    "shiki": {
       "optional": true
     }
   },
   "dependencies": {
     "@ark-ui/react": "catalog:",
-    "@cloudvoyant/helix": "workspace:*"
+    "@cloudvoyant/helix": "workspace:*",
+    "@tanstack/charts": "catalog:"
   },
   "devDependencies": {
+    "@types/katex": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "katex": "catalog:",
+    "manim-web": "catalog:",
     "mermaid": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "shiki": "catalog:"
   }
 }

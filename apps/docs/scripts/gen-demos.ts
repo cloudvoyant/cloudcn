@@ -6,7 +6,10 @@ const DEMO_ASTRO = 'src/components/Demo.astro';
 const REGISTRY_JSON = 'src/components/examples/registry.json';
 
 function toPascalCase(str: string) {
-  return str.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('');
+  return str
+    .split('-')
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+    .join('');
 }
 
 function generate() {
@@ -14,40 +17,42 @@ function generate() {
   let cases = '';
   const registry: Record<string, Array<{ id: string; title: string }>> = {};
 
-  const components = fs.readdirSync(EXAMPLES_DIR).filter(f => {
+  const components = fs.readdirSync(EXAMPLES_DIR).filter((f) => {
     const p = path.join(EXAMPLES_DIR, f);
     return fs.statSync(p).isDirectory();
   });
 
   for (const component of components) {
     const compDir = path.join(EXAMPLES_DIR, component);
-    const examples = fs.readdirSync(compDir).filter(f => {
+    const examples = fs.readdirSync(compDir).filter((f) => {
       const p = path.join(compDir, f);
       return fs.statSync(p).isDirectory();
     });
-    
+
     registry[component] = [];
-    
+
     for (const example of examples) {
       const exDir = path.join(compDir, example);
       const reactPath = path.join(exDir, 'react.tsx');
       const sveltePath = path.join(exDir, 'svelte.svelte');
-      
+
       if (!fs.existsSync(reactPath) || !fs.existsSync(sveltePath)) continue;
-      
+
       const pascalComp = toPascalCase(component);
       const pascalEx = toPascalCase(example);
       const reactImport = 'React' + pascalComp + pascalEx;
       const svelteImport = 'Svelte' + pascalComp + pascalEx;
-      
+
       imports += `import ${reactImport} from './examples/${component}/${example}/react.tsx';\n`;
       imports += `import ${svelteImport} from './examples/${component}/${example}/svelte.svelte';\n`;
       imports += `import ${reactImport}Raw from './examples/${component}/${example}/react.tsx?raw';\n`;
       imports += `import ${svelteImport}Raw from './examples/${component}/${example}/svelte.svelte?raw';\n`;
-      
+
       const title = pascalEx.replace(/([A-Z])/g, ' $1').trim();
       
       registry[component].push({ id: example, title });
+
+      const isFullscreen = ['sidebar', 'page', 'layout', 'navbar', 'scroll', 'splitter', 'window'].includes(component);
 
       cases += `{component === '${component}' && example === '${example}' && (
     <Example 
@@ -55,6 +60,7 @@ function generate() {
       title='${title}' 
       reactCode={${reactImport}Raw} 
       svelteCode={${svelteImport}Raw}
+      fullscreen={${isFullscreen}}
     >
       <div data-fw="react">
         <${reactImport} client:only="react" />

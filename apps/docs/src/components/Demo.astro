@@ -1,588 +1,3146 @@
 ---
-// apps/docs/src/components/Demo.astro
-import ExampleButtonSolid from './examples/button/solid/index.astro';
-import ExampleButtonOutline from './examples/button/outline/index.astro';
-import ExampleButtonRounded from './examples/button/rounded/index.astro';
-import ExampleButtonSizes from './examples/button/sizes/index.astro';
-import ExampleButtonIcon from './examples/button/icon/index.astro';
-import ExampleButtonWithIcon from './examples/button/with-icon/index.astro';
-import ExampleButtonDisabled from './examples/button/disabled/index.astro';
-import ExampleToggleButtonDefault from './examples/toggle-button/default/index.astro';
-import ExampleToggleButtonOutline from './examples/toggle-button/outline/index.astro';
-import ExampleToggleButtonIcon from './examples/toggle-button/icon/index.astro';
-import ExampleToggleButtonIndicator from './examples/toggle-button/indicator/index.astro';
-import ExampleTooltipDefault from './examples/tooltip/default/index.astro';
-import ExampleTooltipControlled from './examples/tooltip/controlled/index.astro';
-import ExampleTooltipRootProvider from './examples/tooltip/root-provider/index.astro';
-import ExampleTooltipArrow from './examples/tooltip/arrow/index.astro';
-import ExampleTooltipDelay from './examples/tooltip/delay/index.astro';
-import ExampleTooltipPositioning from './examples/tooltip/positioning/index.astro';
-import ExampleTooltipContext from './examples/tooltip/context/index.astro';
-import ExampleTooltipWithinFixedContainers from './examples/tooltip/within-fixed-containers/index.astro';
-import ExampleTooltipMultipleTriggers from './examples/tooltip/multiple-triggers/index.astro';
-import ExampleTooltipFollowingCursor from './examples/tooltip/following-cursor/index.astro';
-import ExamplePopoverDefault from './examples/popover/default/index.astro';
-import ExamplePopoverControlled from './examples/popover/controlled/index.astro';
-import ExamplePopoverRootProvider from './examples/popover/root-provider/index.astro';
-import ExamplePopoverArrow from './examples/popover/arrow/index.astro';
-import ExamplePopoverPlacement from './examples/popover/placement/index.astro';
-import ExamplePopoverCloseBehavior from './examples/popover/close-behavior/index.astro';
-import ExamplePopoverModality from './examples/popover/modality/index.astro';
-import ExamplePopoverAnchor from './examples/popover/anchor/index.astro';
-import ExamplePopoverSameWidth from './examples/popover/same-width/index.astro';
-import ExamplePopoverNested from './examples/popover/nested/index.astro';
-import ExamplePopoverMultipleTriggers from './examples/popover/multiple-triggers/index.astro';
-import ExamplePopoverDialogIntegration from './examples/popover/dialog-integration/index.astro';
-import ExamplePopoverWithTooltip from './examples/popover/popover-with-tooltip/index.astro';
-import ExampleDialogDefault from './examples/dialog/default/index.astro';
-import ExampleDialogControlled from './examples/dialog/controlled/index.astro';
-import ExampleDialogRootProvider from './examples/dialog/root-provider/index.astro';
-import ExampleDialogAlertDialog from './examples/dialog/alert-dialog/index.astro';
-import ExampleDialogLazyMount from './examples/dialog/lazy-mount/index.astro';
-import ExampleDialogInitialFocus from './examples/dialog/initial-focus/index.astro';
-import ExampleDialogFinalFocus from './examples/dialog/final-focus/index.astro';
-import ExampleDialogNonModal from './examples/dialog/non-modal/index.astro';
-import ExampleDialogInsideScroll from './examples/dialog/inside-scroll/index.astro';
-import ExampleDialogOutsideScroll from './examples/dialog/outside-scroll/index.astro';
-import ExampleDialogFullscreen from './examples/dialog/fullscreen/index.astro';
-import ExampleDialogContext from './examples/dialog/context/index.astro';
-import ExampleDialogOpenFromMenu from './examples/dialog/open-from-menu/index.astro';
-import ExampleDialogNested from './examples/dialog/nested/index.astro';
-import ExampleDialogMultipleTriggers from './examples/dialog/multiple-triggers/index.astro';
-import ExampleDialogConfirmation from './examples/dialog/confirmation/index.astro';
-import ExampleDialogWithTooltip from './examples/dialog/dialog-with-tooltip/index.astro';
-import ExampleWindowDefault from './examples/window/default/index.astro';
-import ExampleWindowControlledSize from './examples/window/controlled-size/index.astro';
-import ExampleWindowControlledPosition from './examples/window/controlled-position/index.astro';
-import ExampleWindowAnchorPosition from './examples/window/anchor-position/index.astro';
-import ExampleWindowOpenState from './examples/window/open-state/index.astro';
-import ExampleWindowLazyMount from './examples/window/lazy-mount/index.astro';
-import ExampleWindowContext from './examples/window/context/index.astro';
-import ExampleBadgeDefault from './examples/badge/default/index.astro';
-import ExampleBadgeVariants from './examples/badge/variants/index.astro';
-import ExampleBadgeColors from './examples/badge/colors/index.astro';
-import ExampleBadgeSizes from './examples/badge/sizes/index.astro';
-import ExampleSidebarIcon from './examples/sidebar/icon/index.astro';
-import ExampleSidebarOffcanvas from './examples/sidebar/offcanvas/index.astro';
-import ExampleSidebarRail from './examples/sidebar/rail/index.astro';
-import ExampleContainerDefault from './examples/container/default/index.astro';
-import ExampleContainerSizes from './examples/container/sizes/index.astro';
-import ExampleContainerFluid from './examples/container/fluid/index.astro';
-import ExampleRowDefault from './examples/row/default/index.astro';
-import ExampleRowWithGap from './examples/row/with-gap/index.astro';
-import ExampleRowSeparator from './examples/row/separator/index.astro';
-import ExampleRowResponsiveDirection from './examples/row/responsive-direction/index.astro';
-import ExampleColDefault from './examples/col/default/index.astro';
-import ExampleColWithGap from './examples/col/with-gap/index.astro';
-import ExampleColSeparator from './examples/col/separator/index.astro';
-import ExampleColResponsiveDirection from './examples/col/responsive-direction/index.astro';
-import ExampleLayoutPortal from './examples/layout/portal/index.astro';
-import ExampleStackDefault from './examples/stack/default/index.astro';
-import ExampleStackHstack from './examples/stack/hstack/index.astro';
-import ExampleStackVstack from './examples/stack/vstack/index.astro';
-import ExampleStackSeparator from './examples/stack/separator/index.astro';
-import ExampleStackResponsiveDirection from './examples/stack/responsive-direction/index.astro';
-import ExampleScrollDefault from './examples/scroll/default/index.astro';
-import ExampleScrollSizes from './examples/scroll/sizes/index.astro';
-import ExampleScrollHorizontal from './examples/scroll/horizontal/index.astro';
-import ExampleScrollBoth from './examples/scroll/both/index.astro';
-import ExampleScrollScrollShadow from './examples/scroll/scroll-shadow/index.astro';
-import ExampleScrollThumbStyling from './examples/scroll/thumb-styling/index.astro';
-import ExampleScrollHidden from './examples/scroll/hidden/index.astro';
-import ExamplePageDefault from './examples/page/default/index.astro';
-import ExamplePageGutters from './examples/page/gutters/index.astro';
-import ExamplePageGutterScroll from './examples/page/gutter-scroll/index.astro';
-import ExamplePageFooter from './examples/page/footer/index.astro';
-import ExamplePageLanding from './examples/page/landing/index.astro';
-import ExampleSplitterDefault from './examples/splitter/default/index.astro';
-import ExampleSplitterVertical from './examples/splitter/vertical/index.astro';
-import ExampleSplitterMultiplePanels from './examples/splitter/multiple-panels/index.astro';
-import ExampleSplitterCollapsible from './examples/splitter/collapsible/index.astro';
-import ExampleSplitterMinMax from './examples/splitter/min-max/index.astro';
-import ExampleSplitterDisabled from './examples/splitter/disabled/index.astro';
-import ExampleCenterDefault from './examples/center/default/index.astro';
-import ExampleCenterIcon from './examples/center/icon/index.astro';
-import ExampleCenterInline from './examples/center/inline/index.astro';
-import ExampleItemInStack from './examples/item/in-stack/index.astro';
-import ExampleItemInContainer from './examples/item/in-container/index.astro';
-import ExampleCardDefault from './examples/card/default/index.astro';
-import ExampleCardVariants from './examples/card/variants/index.astro';
-import ExampleCardSizes from './examples/card/sizes/index.astro';
-import ExampleCardOverride from './examples/card/override/index.astro';
-import ExampleCardWithImage from './examples/card/with-image/index.astro';
-import ExampleCardHorizontal from './examples/card/horizontal/index.astro';
-import ExampleTabsDefault from './examples/tabs/default/index.astro';
-import ExampleTabsUnderline from './examples/tabs/underline/index.astro';
-import ExamplePaginationDefault from './examples/pagination/default/index.astro';
-import ExamplePaginationControlled from './examples/pagination/controlled/index.astro';
-import ExampleNavbarSticky from './examples/navbar/sticky/index.astro';
-import ExampleNavbarFloating from './examples/navbar/floating/index.astro';
-import ExampleNavbarShrink from './examples/navbar/shrink/index.astro';
-import ExampleNavbarScroll from './examples/navbar/scroll/index.astro';
-import ExampleNavbarHide from './examples/navbar/hide/index.astro';
-import ExampleNavbarDropdown from './examples/navbar/dropdown/index.astro';
-import ExampleNavbarTwoColumns from './examples/navbar/two-columns/index.astro';
-import ExampleNavbarDensity from './examples/navbar/density/index.astro';
-import ExampleNavbarVariants from './examples/navbar/variants/index.astro';
-import ExampleInputDefault from './examples/input/default/index.astro';
-import ExampleInputTextarea from './examples/input/textarea/index.astro';
-import ExampleFieldDefault from './examples/field/default/index.astro';
-import ExampleFieldFieldset from './examples/field/fieldset/index.astro';
-import ExampleNumberInputDefault from './examples/number-input/default/index.astro';
-import ExampleCheckboxDefault from './examples/checkbox/default/index.astro';
-import ExampleSwitchDefault from './examples/switch/default/index.astro';
-import ExampleSelectDefault from './examples/select/default/index.astro';
-import ExampleComboboxDefault from './examples/combobox/default/index.astro';
-import ExampleComboboxMultiple from './examples/combobox/multiple/index.astro';
-import ExampleTagsInputDefault from './examples/tags-input/default/index.astro';
-import ExampleMermaidDefault from './examples/mermaid/default/index.astro';
-import ExampleMermaidFallback from './examples/mermaid/fallback/index.astro';
-import ExampleMermaidPrerendered from './examples/mermaid/prerendered/index.astro';
-import ExampleMermaidColors from './examples/mermaid/colors/index.astro';
-import ExampleNoticeVariants from './examples/notice/variants/index.astro';
-import ExampleNoticeDefault from './examples/notice/default/index.astro';
-import ExampleNoticeOmitTitle from './examples/notice/omit-title/index.astro';
-import ExampleFigureDefault from './examples/figure/default/index.astro';
-import ExampleRevealDefault from './examples/reveal/default/index.astro';
-import ExampleLaTeXBlock from './examples/latex/block/index.astro';
-import ExampleLaTeXInline from './examples/latex/inline/index.astro';
-import ExampleLaTeXPrerendered from './examples/latex/prerendered/index.astro';
-import ExampleCodeBlockDefault from './examples/code-block/default/index.astro';
-import ExampleCodeBlockFeatures from './examples/code-block/features/index.astro';
-import ExampleCodeBlockMultiFile from './examples/code-block/multi-file/index.astro';
-import ExampleCodeBlockLanguageTabs from './examples/code-block/language-tabs/index.astro';
-import ExampleCodeBlockPrerendered from './examples/code-block/prerendered/index.astro';
-import ExampleCodeBlockDiff from './examples/code-block/diff/index.astro';
-import ExampleManimDefault from './examples/manim/default/index.astro';
-import ExampleYouTubeDefault from './examples/youtube/default/index.astro';
-import ExampleYouTubeTimestamps from './examples/youtube/timestamps/index.astro';
-import ExampleChartLine from './examples/chart/line/index.astro';
-import ExampleChartPie from './examples/chart/pie/index.astro';
-import ExampleChartBar from './examples/chart/bar/index.astro';
-import ExampleChartPrerendered from './examples/chart/prerendered/index.astro';
-import ExampleQuestionSingle from './examples/questions/single/index.astro';
-import ExampleQuestionMultiple from './examples/questions/multiple/index.astro';
-import ExampleQuestionNumeric from './examples/questions/numeric/index.astro';
-import ExampleQuizDefault from './examples/quiz/default/index.astro';
-import ExamplePrevNextDefault from './examples/prev-next/default/index.astro';
+// Auto-generated by scripts/gen-demos.ts
+import Example from './Example.astro';
+import ReactBadgeColors from './examples/badge/colors/react.tsx';
+import SvelteBadgeColors from './examples/badge/colors/svelte.svelte';
+import ReactBadgeColorsRaw from './examples/badge/colors/react.tsx?raw';
+import SvelteBadgeColorsRaw from './examples/badge/colors/svelte.svelte?raw';
+import ReactBadgeDefault from './examples/badge/default/react.tsx';
+import SvelteBadgeDefault from './examples/badge/default/svelte.svelte';
+import ReactBadgeDefaultRaw from './examples/badge/default/react.tsx?raw';
+import SvelteBadgeDefaultRaw from './examples/badge/default/svelte.svelte?raw';
+import ReactBadgeSizes from './examples/badge/sizes/react.tsx';
+import SvelteBadgeSizes from './examples/badge/sizes/svelte.svelte';
+import ReactBadgeSizesRaw from './examples/badge/sizes/react.tsx?raw';
+import SvelteBadgeSizesRaw from './examples/badge/sizes/svelte.svelte?raw';
+import ReactBadgeVariants from './examples/badge/variants/react.tsx';
+import SvelteBadgeVariants from './examples/badge/variants/svelte.svelte';
+import ReactBadgeVariantsRaw from './examples/badge/variants/react.tsx?raw';
+import SvelteBadgeVariantsRaw from './examples/badge/variants/svelte.svelte?raw';
+import ReactButtonDisabled from './examples/button/disabled/react.tsx';
+import SvelteButtonDisabled from './examples/button/disabled/svelte.svelte';
+import ReactButtonDisabledRaw from './examples/button/disabled/react.tsx?raw';
+import SvelteButtonDisabledRaw from './examples/button/disabled/svelte.svelte?raw';
+import ReactButtonIcon from './examples/button/icon/react.tsx';
+import SvelteButtonIcon from './examples/button/icon/svelte.svelte';
+import ReactButtonIconRaw from './examples/button/icon/react.tsx?raw';
+import SvelteButtonIconRaw from './examples/button/icon/svelte.svelte?raw';
+import ReactButtonOutline from './examples/button/outline/react.tsx';
+import SvelteButtonOutline from './examples/button/outline/svelte.svelte';
+import ReactButtonOutlineRaw from './examples/button/outline/react.tsx?raw';
+import SvelteButtonOutlineRaw from './examples/button/outline/svelte.svelte?raw';
+import ReactButtonRounded from './examples/button/rounded/react.tsx';
+import SvelteButtonRounded from './examples/button/rounded/svelte.svelte';
+import ReactButtonRoundedRaw from './examples/button/rounded/react.tsx?raw';
+import SvelteButtonRoundedRaw from './examples/button/rounded/svelte.svelte?raw';
+import ReactButtonSizes from './examples/button/sizes/react.tsx';
+import SvelteButtonSizes from './examples/button/sizes/svelte.svelte';
+import ReactButtonSizesRaw from './examples/button/sizes/react.tsx?raw';
+import SvelteButtonSizesRaw from './examples/button/sizes/svelte.svelte?raw';
+import ReactButtonSolid from './examples/button/solid/react.tsx';
+import SvelteButtonSolid from './examples/button/solid/svelte.svelte';
+import ReactButtonSolidRaw from './examples/button/solid/react.tsx?raw';
+import SvelteButtonSolidRaw from './examples/button/solid/svelte.svelte?raw';
+import ReactButtonWithIcon from './examples/button/with-icon/react.tsx';
+import SvelteButtonWithIcon from './examples/button/with-icon/svelte.svelte';
+import ReactButtonWithIconRaw from './examples/button/with-icon/react.tsx?raw';
+import SvelteButtonWithIconRaw from './examples/button/with-icon/svelte.svelte?raw';
+import ReactCardDefault from './examples/card/default/react.tsx';
+import SvelteCardDefault from './examples/card/default/svelte.svelte';
+import ReactCardDefaultRaw from './examples/card/default/react.tsx?raw';
+import SvelteCardDefaultRaw from './examples/card/default/svelte.svelte?raw';
+import ReactCardHorizontal from './examples/card/horizontal/react.tsx';
+import SvelteCardHorizontal from './examples/card/horizontal/svelte.svelte';
+import ReactCardHorizontalRaw from './examples/card/horizontal/react.tsx?raw';
+import SvelteCardHorizontalRaw from './examples/card/horizontal/svelte.svelte?raw';
+import ReactCardOverride from './examples/card/override/react.tsx';
+import SvelteCardOverride from './examples/card/override/svelte.svelte';
+import ReactCardOverrideRaw from './examples/card/override/react.tsx?raw';
+import SvelteCardOverrideRaw from './examples/card/override/svelte.svelte?raw';
+import ReactCardSizes from './examples/card/sizes/react.tsx';
+import SvelteCardSizes from './examples/card/sizes/svelte.svelte';
+import ReactCardSizesRaw from './examples/card/sizes/react.tsx?raw';
+import SvelteCardSizesRaw from './examples/card/sizes/svelte.svelte?raw';
+import ReactCardVariants from './examples/card/variants/react.tsx';
+import SvelteCardVariants from './examples/card/variants/svelte.svelte';
+import ReactCardVariantsRaw from './examples/card/variants/react.tsx?raw';
+import SvelteCardVariantsRaw from './examples/card/variants/svelte.svelte?raw';
+import ReactCardWithImage from './examples/card/with-image/react.tsx';
+import SvelteCardWithImage from './examples/card/with-image/svelte.svelte';
+import ReactCardWithImageRaw from './examples/card/with-image/react.tsx?raw';
+import SvelteCardWithImageRaw from './examples/card/with-image/svelte.svelte?raw';
+import ReactCenterDefault from './examples/center/default/react.tsx';
+import SvelteCenterDefault from './examples/center/default/svelte.svelte';
+import ReactCenterDefaultRaw from './examples/center/default/react.tsx?raw';
+import SvelteCenterDefaultRaw from './examples/center/default/svelte.svelte?raw';
+import ReactCenterIcon from './examples/center/icon/react.tsx';
+import SvelteCenterIcon from './examples/center/icon/svelte.svelte';
+import ReactCenterIconRaw from './examples/center/icon/react.tsx?raw';
+import SvelteCenterIconRaw from './examples/center/icon/svelte.svelte?raw';
+import ReactCenterInline from './examples/center/inline/react.tsx';
+import SvelteCenterInline from './examples/center/inline/svelte.svelte';
+import ReactCenterInlineRaw from './examples/center/inline/react.tsx?raw';
+import SvelteCenterInlineRaw from './examples/center/inline/svelte.svelte?raw';
+import ReactChartBar from './examples/chart/bar/react.tsx';
+import SvelteChartBar from './examples/chart/bar/svelte.svelte';
+import ReactChartBarRaw from './examples/chart/bar/react.tsx?raw';
+import SvelteChartBarRaw from './examples/chart/bar/svelte.svelte?raw';
+import ReactChartLine from './examples/chart/line/react.tsx';
+import SvelteChartLine from './examples/chart/line/svelte.svelte';
+import ReactChartLineRaw from './examples/chart/line/react.tsx?raw';
+import SvelteChartLineRaw from './examples/chart/line/svelte.svelte?raw';
+import ReactChartPie from './examples/chart/pie/react.tsx';
+import SvelteChartPie from './examples/chart/pie/svelte.svelte';
+import ReactChartPieRaw from './examples/chart/pie/react.tsx?raw';
+import SvelteChartPieRaw from './examples/chart/pie/svelte.svelte?raw';
+import ReactChartPrerendered from './examples/chart/prerendered/react.tsx';
+import SvelteChartPrerendered from './examples/chart/prerendered/svelte.svelte';
+import ReactChartPrerenderedRaw from './examples/chart/prerendered/react.tsx?raw';
+import SvelteChartPrerenderedRaw from './examples/chart/prerendered/svelte.svelte?raw';
+import ReactCheckboxDefault from './examples/checkbox/default/react.tsx';
+import SvelteCheckboxDefault from './examples/checkbox/default/svelte.svelte';
+import ReactCheckboxDefaultRaw from './examples/checkbox/default/react.tsx?raw';
+import SvelteCheckboxDefaultRaw from './examples/checkbox/default/svelte.svelte?raw';
+import ReactCodeBlockDefault from './examples/code-block/default/react.tsx';
+import SvelteCodeBlockDefault from './examples/code-block/default/svelte.svelte';
+import ReactCodeBlockDefaultRaw from './examples/code-block/default/react.tsx?raw';
+import SvelteCodeBlockDefaultRaw from './examples/code-block/default/svelte.svelte?raw';
+import ReactCodeBlockDiff from './examples/code-block/diff/react.tsx';
+import SvelteCodeBlockDiff from './examples/code-block/diff/svelte.svelte';
+import ReactCodeBlockDiffRaw from './examples/code-block/diff/react.tsx?raw';
+import SvelteCodeBlockDiffRaw from './examples/code-block/diff/svelte.svelte?raw';
+import ReactCodeBlockFeatures from './examples/code-block/features/react.tsx';
+import SvelteCodeBlockFeatures from './examples/code-block/features/svelte.svelte';
+import ReactCodeBlockFeaturesRaw from './examples/code-block/features/react.tsx?raw';
+import SvelteCodeBlockFeaturesRaw from './examples/code-block/features/svelte.svelte?raw';
+import ReactCodeBlockLanguageTabs from './examples/code-block/language-tabs/react.tsx';
+import SvelteCodeBlockLanguageTabs from './examples/code-block/language-tabs/svelte.svelte';
+import ReactCodeBlockLanguageTabsRaw from './examples/code-block/language-tabs/react.tsx?raw';
+import SvelteCodeBlockLanguageTabsRaw from './examples/code-block/language-tabs/svelte.svelte?raw';
+import ReactCodeBlockMultiFile from './examples/code-block/multi-file/react.tsx';
+import SvelteCodeBlockMultiFile from './examples/code-block/multi-file/svelte.svelte';
+import ReactCodeBlockMultiFileRaw from './examples/code-block/multi-file/react.tsx?raw';
+import SvelteCodeBlockMultiFileRaw from './examples/code-block/multi-file/svelte.svelte?raw';
+import ReactCodeBlockPrerendered from './examples/code-block/prerendered/react.tsx';
+import SvelteCodeBlockPrerendered from './examples/code-block/prerendered/svelte.svelte';
+import ReactCodeBlockPrerenderedRaw from './examples/code-block/prerendered/react.tsx?raw';
+import SvelteCodeBlockPrerenderedRaw from './examples/code-block/prerendered/svelte.svelte?raw';
+import ReactColDefault from './examples/col/default/react.tsx';
+import SvelteColDefault from './examples/col/default/svelte.svelte';
+import ReactColDefaultRaw from './examples/col/default/react.tsx?raw';
+import SvelteColDefaultRaw from './examples/col/default/svelte.svelte?raw';
+import ReactColResponsiveDirection from './examples/col/responsive-direction/react.tsx';
+import SvelteColResponsiveDirection from './examples/col/responsive-direction/svelte.svelte';
+import ReactColResponsiveDirectionRaw from './examples/col/responsive-direction/react.tsx?raw';
+import SvelteColResponsiveDirectionRaw from './examples/col/responsive-direction/svelte.svelte?raw';
+import ReactColSeparator from './examples/col/separator/react.tsx';
+import SvelteColSeparator from './examples/col/separator/svelte.svelte';
+import ReactColSeparatorRaw from './examples/col/separator/react.tsx?raw';
+import SvelteColSeparatorRaw from './examples/col/separator/svelte.svelte?raw';
+import ReactColWithGap from './examples/col/with-gap/react.tsx';
+import SvelteColWithGap from './examples/col/with-gap/svelte.svelte';
+import ReactColWithGapRaw from './examples/col/with-gap/react.tsx?raw';
+import SvelteColWithGapRaw from './examples/col/with-gap/svelte.svelte?raw';
+import ReactComboboxDefault from './examples/combobox/default/react.tsx';
+import SvelteComboboxDefault from './examples/combobox/default/svelte.svelte';
+import ReactComboboxDefaultRaw from './examples/combobox/default/react.tsx?raw';
+import SvelteComboboxDefaultRaw from './examples/combobox/default/svelte.svelte?raw';
+import ReactComboboxMultiple from './examples/combobox/multiple/react.tsx';
+import SvelteComboboxMultiple from './examples/combobox/multiple/svelte.svelte';
+import ReactComboboxMultipleRaw from './examples/combobox/multiple/react.tsx?raw';
+import SvelteComboboxMultipleRaw from './examples/combobox/multiple/svelte.svelte?raw';
+import ReactContainerDefault from './examples/container/default/react.tsx';
+import SvelteContainerDefault from './examples/container/default/svelte.svelte';
+import ReactContainerDefaultRaw from './examples/container/default/react.tsx?raw';
+import SvelteContainerDefaultRaw from './examples/container/default/svelte.svelte?raw';
+import ReactContainerFluid from './examples/container/fluid/react.tsx';
+import SvelteContainerFluid from './examples/container/fluid/svelte.svelte';
+import ReactContainerFluidRaw from './examples/container/fluid/react.tsx?raw';
+import SvelteContainerFluidRaw from './examples/container/fluid/svelte.svelte?raw';
+import ReactContainerSizes from './examples/container/sizes/react.tsx';
+import SvelteContainerSizes from './examples/container/sizes/svelte.svelte';
+import ReactContainerSizesRaw from './examples/container/sizes/react.tsx?raw';
+import SvelteContainerSizesRaw from './examples/container/sizes/svelte.svelte?raw';
+import ReactDialogAlertDialog from './examples/dialog/alert-dialog/react.tsx';
+import SvelteDialogAlertDialog from './examples/dialog/alert-dialog/svelte.svelte';
+import ReactDialogAlertDialogRaw from './examples/dialog/alert-dialog/react.tsx?raw';
+import SvelteDialogAlertDialogRaw from './examples/dialog/alert-dialog/svelte.svelte?raw';
+import ReactDialogConfirmation from './examples/dialog/confirmation/react.tsx';
+import SvelteDialogConfirmation from './examples/dialog/confirmation/svelte.svelte';
+import ReactDialogConfirmationRaw from './examples/dialog/confirmation/react.tsx?raw';
+import SvelteDialogConfirmationRaw from './examples/dialog/confirmation/svelte.svelte?raw';
+import ReactDialogContext from './examples/dialog/context/react.tsx';
+import SvelteDialogContext from './examples/dialog/context/svelte.svelte';
+import ReactDialogContextRaw from './examples/dialog/context/react.tsx?raw';
+import SvelteDialogContextRaw from './examples/dialog/context/svelte.svelte?raw';
+import ReactDialogControlled from './examples/dialog/controlled/react.tsx';
+import SvelteDialogControlled from './examples/dialog/controlled/svelte.svelte';
+import ReactDialogControlledRaw from './examples/dialog/controlled/react.tsx?raw';
+import SvelteDialogControlledRaw from './examples/dialog/controlled/svelte.svelte?raw';
+import ReactDialogDefault from './examples/dialog/default/react.tsx';
+import SvelteDialogDefault from './examples/dialog/default/svelte.svelte';
+import ReactDialogDefaultRaw from './examples/dialog/default/react.tsx?raw';
+import SvelteDialogDefaultRaw from './examples/dialog/default/svelte.svelte?raw';
+import ReactDialogDialogWithTooltip from './examples/dialog/dialog-with-tooltip/react.tsx';
+import SvelteDialogDialogWithTooltip from './examples/dialog/dialog-with-tooltip/svelte.svelte';
+import ReactDialogDialogWithTooltipRaw from './examples/dialog/dialog-with-tooltip/react.tsx?raw';
+import SvelteDialogDialogWithTooltipRaw from './examples/dialog/dialog-with-tooltip/svelte.svelte?raw';
+import ReactDialogFinalFocus from './examples/dialog/final-focus/react.tsx';
+import SvelteDialogFinalFocus from './examples/dialog/final-focus/svelte.svelte';
+import ReactDialogFinalFocusRaw from './examples/dialog/final-focus/react.tsx?raw';
+import SvelteDialogFinalFocusRaw from './examples/dialog/final-focus/svelte.svelte?raw';
+import ReactDialogFullscreen from './examples/dialog/fullscreen/react.tsx';
+import SvelteDialogFullscreen from './examples/dialog/fullscreen/svelte.svelte';
+import ReactDialogFullscreenRaw from './examples/dialog/fullscreen/react.tsx?raw';
+import SvelteDialogFullscreenRaw from './examples/dialog/fullscreen/svelte.svelte?raw';
+import ReactDialogInitialFocus from './examples/dialog/initial-focus/react.tsx';
+import SvelteDialogInitialFocus from './examples/dialog/initial-focus/svelte.svelte';
+import ReactDialogInitialFocusRaw from './examples/dialog/initial-focus/react.tsx?raw';
+import SvelteDialogInitialFocusRaw from './examples/dialog/initial-focus/svelte.svelte?raw';
+import ReactDialogInsideScroll from './examples/dialog/inside-scroll/react.tsx';
+import SvelteDialogInsideScroll from './examples/dialog/inside-scroll/svelte.svelte';
+import ReactDialogInsideScrollRaw from './examples/dialog/inside-scroll/react.tsx?raw';
+import SvelteDialogInsideScrollRaw from './examples/dialog/inside-scroll/svelte.svelte?raw';
+import ReactDialogLazyMount from './examples/dialog/lazy-mount/react.tsx';
+import SvelteDialogLazyMount from './examples/dialog/lazy-mount/svelte.svelte';
+import ReactDialogLazyMountRaw from './examples/dialog/lazy-mount/react.tsx?raw';
+import SvelteDialogLazyMountRaw from './examples/dialog/lazy-mount/svelte.svelte?raw';
+import ReactDialogMultipleTriggers from './examples/dialog/multiple-triggers/react.tsx';
+import SvelteDialogMultipleTriggers from './examples/dialog/multiple-triggers/svelte.svelte';
+import ReactDialogMultipleTriggersRaw from './examples/dialog/multiple-triggers/react.tsx?raw';
+import SvelteDialogMultipleTriggersRaw from './examples/dialog/multiple-triggers/svelte.svelte?raw';
+import ReactDialogNested from './examples/dialog/nested/react.tsx';
+import SvelteDialogNested from './examples/dialog/nested/svelte.svelte';
+import ReactDialogNestedRaw from './examples/dialog/nested/react.tsx?raw';
+import SvelteDialogNestedRaw from './examples/dialog/nested/svelte.svelte?raw';
+import ReactDialogNonModal from './examples/dialog/non-modal/react.tsx';
+import SvelteDialogNonModal from './examples/dialog/non-modal/svelte.svelte';
+import ReactDialogNonModalRaw from './examples/dialog/non-modal/react.tsx?raw';
+import SvelteDialogNonModalRaw from './examples/dialog/non-modal/svelte.svelte?raw';
+import ReactDialogOpenFromMenu from './examples/dialog/open-from-menu/react.tsx';
+import SvelteDialogOpenFromMenu from './examples/dialog/open-from-menu/svelte.svelte';
+import ReactDialogOpenFromMenuRaw from './examples/dialog/open-from-menu/react.tsx?raw';
+import SvelteDialogOpenFromMenuRaw from './examples/dialog/open-from-menu/svelte.svelte?raw';
+import ReactDialogOutsideScroll from './examples/dialog/outside-scroll/react.tsx';
+import SvelteDialogOutsideScroll from './examples/dialog/outside-scroll/svelte.svelte';
+import ReactDialogOutsideScrollRaw from './examples/dialog/outside-scroll/react.tsx?raw';
+import SvelteDialogOutsideScrollRaw from './examples/dialog/outside-scroll/svelte.svelte?raw';
+import ReactDialogRootProvider from './examples/dialog/root-provider/react.tsx';
+import SvelteDialogRootProvider from './examples/dialog/root-provider/svelte.svelte';
+import ReactDialogRootProviderRaw from './examples/dialog/root-provider/react.tsx?raw';
+import SvelteDialogRootProviderRaw from './examples/dialog/root-provider/svelte.svelte?raw';
+import ReactFieldDefault from './examples/field/default/react.tsx';
+import SvelteFieldDefault from './examples/field/default/svelte.svelte';
+import ReactFieldDefaultRaw from './examples/field/default/react.tsx?raw';
+import SvelteFieldDefaultRaw from './examples/field/default/svelte.svelte?raw';
+import ReactFieldFieldset from './examples/field/fieldset/react.tsx';
+import SvelteFieldFieldset from './examples/field/fieldset/svelte.svelte';
+import ReactFieldFieldsetRaw from './examples/field/fieldset/react.tsx?raw';
+import SvelteFieldFieldsetRaw from './examples/field/fieldset/svelte.svelte?raw';
+import ReactFigureDefault from './examples/figure/default/react.tsx';
+import SvelteFigureDefault from './examples/figure/default/svelte.svelte';
+import ReactFigureDefaultRaw from './examples/figure/default/react.tsx?raw';
+import SvelteFigureDefaultRaw from './examples/figure/default/svelte.svelte?raw';
+import ReactInputDefault from './examples/input/default/react.tsx';
+import SvelteInputDefault from './examples/input/default/svelte.svelte';
+import ReactInputDefaultRaw from './examples/input/default/react.tsx?raw';
+import SvelteInputDefaultRaw from './examples/input/default/svelte.svelte?raw';
+import ReactInputTextarea from './examples/input/textarea/react.tsx';
+import SvelteInputTextarea from './examples/input/textarea/svelte.svelte';
+import ReactInputTextareaRaw from './examples/input/textarea/react.tsx?raw';
+import SvelteInputTextareaRaw from './examples/input/textarea/svelte.svelte?raw';
+import ReactItemInContainer from './examples/item/in-container/react.tsx';
+import SvelteItemInContainer from './examples/item/in-container/svelte.svelte';
+import ReactItemInContainerRaw from './examples/item/in-container/react.tsx?raw';
+import SvelteItemInContainerRaw from './examples/item/in-container/svelte.svelte?raw';
+import ReactItemInStack from './examples/item/in-stack/react.tsx';
+import SvelteItemInStack from './examples/item/in-stack/svelte.svelte';
+import ReactItemInStackRaw from './examples/item/in-stack/react.tsx?raw';
+import SvelteItemInStackRaw from './examples/item/in-stack/svelte.svelte?raw';
+import ReactLatexBlock from './examples/latex/block/react.tsx';
+import SvelteLatexBlock from './examples/latex/block/svelte.svelte';
+import ReactLatexBlockRaw from './examples/latex/block/react.tsx?raw';
+import SvelteLatexBlockRaw from './examples/latex/block/svelte.svelte?raw';
+import ReactLatexInline from './examples/latex/inline/react.tsx';
+import SvelteLatexInline from './examples/latex/inline/svelte.svelte';
+import ReactLatexInlineRaw from './examples/latex/inline/react.tsx?raw';
+import SvelteLatexInlineRaw from './examples/latex/inline/svelte.svelte?raw';
+import ReactLatexPrerendered from './examples/latex/prerendered/react.tsx';
+import SvelteLatexPrerendered from './examples/latex/prerendered/svelte.svelte';
+import ReactLatexPrerenderedRaw from './examples/latex/prerendered/react.tsx?raw';
+import SvelteLatexPrerenderedRaw from './examples/latex/prerendered/svelte.svelte?raw';
+import ReactLayoutPortal from './examples/layout/portal/react.tsx';
+import SvelteLayoutPortal from './examples/layout/portal/svelte.svelte';
+import ReactLayoutPortalRaw from './examples/layout/portal/react.tsx?raw';
+import SvelteLayoutPortalRaw from './examples/layout/portal/svelte.svelte?raw';
+import ReactManimDefault from './examples/manim/default/react.tsx';
+import SvelteManimDefault from './examples/manim/default/svelte.svelte';
+import ReactManimDefaultRaw from './examples/manim/default/react.tsx?raw';
+import SvelteManimDefaultRaw from './examples/manim/default/svelte.svelte?raw';
+import ReactMermaidColors from './examples/mermaid/colors/react.tsx';
+import SvelteMermaidColors from './examples/mermaid/colors/svelte.svelte';
+import ReactMermaidColorsRaw from './examples/mermaid/colors/react.tsx?raw';
+import SvelteMermaidColorsRaw from './examples/mermaid/colors/svelte.svelte?raw';
+import ReactMermaidDefault from './examples/mermaid/default/react.tsx';
+import SvelteMermaidDefault from './examples/mermaid/default/svelte.svelte';
+import ReactMermaidDefaultRaw from './examples/mermaid/default/react.tsx?raw';
+import SvelteMermaidDefaultRaw from './examples/mermaid/default/svelte.svelte?raw';
+import ReactMermaidFallback from './examples/mermaid/fallback/react.tsx';
+import SvelteMermaidFallback from './examples/mermaid/fallback/svelte.svelte';
+import ReactMermaidFallbackRaw from './examples/mermaid/fallback/react.tsx?raw';
+import SvelteMermaidFallbackRaw from './examples/mermaid/fallback/svelte.svelte?raw';
+import ReactMermaidPrerendered from './examples/mermaid/prerendered/react.tsx';
+import SvelteMermaidPrerendered from './examples/mermaid/prerendered/svelte.svelte';
+import ReactMermaidPrerenderedRaw from './examples/mermaid/prerendered/react.tsx?raw';
+import SvelteMermaidPrerenderedRaw from './examples/mermaid/prerendered/svelte.svelte?raw';
+import ReactNavbarDensity from './examples/navbar/density/react.tsx';
+import SvelteNavbarDensity from './examples/navbar/density/svelte.svelte';
+import ReactNavbarDensityRaw from './examples/navbar/density/react.tsx?raw';
+import SvelteNavbarDensityRaw from './examples/navbar/density/svelte.svelte?raw';
+import ReactNavbarDropdown from './examples/navbar/dropdown/react.tsx';
+import SvelteNavbarDropdown from './examples/navbar/dropdown/svelte.svelte';
+import ReactNavbarDropdownRaw from './examples/navbar/dropdown/react.tsx?raw';
+import SvelteNavbarDropdownRaw from './examples/navbar/dropdown/svelte.svelte?raw';
+import ReactNavbarFloating from './examples/navbar/floating/react.tsx';
+import SvelteNavbarFloating from './examples/navbar/floating/svelte.svelte';
+import ReactNavbarFloatingRaw from './examples/navbar/floating/react.tsx?raw';
+import SvelteNavbarFloatingRaw from './examples/navbar/floating/svelte.svelte?raw';
+import ReactNavbarHide from './examples/navbar/hide/react.tsx';
+import SvelteNavbarHide from './examples/navbar/hide/svelte.svelte';
+import ReactNavbarHideRaw from './examples/navbar/hide/react.tsx?raw';
+import SvelteNavbarHideRaw from './examples/navbar/hide/svelte.svelte?raw';
+import ReactNavbarScroll from './examples/navbar/scroll/react.tsx';
+import SvelteNavbarScroll from './examples/navbar/scroll/svelte.svelte';
+import ReactNavbarScrollRaw from './examples/navbar/scroll/react.tsx?raw';
+import SvelteNavbarScrollRaw from './examples/navbar/scroll/svelte.svelte?raw';
+import ReactNavbarShrink from './examples/navbar/shrink/react.tsx';
+import SvelteNavbarShrink from './examples/navbar/shrink/svelte.svelte';
+import ReactNavbarShrinkRaw from './examples/navbar/shrink/react.tsx?raw';
+import SvelteNavbarShrinkRaw from './examples/navbar/shrink/svelte.svelte?raw';
+import ReactNavbarSticky from './examples/navbar/sticky/react.tsx';
+import SvelteNavbarSticky from './examples/navbar/sticky/svelte.svelte';
+import ReactNavbarStickyRaw from './examples/navbar/sticky/react.tsx?raw';
+import SvelteNavbarStickyRaw from './examples/navbar/sticky/svelte.svelte?raw';
+import ReactNavbarTwoColumns from './examples/navbar/two-columns/react.tsx';
+import SvelteNavbarTwoColumns from './examples/navbar/two-columns/svelte.svelte';
+import ReactNavbarTwoColumnsRaw from './examples/navbar/two-columns/react.tsx?raw';
+import SvelteNavbarTwoColumnsRaw from './examples/navbar/two-columns/svelte.svelte?raw';
+import ReactNavbarVariants from './examples/navbar/variants/react.tsx';
+import SvelteNavbarVariants from './examples/navbar/variants/svelte.svelte';
+import ReactNavbarVariantsRaw from './examples/navbar/variants/react.tsx?raw';
+import SvelteNavbarVariantsRaw from './examples/navbar/variants/svelte.svelte?raw';
+import ReactNoticeDefault from './examples/notice/default/react.tsx';
+import SvelteNoticeDefault from './examples/notice/default/svelte.svelte';
+import ReactNoticeDefaultRaw from './examples/notice/default/react.tsx?raw';
+import SvelteNoticeDefaultRaw from './examples/notice/default/svelte.svelte?raw';
+import ReactNoticeOmitTitle from './examples/notice/omit-title/react.tsx';
+import SvelteNoticeOmitTitle from './examples/notice/omit-title/svelte.svelte';
+import ReactNoticeOmitTitleRaw from './examples/notice/omit-title/react.tsx?raw';
+import SvelteNoticeOmitTitleRaw from './examples/notice/omit-title/svelte.svelte?raw';
+import ReactNoticeVariants from './examples/notice/variants/react.tsx';
+import SvelteNoticeVariants from './examples/notice/variants/svelte.svelte';
+import ReactNoticeVariantsRaw from './examples/notice/variants/react.tsx?raw';
+import SvelteNoticeVariantsRaw from './examples/notice/variants/svelte.svelte?raw';
+import ReactNumberInputDefault from './examples/number-input/default/react.tsx';
+import SvelteNumberInputDefault from './examples/number-input/default/svelte.svelte';
+import ReactNumberInputDefaultRaw from './examples/number-input/default/react.tsx?raw';
+import SvelteNumberInputDefaultRaw from './examples/number-input/default/svelte.svelte?raw';
+import ReactPageDefault from './examples/page/default/react.tsx';
+import SveltePageDefault from './examples/page/default/svelte.svelte';
+import ReactPageDefaultRaw from './examples/page/default/react.tsx?raw';
+import SveltePageDefaultRaw from './examples/page/default/svelte.svelte?raw';
+import ReactPageFooter from './examples/page/footer/react.tsx';
+import SveltePageFooter from './examples/page/footer/svelte.svelte';
+import ReactPageFooterRaw from './examples/page/footer/react.tsx?raw';
+import SveltePageFooterRaw from './examples/page/footer/svelte.svelte?raw';
+import ReactPageGutterScroll from './examples/page/gutter-scroll/react.tsx';
+import SveltePageGutterScroll from './examples/page/gutter-scroll/svelte.svelte';
+import ReactPageGutterScrollRaw from './examples/page/gutter-scroll/react.tsx?raw';
+import SveltePageGutterScrollRaw from './examples/page/gutter-scroll/svelte.svelte?raw';
+import ReactPageGutters from './examples/page/gutters/react.tsx';
+import SveltePageGutters from './examples/page/gutters/svelte.svelte';
+import ReactPageGuttersRaw from './examples/page/gutters/react.tsx?raw';
+import SveltePageGuttersRaw from './examples/page/gutters/svelte.svelte?raw';
+import ReactPageLanding from './examples/page/landing/react.tsx';
+import SveltePageLanding from './examples/page/landing/svelte.svelte';
+import ReactPageLandingRaw from './examples/page/landing/react.tsx?raw';
+import SveltePageLandingRaw from './examples/page/landing/svelte.svelte?raw';
+import ReactPaginationControlled from './examples/pagination/controlled/react.tsx';
+import SveltePaginationControlled from './examples/pagination/controlled/svelte.svelte';
+import ReactPaginationControlledRaw from './examples/pagination/controlled/react.tsx?raw';
+import SveltePaginationControlledRaw from './examples/pagination/controlled/svelte.svelte?raw';
+import ReactPaginationDefault from './examples/pagination/default/react.tsx';
+import SveltePaginationDefault from './examples/pagination/default/svelte.svelte';
+import ReactPaginationDefaultRaw from './examples/pagination/default/react.tsx?raw';
+import SveltePaginationDefaultRaw from './examples/pagination/default/svelte.svelte?raw';
+import ReactPopoverAnchor from './examples/popover/anchor/react.tsx';
+import SveltePopoverAnchor from './examples/popover/anchor/svelte.svelte';
+import ReactPopoverAnchorRaw from './examples/popover/anchor/react.tsx?raw';
+import SveltePopoverAnchorRaw from './examples/popover/anchor/svelte.svelte?raw';
+import ReactPopoverArrow from './examples/popover/arrow/react.tsx';
+import SveltePopoverArrow from './examples/popover/arrow/svelte.svelte';
+import ReactPopoverArrowRaw from './examples/popover/arrow/react.tsx?raw';
+import SveltePopoverArrowRaw from './examples/popover/arrow/svelte.svelte?raw';
+import ReactPopoverCloseBehavior from './examples/popover/close-behavior/react.tsx';
+import SveltePopoverCloseBehavior from './examples/popover/close-behavior/svelte.svelte';
+import ReactPopoverCloseBehaviorRaw from './examples/popover/close-behavior/react.tsx?raw';
+import SveltePopoverCloseBehaviorRaw from './examples/popover/close-behavior/svelte.svelte?raw';
+import ReactPopoverControlled from './examples/popover/controlled/react.tsx';
+import SveltePopoverControlled from './examples/popover/controlled/svelte.svelte';
+import ReactPopoverControlledRaw from './examples/popover/controlled/react.tsx?raw';
+import SveltePopoverControlledRaw from './examples/popover/controlled/svelte.svelte?raw';
+import ReactPopoverDefault from './examples/popover/default/react.tsx';
+import SveltePopoverDefault from './examples/popover/default/svelte.svelte';
+import ReactPopoverDefaultRaw from './examples/popover/default/react.tsx?raw';
+import SveltePopoverDefaultRaw from './examples/popover/default/svelte.svelte?raw';
+import ReactPopoverDialogIntegration from './examples/popover/dialog-integration/react.tsx';
+import SveltePopoverDialogIntegration from './examples/popover/dialog-integration/svelte.svelte';
+import ReactPopoverDialogIntegrationRaw from './examples/popover/dialog-integration/react.tsx?raw';
+import SveltePopoverDialogIntegrationRaw from './examples/popover/dialog-integration/svelte.svelte?raw';
+import ReactPopoverModality from './examples/popover/modality/react.tsx';
+import SveltePopoverModality from './examples/popover/modality/svelte.svelte';
+import ReactPopoverModalityRaw from './examples/popover/modality/react.tsx?raw';
+import SveltePopoverModalityRaw from './examples/popover/modality/svelte.svelte?raw';
+import ReactPopoverMultipleTriggers from './examples/popover/multiple-triggers/react.tsx';
+import SveltePopoverMultipleTriggers from './examples/popover/multiple-triggers/svelte.svelte';
+import ReactPopoverMultipleTriggersRaw from './examples/popover/multiple-triggers/react.tsx?raw';
+import SveltePopoverMultipleTriggersRaw from './examples/popover/multiple-triggers/svelte.svelte?raw';
+import ReactPopoverNested from './examples/popover/nested/react.tsx';
+import SveltePopoverNested from './examples/popover/nested/svelte.svelte';
+import ReactPopoverNestedRaw from './examples/popover/nested/react.tsx?raw';
+import SveltePopoverNestedRaw from './examples/popover/nested/svelte.svelte?raw';
+import ReactPopoverPlacement from './examples/popover/placement/react.tsx';
+import SveltePopoverPlacement from './examples/popover/placement/svelte.svelte';
+import ReactPopoverPlacementRaw from './examples/popover/placement/react.tsx?raw';
+import SveltePopoverPlacementRaw from './examples/popover/placement/svelte.svelte?raw';
+import ReactPopoverPopoverWithTooltip from './examples/popover/popover-with-tooltip/react.tsx';
+import SveltePopoverPopoverWithTooltip from './examples/popover/popover-with-tooltip/svelte.svelte';
+import ReactPopoverPopoverWithTooltipRaw from './examples/popover/popover-with-tooltip/react.tsx?raw';
+import SveltePopoverPopoverWithTooltipRaw from './examples/popover/popover-with-tooltip/svelte.svelte?raw';
+import ReactPopoverRootProvider from './examples/popover/root-provider/react.tsx';
+import SveltePopoverRootProvider from './examples/popover/root-provider/svelte.svelte';
+import ReactPopoverRootProviderRaw from './examples/popover/root-provider/react.tsx?raw';
+import SveltePopoverRootProviderRaw from './examples/popover/root-provider/svelte.svelte?raw';
+import ReactPopoverSameWidth from './examples/popover/same-width/react.tsx';
+import SveltePopoverSameWidth from './examples/popover/same-width/svelte.svelte';
+import ReactPopoverSameWidthRaw from './examples/popover/same-width/react.tsx?raw';
+import SveltePopoverSameWidthRaw from './examples/popover/same-width/svelte.svelte?raw';
+import ReactPrevNextDefault from './examples/prev-next/default/react.tsx';
+import SveltePrevNextDefault from './examples/prev-next/default/svelte.svelte';
+import ReactPrevNextDefaultRaw from './examples/prev-next/default/react.tsx?raw';
+import SveltePrevNextDefaultRaw from './examples/prev-next/default/svelte.svelte?raw';
+import ReactQuestionsMultiple from './examples/questions/multiple/react.tsx';
+import SvelteQuestionsMultiple from './examples/questions/multiple/svelte.svelte';
+import ReactQuestionsMultipleRaw from './examples/questions/multiple/react.tsx?raw';
+import SvelteQuestionsMultipleRaw from './examples/questions/multiple/svelte.svelte?raw';
+import ReactQuestionsNumeric from './examples/questions/numeric/react.tsx';
+import SvelteQuestionsNumeric from './examples/questions/numeric/svelte.svelte';
+import ReactQuestionsNumericRaw from './examples/questions/numeric/react.tsx?raw';
+import SvelteQuestionsNumericRaw from './examples/questions/numeric/svelte.svelte?raw';
+import ReactQuestionsSingle from './examples/questions/single/react.tsx';
+import SvelteQuestionsSingle from './examples/questions/single/svelte.svelte';
+import ReactQuestionsSingleRaw from './examples/questions/single/react.tsx?raw';
+import SvelteQuestionsSingleRaw from './examples/questions/single/svelte.svelte?raw';
+import ReactQuizDefault from './examples/quiz/default/react.tsx';
+import SvelteQuizDefault from './examples/quiz/default/svelte.svelte';
+import ReactQuizDefaultRaw from './examples/quiz/default/react.tsx?raw';
+import SvelteQuizDefaultRaw from './examples/quiz/default/svelte.svelte?raw';
+import ReactRevealDefault from './examples/reveal/default/react.tsx';
+import SvelteRevealDefault from './examples/reveal/default/svelte.svelte';
+import ReactRevealDefaultRaw from './examples/reveal/default/react.tsx?raw';
+import SvelteRevealDefaultRaw from './examples/reveal/default/svelte.svelte?raw';
+import ReactRowDefault from './examples/row/default/react.tsx';
+import SvelteRowDefault from './examples/row/default/svelte.svelte';
+import ReactRowDefaultRaw from './examples/row/default/react.tsx?raw';
+import SvelteRowDefaultRaw from './examples/row/default/svelte.svelte?raw';
+import ReactRowResponsiveDirection from './examples/row/responsive-direction/react.tsx';
+import SvelteRowResponsiveDirection from './examples/row/responsive-direction/svelte.svelte';
+import ReactRowResponsiveDirectionRaw from './examples/row/responsive-direction/react.tsx?raw';
+import SvelteRowResponsiveDirectionRaw from './examples/row/responsive-direction/svelte.svelte?raw';
+import ReactRowSeparator from './examples/row/separator/react.tsx';
+import SvelteRowSeparator from './examples/row/separator/svelte.svelte';
+import ReactRowSeparatorRaw from './examples/row/separator/react.tsx?raw';
+import SvelteRowSeparatorRaw from './examples/row/separator/svelte.svelte?raw';
+import ReactRowWithGap from './examples/row/with-gap/react.tsx';
+import SvelteRowWithGap from './examples/row/with-gap/svelte.svelte';
+import ReactRowWithGapRaw from './examples/row/with-gap/react.tsx?raw';
+import SvelteRowWithGapRaw from './examples/row/with-gap/svelte.svelte?raw';
+import ReactScrollBoth from './examples/scroll/both/react.tsx';
+import SvelteScrollBoth from './examples/scroll/both/svelte.svelte';
+import ReactScrollBothRaw from './examples/scroll/both/react.tsx?raw';
+import SvelteScrollBothRaw from './examples/scroll/both/svelte.svelte?raw';
+import ReactScrollDefault from './examples/scroll/default/react.tsx';
+import SvelteScrollDefault from './examples/scroll/default/svelte.svelte';
+import ReactScrollDefaultRaw from './examples/scroll/default/react.tsx?raw';
+import SvelteScrollDefaultRaw from './examples/scroll/default/svelte.svelte?raw';
+import ReactScrollHidden from './examples/scroll/hidden/react.tsx';
+import SvelteScrollHidden from './examples/scroll/hidden/svelte.svelte';
+import ReactScrollHiddenRaw from './examples/scroll/hidden/react.tsx?raw';
+import SvelteScrollHiddenRaw from './examples/scroll/hidden/svelte.svelte?raw';
+import ReactScrollHorizontal from './examples/scroll/horizontal/react.tsx';
+import SvelteScrollHorizontal from './examples/scroll/horizontal/svelte.svelte';
+import ReactScrollHorizontalRaw from './examples/scroll/horizontal/react.tsx?raw';
+import SvelteScrollHorizontalRaw from './examples/scroll/horizontal/svelte.svelte?raw';
+import ReactScrollScrollShadow from './examples/scroll/scroll-shadow/react.tsx';
+import SvelteScrollScrollShadow from './examples/scroll/scroll-shadow/svelte.svelte';
+import ReactScrollScrollShadowRaw from './examples/scroll/scroll-shadow/react.tsx?raw';
+import SvelteScrollScrollShadowRaw from './examples/scroll/scroll-shadow/svelte.svelte?raw';
+import ReactScrollSizes from './examples/scroll/sizes/react.tsx';
+import SvelteScrollSizes from './examples/scroll/sizes/svelte.svelte';
+import ReactScrollSizesRaw from './examples/scroll/sizes/react.tsx?raw';
+import SvelteScrollSizesRaw from './examples/scroll/sizes/svelte.svelte?raw';
+import ReactScrollThumbStyling from './examples/scroll/thumb-styling/react.tsx';
+import SvelteScrollThumbStyling from './examples/scroll/thumb-styling/svelte.svelte';
+import ReactScrollThumbStylingRaw from './examples/scroll/thumb-styling/react.tsx?raw';
+import SvelteScrollThumbStylingRaw from './examples/scroll/thumb-styling/svelte.svelte?raw';
+import ReactSelectDefault from './examples/select/default/react.tsx';
+import SvelteSelectDefault from './examples/select/default/svelte.svelte';
+import ReactSelectDefaultRaw from './examples/select/default/react.tsx?raw';
+import SvelteSelectDefaultRaw from './examples/select/default/svelte.svelte?raw';
+import ReactSidebarIcon from './examples/sidebar/icon/react.tsx';
+import SvelteSidebarIcon from './examples/sidebar/icon/svelte.svelte';
+import ReactSidebarIconRaw from './examples/sidebar/icon/react.tsx?raw';
+import SvelteSidebarIconRaw from './examples/sidebar/icon/svelte.svelte?raw';
+import ReactSidebarOffcanvas from './examples/sidebar/offcanvas/react.tsx';
+import SvelteSidebarOffcanvas from './examples/sidebar/offcanvas/svelte.svelte';
+import ReactSidebarOffcanvasRaw from './examples/sidebar/offcanvas/react.tsx?raw';
+import SvelteSidebarOffcanvasRaw from './examples/sidebar/offcanvas/svelte.svelte?raw';
+import ReactSidebarRail from './examples/sidebar/rail/react.tsx';
+import SvelteSidebarRail from './examples/sidebar/rail/svelte.svelte';
+import ReactSidebarRailRaw from './examples/sidebar/rail/react.tsx?raw';
+import SvelteSidebarRailRaw from './examples/sidebar/rail/svelte.svelte?raw';
+import ReactSplitterCollapsible from './examples/splitter/collapsible/react.tsx';
+import SvelteSplitterCollapsible from './examples/splitter/collapsible/svelte.svelte';
+import ReactSplitterCollapsibleRaw from './examples/splitter/collapsible/react.tsx?raw';
+import SvelteSplitterCollapsibleRaw from './examples/splitter/collapsible/svelte.svelte?raw';
+import ReactSplitterDefault from './examples/splitter/default/react.tsx';
+import SvelteSplitterDefault from './examples/splitter/default/svelte.svelte';
+import ReactSplitterDefaultRaw from './examples/splitter/default/react.tsx?raw';
+import SvelteSplitterDefaultRaw from './examples/splitter/default/svelte.svelte?raw';
+import ReactSplitterDisabled from './examples/splitter/disabled/react.tsx';
+import SvelteSplitterDisabled from './examples/splitter/disabled/svelte.svelte';
+import ReactSplitterDisabledRaw from './examples/splitter/disabled/react.tsx?raw';
+import SvelteSplitterDisabledRaw from './examples/splitter/disabled/svelte.svelte?raw';
+import ReactSplitterMinMax from './examples/splitter/min-max/react.tsx';
+import SvelteSplitterMinMax from './examples/splitter/min-max/svelte.svelte';
+import ReactSplitterMinMaxRaw from './examples/splitter/min-max/react.tsx?raw';
+import SvelteSplitterMinMaxRaw from './examples/splitter/min-max/svelte.svelte?raw';
+import ReactSplitterMultiplePanels from './examples/splitter/multiple-panels/react.tsx';
+import SvelteSplitterMultiplePanels from './examples/splitter/multiple-panels/svelte.svelte';
+import ReactSplitterMultiplePanelsRaw from './examples/splitter/multiple-panels/react.tsx?raw';
+import SvelteSplitterMultiplePanelsRaw from './examples/splitter/multiple-panels/svelte.svelte?raw';
+import ReactSplitterVertical from './examples/splitter/vertical/react.tsx';
+import SvelteSplitterVertical from './examples/splitter/vertical/svelte.svelte';
+import ReactSplitterVerticalRaw from './examples/splitter/vertical/react.tsx?raw';
+import SvelteSplitterVerticalRaw from './examples/splitter/vertical/svelte.svelte?raw';
+import ReactStackDefault from './examples/stack/default/react.tsx';
+import SvelteStackDefault from './examples/stack/default/svelte.svelte';
+import ReactStackDefaultRaw from './examples/stack/default/react.tsx?raw';
+import SvelteStackDefaultRaw from './examples/stack/default/svelte.svelte?raw';
+import ReactStackHstack from './examples/stack/hstack/react.tsx';
+import SvelteStackHstack from './examples/stack/hstack/svelte.svelte';
+import ReactStackHstackRaw from './examples/stack/hstack/react.tsx?raw';
+import SvelteStackHstackRaw from './examples/stack/hstack/svelte.svelte?raw';
+import ReactStackResponsiveDirection from './examples/stack/responsive-direction/react.tsx';
+import SvelteStackResponsiveDirection from './examples/stack/responsive-direction/svelte.svelte';
+import ReactStackResponsiveDirectionRaw from './examples/stack/responsive-direction/react.tsx?raw';
+import SvelteStackResponsiveDirectionRaw from './examples/stack/responsive-direction/svelte.svelte?raw';
+import ReactStackSeparator from './examples/stack/separator/react.tsx';
+import SvelteStackSeparator from './examples/stack/separator/svelte.svelte';
+import ReactStackSeparatorRaw from './examples/stack/separator/react.tsx?raw';
+import SvelteStackSeparatorRaw from './examples/stack/separator/svelte.svelte?raw';
+import ReactStackVstack from './examples/stack/vstack/react.tsx';
+import SvelteStackVstack from './examples/stack/vstack/svelte.svelte';
+import ReactStackVstackRaw from './examples/stack/vstack/react.tsx?raw';
+import SvelteStackVstackRaw from './examples/stack/vstack/svelte.svelte?raw';
+import ReactSwitchDefault from './examples/switch/default/react.tsx';
+import SvelteSwitchDefault from './examples/switch/default/svelte.svelte';
+import ReactSwitchDefaultRaw from './examples/switch/default/react.tsx?raw';
+import SvelteSwitchDefaultRaw from './examples/switch/default/svelte.svelte?raw';
+import ReactTabsDefault from './examples/tabs/default/react.tsx';
+import SvelteTabsDefault from './examples/tabs/default/svelte.svelte';
+import ReactTabsDefaultRaw from './examples/tabs/default/react.tsx?raw';
+import SvelteTabsDefaultRaw from './examples/tabs/default/svelte.svelte?raw';
+import ReactTabsUnderline from './examples/tabs/underline/react.tsx';
+import SvelteTabsUnderline from './examples/tabs/underline/svelte.svelte';
+import ReactTabsUnderlineRaw from './examples/tabs/underline/react.tsx?raw';
+import SvelteTabsUnderlineRaw from './examples/tabs/underline/svelte.svelte?raw';
+import ReactTagsInputDefault from './examples/tags-input/default/react.tsx';
+import SvelteTagsInputDefault from './examples/tags-input/default/svelte.svelte';
+import ReactTagsInputDefaultRaw from './examples/tags-input/default/react.tsx?raw';
+import SvelteTagsInputDefaultRaw from './examples/tags-input/default/svelte.svelte?raw';
+import ReactToggleButtonDefault from './examples/toggle-button/default/react.tsx';
+import SvelteToggleButtonDefault from './examples/toggle-button/default/svelte.svelte';
+import ReactToggleButtonDefaultRaw from './examples/toggle-button/default/react.tsx?raw';
+import SvelteToggleButtonDefaultRaw from './examples/toggle-button/default/svelte.svelte?raw';
+import ReactToggleButtonIcon from './examples/toggle-button/icon/react.tsx';
+import SvelteToggleButtonIcon from './examples/toggle-button/icon/svelte.svelte';
+import ReactToggleButtonIconRaw from './examples/toggle-button/icon/react.tsx?raw';
+import SvelteToggleButtonIconRaw from './examples/toggle-button/icon/svelte.svelte?raw';
+import ReactToggleButtonIndicator from './examples/toggle-button/indicator/react.tsx';
+import SvelteToggleButtonIndicator from './examples/toggle-button/indicator/svelte.svelte';
+import ReactToggleButtonIndicatorRaw from './examples/toggle-button/indicator/react.tsx?raw';
+import SvelteToggleButtonIndicatorRaw from './examples/toggle-button/indicator/svelte.svelte?raw';
+import ReactToggleButtonOutline from './examples/toggle-button/outline/react.tsx';
+import SvelteToggleButtonOutline from './examples/toggle-button/outline/svelte.svelte';
+import ReactToggleButtonOutlineRaw from './examples/toggle-button/outline/react.tsx?raw';
+import SvelteToggleButtonOutlineRaw from './examples/toggle-button/outline/svelte.svelte?raw';
+import ReactTooltipArrow from './examples/tooltip/arrow/react.tsx';
+import SvelteTooltipArrow from './examples/tooltip/arrow/svelte.svelte';
+import ReactTooltipArrowRaw from './examples/tooltip/arrow/react.tsx?raw';
+import SvelteTooltipArrowRaw from './examples/tooltip/arrow/svelte.svelte?raw';
+import ReactTooltipContext from './examples/tooltip/context/react.tsx';
+import SvelteTooltipContext from './examples/tooltip/context/svelte.svelte';
+import ReactTooltipContextRaw from './examples/tooltip/context/react.tsx?raw';
+import SvelteTooltipContextRaw from './examples/tooltip/context/svelte.svelte?raw';
+import ReactTooltipControlled from './examples/tooltip/controlled/react.tsx';
+import SvelteTooltipControlled from './examples/tooltip/controlled/svelte.svelte';
+import ReactTooltipControlledRaw from './examples/tooltip/controlled/react.tsx?raw';
+import SvelteTooltipControlledRaw from './examples/tooltip/controlled/svelte.svelte?raw';
+import ReactTooltipDefault from './examples/tooltip/default/react.tsx';
+import SvelteTooltipDefault from './examples/tooltip/default/svelte.svelte';
+import ReactTooltipDefaultRaw from './examples/tooltip/default/react.tsx?raw';
+import SvelteTooltipDefaultRaw from './examples/tooltip/default/svelte.svelte?raw';
+import ReactTooltipDelay from './examples/tooltip/delay/react.tsx';
+import SvelteTooltipDelay from './examples/tooltip/delay/svelte.svelte';
+import ReactTooltipDelayRaw from './examples/tooltip/delay/react.tsx?raw';
+import SvelteTooltipDelayRaw from './examples/tooltip/delay/svelte.svelte?raw';
+import ReactTooltipFollowingCursor from './examples/tooltip/following-cursor/react.tsx';
+import SvelteTooltipFollowingCursor from './examples/tooltip/following-cursor/svelte.svelte';
+import ReactTooltipFollowingCursorRaw from './examples/tooltip/following-cursor/react.tsx?raw';
+import SvelteTooltipFollowingCursorRaw from './examples/tooltip/following-cursor/svelte.svelte?raw';
+import ReactTooltipMultipleTriggers from './examples/tooltip/multiple-triggers/react.tsx';
+import SvelteTooltipMultipleTriggers from './examples/tooltip/multiple-triggers/svelte.svelte';
+import ReactTooltipMultipleTriggersRaw from './examples/tooltip/multiple-triggers/react.tsx?raw';
+import SvelteTooltipMultipleTriggersRaw from './examples/tooltip/multiple-triggers/svelte.svelte?raw';
+import ReactTooltipPositioning from './examples/tooltip/positioning/react.tsx';
+import SvelteTooltipPositioning from './examples/tooltip/positioning/svelte.svelte';
+import ReactTooltipPositioningRaw from './examples/tooltip/positioning/react.tsx?raw';
+import SvelteTooltipPositioningRaw from './examples/tooltip/positioning/svelte.svelte?raw';
+import ReactTooltipRootProvider from './examples/tooltip/root-provider/react.tsx';
+import SvelteTooltipRootProvider from './examples/tooltip/root-provider/svelte.svelte';
+import ReactTooltipRootProviderRaw from './examples/tooltip/root-provider/react.tsx?raw';
+import SvelteTooltipRootProviderRaw from './examples/tooltip/root-provider/svelte.svelte?raw';
+import ReactTooltipWithinFixedContainers from './examples/tooltip/within-fixed-containers/react.tsx';
+import SvelteTooltipWithinFixedContainers from './examples/tooltip/within-fixed-containers/svelte.svelte';
+import ReactTooltipWithinFixedContainersRaw from './examples/tooltip/within-fixed-containers/react.tsx?raw';
+import SvelteTooltipWithinFixedContainersRaw from './examples/tooltip/within-fixed-containers/svelte.svelte?raw';
+import ReactWindowAnchorPosition from './examples/window/anchor-position/react.tsx';
+import SvelteWindowAnchorPosition from './examples/window/anchor-position/svelte.svelte';
+import ReactWindowAnchorPositionRaw from './examples/window/anchor-position/react.tsx?raw';
+import SvelteWindowAnchorPositionRaw from './examples/window/anchor-position/svelte.svelte?raw';
+import ReactWindowContext from './examples/window/context/react.tsx';
+import SvelteWindowContext from './examples/window/context/svelte.svelte';
+import ReactWindowContextRaw from './examples/window/context/react.tsx?raw';
+import SvelteWindowContextRaw from './examples/window/context/svelte.svelte?raw';
+import ReactWindowControlledPosition from './examples/window/controlled-position/react.tsx';
+import SvelteWindowControlledPosition from './examples/window/controlled-position/svelte.svelte';
+import ReactWindowControlledPositionRaw from './examples/window/controlled-position/react.tsx?raw';
+import SvelteWindowControlledPositionRaw from './examples/window/controlled-position/svelte.svelte?raw';
+import ReactWindowControlledSize from './examples/window/controlled-size/react.tsx';
+import SvelteWindowControlledSize from './examples/window/controlled-size/svelte.svelte';
+import ReactWindowControlledSizeRaw from './examples/window/controlled-size/react.tsx?raw';
+import SvelteWindowControlledSizeRaw from './examples/window/controlled-size/svelte.svelte?raw';
+import ReactWindowDefault from './examples/window/default/react.tsx';
+import SvelteWindowDefault from './examples/window/default/svelte.svelte';
+import ReactWindowDefaultRaw from './examples/window/default/react.tsx?raw';
+import SvelteWindowDefaultRaw from './examples/window/default/svelte.svelte?raw';
+import ReactWindowLazyMount from './examples/window/lazy-mount/react.tsx';
+import SvelteWindowLazyMount from './examples/window/lazy-mount/svelte.svelte';
+import ReactWindowLazyMountRaw from './examples/window/lazy-mount/react.tsx?raw';
+import SvelteWindowLazyMountRaw from './examples/window/lazy-mount/svelte.svelte?raw';
+import ReactWindowOpenState from './examples/window/open-state/react.tsx';
+import SvelteWindowOpenState from './examples/window/open-state/svelte.svelte';
+import ReactWindowOpenStateRaw from './examples/window/open-state/react.tsx?raw';
+import SvelteWindowOpenStateRaw from './examples/window/open-state/svelte.svelte?raw';
+import ReactYoutubeDefault from './examples/youtube/default/react.tsx';
+import SvelteYoutubeDefault from './examples/youtube/default/svelte.svelte';
+import ReactYoutubeDefaultRaw from './examples/youtube/default/react.tsx?raw';
+import SvelteYoutubeDefaultRaw from './examples/youtube/default/svelte.svelte?raw';
+import ReactYoutubeTimestamps from './examples/youtube/timestamps/react.tsx';
+import SvelteYoutubeTimestamps from './examples/youtube/timestamps/svelte.svelte';
+import ReactYoutubeTimestampsRaw from './examples/youtube/timestamps/react.tsx?raw';
+import SvelteYoutubeTimestampsRaw from './examples/youtube/timestamps/svelte.svelte?raw';
 
-type ComponentName =
-  | 'button'
-  | 'toggle-button'
-  | 'tooltip'
-  | 'popover'
-  | 'dialog'
-  | 'window'
-  | 'badge'
-  | 'layout'
-  | 'stack'
-  | 'scroll'
-  | 'splitter'
-  | 'center'
-  | 'item'
-  | 'card'
-  | 'sidebar'
-  | 'tabs'
-  | 'pagination'
-  | 'navbar'
-  | 'input'
-  | 'field'
-  | 'number-input'
-  | 'checkbox'
-  | 'switch'
-  | 'select'
-  | 'combobox'
-  | 'tags-input'
-  | 'page'
-  | 'mermaid'
-  | 'notice'
-  | 'figure'
-  | 'reveal'
-  | 'latex'
-  | 'code-block'
-  | 'manim'
-  | 'youtube'
-  | 'chart'
-  | 'questions'
-  | 'quiz'
-  | 'prev-next';
-
-type ExampleName =
-  | 'solid'
-  | 'outline'
-  | 'rounded'
-  | 'sizes'
-  | 'icon'
-  | 'with-icon'
-  | 'disabled'
-  | 'indicator'
-  | 'root-provider'
-  | 'arrow'
-  | 'delay'
-  | 'positioning'
-  | 'context'
-  | 'within-fixed-containers'
-  | 'multiple-triggers'
-  | 'placement'
-  | 'close-behavior'
-  | 'modality'
-  | 'anchor'
-  | 'same-width'
-  | 'nested'
-  | 'dialog-integration'
-  | 'popover-with-tooltip'
-  | 'dialog-with-tooltip'
-  | 'following-cursor'
-  | 'alert-dialog'
-  | 'lazy-mount'
-  | 'initial-focus'
-  | 'final-focus'
-  | 'non-modal'
-  | 'inside-scroll'
-  | 'outside-scroll'
-  | 'fullscreen'
-  | 'open-from-menu'
-  | 'confirmation'
-  | 'controlled-size'
-  | 'controlled-position'
-  | 'anchor-position'
-  | 'open-state'
-  | 'variants'
-  | 'colors'
-  | 'default'
-  | 'fluid'
-  | 'hstack'
-  | 'vstack'
-  | 'separator'
-  | 'responsive-direction'
-  | 'horizontal'
-  | 'both'
-  | 'scroll-shadow'
-  | 'thumb-styling'
-  | 'vertical'
-  | 'multiple-panels'
-  | 'collapsible'
-  | 'min-max'
-  | 'container'
-  | 'container-sizes'
-  | 'container-fluid'
-  | 'row'
-  | 'row-gap'
-  | 'row-separator'
-  | 'row-responsive'
-  | 'col'
-  | 'col-gap'
-  | 'col-separator'
-  | 'col-responsive'
-  | 'inline'
-  | 'in-stack'
-  | 'in-container'
-  | 'override'
-  | 'with-image'
-  | 'offcanvas'
-  | 'rail'
-  | 'dropdown'
-  | 'two-columns'
-  | 'density'
-  | 'variants'
-  | 'underline'
-  | 'controlled'
-  | 'sticky'
-  | 'floating'
-  | 'shrink'
-  | 'scroll'
-  | 'hide'
-  | 'textarea'
-  | 'fieldset'
-  | 'multiple'
-  | 'hidden'
-  | 'gutters'
-  | 'gutter-scroll'
-  | 'footer'
-  | 'landing'
-  | 'portal'
-  | 'fallback'
-  | 'prerendered'
-  | 'diff'
-  | 'colors'
-  | 'bar'
-  | 'variants'
-  | 'block'
-  | 'inline'
-  | 'features'
-  | 'multi-file'
-  | 'language-tabs'
-  | 'line'
-  | 'pie'
-  | 'single'
-  | 'numeric'
-  | 'timestamps'
-  | 'omit-title';
-
-interface ExampleEntry {
-  id: ExampleName;
-  title: string;
-  component: typeof ExampleButtonSolid;
-}
-
-interface Props {
-  component?: ComponentName;
-  /** Render a single example by id (defaults to the first in the registry). */
-  example?: ExampleName;
-}
 
 const { component = 'button', example } = Astro.props;
-
-const registry: Record<ComponentName, ExampleEntry[]> = {
-  button: [
-    { id: 'solid', title: 'Solid', component: ExampleButtonSolid },
-    { id: 'outline', title: 'Outline', component: ExampleButtonOutline },
-    { id: 'rounded', title: 'Rounded', component: ExampleButtonRounded },
-    { id: 'sizes', title: 'Sizes', component: ExampleButtonSizes },
-    { id: 'icon', title: 'Icon button', component: ExampleButtonIcon },
-    { id: 'with-icon', title: 'With icon', component: ExampleButtonWithIcon },
-    { id: 'disabled', title: 'Disabled', component: ExampleButtonDisabled },
-  ],
-  'toggle-button': [
-    { id: 'default', title: 'Default', component: ExampleToggleButtonDefault },
-    { id: 'outline', title: 'Outline', component: ExampleToggleButtonOutline },
-    { id: 'icon', title: 'Icon', component: ExampleToggleButtonIcon },
-    { id: 'indicator', title: 'Indicator', component: ExampleToggleButtonIndicator },
-  ],
-  tooltip: [
-    { id: 'default', title: 'Default', component: ExampleTooltipDefault },
-    { id: 'controlled', title: 'Controlled', component: ExampleTooltipControlled },
-    { id: 'root-provider', title: 'Root provider', component: ExampleTooltipRootProvider },
-    { id: 'arrow', title: 'Arrow', component: ExampleTooltipArrow },
-    { id: 'delay', title: 'Delay', component: ExampleTooltipDelay },
-    { id: 'positioning', title: 'Positioning', component: ExampleTooltipPositioning },
-    { id: 'context', title: 'Context', component: ExampleTooltipContext },
-    { id: 'within-fixed-containers', title: 'Within fixed containers', component: ExampleTooltipWithinFixedContainers },
-    { id: 'multiple-triggers', title: 'Multiple triggers', component: ExampleTooltipMultipleTriggers },
-    { id: 'following-cursor', title: 'Following cursor', component: ExampleTooltipFollowingCursor },
-  ],
-  popover: [
-    { id: 'default', title: 'Default', component: ExamplePopoverDefault },
-    { id: 'controlled', title: 'Controlled', component: ExamplePopoverControlled },
-    { id: 'root-provider', title: 'Root provider', component: ExamplePopoverRootProvider },
-    { id: 'arrow', title: 'Arrow', component: ExamplePopoverArrow },
-    { id: 'placement', title: 'Placement', component: ExamplePopoverPlacement },
-    { id: 'close-behavior', title: 'Close behavior', component: ExamplePopoverCloseBehavior },
-    { id: 'modality', title: 'Modality', component: ExamplePopoverModality },
-    { id: 'anchor', title: 'Anchor', component: ExamplePopoverAnchor },
-    { id: 'same-width', title: 'Same width', component: ExamplePopoverSameWidth },
-    { id: 'nested', title: 'Nested', component: ExamplePopoverNested },
-    { id: 'multiple-triggers', title: 'Multiple triggers', component: ExamplePopoverMultipleTriggers },
-    { id: 'dialog-integration', title: 'Dialog integration', component: ExamplePopoverDialogIntegration },
-    { id: 'popover-with-tooltip', title: 'Popover with tooltip', component: ExamplePopoverWithTooltip },
-  ],
-  dialog: [
-    { id: 'default', title: 'Default', component: ExampleDialogDefault },
-    { id: 'controlled', title: 'Controlled', component: ExampleDialogControlled },
-    { id: 'root-provider', title: 'Root provider', component: ExampleDialogRootProvider },
-    { id: 'alert-dialog', title: 'Alert dialog', component: ExampleDialogAlertDialog },
-    { id: 'lazy-mount', title: 'Lazy mount', component: ExampleDialogLazyMount },
-    { id: 'initial-focus', title: 'Initial focus', component: ExampleDialogInitialFocus },
-    { id: 'final-focus', title: 'Final focus', component: ExampleDialogFinalFocus },
-    { id: 'non-modal', title: 'Non-modal', component: ExampleDialogNonModal },
-    { id: 'inside-scroll', title: 'Inside scroll', component: ExampleDialogInsideScroll },
-    { id: 'outside-scroll', title: 'Outside scroll', component: ExampleDialogOutsideScroll },
-    { id: 'fullscreen', title: 'Fullscreen', component: ExampleDialogFullscreen },
-    { id: 'context', title: 'Context', component: ExampleDialogContext },
-    { id: 'open-from-menu', title: 'Open from menu', component: ExampleDialogOpenFromMenu },
-    { id: 'nested', title: 'Nested', component: ExampleDialogNested },
-    { id: 'multiple-triggers', title: 'Multiple triggers', component: ExampleDialogMultipleTriggers },
-    { id: 'confirmation', title: 'Confirmation', component: ExampleDialogConfirmation },
-    { id: 'dialog-with-tooltip', title: 'Dialog with tooltip', component: ExampleDialogWithTooltip },
-  ],
-  'window': [
-    { id: 'default', title: 'Default', component: ExampleWindowDefault },
-    { id: 'controlled-size', title: 'Controlled size', component: ExampleWindowControlledSize },
-    { id: 'controlled-position', title: 'Controlled position', component: ExampleWindowControlledPosition },
-    { id: 'anchor-position', title: 'Anchor position', component: ExampleWindowAnchorPosition },
-    { id: 'open-state', title: 'Open state', component: ExampleWindowOpenState },
-    { id: 'lazy-mount', title: 'Lazy mount', component: ExampleWindowLazyMount },
-    { id: 'context', title: 'Context', component: ExampleWindowContext },
-  ],
-  badge: [
-    { id: 'default', title: 'Default', component: ExampleBadgeDefault },
-    { id: 'variants', title: 'Variants', component: ExampleBadgeVariants },
-    { id: 'colors', title: 'Colors', component: ExampleBadgeColors },
-    { id: 'sizes', title: 'Sizes', component: ExampleBadgeSizes },
-  ],
-  layout: [
-    { id: 'container', title: 'Container', component: ExampleContainerDefault },
-    { id: 'container-sizes', title: 'Container sizes', component: ExampleContainerSizes },
-    { id: 'container-fluid', title: 'Fluid container', component: ExampleContainerFluid },
-    { id: 'row', title: 'Row', component: ExampleRowDefault },
-    { id: 'row-gap', title: 'Row with gap', component: ExampleRowWithGap },
-    { id: 'row-separator', title: 'Row separator', component: ExampleRowSeparator },
-    { id: 'row-responsive', title: 'Row responsive direction', component: ExampleRowResponsiveDirection },
-    { id: 'col', title: 'Col', component: ExampleColDefault },
-    { id: 'col-gap', title: 'Col with gap', component: ExampleColWithGap },
-    { id: 'col-separator', title: 'Col separator', component: ExampleColSeparator },
-    { id: 'col-responsive', title: 'Col responsive direction', component: ExampleColResponsiveDirection },
-    { id: 'portal', title: 'Portal', component: ExampleLayoutPortal },
-  ],
-  stack: [
-    { id: 'default', title: 'Default', component: ExampleStackDefault },
-    { id: 'hstack', title: 'HStack', component: ExampleStackHstack },
-    { id: 'vstack', title: 'VStack', component: ExampleStackVstack },
-    { id: 'separator', title: 'Separator', component: ExampleStackSeparator },
-    { id: 'responsive-direction', title: 'Responsive direction', component: ExampleStackResponsiveDirection },
-  ],
-  'scroll': [
-    { id: 'default', title: 'Default', component: ExampleScrollDefault },
-    { id: 'sizes', title: 'Sizes', component: ExampleScrollSizes },
-    { id: 'horizontal', title: 'Horizontal scrolling', component: ExampleScrollHorizontal },
-    { id: 'both', title: 'Both directions', component: ExampleScrollBoth },
-    { id: 'scroll-shadow', title: 'Scroll shadow', component: ExampleScrollScrollShadow },
-    { id: 'thumb-styling', title: 'Thumb styling', component: ExampleScrollThumbStyling },
-    { id: 'hidden', title: 'Hidden scrollbars', component: ExampleScrollHidden },
-  ],
-  page: [
-    { id: 'default', title: 'Default', component: ExamplePageDefault },
-    { id: 'gutters', title: 'Gutters', component: ExamplePageGutters },
-    { id: 'gutter-scroll', title: 'Scrolling gutters', component: ExamplePageGutterScroll },
-    { id: 'footer', title: 'Footer', component: ExamplePageFooter },
-    { id: 'landing', title: 'Landing variant', component: ExamplePageLanding },
-  ],
-  splitter: [
-    { id: 'default', title: 'Default', component: ExampleSplitterDefault },
-    { id: 'vertical', title: 'Vertical', component: ExampleSplitterVertical },
-    { id: 'multiple-panels', title: 'Multiple panels', component: ExampleSplitterMultiplePanels },
-    { id: 'collapsible', title: 'Collapsible panels', component: ExampleSplitterCollapsible },
-    { id: 'min-max', title: 'Min/max constraints', component: ExampleSplitterMinMax },
-    { id: 'disabled', title: 'Disabled resize', component: ExampleSplitterDisabled },
-  ],
-  center: [
-    { id: 'default', title: 'Default', component: ExampleCenterDefault },
-    { id: 'icon', title: 'Icon', component: ExampleCenterIcon },
-    { id: 'inline', title: 'Inline', component: ExampleCenterInline },
-  ],
-  item: [
-    { id: 'in-stack', title: 'In a stack', component: ExampleItemInStack },
-    { id: 'in-container', title: 'In a container', component: ExampleItemInContainer },
-  ],
-  card: [
-    { id: 'default', title: 'Default', component: ExampleCardDefault },
-    { id: 'variants', title: 'Variants', component: ExampleCardVariants },
-    { id: 'sizes', title: 'Sizes', component: ExampleCardSizes },
-    { id: 'override', title: 'Override title', component: ExampleCardOverride },
-    { id: 'with-image', title: 'With image', component: ExampleCardWithImage },
-    { id: 'horizontal', title: 'Horizontal', component: ExampleCardHorizontal },
-  ],
-  sidebar: [
-    { id: 'icon', title: 'Collapses to an icon rail', component: ExampleSidebarIcon },
-    { id: 'offcanvas', title: 'Completely disappears on collapse', component: ExampleSidebarOffcanvas },
-    { id: 'rail', title: 'Toggle with the rail handle', component: ExampleSidebarRail },
-  ],
-  tabs: [
-    { id: 'default', title: 'Default', component: ExampleTabsDefault },
-    { id: 'underline', title: 'Underline', component: ExampleTabsUnderline },
-  ],
-  pagination: [
-    { id: 'default', title: 'Default', component: ExamplePaginationDefault },
-    { id: 'controlled', title: 'Controlled', component: ExamplePaginationControlled },
-  ],
-  navbar: [
-    { id: 'sticky', title: 'Sticky', component: ExampleNavbarSticky },
-    { id: 'floating', title: 'Floating', component: ExampleNavbarFloating },
-    { id: 'shrink', title: 'Shrink on scroll', component: ExampleNavbarShrink },
-    { id: 'scroll', title: 'Scroll', component: ExampleNavbarScroll },
-    { id: 'hide', title: 'Hide on leave', component: ExampleNavbarHide },
-    { id: 'dropdown', title: 'Menu dropdowns', component: ExampleNavbarDropdown },
-    { id: 'two-columns', title: 'Two-column menu', component: ExampleNavbarTwoColumns },
-    { id: 'density', title: 'Compact menu', component: ExampleNavbarDensity },
-    { id: 'variants', title: 'Menu links', component: ExampleNavbarVariants },
-  ],
-  input: [
-    { id: 'default', title: 'Default', component: ExampleInputDefault },
-    { id: 'textarea', title: 'Textarea', component: ExampleInputTextarea },
-  ],
-  field: [
-    { id: 'default', title: 'Default', component: ExampleFieldDefault },
-    { id: 'fieldset', title: 'FieldSet', component: ExampleFieldFieldset },
-  ],
-  'number-input': [
-    { id: 'default', title: 'Default', component: ExampleNumberInputDefault },
-  ],
-  checkbox: [
-    { id: 'default', title: 'Default', component: ExampleCheckboxDefault },
-  ],
-  switch: [
-    { id: 'default', title: 'Default', component: ExampleSwitchDefault },
-  ],
-  select: [
-    { id: 'default', title: 'Default', component: ExampleSelectDefault },
-  ],
-  combobox: [
-    { id: 'default', title: 'Default', component: ExampleComboboxDefault },
-    { id: 'multiple', title: 'Multiple', component: ExampleComboboxMultiple },
-  ],
-  'tags-input': [
-    { id: 'default', title: 'Default', component: ExampleTagsInputDefault },
-  ],
-  mermaid: [
-    { id: 'default', title: 'Default', component: ExampleMermaidDefault },
-    { id: 'fallback', title: 'Source fallback', component: ExampleMermaidFallback },
-    { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleMermaidPrerendered },
-    { id: 'colors', title: 'Colors', component: ExampleMermaidColors },
-  ],
-  notice: [
-    { id: 'default', title: 'Default', component: ExampleNoticeDefault },
-    { id: 'variants', title: 'Variants', component: ExampleNoticeVariants },
-    { id: 'omit-title', title: 'Omit title', component: ExampleNoticeOmitTitle },
-  ],
-  figure: [
-    { id: 'default', title: 'Default', component: ExampleFigureDefault },
-  ],
-  reveal: [
-    { id: 'default', title: 'Default', component: ExampleRevealDefault },
-  ],
-  latex: [
-    { id: 'block', title: 'Block', component: ExampleLaTeXBlock },
-    { id: 'inline', title: 'Inline (toLaTeX)', component: ExampleLaTeXInline },
-    { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleLaTeXPrerendered },
-  ],
-  'code-block': [
-    { id: 'default', title: 'Default', component: ExampleCodeBlockDefault },
-    { id: 'features', title: 'Line numbers & highlights', component: ExampleCodeBlockFeatures },
-    { id: 'multi-file', title: 'Multi-file', component: ExampleCodeBlockMultiFile },
-    { id: 'language-tabs', title: 'Language tabs', component: ExampleCodeBlockLanguageTabs },
-    { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleCodeBlockPrerendered },
-    { id: 'diff', title: 'Diff', component: ExampleCodeBlockDiff },
-  ],
-  manim: [
-    { id: 'default', title: 'Default', component: ExampleManimDefault },
-  ],
-  youtube: [
-    { id: 'default', title: 'Default', component: ExampleYouTubeDefault },
-    { id: 'timestamps', title: 'Timestamps', component: ExampleYouTubeTimestamps },
-  ],
-  chart: [
-    { id: 'pie', title: 'Pie', component: ExampleChartPie },
-    { id: 'bar', title: 'Bar', component: ExampleChartBar },
-    { id: 'line', title: 'Line', component: ExampleChartLine },
-    { id: 'prerendered', title: 'Prerendered (SSR)', component: ExampleChartPrerendered },
-  ],
-  questions: [
-    { id: 'single', title: 'Single choice', component: ExampleQuestionSingle },
-    { id: 'multiple', title: 'Multiple choice', component: ExampleQuestionMultiple },
-    { id: 'numeric', title: 'Numeric', component: ExampleQuestionNumeric },
-  ],
-  quiz: [
-    { id: 'default', title: 'Default', component: ExampleQuizDefault },
-  ],
-  'prev-next': [
-    { id: 'default', title: 'Default', component: ExamplePrevNextDefault },
-  ],
-};
-
-const entries = registry[component] ?? [];
-const selected = example ? entries.find((e) => e.id === example) ?? entries[0] : entries[0];
 ---
 
 <div class="w-full" data-demo-region>
-  {selected && <selected.component />}
+  {component === 'badge' && example === 'colors' && (
+    <Example 
+      id='colors' 
+      title='Colors' 
+      reactCode={ReactBadgeColorsRaw} 
+      svelteCode={SvelteBadgeColorsRaw}
+    >
+      <div data-fw="react">
+        <ReactBadgeColors client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteBadgeColors client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'badge' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactBadgeDefaultRaw} 
+      svelteCode={SvelteBadgeDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactBadgeDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteBadgeDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'badge' && example === 'sizes' && (
+    <Example 
+      id='sizes' 
+      title='Sizes' 
+      reactCode={ReactBadgeSizesRaw} 
+      svelteCode={SvelteBadgeSizesRaw}
+    >
+      <div data-fw="react">
+        <ReactBadgeSizes client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteBadgeSizes client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'badge' && example === 'variants' && (
+    <Example 
+      id='variants' 
+      title='Variants' 
+      reactCode={ReactBadgeVariantsRaw} 
+      svelteCode={SvelteBadgeVariantsRaw}
+    >
+      <div data-fw="react">
+        <ReactBadgeVariants client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteBadgeVariants client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'button' && example === 'disabled' && (
+    <Example 
+      id='disabled' 
+      title='Disabled' 
+      reactCode={ReactButtonDisabledRaw} 
+      svelteCode={SvelteButtonDisabledRaw}
+    >
+      <div data-fw="react">
+        <ReactButtonDisabled client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteButtonDisabled client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'button' && example === 'icon' && (
+    <Example 
+      id='icon' 
+      title='Icon' 
+      reactCode={ReactButtonIconRaw} 
+      svelteCode={SvelteButtonIconRaw}
+    >
+      <div data-fw="react">
+        <ReactButtonIcon client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteButtonIcon client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'button' && example === 'outline' && (
+    <Example 
+      id='outline' 
+      title='Outline' 
+      reactCode={ReactButtonOutlineRaw} 
+      svelteCode={SvelteButtonOutlineRaw}
+    >
+      <div data-fw="react">
+        <ReactButtonOutline client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteButtonOutline client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'button' && example === 'rounded' && (
+    <Example 
+      id='rounded' 
+      title='Rounded' 
+      reactCode={ReactButtonRoundedRaw} 
+      svelteCode={SvelteButtonRoundedRaw}
+    >
+      <div data-fw="react">
+        <ReactButtonRounded client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteButtonRounded client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'button' && example === 'sizes' && (
+    <Example 
+      id='sizes' 
+      title='Sizes' 
+      reactCode={ReactButtonSizesRaw} 
+      svelteCode={SvelteButtonSizesRaw}
+    >
+      <div data-fw="react">
+        <ReactButtonSizes client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteButtonSizes client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'button' && example === 'solid' && (
+    <Example 
+      id='solid' 
+      title='Solid' 
+      reactCode={ReactButtonSolidRaw} 
+      svelteCode={SvelteButtonSolidRaw}
+    >
+      <div data-fw="react">
+        <ReactButtonSolid client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteButtonSolid client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'button' && example === 'with-icon' && (
+    <Example 
+      id='with-icon' 
+      title='With Icon' 
+      reactCode={ReactButtonWithIconRaw} 
+      svelteCode={SvelteButtonWithIconRaw}
+    >
+      <div data-fw="react">
+        <ReactButtonWithIcon client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteButtonWithIcon client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'card' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactCardDefaultRaw} 
+      svelteCode={SvelteCardDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactCardDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCardDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'card' && example === 'horizontal' && (
+    <Example 
+      id='horizontal' 
+      title='Horizontal' 
+      reactCode={ReactCardHorizontalRaw} 
+      svelteCode={SvelteCardHorizontalRaw}
+    >
+      <div data-fw="react">
+        <ReactCardHorizontal client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCardHorizontal client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'card' && example === 'override' && (
+    <Example 
+      id='override' 
+      title='Override' 
+      reactCode={ReactCardOverrideRaw} 
+      svelteCode={SvelteCardOverrideRaw}
+    >
+      <div data-fw="react">
+        <ReactCardOverride client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCardOverride client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'card' && example === 'sizes' && (
+    <Example 
+      id='sizes' 
+      title='Sizes' 
+      reactCode={ReactCardSizesRaw} 
+      svelteCode={SvelteCardSizesRaw}
+    >
+      <div data-fw="react">
+        <ReactCardSizes client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCardSizes client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'card' && example === 'variants' && (
+    <Example 
+      id='variants' 
+      title='Variants' 
+      reactCode={ReactCardVariantsRaw} 
+      svelteCode={SvelteCardVariantsRaw}
+    >
+      <div data-fw="react">
+        <ReactCardVariants client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCardVariants client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'card' && example === 'with-image' && (
+    <Example 
+      id='with-image' 
+      title='With Image' 
+      reactCode={ReactCardWithImageRaw} 
+      svelteCode={SvelteCardWithImageRaw}
+    >
+      <div data-fw="react">
+        <ReactCardWithImage client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCardWithImage client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'center' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactCenterDefaultRaw} 
+      svelteCode={SvelteCenterDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactCenterDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCenterDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'center' && example === 'icon' && (
+    <Example 
+      id='icon' 
+      title='Icon' 
+      reactCode={ReactCenterIconRaw} 
+      svelteCode={SvelteCenterIconRaw}
+    >
+      <div data-fw="react">
+        <ReactCenterIcon client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCenterIcon client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'center' && example === 'inline' && (
+    <Example 
+      id='inline' 
+      title='Inline' 
+      reactCode={ReactCenterInlineRaw} 
+      svelteCode={SvelteCenterInlineRaw}
+    >
+      <div data-fw="react">
+        <ReactCenterInline client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCenterInline client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'chart' && example === 'bar' && (
+    <Example 
+      id='bar' 
+      title='Bar' 
+      reactCode={ReactChartBarRaw} 
+      svelteCode={SvelteChartBarRaw}
+    >
+      <div data-fw="react">
+        <ReactChartBar client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteChartBar client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'chart' && example === 'line' && (
+    <Example 
+      id='line' 
+      title='Line' 
+      reactCode={ReactChartLineRaw} 
+      svelteCode={SvelteChartLineRaw}
+    >
+      <div data-fw="react">
+        <ReactChartLine client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteChartLine client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'chart' && example === 'pie' && (
+    <Example 
+      id='pie' 
+      title='Pie' 
+      reactCode={ReactChartPieRaw} 
+      svelteCode={SvelteChartPieRaw}
+    >
+      <div data-fw="react">
+        <ReactChartPie client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteChartPie client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'chart' && example === 'prerendered' && (
+    <Example 
+      id='prerendered' 
+      title='Prerendered' 
+      reactCode={ReactChartPrerenderedRaw} 
+      svelteCode={SvelteChartPrerenderedRaw}
+    >
+      <div data-fw="react">
+        <ReactChartPrerendered client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteChartPrerendered client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'checkbox' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactCheckboxDefaultRaw} 
+      svelteCode={SvelteCheckboxDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactCheckboxDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCheckboxDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'code-block' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactCodeBlockDefaultRaw} 
+      svelteCode={SvelteCodeBlockDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactCodeBlockDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCodeBlockDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'code-block' && example === 'diff' && (
+    <Example 
+      id='diff' 
+      title='Diff' 
+      reactCode={ReactCodeBlockDiffRaw} 
+      svelteCode={SvelteCodeBlockDiffRaw}
+    >
+      <div data-fw="react">
+        <ReactCodeBlockDiff client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCodeBlockDiff client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'code-block' && example === 'features' && (
+    <Example 
+      id='features' 
+      title='Features' 
+      reactCode={ReactCodeBlockFeaturesRaw} 
+      svelteCode={SvelteCodeBlockFeaturesRaw}
+    >
+      <div data-fw="react">
+        <ReactCodeBlockFeatures client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCodeBlockFeatures client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'code-block' && example === 'language-tabs' && (
+    <Example 
+      id='language-tabs' 
+      title='Language Tabs' 
+      reactCode={ReactCodeBlockLanguageTabsRaw} 
+      svelteCode={SvelteCodeBlockLanguageTabsRaw}
+    >
+      <div data-fw="react">
+        <ReactCodeBlockLanguageTabs client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCodeBlockLanguageTabs client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'code-block' && example === 'multi-file' && (
+    <Example 
+      id='multi-file' 
+      title='Multi File' 
+      reactCode={ReactCodeBlockMultiFileRaw} 
+      svelteCode={SvelteCodeBlockMultiFileRaw}
+    >
+      <div data-fw="react">
+        <ReactCodeBlockMultiFile client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCodeBlockMultiFile client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'code-block' && example === 'prerendered' && (
+    <Example 
+      id='prerendered' 
+      title='Prerendered' 
+      reactCode={ReactCodeBlockPrerenderedRaw} 
+      svelteCode={SvelteCodeBlockPrerenderedRaw}
+    >
+      <div data-fw="react">
+        <ReactCodeBlockPrerendered client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteCodeBlockPrerendered client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'col' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactColDefaultRaw} 
+      svelteCode={SvelteColDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactColDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteColDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'col' && example === 'responsive-direction' && (
+    <Example 
+      id='responsive-direction' 
+      title='Responsive Direction' 
+      reactCode={ReactColResponsiveDirectionRaw} 
+      svelteCode={SvelteColResponsiveDirectionRaw}
+    >
+      <div data-fw="react">
+        <ReactColResponsiveDirection client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteColResponsiveDirection client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'col' && example === 'separator' && (
+    <Example 
+      id='separator' 
+      title='Separator' 
+      reactCode={ReactColSeparatorRaw} 
+      svelteCode={SvelteColSeparatorRaw}
+    >
+      <div data-fw="react">
+        <ReactColSeparator client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteColSeparator client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'col' && example === 'with-gap' && (
+    <Example 
+      id='with-gap' 
+      title='With Gap' 
+      reactCode={ReactColWithGapRaw} 
+      svelteCode={SvelteColWithGapRaw}
+    >
+      <div data-fw="react">
+        <ReactColWithGap client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteColWithGap client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'combobox' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactComboboxDefaultRaw} 
+      svelteCode={SvelteComboboxDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactComboboxDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteComboboxDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'combobox' && example === 'multiple' && (
+    <Example 
+      id='multiple' 
+      title='Multiple' 
+      reactCode={ReactComboboxMultipleRaw} 
+      svelteCode={SvelteComboboxMultipleRaw}
+    >
+      <div data-fw="react">
+        <ReactComboboxMultiple client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteComboboxMultiple client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'container' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactContainerDefaultRaw} 
+      svelteCode={SvelteContainerDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactContainerDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteContainerDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'container' && example === 'fluid' && (
+    <Example 
+      id='fluid' 
+      title='Fluid' 
+      reactCode={ReactContainerFluidRaw} 
+      svelteCode={SvelteContainerFluidRaw}
+    >
+      <div data-fw="react">
+        <ReactContainerFluid client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteContainerFluid client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'container' && example === 'sizes' && (
+    <Example 
+      id='sizes' 
+      title='Sizes' 
+      reactCode={ReactContainerSizesRaw} 
+      svelteCode={SvelteContainerSizesRaw}
+    >
+      <div data-fw="react">
+        <ReactContainerSizes client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteContainerSizes client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'alert-dialog' && (
+    <Example 
+      id='alert-dialog' 
+      title='Alert Dialog' 
+      reactCode={ReactDialogAlertDialogRaw} 
+      svelteCode={SvelteDialogAlertDialogRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogAlertDialog client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogAlertDialog client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'confirmation' && (
+    <Example 
+      id='confirmation' 
+      title='Confirmation' 
+      reactCode={ReactDialogConfirmationRaw} 
+      svelteCode={SvelteDialogConfirmationRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogConfirmation client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogConfirmation client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'context' && (
+    <Example 
+      id='context' 
+      title='Context' 
+      reactCode={ReactDialogContextRaw} 
+      svelteCode={SvelteDialogContextRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogContext client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogContext client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'controlled' && (
+    <Example 
+      id='controlled' 
+      title='Controlled' 
+      reactCode={ReactDialogControlledRaw} 
+      svelteCode={SvelteDialogControlledRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogControlled client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogControlled client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactDialogDefaultRaw} 
+      svelteCode={SvelteDialogDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'dialog-with-tooltip' && (
+    <Example 
+      id='dialog-with-tooltip' 
+      title='Dialog With Tooltip' 
+      reactCode={ReactDialogDialogWithTooltipRaw} 
+      svelteCode={SvelteDialogDialogWithTooltipRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogDialogWithTooltip client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogDialogWithTooltip client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'final-focus' && (
+    <Example 
+      id='final-focus' 
+      title='Final Focus' 
+      reactCode={ReactDialogFinalFocusRaw} 
+      svelteCode={SvelteDialogFinalFocusRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogFinalFocus client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogFinalFocus client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'fullscreen' && (
+    <Example 
+      id='fullscreen' 
+      title='Fullscreen' 
+      reactCode={ReactDialogFullscreenRaw} 
+      svelteCode={SvelteDialogFullscreenRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogFullscreen client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogFullscreen client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'initial-focus' && (
+    <Example 
+      id='initial-focus' 
+      title='Initial Focus' 
+      reactCode={ReactDialogInitialFocusRaw} 
+      svelteCode={SvelteDialogInitialFocusRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogInitialFocus client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogInitialFocus client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'inside-scroll' && (
+    <Example 
+      id='inside-scroll' 
+      title='Inside Scroll' 
+      reactCode={ReactDialogInsideScrollRaw} 
+      svelteCode={SvelteDialogInsideScrollRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogInsideScroll client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogInsideScroll client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'lazy-mount' && (
+    <Example 
+      id='lazy-mount' 
+      title='Lazy Mount' 
+      reactCode={ReactDialogLazyMountRaw} 
+      svelteCode={SvelteDialogLazyMountRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogLazyMount client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogLazyMount client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'multiple-triggers' && (
+    <Example 
+      id='multiple-triggers' 
+      title='Multiple Triggers' 
+      reactCode={ReactDialogMultipleTriggersRaw} 
+      svelteCode={SvelteDialogMultipleTriggersRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogMultipleTriggers client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogMultipleTriggers client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'nested' && (
+    <Example 
+      id='nested' 
+      title='Nested' 
+      reactCode={ReactDialogNestedRaw} 
+      svelteCode={SvelteDialogNestedRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogNested client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogNested client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'non-modal' && (
+    <Example 
+      id='non-modal' 
+      title='Non Modal' 
+      reactCode={ReactDialogNonModalRaw} 
+      svelteCode={SvelteDialogNonModalRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogNonModal client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogNonModal client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'open-from-menu' && (
+    <Example 
+      id='open-from-menu' 
+      title='Open From Menu' 
+      reactCode={ReactDialogOpenFromMenuRaw} 
+      svelteCode={SvelteDialogOpenFromMenuRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogOpenFromMenu client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogOpenFromMenu client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'outside-scroll' && (
+    <Example 
+      id='outside-scroll' 
+      title='Outside Scroll' 
+      reactCode={ReactDialogOutsideScrollRaw} 
+      svelteCode={SvelteDialogOutsideScrollRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogOutsideScroll client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogOutsideScroll client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'dialog' && example === 'root-provider' && (
+    <Example 
+      id='root-provider' 
+      title='Root Provider' 
+      reactCode={ReactDialogRootProviderRaw} 
+      svelteCode={SvelteDialogRootProviderRaw}
+    >
+      <div data-fw="react">
+        <ReactDialogRootProvider client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteDialogRootProvider client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'field' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactFieldDefaultRaw} 
+      svelteCode={SvelteFieldDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactFieldDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteFieldDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'field' && example === 'fieldset' && (
+    <Example 
+      id='fieldset' 
+      title='Fieldset' 
+      reactCode={ReactFieldFieldsetRaw} 
+      svelteCode={SvelteFieldFieldsetRaw}
+    >
+      <div data-fw="react">
+        <ReactFieldFieldset client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteFieldFieldset client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'figure' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactFigureDefaultRaw} 
+      svelteCode={SvelteFigureDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactFigureDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteFigureDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'input' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactInputDefaultRaw} 
+      svelteCode={SvelteInputDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactInputDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteInputDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'input' && example === 'textarea' && (
+    <Example 
+      id='textarea' 
+      title='Textarea' 
+      reactCode={ReactInputTextareaRaw} 
+      svelteCode={SvelteInputTextareaRaw}
+    >
+      <div data-fw="react">
+        <ReactInputTextarea client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteInputTextarea client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'item' && example === 'in-container' && (
+    <Example 
+      id='in-container' 
+      title='In Container' 
+      reactCode={ReactItemInContainerRaw} 
+      svelteCode={SvelteItemInContainerRaw}
+    >
+      <div data-fw="react">
+        <ReactItemInContainer client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteItemInContainer client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'item' && example === 'in-stack' && (
+    <Example 
+      id='in-stack' 
+      title='In Stack' 
+      reactCode={ReactItemInStackRaw} 
+      svelteCode={SvelteItemInStackRaw}
+    >
+      <div data-fw="react">
+        <ReactItemInStack client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteItemInStack client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'latex' && example === 'block' && (
+    <Example 
+      id='block' 
+      title='Block' 
+      reactCode={ReactLatexBlockRaw} 
+      svelteCode={SvelteLatexBlockRaw}
+    >
+      <div data-fw="react">
+        <ReactLatexBlock client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteLatexBlock client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'latex' && example === 'inline' && (
+    <Example 
+      id='inline' 
+      title='Inline' 
+      reactCode={ReactLatexInlineRaw} 
+      svelteCode={SvelteLatexInlineRaw}
+    >
+      <div data-fw="react">
+        <ReactLatexInline client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteLatexInline client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'latex' && example === 'prerendered' && (
+    <Example 
+      id='prerendered' 
+      title='Prerendered' 
+      reactCode={ReactLatexPrerenderedRaw} 
+      svelteCode={SvelteLatexPrerenderedRaw}
+    >
+      <div data-fw="react">
+        <ReactLatexPrerendered client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteLatexPrerendered client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'layout' && example === 'portal' && (
+    <Example 
+      id='portal' 
+      title='Portal' 
+      reactCode={ReactLayoutPortalRaw} 
+      svelteCode={SvelteLayoutPortalRaw}
+    >
+      <div data-fw="react">
+        <ReactLayoutPortal client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteLayoutPortal client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'manim' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactManimDefaultRaw} 
+      svelteCode={SvelteManimDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactManimDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteManimDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'mermaid' && example === 'colors' && (
+    <Example 
+      id='colors' 
+      title='Colors' 
+      reactCode={ReactMermaidColorsRaw} 
+      svelteCode={SvelteMermaidColorsRaw}
+    >
+      <div data-fw="react">
+        <ReactMermaidColors client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteMermaidColors client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'mermaid' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactMermaidDefaultRaw} 
+      svelteCode={SvelteMermaidDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactMermaidDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteMermaidDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'mermaid' && example === 'fallback' && (
+    <Example 
+      id='fallback' 
+      title='Fallback' 
+      reactCode={ReactMermaidFallbackRaw} 
+      svelteCode={SvelteMermaidFallbackRaw}
+    >
+      <div data-fw="react">
+        <ReactMermaidFallback client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteMermaidFallback client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'mermaid' && example === 'prerendered' && (
+    <Example 
+      id='prerendered' 
+      title='Prerendered' 
+      reactCode={ReactMermaidPrerenderedRaw} 
+      svelteCode={SvelteMermaidPrerenderedRaw}
+    >
+      <div data-fw="react">
+        <ReactMermaidPrerendered client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteMermaidPrerendered client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'navbar' && example === 'density' && (
+    <Example 
+      id='density' 
+      title='Density' 
+      reactCode={ReactNavbarDensityRaw} 
+      svelteCode={SvelteNavbarDensityRaw}
+    >
+      <div data-fw="react">
+        <ReactNavbarDensity client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNavbarDensity client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'navbar' && example === 'dropdown' && (
+    <Example 
+      id='dropdown' 
+      title='Dropdown' 
+      reactCode={ReactNavbarDropdownRaw} 
+      svelteCode={SvelteNavbarDropdownRaw}
+    >
+      <div data-fw="react">
+        <ReactNavbarDropdown client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNavbarDropdown client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'navbar' && example === 'floating' && (
+    <Example 
+      id='floating' 
+      title='Floating' 
+      reactCode={ReactNavbarFloatingRaw} 
+      svelteCode={SvelteNavbarFloatingRaw}
+    >
+      <div data-fw="react">
+        <ReactNavbarFloating client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNavbarFloating client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'navbar' && example === 'hide' && (
+    <Example 
+      id='hide' 
+      title='Hide' 
+      reactCode={ReactNavbarHideRaw} 
+      svelteCode={SvelteNavbarHideRaw}
+    >
+      <div data-fw="react">
+        <ReactNavbarHide client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNavbarHide client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'navbar' && example === 'scroll' && (
+    <Example 
+      id='scroll' 
+      title='Scroll' 
+      reactCode={ReactNavbarScrollRaw} 
+      svelteCode={SvelteNavbarScrollRaw}
+    >
+      <div data-fw="react">
+        <ReactNavbarScroll client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNavbarScroll client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'navbar' && example === 'shrink' && (
+    <Example 
+      id='shrink' 
+      title='Shrink' 
+      reactCode={ReactNavbarShrinkRaw} 
+      svelteCode={SvelteNavbarShrinkRaw}
+    >
+      <div data-fw="react">
+        <ReactNavbarShrink client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNavbarShrink client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'navbar' && example === 'sticky' && (
+    <Example 
+      id='sticky' 
+      title='Sticky' 
+      reactCode={ReactNavbarStickyRaw} 
+      svelteCode={SvelteNavbarStickyRaw}
+    >
+      <div data-fw="react">
+        <ReactNavbarSticky client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNavbarSticky client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'navbar' && example === 'two-columns' && (
+    <Example 
+      id='two-columns' 
+      title='Two Columns' 
+      reactCode={ReactNavbarTwoColumnsRaw} 
+      svelteCode={SvelteNavbarTwoColumnsRaw}
+    >
+      <div data-fw="react">
+        <ReactNavbarTwoColumns client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNavbarTwoColumns client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'navbar' && example === 'variants' && (
+    <Example 
+      id='variants' 
+      title='Variants' 
+      reactCode={ReactNavbarVariantsRaw} 
+      svelteCode={SvelteNavbarVariantsRaw}
+    >
+      <div data-fw="react">
+        <ReactNavbarVariants client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNavbarVariants client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'notice' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactNoticeDefaultRaw} 
+      svelteCode={SvelteNoticeDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactNoticeDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNoticeDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'notice' && example === 'omit-title' && (
+    <Example 
+      id='omit-title' 
+      title='Omit Title' 
+      reactCode={ReactNoticeOmitTitleRaw} 
+      svelteCode={SvelteNoticeOmitTitleRaw}
+    >
+      <div data-fw="react">
+        <ReactNoticeOmitTitle client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNoticeOmitTitle client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'notice' && example === 'variants' && (
+    <Example 
+      id='variants' 
+      title='Variants' 
+      reactCode={ReactNoticeVariantsRaw} 
+      svelteCode={SvelteNoticeVariantsRaw}
+    >
+      <div data-fw="react">
+        <ReactNoticeVariants client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNoticeVariants client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'number-input' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactNumberInputDefaultRaw} 
+      svelteCode={SvelteNumberInputDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactNumberInputDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteNumberInputDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'page' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactPageDefaultRaw} 
+      svelteCode={SveltePageDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactPageDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePageDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'page' && example === 'footer' && (
+    <Example 
+      id='footer' 
+      title='Footer' 
+      reactCode={ReactPageFooterRaw} 
+      svelteCode={SveltePageFooterRaw}
+    >
+      <div data-fw="react">
+        <ReactPageFooter client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePageFooter client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'page' && example === 'gutter-scroll' && (
+    <Example 
+      id='gutter-scroll' 
+      title='Gutter Scroll' 
+      reactCode={ReactPageGutterScrollRaw} 
+      svelteCode={SveltePageGutterScrollRaw}
+    >
+      <div data-fw="react">
+        <ReactPageGutterScroll client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePageGutterScroll client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'page' && example === 'gutters' && (
+    <Example 
+      id='gutters' 
+      title='Gutters' 
+      reactCode={ReactPageGuttersRaw} 
+      svelteCode={SveltePageGuttersRaw}
+    >
+      <div data-fw="react">
+        <ReactPageGutters client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePageGutters client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'page' && example === 'landing' && (
+    <Example 
+      id='landing' 
+      title='Landing' 
+      reactCode={ReactPageLandingRaw} 
+      svelteCode={SveltePageLandingRaw}
+    >
+      <div data-fw="react">
+        <ReactPageLanding client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePageLanding client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'pagination' && example === 'controlled' && (
+    <Example 
+      id='controlled' 
+      title='Controlled' 
+      reactCode={ReactPaginationControlledRaw} 
+      svelteCode={SveltePaginationControlledRaw}
+    >
+      <div data-fw="react">
+        <ReactPaginationControlled client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePaginationControlled client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'pagination' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactPaginationDefaultRaw} 
+      svelteCode={SveltePaginationDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactPaginationDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePaginationDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'anchor' && (
+    <Example 
+      id='anchor' 
+      title='Anchor' 
+      reactCode={ReactPopoverAnchorRaw} 
+      svelteCode={SveltePopoverAnchorRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverAnchor client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverAnchor client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'arrow' && (
+    <Example 
+      id='arrow' 
+      title='Arrow' 
+      reactCode={ReactPopoverArrowRaw} 
+      svelteCode={SveltePopoverArrowRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverArrow client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverArrow client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'close-behavior' && (
+    <Example 
+      id='close-behavior' 
+      title='Close Behavior' 
+      reactCode={ReactPopoverCloseBehaviorRaw} 
+      svelteCode={SveltePopoverCloseBehaviorRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverCloseBehavior client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverCloseBehavior client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'controlled' && (
+    <Example 
+      id='controlled' 
+      title='Controlled' 
+      reactCode={ReactPopoverControlledRaw} 
+      svelteCode={SveltePopoverControlledRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverControlled client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverControlled client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactPopoverDefaultRaw} 
+      svelteCode={SveltePopoverDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'dialog-integration' && (
+    <Example 
+      id='dialog-integration' 
+      title='Dialog Integration' 
+      reactCode={ReactPopoverDialogIntegrationRaw} 
+      svelteCode={SveltePopoverDialogIntegrationRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverDialogIntegration client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverDialogIntegration client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'modality' && (
+    <Example 
+      id='modality' 
+      title='Modality' 
+      reactCode={ReactPopoverModalityRaw} 
+      svelteCode={SveltePopoverModalityRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverModality client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverModality client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'multiple-triggers' && (
+    <Example 
+      id='multiple-triggers' 
+      title='Multiple Triggers' 
+      reactCode={ReactPopoverMultipleTriggersRaw} 
+      svelteCode={SveltePopoverMultipleTriggersRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverMultipleTriggers client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverMultipleTriggers client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'nested' && (
+    <Example 
+      id='nested' 
+      title='Nested' 
+      reactCode={ReactPopoverNestedRaw} 
+      svelteCode={SveltePopoverNestedRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverNested client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverNested client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'placement' && (
+    <Example 
+      id='placement' 
+      title='Placement' 
+      reactCode={ReactPopoverPlacementRaw} 
+      svelteCode={SveltePopoverPlacementRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverPlacement client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverPlacement client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'popover-with-tooltip' && (
+    <Example 
+      id='popover-with-tooltip' 
+      title='Popover With Tooltip' 
+      reactCode={ReactPopoverPopoverWithTooltipRaw} 
+      svelteCode={SveltePopoverPopoverWithTooltipRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverPopoverWithTooltip client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverPopoverWithTooltip client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'root-provider' && (
+    <Example 
+      id='root-provider' 
+      title='Root Provider' 
+      reactCode={ReactPopoverRootProviderRaw} 
+      svelteCode={SveltePopoverRootProviderRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverRootProvider client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverRootProvider client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'popover' && example === 'same-width' && (
+    <Example 
+      id='same-width' 
+      title='Same Width' 
+      reactCode={ReactPopoverSameWidthRaw} 
+      svelteCode={SveltePopoverSameWidthRaw}
+    >
+      <div data-fw="react">
+        <ReactPopoverSameWidth client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePopoverSameWidth client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'prev-next' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactPrevNextDefaultRaw} 
+      svelteCode={SveltePrevNextDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactPrevNextDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SveltePrevNextDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'questions' && example === 'multiple' && (
+    <Example 
+      id='multiple' 
+      title='Multiple' 
+      reactCode={ReactQuestionsMultipleRaw} 
+      svelteCode={SvelteQuestionsMultipleRaw}
+    >
+      <div data-fw="react">
+        <ReactQuestionsMultiple client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteQuestionsMultiple client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'questions' && example === 'numeric' && (
+    <Example 
+      id='numeric' 
+      title='Numeric' 
+      reactCode={ReactQuestionsNumericRaw} 
+      svelteCode={SvelteQuestionsNumericRaw}
+    >
+      <div data-fw="react">
+        <ReactQuestionsNumeric client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteQuestionsNumeric client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'questions' && example === 'single' && (
+    <Example 
+      id='single' 
+      title='Single' 
+      reactCode={ReactQuestionsSingleRaw} 
+      svelteCode={SvelteQuestionsSingleRaw}
+    >
+      <div data-fw="react">
+        <ReactQuestionsSingle client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteQuestionsSingle client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'quiz' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactQuizDefaultRaw} 
+      svelteCode={SvelteQuizDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactQuizDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteQuizDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'reveal' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactRevealDefaultRaw} 
+      svelteCode={SvelteRevealDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactRevealDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteRevealDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'row' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactRowDefaultRaw} 
+      svelteCode={SvelteRowDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactRowDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteRowDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'row' && example === 'responsive-direction' && (
+    <Example 
+      id='responsive-direction' 
+      title='Responsive Direction' 
+      reactCode={ReactRowResponsiveDirectionRaw} 
+      svelteCode={SvelteRowResponsiveDirectionRaw}
+    >
+      <div data-fw="react">
+        <ReactRowResponsiveDirection client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteRowResponsiveDirection client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'row' && example === 'separator' && (
+    <Example 
+      id='separator' 
+      title='Separator' 
+      reactCode={ReactRowSeparatorRaw} 
+      svelteCode={SvelteRowSeparatorRaw}
+    >
+      <div data-fw="react">
+        <ReactRowSeparator client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteRowSeparator client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'row' && example === 'with-gap' && (
+    <Example 
+      id='with-gap' 
+      title='With Gap' 
+      reactCode={ReactRowWithGapRaw} 
+      svelteCode={SvelteRowWithGapRaw}
+    >
+      <div data-fw="react">
+        <ReactRowWithGap client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteRowWithGap client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'scroll' && example === 'both' && (
+    <Example 
+      id='both' 
+      title='Both' 
+      reactCode={ReactScrollBothRaw} 
+      svelteCode={SvelteScrollBothRaw}
+    >
+      <div data-fw="react">
+        <ReactScrollBoth client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteScrollBoth client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'scroll' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactScrollDefaultRaw} 
+      svelteCode={SvelteScrollDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactScrollDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteScrollDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'scroll' && example === 'hidden' && (
+    <Example 
+      id='hidden' 
+      title='Hidden' 
+      reactCode={ReactScrollHiddenRaw} 
+      svelteCode={SvelteScrollHiddenRaw}
+    >
+      <div data-fw="react">
+        <ReactScrollHidden client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteScrollHidden client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'scroll' && example === 'horizontal' && (
+    <Example 
+      id='horizontal' 
+      title='Horizontal' 
+      reactCode={ReactScrollHorizontalRaw} 
+      svelteCode={SvelteScrollHorizontalRaw}
+    >
+      <div data-fw="react">
+        <ReactScrollHorizontal client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteScrollHorizontal client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'scroll' && example === 'scroll-shadow' && (
+    <Example 
+      id='scroll-shadow' 
+      title='Scroll Shadow' 
+      reactCode={ReactScrollScrollShadowRaw} 
+      svelteCode={SvelteScrollScrollShadowRaw}
+    >
+      <div data-fw="react">
+        <ReactScrollScrollShadow client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteScrollScrollShadow client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'scroll' && example === 'sizes' && (
+    <Example 
+      id='sizes' 
+      title='Sizes' 
+      reactCode={ReactScrollSizesRaw} 
+      svelteCode={SvelteScrollSizesRaw}
+    >
+      <div data-fw="react">
+        <ReactScrollSizes client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteScrollSizes client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'scroll' && example === 'thumb-styling' && (
+    <Example 
+      id='thumb-styling' 
+      title='Thumb Styling' 
+      reactCode={ReactScrollThumbStylingRaw} 
+      svelteCode={SvelteScrollThumbStylingRaw}
+    >
+      <div data-fw="react">
+        <ReactScrollThumbStyling client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteScrollThumbStyling client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'select' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactSelectDefaultRaw} 
+      svelteCode={SvelteSelectDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactSelectDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSelectDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'sidebar' && example === 'icon' && (
+    <Example 
+      id='icon' 
+      title='Icon' 
+      reactCode={ReactSidebarIconRaw} 
+      svelteCode={SvelteSidebarIconRaw}
+    >
+      <div data-fw="react">
+        <ReactSidebarIcon client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSidebarIcon client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'sidebar' && example === 'offcanvas' && (
+    <Example 
+      id='offcanvas' 
+      title='Offcanvas' 
+      reactCode={ReactSidebarOffcanvasRaw} 
+      svelteCode={SvelteSidebarOffcanvasRaw}
+    >
+      <div data-fw="react">
+        <ReactSidebarOffcanvas client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSidebarOffcanvas client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'sidebar' && example === 'rail' && (
+    <Example 
+      id='rail' 
+      title='Rail' 
+      reactCode={ReactSidebarRailRaw} 
+      svelteCode={SvelteSidebarRailRaw}
+    >
+      <div data-fw="react">
+        <ReactSidebarRail client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSidebarRail client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'splitter' && example === 'collapsible' && (
+    <Example 
+      id='collapsible' 
+      title='Collapsible' 
+      reactCode={ReactSplitterCollapsibleRaw} 
+      svelteCode={SvelteSplitterCollapsibleRaw}
+    >
+      <div data-fw="react">
+        <ReactSplitterCollapsible client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSplitterCollapsible client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'splitter' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactSplitterDefaultRaw} 
+      svelteCode={SvelteSplitterDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactSplitterDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSplitterDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'splitter' && example === 'disabled' && (
+    <Example 
+      id='disabled' 
+      title='Disabled' 
+      reactCode={ReactSplitterDisabledRaw} 
+      svelteCode={SvelteSplitterDisabledRaw}
+    >
+      <div data-fw="react">
+        <ReactSplitterDisabled client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSplitterDisabled client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'splitter' && example === 'min-max' && (
+    <Example 
+      id='min-max' 
+      title='Min Max' 
+      reactCode={ReactSplitterMinMaxRaw} 
+      svelteCode={SvelteSplitterMinMaxRaw}
+    >
+      <div data-fw="react">
+        <ReactSplitterMinMax client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSplitterMinMax client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'splitter' && example === 'multiple-panels' && (
+    <Example 
+      id='multiple-panels' 
+      title='Multiple Panels' 
+      reactCode={ReactSplitterMultiplePanelsRaw} 
+      svelteCode={SvelteSplitterMultiplePanelsRaw}
+    >
+      <div data-fw="react">
+        <ReactSplitterMultiplePanels client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSplitterMultiplePanels client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'splitter' && example === 'vertical' && (
+    <Example 
+      id='vertical' 
+      title='Vertical' 
+      reactCode={ReactSplitterVerticalRaw} 
+      svelteCode={SvelteSplitterVerticalRaw}
+    >
+      <div data-fw="react">
+        <ReactSplitterVertical client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSplitterVertical client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'stack' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactStackDefaultRaw} 
+      svelteCode={SvelteStackDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactStackDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteStackDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'stack' && example === 'hstack' && (
+    <Example 
+      id='hstack' 
+      title='Hstack' 
+      reactCode={ReactStackHstackRaw} 
+      svelteCode={SvelteStackHstackRaw}
+    >
+      <div data-fw="react">
+        <ReactStackHstack client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteStackHstack client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'stack' && example === 'responsive-direction' && (
+    <Example 
+      id='responsive-direction' 
+      title='Responsive Direction' 
+      reactCode={ReactStackResponsiveDirectionRaw} 
+      svelteCode={SvelteStackResponsiveDirectionRaw}
+    >
+      <div data-fw="react">
+        <ReactStackResponsiveDirection client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteStackResponsiveDirection client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'stack' && example === 'separator' && (
+    <Example 
+      id='separator' 
+      title='Separator' 
+      reactCode={ReactStackSeparatorRaw} 
+      svelteCode={SvelteStackSeparatorRaw}
+    >
+      <div data-fw="react">
+        <ReactStackSeparator client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteStackSeparator client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'stack' && example === 'vstack' && (
+    <Example 
+      id='vstack' 
+      title='Vstack' 
+      reactCode={ReactStackVstackRaw} 
+      svelteCode={SvelteStackVstackRaw}
+    >
+      <div data-fw="react">
+        <ReactStackVstack client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteStackVstack client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'switch' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactSwitchDefaultRaw} 
+      svelteCode={SvelteSwitchDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactSwitchDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteSwitchDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tabs' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactTabsDefaultRaw} 
+      svelteCode={SvelteTabsDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactTabsDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTabsDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tabs' && example === 'underline' && (
+    <Example 
+      id='underline' 
+      title='Underline' 
+      reactCode={ReactTabsUnderlineRaw} 
+      svelteCode={SvelteTabsUnderlineRaw}
+    >
+      <div data-fw="react">
+        <ReactTabsUnderline client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTabsUnderline client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tags-input' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactTagsInputDefaultRaw} 
+      svelteCode={SvelteTagsInputDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactTagsInputDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTagsInputDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'toggle-button' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactToggleButtonDefaultRaw} 
+      svelteCode={SvelteToggleButtonDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactToggleButtonDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteToggleButtonDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'toggle-button' && example === 'icon' && (
+    <Example 
+      id='icon' 
+      title='Icon' 
+      reactCode={ReactToggleButtonIconRaw} 
+      svelteCode={SvelteToggleButtonIconRaw}
+    >
+      <div data-fw="react">
+        <ReactToggleButtonIcon client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteToggleButtonIcon client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'toggle-button' && example === 'indicator' && (
+    <Example 
+      id='indicator' 
+      title='Indicator' 
+      reactCode={ReactToggleButtonIndicatorRaw} 
+      svelteCode={SvelteToggleButtonIndicatorRaw}
+    >
+      <div data-fw="react">
+        <ReactToggleButtonIndicator client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteToggleButtonIndicator client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'toggle-button' && example === 'outline' && (
+    <Example 
+      id='outline' 
+      title='Outline' 
+      reactCode={ReactToggleButtonOutlineRaw} 
+      svelteCode={SvelteToggleButtonOutlineRaw}
+    >
+      <div data-fw="react">
+        <ReactToggleButtonOutline client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteToggleButtonOutline client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'arrow' && (
+    <Example 
+      id='arrow' 
+      title='Arrow' 
+      reactCode={ReactTooltipArrowRaw} 
+      svelteCode={SvelteTooltipArrowRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipArrow client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipArrow client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'context' && (
+    <Example 
+      id='context' 
+      title='Context' 
+      reactCode={ReactTooltipContextRaw} 
+      svelteCode={SvelteTooltipContextRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipContext client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipContext client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'controlled' && (
+    <Example 
+      id='controlled' 
+      title='Controlled' 
+      reactCode={ReactTooltipControlledRaw} 
+      svelteCode={SvelteTooltipControlledRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipControlled client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipControlled client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactTooltipDefaultRaw} 
+      svelteCode={SvelteTooltipDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'delay' && (
+    <Example 
+      id='delay' 
+      title='Delay' 
+      reactCode={ReactTooltipDelayRaw} 
+      svelteCode={SvelteTooltipDelayRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipDelay client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipDelay client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'following-cursor' && (
+    <Example 
+      id='following-cursor' 
+      title='Following Cursor' 
+      reactCode={ReactTooltipFollowingCursorRaw} 
+      svelteCode={SvelteTooltipFollowingCursorRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipFollowingCursor client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipFollowingCursor client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'multiple-triggers' && (
+    <Example 
+      id='multiple-triggers' 
+      title='Multiple Triggers' 
+      reactCode={ReactTooltipMultipleTriggersRaw} 
+      svelteCode={SvelteTooltipMultipleTriggersRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipMultipleTriggers client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipMultipleTriggers client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'positioning' && (
+    <Example 
+      id='positioning' 
+      title='Positioning' 
+      reactCode={ReactTooltipPositioningRaw} 
+      svelteCode={SvelteTooltipPositioningRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipPositioning client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipPositioning client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'root-provider' && (
+    <Example 
+      id='root-provider' 
+      title='Root Provider' 
+      reactCode={ReactTooltipRootProviderRaw} 
+      svelteCode={SvelteTooltipRootProviderRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipRootProvider client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipRootProvider client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'tooltip' && example === 'within-fixed-containers' && (
+    <Example 
+      id='within-fixed-containers' 
+      title='Within Fixed Containers' 
+      reactCode={ReactTooltipWithinFixedContainersRaw} 
+      svelteCode={SvelteTooltipWithinFixedContainersRaw}
+    >
+      <div data-fw="react">
+        <ReactTooltipWithinFixedContainers client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteTooltipWithinFixedContainers client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'window' && example === 'anchor-position' && (
+    <Example 
+      id='anchor-position' 
+      title='Anchor Position' 
+      reactCode={ReactWindowAnchorPositionRaw} 
+      svelteCode={SvelteWindowAnchorPositionRaw}
+    >
+      <div data-fw="react">
+        <ReactWindowAnchorPosition client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteWindowAnchorPosition client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'window' && example === 'context' && (
+    <Example 
+      id='context' 
+      title='Context' 
+      reactCode={ReactWindowContextRaw} 
+      svelteCode={SvelteWindowContextRaw}
+    >
+      <div data-fw="react">
+        <ReactWindowContext client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteWindowContext client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'window' && example === 'controlled-position' && (
+    <Example 
+      id='controlled-position' 
+      title='Controlled Position' 
+      reactCode={ReactWindowControlledPositionRaw} 
+      svelteCode={SvelteWindowControlledPositionRaw}
+    >
+      <div data-fw="react">
+        <ReactWindowControlledPosition client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteWindowControlledPosition client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'window' && example === 'controlled-size' && (
+    <Example 
+      id='controlled-size' 
+      title='Controlled Size' 
+      reactCode={ReactWindowControlledSizeRaw} 
+      svelteCode={SvelteWindowControlledSizeRaw}
+    >
+      <div data-fw="react">
+        <ReactWindowControlledSize client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteWindowControlledSize client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'window' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactWindowDefaultRaw} 
+      svelteCode={SvelteWindowDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactWindowDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteWindowDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'window' && example === 'lazy-mount' && (
+    <Example 
+      id='lazy-mount' 
+      title='Lazy Mount' 
+      reactCode={ReactWindowLazyMountRaw} 
+      svelteCode={SvelteWindowLazyMountRaw}
+    >
+      <div data-fw="react">
+        <ReactWindowLazyMount client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteWindowLazyMount client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'window' && example === 'open-state' && (
+    <Example 
+      id='open-state' 
+      title='Open State' 
+      reactCode={ReactWindowOpenStateRaw} 
+      svelteCode={SvelteWindowOpenStateRaw}
+    >
+      <div data-fw="react">
+        <ReactWindowOpenState client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteWindowOpenState client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'youtube' && example === 'default' && (
+    <Example 
+      id='default' 
+      title='Default' 
+      reactCode={ReactYoutubeDefaultRaw} 
+      svelteCode={SvelteYoutubeDefaultRaw}
+    >
+      <div data-fw="react">
+        <ReactYoutubeDefault client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteYoutubeDefault client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  {component === 'youtube' && example === 'timestamps' && (
+    <Example 
+      id='timestamps' 
+      title='Timestamps' 
+      reactCode={ReactYoutubeTimestampsRaw} 
+      svelteCode={SvelteYoutubeTimestampsRaw}
+    >
+      <div data-fw="react">
+        <ReactYoutubeTimestamps client:only="react" />
+      </div>
+      <div data-fw="svelte">
+        <SvelteYoutubeTimestamps client:only="svelte" />
+      </div>
+    </Example>
+  )}
+  
 </div>

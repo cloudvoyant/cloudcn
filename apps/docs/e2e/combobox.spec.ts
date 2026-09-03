@@ -42,7 +42,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('marks multiple options as selected', async ({ page }) => {
-      const input = page.locator(`[data-example]`).nth(1).locator(`[data-fw="${framework}"] [role="combobox"]`).first();
+      const input = page.locator('[data-example-id="multiple"]').locator(`[data-fw="${framework}"] [role="combobox"]`).first();
       await input.click();
       await page.locator('[role="option"]:has-text("Vue")').first().click();
       await expect(page.locator('[role="option"]:has-text("Vue")').first()).toHaveAttribute('aria-selected', 'true');

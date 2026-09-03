@@ -5,9 +5,8 @@
   "type": "module",
   "description": "helix docs/demo app — Astro site with React + Svelte component demos",
   "scripts": {
-    "predev": "pnpm gen && pnpm --filter @cloudvoyant/helix --filter @cloudvoyant/helix-react --filter @cloudvoyant/helix-svelte run build",
-    "gen": "pnpm dlx tsx scripts/gen-demos.ts",
-    "prebuild": "pnpm gen && pnpm --filter @cloudvoyant/helix --filter @cloudvoyant/helix-react --filter @cloudvoyant/helix-svelte run build",
+    "predev": "pnpm --filter @cloudvoyant/helix --filter @cloudvoyant/helix-react --filter @cloudvoyant/helix-svelte run build",
+    "prebuild": "pnpm --filter @cloudvoyant/helix --filter @cloudvoyant/helix-react --filter @cloudvoyant/helix-svelte run build",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

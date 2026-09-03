@@ -9,7 +9,6 @@ const FRAMEWORKS = ['react', 'svelte'] as const;
 type Framework = (typeof FRAMEWORKS)[number];
 type ClickCounter = { __clicks: number };
 
-
 function introButton(page: Page, framework: Framework, text: string): Locator {
   return page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("${text}")`).first();
 }
@@ -59,11 +58,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('renders disabled buttons that cannot be activated', async ({ page }) => {
-      const disabled = page
-        .locator('[data-example]')
-        .last()
-        .locator(`[data-fw="${framework}"] button`)
-        .first();
+      const disabled = page.locator('[data-example-id="disabled"]').locator(`[data-fw="${framework}"] button`).first();
       await expect(disabled).toBeDisabled();
       expect(await disabled.evaluate((el) => el.hasAttribute('disabled'))).toBe(true);
     });

@@ -44,7 +44,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('underline variant renders tabs with the underline style', async ({ page }) => {
-      const account = page.locator(`[data-example]`).nth(1).locator(`[data-fw="${framework}"] [role="tab"]:has-text("Account")`).first();
+      const account = page.locator('[data-example-id="underline"]').locator(`[data-fw="${framework}"] [role="tab"]:has-text("Account")`).first();
       await expect(account).toHaveAttribute('role', 'tab');
       await expect(account).toHaveAttribute('aria-selected', 'true');
     });

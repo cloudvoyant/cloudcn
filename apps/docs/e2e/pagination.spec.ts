@@ -35,8 +35,8 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('controlled example updates its page label', async ({ page }) => {
-      const next = page.locator(`[data-example]`).nth(1).locator(`[data-fw="${framework}"] button:has-text("Next")`).first();
-      const label = page.locator(`[data-example]`).nth(1).locator(`[data-fw="${framework}"] p:has-text("Page")`).first();
+      const next = page.locator('[data-example-id="controlled"]').locator(`[data-fw="${framework}"] button:has-text("Next")`).first();
+      const label = page.locator('[data-example-id="controlled"]').locator(`[data-fw="${framework}"] p:has-text("Page")`).first();
       await expect(async () => {
         await next.click();
         await expect(label).toHaveText('Page 3 of 12');

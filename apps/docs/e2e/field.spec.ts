@@ -21,7 +21,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('fieldset with legend groups related fields', async ({ page }) => {
-      const fieldset = page.locator(`[data-example]`).nth(1).locator(`[data-fw="${framework}"] fieldset`).first();
+      const fieldset = page.locator('[data-example-id="fieldset"]').locator(`[data-fw="${framework}"] fieldset`).first();
       await expect(fieldset).toBeVisible();
       await expect(fieldset.locator('legend')).toContainText('Billing address');
     });

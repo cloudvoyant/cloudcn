@@ -11,7 +11,7 @@ const FRAMEWORKS = ['react', 'svelte'] as const;
 // exercise the sticky example, so hide the second (floating) example to keep
 // the framework selector and locators unambiguous.
 async function hideFloatingExample(page: Page) {
-  await page.locator('[data-example]').nth(1).evaluate((el) => (el.style.display = 'none'));
+  await page.locator('[data-example-id="density"]').evaluate((el) => (el.style.display = 'none'));
 }
 
 for (const framework of FRAMEWORKS) {
@@ -101,7 +101,7 @@ for (const framework of FRAMEWORKS) {
 
     test('shrink-on-scroll bar stays pinned and compacts on container scroll', async ({ page }) => {
       // The "Shrink on scroll" example is the third [data-example] on the page.
-      const example = page.locator('[data-example]').nth(2);
+      const example = page.locator('[data-example-id="shrink"]');
       const header = example.locator(`[data-fw="${framework}"] header[data-slot="navbar"]`).first();
       await header.scrollIntoViewIfNeeded();
       const pinned = await header.evaluate((el) => {
@@ -139,7 +139,7 @@ for (const framework of FRAMEWORKS) {
 
     test('hide variant slides away and reveals on hover', async ({ page }) => {
       // The "Hide on leave" example is the fifth [data-example] on the page.
-      const example = page.locator('[data-example]').nth(4);
+      const example = page.locator('[data-example-id="hide"]');
       const header = example.locator(`[data-fw="${framework}"] header[data-slot="navbar"]`).first();
       const area = example.locator(`[data-fw="${framework}"] [data-slot="navbar-activation-area"]`).first();
       await header.scrollIntoViewIfNeeded();

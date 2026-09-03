@@ -4,6 +4,7 @@
 import Example from './Example.astro';
 import ReactRouter from './ReactRouter.tsx';
 import SvelteRouter from './SvelteRouter.svelte';
+import PreviewFrame from './PreviewFrame.astro';
 
 interface Props {
   component?: string;
@@ -28,6 +29,7 @@ const title = example
   .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
   .join(' ');
 
+const isPreviewFrame = ['sidebar', 'page'].includes(component);
 const isFullscreen = ['sidebar', 'page', 'layout', 'navbar', 'scroll', 'splitter', 'window'].includes(component);
 ---
 
@@ -39,11 +41,17 @@ const isFullscreen = ['sidebar', 'page', 'layout', 'navbar', 'scroll', 'splitter
     svelteCode={svelteCode || ''}
     fullscreen={isFullscreen}
   >
-    <div data-fw="react">
-      <ReactRouter component={component} example={example} client:only="react" />
-    </div>
-    <div data-fw="svelte">
-      <SvelteRouter component={component} example={example} client:only="svelte" />
-    </div>
+    {isPreviewFrame ? (
+      <PreviewFrame component={component} example={example} desktopWidth={component === 'sidebar' ? 1024 : undefined} />
+    ) : (
+      <>
+        <div data-fw="react">
+          <ReactRouter component={component} example={example} client:only="react" />
+        </div>
+        <div data-fw="svelte">
+          <SvelteRouter component={component} example={example} client:only="svelte" />
+        </div>
+      </>
+    )}
   </Example>
 </div>

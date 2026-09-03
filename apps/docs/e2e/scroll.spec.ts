@@ -35,9 +35,7 @@ for (const framework of FRAMEWORKS) {
         el.scrollTop = el.scrollHeight;
       });
       await expect(scrollbar).toHaveAttribute('data-scrolling', /.*/);
-      await expect
-        .poll(() => viewport.evaluate((el) => el.scrollTop))
-        .toBeGreaterThan(0);
+      await expect.poll(() => viewport.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
     });
 
     test('applies custom scrollbar thumb styling', async ({ page }) => {

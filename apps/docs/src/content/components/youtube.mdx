@@ -31,11 +31,11 @@ YouTube renders a dependency-free facade: a poster thumbnail with a play overlay
 
 ## API Reference
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `url` | `string` | Video URL (`youtube.com/watch?v=…` / `youtu.be/…`). Required. |
-| `title` | `string` | Optional heading. |
-| `description` | `string` | Optional description. |
-| `poster` | `string` | Optional poster URL (defaults to the hqdefault thumbnail). |
+| Prop          | Type     | Description                                                   |
+| ------------- | -------- | ------------------------------------------------------------- |
+| `url`         | `string` | Video URL (`youtube.com/watch?v=…` / `youtu.be/…`). Required. |
+| `title`       | `string` | Optional heading.                                             |
+| `description` | `string` | Optional description.                                         |
+| `poster`      | `string` | Optional poster URL (defaults to the hqdefault thumbnail).    |
 
 `YoutubeTimestamps` — composes inside `YouTube`; `chapters` prop overrides, otherwise auto-inferred from metadata. `YoutubeTimestampAt` — child entry with `t` (seconds) and description as children.

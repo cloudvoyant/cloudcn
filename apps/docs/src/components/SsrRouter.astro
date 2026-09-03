@@ -5,8 +5,8 @@ interface Props {
 }
 const { component, example } = Astro.props;
 
-const reactModules = import.meta.glob('./examples/*/*/react.tsx', { eager: true });
-const svelteModules = import.meta.glob('./examples/*/*/svelte.svelte', { eager: true });
+const reactModules = import.meta.glob<Record<string, any>>('./examples/*/*/react.tsx', { eager: true });
+const svelteModules = import.meta.glob<Record<string, any>>('./examples/*/*/svelte.svelte', { eager: true });
 
 const reactPath = `./examples/${component}/${example}/react.tsx`;
 const sveltePath = `./examples/${component}/${example}/svelte.svelte`;

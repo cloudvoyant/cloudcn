@@ -24,7 +24,7 @@ const svg = renderChartSvgString(
   { width: 640, height: 360 },
 );
 
-<Chart type="pie" data={data} series={[{ key: 'value' }]} nameKey="name" svg={svg} />
+<Chart type="pie" data={data} series={[{ key: 'value' }]} nameKey="name" svg={svg} />;
 ```
 
 ## Examples
@@ -33,11 +33,11 @@ const svg = renderChartSvgString(
 
 ## API Reference
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `type` | `'line' \| 'bar' \| 'area' \| 'pie'` | Chart type. Required. |
-| `data` | `Record<string, string \| number>[]` | Rows. Required. |
-| `series` | `{ key, label?, color? }[]` | Series definitions. Required. |
-| `xKey` / `nameKey` | `string` | Axis/category key. |
-| `svg` | `string` | Pre-rendered SVG (server path). |
-| `height`, `showLegend`, `showGrid`, `showAxis` | — | Display options. |
+| Prop                                           | Type                                 | Description                     |
+| ---------------------------------------------- | ------------------------------------ | ------------------------------- |
+| `type`                                         | `'line' \| 'bar' \| 'area' \| 'pie'` | Chart type. Required.           |
+| `data`                                         | `Record<string, string \| number>[]` | Rows. Required.                 |
+| `series`                                       | `{ key, label?, color? }[]`          | Series definitions. Required.   |
+| `xKey` / `nameKey`                             | `string`                             | Axis/category key.              |
+| `svg`                                          | `string`                             | Pre-rendered SVG (server path). |
+| `height`, `showLegend`, `showGrid`, `showAxis` | —                                    | Display options.                |

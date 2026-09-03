@@ -24,7 +24,7 @@ const titleFromId = (id: string) =>
 
 const entries = Object.keys(examplePaths)
   .map((p) => /\.\/examples\/([^/]+)\/([^/]+)\/react\.tsx$/.exec(p))
-  .filter((m): m is RegExpMatchArray => m !== null)
+  .filter((m): m is RegExpExecArray => m !== null)
   .filter((m) => m[1] === component)
   .map((m) => ({ id: m[2], title: titleFromId(m[2]) }))
   .filter((e) => e.id !== exclude);

@@ -25,13 +25,14 @@ Inline math is a function, not a component:
   code={`import { toLaTeX } from '@cloudvoyant/helix';
 
 // React / JSX
+
 <span dangerouslySetInnerHTML={{ __html: toLaTeX('e^{i\\\\pi} + 1 = 0') }} />
 
 // Svelte
 {@html toLaTeX('e^{i\\\\pi} + 1 = 0')}`}
-  lang="tsx"
-  themes={{ light: 'github-light', dark: 'github-dark' }}
-  defaultColor={false}
+lang="tsx"
+themes={{ light: 'github-light', dark: 'github-dark' }}
+defaultColor={false}
 />
 
 `toLaTeX(latex, { displayMode? })` renders inline by default; block output is `toLaTeX(latex, { displayMode: true })` (which is what the `LaTeX` component wraps).
@@ -52,10 +53,10 @@ The `LaTeX` component's `html` prop accepts that pre-rendered output directly, s
 
 ### LaTeX
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `latex` | `string` | LaTeX source. Required. |
-| `html` | `string` | Pre-rendered KaTeX HTML (server path). |
+| Prop    | Type     | Description                            |
+| ------- | -------- | -------------------------------------- |
+| `latex` | `string` | LaTeX source. Required.                |
+| `html`  | `string` | Pre-rendered KaTeX HTML (server path). |
 
 ### toLaTeX
 

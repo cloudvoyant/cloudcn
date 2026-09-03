@@ -32,16 +32,17 @@ for (const framework of FRAMEWORKS) {
       const gutter = frame.locator(`[data-fw="${framework}"] [data-slot="page-gutter"]`).first();
       await expect(gutter).toHaveCSS('position', 'sticky');
       await guttersCard.scrollIntoViewIfNeeded();
-      await frame.locator(`[data-fw="${framework}"]`).first().evaluate(() => window.scrollTo(0, 0));
+      await frame
+        .locator(`[data-fw="${framework}"]`)
+        .first()
+        .evaluate(() => window.scrollTo(0, 0));
       const baseY = Math.round((await gutter.boundingBox())?.y ?? 0);
       await frame
         .locator(`[data-fw="${framework}"]`)
         .first()
         .evaluate(() => window.scrollBy(0, Math.floor(window.innerHeight / 2)));
       await expect
-        .poll(async () =>
-          Math.abs(Math.round((await gutter.boundingBox())?.y ?? -999) - baseY),
-        )
+        .poll(async () => Math.abs(Math.round((await gutter.boundingBox())?.y ?? -999) - baseY))
         .toBeLessThanOrEqual(2);
     });
 
@@ -52,7 +53,10 @@ for (const framework of FRAMEWORKS) {
       const gutter = frame.locator(`[data-fw="${framework}"] [data-slot="page-gutter"]`).first();
       const footer = frame.locator(`[data-fw="${framework}"] [data-slot="page-footer"]`).first();
       await guttersCard.scrollIntoViewIfNeeded();
-      await frame.locator(`[data-fw="${framework}"]`).first().evaluate(() => window.scrollTo(0, 0));
+      await frame
+        .locator(`[data-fw="${framework}"]`)
+        .first()
+        .evaluate(() => window.scrollTo(0, 0));
       await footer.scrollIntoViewIfNeeded();
       await expect(footer).toBeVisible();
       // Once the footer is reached the sticky gutter has run out of room and
@@ -85,9 +89,7 @@ for (const framework of FRAMEWORKS) {
         .locator(`[data-fw="${framework}"]`)
         .first()
         .evaluate(() => window.innerHeight);
-      await expect
-        .poll(async () => (await section.boundingBox())?.height ?? 0)
-        .toBeGreaterThanOrEqual(innerHeight);
+      await expect.poll(async () => (await section.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(innerHeight);
       const footer = frame.locator(`[data-fw="${framework}"] [data-slot="page-footer"]`).first();
       const lastSection = sections.last();
       await expect

@@ -3,9 +3,9 @@
 <script lang="ts">
   import { Root as DialogRoot, type DialogRootProps } from '@ark-ui/svelte/dialog';
 
-  let { children, ...rest }: DialogRootProps = $props();
+  let { children, open = $bindable(), ...rest }: DialogRootProps = $props();
 </script>
 
-<DialogRoot {...rest}>
+<DialogRoot bind:open {...rest}>
   {@render children?.()}
 </DialogRoot>

@@ -27,32 +27,36 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('keeps gutters sticky while scrolling the page body', async ({ page }) => {
-      const guttersCard = page.getByRole('heading', { name: 'Left and right gutters' }).locator('..');
+      const guttersCard = page.getByRole('heading', { name: 'Gutters' }).locator('..');
       const frame = guttersCard.frameLocator('iframe[data-preview]');
       const gutter = frame.locator(`[data-fw="${framework}"] [data-slot="page-gutter"]`).first();
       await expect(gutter).toHaveCSS('position', 'sticky');
       await guttersCard.scrollIntoViewIfNeeded();
-      await frame.locator(`[data-fw="${framework}"]`).first().evaluate(() => window.scrollTo(0, 0));
+      await frame
+        .locator(`[data-fw="${framework}"]`)
+        .first()
+        .evaluate(() => window.scrollTo(0, 0));
       const baseY = Math.round((await gutter.boundingBox())?.y ?? 0);
       await frame
         .locator(`[data-fw="${framework}"]`)
         .first()
         .evaluate(() => window.scrollBy(0, Math.floor(window.innerHeight / 2)));
       await expect
-        .poll(async () =>
-          Math.abs(Math.round((await gutter.boundingBox())?.y ?? -999) - baseY),
-        )
+        .poll(async () => Math.abs(Math.round((await gutter.boundingBox())?.y ?? -999) - baseY))
         .toBeLessThanOrEqual(2);
     });
 
     test('footer appears and gutters scroll up once the page body is past', async ({ page }) => {
-      const guttersCard = page.getByRole('heading', { name: 'Left and right gutters' }).locator('..');
+      const guttersCard = page.getByRole('heading', { name: 'Gutters' }).locator('..');
       const iframeEl = guttersCard.locator('iframe[data-preview]');
       const frame = guttersCard.frameLocator('iframe[data-preview]');
       const gutter = frame.locator(`[data-fw="${framework}"] [data-slot="page-gutter"]`).first();
       const footer = frame.locator(`[data-fw="${framework}"] [data-slot="page-footer"]`).first();
       await guttersCard.scrollIntoViewIfNeeded();
-      await frame.locator(`[data-fw="${framework}"]`).first().evaluate(() => window.scrollTo(0, 0));
+      await frame
+        .locator(`[data-fw="${framework}"]`)
+        .first()
+        .evaluate(() => window.scrollTo(0, 0));
       await footer.scrollIntoViewIfNeeded();
       await expect(footer).toBeVisible();
       // Once the footer is reached the sticky gutter has run out of room and
@@ -68,7 +72,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('hides gutter content on narrow screens', async ({ page }) => {
-      const guttersCard = page.getByRole('heading', { name: 'Left and right gutters' }).locator('..');
+      const guttersCard = page.getByRole('heading', { name: 'Gutters' }).locator('..');
       await guttersCard.locator('button[data-preview-width="mobile"]').click();
       const frame = guttersCard.frameLocator('iframe[data-preview]');
       const gutterContent = frame.locator(`[data-fw="${framework}"] [data-slot="page-gutter-content"]`).first();
@@ -76,7 +80,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('landing variant stacks viewport-height sections above the footer', async ({ page }) => {
-      const landingCard = page.getByRole('heading', { name: 'Landing variant' }).locator('..');
+      const landingCard = page.getByRole('heading', { name: 'Landing' }).locator('..');
       const frame = landingCard.frameLocator('iframe[data-preview]');
       const sections = frame.locator(`[data-fw="${framework}"] [data-slot="page-section"]`);
       const section = sections.first();
@@ -85,9 +89,7 @@ for (const framework of FRAMEWORKS) {
         .locator(`[data-fw="${framework}"]`)
         .first()
         .evaluate(() => window.innerHeight);
-      await expect
-        .poll(async () => (await section.boundingBox())?.height ?? 0)
-        .toBeGreaterThanOrEqual(innerHeight);
+      await expect.poll(async () => (await section.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(innerHeight);
       const footer = frame.locator(`[data-fw="${framework}"] [data-slot="page-footer"]`).first();
       const lastSection = sections.last();
       await expect

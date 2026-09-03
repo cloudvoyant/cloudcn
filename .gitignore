@@ -134,3 +134,6 @@ test-results/
 
 # codevoyant context store (symlink to ~/.codevoyant/<project-slug>/)
 .codevoyant
+
+# Pi coding agent runtime state (task logs, session state) — never commit
+.pi/

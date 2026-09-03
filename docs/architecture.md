@@ -20,7 +20,8 @@ helix is a pnpm workspace monorepo:
 
 - `apps/docs` uses Astro 7 with `@astrojs/react`, `@astrojs/svelte`, `@astrojs/mdx`, and Tailwind v4 via `@tailwindcss/vite`.
 - The theme lives in `@cloudvoyant/helix/src/theme.css` and matches shadcn/ui's implementation exactly at this stage (CSS variables under `:root`/`.dark`, `@theme inline`, `@custom-variant dark`).
-- The framework selector persists to `localStorage` (`helix:framework`) and sets `data-framework` on `<html>`; `Demo.astro` renders both framework islands and CSS shows the active one.
+- The framework selector persists to `localStorage` (`helix:framework`) and sets `data-framework` on `<html>`; `Demo.astro` is an auto-generated monolithic switcher that renders both framework islands and CSS shows the active one.
+- To add a new demo, create a folder under `apps/docs/src/components/examples/{component}/{name}` containing `react.tsx` and `svelte.svelte`. The `Demo.astro` and `registry.json` files are automatically updated by `pnpm gen` (run during `predev`/`prebuild`).
 
 ## Component pattern
 

@@ -7,7 +7,6 @@ import { test, expect, type Page } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
 
-
 for (const framework of FRAMEWORKS) {
   test.describe(`Pagination docs page · ${framework}`, () => {
     test.beforeEach(async ({ page }) => {
@@ -26,17 +25,29 @@ for (const framework of FRAMEWORKS) {
       const prev = page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("Previous")`).first();
       await expect(async () => {
         await next.click();
-        await expect(page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("2")`).first()).toHaveAttribute('data-selected', '');
+        await expect(page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("2")`).first()).toHaveAttribute(
+          'data-selected',
+          '',
+        );
       }).toPass();
       await expect(async () => {
         await prev.click();
-        await expect(page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("1")`).first()).toHaveAttribute('data-selected', '');
+        await expect(page.locator(`[data-demo] [data-fw="${framework}"] button:has-text("1")`).first()).toHaveAttribute(
+          'data-selected',
+          '',
+        );
       }).toPass();
     });
 
     test('controlled example updates its page label', async ({ page }) => {
-      const next = page.locator(`[data-example]`).nth(1).locator(`[data-fw="${framework}"] button:has-text("Next")`).first();
-      const label = page.locator(`[data-example]`).nth(1).locator(`[data-fw="${framework}"] p:has-text("Page")`).first();
+      const next = page
+        .locator('[data-example-id="controlled"]')
+        .locator(`[data-fw="${framework}"] button:has-text("Next")`)
+        .first();
+      const label = page
+        .locator('[data-example-id="controlled"]')
+        .locator(`[data-fw="${framework}"] p:has-text("Page")`)
+        .first();
       await expect(async () => {
         await next.click();
         await expect(label).toHaveText('Page 3 of 12');

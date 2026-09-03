@@ -11,7 +11,10 @@ for (const framework of FRAMEWORKS) {
       await page.goto('components/layout');
       await selectFramework(page, framework);
 
-      const item = page.locator(`[data-fw="${framework}"] div.bg-muted:has-text("Lorem ipsum")`).first();
+      const item = page
+        .locator('[data-example-id="container"]')
+        .locator(`[data-fw="${framework}"] div.bg-muted:has-text("Lorem ipsum")`)
+        .first();
       await expect(item).toBeVisible();
       const container = item.locator('xpath=..');
       const { w, pw } = await container.evaluate((el) => {
@@ -27,14 +30,12 @@ for (const framework of FRAMEWORKS) {
       await page.goto('components/layout');
       await selectFramework(page, framework);
 
-      const info = await page
-        .locator(`[data-fw="${framework}"] div.p-3:not(.border)`)
-        .evaluateAll((els) =>
-          els.map((el) => {
-            const r = el.getBoundingClientRect();
-            return { x: r.x, y: r.y, bg: getComputedStyle(el).backgroundColor };
-          }),
-        );
+      const info = await page.locator(`[data-fw="${framework}"] div.p-3:not(.border)`).evaluateAll((els) =>
+        els.map((el) => {
+          const r = el.getBoundingClientRect();
+          return { x: r.x, y: r.y, bg: getComputedStyle(el).backgroundColor };
+        }),
+      );
 
       const sideBySide = info.some((a, i) =>
         info.some((b, j) => i !== j && Math.abs(a.y - b.y) < 2 && Math.abs(a.x - b.x) > 2 && a.bg !== b.bg),

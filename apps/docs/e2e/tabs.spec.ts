@@ -7,7 +7,6 @@ import { test, expect } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
 
-
 for (const framework of FRAMEWORKS) {
   test.describe(`Tabs docs page · ${framework}`, () => {
     test.beforeEach(async ({ page }) => {
@@ -19,7 +18,9 @@ for (const framework of FRAMEWORKS) {
       const profile = page.locator(`[data-demo] [data-fw="${framework}"] [role="tab"]:has-text("Profile")`).first();
       await expect(profile).toHaveAttribute('role', 'tab');
       await expect(profile).toHaveAttribute('aria-selected', 'true');
-      await expect(page.locator(`[data-demo] [data-fw="${framework}"] [role="tabpanel"]:has-text("Profile content")`).first()).toBeVisible();
+      await expect(
+        page.locator(`[data-demo] [data-fw="${framework}"] [role="tabpanel"]:has-text("Profile content")`).first(),
+      ).toBeVisible();
     });
 
     test('switches tabs on click', async ({ page }) => {
@@ -30,7 +31,9 @@ for (const framework of FRAMEWORKS) {
         await expect(settings).toHaveAttribute('aria-selected', 'true');
         await expect(profile).toHaveAttribute('aria-selected', 'false');
       }).toPass();
-      await expect(page.locator(`[data-demo] [data-fw="${framework}"] [role="tabpanel"]:has-text("Settings content")`).first()).toBeVisible();
+      await expect(
+        page.locator(`[data-demo] [data-fw="${framework}"] [role="tabpanel"]:has-text("Settings content")`).first(),
+      ).toBeVisible();
     });
 
     test('switches tabs with arrow keys', async ({ page }) => {
@@ -44,7 +47,10 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('underline variant renders tabs with the underline style', async ({ page }) => {
-      const account = page.locator(`[data-example]`).nth(1).locator(`[data-fw="${framework}"] [role="tab"]:has-text("Account")`).first();
+      const account = page
+        .locator('[data-example-id="underline"]')
+        .locator(`[data-fw="${framework}"] [role="tab"]:has-text("Account")`)
+        .first();
       await expect(account).toHaveAttribute('role', 'tab');
       await expect(account).toHaveAttribute('aria-selected', 'true');
     });

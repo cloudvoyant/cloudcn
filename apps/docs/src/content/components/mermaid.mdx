@@ -15,7 +15,7 @@ The Mermaid component renders [Mermaid](https://mermaid.js.org/) diagrams with t
 
 ## Examples
 
-<Examples component="mermaid" />
+<Examples component="mermaid" exclude="default" />
 
 ## Guide
 
@@ -104,11 +104,11 @@ Per-node colors are part of the diagram source and win over the theme-level `the
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `code` | `string` | — | Mermaid diagram source. Required. |
-| `svg` | `string` | — | Pre-rendered SVG markup (server/static path). When provided, renders immediately and never imports `mermaid`; should carry a `viewBox` for aspect-ratio reservation. |
-| `className` / `class` | `string` | `''` | Extra classes for the root container. |
+| Prop                  | Type     | Default | Description                                                                                                                                                          |
+| --------------------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `code`                | `string` | —       | Mermaid diagram source. Required.                                                                                                                                    |
+| `svg`                 | `string` | —       | Pre-rendered SVG markup (server/static path). When provided, renders immediately and never imports `mermaid`; should carry a `viewBox` for aspect-ratio reservation. |
+| `className` / `class` | `string` | `''`    | Extra classes for the root container.                                                                                                                                |
 
 Any other standard `div` attributes — `id`, `style`, `aria-*`, data attributes — pass through to the root container.
 

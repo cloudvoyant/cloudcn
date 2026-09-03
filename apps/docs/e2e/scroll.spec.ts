@@ -35,9 +35,7 @@ for (const framework of FRAMEWORKS) {
         el.scrollTop = el.scrollHeight;
       });
       await expect(scrollbar).toHaveAttribute('data-scrolling', /.*/);
-      await expect
-        .poll(() => viewport.evaluate((el) => el.scrollTop))
-        .toBeGreaterThan(0);
+      await expect.poll(() => viewport.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
     });
 
     test('applies custom scrollbar thumb styling', async ({ page }) => {
@@ -49,7 +47,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('hidden variant scrolls without rendering scrollbar parts', async ({ page }) => {
-      const section = page.getByRole('heading', { name: 'Hidden scrollbars' }).locator('..');
+      const section = page.getByRole('heading', { name: 'Hidden' }).locator('..');
       const fw = `[data-fw="${framework}"]`;
       const viewport = section.locator(`${fw} [data-part="viewport"]`).first();
       await expect(viewport).toBeVisible();

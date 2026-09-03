@@ -27,7 +27,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('keeps gutters sticky while scrolling the page body', async ({ page }) => {
-      const guttersCard = page.getByRole('heading', { name: 'Left and right gutters' }).locator('..');
+      const guttersCard = page.getByRole('heading', { name: 'Gutters' }).locator('..');
       const frame = guttersCard.frameLocator('iframe[data-preview]');
       const gutter = frame.locator(`[data-fw="${framework}"] [data-slot="page-gutter"]`).first();
       await expect(gutter).toHaveCSS('position', 'sticky');
@@ -46,7 +46,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('footer appears and gutters scroll up once the page body is past', async ({ page }) => {
-      const guttersCard = page.getByRole('heading', { name: 'Left and right gutters' }).locator('..');
+      const guttersCard = page.getByRole('heading', { name: 'Gutters' }).locator('..');
       const iframeEl = guttersCard.locator('iframe[data-preview]');
       const frame = guttersCard.frameLocator('iframe[data-preview]');
       const gutter = frame.locator(`[data-fw="${framework}"] [data-slot="page-gutter"]`).first();
@@ -68,7 +68,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('hides gutter content on narrow screens', async ({ page }) => {
-      const guttersCard = page.getByRole('heading', { name: 'Left and right gutters' }).locator('..');
+      const guttersCard = page.getByRole('heading', { name: 'Gutters' }).locator('..');
       await guttersCard.locator('button[data-preview-width="mobile"]').click();
       const frame = guttersCard.frameLocator('iframe[data-preview]');
       const gutterContent = frame.locator(`[data-fw="${framework}"] [data-slot="page-gutter-content"]`).first();
@@ -76,7 +76,7 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('landing variant stacks viewport-height sections above the footer', async ({ page }) => {
-      const landingCard = page.getByRole('heading', { name: 'Landing variant' }).locator('..');
+      const landingCard = page.getByRole('heading', { name: 'Landing' }).locator('..');
       const frame = landingCard.frameLocator('iframe[data-preview]');
       const sections = frame.locator(`[data-fw="${framework}"] [data-slot="page-section"]`);
       const section = sections.first();

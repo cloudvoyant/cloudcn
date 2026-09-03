@@ -1,5 +1,3 @@
-
-
 // Use eager: true to bundle all examples and eliminate lazy-loading network delays,
 // which fixes hydration race conditions in the E2E tests.
 const reactModules = import.meta.glob('./examples/*/*/react.tsx', { eager: true });

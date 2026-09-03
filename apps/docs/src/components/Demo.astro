@@ -40,6 +40,8 @@ const SSR_EXAMPLES = new Set([
 ]);
 const isSsr = SSR_EXAMPLES.has(`${component}/${example}`);
 
+const isClientOnly = component === 'navbar';
+
 // Full-bleed demos render flush to the card edges (no ExampleScreen padding).
 const FULLSCREEN_EXAMPLES = new Set([
   'sidebar/icon',
@@ -72,13 +74,22 @@ const isFullscreen = FULLSCREEN_EXAMPLES.has(`${component}/${example}`);
       <SsrRouter component={component} example={example} />
     ) : isPreviewFrame ? (
       <PreviewFrame component={component} example={example} desktopWidth={component === 'sidebar' ? 1024 : undefined} />
-    ) : (
+    ) : isClientOnly ? (
       <>
         <div data-fw="react">
           <ReactRouter component={component} example={example} client:only="react" />
         </div>
         <div data-fw="svelte">
           <SvelteRouter component={component} example={example} client:only="svelte" />
+        </div>
+      </>
+    ) : (
+      <>
+        <div data-fw="react">
+          <ReactRouter component={component} example={example} client:load />
+        </div>
+        <div data-fw="svelte">
+          <SvelteRouter component={component} example={example} client:load />
         </div>
       </>
     )}

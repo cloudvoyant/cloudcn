@@ -4,34 +4,15 @@
 
   let { component, example } = $props<{ component: string; example: string }>();
 
-  const svelteModules = import.meta.glob('./examples/*/*/svelte.svelte');
+  const svelteModules = import.meta.glob('./examples/*/*/svelte.svelte', { eager: true });
 
-  let Comp = $state<Component | null>(null);
-  let error = $state(false);
-
-  $effect(() => {
-    const path = `./examples/${component}/${example}/svelte.svelte`;
-    const importFn = svelteModules[path] as (() => Promise<{ default: Component }>) | undefined;
-    
-    if (importFn) {
-      importFn()
-        .then((m) => {
-          Comp = m.default;
-          error = false;
-        })
-        .catch(() => {
-          error = true;
-        });
-    } else {
-      error = true;
-    }
-  });
+  const path = $derived(`./examples/${component}/${example}/svelte.svelte`);
+  const module = $derived(svelteModules[path] as { default: Component } | undefined);
+  const Comp = $derived(module?.default);
 </script>
 
-{#if error}
+{#if !module}
   <div class="text-sm text-red-500 p-4">Svelte example not found: {component}/{example}</div>
 {:else if Comp}
   <Comp />
-{:else}
-  <div class="text-sm text-muted-foreground p-4">Loading Svelte...</div>
 {/if}

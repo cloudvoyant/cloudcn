@@ -4,6 +4,7 @@
 import Example from './Example.astro';
 import ReactRouter from './ReactRouter.tsx';
 import SvelteRouter from './SvelteRouter.svelte';
+import SsrRouter from './SsrRouter.astro';
 import PreviewFrame from './PreviewFrame.astro';
 
 interface Props {
@@ -30,6 +31,14 @@ const title = example
   .join(' ');
 
 const isPreviewFrame = ['sidebar', 'page'].includes(component);
+
+const SSR_EXAMPLES = new Set([
+  'mermaid/prerendered',
+  'latex/prerendered',
+  'code-block/prerendered',
+  'chart/prerendered'
+]);
+const isSsr = SSR_EXAMPLES.has(`${component}/${example}`);
 
 // Full-bleed demos render flush to the card edges (no ExampleScreen padding).
 const FULLSCREEN_EXAMPLES = new Set([
@@ -59,7 +68,9 @@ const isFullscreen = FULLSCREEN_EXAMPLES.has(`${component}/${example}`);
     svelteCode={svelteCode || ''}
     fullscreen={isFullscreen}
   >
-    {isPreviewFrame ? (
+    {isSsr ? (
+      <SsrRouter component={component} example={example} />
+    ) : isPreviewFrame ? (
       <PreviewFrame component={component} example={example} desktopWidth={component === 'sidebar' ? 1024 : undefined} />
     ) : (
       <>

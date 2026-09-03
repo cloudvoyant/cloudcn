@@ -8,7 +8,6 @@ import { test, expect } from '@playwright/test';
 
 const FRAMEWORKS = ['react', 'svelte'] as const;
 
-
 for (const framework of FRAMEWORKS) {
   test.describe(`Combobox docs page · ${framework}`, () => {
     test.beforeEach(async ({ page }) => {
@@ -42,7 +41,10 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('marks multiple options as selected', async ({ page }) => {
-      const input = page.locator('[data-example-id="multiple"]').locator(`[data-fw="${framework}"] [role="combobox"]`).first();
+      const input = page
+        .locator('[data-example-id="multiple"]')
+        .locator(`[data-fw="${framework}"] [role="combobox"]`)
+        .first();
       await input.click();
       await page.locator('[role="option"]:has-text("Vue")').first().click();
       await expect(page.locator('[role="option"]:has-text("Vue")').first()).toHaveAttribute('aria-selected', 'true');

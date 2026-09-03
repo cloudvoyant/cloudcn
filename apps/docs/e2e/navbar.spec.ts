@@ -125,7 +125,9 @@ for (const framework of FRAMEWORKS) {
         expect(h).toBeLessThan(64); // compacted below the default h-16 (64px)
       }).toPass();
       // NavbarMenu items shrink too (density="compact")
-      const trigger = example.locator(`[data-fw="${framework}"] [data-slot="navbar-menu"] [data-part="trigger"]`).first();
+      const trigger = example
+        .locator(`[data-fw="${framework}"] [data-slot="navbar-menu"] [data-part="trigger"]`)
+        .first();
       await expect(async () => {
         const th = await trigger.evaluate((el) => el.getBoundingClientRect().height);
         expect(th).toBeLessThan(36); // compacted below h-9 (36px)

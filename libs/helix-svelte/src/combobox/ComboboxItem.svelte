@@ -18,5 +18,5 @@
 </script>
 
 <ComboboxItem {item} persistFocus class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </ComboboxItem>

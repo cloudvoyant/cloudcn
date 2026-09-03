@@ -3,7 +3,7 @@
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { sidebarStyles, cn } from '@cloudvoyant/helix';
-  import { getSidebarContext } from './context.svelte';
+  import { getSidebarContext } from './context.svelte.ts';
   import type { Snippet } from 'svelte';
   import type { HTMLButtonAttributes } from 'svelte/elements';
 
@@ -30,5 +30,5 @@
   }}
   {...rest}
 >
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </Ark>

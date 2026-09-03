@@ -10,5 +10,5 @@
 </script>
 
 <SelectClearTrigger aria-label="Clear selection" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </SelectClearTrigger>

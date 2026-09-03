@@ -10,7 +10,7 @@
     type NavbarDensity,
     type NavbarVariant,
   } from '@cloudvoyant/helix';
-  import { getNavbarContext, setNavbarContext } from './NavbarContext.svelte';
+  import { getNavbarContext, setNavbarContext } from './NavbarContext.svelte.ts';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -138,5 +138,5 @@
   onmouseleave={() => parent.setHovered(false)}
   {...rest}
 >
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </header>

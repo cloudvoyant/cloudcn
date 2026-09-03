@@ -7,5 +7,5 @@
 </script>
 
 <Portal {disabled}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </Portal>

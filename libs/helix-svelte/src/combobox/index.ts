@@ -12,4 +12,4 @@ export { default as ComboboxItemText } from './ComboboxItemText.svelte';
 export { default as ComboboxItemIndicator } from './ComboboxItemIndicator.svelte';
 export { default as ComboboxList } from './ComboboxList.svelte';
 export { default as ComboboxEmpty } from './ComboboxEmpty.svelte';
-export { useCombobox } from './ComboboxContext.svelte';
+export { useCombobox } from './ComboboxContext.svelte.ts';

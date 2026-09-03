@@ -2,7 +2,7 @@
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import CodeRenderer from './CodeRenderer.svelte';
-  import { codeBlockContext } from './CodeBlockContext.svelte';
+  import { codeBlockContext } from './CodeBlockContext.svelte.ts';
   import type { HTMLAttributes } from 'svelte/elements';
 
   type Props = { html?: string; class?: string } & HTMLAttributes<HTMLDivElement>;

@@ -10,5 +10,5 @@
 </script>
 
 <CheckboxGroup class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </CheckboxGroup>

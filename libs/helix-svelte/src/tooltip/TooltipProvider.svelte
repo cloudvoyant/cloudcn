@@ -7,5 +7,5 @@
 </script>
 
 <TooltipRootProvider {value} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </TooltipRootProvider>

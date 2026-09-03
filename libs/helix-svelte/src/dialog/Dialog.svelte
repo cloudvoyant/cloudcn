@@ -7,5 +7,5 @@
 </script>
 
 <DialogRoot bind:open {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </DialogRoot>

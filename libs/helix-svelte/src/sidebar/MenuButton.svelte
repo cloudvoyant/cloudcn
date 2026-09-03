@@ -4,7 +4,7 @@
   import { Ark } from '@ark-ui/svelte/factory';
   import { TooltipRoot, TooltipTrigger, TooltipPositioner, TooltipContent } from '@ark-ui/svelte/tooltip';
   import { sidebarMenuButtonVariants, sidebarStyles, cn } from '@cloudvoyant/helix';
-  import { getSidebarContext } from './context.svelte';
+  import { getSidebarContext } from './context.svelte.ts';
   import type { Snippet } from 'svelte';
   import type { HTMLButtonAttributes, HTMLAttributes } from 'svelte/elements';
 
@@ -56,7 +56,7 @@
     {...propsFn ? propsFn() : {}}
     {...rest}
   >
-    {@render children?.()}
+    {#if children}{@render children()}{/if}
   </Ark>
 {/snippet}
 

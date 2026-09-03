@@ -3,7 +3,7 @@
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { sidebarStyles, cn } from '@cloudvoyant/helix';
-  import { getSidebarContext } from './context.svelte';
+  import { getSidebarContext } from './context.svelte.ts';
   import type { HTMLButtonAttributes } from 'svelte/elements';
 
   type Props = {

@@ -10,5 +10,5 @@
 </script>
 
 <TabContent {value} class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </TabContent>

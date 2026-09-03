@@ -12,5 +12,5 @@
 </script>
 
 <PopoverCloseTrigger aria-label="Close" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </PopoverCloseTrigger>

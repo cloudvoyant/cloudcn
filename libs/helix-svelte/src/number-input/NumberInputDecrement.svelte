@@ -10,5 +10,5 @@
 </script>
 
 <NumberInputDecrementTrigger aria-label="Decrement" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </NumberInputDecrementTrigger>

@@ -3,7 +3,7 @@
 <script lang="ts">
   import { NavigationMenuTrigger, type NavigationMenuTriggerProps } from '@ark-ui/svelte/navigation-menu';
   import { navbarMenuTriggerStyle, cn } from '@cloudvoyant/helix';
-  import { getNavbarMenuStyle } from './NavbarMenuContext.svelte';
+  import { getNavbarMenuStyle } from './NavbarMenuContext.svelte.ts';
 
   let { disabled = false, asChild, class: className = '', children, ...rest }: NavigationMenuTriggerProps = $props();
 
@@ -12,7 +12,7 @@
 </script>
 
 <NavigationMenuTrigger {disabled} {asChild} class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
   {#if !asChild}
     <svg
       class="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"

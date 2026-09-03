@@ -10,5 +10,5 @@
 </script>
 
 <TagsInputClearTrigger aria-label="Clear all tags" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </TagsInputClearTrigger>

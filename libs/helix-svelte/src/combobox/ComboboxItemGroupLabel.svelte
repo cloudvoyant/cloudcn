@@ -10,5 +10,5 @@
 </script>
 
 <ComboboxItemGroupLabel class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </ComboboxItemGroupLabel>

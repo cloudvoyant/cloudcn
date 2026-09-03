@@ -18,8 +18,8 @@
     type NavbarMenuDensity,
     type NavbarMenuVariant,
   } from '@cloudvoyant/helix';
-  import { setNavbarMenuStyle } from './NavbarMenuContext.svelte';
-  import { getNavbarContext } from './NavbarContext.svelte';
+  import { setNavbarMenuStyle } from './NavbarMenuContext.svelte.ts';
+  import { getNavbarContext } from './NavbarContext.svelte.ts';
   import type { Snippet } from 'svelte';
 
   type Props = NavigationMenuRootProps & {
@@ -53,7 +53,7 @@
 
 <Ark as="nav" data-slot="navbar-menu" data-placement={placement} class={classes}>
   <NavigationMenuRoot data-density={menuDensity} class={cn(navbarMenuRootBase)} {...rest}>
-    {@render children?.()}
+    {#if children}{@render children()}{/if}
     <NavigationMenuViewportPositioner class={cn(navbarMenuViewportPositionerBase)}>
       <NavigationMenuViewport class={cn(navbarMenuViewportBase)} />
     </NavigationMenuViewportPositioner>

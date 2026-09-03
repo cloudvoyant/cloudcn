@@ -17,5 +17,5 @@
 </script>
 
 <SelectItem {item} class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </SelectItem>

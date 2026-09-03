@@ -8,7 +8,7 @@
   import CodeBlockCopyButton from './CodeBlockCopyButton.svelte';
   import { codeBlockRootBase, cn } from '@cloudvoyant/helix';
   import { setContext } from 'svelte';
-  import { CODE_BLOCK_KEY, type CodeBlockContextValue } from './CodeBlockContext.svelte';
+  import { CODE_BLOCK_KEY, type CodeBlockContextValue } from './CodeBlockContext.svelte.ts';
   import type { HTMLAttributes } from 'svelte/elements';
   import type { Snippet } from 'svelte';
 

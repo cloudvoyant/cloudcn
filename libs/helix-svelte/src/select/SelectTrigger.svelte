@@ -15,5 +15,5 @@
 </script>
 
 <SelectTrigger class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </SelectTrigger>

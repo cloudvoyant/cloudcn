@@ -17,5 +17,5 @@
 </script>
 
 <Ark as="main" data-slot="page-content" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </Ark>

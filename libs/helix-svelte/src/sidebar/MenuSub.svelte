@@ -21,5 +21,5 @@
   class={cn(sidebarStyles.menuSubClass, className)}
   {...rest}
 >
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </Ark>

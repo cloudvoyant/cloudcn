@@ -12,5 +12,5 @@
 </script>
 
 <FloatingPanelStageTrigger class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </FloatingPanelStageTrigger>

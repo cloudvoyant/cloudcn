@@ -27,7 +27,7 @@
   <Portal>
     <FloatingPanelPositioner class={positionerClasses}>
       <FloatingPanelContent class={contentClasses}>
-        {@render children?.()}
+        {#if children}{@render children()}{/if}
       </FloatingPanelContent>
     </FloatingPanelPositioner>
   </Portal>

@@ -25,7 +25,7 @@ import Trigger from './Trigger.svelte';
 import Rail from './Rail.svelte';
 import Inset from './Inset.svelte';
 import Input from './Input.svelte';
-import { getSidebarContext as useSidebar } from './context.svelte';
+import { getSidebarContext as useSidebar } from './context.svelte.ts';
 
 export {
   Provider as SidebarProvider,

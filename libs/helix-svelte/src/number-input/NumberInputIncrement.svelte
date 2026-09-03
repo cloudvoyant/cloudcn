@@ -10,5 +10,5 @@
 </script>
 
 <NumberInputIncrementTrigger aria-label="Increment" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </NumberInputIncrementTrigger>

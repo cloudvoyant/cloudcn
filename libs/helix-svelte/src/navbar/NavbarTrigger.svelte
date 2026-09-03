@@ -2,7 +2,7 @@
 <!-- Source: @cloudvoyant/helix-react navbar trigger (shadcnblocks navbar6/7, re-based on Ark UI collapsible) -->
 <script lang="ts">
   import { navbarTriggerVariants, cn } from '@cloudvoyant/helix';
-  import { getNavbarContext } from './NavbarContext.svelte';
+  import { getNavbarContext } from './NavbarContext.svelte.ts';
   import type { Snippet } from 'svelte';
   import type { HTMLButtonAttributes } from 'svelte/elements';
 

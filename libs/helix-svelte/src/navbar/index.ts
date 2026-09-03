@@ -24,7 +24,7 @@ import NavbarMobileMenuContent from './NavbarMobileMenuContent.svelte';
 import NavbarMenuViewport from './NavbarMenuViewport.svelte';
 import NavbarMenuViewportPositioner from './NavbarMenuViewportPositioner.svelte';
 import NavbarMenuIndicator from './NavbarMenuIndicator.svelte';
-import { getNavbarContext as useNavbar } from './NavbarContext.svelte';
+import { getNavbarContext as useNavbar } from './NavbarContext.svelte.ts';
 import { navbarMenuTriggerStyle, type NavbarMenuDensity, type NavbarMenuVariant } from '@cloudvoyant/helix';
 
 export {

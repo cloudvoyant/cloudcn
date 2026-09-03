@@ -15,6 +15,6 @@
 </script>
 
 <TabList class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
   <TabIndicator class={indicatorClasses} />
 </TabList>

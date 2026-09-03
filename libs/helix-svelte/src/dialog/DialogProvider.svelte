@@ -7,5 +7,5 @@
 </script>
 
 <DialogRootProvider {value} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </DialogRootProvider>

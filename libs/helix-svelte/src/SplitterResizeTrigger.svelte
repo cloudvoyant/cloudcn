@@ -11,5 +11,5 @@
 
 <SplitterResizeTrigger class={classes} {...rest}>
   <span aria-hidden data-part="separator" class={splitterResizeTriggerSeparatorBase}></span>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </SplitterResizeTrigger>

@@ -7,5 +7,5 @@
 </script>
 
 <PopoverRootProvider {value} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </PopoverRootProvider>

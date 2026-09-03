@@ -21,5 +21,5 @@
 </script>
 
 <ComboboxRoot collection={resolvedCollection} {openOnClick} {lazyMount} {unmountOnExit} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </ComboboxRoot>

@@ -12,5 +12,5 @@
 </script>
 
 <PopoverIndicator class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </PopoverIndicator>

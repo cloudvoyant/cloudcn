@@ -51,7 +51,7 @@
 <ScrollAreaRoot class={rootClasses} {...rest}>
   <ScrollAreaViewport class={viewportClasses}>
     <ScrollAreaContent class={contentClasses}>
-      {@render children?.()}
+      {#if children}{@render children()}{/if}
     </ScrollAreaContent>
   </ScrollAreaViewport>
   {#if variant !== 'hidden'}

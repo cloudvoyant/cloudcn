@@ -29,7 +29,7 @@
       </PopoverArrow>
     {/if}
     <PopoverContent class={classes} {...rest}>
-      {@render children?.()}
+      {#if children}{@render children()}{/if}
     </PopoverContent>
   </PopoverPositioner>
 </Portal>

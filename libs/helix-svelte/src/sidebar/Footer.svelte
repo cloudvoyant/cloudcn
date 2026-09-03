@@ -15,5 +15,5 @@
 </script>
 
 <Col data-slot="sidebar-footer" data-sidebar="footer" class={cn(sidebarStyles.footerClass, className)} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </Col>

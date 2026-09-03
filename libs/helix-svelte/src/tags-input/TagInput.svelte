@@ -14,6 +14,6 @@
 </script>
 
 <TagsInputRoot {editable} class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
   <TagsInputHiddenInput />
 </TagsInputRoot>

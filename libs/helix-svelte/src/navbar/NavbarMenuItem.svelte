@@ -3,7 +3,7 @@
 <script lang="ts">
   import { NavigationMenuItem, type NavigationMenuItemProps } from '@ark-ui/svelte/navigation-menu';
   import { navbarMenuItemBase, cn, type NavbarMenuVariant } from '@cloudvoyant/helix';
-  import { getNavbarMenuStyle, setNavbarMenuStyle } from './NavbarMenuContext.svelte';
+  import { getNavbarMenuStyle, setNavbarMenuStyle } from './NavbarMenuContext.svelte.ts';
 
   let {
     value,
@@ -30,5 +30,5 @@
 </script>
 
 <NavigationMenuItem {value} {disabled} data-variant={variant} class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </NavigationMenuItem>

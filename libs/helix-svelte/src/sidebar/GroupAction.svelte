@@ -24,5 +24,5 @@
   class={cn(sidebarStyles.groupActionClass, className)}
   {...rest}
 >
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </Ark>

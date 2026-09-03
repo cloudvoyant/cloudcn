@@ -10,7 +10,7 @@
 </script>
 
 <CollapsibleTrigger data-slot="navbar-mobile-menu-trigger" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
   <svg
     class="size-4 transition-transform duration-200 group-data-[state=open]:rotate-180"
     aria-hidden="true"

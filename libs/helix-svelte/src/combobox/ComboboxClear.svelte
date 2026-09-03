@@ -10,5 +10,5 @@
 </script>
 
 <ComboboxClearTrigger aria-label="Clear" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </ComboboxClearTrigger>

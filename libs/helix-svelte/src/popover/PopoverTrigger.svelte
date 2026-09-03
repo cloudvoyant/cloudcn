@@ -9,5 +9,5 @@
 </script>
 
 <PopoverTrigger class={className} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </PopoverTrigger>

@@ -12,5 +12,5 @@
 </script>
 
 <FloatingPanelBody class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </FloatingPanelBody>

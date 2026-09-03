@@ -16,7 +16,7 @@
 <Portal>
   <DialogPositioner class={positionerClasses}>
     <DialogContent class={classes} {...rest}>
-      {@render children?.()}
+      {#if children}{@render children()}{/if}
     </DialogContent>
   </DialogPositioner>
 </Portal>

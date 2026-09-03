@@ -10,5 +10,5 @@
 </script>
 
 <TabTrigger {value} {disabled} class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </TabTrigger>

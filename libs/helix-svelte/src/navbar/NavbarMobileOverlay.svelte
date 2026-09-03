@@ -19,7 +19,7 @@
     navbarTriggerVariants,
     cn,
   } from '@cloudvoyant/helix';
-  import { getNavbarContext } from './NavbarContext.svelte';
+  import { getNavbarContext } from './NavbarContext.svelte.ts';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -72,7 +72,7 @@
           </DialogCloseTrigger>
         </div>
         <div class={navbarMobileMenuBase}>
-          {@render children?.()}
+          {#if children}{@render children()}{/if}
         </div>
         {#if navbar.slots.actions}
           <div class={navbarMobileActionsBase}>

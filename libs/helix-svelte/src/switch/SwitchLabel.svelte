@@ -10,5 +10,5 @@
 </script>
 
 <SwitchLabel class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </SwitchLabel>

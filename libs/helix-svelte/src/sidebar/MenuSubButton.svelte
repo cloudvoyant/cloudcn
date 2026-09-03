@@ -27,5 +27,5 @@
   class={cn(sidebarStyles.menuSubButtonClass, className)}
   {...rest}
 >
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </Ark>

@@ -30,5 +30,5 @@
 </script>
 
 <Ark as="div" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </Ark>

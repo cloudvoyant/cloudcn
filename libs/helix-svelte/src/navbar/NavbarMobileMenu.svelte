@@ -10,5 +10,5 @@
 </script>
 
 <CollapsibleRoot data-slot="navbar-mobile-menu" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </CollapsibleRoot>

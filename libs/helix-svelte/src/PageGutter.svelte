@@ -31,7 +31,7 @@
 <div data-slot="page-gutter-area" class={areaClasses}>
   <Ark as="div" data-slot="page-gutter" class={gutterClasses} {...rest}>
     <div data-slot="page-gutter-content" class={contentClasses}>
-      {@render children?.()}
+      {#if children}{@render children()}{/if}
     </div>
   </Ark>
 </div>

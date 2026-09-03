@@ -13,5 +13,5 @@
 </script>
 
 <SwitchControl class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </SwitchControl>

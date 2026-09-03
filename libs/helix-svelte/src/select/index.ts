@@ -11,4 +11,4 @@ export { default as SelectItem } from './SelectItem.svelte';
 export { default as SelectItemText } from './SelectItemText.svelte';
 export { default as SelectItemIndicator } from './SelectItemIndicator.svelte';
 export { default as SelectNative } from './SelectNative.svelte';
-export { useSelect } from './SelectContext.svelte';
+export { useSelect } from './SelectContext.svelte.ts';

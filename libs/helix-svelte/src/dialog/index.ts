@@ -10,4 +10,4 @@ export { default as DialogHeader } from './DialogHeader.svelte';
 export { default as DialogFooter } from './DialogFooter.svelte';
 export { default as DialogDismiss } from './DialogDismiss.svelte';
 export { default as DialogContext } from './DialogRender.svelte';
-export { useDialog, useDialogContext } from './DialogContext.svelte';
+export { useDialog, useDialogContext } from './DialogContext.svelte.ts';

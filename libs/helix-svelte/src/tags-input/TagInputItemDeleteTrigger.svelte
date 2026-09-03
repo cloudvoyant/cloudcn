@@ -10,5 +10,5 @@
 </script>
 
 <TagsInputItemDeleteTrigger aria-label="Remove tag" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </TagsInputItemDeleteTrigger>

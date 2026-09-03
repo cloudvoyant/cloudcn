@@ -20,5 +20,5 @@
 </script>
 
 <Ark as="span" class={classes} {...rest}>
-  {@render children?.()}
+  {#if children}{@render children()}{/if}
 </Ark>

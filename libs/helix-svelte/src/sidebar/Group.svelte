@@ -22,6 +22,6 @@
     </div>
   {/if}
   <div data-slot="sidebar-group-content" data-sidebar="group-content" class={cn(sidebarStyles.groupContentClass)}>
-    {@render children?.()}
+    {#if children}{@render children()}{/if}
   </div>
 </Col>

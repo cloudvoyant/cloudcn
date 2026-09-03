@@ -9,5 +9,5 @@
 </script>
 
 <DialogTrigger class={className} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </DialogTrigger>

@@ -20,5 +20,5 @@
 </script>
 
 <TabsRoot {value} {defaultValue} {onValueChange} {orientation} {lazyMount} {unmountOnExit} class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </TabsRoot>

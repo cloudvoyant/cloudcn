@@ -18,5 +18,5 @@
 </script>
 
 <Ark as="h3" class={classes} {asChild} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Ark>

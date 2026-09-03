@@ -12,5 +12,5 @@
 </script>
 
 <DialogTitle class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </DialogTitle>

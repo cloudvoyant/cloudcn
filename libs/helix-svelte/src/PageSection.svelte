@@ -17,5 +17,5 @@
 </script>
 
 <Ark as="section" data-slot="page-section" class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Ark>

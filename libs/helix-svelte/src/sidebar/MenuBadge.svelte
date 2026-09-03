@@ -21,5 +21,5 @@
   class={cn(sidebarStyles.menuBadgeClass, className)}
   {...rest}
 >
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Ark>

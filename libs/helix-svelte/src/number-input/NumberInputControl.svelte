@@ -10,5 +10,5 @@
 </script>
 
 <NumberInputControl class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </NumberInputControl>

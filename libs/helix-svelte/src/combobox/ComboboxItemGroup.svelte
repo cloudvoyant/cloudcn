@@ -7,5 +7,5 @@
 </script>
 
 <ComboboxItemGroup class={className} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </ComboboxItemGroup>

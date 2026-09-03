@@ -10,5 +10,5 @@
 </script>
 
 <NumberInputRoot class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </NumberInputRoot>

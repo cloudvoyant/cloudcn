@@ -5,7 +5,7 @@
 </script>
 
 <script lang="ts">
-  import { setNavbarContext } from './NavbarContext.svelte.ts';
+  import { setNavbarContext } from './NavbarContext.svelte';
   import type { NavbarDensity, NavbarVariant } from '@cloudvoyant/helix';
   import type { Snippet } from 'svelte';
 
@@ -80,4 +80,4 @@
   });
 </script>
 
-{#if children}{@render children()}{/if}
+{@render children?.()}

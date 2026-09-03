@@ -17,5 +17,5 @@
 </script>
 
 <Ark as="footer" data-slot="page-footer" class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Ark>

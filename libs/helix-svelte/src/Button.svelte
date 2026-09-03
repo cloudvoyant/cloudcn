@@ -31,5 +31,5 @@
 </script>
 
 <Ark as="button" class={classes} {type} {disabled} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Ark>

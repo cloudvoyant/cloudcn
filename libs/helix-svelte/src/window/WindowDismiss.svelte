@@ -12,5 +12,5 @@
 </script>
 
 <FloatingPanelCloseTrigger aria-label="Close" class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </FloatingPanelCloseTrigger>

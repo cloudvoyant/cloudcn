@@ -29,7 +29,7 @@
       </TooltipArrow>
     {/if}
     <TooltipContent class={classes} {...rest}>
-      {#if children}{@render children()}{/if}
+      {@render children?.()}
     </TooltipContent>
   </TooltipPositioner>
 </Portal>

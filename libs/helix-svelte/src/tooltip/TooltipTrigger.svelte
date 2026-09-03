@@ -9,5 +9,5 @@
 </script>
 
 <TooltipTrigger class={className} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </TooltipTrigger>

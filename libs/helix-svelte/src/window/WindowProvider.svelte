@@ -7,5 +7,5 @@
 </script>
 
 <FloatingPanelRootProvider {value} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </FloatingPanelRootProvider>

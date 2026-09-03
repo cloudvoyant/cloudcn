@@ -21,6 +21,6 @@
   <RadioGroupItemControl class={radioGroupItemControlBase}>
     <span class="size-1.5 rounded-full bg-current hidden [[data-state=checked]>&]:block"></span>
   </RadioGroupItemControl>
-  <RadioGroupItemText class={radioGroupItemTextBase}>{#if children}{@render children()}{/if}</RadioGroupItemText>
+  <RadioGroupItemText class={radioGroupItemTextBase}>{@render children?.()}</RadioGroupItemText>
   <RadioGroupItemHiddenInput />
 </ArkRadioGroupItem>

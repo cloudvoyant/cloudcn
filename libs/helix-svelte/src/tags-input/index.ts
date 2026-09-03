@@ -9,4 +9,4 @@ export { default as TagInputItemInput } from './TagInputItemInput.svelte';
 export { default as TagInputItemDeleteTrigger } from './TagInputItemDeleteTrigger.svelte';
 export { default as TagInputClearTrigger } from './TagInputClearTrigger.svelte';
 export { TagsInputContext as TagInputContext } from '@ark-ui/svelte/tags-input';
-export { useTagInput } from './TagInputContext.svelte.ts';
+export { useTagInput } from './TagInputContext.svelte';

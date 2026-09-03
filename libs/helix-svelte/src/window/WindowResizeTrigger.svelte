@@ -12,5 +12,5 @@
 </script>
 
 <FloatingPanelResizeTrigger {axis} class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </FloatingPanelResizeTrigger>

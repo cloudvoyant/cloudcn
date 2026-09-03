@@ -13,7 +13,7 @@
 <Portal>
   <SelectPositioner class={selectPositionerBase}>
     <SelectContent class={classes} {...rest}>
-      {#if children}{@render children()}{/if}
+      {@render children?.()}
     </SelectContent>
   </SelectPositioner>
 </Portal>

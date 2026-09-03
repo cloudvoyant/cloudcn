@@ -9,7 +9,7 @@
     cn,
     type SidebarContextProps,
   } from '@cloudvoyant/helix';
-  import { setSidebarContext } from './context.svelte.ts';
+  import { setSidebarContext } from './context.svelte';
   import Row from '../Row.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
@@ -99,5 +99,5 @@
   style={`--sidebar-width: ${SIDEBAR_WIDTH}; --sidebar-width-icon: ${SIDEBAR_WIDTH_ICON}; ${style ?? ''}`}
   {...rest}
 >
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Row>

@@ -8,4 +8,4 @@ export { default as PopoverTitle } from './PopoverTitle.svelte';
 export { default as PopoverDescription } from './PopoverDescription.svelte';
 export { default as PopoverDismiss } from './PopoverDismiss.svelte';
 export { default as PopoverIndicator } from './PopoverIndicator.svelte';
-export { usePopover, usePopoverContext } from './PopoverContext.svelte.ts';
+export { usePopover, usePopoverContext } from './PopoverContext.svelte';

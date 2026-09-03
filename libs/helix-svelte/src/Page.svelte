@@ -23,5 +23,5 @@
 </script>
 
 <Ark as="div" data-slot="page" class={rootClasses} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Ark>

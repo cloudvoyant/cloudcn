@@ -12,5 +12,5 @@
 </script>
 
 <PopoverTitle class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </PopoverTitle>

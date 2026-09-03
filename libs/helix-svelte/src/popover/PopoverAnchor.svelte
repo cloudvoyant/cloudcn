@@ -9,5 +9,5 @@
 </script>
 
 <PopoverAnchor class={className} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </PopoverAnchor>

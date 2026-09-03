@@ -2,7 +2,7 @@
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import CopyButton from '../CopyButton.svelte';
-  import { codeBlockContext } from './CodeBlockContext.svelte.ts';
+  import { codeBlockContext } from './CodeBlockContext.svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
   type Props = { label?: string; class?: string } & HTMLAttributes<HTMLDivElement>;

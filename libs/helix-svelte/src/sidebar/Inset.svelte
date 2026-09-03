@@ -15,5 +15,5 @@
 </script>
 
 <Ark as="main" data-slot="sidebar-inset" class={cn(sidebarStyles.insetClass, className)} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Ark>

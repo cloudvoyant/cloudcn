@@ -10,5 +10,5 @@
 </script>
 
 <SelectItemIndicator class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </SelectItemIndicator>

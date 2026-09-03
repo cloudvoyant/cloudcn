@@ -10,4 +10,4 @@ export { default as WindowDismiss } from './WindowDismiss.svelte';
 export { default as WindowBody } from './WindowBody.svelte';
 export { default as WindowResizeTrigger } from './WindowResizeTrigger.svelte';
 export { default as WindowContext } from './WindowRender.svelte';
-export { useWindow, useWindowContext } from './WindowContext.svelte.ts';
+export { useWindow, useWindowContext } from './WindowContext.svelte';

@@ -10,5 +10,5 @@
 </script>
 
 <TagsInputItemText class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </TagsInputItemText>

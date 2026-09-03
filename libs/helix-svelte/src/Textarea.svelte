@@ -10,5 +10,5 @@
 </script>
 
 <FieldTextarea class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </FieldTextarea>

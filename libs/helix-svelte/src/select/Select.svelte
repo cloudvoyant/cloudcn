@@ -64,7 +64,7 @@
   />
 {:else}
   <SelectRoot collection={resolvedCollection} {value} {defaultValue} {onValueChange} {invalid} {disabled} {name} {form} {required} class={className} {...rest}>
-    {#if children}{@render children()}{/if}
+    {@render children?.()}
     <SelectHiddenSelect />
   </SelectRoot>
 {/if}

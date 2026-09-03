@@ -10,5 +10,5 @@
 </script>
 
 <FieldHelperText class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </FieldHelperText>

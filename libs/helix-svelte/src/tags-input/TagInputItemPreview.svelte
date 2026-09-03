@@ -7,5 +7,5 @@
 </script>
 
 <TagsInputItemPreview class={className} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </TagsInputItemPreview>

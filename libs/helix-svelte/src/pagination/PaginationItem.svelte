@@ -10,5 +10,5 @@
 </script>
 
 <PaginationItem {type} {value} class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </PaginationItem>

@@ -7,5 +7,5 @@
 </script>
 
 <SelectItemGroup class={className} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </SelectItemGroup>

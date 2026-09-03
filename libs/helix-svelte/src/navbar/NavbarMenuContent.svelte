@@ -3,7 +3,7 @@
 <script lang="ts">
   import { NavigationMenuContent, type NavigationMenuContentProps } from '@ark-ui/svelte/navigation-menu';
   import { navbarMenuContentBase, cn } from '@cloudvoyant/helix';
-  import { setNavbarMenuStyle } from './NavbarMenuContext.svelte.ts';
+  import { setNavbarMenuStyle } from './NavbarMenuContext.svelte';
 
   let { value, class: className = '', children, ...rest }: NavigationMenuContentProps = $props();
 
@@ -12,5 +12,5 @@
 </script>
 
 <NavigationMenuContent {value} class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </NavigationMenuContent>

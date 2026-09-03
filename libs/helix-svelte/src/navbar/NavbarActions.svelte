@@ -3,7 +3,7 @@
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { navbarActionsBase, cn } from '@cloudvoyant/helix';
-  import { getNavbarContext } from './NavbarContext.svelte.ts';
+  import { getNavbarContext } from './NavbarContext.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -21,5 +21,5 @@
 </script>
 
 <Ark as="div" data-slot="navbar-actions" class={classes} {...rest}>
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Ark>

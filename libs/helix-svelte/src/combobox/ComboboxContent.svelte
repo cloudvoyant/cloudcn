@@ -13,7 +13,7 @@
 <Portal>
   <ComboboxPositioner class={comboboxPositionerBase}>
     <ComboboxContent class={classes} {...rest}>
-      {#if children}{@render children()}{/if}
+      {@render children?.()}
     </ComboboxContent>
   </ComboboxPositioner>
 </Portal>

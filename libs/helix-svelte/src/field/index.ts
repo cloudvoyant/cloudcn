@@ -8,4 +8,4 @@ export { default as FieldSet } from './FieldSet.svelte';
 export { default as FieldSetLegend } from './FieldSetLegend.svelte';
 export { default as FieldSetHelper } from './FieldSetHelper.svelte';
 export { default as FieldSetError } from './FieldSetError.svelte';
-export { useField } from './FieldContext.svelte.ts';
+export { useField } from './FieldContext.svelte';

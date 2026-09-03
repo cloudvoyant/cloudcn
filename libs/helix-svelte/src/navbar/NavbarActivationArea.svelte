@@ -3,7 +3,7 @@
 <script lang="ts">
   import { Ark } from '@ark-ui/svelte/factory';
   import { navbarActivationAreaBase, cn } from '@cloudvoyant/helix';
-  import { getNavbarContext } from './NavbarContext.svelte.ts';
+  import { getNavbarContext } from './NavbarContext.svelte';
   import type { Snippet } from 'svelte';
   import type { HTMLAttributes } from 'svelte/elements';
 
@@ -26,5 +26,5 @@
   onmouseleave={() => navbar.setHovered(false)}
   {...rest}
 >
-  {#if children}{@render children()}{/if}
+  {@render children?.()}
 </Ark>

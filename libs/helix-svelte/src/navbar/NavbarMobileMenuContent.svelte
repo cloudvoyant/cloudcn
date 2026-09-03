@@ -18,6 +18,6 @@
 
 <CollapsibleContent>
   <div data-slot="navbar-mobile-menu-content" class={classes} {...rest}>
-    {#if children}{@render children()}{/if}
+    {@render children?.()}
   </div>
 </CollapsibleContent>

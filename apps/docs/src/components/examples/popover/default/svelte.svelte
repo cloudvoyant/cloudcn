@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/popover/default/svelte.svelte -->
 <script lang="ts">
-  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverDismiss, PopoverContent } from '@cloudvoyant/vertex-svelte';
+  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverDismiss, PopoverContent } from '@cloudvoyant/vortex-svelte';
   import { X } from 'lucide-svelte';
 </script>
 

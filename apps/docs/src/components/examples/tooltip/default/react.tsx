@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/tooltip/default/react.tsx
-import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vertex-react';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vortex-react';
 
 export default function ReactTooltipDefault() {
   return (

@@ -11,9 +11,9 @@
     SidebarInset,
     SidebarTrigger,
     Container,
-  } from '@cloudvoyant/vertex-svelte';
+  } from '@cloudvoyant/vortex-svelte';
   import { House as Home, Inbox, Settings } from 'lucide-svelte';
-  import VertexLogo from '../../VertexLogo.svelte';
+  import VortexLogo from '../../VortexLogo.svelte';
 
   const NAV = [
     { label: 'Home', icon: Home },
@@ -29,11 +29,11 @@
         <SidebarMenu>
           {#snippet logoIcon()}
             <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-              <VertexLogo class="size-5" />
+              <VortexLogo class="size-5" />
             </div>
           {/snippet}
           <SidebarMenuLink href="#" size="lg" icon={logoIcon}>
-            vertex-ui
+            vortex-ui
           </SidebarMenuLink>
         </SidebarMenu>
       </SidebarHeader>

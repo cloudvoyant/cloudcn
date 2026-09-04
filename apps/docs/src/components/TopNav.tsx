@@ -1,5 +1,5 @@
 // apps/docs/src/components/TopNav.tsx
-// The docs site top navigation, built from the vertex-ui Navbar (shrink variant).
+// The docs site top navigation, built from the vortex-ui Navbar (shrink variant).
 import {
   Navbar,
   NavbarProvider,
@@ -11,8 +11,8 @@ import {
   NavbarMenuList,
   NavbarMenuItem,
   NavbarMenuLink,
-} from '@cloudvoyant/vertex-react';
-import { VertexLogo } from './examples/VertexLogo';
+} from '@cloudvoyant/vortex-react';
+import { VortexLogo } from './examples/VortexLogo';
 import ThemeSelector from './ThemeSelector';
 import FrameworkSelector from './FrameworkSelector';
 
@@ -45,8 +45,8 @@ export default function TopNav({ currentPath = import.meta.env.BASE_URL, groups 
         className="border-transparent bg-background/60 backdrop-blur-xl transition-[height,background-color,box-shadow,border-color] duration-300 data-[scrolled=true]:border-border data-[scrolled=true]:bg-background/75"
       >
         <NavbarBrand className="text-primary">
-          <VertexLogo className="h-7 w-auto" />
-          <span className="font-brand text-sm font-semibold">vertex-ui</span>
+          <VortexLogo className="h-7 w-auto" />
+          <span className="font-brand text-sm font-semibold">vortex-ui</span>
         </NavbarBrand>
         <NavbarMenu placement="center">
           <NavbarMenuList>
@@ -68,7 +68,7 @@ export default function TopNav({ currentPath = import.meta.env.BASE_URL, groups 
           <div className="flex-1" />
           <ThemeSelector />
           <a
-            href="https://github.com/cloudvoyant/vertex-ui"
+            href="https://github.com/cloudvoyant/vortex-ui"
             aria-label="GitHub"
             className="inline-flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             target="_blank"

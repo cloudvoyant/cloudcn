@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/manim/default/react.tsx
-import { Manim } from '@cloudvoyant/vertex-react';
+import { Manim } from '@cloudvoyant/vortex-react';
 
 export default function ReactManimDefault() {
   return (

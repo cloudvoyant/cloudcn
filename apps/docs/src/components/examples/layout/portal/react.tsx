@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/layout/portal/react.tsx
-import { Portal } from '@cloudvoyant/vertex-react';
+import { Portal } from '@cloudvoyant/vortex-react';
 
 export default function ReactLayoutPortal() {
   return (

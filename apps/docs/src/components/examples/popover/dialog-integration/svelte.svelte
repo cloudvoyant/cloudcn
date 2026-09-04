@@ -8,8 +8,8 @@
     DialogDismiss,
     DialogContent,
     DialogBackdrop,
-  } from '@cloudvoyant/vertex-svelte';
-  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vertex-svelte';
+  } from '@cloudvoyant/vortex-svelte';
+  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vortex-svelte';
   import { X } from 'lucide-svelte';
 </script>
 

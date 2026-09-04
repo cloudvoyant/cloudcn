@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/popover/popover-with-tooltip/react.tsx
-import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vertex-react';
-import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vertex-react';
+import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vortex-react';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vortex-react';
 
 export default function ReactPopoverWithTooltip() {
   return (

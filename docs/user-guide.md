@@ -1,6 +1,6 @@
 # User Guide
 
-> How to install and use vertex-ui.
+> How to install and use vortex-ui.
 
 ## Requirements
 
@@ -18,7 +18,7 @@ mise run dev   # opens the Astro docs site
 
 ## Workspace (pnpm monorepo)
 
-vertex-ui is a pnpm workspace monorepo:
+vortex-ui is a pnpm workspace monorepo:
 
 - Install everything: `mise run install`
 - Build all packages: `mise run build`
@@ -31,19 +31,19 @@ vertex-ui is a pnpm workspace monorepo:
 ## Using the packages
 
 ```text
-pnpm add @cloudvoyant/vertex-ui @cloudvoyant/vertex-react
+pnpm add @cloudvoyant/vortex-ui @cloudvoyant/vortex-react
 # or for Svelte
-pnpm add @cloudvoyant/vertex-ui @cloudvoyant/vertex-svelte
+pnpm add @cloudvoyant/vortex-ui @cloudvoyant/vortex-svelte
 ```
 
 Import the theme once in your global CSS:
 
 ```css
 @import 'tailwindcss';
-@import '@cloudvoyant/vertex-ui/theme.css';
-/* Registers the vertex-ui component class strings (cva variants + framework
+@import '@cloudvoyant/vortex-ui/theme.css';
+/* Registers the vortex-ui component class strings (cva variants + framework
    classes) with Tailwind via @source self-scanning — no manual @source needed. */
-@import '@cloudvoyant/vertex-ui/components.css';
+@import '@cloudvoyant/vortex-ui/components.css';
 ```
 
 Components accept the same `variant` and `size` props across frameworks. Available components:

@@ -9,8 +9,8 @@ import {
   DialogDismiss,
   DialogContent,
   DialogBackdrop,
-} from '@cloudvoyant/vertex-react';
-import { Scroll } from '@cloudvoyant/vertex-react';
+} from '@cloudvoyant/vortex-react';
+import { Scroll } from '@cloudvoyant/vortex-react';
 import { X } from 'lucide-react';
 
 export default function ReactDialogFullscreen() {

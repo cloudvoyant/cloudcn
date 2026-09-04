@@ -1,7 +1,7 @@
 <!-- apps/docs/src/components/examples/quiz/default/svelte.svelte -->
 <script lang="ts">
-  import { Quiz } from '@cloudvoyant/vertex-svelte';
-  import type { Question } from '@cloudvoyant/vertex-ui';
+  import { Quiz } from '@cloudvoyant/vortex-svelte';
+  import type { Question } from '@cloudvoyant/vortex-ui';
 
   const questions: Question[] = [
     {

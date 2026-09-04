@@ -6,7 +6,7 @@ import {
   PopoverTitle,
   PopoverDescription,
   PopoverContent,
-} from '@cloudvoyant/vertex-react';
+} from '@cloudvoyant/vortex-react';
 
 export default function ReactPopoverRootProvider() {
   const popover = usePopover({ positioning: { placement: 'bottom-start' } });

@@ -1,0 +1,36 @@
+/* libs/vortex-ui/src/components.css */
+/*
+ * Registers the vortex-ui component class strings with the consuming Tailwind
+ * v4 build. Relative paths resolve from this file's installed location
+ * (node_modules/@cloudvoyant/vortex-ui/src/), where the sibling packages sit alongside
+ * it in a flat node_modules. This lets the client's own Tailwind compile the
+ * utility classes the vortex-ui components reference + inline in the framework
+ * libs -- no per-consumer @source config required.
+ *
+ * src/ dirs are scanned so dev-served source (HMR) sees class changes without
+ * a rebuild; dist/ stays so published packages keep working.
+ *
+ * Consumers import it after Tailwind, e.g.:
+ *   @import 'tailwindcss';
+ *   @import '@cloudvoyant/vortex-ui/theme.css';
+ *   @import '@cloudvoyant/vortex-ui/components.css';
+ */
+@source ".";
+@source "../../vortex-react/src";
+@source "../../vortex-svelte/src";
+@source "../dist";
+@source "../../vortex-react/dist";
+@source "../../vortex-svelte/dist";
+
+/*
+ * Overlay arrows (tooltip/popover): the arrow tip is an 8x8 square rotated into
+ * a diamond, whose inner vortex points into the content. Clip the square to the
+ * {top-left, top-right, bottom-left} triangle (removing the bottom-right corner
+ * that becomes the inner vortex), then the per-placement rotation maps that same
+ * triangle to the outer half for every side. A full border lands on the two kept
+ * edges — always the two outer diagonals — while the clipped base stays borderless.
+ */
+[data-part='arrow-tip'] {
+  border: 1px solid var(--color-border);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}

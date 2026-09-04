@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/center/default/react.tsx
-import { Center } from '@cloudvoyant/vertex-react';
+import { Center } from '@cloudvoyant/vortex-react';
 
 export default function ReactCenterDefault() {
   return (

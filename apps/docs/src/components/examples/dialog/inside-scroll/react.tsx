@@ -8,8 +8,8 @@ import {
   DialogFooter,
   DialogContent,
   DialogBackdrop,
-} from '@cloudvoyant/vertex-react';
-import { Scroll } from '@cloudvoyant/vertex-react';
+} from '@cloudvoyant/vortex-react';
+import { Scroll } from '@cloudvoyant/vortex-react';
 
 export default function ReactDialogInsideScroll() {
   const [open, setOpen] = useState(false);

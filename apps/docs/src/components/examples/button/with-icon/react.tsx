@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/button/with-icon/react.tsx
-import { Button } from '@cloudvoyant/vertex-react';
+import { Button } from '@cloudvoyant/vortex-react';
 import { Check, Trash2, AlertTriangle, Info, Plus, Download } from 'lucide-react';
 
 export default function ReactButtonWithIcon() {

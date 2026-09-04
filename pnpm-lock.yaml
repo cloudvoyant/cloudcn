@@ -203,15 +203,15 @@ importers:
       '@astrojs/svelte':
         specifier: 'catalog:'
         version: 9.0.1(@types/node@22.20.1)(astro@7.2.3(@astrojs/markdown-remark@7.2.3)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0))(esbuild@0.28.2)(jiti@2.7.0)(svelte@5.56.9(@typescript-eslint/types@8.67.0))(typescript@5.9.3)(yaml@2.9.0)
-      '@cloudvoyant/vertex-react':
+      '@cloudvoyant/vortex-react':
         specifier: workspace:*
-        version: link:../../libs/vertex-react
-      '@cloudvoyant/vertex-svelte':
+        version: link:../../libs/vortex-react
+      '@cloudvoyant/vortex-svelte':
         specifier: workspace:*
-        version: link:../../libs/vertex-svelte
-      '@cloudvoyant/vertex-ui':
+        version: link:../../libs/vortex-svelte
+      '@cloudvoyant/vortex-ui':
         specifier: workspace:*
-        version: link:../../libs/vertex-ui
+        version: link:../../libs/vortex-ui
       '@tailwindcss/vite':
         specifier: 'catalog:'
         version: 4.3.3(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.0))
@@ -271,14 +271,14 @@ importers:
         specifier: 'catalog:'
         version: 5.9.3
 
-  libs/vertex-react:
+  libs/vortex-react:
     dependencies:
       '@ark-ui/react':
         specifier: 'catalog:'
         version: 5.38.2(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      '@cloudvoyant/vertex-ui':
+      '@cloudvoyant/vortex-ui':
         specifier: workspace:*
-        version: link:../vertex-ui
+        version: link:../vortex-ui
       '@tanstack/charts':
         specifier: 'catalog:'
         version: 0.16.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(svelte@5.56.9(@typescript-eslint/types@8.67.0))
@@ -314,14 +314,14 @@ importers:
         specifier: 'catalog:'
         version: 3.23.0
 
-  libs/vertex-svelte:
+  libs/vortex-svelte:
     dependencies:
       '@ark-ui/svelte':
         specifier: 'catalog:'
         version: 5.23.1(svelte@5.56.9(@typescript-eslint/types@8.67.0))
-      '@cloudvoyant/vertex-ui':
+      '@cloudvoyant/vortex-ui':
         specifier: workspace:*
-        version: link:../vertex-ui
+        version: link:../vortex-ui
       '@tanstack/charts':
         specifier: 'catalog:'
         version: 0.16.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(svelte@5.56.9(@typescript-eslint/types@8.67.0))
@@ -360,7 +360,7 @@ importers:
         specifier: 'catalog:'
         version: 5.9.3
 
-  libs/vertex-ui:
+  libs/vortex-ui:
     dependencies:
       '@tanstack/charts':
         specifier: 'catalog:'

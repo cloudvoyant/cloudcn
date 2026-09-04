@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/pagination/controlled/svelte.svelte -->
 <script lang="ts">
-  import { Pagination, VStack, PaginationItems, PaginationPrevious, PaginationNext } from '@cloudvoyant/vertex-svelte';
+  import { Pagination, VStack, PaginationItems, PaginationPrevious, PaginationNext } from '@cloudvoyant/vortex-svelte';
 
   let page = $state(2);
 </script>

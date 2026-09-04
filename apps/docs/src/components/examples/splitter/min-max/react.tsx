@@ -4,7 +4,7 @@ import {
   SplitterPanel,
   SplitterResizeTrigger,
   SplitterResizeTriggerIndicator,
-} from '@cloudvoyant/vertex-react';
+} from '@cloudvoyant/vortex-react';
 
 export default function ReactSplitterMinMax() {
   return (

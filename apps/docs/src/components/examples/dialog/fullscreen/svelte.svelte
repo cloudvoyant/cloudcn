@@ -9,8 +9,8 @@
     DialogDismiss,
     DialogContent,
     DialogBackdrop,
-  } from '@cloudvoyant/vertex-svelte';
-  import { Scroll } from '@cloudvoyant/vertex-svelte';
+  } from '@cloudvoyant/vortex-svelte';
+  import { Scroll } from '@cloudvoyant/vortex-svelte';
   import { X } from 'lucide-svelte';
 
   let open = $state(false);

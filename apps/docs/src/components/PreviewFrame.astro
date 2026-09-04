@@ -17,7 +17,7 @@ interface Props {
   desktopWidth?: number;
 }
 
-const { component, example, title = 'vertex-ui preview', desktopWidth } = Astro.props;
+const { component, example, title = 'vortex-ui preview', desktopWidth } = Astro.props;
 const uid = `pf-${Math.random().toString(36).slice(2)}`;
 const initialWidth = desktopWidth ? `${desktopWidth}px` : '100%';
 ---
@@ -116,7 +116,7 @@ const initialWidth = desktopWidth ? `${desktopWidth}px` : '100%';
   // Mirrors FRAMEWORK_EVENT in lib/framework.ts. A define:vars script is inlined
   // as a non-module script, so it can't use imports or import.meta — base comes
   // in via define:vars and the event name is duplicated here on purpose.
-  const FRAMEWORK_EVENT = 'vertex:framework';
+  const FRAMEWORK_EVENT = 'vortex:framework';
 
   const root = document.getElementById(uid);
   if (root) {
@@ -128,7 +128,7 @@ const initialWidth = desktopWidth ? `${desktopWidth}px` : '100%';
       document.documentElement.dataset.framework === 'svelte' ? 'svelte' : 'react';
     const currentTheme = () => {
       const cls = [...document.documentElement.classList];
-      const name = cls.find((c) => c.startsWith('theme-'))?.slice('theme-'.length) ?? 'vertex-ui';
+      const name = cls.find((c) => c.startsWith('theme-'))?.slice('theme-'.length) ?? 'vortex-ui';
       return name;
     };
     const currentDark = () => document.documentElement.classList.contains('dark');

@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/badge/sizes/svelte.svelte -->
 <script lang="ts">
-  import { Badge } from '@cloudvoyant/vertex-svelte';
+  import { Badge } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <div class="flex flex-wrap items-center gap-3">

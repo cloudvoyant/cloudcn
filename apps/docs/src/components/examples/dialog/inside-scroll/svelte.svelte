@@ -8,8 +8,8 @@
     DialogFooter,
     DialogContent,
     DialogBackdrop,
-  } from '@cloudvoyant/vertex-svelte';
-  import { Scroll } from '@cloudvoyant/vertex-svelte';
+  } from '@cloudvoyant/vortex-svelte';
+  import { Scroll } from '@cloudvoyant/vortex-svelte';
 
   let open = $state(false);
 </script>

@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/code-block/multi-file/svelte.svelte -->
 <script lang="ts">
-  import { MultiFileCodeBlock } from '@cloudvoyant/vertex-svelte';
+  import { MultiFileCodeBlock } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <MultiFileCodeBlock

@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/chart/bar/react.tsx
-import { Chart } from '@cloudvoyant/vertex-react';
+import { Chart } from '@cloudvoyant/vortex-react';
 
 const data = [
   { name: 'Jan', revenue: 42, costs: 20 },

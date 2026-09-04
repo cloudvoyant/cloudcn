@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/popover/placement/react.tsx
-import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vertex-react';
+import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vortex-react';
 
 export default function ReactPopoverPlacement() {
   return (

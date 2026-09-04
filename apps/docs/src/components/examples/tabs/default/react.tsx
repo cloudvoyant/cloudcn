@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/tabs/default/react.tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@cloudvoyant/vertex-react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@cloudvoyant/vortex-react';
 
 export default function ReactTabsDefault() {
   return (

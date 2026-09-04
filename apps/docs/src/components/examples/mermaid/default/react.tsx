@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/mermaid/default/react.tsx
-import { Mermaid } from '@cloudvoyant/vertex-react';
+import { Mermaid } from '@cloudvoyant/vortex-react';
 
 const code = `flowchart LR
   A[Source] --> B[Placeholder]

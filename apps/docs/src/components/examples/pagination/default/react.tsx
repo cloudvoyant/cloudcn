@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/pagination/default/react.tsx
-import { Pagination, PaginationItems, PaginationPrevious, PaginationNext } from '@cloudvoyant/vertex-react';
+import { Pagination, PaginationItems, PaginationPrevious, PaginationNext } from '@cloudvoyant/vortex-react';
 
 export default function ReactPaginationDefault() {
   return (

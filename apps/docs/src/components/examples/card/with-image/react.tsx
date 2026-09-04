@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/card/with-image/react.tsx
-import { Card, CardHeader, CardBody, CardTitle, CardDescription, CardCover } from '@cloudvoyant/vertex-react';
+import { Card, CardHeader, CardBody, CardTitle, CardDescription, CardCover } from '@cloudvoyant/vortex-react';
 
 export default function ReactCardWithImage() {
   return (

@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/quiz/default/react.tsx
-import { Quiz } from '@cloudvoyant/vertex-react';
+import { Quiz } from '@cloudvoyant/vortex-react';
 
 const questions = [
   {

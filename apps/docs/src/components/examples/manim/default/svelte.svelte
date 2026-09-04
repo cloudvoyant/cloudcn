@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/manim/default/svelte.svelte -->
 <script lang="ts">
-  import { Manim } from '@cloudvoyant/vertex-svelte';
+  import { Manim } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <Manim

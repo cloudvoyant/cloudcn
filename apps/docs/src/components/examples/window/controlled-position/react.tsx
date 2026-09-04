@@ -10,7 +10,7 @@ import {
   WindowDismiss,
   WindowBody,
   WindowResizeTrigger,
-} from '@cloudvoyant/vertex-react';
+} from '@cloudvoyant/vortex-react';
 import { Minus, Maximize2, RotateCcw, X } from 'lucide-react';
 
 export default function ReactWindowControlledPosition() {

@@ -10,9 +10,9 @@ import {
   SidebarInset,
   SidebarTrigger,
   Container,
-} from '@cloudvoyant/vertex-react';
+} from '@cloudvoyant/vortex-react';
 import { Home, Inbox, Settings, PanelLeft } from 'lucide-react';
-import { VertexLogo } from '../../VertexLogo';
+import { VortexLogo } from '../../VortexLogo';
 
 const NAV = [
   { label: 'Home', icon: Home },
@@ -32,11 +32,11 @@ export default function ReactSidebarOffcanvas() {
                 size="lg"
                 icon={
                   <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                    <VertexLogo className="size-5" />
+                    <VortexLogo className="size-5" />
                   </div>
                 }
               >
-                vertex-ui
+                vortex-ui
               </SidebarMenuLink>
             </SidebarMenu>
           </SidebarHeader>

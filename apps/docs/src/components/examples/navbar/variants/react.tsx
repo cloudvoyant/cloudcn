@@ -8,7 +8,7 @@ import {
   NavbarMenuTrigger,
   NavbarMenuContent,
   NavbarMenuLink,
-} from '@cloudvoyant/vertex-react';
+} from '@cloudvoyant/vortex-react';
 
 export default function ReactNavbarMenuVariants() {
   return (

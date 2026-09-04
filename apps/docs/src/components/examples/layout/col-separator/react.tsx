@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/col/separator/react.tsx
-import { Col } from '@cloudvoyant/vertex-react';
+import { Col } from '@cloudvoyant/vortex-react';
 
 export default function ReactColSeparator() {
   return (

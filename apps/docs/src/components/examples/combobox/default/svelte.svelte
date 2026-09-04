@@ -9,7 +9,7 @@
     ComboboxList,
     ComboboxItem,
     ComboboxItemText,
-  } from '@cloudvoyant/vertex-svelte';
+  } from '@cloudvoyant/vortex-svelte';
   import { ChevronsUpDown } from 'lucide-svelte';
 
   const items = [

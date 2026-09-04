@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/dialog/controlled/react.tsx
 import { useState } from 'react';
-import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vertex-react';
+import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vortex-react';
 
 export default function ReactDialogControlled() {
   const [open, setOpen] = useState(false);

@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/center/inline/svelte.svelte -->
 <script lang="ts">
-  import { Center } from '@cloudvoyant/vertex-svelte';
+  import { Center } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <div class="text-sm">

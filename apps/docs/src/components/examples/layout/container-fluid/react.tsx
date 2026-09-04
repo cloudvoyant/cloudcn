@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/container/fluid/react.tsx
-import { Container, Item } from '@cloudvoyant/vertex-react';
+import { Container, Item } from '@cloudvoyant/vortex-react';
 
 export default function ReactContainerFluid() {
   return (

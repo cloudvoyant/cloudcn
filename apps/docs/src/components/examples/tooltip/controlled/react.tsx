@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/tooltip/controlled/react.tsx
 import { useState } from 'react';
-import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vertex-react';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vortex-react';
 
 export default function ReactTooltipControlled() {
   const [open, setOpen] = useState(false);

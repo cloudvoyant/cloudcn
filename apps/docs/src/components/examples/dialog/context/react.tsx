@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogBackdrop,
   useDialogContext,
-} from '@cloudvoyant/vertex-react';
+} from '@cloudvoyant/vortex-react';
 
 function DialogStatus() {
   const dialog = useDialogContext();

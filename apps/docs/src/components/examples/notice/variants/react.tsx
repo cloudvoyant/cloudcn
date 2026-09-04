@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/notice/variants/react.tsx
-import { Notice } from '@cloudvoyant/vertex-react';
+import { Notice } from '@cloudvoyant/vortex-react';
 
 export default function ReactNoticeVariants() {
   return (

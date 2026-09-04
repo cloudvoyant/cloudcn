@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/stack/hstack/react.tsx
-import { Item, HStack } from '@cloudvoyant/helix-react';
+import { Item, HStack } from '@cloudvoyant/vertex-react';
 
 export default function ReactStackHstack() {
   return (

@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/page/footer/react.tsx
-import { Page, PageContent, PageFooter, Container } from '@cloudvoyant/helix-react';
+import { Page, PageContent, PageFooter, Container } from '@cloudvoyant/vertex-react';
 
 export default function ReactPageFooter() {
   return (
@@ -41,7 +41,7 @@ export default function ReactPageFooter() {
             </ul>
           </div>
         </Container>
-        <p className="border-t border-border px-4 py-3 text-sm text-muted-foreground">© 2026 helix</p>
+        <p className="border-t border-border px-4 py-3 text-sm text-muted-foreground">© 2026 vertex-ui</p>
       </PageFooter>
     </Page>
   );

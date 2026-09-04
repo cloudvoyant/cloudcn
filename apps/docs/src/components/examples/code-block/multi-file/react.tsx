@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/code-block/multi-file/react.tsx
-import { MultiFileCodeBlock } from '@cloudvoyant/helix-react';
+import { MultiFileCodeBlock } from '@cloudvoyant/vertex-react';
 
 export default function ReactCodeBlockMultiFile() {
   return (

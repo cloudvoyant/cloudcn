@@ -1,12 +1,12 @@
-# helix architecture
+# vertex-ui architecture
 
 ## Monorepo layout
 
-helix is a pnpm workspace monorepo:
+vertex-ui is a pnpm workspace monorepo:
 
-- `libs/helix` — shared interfaces, cva variants (`buttonVariants`, `toggleButtonVariants`, `badgeVariants`), `cn` utility, and the shadcn-style theme (CSS variables, light + dark). Publishes to npm.
-- `libs/helix-react` — React UI components built on Ark UI (Button, ToggleButton, Badge). Publishes to npm.
-- `libs/helix-svelte` — Svelte UI components built on Ark UI (Button, ToggleButton, Badge), packaged with `@sveltejs/package`. Publishes to npm.
+- `libs/vertex-ui` — shared interfaces, cva variants (`buttonVariants`, `toggleButtonVariants`, `badgeVariants`), `cn` utility, and the shadcn-style theme (CSS variables, light + dark). Publishes to npm.
+- `libs/vertex-react` — React UI components built on Ark UI (Button, ToggleButton, Badge). Publishes to npm.
+- `libs/vertex-svelte` — Svelte UI components built on Ark UI (Button, ToggleButton, Badge), packaged with `@sveltejs/package`. Publishes to npm.
 - `apps/docs` — Astro docs/demo app, `private: true` (never published). MDX content collection, shadcn-style shell, React/Svelte framework selector, live component demos.
 
 ## Workspace config
@@ -19,15 +19,15 @@ helix is a pnpm workspace monorepo:
 ## Docs app conventions
 
 - `apps/docs` uses Astro 7 with `@astrojs/react`, `@astrojs/svelte`, `@astrojs/mdx`, and Tailwind v4 via `@tailwindcss/vite`.
-- The theme lives in `@cloudvoyant/helix/src/theme.css` and matches shadcn/ui's implementation exactly at this stage (CSS variables under `:root`/`.dark`, `@theme inline`, `@custom-variant dark`).
-- The framework selector persists to `localStorage` (`helix:framework`) and sets `data-framework` on `<html>`; `Demo.astro` is an auto-generated monolithic switcher that renders both framework islands and CSS shows the active one.
+- The theme lives in `@cloudvoyant/vertex-ui/src/theme.css` and matches shadcn/ui's implementation exactly at this stage (CSS variables under `:root`/`.dark`, `@theme inline`, `@custom-variant dark`).
+- The framework selector persists to `localStorage` (`vertex:framework`) and sets `data-framework` on `<html>`; `Demo.astro` is an auto-generated monolithic switcher that renders both framework islands and CSS shows the active one.
 - To add a new demo, create a folder under `apps/docs/src/components/examples/{component}/{name}` containing `react.tsx` and `svelte.svelte`. The `Demo.astro` and `registry.json` files are automatically updated by `pnpm gen` (run during `predev`/`prebuild`).
 
 ## Component pattern
 
-Every component follows the Button pattern: a shared cva variant function lives in `@cloudvoyant/helix`, and `@cloudvoyant/helix-react`/`@cloudvoyant/helix-svelte` expose thin wrappers that apply `cn(<variants>, className)` over an Ark UI primitive. Composite components (ToggleButton) are composed from per-part exports matching Ark's anatomy.
+Every component follows the Button pattern: a shared cva variant function lives in `@cloudvoyant/vertex-ui`, and `@cloudvoyant/vertex-react`/`@cloudvoyant/vertex-svelte` expose thin wrappers that apply `cn(<variants>, className)` over an Ark UI primitive. Composite components (ToggleButton) are composed from per-part exports matching Ark's anatomy.
 
-The overlay components (Popover, Dialog, Window, Tooltip) extend this pattern: their shared Tailwind base classes live in `@cloudvoyant/helix` (e.g. `popoverContentBase`), the framework wrappers are thin `cn(base, className)` pass-throughs, and the content/backdrop parts swallow the Ark `Portal` + `Positioner` internally so consumers never compose them (`Window` goes furthest — its root swallows the positioner and content, so children are the window parts directly). Ark's `CloseTrigger` is exported as `Dismiss` with a baked-in `aria-label`, and the arrow is an internal detail toggled via an `arrow` prop on content. A `Portal` layout primitive is exported by `@cloudvoyant/helix-react`/`@cloudvoyant/helix-svelte` (documented under Layout) for escaping ancestors in user compositions. Overlay components reuse the existing shadcn theme tokens — no `theme.css` additions.
+The overlay components (Popover, Dialog, Window, Tooltip) extend this pattern: their shared Tailwind base classes live in `@cloudvoyant/vertex-ui` (e.g. `popoverContentBase`), the framework wrappers are thin `cn(base, className)` pass-throughs, and the content/backdrop parts swallow the Ark `Portal` + `Positioner` internally so consumers never compose them (`Window` goes furthest — its root swallows the positioner and content, so children are the window parts directly). Ark's `CloseTrigger` is exported as `Dismiss` with a baked-in `aria-label`, and the arrow is an internal detail toggled via an `arrow` prop on content. A `Portal` layout primitive is exported by `@cloudvoyant/vertex-react`/`@cloudvoyant/vertex-svelte` (documented under Layout) for escaping ancestors in user compositions. Overlay components reuse the existing shadcn theme tokens — no `theme.css` additions.
 
 ## Release pipeline
 

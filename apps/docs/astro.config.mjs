@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://cloudvoyant.github.io',
-  base: '/helix/',
+  base: '/vertex-ui/',
   integrations: [react(), svelte(), mdx()],
   devToolbar: {
     enabled: false,
@@ -18,18 +18,18 @@ export default defineConfig({
       alias: [
         // Serve workspace packages from source in dev so edits to libs/* hot-reload
         // instead of requiring a rebuild (the package exports map points at dist/).
-        // Exact-match anchors keep subpath imports (@cloudvoyant/helix/theme.css, ...)
+        // Exact-match anchors keep subpath imports (@cloudvoyant/vertex-ui/theme.css, ...)
         // resolving through the exports map, not through the JS alias.
-        { find: /^@cloudvoyant\/helix$/, replacement: new URL('../../libs/helix/src/index.ts', import.meta.url).pathname },
-        { find: /^@cloudvoyant\/helix-react$/, replacement: new URL('../../libs/helix-react/src/index.ts', import.meta.url).pathname },
-        { find: /^@cloudvoyant\/helix-svelte$/, replacement: new URL('../../libs/helix-svelte/src/index.ts', import.meta.url).pathname },
+        { find: /^@cloudvoyant\/vertex-ui$/, replacement: new URL('../../libs/vertex-ui/src/index.ts', import.meta.url).pathname },
+        { find: /^@cloudvoyant\/vertex-react$/, replacement: new URL('../../libs/vertex-react/src/index.ts', import.meta.url).pathname },
+        { find: /^@cloudvoyant\/vertex-svelte$/, replacement: new URL('../../libs/vertex-svelte/src/index.ts', import.meta.url).pathname },
       ],
     },
     optimizeDeps: {
       // Workspace packages resolve to source in dev (see alias above); don't let
       // Vite pre-bundle and cache a stale copy (new named exports then throw
       // "does not provide an export named ..." until a dev-server restart).
-      exclude: ['@cloudvoyant/helix', '@cloudvoyant/helix-react', '@cloudvoyant/helix-svelte'],
+      exclude: ['@cloudvoyant/vertex-ui', '@cloudvoyant/vertex-react', '@cloudvoyant/vertex-svelte'],
     },
   },
   redirects: {

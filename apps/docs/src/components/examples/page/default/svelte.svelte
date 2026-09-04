@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/page/default/svelte.svelte -->
 <script lang="ts">
-  import { Page, PageContent, PageFooter } from '@cloudvoyant/helix-svelte';
+  import { Page, PageContent, PageFooter } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <Page>

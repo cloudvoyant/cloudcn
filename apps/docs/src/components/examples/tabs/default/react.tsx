@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/tabs/default/react.tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@cloudvoyant/helix-react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@cloudvoyant/vertex-react';
 
 export default function ReactTabsDefault() {
   return (

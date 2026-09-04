@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/card/with-image/svelte.svelte -->
 <script lang="ts">
-  import { Card, CardHeader, CardBody, CardTitle, CardDescription, CardCover } from '@cloudvoyant/helix-svelte';
+  import { Card, CardHeader, CardBody, CardTitle, CardDescription, CardCover } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <div class="flex flex-col gap-4 sm:flex-row">

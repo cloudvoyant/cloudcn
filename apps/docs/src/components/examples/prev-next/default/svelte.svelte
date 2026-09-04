@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/prev-next/default/svelte.svelte -->
 <script lang="ts">
-  import { PrevNext } from '@cloudvoyant/helix-svelte';
+  import { PrevNext } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <PrevNext

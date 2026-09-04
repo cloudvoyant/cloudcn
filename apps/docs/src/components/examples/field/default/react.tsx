@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/field/default/react.tsx
-import { Field, FieldLabel, FieldRequiredIndicator, FieldHelper, FieldError, Input } from '@cloudvoyant/helix-react';
+import { Field, FieldLabel, FieldRequiredIndicator, FieldHelper, FieldError, Input } from '@cloudvoyant/vertex-react';
 
 export default function ReactFieldDefault() {
   return (

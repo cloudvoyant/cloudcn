@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/tooltip/multiple-triggers/react.tsx
 import { useState } from 'react';
-import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/helix-react';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vertex-react';
 
 const items = ['First', 'Second', 'Third'];
 

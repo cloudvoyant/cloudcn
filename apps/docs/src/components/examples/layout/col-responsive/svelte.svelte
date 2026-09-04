@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/col/responsive-direction/svelte.svelte -->
 <script lang="ts">
-  import { Item, Col } from '@cloudvoyant/helix-svelte';
+  import { Item, Col } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <Col class="md:flex-row">

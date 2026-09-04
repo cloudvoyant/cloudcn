@@ -8,8 +8,8 @@ import {
   DialogFooter,
   DialogContent,
   DialogBackdrop,
-} from '@cloudvoyant/helix-react';
-import { Scroll } from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
+import { Scroll } from '@cloudvoyant/vertex-react';
 
 export default function ReactDialogInsideScroll() {
   const [open, setOpen] = useState(false);

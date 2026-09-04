@@ -10,7 +10,7 @@ import {
   WindowDismiss,
   WindowBody,
   WindowResizeTrigger,
-} from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
 import { Minus, Maximize2, RotateCcw, X } from 'lucide-react';
 
 export default function ReactWindowAnchorPosition() {

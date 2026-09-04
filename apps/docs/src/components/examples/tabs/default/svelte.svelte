@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/tabs/default/svelte.svelte -->
 <script lang="ts">
-  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@cloudvoyant/helix-svelte';
+  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <Tabs defaultValue="profile">

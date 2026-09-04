@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/dialog/multiple-triggers/react.tsx
 import { useState } from 'react';
-import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/helix-react';
+import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vertex-react';
 
 const sections = [
   { id: 'general', title: 'General', body: 'General account settings.' },

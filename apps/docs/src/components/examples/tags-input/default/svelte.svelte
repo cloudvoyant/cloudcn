@@ -10,7 +10,7 @@
     TagInputItemInput,
     TagInputItemDeleteTrigger,
     TagInputContext,
-  } from '@cloudvoyant/helix-svelte';
+  } from '@cloudvoyant/vertex-svelte';
   import { X } from 'lucide-svelte';
 </script>
 

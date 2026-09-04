@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/scroll/both/react.tsx
-import { Scroll } from '@cloudvoyant/helix-react';
+import { Scroll } from '@cloudvoyant/vertex-react';
 
 export default function ReactScrollBoth() {
   return (

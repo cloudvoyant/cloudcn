@@ -18,12 +18,12 @@
     NavbarMobileMenu,
     NavbarMobileMenuTrigger,
     NavbarMobileMenuContent,
-  } from '@cloudvoyant/helix-svelte';
-  import HelixLogo from '../../HelixLogo.svelte';
+  } from '@cloudvoyant/vertex-svelte';
+  import VertexLogo from '../../VertexLogo.svelte';
 
   const CONTENT: [string, string][] = [
-    ['About', 'A brief history of helix and its guiding principles.'],
-    ['Installation', 'Add helix to your Astro, Vite, or framework project.'],
+    ['About', 'A brief history of vertex-ui and its guiding principles.'],
+    ['Installation', 'Add vertex-ui to your Astro, Vite, or framework project.'],
     ['Components', 'Every component, demoed and documented for React and Svelte.'],
     ['Theming', 'Light and dark themes over the shadcn token model.'],
     ['Accessibility', "Roles, focus, and keyboard behavior come from Ark's state machine."],
@@ -35,7 +35,7 @@
   <NavbarProvider>
     <Navbar variant="shrink" floating class="sticky top-4 z-30">
         <NavbarBrand>
-          <HelixLogo class="h-7 w-auto" /><span class="text-sm font-semibold">helix</span>
+          <VertexLogo class="h-7 w-auto" /><span class="text-sm font-semibold">vertex-ui</span>
         </NavbarBrand>
         <NavbarMenu placement="left">
           <NavbarMenuList>

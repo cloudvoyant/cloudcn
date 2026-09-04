@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/toggle-button/icon/svelte.svelte -->
 <script lang="ts">
-  import { ToggleButton } from '@cloudvoyant/helix-svelte';
+  import { ToggleButton } from '@cloudvoyant/vertex-svelte';
   import { Bold, Italic, Underline } from 'lucide-svelte';
 </script>
 

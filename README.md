@@ -1,18 +1,18 @@
-# helix
+# vertex-ui
 
-[![npm version](https://img.shields.io/npm/v/@cloudvoyant/helix-react.svg)](https://www.npmjs.com/package/@cloudvoyant/helix-react)
+[![npm version](https://img.shields.io/npm/v/@cloudvoyant/vertex-react.svg)](https://www.npmjs.com/package/@cloudvoyant/vertex-react)
 
-helix is a pnpm workspace monorepo for a cross-framework UI component library (React + Svelte) with an Astro docs/demo site.
+vertex-ui is a pnpm workspace monorepo for a cross-framework UI component library (React + Svelte) with an Astro docs/demo site.
 
 ## Docs
 
-The docs site is published to GitHub Pages at [https://cloudvoyant.github.io/helix/](https://cloudvoyant.github.io/helix/).
+The docs site is published to GitHub Pages at [https://cloudvoyant.github.io/vertex-ui/](https://cloudvoyant.github.io/vertex-ui/).
 
 ## Structure
 
-- `libs/helix` — shared interfaces, cva variants (`buttonVariants`, `toggleButtonVariants`, `badgeVariants`), `cn`, and the shadcn-style theme (light + dark)
-- `libs/helix-react` — React components built on Ark UI (Button, ToggleButton, Badge)
-- `libs/helix-svelte` — Svelte components built on Ark UI (Button, ToggleButton, Badge)
+- `libs/vertex-ui` — shared interfaces, cva variants (`buttonVariants`, `toggleButtonVariants`, `badgeVariants`), `cn`, and the shadcn-style theme (light + dark)
+- `libs/vertex-react` — React components built on Ark UI (Button, ToggleButton, Badge)
+- `libs/vertex-svelte` — Svelte components built on Ark UI (Button, ToggleButton, Badge)
 - `apps/docs` — Astro docs/demo site with MDX docs, framework selector, and live demos
 
 ## Getting started

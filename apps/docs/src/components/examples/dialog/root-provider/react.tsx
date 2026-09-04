@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/dialog/root-provider/react.tsx
 import { useState } from 'react';
-import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/helix-react';
+import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vertex-react';
 
 export default function ReactDialogRootProvider() {
   const [open, setOpen] = useState(false);

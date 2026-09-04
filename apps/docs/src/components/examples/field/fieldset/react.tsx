@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/field/fieldset/react.tsx
-import { FieldSet, FieldSetLegend, Field, FieldLabel, Input } from '@cloudvoyant/helix-react';
+import { FieldSet, FieldSetLegend, Field, FieldLabel, Input } from '@cloudvoyant/vertex-react';
 
 export default function ReactFieldFieldset() {
   return (

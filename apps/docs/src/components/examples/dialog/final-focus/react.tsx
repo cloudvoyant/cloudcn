@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/dialog/final-focus/react.tsx
 import { useRef, useState } from 'react';
-import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/helix-react';
+import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vertex-react';
 
 export default function ReactDialogFinalFocus() {
   const [open, setOpen] = useState(false);

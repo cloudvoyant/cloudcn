@@ -9,7 +9,7 @@
     SelectItem,
     SelectItemText,
     SelectItemIndicator,
-  } from '@cloudvoyant/helix-svelte';
+  } from '@cloudvoyant/vertex-svelte';
   import { Check, ChevronsUpDown } from 'lucide-svelte';
 
   const items = [

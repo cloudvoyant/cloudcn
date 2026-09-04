@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/input/textarea/svelte.svelte -->
 <script lang="ts">
-  import { Field, FieldLabel, Textarea } from '@cloudvoyant/helix-svelte';
+  import { Field, FieldLabel, Textarea } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <Field class="max-w-sm">

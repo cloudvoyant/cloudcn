@@ -1,4 +1,4 @@
-# helix Style Guide
+# vertex-ui Style Guide
 
 <!-- CRITICAL RULES — always apply these; load relevant sections below for your current task -->
 
@@ -75,7 +75,7 @@ Use Conventional Commits. No Claude attributions.
 
 - `feat:` → MINOR bump (1.x.0)
 - `fix:` → PATCH bump (1.0.x)
-- `feat!:` / `fix!:` → MAJOR bump (x.0.0) — except helix, which intentionally caps at `minor` to stay at v0 (see `.releaserc.json`)
+- `feat!:` / `fix!:` → MAJOR bump (x.0.0) — except vertex-ui, which intentionally caps at `minor` to stay at v0 (see `.releaserc.json`)
 - `docs:`, `refactor:`, `test:` → changelog only, no bump
 - `chore:` → hidden from changelog, no bump
 
@@ -89,7 +89,6 @@ Use Conventional Commits. No Claude attributions.
 - If a semantic-release publish step fails and CI skips it on re-run, push a new `feat:`/`fix:` commit instead of re-running — re-runs lose the `new_release_published` output
 
 ---
-
 
 <!-- @context: docs -->
 
@@ -138,4 +137,3 @@ Use Conventional Commits. No Claude attributions.
 - `README.template.md` — base README template
 
 **CLAUDE.md.append rules:**
-

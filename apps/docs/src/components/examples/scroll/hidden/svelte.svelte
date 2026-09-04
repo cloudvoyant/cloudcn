@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/scroll/hidden/svelte.svelte -->
 <script lang="ts">
-  import { Scroll } from '@cloudvoyant/helix-svelte';
+  import { Scroll } from '@cloudvoyant/vertex-svelte';
 
   const lines = Array.from({ length: 40 }, (_, i) => `Item ${i + 1}`);
 </script>

@@ -6,7 +6,7 @@ import {
   PopoverTitle,
   PopoverDescription,
   PopoverContent,
-} from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
 
 export default function ReactPopoverRootProvider() {
   const popover = usePopover({ positioning: { placement: 'bottom-start' } });

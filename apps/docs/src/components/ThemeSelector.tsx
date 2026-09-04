@@ -6,7 +6,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 import { Settings2, Sun, Moon, Monitor, X, type LucideIcon } from 'lucide-react';
-import { THEMES, type ThemeMeta } from '@cloudvoyant/helix';
+import { THEMES, type ThemeMeta } from '@cloudvoyant/vertex-ui';
 import {
   applyColorMode,
   getInitialColorMode,

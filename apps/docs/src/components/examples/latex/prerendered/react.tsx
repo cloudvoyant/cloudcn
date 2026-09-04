@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/latex/prerendered/react.tsx
-import { LaTeX } from '@cloudvoyant/helix-react';
-import { toLaTeX } from '@cloudvoyant/helix';
+import { LaTeX } from '@cloudvoyant/vertex-react';
+import { toLaTeX } from '@cloudvoyant/vertex-ui';
 
 const latex = '\\int_{-\\infty}^{\\infty} e^{-x^2}\\,dx = \\sqrt{\\pi}';
 

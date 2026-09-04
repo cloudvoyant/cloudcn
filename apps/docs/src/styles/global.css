@@ -5,26 +5,26 @@
    docs sidebar/TOC scroll fade. */
 @import 'shadcn/tailwind.css';
 /* Scan the workspace lib sources directly. In a pnpm workspace the
-   `@source` lines in @cloudvoyant/helix/components.css resolve through the
+   `@source` lines in @cloudvoyant/vertex-ui/components.css resolve through the
    node_modules symlink, whose target is gitignored — so Tailwind skips it
-   in the production build and helix's Tailwind classes never compile here.
-   Explicit real paths guarantee @cloudvoyant/helix/react/svelte classes (e.g.
+   in the production build and vertex-ui's Tailwind classes never compile here.
+   Explicit real paths guarantee @cloudvoyant/vertex-ui/react/svelte classes (e.g.
    group-data-[density=compact]/nav-menu, the link variant, viewport classes). */
-@source '../../../../libs/helix/src';
-@source '../../../../libs/helix-react/src';
-@source '../../../../libs/helix-svelte/src';
-@import '@cloudvoyant/helix/theme.css';
+@source '../../../../libs/vertex-ui/src';
+@source '../../../../libs/vertex-react/src';
+@source '../../../../libs/vertex-svelte/src';
+@import '@cloudvoyant/vertex-ui/theme.css';
 /* shadcn-compatible theme presets (`.theme-{name}` / `.theme-{name}.dark`). */
-@import '@cloudvoyant/helix/themes.css';
-/* Registers the helix component class strings (cva + inline framework
+@import '@cloudvoyant/vertex-ui/themes.css';
+/* Registers the vertex-ui component class strings (cva + inline framework
    classes) with Tailwind, resolving via the package exports. This is the same
    line an external consumer uses. */
-@import '@cloudvoyant/helix/components.css';
+@import '@cloudvoyant/vertex-ui/components.css';
 /* KaTeX typesetting (glyphs, fractions, spacing). Without it the raw MathML
    annotation and the HTML glyphs both render, so equations appear twice as ascii. */
 @import 'katex/dist/katex.min.css';
 
-/* Brand wordmark font — distinctive geometric grotesque for the "helix" lockup. */
+/* Brand wordmark font — distinctive geometric grotesque for the "vertex-ui" lockup. */
 .font-brand {
   font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   letter-spacing: -0.02em;
@@ -88,10 +88,10 @@ html.dark [data-example-code] .astro-code span {
 /* Astro inlines a hardcoded Shiki background on MDX code blocks; force it to
    the theme's surface token so light/dark code blocks match the theme. */
 .astro-code {
-  background-color: var(--helix-shiki-light-bg, #ffffff) !important;
+  background-color: var(--vertex-ui-shiki-light-bg, #ffffff) !important;
 }
 html.dark .astro-code {
-  background-color: var(--helix-shiki-dark-bg, #24292e) !important;
+  background-color: var(--vertex-ui-shiki-dark-bg, #24292e) !important;
 }
 
 /* Rendered MDX docs. */

@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/popover/controlled/svelte.svelte -->
 <script lang="ts">
-  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/helix-svelte';
+  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vertex-svelte';
 
   let open = $state(false);
 </script>

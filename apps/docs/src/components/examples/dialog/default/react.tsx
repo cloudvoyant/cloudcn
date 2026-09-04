@@ -7,7 +7,7 @@ import {
   DialogDismiss,
   DialogContent,
   DialogBackdrop,
-} from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
 import { X } from 'lucide-react';
 
 export default function ReactDialogDefault() {

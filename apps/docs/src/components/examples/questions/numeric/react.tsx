@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/questions/numeric/react.tsx
-import { NumericQuestion } from '@cloudvoyant/helix-react';
+import { NumericQuestion } from '@cloudvoyant/vertex-react';
 
 export default function ReactQuestionNumeric() {
   return (

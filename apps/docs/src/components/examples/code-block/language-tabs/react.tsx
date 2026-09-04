@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/code-block/language-tabs/react.tsx
-import { LanguageTabsCodeBlock } from '@cloudvoyant/helix-react';
+import { LanguageTabsCodeBlock } from '@cloudvoyant/vertex-react';
 
 export default function ReactCodeBlockLanguageTabs() {
   return (

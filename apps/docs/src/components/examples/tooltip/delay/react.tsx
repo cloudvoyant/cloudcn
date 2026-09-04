@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/tooltip/delay/react.tsx
-import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/helix-react';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vertex-react';
 
 export default function ReactTooltipDelay() {
   return (

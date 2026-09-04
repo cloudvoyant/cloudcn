@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/latex/inline/react.tsx
-import { toLaTeX } from '@cloudvoyant/helix';
+import { toLaTeX } from '@cloudvoyant/vertex-ui';
 
 export default function ReactLaTeXInline() {
   return (

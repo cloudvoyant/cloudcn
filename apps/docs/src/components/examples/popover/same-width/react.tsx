@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/popover/same-width/react.tsx
-import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/helix-react';
+import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vertex-react';
 
 export default function ReactPopoverSameWidth() {
   return (

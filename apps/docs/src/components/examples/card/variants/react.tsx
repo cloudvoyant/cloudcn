@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/card/variants/react.tsx
-import { Card, CardHeader, CardBody, CardTitle } from '@cloudvoyant/helix-react';
+import { Card, CardHeader, CardBody, CardTitle } from '@cloudvoyant/vertex-react';
 
 export default function ReactCardVariants() {
   return (

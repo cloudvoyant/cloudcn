@@ -7,8 +7,8 @@ import {
   DialogDismiss,
   DialogContent,
   DialogBackdrop,
-} from '@cloudvoyant/helix-react';
-import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
+import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vertex-react';
 import { X } from 'lucide-react';
 
 export default function ReactPopoverDialogIntegration() {

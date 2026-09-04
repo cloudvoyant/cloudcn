@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { NAV_GROUPS } from '../lib/nav';
-import { Page, PageGutter, PageContent, PageFooter } from '@cloudvoyant/helix-react';
+import { Page, PageGutter, PageContent, PageFooter } from '@cloudvoyant/vertex-react';
 import '../styles/global.css';
 import TopNav from '../components/TopNav.tsx';
 import Sidebar from '../components/Sidebar.astro';
@@ -24,7 +24,7 @@ interface Props {
 }
 
 const {
-  title = 'helix',
+  title = 'vertex-ui',
   description,
   currentPath = import.meta.env.BASE_URL,
   headings = [],
@@ -61,20 +61,20 @@ const groups = NAV_GROUPS.map((g) => {
     <script is:inline>
       (function () {
         try {
-          var framework = localStorage.getItem('helix:framework');
+          var framework = localStorage.getItem('vertex:framework');
           if (framework === 'svelte' || framework === 'react') {
             document.documentElement.dataset.framework = framework;
           }
           // Restore the theme before first paint to avoid a flash.
           var root = document.documentElement;
           var mq = window.matchMedia('(prefers-color-scheme: dark)');
-          var mode = localStorage.getItem('helix:color-mode') || 'system';
+          var mode = localStorage.getItem('vertex:color-mode') || 'system';
           var dark = mode === 'dark' || (mode === 'system' && mq.matches);
           if (dark) root.classList.add('dark');
-          var theme = localStorage.getItem('helix:theme');
-          // Default to the helix brand theme when nothing is stored. Ignore
+          var theme = localStorage.getItem('vertex:theme');
+          // Default to the vertex-ui brand theme when nothing is stored. Ignore
           // legacy 'light'/'dark' values left by the old theme toggle.
-          if (!theme || theme === 'light' || theme === 'dark') theme = 'helix';
+          if (!theme || theme === 'light' || theme === 'dark') theme = 'vertex-ui';
           {
             var toRemove = [];
             for (var i = 0; i < root.classList.length; i++) {

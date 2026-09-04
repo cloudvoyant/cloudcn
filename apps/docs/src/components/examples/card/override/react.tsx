@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/card/override/react.tsx
-import { Card, CardHeader, CardBody, CardTitle, CardDescription } from '@cloudvoyant/helix-react';
+import { Card, CardHeader, CardBody, CardTitle, CardDescription } from '@cloudvoyant/vertex-react';
 
 export default function ReactCardOverride() {
   return (

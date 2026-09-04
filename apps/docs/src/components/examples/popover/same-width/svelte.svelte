@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/popover/same-width/svelte.svelte -->
 <script lang="ts">
-  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/helix-svelte';
+  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <Popover positioning={{ sameWidth: true }}>

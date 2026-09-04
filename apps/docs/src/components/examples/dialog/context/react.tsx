@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogBackdrop,
   useDialogContext,
-} from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
 
 function DialogStatus() {
   const dialog = useDialogContext();

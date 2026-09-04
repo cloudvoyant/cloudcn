@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/button/icon/react.tsx
-import { Button } from '@cloudvoyant/helix-react';
+import { Button } from '@cloudvoyant/vertex-react';
 import { Plus } from 'lucide-react';
 
 export default function ReactButtonIcon() {

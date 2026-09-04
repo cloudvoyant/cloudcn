@@ -6,8 +6,8 @@ import {
   PopoverTitle,
   PopoverDescription,
   PopoverContent,
-} from '@cloudvoyant/helix-react';
-import { Input } from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
+import { Input } from '@cloudvoyant/vertex-react';
 
 export default function ReactPopoverAnchor() {
   return (

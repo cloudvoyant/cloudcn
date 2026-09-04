@@ -8,7 +8,7 @@ import {
   NavbarMenuTrigger,
   NavbarMenuContent,
   NavbarMenuLink,
-} from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
 
 export default function ReactNavbarMenuVariants() {
   return (

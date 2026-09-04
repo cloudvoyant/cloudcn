@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/stack/responsive-direction/react.tsx
-import { Item, Stack } from '@cloudvoyant/helix-react';
+import { Item, Stack } from '@cloudvoyant/vertex-react';
 
 export default function ReactStackResponsiveDirection() {
   return (

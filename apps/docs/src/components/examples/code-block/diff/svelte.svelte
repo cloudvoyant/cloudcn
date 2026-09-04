@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/code-block/diff/svelte.svelte -->
 <script lang="ts">
-  import { CodeBlock } from '@cloudvoyant/helix-svelte';
+  import { CodeBlock } from '@cloudvoyant/vertex-svelte';
 
   const code = `--- a/src/greet.ts
 +++ b/src/greet.ts

@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/container/default/react.tsx
-import { Container, Item } from '@cloudvoyant/helix-react';
+import { Container, Item } from '@cloudvoyant/vertex-react';
 
 export default function ReactContainerDefault() {
   return (

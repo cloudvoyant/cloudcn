@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/dialog/initial-focus/svelte.svelte -->
 <script lang="ts">
-  import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/helix-svelte';
+  import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vertex-svelte';
 
   let open = $state(false);
   let inputEl: HTMLInputElement | undefined = $state();

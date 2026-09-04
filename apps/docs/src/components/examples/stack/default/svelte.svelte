@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/stack/default/svelte.svelte -->
 <script lang="ts">
-  import { Item, Stack } from '@cloudvoyant/helix-svelte';
+  import { Item, Stack } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <Stack>

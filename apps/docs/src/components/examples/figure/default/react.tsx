@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/figure/default/react.tsx
-import { Figure } from '@cloudvoyant/helix-react';
+import { Figure } from '@cloudvoyant/vertex-react';
 
 const src = `${import.meta.env.BASE_URL}figure-example.svg`;
 

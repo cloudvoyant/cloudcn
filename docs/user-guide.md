@@ -1,6 +1,6 @@
 # User Guide
 
-> How to install and use helix.
+> How to install and use vertex-ui.
 
 ## Requirements
 
@@ -18,7 +18,7 @@ mise run dev   # opens the Astro docs site
 
 ## Workspace (pnpm monorepo)
 
-helix is a pnpm workspace monorepo:
+vertex-ui is a pnpm workspace monorepo:
 
 - Install everything: `mise run install`
 - Build all packages: `mise run build`
@@ -31,19 +31,19 @@ helix is a pnpm workspace monorepo:
 ## Using the packages
 
 ```text
-pnpm add @cloudvoyant/helix @cloudvoyant/helix-react
+pnpm add @cloudvoyant/vertex-ui @cloudvoyant/vertex-react
 # or for Svelte
-pnpm add @cloudvoyant/helix @cloudvoyant/helix-svelte
+pnpm add @cloudvoyant/vertex-ui @cloudvoyant/vertex-svelte
 ```
 
 Import the theme once in your global CSS:
 
 ```css
 @import 'tailwindcss';
-@import '@cloudvoyant/helix/theme.css';
-/* Registers the helix component class strings (cva variants + framework
+@import '@cloudvoyant/vertex-ui/theme.css';
+/* Registers the vertex-ui component class strings (cva variants + framework
    classes) with Tailwind via @source self-scanning — no manual @source needed. */
-@import '@cloudvoyant/helix/components.css';
+@import '@cloudvoyant/vertex-ui/components.css';
 ```
 
 Components accept the same `variant` and `size` props across frameworks. Available components:

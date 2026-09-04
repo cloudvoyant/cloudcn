@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/button/outline/svelte.svelte -->
 <script lang="ts">
-  import { Button } from '@cloudvoyant/helix-svelte';
+  import { Button } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <div class="flex flex-wrap items-center gap-3">

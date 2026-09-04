@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/chart/line/svelte.svelte -->
 <script lang="ts">
-  import { Chart } from '@cloudvoyant/helix-svelte';
+  import { Chart } from '@cloudvoyant/vertex-svelte';
 
   const data = [
     { name: 'Jan', sales: 400, costs: 240 },

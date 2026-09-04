@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/chart/pie/react.tsx
-import { Chart } from '@cloudvoyant/helix-react';
+import { Chart } from '@cloudvoyant/vertex-react';
 
 const data = [
   { name: 'React', value: 40 },

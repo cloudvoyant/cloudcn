@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@cloudvoyant/vertex-ui": ["../vertex-ui/src/index.ts"]
+    }
+  },
+  "include": ["src", "tests"]
+}

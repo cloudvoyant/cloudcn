@@ -1,13 +1,13 @@
 // apps/docs/src/lib/theme.ts
 // Color-mode (light/dark/system) and theme-preset helpers for the docs shell.
-// Ported from diffbook; localStorage keys use the helix: namespace and all
+// Ported from diffbook; localStorage keys use the vertex: namespace and all
 // document/localStorage access is guarded for SSR safety.
-import { THEME_NAMES } from '@cloudvoyant/helix';
+import { THEME_NAMES } from '@cloudvoyant/vertex-ui';
 
-export const COLOR_MODE_KEY = 'helix:color-mode' as const;
-export const THEME_KEY = 'helix:theme' as const;
+export const COLOR_MODE_KEY = 'vertex:color-mode' as const;
+export const THEME_KEY = 'vertex:theme' as const;
 export type ColorMode = 'light' | 'dark' | 'system';
-export type ThemeName = string; // any helix theme name — see @cloudvoyant/helix THEMES
+export type ThemeName = string; // any vertex-ui theme name — see @cloudvoyant/vertex-ui THEMES
 
 const THEME_PREFIX = 'theme-';
 
@@ -59,17 +59,17 @@ export function applyColorMode(mode: ColorMode): void {
 // ── Theme ────────────────────────────────────────────────────────────────
 
 /**
- * Read the persisted theme from localStorage. Falls back to the helix brand theme.
+ * Read the persisted theme from localStorage. Falls back to the vertex-ui brand theme.
  */
 export function getInitialTheme(): ThemeName {
-  if (typeof window === 'undefined') return 'helix';
+  if (typeof window === 'undefined') return 'vertex-ui';
   try {
     const saved = localStorage.getItem(THEME_KEY);
     if (saved && THEME_NAMES.includes(saved)) return saved;
   } catch {
     /* storage unavailable */
   }
-  return 'helix';
+  return 'vertex-ui';
 }
 
 /**

@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/tooltip/delay/svelte.svelte -->
 <script lang="ts">
-  import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/helix-svelte';
+  import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <Tooltip openDelay={1000} closeDelay={200}>

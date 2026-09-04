@@ -10,7 +10,7 @@
     WindowDismiss,
     WindowBody,
     WindowResizeTrigger,
-  } from '@cloudvoyant/helix-svelte';
+  } from '@cloudvoyant/vertex-svelte';
   import { Minus, Maximize2, RotateCcw, X } from 'lucide-svelte';
 
   let open = $state(false);

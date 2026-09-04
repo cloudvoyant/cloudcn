@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/chart/prerendered/react.tsx
-import { Chart } from '@cloudvoyant/helix-react';
-import { renderChartSvgString } from '@cloudvoyant/helix';
+import { Chart } from '@cloudvoyant/vertex-react';
+import { renderChartSvgString } from '@cloudvoyant/vertex-ui';
 
 const data = [
   { name: 'React', value: 40 },

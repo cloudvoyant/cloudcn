@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/figure/default/svelte.svelte -->
 <script lang="ts">
-  import { Figure } from '@cloudvoyant/helix-svelte';
+  import { Figure } from '@cloudvoyant/vertex-svelte';
 
   const src = `${import.meta.env.BASE_URL}figure-example.svg`;
 </script>

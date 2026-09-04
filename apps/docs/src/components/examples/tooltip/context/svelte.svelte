@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/tooltip/context/svelte.svelte -->
 <script lang="ts">
-  import { Tooltip, TooltipTrigger, TooltipContent, TooltipContext } from '@cloudvoyant/helix-svelte';
+  import { Tooltip, TooltipTrigger, TooltipContent, TooltipContext } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <Tooltip>

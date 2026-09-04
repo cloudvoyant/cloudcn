@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/checkbox/default/svelte.svelte -->
 <script lang="ts">
-  import { Checkbox, CheckboxControl, CheckboxIndicator, CheckboxLabel } from '@cloudvoyant/helix-svelte';
+  import { Checkbox, CheckboxControl, CheckboxIndicator, CheckboxLabel } from '@cloudvoyant/vertex-svelte';
   import { Check } from 'lucide-svelte';
 </script>
 

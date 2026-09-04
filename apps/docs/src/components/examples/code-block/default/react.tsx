@@ -5,7 +5,7 @@ import {
   CodeBlockTitle,
   CodeBlockContent,
   CodeBlockCopyButton,
-} from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
 
 const code = `export function greet(name: string): string {
   return \`Hello, \${name}!\`;

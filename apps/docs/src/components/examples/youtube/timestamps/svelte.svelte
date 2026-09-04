@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/youtube/timestamps/svelte.svelte -->
 <script lang="ts">
-  import { YouTube, YoutubeTimestamps, YoutubeTimestampAt } from '@cloudvoyant/helix-svelte';
+  import { YouTube, YoutubeTimestamps, YoutubeTimestampAt } from '@cloudvoyant/vertex-svelte';
 </script>
 
 <YouTube url="https://www.youtube.com/watch?v=dQw4w9WgXcQ">

@@ -4,7 +4,7 @@ import {
   SplitterPanel,
   SplitterResizeTrigger,
   SplitterResizeTriggerIndicator,
-} from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vertex-react';
 
 export default function ReactSplitterVertical() {
   return (

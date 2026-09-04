@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/button/rounded/react.tsx
-import { Button } from '@cloudvoyant/helix-react';
+import { Button } from '@cloudvoyant/vertex-react';
 
 export default function ReactButtonRounded() {
   return (

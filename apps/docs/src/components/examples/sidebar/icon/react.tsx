@@ -12,9 +12,9 @@ import {
   SidebarInset,
   SidebarTrigger,
   Container,
-} from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vortex-react';
 import { Home, Inbox, Settings, LifeBuoy, PanelLeft } from 'lucide-react';
-import { HelixLogo } from '../../HelixLogo';
+import { VortexLogo } from '../../VortexLogo';
 
 const NAV = [
   { label: 'Home', icon: Home },
@@ -32,11 +32,11 @@ function AppSidebar() {
             size="lg"
             icon={
               <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                <HelixLogo className="size-5" />
+                <VortexLogo className="size-5" />
               </div>
             }
           >
-            helix
+            vortex-ui
           </SidebarMenuLink>
         </SidebarMenu>
       </SidebarHeader>

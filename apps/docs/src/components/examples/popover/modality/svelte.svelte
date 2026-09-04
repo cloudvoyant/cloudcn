@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/popover/modality/svelte.svelte -->
 <script lang="ts">
-  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/helix-svelte';
+  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <Popover modal>

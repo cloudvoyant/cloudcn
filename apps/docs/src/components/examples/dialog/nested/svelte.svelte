@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/dialog/nested/svelte.svelte -->
 <script lang="ts">
-  import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/helix-svelte';
+  import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vortex-svelte';
 
   let open = $state(false);
   let nestedOpen = $state(false);

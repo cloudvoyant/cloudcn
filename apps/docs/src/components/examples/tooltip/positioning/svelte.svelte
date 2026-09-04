@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/tooltip/positioning/svelte.svelte -->
 <script lang="ts">
-  import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/helix-svelte';
+  import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <Tooltip positioning={{ placement: 'right', offset: { mainAxis: 12 } }}>

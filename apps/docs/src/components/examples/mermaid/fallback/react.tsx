@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/mermaid/fallback/react.tsx
-import { Mermaid } from '@cloudvoyant/helix-react';
+import { Mermaid } from '@cloudvoyant/vortex-react';
 
 const code = 'This is not a valid mermaid diagram.';
 

@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/questions/numeric/svelte.svelte -->
 <script lang="ts">
-  import { NumericQuestion } from '@cloudvoyant/helix-svelte';
+  import { NumericQuestion } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <NumericQuestion

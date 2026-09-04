@@ -11,7 +11,7 @@
     WindowBody,
     WindowResizeTrigger,
     WindowContext,
-  } from '@cloudvoyant/helix-svelte';
+  } from '@cloudvoyant/vortex-svelte';
   import { Minus, Maximize2, RotateCcw, X } from 'lucide-svelte';
 
   let open = $state(false);

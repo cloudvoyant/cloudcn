@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/toggle-button/icon/react.tsx
-import { ToggleButton } from '@cloudvoyant/helix-react';
+import { ToggleButton } from '@cloudvoyant/vortex-react';
 import { Bold, Italic, Underline } from 'lucide-react';
 
 export default function ReactToggleButtonIcon() {

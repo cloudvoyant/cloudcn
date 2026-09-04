@@ -1,7 +1,7 @@
 <!-- apps/docs/src/components/examples/dialog/dialog-with-tooltip/svelte.svelte -->
 <script lang="ts">
-  import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/helix-svelte';
-  import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/helix-svelte';
+  import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vortex-svelte';
+  import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vortex-svelte';
 
   let open = $state(false);
 </script>

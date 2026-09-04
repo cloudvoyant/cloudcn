@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/stack/responsive-direction/svelte.svelte -->
 <script lang="ts">
-  import { Item, Stack } from '@cloudvoyant/helix-svelte';
+  import { Item, Stack } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <Stack class="md:flex-row">

@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/input/textarea/react.tsx
-import { Field, FieldLabel, Textarea } from '@cloudvoyant/helix-react';
+import { Field, FieldLabel, Textarea } from '@cloudvoyant/vortex-react';
 
 export default function ReactInputTextarea() {
   return (

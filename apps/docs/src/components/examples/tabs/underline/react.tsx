@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/tabs/underline/react.tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@cloudvoyant/helix-react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@cloudvoyant/vortex-react';
 
 export default function ReactTabsUnderline() {
   return (

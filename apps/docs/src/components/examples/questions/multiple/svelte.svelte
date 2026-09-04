@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/questions/multiple/svelte.svelte -->
 <script lang="ts">
-  import { MultipleChoiceQuestion } from '@cloudvoyant/helix-svelte';
+  import { MultipleChoiceQuestion } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <MultipleChoiceQuestion

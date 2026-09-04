@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/row/default/react.tsx
-import { Item, Row } from '@cloudvoyant/helix-react';
+import { Item, Row } from '@cloudvoyant/vortex-react';
 
 export default function ReactRowDefault() {
   return (

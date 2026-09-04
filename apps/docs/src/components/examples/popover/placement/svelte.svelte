@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/popover/placement/svelte.svelte -->
 <script lang="ts">
-  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/helix-svelte';
+  import { Popover, PopoverTrigger, PopoverTitle, PopoverDescription, PopoverContent } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <Popover positioning={{ placement: 'left-start', offset: { mainAxis: 12, crossAxis: 12 } }}>

@@ -24,7 +24,9 @@ for (const framework of FRAMEWORKS) {
     test('plain notice has no live-region role', async ({ page }) => {
       await page.goto('components/notice');
       await selectFramework(page, framework);
-      const def = page.locator('[data-example-id="default"] [data-example-preview]').locator(`[data-fw="${framework}"]`);
+      const def = page
+        .locator('[data-example-id="default"] [data-example-preview]')
+        .locator(`[data-fw="${framework}"]`);
       await expect(def.locator('[role="status"], [role="alert"]')).toHaveCount(0);
       await expect(def.getByText('A plain notice with just a body.')).toBeVisible();
     });
@@ -66,7 +68,9 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('prerendered LaTeX renders immediately', async ({ page }) => {
-      const prerendered = page.locator('[data-example-id="prerendered"]').locator(`[data-fw="${framework}"] [data-latex-state]`);
+      const prerendered = page
+        .locator('[data-example-id="prerendered"]')
+        .locator(`[data-fw="${framework}"] [data-latex-state]`);
       await expect(prerendered).toHaveAttribute('data-latex-state', 'done');
       await expect(prerendered.locator('.katex')).toBeVisible();
     });
@@ -85,13 +89,17 @@ for (const framework of FRAMEWORKS) {
     });
 
     test('multi-file and language-tabs switchers render their code', async ({ page }) => {
-      const multiFile = page.locator('[data-example-id="multi-file"]').locator(`[data-fw="${framework}"] [data-code-block]`);
+      const multiFile = page
+        .locator('[data-example-id="multi-file"]')
+        .locator(`[data-fw="${framework}"] [data-code-block]`);
       await expect(multiFile.locator('.shiki')).toBeVisible({ timeout: 15_000 });
       await expect(multiFile.locator('[role="tab"]')).toHaveCount(2);
 
-      const languageTabs = page.locator('[data-example-id="language-tabs"]').locator(`[data-fw="${framework}"] [data-code-block]`);
+      const languageTabs = page
+        .locator('[data-example-id="language-tabs"]')
+        .locator(`[data-fw="${framework}"] [data-code-block]`);
       await expect(languageTabs.locator('.shiki')).toBeVisible({ timeout: 15_000 });
-      // Language selector is the Ark-based helix Select (visible Ark trigger, not a visible
+      // Language selector is the Ark-based vortex-ui Select (visible Ark trigger, not a visible
       // native <select> — Ark's SelectHiddenSelect is always present but visually hidden).
       await expect(languageTabs.locator('[data-scope="select"][data-part="trigger"]')).toHaveCount(1);
       await expect(languageTabs.locator('select')).toHaveCount(1);
@@ -103,7 +111,9 @@ for (const framework of FRAMEWORKS) {
       await page.route(/shiki[^/]*\.js$/, (route) => route.abort());
       await page.goto('components/code-block');
       await selectFramework(page, framework);
-      const prerendered = page.locator('[data-example-id="prerendered"]').locator(`[data-fw="${framework}"] [data-code-block]`);
+      const prerendered = page
+        .locator('[data-example-id="prerendered"]')
+        .locator(`[data-fw="${framework}"] [data-code-block]`);
       await expect(prerendered.locator('.shiki')).toBeVisible();
       // The scoped styles must be injected even on the prerendered `html` path; otherwise
       // line-number counters and highlights silently disappear.

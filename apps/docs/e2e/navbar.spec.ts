@@ -25,7 +25,7 @@ for (const framework of FRAMEWORKS) {
     test('renders a header with brand and menu links', async ({ page }) => {
       const header = page.locator(`[data-demo] [data-fw="${framework}"] header`).first();
       await expect(header).toBeVisible();
-      await expect(header.locator('text=helix').first()).toBeVisible();
+      await expect(header.locator('text=vortex-ui').first()).toBeVisible();
     });
 
     test('mobile trigger toggles the mobile panel', async ({ page }) => {

@@ -1,6 +1,6 @@
 // apps/docs/src/components/examples/dialog/alert-dialog/react.tsx
 import { useState } from 'react';
-import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/helix-react';
+import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vortex-react';
 
 export default function ReactDialogAlertDialog() {
   const [open, setOpen] = useState(false);

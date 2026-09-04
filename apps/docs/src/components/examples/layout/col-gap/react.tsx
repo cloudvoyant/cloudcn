@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/col/with-gap/react.tsx
-import { Item, Col } from '@cloudvoyant/helix-react';
+import { Item, Col } from '@cloudvoyant/vortex-react';
 
 export default function ReactColWithGap() {
   return (

@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/card/override/svelte.svelte -->
 <script lang="ts">
-  import { Card, CardHeader, CardBody, CardTitle, CardDescription } from '@cloudvoyant/helix-svelte';
+  import { Card, CardHeader, CardBody, CardTitle, CardDescription } from '@cloudvoyant/vortex-svelte';
 </script>
 
 {#snippet heading(props)}

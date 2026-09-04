@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/scroll/thumb-styling/react.tsx
-import { Scroll } from '@cloudvoyant/helix-react';
+import { Scroll } from '@cloudvoyant/vortex-react';
 
 export default function ReactScrollThumbStyling() {
   return (

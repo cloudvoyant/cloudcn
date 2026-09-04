@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/prev-next/default/react.tsx
-import { PrevNext } from '@cloudvoyant/helix-react';
+import { PrevNext } from '@cloudvoyant/vortex-react';
 
 export default function ReactPrevNextDefault() {
   return (

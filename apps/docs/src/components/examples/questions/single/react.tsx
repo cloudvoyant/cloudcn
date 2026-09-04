@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/questions/single/react.tsx
-import { SingleChoiceQuestion } from '@cloudvoyant/helix-react';
+import { SingleChoiceQuestion } from '@cloudvoyant/vortex-react';
 
 export default function ReactQuestionSingle() {
   return (

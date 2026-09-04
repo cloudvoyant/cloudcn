@@ -1,8 +1,8 @@
 // apps/docs/src/lib/framework.ts
 export type Framework = 'react' | 'svelte';
 
-const STORAGE_KEY = 'helix:framework';
-export const FRAMEWORK_EVENT = 'helix:framework';
+const STORAGE_KEY = 'vortex:framework';
+export const FRAMEWORK_EVENT = 'vortex:framework';
 
 export function getStoredFramework(): Framework {
   if (typeof localStorage === 'undefined') return 'react';

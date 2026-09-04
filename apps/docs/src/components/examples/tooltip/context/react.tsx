@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/tooltip/context/react.tsx
-import { Tooltip, TooltipTrigger, TooltipContent, useTooltipContext } from '@cloudvoyant/helix-react';
+import { Tooltip, TooltipTrigger, TooltipContent, useTooltipContext } from '@cloudvoyant/vortex-react';
 
 function TooltipStatus() {
   const tooltip = useTooltipContext();

@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/tooltip/positioning/react.tsx
-import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/helix-react';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@cloudvoyant/vortex-react';
 
 export default function ReactTooltipPositioning() {
   return (

@@ -8,9 +8,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@cloudvoyant/helix": ["../../libs/helix/src/index.ts"],
-      "@cloudvoyant/helix-react": ["../../libs/helix-react/src/index.ts"],
-      "@cloudvoyant/helix-svelte": ["../../libs/helix-svelte/src/index.ts"]
+      "@cloudvoyant/vortex-ui": ["../../libs/vortex-ui/src/index.ts"],
+      "@cloudvoyant/vortex-react": ["../../libs/vortex-react/src/index.ts"],
+      "@cloudvoyant/vortex-svelte": ["../../libs/vortex-svelte/src/index.ts"]
     }
   }
 }

@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/switch/default/react.tsx
-import { Switch, SwitchControl, SwitchThumb, SwitchLabel } from '@cloudvoyant/helix-react';
+import { Switch, SwitchControl, SwitchThumb, SwitchLabel } from '@cloudvoyant/vortex-react';
 
 export default function ReactSwitchDefault() {
   return (

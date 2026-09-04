@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/dialog/non-modal/svelte.svelte -->
 <script lang="ts">
-  import { Dialog, DialogTitle, DialogDescription, DialogContent } from '@cloudvoyant/helix-svelte';
+  import { Dialog, DialogTitle, DialogDescription, DialogContent } from '@cloudvoyant/vortex-svelte';
 
   let open = $state(false);
 </script>

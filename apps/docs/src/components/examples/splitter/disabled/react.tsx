@@ -4,7 +4,7 @@ import {
   SplitterPanel,
   SplitterResizeTrigger,
   SplitterResizeTriggerIndicator,
-} from '@cloudvoyant/helix-react';
+} from '@cloudvoyant/vortex-react';
 
 export default function ReactSplitterDisabled() {
   return (

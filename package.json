@@ -1,9 +1,9 @@
 {
-  "name": "helix-monorepo",
+  "name": "vortex-ui-monorepo",
   "version": "0.17.0",
   "private": true,
   "packageManager": "pnpm@10.32.1",
-  "description": "helix — UI component library monorepo (React + Svelte libs + docs app)",
+  "description": "vortex-ui — UI component library monorepo (React + Svelte libs + docs app)",
   "scripts": {
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",

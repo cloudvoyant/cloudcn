@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/tooltip/following-cursor/react.tsx
-import { Tooltip, TooltipTrigger, TooltipContent, useTooltipContext } from '@cloudvoyant/helix-react';
+import { Tooltip, TooltipTrigger, TooltipContent, useTooltipContext } from '@cloudvoyant/vortex-react';
 
 const cursor = { x: 0, y: 0 };
 let areaEl: HTMLDivElement | null = null;

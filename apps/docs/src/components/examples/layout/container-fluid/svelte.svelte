@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/container/fluid/svelte.svelte -->
 <script lang="ts">
-  import { Container, Item } from '@cloudvoyant/helix-svelte';
+  import { Container, Item } from '@cloudvoyant/vortex-svelte';
 </script>
 
 <Container class="max-w-full">

@@ -8,7 +8,7 @@ group: navigation
 import Demo from '../../components/Demo.astro';
 import Examples from '../../components/Examples.astro';
 
-The Navbar composes a brand, a navigation menu (NavbarMenu), and actions into a top bar with four behaviors — `scroll`, `sticky`, `shrink`, and `hide` — collapsing to a mobile disclosure below `md`. An optional `floating` flag turns it into a floating pill. It is based on [shadcnblocks Navbar 7](https://www.shadcnblocks.com/block/navbar7) and [Navbar 6](https://www.shadcnblocks.com/block/navbar6), re-based on Ark UI's `navigation-menu` and `collapsible` primitives, sharing the `navbarVariants` cva + part classes from `@cloudvoyant/helix`. Use the framework selector in the top-right to switch between implementations.
+The Navbar composes a brand, a navigation menu (NavbarMenu), and actions into a top bar with four behaviors — `scroll`, `sticky`, `shrink`, and `hide` — collapsing to a mobile disclosure below `md`. An optional `floating` flag turns it into a floating pill. It is based on [shadcnblocks Navbar 7](https://www.shadcnblocks.com/block/navbar7) and [Navbar 6](https://www.shadcnblocks.com/block/navbar6), re-based on Ark UI's `navigation-menu` and `collapsible` primitives, sharing the `navbarVariants` cva + part classes from `@cloudvoyant/vortex-ui`. Use the framework selector in the top-right to switch between implementations.
 
 <Demo component="navbar" example="sticky" />
 
@@ -24,8 +24,8 @@ A pure context provider — it renders no DOM and accepts no styling props. Prov
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
+| Prop          | Type      | Default | Description                     |
+| ------------- | --------- | ------- | ------------------------------- |
 | `defaultOpen` | `boolean` | `false` | Initial mobile-menu open state. |
 
 ### Navbar
@@ -34,11 +34,11 @@ The `<header>` element and the config owner. Takes `variant`/`floating`/`density
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `variant` | `'scroll' \| 'sticky' \| 'shrink' \| 'hide'` | `'sticky'` | Bar behavior. `scroll` scrolls away with the page. `sticky` pins to the top. `shrink` pins and compacts to the compact density once scrolled past 24px. `hide` pins, then slides away once scrolled past 24px while not hovered (revealed on hover of the bar or an `NavbarActivationArea`). |
-| `floating` | `boolean` | `false` | Render as a floating pill (rounded, inset) instead of a full-width bar. Orthogonal to `variant`. |
-| `density` | `'relaxed' \| 'compact'` | `'relaxed'` | Bar density. `relaxed` is the spacious default (`h-16`). `compact` uses a tighter `h-12` bar. |
+| Prop       | Type                                         | Default     | Description                                                                                                                                                                                                                                                                                  |
+| ---------- | -------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `variant`  | `'scroll' \| 'sticky' \| 'shrink' \| 'hide'` | `'sticky'`  | Bar behavior. `scroll` scrolls away with the page. `sticky` pins to the top. `shrink` pins and compacts to the compact density once scrolled past 24px. `hide` pins, then slides away once scrolled past 24px while not hovered (revealed on hover of the bar or an `NavbarActivationArea`). |
+| `floating` | `boolean`                                    | `false`     | Render as a floating pill (rounded, inset) instead of a full-width bar. Orthogonal to `variant`.                                                                                                                                                                                             |
+| `density`  | `'relaxed' \| 'compact'`                     | `'relaxed'` | Bar density. `relaxed` is the spacious default (`h-16`). `compact` uses a tighter `h-12` bar.                                                                                                                                                                                                |
 
 Accepts standard `<header>` attributes plus `className`/`class`.
 
@@ -56,8 +56,8 @@ The Navbar's desktop menu — a thin wrapper over the coupled `NavbarMenu` navig
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
+| Prop        | Type                            | Default    | Description                             |
+| ----------- | ------------------------------- | ---------- | --------------------------------------- |
 | `placement` | `'left' \| 'center' \| 'right'` | `'center'` | Horizontal placement of the menu items. |
 
 Accepts all [Ark `NavigationMenuRoot` props](https://ark-ui.com/docs/components/navigation-menu) plus `className`/`class`.
@@ -68,11 +68,11 @@ Accepts all [Ark `NavigationMenuTrigger` props](https://ark-ui.com/docs/componen
 
 #### NavbarMenuItem
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `string` | — | Identifies the item. |
-| `disabled` | `boolean` | `false` | Disables the item. |
-| `variant` | `'default' \| 'link'` | `'default'` | Trigger treatment. `link` styles the item's trigger/link as a text link — transparent background, `text-muted-foreground` with `hover:text-foreground` and `data-[state=open]:text-primary` — matching a top nav of plain links. Combine with `NavbarMenuTrigger asChild` to render the trigger as an actual `<a>`. |
+| Prop       | Type                  | Default     | Description                                                                                                                                                                                                                                                                                                         |
+| ---------- | --------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`    | `string`              | —           | Identifies the item.                                                                                                                                                                                                                                                                                                |
+| `disabled` | `boolean`             | `false`     | Disables the item.                                                                                                                                                                                                                                                                                                  |
+| `variant`  | `'default' \| 'link'` | `'default'` | Trigger treatment. `link` styles the item's trigger/link as a text link — transparent background, `text-muted-foreground` with `hover:text-foreground` and `data-[state=open]:text-primary` — matching a top nav of plain links. Combine with `NavbarMenuTrigger asChild` to render the trigger as an actual `<a>`. |
 
 #### NavbarMenuContent
 

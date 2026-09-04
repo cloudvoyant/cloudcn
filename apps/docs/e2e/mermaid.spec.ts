@@ -68,7 +68,9 @@ for (const framework of FRAMEWORKS) {
       await expect(page.locator(`[data-demo] [data-fw="${framework}"] [data-mermaid-code] svg`).first()).toBeVisible({
         timeout: 15_000,
       });
-      const fallback = page.locator('[data-example-id="fallback"]').locator(`[data-fw="${framework}"] [data-mermaid-code]`);
+      const fallback = page
+        .locator('[data-example-id="fallback"]')
+        .locator(`[data-fw="${framework}"] [data-mermaid-code]`);
       await expect(fallback).toHaveAttribute('data-mermaid-state', 'error');
       await expect(fallback.locator('pre')).toBeVisible();
       await expect(fallback.locator('pre')).toContainText('not a valid mermaid diagram');
@@ -76,7 +78,7 @@ for (const framework of FRAMEWORKS) {
       // mermaid v11 appends its temp render container (`#d<render-id>`) to document.body;
       // suppressErrorRendering must make a failed render clean up after itself, leaving
       // no stray "Syntax error in text" graphic behind.
-      await expect(page.locator('body > div[id^="dhelix-mmd-"]')).toHaveCount(0);
+      await expect(page.locator('body > div[id^="dvortex-ui-mmd-"]')).toHaveCount(0);
       await expect(page.locator('svg text', { hasText: 'Syntax error in text' })).toHaveCount(0);
     });
   });
@@ -89,7 +91,9 @@ for (const framework of FRAMEWORKS) {
       await page.goto('components/mermaid');
       await selectFramework(page, framework);
 
-      const prerendered = page.locator('[data-example-id="prerendered"]').locator(`[data-fw="${framework}"] [data-mermaid-code]`);
+      const prerendered = page
+        .locator('[data-example-id="prerendered"]')
+        .locator(`[data-fw="${framework}"] [data-mermaid-code]`);
       await expect(prerendered).toHaveAttribute('data-mermaid-state', 'done');
       await expect(prerendered.locator('svg')).toBeVisible();
       await expect(prerendered.locator('svg')).toContainText('Prerendered');
@@ -101,7 +105,9 @@ for (const framework of FRAMEWORKS) {
     test('reserves the diagram aspect-ratio so the swap does not shift layout', async ({ page }) => {
       await page.goto('components/mermaid');
       await selectFramework(page, framework);
-      const prerendered = page.locator('[data-example-id="prerendered"]').locator(`[data-fw="${framework}"] [data-mermaid-code]`);
+      const prerendered = page
+        .locator('[data-example-id="prerendered"]')
+        .locator(`[data-fw="${framework}"] [data-mermaid-code]`);
       // The prerendered SVG carries viewBox="0 0 480 180" → aspect-ratio: 480 / 180.
       await expect(prerendered).toHaveCSS('aspect-ratio', /480 \/ 180/);
     });
@@ -141,7 +147,9 @@ test.describe('Mermaid SSR placeholder', () => {
 
   test('prerendered SVG ships in the server-rendered HTML with no client JS', async ({ page }) => {
     await page.goto('components/mermaid');
-    const prerendered = page.locator('[data-example-id="prerendered"]').locator('[data-fw="react"] [data-mermaid-code]');
+    const prerendered = page
+      .locator('[data-example-id="prerendered"]')
+      .locator('[data-fw="react"] [data-mermaid-code]');
     await expect(prerendered.locator('svg')).toBeVisible();
     await expect(prerendered.locator('svg')).toContainText('Prerendered');
     await expect(prerendered).toHaveCSS('aspect-ratio', /480 \/ 180/);

@@ -1,7 +1,7 @@
 <!-- apps/docs/src/components/examples/chart/prerendered/svelte.svelte -->
 <script lang="ts">
-  import { Chart } from '@cloudvoyant/helix-svelte';
-  import { renderChartSvgString } from '@cloudvoyant/helix';
+  import { Chart } from '@cloudvoyant/vortex-svelte';
+  import { renderChartSvgString } from '@cloudvoyant/vortex-ui';
 
   const data = [
     { name: 'React', value: 40 },

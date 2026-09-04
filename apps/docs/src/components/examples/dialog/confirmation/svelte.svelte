@@ -1,6 +1,6 @@
 <!-- apps/docs/src/components/examples/dialog/confirmation/svelte.svelte -->
 <script lang="ts">
-  import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/helix-svelte';
+  import { Dialog, DialogTitle, DialogDescription, DialogContent, DialogBackdrop } from '@cloudvoyant/vortex-svelte';
 
   let dirty = $state(true);
   let open = $state(false);

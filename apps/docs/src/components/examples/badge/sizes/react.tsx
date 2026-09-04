@@ -1,5 +1,5 @@
 // apps/docs/src/components/examples/badge/sizes/react.tsx
-import { Badge } from '@cloudvoyant/helix-react';
+import { Badge } from '@cloudvoyant/vortex-react';
 
 export default function ReactBadgeSizes() {
   return (

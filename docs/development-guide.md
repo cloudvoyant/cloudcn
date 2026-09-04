@@ -27,7 +27,7 @@ mise run format:check
 ```
 apps/docs/     # Docs/demo app (private placeholder)
 libs/vertex-react/    # React UI lib (tsup: ESM + CJS + d.ts)
-libs/vertex-svelte/   # Svelte UI lib (tsup: ESM + CJS + d.ts)
+libs/vertex-svelte/   # Svelte UI lib (svelte-package: ESM + d.ts)
 version.txt            # Single source of truth for the lockstep version
 mise.toml              # Task runner and tool versions
 pnpm-workspace.yaml    # Workspace declaration (apps/*, libs/*)
@@ -40,7 +40,7 @@ tsconfig.base.json     # Shared strict TypeScript base
 2. **Check quality**: `mise run lint && mise run format:check` (`lint` runs ESLint + `tsc --noEmit`)
 3. **Run tests**: `mise run test` (vitest across the workspace)
 4. **Fix issues**: `mise run lint:fix && mise run format` (then fix any remaining type errors manually)
-5. **Build**: `mise run build` (tsup emits ESM + CJS + d.ts per package)
+5. **Build**: `mise run build` (tsup emits ESM + CJS + d.ts for the TS libs; svelte-package bundles the Svelte lib)
 
 ## Adding Dependencies
 

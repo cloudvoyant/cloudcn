@@ -2,14 +2,7 @@
 // Closely based on: diffbook's KaTeX pipeline; block + inline components. Inline rendering can
 // also use `toLaTeX` directly — see the LaTeX docs.
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
-import {
-  latexRootBase,
-  latexDisplayBase,
-  latexInlineBase,
-  latexErrorBase,
-  toLaTeX,
-  cn,
-} from '@cloudvoyant/vortex-ui';
+import { latexRootBase, latexDisplayBase, latexInlineBase, latexErrorBase, toLaTeX, cn } from '@cloudvoyant/vortex-ui';
 import type { LaTeXProps as LaTeXPropsBase } from '@cloudvoyant/vortex-ui';
 
 export type LaTeXProps = HTMLArkProps<'div'> & LaTeXPropsBase;
@@ -41,11 +34,7 @@ export function LaTeX({ latex, html, className, ...props }: LaTeXProps) {
       data-latex-state={error ? 'error' : 'done'}
       className={cn(latexRootBase, latexDisplayBase, className)}
     >
-      {error ? (
-        <code className={latexErrorBase}>{latex}</code>
-      ) : (
-        <span dangerouslySetInnerHTML={{ __html: markup }} />
-      )}
+      {error ? <code className={latexErrorBase}>{latex}</code> : <span dangerouslySetInnerHTML={{ __html: markup }} />}
     </ark.div>
   );
 }
@@ -74,11 +63,7 @@ export function InlineLaTeX({ latex, html, className, ...props }: InlineLaTeXPro
       data-latex-state={error ? 'error' : 'done'}
       className={cn(latexRootBase, latexInlineBase, className)}
     >
-      {error ? (
-        <code className={latexErrorBase}>{latex}</code>
-      ) : (
-        <span dangerouslySetInnerHTML={{ __html: markup }} />
-      )}
+      {error ? <code className={latexErrorBase}>{latex}</code> : <span dangerouslySetInnerHTML={{ __html: markup }} />}
     </ark.span>
   );
 }

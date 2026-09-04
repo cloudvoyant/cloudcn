@@ -61,7 +61,15 @@ function useCodeBlock(): CodeBlockContextValue {
 
 type CodeRendererProps = CodeBlockContextValue;
 
-function CodeRenderer({ code, language, html, showLineNumbers, scrollable, maxHeight, highlightLines }: CodeRendererProps) {
+function CodeRenderer({
+  code,
+  language,
+  html,
+  showLineNumbers,
+  scrollable,
+  maxHeight,
+  highlightLines,
+}: CodeRendererProps) {
   const [rendered, setRendered] = useState<string | null>(html ?? null);
 
   useEffect(() => {

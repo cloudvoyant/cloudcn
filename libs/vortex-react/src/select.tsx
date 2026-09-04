@@ -113,7 +113,9 @@ export function SelectIndicator({ className, ...props }: SelectIndicatorProps) {
 }
 
 export function SelectClearTrigger({ className, ...props }: SelectClearTriggerProps) {
-  return <ArkSelectClearTrigger aria-label="Clear selection" className={cn(selectClearTriggerBase, className)} {...props} />;
+  return (
+    <ArkSelectClearTrigger aria-label="Clear selection" className={cn(selectClearTriggerBase, className)} {...props} />
+  );
 }
 
 export function SelectContent({ className, ...props }: SelectContentProps) {
@@ -150,8 +152,10 @@ export function SelectItemIndicator({ className, ...props }: SelectItemIndicator
 
 export const useSelect = useSelectContext;
 
-export interface SelectNativeProps
-  extends Omit<HTMLArkProps<'select'>, 'onChange' | 'children' | 'value' | 'defaultValue' | 'size'> {
+export interface SelectNativeProps extends Omit<
+  HTMLArkProps<'select'>,
+  'onChange' | 'children' | 'value' | 'defaultValue' | 'size'
+> {
   items: SelectItemData[];
   value?: string;
   defaultValue?: string;

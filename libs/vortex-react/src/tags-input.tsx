@@ -74,11 +74,23 @@ export function TagInputItemInput({ className, ...props }: TagsInputItemInputPro
 }
 
 export function TagInputItemDeleteTrigger({ className, ...props }: TagsInputItemDeleteTriggerProps) {
-  return <ArkTagsInputItemDeleteTrigger aria-label="Remove tag" className={cn(tagsInputItemDeleteTriggerBase, className)} {...props} />;
+  return (
+    <ArkTagsInputItemDeleteTrigger
+      aria-label="Remove tag"
+      className={cn(tagsInputItemDeleteTriggerBase, className)}
+      {...props}
+    />
+  );
 }
 
 export function TagInputClearTrigger({ className, ...props }: TagsInputClearTriggerProps) {
-  return <ArkTagsInputClearTrigger aria-label="Clear all tags" className={cn(tagsInputClearTriggerBase, className)} {...props} />;
+  return (
+    <ArkTagsInputClearTrigger
+      aria-label="Clear all tags"
+      className={cn(tagsInputClearTriggerBase, className)}
+      {...props}
+    />
+  );
 }
 
 export const TagInputContext = ArkTagsInputContext;

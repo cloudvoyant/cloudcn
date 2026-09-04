@@ -22,15 +22,15 @@ import Examples from '../../components/Examples.astro';
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `open` / `onOpenChange` | `boolean` / `(details) => void` | — | Controlled open state. |
-| `defaultOpen` | `boolean` | `false` | Initial open state when uncontrolled. |
-| `openDelay` / `closeDelay` | `number` | `400` / `150` | Open/close delay in ms. |
-| `positioning` | `PositioningOptions` | — | Placement/offset (e.g. `{ placement: 'right' }`, `{ strategy: 'fixed' }`). |
-| `disabled` | `boolean` | `false` | Disables the tooltip. |
-| `interactive` | `boolean` | `false` | Keep open while hovering the content. |
-| `closeOnEscape` | `boolean` | `true` | Close on Escape. |
+| Prop                       | Type                            | Default       | Description                                                                |
+| -------------------------- | ------------------------------- | ------------- | -------------------------------------------------------------------------- |
+| `open` / `onOpenChange`    | `boolean` / `(details) => void` | —             | Controlled open state.                                                     |
+| `defaultOpen`              | `boolean`                       | `false`       | Initial open state when uncontrolled.                                      |
+| `openDelay` / `closeDelay` | `number`                        | `400` / `150` | Open/close delay in ms.                                                    |
+| `positioning`              | `PositioningOptions`            | —             | Placement/offset (e.g. `{ placement: 'right' }`, `{ strategy: 'fixed' }`). |
+| `disabled`                 | `boolean`                       | `false`       | Disables the tooltip.                                                      |
+| `interactive`              | `boolean`                       | `false`       | Keep open while hovering the content.                                      |
+| `closeOnEscape`            | `boolean`                       | `true`        | Close on Escape.                                                           |
 
 Accepts all [Ark `TooltipRootProps`](https://ark-ui.com/docs/components/tooltip).
 
@@ -38,9 +38,9 @@ Accepts all [Ark `TooltipRootProps`](https://ark-ui.com/docs/components/tooltip)
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `UseTooltipReturn` | — | The API object from `useTooltip()`. |
+| Prop    | Type               | Default | Description                         |
+| ------- | ------------------ | ------- | ----------------------------------- |
+| `value` | `UseTooltipReturn` | —       | The API object from `useTooltip()`. |
 
 ### TooltipTrigger
 
@@ -50,9 +50,9 @@ Accepts all [Ark `TooltipTriggerProps`](https://ark-ui.com/docs/components/toolt
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `arrow` | `boolean` | `true` | Render the arrow pointing at the trigger. |
+| Prop    | Type      | Default | Description                               |
+| ------- | --------- | ------- | ----------------------------------------- |
+| `arrow` | `boolean` | `true`  | Render the arrow pointing at the trigger. |
 
 Accepts all [Ark `TooltipContentProps`](https://ark-ui.com/docs/components/tooltip) plus `className`/`class`.
 

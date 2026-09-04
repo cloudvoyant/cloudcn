@@ -57,14 +57,14 @@ One heading per **public component**, then sub-headings for each thing that cons
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
+| Prop      | Type                             | Default   | Description |
+| --------- | -------------------------------- | --------- | ----------- |
 | `variant` | `'solid' \| 'outline' \| 'text'` | `'solid'` | Fill style. |
 
 #### Slots
 
-| Slot | Description |
-| --- | --- |
+| Slot      | Description           |
+| --------- | --------------------- |
 | `default` | The button's content. |
 ```
 

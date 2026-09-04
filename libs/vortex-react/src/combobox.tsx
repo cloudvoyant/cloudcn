@@ -122,7 +122,14 @@ export function ComboboxItemGroupLabel({ className, ...props }: ComboboxItemGrou
 export type ComboboxItemProps = Omit<ArkComboboxItemProps, 'item'> & ComboboxItemVariants & { item: SelectItemData };
 
 export function ComboboxItem({ item, showIndicator = true, className, ...props }: ComboboxItemProps) {
-  return <ArkComboboxItem item={item} persistFocus className={cn(comboboxItemVariants({ showIndicator }), className)} {...props} />;
+  return (
+    <ArkComboboxItem
+      item={item}
+      persistFocus
+      className={cn(comboboxItemVariants({ showIndicator }), className)}
+      {...props}
+    />
+  );
 }
 
 export function ComboboxItemText({ className, ...props }: ComboboxItemTextProps) {

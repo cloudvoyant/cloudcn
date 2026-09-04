@@ -24,15 +24,15 @@ The Pagination component pages through a list of items. It is built on [Ark UI `
 
 Accepts all [Ark `PaginationRoot` props](https://ark-ui.com/docs/components/pagination) plus `className`/`class`:
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `count` | `number` | — | Total number of items. |
-| `page` | `number` | — | Controlled current page. |
-| `defaultPage` | `number` | `1` | Initial page when uncontrolled. |
-| `onPageChange` | `(details) => void` | — | Fires when the page changes. |
-| `pageSize` | `number` | — | Items per page. |
-| `defaultPageSize` | `number` | `10` | Initial page size when uncontrolled. |
-| `siblingCount` | `number` | `1` | Page items shown around the current page. |
+| Prop              | Type                | Default | Description                               |
+| ----------------- | ------------------- | ------- | ----------------------------------------- |
+| `count`           | `number`            | —       | Total number of items.                    |
+| `page`            | `number`            | —       | Controlled current page.                  |
+| `defaultPage`     | `number`            | `1`     | Initial page when uncontrolled.           |
+| `onPageChange`    | `(details) => void` | —       | Fires when the page changes.              |
+| `pageSize`        | `number`            | —       | Items per page.                           |
+| `defaultPageSize` | `number`            | `10`    | Initial page size when uncontrolled.      |
+| `siblingCount`    | `number`            | `1`     | Page items shown around the current page. |
 
 ### PaginationItems
 
@@ -42,10 +42,10 @@ Renders the page items plus ellipsis placeholders from the current page/sibling 
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'page'` | `'page'` | Item type. |
-| `value` | `number` | — | The page number. |
+| Prop    | Type     | Default  | Description      |
+| ------- | -------- | -------- | ---------------- |
+| `type`  | `'page'` | `'page'` | Item type.       |
+| `value` | `number` | —        | The page number. |
 
 Accepts all [Ark `PaginationItem` props](https://ark-ui.com/docs/components/pagination). The current page is marked with `data-selected`.
 

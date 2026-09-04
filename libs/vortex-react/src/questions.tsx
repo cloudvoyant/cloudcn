@@ -472,9 +472,7 @@ export function Quiz({ id, title, questions, className, ...props }: QuizProps) {
 
   return (
     <div data-quiz-id={id} className={cn(quizRootBase, className)} {...props}>
-      <div className={quizHeaderBase}>
-        {title ? <ark.h3 className={quizTitleBase}>{title}</ark.h3> : null}
-      </div>
+      <div className={quizHeaderBase}>{title ? <ark.h3 className={quizTitleBase}>{title}</ark.h3> : null}</div>
       {questions.map(renderQuestion)}
       <div className="mt-4 flex items-center gap-3">
         {submitted ? (

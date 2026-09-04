@@ -83,9 +83,7 @@ export function WindowStageTrigger({ className, ...props }: WindowStageTriggerPr
 }
 
 export function WindowDismiss({ className, ...props }: WindowCloseTriggerProps) {
-  return (
-    <ArkWindowCloseTrigger aria-label="Close" className={cn(windowCloseTriggerBase, className)} {...props} />
-  );
+  return <ArkWindowCloseTrigger aria-label="Close" className={cn(windowCloseTriggerBase, className)} {...props} />;
 }
 
 export function WindowBody({ className, ...props }: WindowBodyProps) {

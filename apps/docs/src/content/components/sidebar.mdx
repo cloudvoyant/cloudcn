@@ -24,29 +24,29 @@ The sidebar is a composition of named parts; all structural parts accept standar
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `defaultOpen` | `boolean` | `true` | Default open state. |
-| `open` | `boolean` | — | Controlled open state. |
-| `onOpenChange` | `(open: boolean) => void` | — | Fires when open state changes. |
+| Prop           | Type                      | Default | Description                    |
+| -------------- | ------------------------- | ------- | ------------------------------ |
+| `defaultOpen`  | `boolean`                 | `true`  | Default open state.            |
+| `open`         | `boolean`                 | —       | Controlled open state.         |
+| `onOpenChange` | `(open: boolean) => void` | —       | Fires when open state changes. |
 
 ### Sidebar
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `side` | `'left' \| 'right'` | `'left'` | Which side the sidebar sits on. |
-| `variant` | `'sidebar' \| 'floating' \| 'inset'` | `'sidebar'` | Layout variant. |
-| `collapsible` | `'offcanvas' \| 'icon' \| 'none'` | `'offcanvas'` | Collapse behavior: `icon` leaves a thin icon rail, `offcanvas` hides it entirely, `none` disables collapsing. |
+| Prop          | Type                                 | Default       | Description                                                                                                   |
+| ------------- | ------------------------------------ | ------------- | ------------------------------------------------------------------------------------------------------------- |
+| `side`        | `'left' \| 'right'`                  | `'left'`      | Which side the sidebar sits on.                                                                               |
+| `variant`     | `'sidebar' \| 'floating' \| 'inset'` | `'sidebar'`   | Layout variant.                                                                                               |
+| `collapsible` | `'offcanvas' \| 'icon' \| 'none'`    | `'offcanvas'` | Collapse behavior: `icon` leaves a thin icon rail, `offcanvas` hides it entirely, `none` disables collapsing. |
 
 ### SidebarGroup
 
 #### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `label` | `string` | — | Optional group heading, rendered as the `SidebarGroupLabel`. |
+| Prop    | Type     | Default | Description                                                  |
+| ------- | -------- | ------- | ------------------------------------------------------------ |
+| `label` | `string` | —       | Optional group heading, rendered as the `SidebarGroupLabel`. |
 
 ### SidebarMenuLink
 
@@ -56,11 +56,11 @@ The concise nav-item shorthand: renders `SidebarMenuItem > SidebarMenuButton` in
 
 Accepts all `SidebarMenuButton` props plus:
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `icon` | `ReactNode` / snippet | — | Icon rendered before the label. |
-| `href` | `string` | — | When set, renders an `<a>` instead of a `<button>`. |
-| `children` | `string` | — | The item label. |
+| Prop       | Type                  | Default | Description                                         |
+| ---------- | --------------------- | ------- | --------------------------------------------------- |
+| `icon`     | `ReactNode` / snippet | —       | Icon rendered before the label.                     |
+| `href`     | `string`              | —       | When set, renders an `<a>` instead of a `<button>`. |
+| `children` | `string`              | —       | The item label.                                     |
 
 ### SidebarMenuButton
 
@@ -68,13 +68,13 @@ Accepts all `SidebarMenuButton` props plus:
 
 Accepts all `HTMLButtonProps` plus `className`/`class`, and:
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `asChild` | `boolean` / snippet | `false` | Render the button as a different element (e.g. an `<a>`). |
-| `isActive` | `boolean` | `false` | Marks the item active. |
-| `variant` | `'default' \| 'outline'` | `'default'` | Menu button style. |
-| `size` | `'default' \| 'sm' \| 'lg'` | `'default'` | Menu button size. |
-| `tooltip` | `string` or Ark `TooltipContent` props | — | Label shown as a tooltip when the sidebar is collapsed to an icon rail. |
+| Prop       | Type                                   | Default     | Description                                                             |
+| ---------- | -------------------------------------- | ----------- | ----------------------------------------------------------------------- |
+| `asChild`  | `boolean` / snippet                    | `false`     | Render the button as a different element (e.g. an `<a>`).               |
+| `isActive` | `boolean`                              | `false`     | Marks the item active.                                                  |
+| `variant`  | `'default' \| 'outline'`               | `'default'` | Menu button style.                                                      |
+| `size`     | `'default' \| 'sm' \| 'lg'`            | `'default'` | Menu button size.                                                       |
+| `tooltip`  | `string` or Ark `TooltipContent` props | —           | Label shown as a tooltip when the sidebar is collapsed to an icon rail. |
 
 ### useSidebar
 

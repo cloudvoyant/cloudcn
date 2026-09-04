@@ -38,13 +38,30 @@ export function NumberInputInput({ className, ...props }: NumberInputInputProps)
 }
 
 export function NumberInputDecrement({ className, ...props }: NumberInputDecrementTriggerProps) {
-  return <ArkNumberInputDecrementTrigger aria-label="Decrement" className={cn(numberInputTriggerBase, className)} {...props} />;
+  return (
+    <ArkNumberInputDecrementTrigger
+      aria-label="Decrement"
+      className={cn(numberInputTriggerBase, className)}
+      {...props}
+    />
+  );
 }
 
 export function NumberInputIncrement({ className, ...props }: NumberInputIncrementTriggerProps) {
-  return <ArkNumberInputIncrementTrigger aria-label="Increment" className={cn(numberInputTriggerBase, className)} {...props} />;
+  return (
+    <ArkNumberInputIncrementTrigger
+      aria-label="Increment"
+      className={cn(numberInputTriggerBase, className)}
+      {...props}
+    />
+  );
 }
 
 export const useNumberInput = useNumberInputContext;
 
-export type { NumberInputControlProps, NumberInputInputProps, NumberInputIncrementTriggerProps, NumberInputDecrementTriggerProps };
+export type {
+  NumberInputControlProps,
+  NumberInputInputProps,
+  NumberInputIncrementTriggerProps,
+  NumberInputDecrementTriggerProps,
+};

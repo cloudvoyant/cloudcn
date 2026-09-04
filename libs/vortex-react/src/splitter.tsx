@@ -36,16 +36,8 @@ export function SplitterResizeTrigger({ className, children, ...props }: Splitte
   );
 }
 
-export function SplitterResizeTriggerIndicator({
-  className,
-  ...props
-}: SplitterResizeTriggerIndicatorProps) {
-  return (
-    <ArkSplitterResizeTriggerIndicator
-      className={cn(splitterResizeTriggerIndicatorBase, className)}
-      {...props}
-    />
-  );
+export function SplitterResizeTriggerIndicator({ className, ...props }: SplitterResizeTriggerIndicatorProps) {
+  return <ArkSplitterResizeTriggerIndicator className={cn(splitterResizeTriggerIndicatorBase, className)} {...props} />;
 }
 
 export type {

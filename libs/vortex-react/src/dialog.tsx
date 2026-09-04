@@ -63,7 +63,12 @@ export type DialogContentPropsWithPositioner = DialogContentProps & {
   fullscreen?: boolean;
 };
 
-export function DialogContent({ positionerClassName, fullscreen, className, ...props }: DialogContentPropsWithPositioner) {
+export function DialogContent({
+  positionerClassName,
+  fullscreen,
+  className,
+  ...props
+}: DialogContentPropsWithPositioner) {
   return (
     <Portal>
       <ArkDialogPositioner className={cn(dialogPositionerBase, fullscreen && 'p-0', positionerClassName)}>

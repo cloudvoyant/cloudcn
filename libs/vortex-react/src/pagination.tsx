@@ -11,7 +11,13 @@ import {
   type PaginationRootProps,
 } from '@ark-ui/react/pagination';
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory';
-import { paginationRootBase, paginationTriggerBase, paginationItemBase, paginationEllipsisBase, cn } from '@cloudvoyant/vortex-ui';
+import {
+  paginationRootBase,
+  paginationTriggerBase,
+  paginationItemBase,
+  paginationEllipsisBase,
+  cn,
+} from '@cloudvoyant/vortex-ui';
 
 export function Pagination({ className, ...props }: PaginationRootProps) {
   return <ArkPaginationRoot className={cn(paginationRootBase, className)} {...props} />;

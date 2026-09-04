@@ -30,7 +30,17 @@ export interface MenuLinkProps {
 
 type MenuButtonProps = React.ComponentProps<typeof MenuButton>;
 
-export function MenuLink({ icon, href, onClick, isActive, variant, size, tooltip, className, children }: MenuLinkProps) {
+export function MenuLink({
+  icon,
+  href,
+  onClick,
+  isActive,
+  variant,
+  size,
+  tooltip,
+  className,
+  children,
+}: MenuLinkProps) {
   const content = (
     <>
       {icon}
@@ -41,7 +51,14 @@ export function MenuLink({ icon, href, onClick, isActive, variant, size, tooltip
   return (
     <li data-slot="sidebar-menu-item" data-sidebar="menu-item" className={cn(sidebarStyles.menuItemClass)}>
       {href == null ? (
-        <MenuButton isActive={isActive} variant={variant} size={size} tooltip={tooltip} className={className} onClick={onClick}>
+        <MenuButton
+          isActive={isActive}
+          variant={variant}
+          size={size}
+          tooltip={tooltip}
+          className={className}
+          onClick={onClick}
+        >
           {content}
         </MenuButton>
       ) : (

@@ -3,7 +3,13 @@
 //         re-based on Ark UI (drawer, tooltip, asChild factory)
 /// <reference lib="dom" />
 import * as React from 'react';
-import { SIDEBAR_WIDTH, SIDEBAR_WIDTH_ICON, SIDEBAR_KEYBOARD_SHORTCUT, sidebarStyles, cn } from '@cloudvoyant/vortex-ui';
+import {
+  SIDEBAR_WIDTH,
+  SIDEBAR_WIDTH_ICON,
+  SIDEBAR_KEYBOARD_SHORTCUT,
+  sidebarStyles,
+  cn,
+} from '@cloudvoyant/vortex-ui';
 import { Row } from '../row';
 import { SidebarContext } from './context';
 
@@ -68,9 +74,7 @@ export function Provider({
   React.useEffect(() => {
     if (openProp !== undefined) return;
     if (typeof document === 'undefined') return;
-    const cookie = document.cookie
-      .split('; ')
-      .find((row) => row.startsWith(`${SIDEBAR_COOKIE_NAME}=`));
+    const cookie = document.cookie.split('; ').find((row) => row.startsWith(`${SIDEBAR_COOKIE_NAME}=`));
     if (cookie) {
       _setOpen(cookie.split('=')[1] === 'true');
     }

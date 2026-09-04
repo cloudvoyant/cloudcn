@@ -13,7 +13,11 @@ export function Group({ label, className, children, ...props }: HTMLArkProps<'di
           {label}
         </div>
       )}
-      <div data-slot="sidebar-group-content" data-sidebar="group-content" className={cn(sidebarStyles.groupContentClass)}>
+      <div
+        data-slot="sidebar-group-content"
+        data-sidebar="group-content"
+        className={cn(sidebarStyles.groupContentClass)}
+      >
         {children}
       </div>
     </Col>

@@ -20,9 +20,18 @@ export default defineConfig({
         // instead of requiring a rebuild (the package exports map points at dist/).
         // Exact-match anchors keep subpath imports (@cloudvoyant/vortex-ui/theme.css, ...)
         // resolving through the exports map, not through the JS alias.
-        { find: /^@cloudvoyant\/vortex-ui$/, replacement: new URL('../../libs/vortex-ui/src/index.ts', import.meta.url).pathname },
-        { find: /^@cloudvoyant\/vortex-react$/, replacement: new URL('../../libs/vortex-react/src/index.ts', import.meta.url).pathname },
-        { find: /^@cloudvoyant\/vortex-svelte$/, replacement: new URL('../../libs/vortex-svelte/src/index.ts', import.meta.url).pathname },
+        {
+          find: /^@cloudvoyant\/vortex-ui$/,
+          replacement: new URL('../../libs/vortex-ui/src/index.ts', import.meta.url).pathname,
+        },
+        {
+          find: /^@cloudvoyant\/vortex-react$/,
+          replacement: new URL('../../libs/vortex-react/src/index.ts', import.meta.url).pathname,
+        },
+        {
+          find: /^@cloudvoyant\/vortex-svelte$/,
+          replacement: new URL('../../libs/vortex-svelte/src/index.ts', import.meta.url).pathname,
+        },
       ],
     },
     optimizeDeps: {

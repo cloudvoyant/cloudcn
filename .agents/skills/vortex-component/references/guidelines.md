@@ -75,7 +75,7 @@ The Svelte wrapper exposes the same parts and prop names as React. Translate las
   - **inertness** — disabled controls are not activatable (`toBeDisabled`)
   - **a11y violations** — when the axe harness is available, scan for violations instead of hand-rolling role checks
   - **keyboard navigability** — when the component exposes focusable structure (menus, command palettes, sidebars, dialogs, toggles), assert full keyboard operation: arrow keys move focus, `Enter`/`Space` activates, `Escape` dismisses, and no unexpected `Tab` presses are needed to reach items (no focus traps, no skipped items)
-  Do not assert demo-shell presence, example-card UI, or generated classes.
+    Do not assert demo-shell presence, example-card UI, or generated classes.
 - **Example** — a behavior/a11y e2e test follows this pattern (the shipped `e2e/button.spec.ts`, `e2e/toggle-button.spec.ts`, and `e2e/badge.spec.ts` are the canonical full specs):
 
   ```ts

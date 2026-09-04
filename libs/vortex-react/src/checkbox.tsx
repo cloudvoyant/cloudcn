@@ -11,8 +11,19 @@ import {
   useCheckboxContext,
   type CheckboxRootProps,
 } from '@ark-ui/react/checkbox';
-import type { CheckboxControlProps, CheckboxIndicatorProps, CheckboxLabelProps, CheckboxGroupProps } from '@ark-ui/react/checkbox';
-import { checkboxVariants, checkboxIndicatorBase, checkboxLabelBase, checkboxGroupBase, cn } from '@cloudvoyant/vortex-ui';
+import type {
+  CheckboxControlProps,
+  CheckboxIndicatorProps,
+  CheckboxLabelProps,
+  CheckboxGroupProps,
+} from '@ark-ui/react/checkbox';
+import {
+  checkboxVariants,
+  checkboxIndicatorBase,
+  checkboxLabelBase,
+  checkboxGroupBase,
+  cn,
+} from '@cloudvoyant/vortex-ui';
 import type { CheckboxProps as CheckboxBaseProps } from '@cloudvoyant/vortex-ui';
 
 export type CheckboxProps = CheckboxRootProps & CheckboxBaseProps;

@@ -110,7 +110,12 @@ export function YouTube({ url, title, description, poster, className, children, 
             onClick={() => setPlaying(true)}
             aria-label={title ? `Play video: ${title}` : 'Play video'}
           >
-            <ark.img src={posterUrl} alt={title ?? `YouTube video ${videoId}`} loading="lazy" className="h-full w-full object-cover" />
+            <ark.img
+              src={posterUrl}
+              alt={title ?? `YouTube video ${videoId}`}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
             <ark.span className={youtubePlayButtonBase} aria-hidden="true">
               <ark.span className={youtubePlayButtonInnerBase}>
                 <PlayIcon />

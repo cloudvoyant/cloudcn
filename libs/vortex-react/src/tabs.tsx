@@ -28,12 +28,7 @@ export type TabsProps = TabsRootProps;
 
 export function Tabs({ className, lazyMount = true, unmountOnExit = true, ...props }: TabsProps) {
   return (
-    <TabsRoot
-      lazyMount={lazyMount}
-      unmountOnExit={unmountOnExit}
-      className={cn(tabsRootBase, className)}
-      {...props}
-    />
+    <TabsRoot lazyMount={lazyMount} unmountOnExit={unmountOnExit} className={cn(tabsRootBase, className)} {...props} />
   );
 }
 

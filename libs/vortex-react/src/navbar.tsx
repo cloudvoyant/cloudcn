@@ -126,13 +126,7 @@ const NavbarMenuStyleContext = React.createContext<NavbarMenuStyle>({
   inContent: false,
 });
 
-function NavbarProvider({
-  defaultOpen = false,
-  children,
-}: {
-  defaultOpen?: boolean;
-  children: React.ReactNode;
-}) {
+function NavbarProvider({ defaultOpen = false, children }: { defaultOpen?: boolean; children: React.ReactNode }) {
   const id = React.useId();
   const [open, setOpen] = React.useState(defaultOpen);
   const [scrolled, setScrolled] = React.useState(false);
@@ -198,10 +192,7 @@ function Navbar({
     return () => (target as EventTarget).removeEventListener('scroll', onScroll);
   }, [setScrolled]);
 
-  const value = React.useMemo(
-    () => ({ ...base, variant, floating, density }),
-    [base, variant, floating, density],
-  );
+  const value = React.useMemo(() => ({ ...base, variant, floating, density }), [base, variant, floating, density]);
   const hidden = variant === 'hide' && base.scrolled && !base.hovered;
   const shrunk = variant === 'shrink' && base.scrolled;
 
@@ -339,8 +330,19 @@ function NavbarMenuTrigger({ asChild, className, children, ...props }: NavbarMen
     </svg>
   );
   return (
-    <ArkNavMenuTrigger asChild={asChild} className={cn(navbarMenuTriggerStyle({ density, variant }), className)} {...props}>
-      {asChild ? children : (<>{children}{chevron}</>)}
+    <ArkNavMenuTrigger
+      asChild={asChild}
+      className={cn(navbarMenuTriggerStyle({ density, variant }), className)}
+      {...props}
+    >
+      {asChild ? (
+        children
+      ) : (
+        <>
+          {children}
+          {chevron}
+        </>
+      )}
     </ArkNavMenuTrigger>
   );
 }
@@ -486,13 +488,22 @@ function NavbarMobileOverlay({ className, children, ...props }: React.ComponentP
       <DialogRoot open={open} lazyMount unmountOnExit onOpenChange={({ open }) => setOpen(open)} preventScroll={false}>
         <DialogBackdrop className="absolute inset-0 z-[100] bg-background/60 backdrop-blur-sm" />
         <DialogPositioner className="absolute inset-0 z-[100]">
-          <DialogContent id={id} data-slot="navbar-mobile-overlay" className={cn(navbarMobileContentBase, className)} {...props}>
+          <DialogContent
+            id={id}
+            data-slot="navbar-mobile-overlay"
+            className={cn(navbarMobileContentBase, className)}
+            {...props}
+          >
             <DialogTitle className="sr-only">Navigation menu</DialogTitle>
             <DialogDescription className="sr-only">Mobile navigation menu</DialogDescription>
             <div className={navbarMobileHeaderBase}>
               {slots.brand}
               <DialogCloseTrigger asChild>
-                <button type="button" aria-label="Close navigation menu" className={cn(navbarTriggerVariants({ floating }))}>
+                <button
+                  type="button"
+                  aria-label="Close navigation menu"
+                  className={cn(navbarTriggerVariants({ floating }))}
+                >
                   <svg
                     className="size-4"
                     viewBox="0 0 24 24"
@@ -538,9 +549,7 @@ export {
   NavbarMenuIndicator,
   useNavbar,
 };
-export {
-  ArkNavMenuViewportPositioner as NavbarMenuViewportPositioner,
-};
+export { ArkNavMenuViewportPositioner as NavbarMenuViewportPositioner };
 export { navbarMenuTriggerStyle, type NavbarMenuDensity, type NavbarMenuVariant } from '@cloudvoyant/vortex-ui';
 export type {
   NavbarMenuRootProps,

@@ -1,0 +1,57 @@
+---
+title: AgentChat
+description: An agentic chat layer — useAgenticChat hook, streaming message, virtualized history — for React and Svelte.
+order: 3
+group: chat
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+AgentChat layers agent semantics on the Chat family. `useAgenticChat()` manages message state and stream folding (`waiting`, `streaming`, `completed`, `retrying`, `cancelled`); you wire your transport (fetch/SSE) into `dispatch`, `addMessage`, and `prependMessages`. It returns `{ messages, status, streamingText, error, dispatch, addMessage, prependMessages, setStreamingText, setStatus }` (Svelte: `{ state, dispatch, addMessage, prependMessages, setStreamingText, setStatus }`). `AgentStreamingMessage` renders the in-flight text with a caret outside the virtualized list, and `ChatThread virtual` window-sizes settled history. Any new `status` event or a `done` event clears `error`, so a recovered retry does not leave a stale failure on the state.
+
+<Demo component="agent-chat" example="streaming" />
+
+## Examples
+
+<Examples component="agent-chat" exclude="streaming" />
+
+## Dependencies
+
+`@tanstack/react-virtual` (React) and `@tanstack/svelte-virtual` (Svelte) are **optional peer dependencies — not bundled**. Install them in your app to enable `virtual` threads; without them the thread renders the full list (dynamic import with fallback).
+
+## API Reference
+
+### useAgenticChat
+
+Stream events: `{ type: 'text-delta', text }`, `{ type: 'status', status }`, `{ type: 'error', message }`, `{ type: 'done', message? }`.
+
+### AgentChat
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `chat` | `AgenticChatApi` | — | The `useAgenticChat()` return value. |
+| `threadVariant` | `'slack' \| 'ios' \| 'minimal'` | `'minimal'` | Thread styling context. |
+
+Accepts all Ark factory `div` props.
+
+### AgentStreamingMessage
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `text` | `string` | context | Standalone usage (outside AgentChat). |
+| `streaming` | `boolean` | context | Shows the caret while `true`. |
+
+Accepts all Ark factory `div` props. Without text the message body is empty, but the `aria-live` region stays mounted so the first delta is announced.
+
+## Future work
+
+Planned additions (tracked, not yet scheduled): ask-user-question flows, tool-call activity panels, Replies, Thinking/Activity indicators, AssistantQuestion, AssistantSuggestion, SubagentPanel.
+
+## Accessibility
+
+The streaming region uses `aria-live="polite"` and carries `aria-busy` while tokens arrive, so a screen reader learns the stream is still updating rather than re-announcing the accumulated text on every delta. The region mounts before it has content — a live region has to be in the DOM ahead of the change to be announced. The caret is decorative (`aria-hidden`).

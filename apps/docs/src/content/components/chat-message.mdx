@@ -1,0 +1,54 @@
+---
+title: ChatMessage
+description: A chat message with role variants, timestamps, reactions, and attachments for React and Svelte.
+order: 1
+group: chat
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+ChatMessage renders one message bubble. Variants cover your messages (`user`), agent messages (`agent`), and everyone else (`default`); statuses cover `sending`, `streaming`, and `error` states. Reactions render from a `Record<string, number>` map keyed by unicode emoji or `thumbs-up`/`thumbs-down`, and both picker menus (`ReactionEmoji`, `ReactionRate`) are included.
+
+<Demo component="chat-message" example="default" />
+
+## Examples
+
+<Examples component="chat-message" exclude="default" />
+
+## API Reference
+
+React and Svelte accept the same props (`className`/`class`).
+
+### ChatMessage
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `'user' \| 'agent' \| 'default'` | `'default'` | Message role styling. |
+| `status` | `'default' \| 'sending' \| 'streaming' \| 'error'` | `'default'` | Lifecycle state; `streaming` appends the caret. |
+| `from` | `string` | — | Sender label (hidden in `minimal` threads). |
+| `at` | `Date` | — | Timestamp rendered in the meta row. |
+| `reactions` | `Record<string, number>` | — | Reaction pills (emoji keys or `thumbs-up`/`thumbs-down`). |
+| `activeReactionIcons` | `string[]` | `[]` | Icons toggled on by the current user. |
+| `attachments` | `ChatAttachment[]` | — | Rendered below the bubble. |
+| `onReactionToggle` | `(icon: string) => void` | — | Fires when a reaction pill is clicked. |
+
+Accepts all Ark factory `div` props.
+
+### ChatMessageReaction / ReactionEmoji / ReactionRate
+
+#### Props
+
+| Component | Key props |
+| --- | --- |
+| `ChatMessageReaction` | `icon`, `count`, `active`, `onToggle` |
+| `ReactionEmoji` | `emojis`, `onSelect`, `triggerLabel` |
+| `ReactionRate` | `value`, `counts`, `onToggle` |
+
+`emojis` defaults to `DEFAULT_REACTION_EMOJIS`, exported from `@cloudvoyant/vortex-ui` (and re-exported by both framework packages) so the two mirrors and your app share one list. `ChatMessageReaction` and `ReactionRate` accept all Ark factory `button`/`div` props; `ReactionEmoji` takes props for its trigger and popover content.
+
+## Accessibility
+
+Reaction pills are buttons with `aria-pressed` state and accessible labels; the emoji grid buttons and thumbs controls are labeled individually.

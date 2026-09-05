@@ -1,0 +1,74 @@
+---
+title: Chat
+description: A presentational chat surface — thread, messages, typing indicator, and composer — for React and Svelte.
+order: 2
+group: chat
+---
+
+import Demo from '../../components/Demo.astro';
+import Examples from '../../components/Examples.astro';
+
+Chat is a dumb/presentational surface: you own the messages and render them as `ChatMessage` children inside `ChatThread`, with `ChatInput` as the composer. Variants change layout — `ios` floats your messages right as accent bubbles, `slack` left-aligns everything, and `minimal` drops labels for styling-only distinction. Enter sends; Shift+Enter inserts a newline.
+
+<Demo component="chat" example="default" />
+
+## Examples
+
+<Examples component="chat" exclude="default" />
+
+## API Reference
+
+### Chat
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `'slack' \| 'ios'` | `'slack'` | Thread layout provided to nested messages. |
+
+Accepts all Ark factory `div` props.
+
+### ChatThread
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `'slack' \| 'ios' \| 'minimal'` | context | Overrides the surrounding Chat variant. |
+| `messages` | `ChatMessageData[]` | — | Data mode (renders `ChatMessage` per item). |
+| `virtual` | `boolean` | `false` | Virtualize settled messages (see AgentChat); keeps the variant's padding and row spacing. |
+| `onScrollTop` | `() => void` | — | Fires once each time the thread reaches the top — wire history loading. |
+| `renderMessage` / `message` | function / snippet | — | Custom data-mode renderer (React / Svelte). |
+
+Accepts all Ark factory `div` props. `onScroll`/`onscroll` is composed with the internal handler, so a passed listener still runs alongside `onScrollTop`.
+
+### ChatInput
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `placeholder` | `string` | `'Type a message…'` | Composer placeholder. |
+| `value` / `onValueChange` | `string` / `(value) => void` | — | Controlled text. |
+| `onSend` | `(text, attachments) => void` | — | Fires on Enter/Send with trimmed text + attachments. Ownership of each attachment `url` (a blob URL) transfers to you — revoke it when you are done. |
+| `disabled` | `boolean` | `false` | Disables the composer. |
+
+Accepts all Ark factory `div` props.
+
+### TypingIndicator
+
+#### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | `'Someone is typing'` | Announced via `role="status"`. |
+
+Accepts all Ark factory `div` props.
+
+## Future work
+
+Planned additions for richer agentic surfaces (tracked, not yet scheduled): Replies, Events, Thinking, Edits, AssistantThinking/Activity, SubagentPanel, AssistantQuestion, AssistantSuggestion.
+
+## Accessibility
+
+The composer textarea is labeled, Enter/Shift+Enter behavior is standard (Enter that confirms an IME composition inserts rather than sends), and the typing indicator announces politely. The `ChatInput` composer builds on the sourced `Textarea` (Ark field), so it picks up `Field` association and invalid/required state when you wrap it in one.
